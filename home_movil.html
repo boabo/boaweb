@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!--     BOLIVIANA DE AVIACION     -->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=320">
+
+	<link rel="icon" href="images/icon.png" type="image/x-icon">
+	<title>Boliviana de Aviaci&oacute;n</title>
+	
+	<!--  LIBRERIAS JAVASCRIPT  -->
+	<!-- JQUERY -->
+	<script src="content/lib/jquery-1.11.1.min.js"></script>
+
+	<!-- STYLE.CSS -->
+	<link href="content/style_movil.css" media="screen" rel="stylesheet" type="text/css" />
+	
+	<!-- JQUERY UI -->
+	<link rel="stylesheet" type="text/css" href="content/lib/jquery_ui/css/dot-luv/jquery-ui.min.css">
+	<script src="content/lib/jquery_ui/jquery-ui.min_es.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+	<!-- GENERAL SCRIPTS -->
+	<script type="text/javascript" src="content/common.js"></script>
+	<script type="text/javascript" src="content/language_data_es.js"></script><!-- CHANGE BY LANGUAGE -->
+	<script type="text/javascript" src="content/custom_handlers.js"></script>
+
+	<script type="text/javascript" src="content/home_movil.js"></script>
+	<!--
+	<script type="text/javascript" src="content/home.js"></script>
+	<script type="text/javascript" src="content/header.js"></script>
+	<script type="text/javascript" src="content/footer.js"></script>
+	-->
+
+	<!-- SERVICES LOCATION -->
+	<script type="text/javascript">
+		var SLIDES_SERVICE_URL = "content/fake_services/slides.json?type=mobile";
+	</script>
+
+	<link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<!-- HEADER -->
+	<header style="display:block">
+		<div id="btn_menu"></div>
+		<div class="logo-header"></div>
+		<div id="menu_overlay" style="display:none"></div>
+		<ul id="main_menu" data-level="first">
+			<li id="menu_item_planifica">
+				<span>PLANIFICA TU VIAJE</span>
+				<ul>
+					<li class="title">PLANIFICA TU VIAJE</li>
+					<li data-link="reservar_vuelos"><span>RESERVAR VUELOS</span></li>
+					<li data-link="estado_vuelo"><span>ESTADO DEL VUELO</span></li>
+					<li data-link="horario_vuelos"><span>HORARIO DE VUELOS</span></li>
+				</ul>
+			</li>
+			<li id="menu_item_antes_viajar">
+				<span>ANTES DE VIAJAR</span>
+				<ul>
+					<li class="title">ANTES DE VIAJAR</li>
+					<li data-primary="politica_equipaje" class="collapsible">
+						<span>POL&Iacute;TICA DE EQUIPAJE</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-item="equipaje_mano">Equipaje de Mano</li>
+							<li data-item="equipaje_facturable">Equipaje Facturable</li>
+							<li data-item="exceso_equipaje">Exceso de Equipaje</li>
+							<li data-item="equipaje_especial">Equipaje Especial</li>
+							<li data-item="mercancias_peligrosas">Mercanc&iacute;as Peligrosas</li>
+							<li data-item="equipaje_mascotas">Mascotas</li>
+						</ul>
+					</li>
+					<li data-primary="tips_equipaje">
+						<span>TIPS DE EQUIPAJE</span>
+					</li>
+					<li data-primary="llegar_aeropuerto" class="collapsible">
+						<span>LLEGAR AL AEROPUERTO</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-item="hora_limite">Hora l&iacute;mite</li>
+							<li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+							<li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+							<li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+						</ul>
+					</li>
+					<li data-primary="servicios_especiales">
+						<span>SERVICIOS ESPECIALES</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+							<li data-item-"pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes</li>
+							<li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales</li>
+							<li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+							<li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis portatil(PDMs)</li>
+							<li data-item-"bebes">Viajando con beb&eacute;s</li>
+							<li data-item="mascota">Viajando con tu mascota en cabina</li>
+						</ul>
+					</li>
+					<li data-primary="pasajeros_especiales">
+						<span>PASAJEROS ESPECIALES</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-item="embarazadas">Mujeres embarazadas</li>
+							<li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+							<li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+						</ul>
+					</li>
+					<li data-primary="menu_especial">
+						<span>MEN&Uacute; ESPECIAL</span>
+					</li>
+					<li data-primary="documentacion_viaje">
+						<span>DOCUMENTACION DE VIAJE, VISA Y API</span>
+					</li>
+					<li data-primary="vacunas">
+						<span>VACUNAS</span>
+					</li>
+					<li data-primary="derechos_pasajeros" class="collapsible">
+						<span>DERECHOS DE LOS PASAJEROS</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-link="contrato_transporte">Contrato de transporte</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li id="menu_item_experiencia_boa">
+				<span>EXPERIENCIA BoA</span>
+				<ul>
+					<li class="title">EXPERIENCIA BoA</li>
+					<li data-primary="nuestra_flota">
+						<span>NUESTRA FLOTA</span>
+					</li>
+					<li data-primary="experiencia_bordo" class="collapsible">
+						<span>EXPERIENCIA A BORDO</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-item="gastronomia">Gastronim&iacute;a, snack y bebidas</li>
+						</ul>
+					</li>
+					<li data-primary="seguro_internacional"><span>SEGURO INTERNACIONAL</span></li>
+					<li data-primary="en_el_aeropuerto" class="collapsible">
+						<span>EN EL AEROPUERTO</span>
+						<div class="locker"></div>
+						<ul class="inner-menu">
+							<li data-item="check_in">Servicio de Check-in</li>
+						</ul>
+					</li>
+					<li data-primary="cabinas"><span>CARACTER&Iacute;STICAS DE LAS CABINAS</span></li>
+				</ul>
+			</li>
+			<li id="menu_item_somos_boa">
+				<span>SOMOS BoA</span>
+				<ul>
+					<li class="title">SOMOS BoA</li>
+					<li data-primary="perfil_corporativo">
+						<span>PERFIL CORPORATIVO<span>
+					</li>
+					<li data-primary="somos_iosa">
+						<span>SOMOS IOSA</span>
+					</li>
+					<li data-primary="reconocimientos_premios">
+						<span>RECONOCIMIENTOS Y PREMIOS</span>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</header>
+	<!-- SLIDES -->
+	<img class="slide" src="content/fake_services/slides/aniversario_movil.jpg" style="display:block">
+	<!-- UI HOME -->
+	<div id="ui_home">
+		<div class="overlay"></div>
+		<div id="div_submit"></div>
+		<div id="buscador_vuelos">
+			<!-- TABS -->
+			<ul>
+				<li class="menu selected" data-content="reserva_vuelos">
+					<h2>RESERVA DE</h2>
+					<h1>VUELOS</h1>
+				</li>
+				<li id="tab_web_check_in" class="menu" data-content="web_check_in" title="Disponible Pr&oacute;ximamente">
+					<h2>WEB</h2>
+					<h1>CHECK IN</h1>
+				</li>
+				<li class="menu disabled" data-content="estado_vuelo" title="Disponible Pr&oacute;ximamente">
+					<div class="label-prox">(pr&oacute;ximamente)</div>
+					<h2>ESTADO DE MI</h2>
+					<h1>VUELO</h1>
+				</li>
+			</ul>
+			<!-- CONTENT -->
+			<div id="reserva_vuelos" class="content form selected">
+				<table>
+					<tr>
+						<td><label>Desde:</label></td>
+						<td><label>A:</label></td>
+					</tr>
+					<tr>
+						<td class='input-container'>
+							<div class="validable">
+								<select id="select_desde" class="origen-destino">
+									<option value="">Origen</option>
+									<option value="CIJ">COBIJA</option>
+					                <option value="CBB">COCHABAMBA</option>
+					                <option value="LPB">LA PAZ</option>
+					                <option value="MAD">MADRID</option>
+					                <option value="VVI">SANTA CRUZ</option>
+					                <option value="SRE">SUCRE</option>
+					                <option value="TJA">TARIJA</option>
+					                <option value="TDD">TRINIDAD</option>
+					                <option value="EZE">BUENOS AIRES</option>
+					                <option value="GRU">SAO PAULO</option>
+								</select>	
+							</div>
+						</td>
+						<td class='input-container'>
+							<div class="validable">
+								<select id="select_hasta" class="origen-destino">
+									<option value="">Destino</option>
+									<option value="CIJ">COBIJA</option>
+					                <option value="CBB">COCHABAMBA</option>
+					                <option value="LPB">LA PAZ</option>
+					                <option value="MAD">MADRID</option>
+					                <option value="VVI">SANTA CRUZ</option>
+					                <option value="SRE">SUCRE</option>
+					                <option value="TJA">TARIJA</option>
+					                <option value="TDD">TRINIDAD</option>
+					                <option value="EZE">BUENOS AIRES</option>
+					                <option value="GRU">SAO PAULO</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+				</table>
+
+				<table>
+					<tr>
+						<td>
+							<div id="rbtn_ida_vuelta" class="radio-button" data-group="ida_vuelta">
+								<div class="btn">
+									<div></div>
+								</div>
+								<label>Ida y vuelta</label>
+							</div>
+						</td>
+						<td>
+							<div id="rbtn_ida" class="radio-button checked" data-group="ida_vuelta">
+								<div class="btn">
+									<div></div>
+								</div>
+								<label>Solo ida</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><label>Salida:</label></td>
+					</tr>
+					<tr>
+						<td class='input-container' colspan="2">
+							<div class="validable">
+								<input type="text" id="picker_salida" class="calendar" text="(Ingrese fecha)" onkeypress="return false;">
+							</div>
+						</td>
+						
+					</tr>
+					<tr>
+						<td colspan="2"><label id="lbl_regreso" style="display:none">Regreso:</label></td>
+					</tr>
+					<tr>
+						<td class='input-container' colspan="2">
+							<div class="validable">
+								<input type="text" id="picker_regreso" class="calendar" style="display:none"
+									onkeypress="return false;">
+							</div>
+						</td>
+					</tr>
+				</table>
+				
+				<table>
+					<tr>
+						<td><label>Adultos</label></td>
+						<td><label>Ni&ntilde;os<br>(2-11)a&ntilde;os</label></td>
+						<td><label>Beb&eacute;s<br>(0-1)a&ntilde;os</label></td>
+					</tr>
+					<tr>
+						<td class="input-container">
+							<select id="select_nro_adultos" class="number">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</td>
+						<td class="input-container">
+							<select id="select_nro_ninhos" class="number">
+								<option value="0" selected>0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</td>
+						<td class="input-container">
+							<select id="select_nro_bebes" class="number">
+								<option value="0" selected>0</option>
+								<option value="1">1</option>
+								<option value="1">2</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" style="display:none">
+							<div id="cbx_flexible_en_fechas" class="checkbox"></div>
+						</td>
+					</tr>
+					<tr style="display:none">
+						<td><label>Moneda:</label></td>
+					</tr>
+					<tr style="display:none">
+						<td colspan="5">
+							<select id="select_moneda" class="moneda">
+								<option value="BOB" selected>BOLIVIANOS (BOB)</option>
+								<option value="USD">D&Oacute;LARES (USD)</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+
+				<div id="btn_buscar_vuelos" class="button">BUSCAR</div>
+			</div>
+
+			<div id="web_check_in" class="content form">
+				<table>
+					<tr>
+						<td rowspan="2" valign="top">
+							<div id="cbx_acepto_terminos" class="checkbox"></div>
+							<br>
+							<br>
+							<label>Acepto los <a target="_blank" href="http://www.boa.bo/es/bolivia/terminos-condiciones">t&eacute;rminos y condiciones</a></label>
+						</td>
+						<td>
+							<table class="tbl_indicaciones">
+								<tr>
+									<td>
+										<div class="clock-img"></div>
+									</td>
+									<td>Real&iacute;zalo entre 24 y 2 horas antes del vuelo.</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="book-img"></div>
+									</td>
+									<td>Ten a mano tus documentos de viaje.</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="paper-img"></div>
+									</td>
+									<td>Ten lista tu impresora</td>
+								</tr>
+								<tr>
+									<td>
+										
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="btn_buscar_check_in" class="button" style="display:none">CHECK-IN</div>
+						</td>
+					</tr>
+				</table>
+				<table class="tbl_tipo_identificacion" style="display:none;">
+					<tr>
+						<td>
+							<input id="rbtn_cod_reserva" name="tipo_identificacion" type="radio">
+						</td>
+						<td>
+							<label for="rbtn_cod_reserva">COD. RESERVA</label>
+						</td>
+						<td>
+							<input id="rbtn_doc_identificacion" checked name="tipo_identificacion" type="radio">
+						</td>
+						<td>
+							<label for="rbtn_doc_identificacion">DOCUMENTO NAL. DE IDENTIFICACI&Oacute;N</label>
+						</td>
+						<td>
+							<input id="rbtn_frequent_flyer" name="tipo_identificacion" type="radio">
+						</td>
+						<td>
+							<label for="rbtn_frequent_flyer">FREQUENT FLYER</label>
+						</td>
+					</tr>
+				</table>
+				<table class="tbl_datos" style="display:none;">
+					<tr>
+						<td><label>Apellido</label></td>
+					</tr>
+					<tr>
+						<td><input id="tbx_apellido" type="text"></td>
+					</tr>
+					<tr>
+						<td><label id="lbl_tipo_documento">Documento nal. de Identificaci&oacute;n</label></td>
+					</tr>
+					<tr>
+						<td><input id="tbx_documento" type="text"></td>
+					</tr>
+					<tr>
+						<td><label>Origen</label></td>
+					</tr>
+					<tr>
+						<td>
+							<select id="select_check_in_origen">
+								<option value="VVI">Santa Cruz, BO(WI)</option>
+								<option value="EZE" selected>Buenos Aires, AR(EZE)</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="estado_vuelo" class="content">
+				<table>
+					<tr>
+						<td><label>ORIGEN:</label></td>
+						<td><label>DESTINO:</label></td>
+					<tr>
+						<td>
+							<select id="select_origen">
+								<option value="VVI" selected>Santa Cruz, BO(WI)</option>
+								<option value="EZE">Buenos Aires, AR(EZE)</option>
+							</select>
+						</td>
+						<td>
+							<select id="select_destino">
+								<option value="VVI">Santa Cruz, BO(WI)</option>
+								<option value="EZE" selected>Buenos Aires, AR(EZE)</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>FECHA:</label></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" id="picker_estado_vuelo" class="calendar">
+						</td>
+					</tr>
+				</table>
+				<div id="btn_buscar_estado_vuelo" class="button">BUSCAR</div>
+			</div>
+		</div>
+	</div>
+	<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+</body>
+</html>
