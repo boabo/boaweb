@@ -27,19 +27,27 @@ $(document).on('ready',function()
 function animateFooterIcons()
 {
 	animateTooltip("contacto_asistencia");
-	setTimeout(function(){animateTooltip("horarios")},100);
-	setTimeout(function(){animateTooltip("reservas")},200);
+	setTimeout(function(){animateTooltip("horarios")},1000);
+	setTimeout(function(){animateTooltip("reservas")},2000);
+	setTimeout(function(){animateTooltip("pin_boa")},3000);
 }
 // ---------------------------------------------------------------------------
 function animateTooltip(id)
 {
 	setTimeout(function(){
-		$("footer #" + id).addClass("animating");	
+		$("footer #" + id).addClass("animating");
+		console.log($("footer #" + id).children('span'));
+		$("footer #" + id).children('span').show();
+
 	},1000);
 
+
+
 	setTimeout(function(){
-		$("footer #" + id).removeClass("animating");	
-	},1350);
+		$("footer #" + id).removeClass("animating");
+		//$("footer #" + id).click();
+		$("footer #" + id).children('span').hide('fadein');
+	},2000);
 }
 // ---------------------------------------------------------------------------
 function validar_busqueda_itinerario()
