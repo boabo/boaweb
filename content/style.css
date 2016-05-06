@@ -1309,8 +1309,9 @@ footer .tooltip_icono_ span {
 }
 
 
-footer .ocular_tooltip {
-
+footer .tooltip_icono_ span .verDescripcionFooter {
+	bottom: 60px;
+	display: block;
 }
 
 footer .tooltip_icono_:hover span {

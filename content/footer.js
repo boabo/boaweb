@@ -11,6 +11,11 @@ $(document).on('ready',function()
 		clearInterval(footerIconsAnimationInterval);
 	});
 
+	$("footer .tooltip_icono_").on('mouseenter',function(){
+		clearInterval(footerIconsAnimationInterval);
+	});
+
+
 	$("footer #icon_facebook").click(function() { redirect('facebook');});
 	$("footer #icon_youtube").click(function() { redirect('youtube');});
 	$("footer #icon_twitter").click(function() { redirect('twitter');});
@@ -34,10 +39,23 @@ function animateFooterIcons()
 // ---------------------------------------------------------------------------
 function animateTooltip(id)
 {
+
+
 	setTimeout(function(){
-		$("footer #" + id).addClass("animating");
-		console.log($("footer #" + id).children('span'));
-		$("footer #" + id).children('span').show();
+
+
+		//validamos que no se este haciendo hover
+		if ($("footer #pin_boa").is(":hover") === false && $("footer #horarios").is(":hover") === false && $("footer #reservas").is(":hover") === false ){
+			$("footer #" + id).addClass("animating");
+			// $("footer #" + id).children('span').show();
+			$("footer #" + id).children('span').css({"display":"block","bottom":"60px"});
+			$("footer #" + id).children('div:first').css({"display":"block","bottom":"47px"});
+
+		}else{
+
+
+		}
+
 
 	},1000);
 
@@ -45,8 +63,10 @@ function animateTooltip(id)
 
 	setTimeout(function(){
 		$("footer #" + id).removeClass("animating");
-		//$("footer #" + id).click();
-		$("footer #" + id).children('span').hide('fadein');
+		$("footer #" + id).children('span').css({"display":"","bottom":""}); //limpiamos los css
+		$("footer #" + id).children('div:first').css({"display":"","bottom":""});
+
+
 	},2000);
 }
 // ---------------------------------------------------------------------------
