@@ -31,10 +31,31 @@ $(document).on('ready',function()
 // ---------------------------------------------------------------------------
 function animateFooterIcons()
 {
-	animateTooltip("contacto_asistencia");
+	/*animateTooltip("contacto_asistencia");
 	setTimeout(function(){animateTooltip("horarios")},1000);
 	setTimeout(function(){animateTooltip("reservas")},2000);
-	setTimeout(function(){animateTooltip("pin_boa")},3000);
+	setTimeout(function(){animateTooltip("pin_boa")},3000);*/
+
+	var obj_iconos_footer = $("footer #icons_util").children();
+	$.each(obj_iconos_footer,function (k,v) {
+
+
+		if ($("footer #"+$(v).context.id).is(":hover") === false ){
+
+			if(k == 0){
+				animateTooltip($(v).context.id);
+			}else{
+				setTimeout(function(){animateTooltip($(v).context.id)},(k+1)*1000);
+			}
+
+		}
+
+
+
+
+	});
+
+
 }
 // ---------------------------------------------------------------------------
 function animateTooltip(id)
@@ -43,19 +64,10 @@ function animateTooltip(id)
 
 	setTimeout(function(){
 
-
-		//validamos que no se este haciendo hover
-		if ($("footer #pin_boa").is(":hover") === false && $("footer #horarios").is(":hover") === false && $("footer #reservas").is(":hover") === false ){
 			$("footer #" + id).addClass("animating");
 			// $("footer #" + id).children('span').show();
 			$("footer #" + id).children('span').css({"display":"block","bottom":"60px"});
 			$("footer #" + id).children('div:first').css({"display":"block","bottom":"47px"});
-
-		}else{
-
-
-		}
-
 
 	},1000);
 
@@ -65,7 +77,6 @@ function animateTooltip(id)
 		$("footer #" + id).removeClass("animating");
 		$("footer #" + id).children('span').css({"display":"","bottom":""}); //limpiamos los css
 		$("footer #" + id).children('div:first').css({"display":"","bottom":""});
-
 
 	},2000);
 }
