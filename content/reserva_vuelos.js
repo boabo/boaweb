@@ -1691,35 +1691,6 @@ function buildRegistroPersona(tipo, numPx)
 
     var tbl = $(persona).find(".form table");
 
-	var m_form = "";
-	var f_email = "";
-
-	if (isAdulto) {
-		/*es adulo y tiene email*/
-		f_email += "<tr><th>TEL&Eacute;FONO</th><th colspan='2'>"+(isAdulto?"EMAIL":"FECHA NACIMIENTO")+"</th><th class='"+(isAdulto?'':'disabled')+"'>"+(isAdulto?"FECHA NACIMIENTO":"# VIAJERO FRECUENTE")+"</th></tr>"+
-			"<tr>" +
-			"<td><input type='text' id='tbx_px"+numPx+"_telefono' class='telefono'></td>" +
-			"<td colspan='"+(isAdulto?'2':'1')+"'>" +
-				/*SI ES ADULTO ENTRA EL EMAIL Y DIFERENTE ENTRA LA FECHA NACIMIENTO*/
-			(isAdulto?
-				"<input type='text' id='tbx_px"+numPx+"_email' class='email'>" :
-				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
-			) +
-			"</td>" +
-			(isAdulto?"":"<td></td>") +
-
-			"<td>" +
-				/*SI ES ADULTO ENTRA LA FECHA DE NACIMIENTO Y DIFERENTE ENTRA VIAJERO FRECUENTE*/
-			(isAdulto?
-				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>":
-				"<input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'>"
-			) +
-			"</td>" +
-
-			"</tr>";
-
-
-	}
     tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")
 	   .append("<tr>" + 
 	   				"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_nombres' class='nombres'></div></td>"+
