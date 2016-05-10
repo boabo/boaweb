@@ -659,6 +659,7 @@ function validatePassengers()
 {
 	var divPersonas = $("#div_formulario_personas .persona");
 
+
 	var pasajeros = {adulto:[],infante:[],ninho:[]};
 	var isAllValid = true;
 	for(var i=0;i<divPersonas.length;i++) {
@@ -716,7 +717,7 @@ function validatePassengers()
 		if(tipo=='adulto')
 			persona["email"] = divPersona.find(".email").val();
 
-		if(tipo=="infante" || tipo=="ninho") {
+		if(tipo=="infante" || tipo=="ninho" || tipo=="adulto") {
 			var pickerNacimiento = divPersona.find(".nacimiento");
 			if($.trim(pickerNacimiento.val())=="" ) {
 				isValid = false;
@@ -808,6 +809,9 @@ function asyncRegisterPassengers(response)
 
 function asyncValidateSeleccionVuelo(response)
 {
+
+	/*aca inicia el cambio de ventana de seleccion de vualo a formulario*/
+
 	if(response["success"] == true) {
 		// continuando compra
 		var form = $("#div_formulario_personas");
@@ -1655,10 +1659,15 @@ function buildDetailPrices(info, tipo)
 	   .append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
 	   .append("<tr><th><h3>TOTAL</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+strTotal+"</td></tr>");
 }
-// ---------------------= =---------------------
+// ---------------------= dibujador del formulario =---------------------
 function buildRegistroPersona(tipo, numPx)
 {
 	var namesByTipo = {adulto:"ADULTO",ninho:"NI&Ntilde;O",infante:"INFANTE"};
+
+	console.log('tipo',tipo);
+	console.log('tipo',namesByTipo[tipo]);
+	console.log('namesByTipo',namesByTipo);
+
 
 	var isAdulto = (tipo=='adulto');
 
@@ -1671,6 +1680,35 @@ function buildRegistroPersona(tipo, numPx)
 
     var tbl = $(persona).find(".form table");
 
+	var m_form = "";
+	var f_email = "";
+
+	if (isAdulto) {
+		/*es adulo y tiene email*/
+		f_email += "<tr><th>TEL&Eacute;FONO</th><th colspan='2'>"+(isAdulto?"EMAIL":"FECHA NACIMIENTO")+"</th><th class='"+(isAdulto?'':'disabled')+"'>"+(isAdulto?"FECHA NACIMIENTO":"# VIAJERO FRECUENTE")+"</th></tr>"+
+			"<tr>" +
+			"<td><input type='text' id='tbx_px"+numPx+"_telefono' class='telefono'></td>" +
+			"<td colspan='"+(isAdulto?'2':'1')+"'>" +
+				/*SI ES ADULTO ENTRA EL EMAIL Y DIFERENTE ENTRA LA FECHA NACIMIENTO*/
+			(isAdulto?
+				"<input type='text' id='tbx_px"+numPx+"_email' class='email'>" :
+				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
+			) +
+			"</td>" +
+			(isAdulto?"":"<td></td>") +
+
+			"<td>" +
+				/*SI ES ADULTO ENTRA LA FECHA DE NACIMIENTO Y DIFERENTE ENTRA VIAJERO FRECUENTE*/
+			(isAdulto?
+				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>":
+				"<input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'>"
+			) +
+			"</td>" +
+
+			"</tr>";
+
+
+	}
     tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")
 	   .append("<tr>" + 
 	   				"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_nombres' class='nombres'></div></td>"+
@@ -1686,21 +1724,36 @@ function buildRegistroPersona(tipo, numPx)
 					"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_documento' class='nro-documento'></div></td>" +
 					
 				"</tr>")
-		.append("<tr><th>TEL&Eacute;FONO</th><th colspan='2'>"+(isAdulto?"EMAIL":"FECHA NACIMIENTO")+"</th><th class='disabled'># VIAJERO FRECUENTE</th></tr>")
-		.append(
+		.append("<tr><th>TEL&Eacute;FONO</th><th colspan='2'>"+(isAdulto?"EMAIL":"FECHA NACIMIENTO")+"</th><th class='"+(isAdulto?'':'disabled')+"'>"+(isAdulto?"FECHA NACIMIENTO":"# VIAJERO FRECUENTE")+"</th></tr>"+
 			"<tr>" +
-				"<td><input type='text' id='tbx_px"+numPx+"_telefono' class='telefono'></td>" +
-				"<td colspan='"+(isAdulto?'2':'1')+"'>" +
-					(isAdulto?
-						"<input type='text' id='tbx_px"+numPx+"_email' class='email'>" :
-						"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"		
-					) +
-				"</td>" +
-				(isAdulto?"":"<td></td>") +
-				"<td><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td>" +
+			"<td><input type='text' id='tbx_px"+numPx+"_telefono' class='telefono'></td>" +
+			"<td colspan='"+(isAdulto?'2':'1')+"'>" +
+			/*SI ES ADULTO ENTRA EL EMAIL Y DIFERENTE ENTRA LA FECHA NACIMIENTO*/
+			(isAdulto?
+				"<input type='text' id='tbx_px"+numPx+"_email' class='email'>" :
+				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
+			) +
+			"</td>" +
+			(isAdulto?"":"<td></td>") +
+
+			"<td>" +
+			/*SI ES ADULTO ENTRA LA FECHA DE NACIMIENTO Y DIFERENTE ENTRA VIAJERO FRECUENTE*/
+			(isAdulto?
+				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>":
+				"<input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'>"
+			) +
+			"</td>" +
+
 			"</tr>"
 		)
-	  	.append("<tr><td colspan='4'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>");
+
+		.append("" +
+			(isAdulto?
+				"<tr><th colspan='2' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><td colspan='2'><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td>" :
+				"<tr><td colspan='4'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+			) +
+
+			"");
 
 	$(persona).find("input").focusin(focusOnPersona);
 

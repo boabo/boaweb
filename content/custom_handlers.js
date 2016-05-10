@@ -2,7 +2,9 @@
 var CURRENCY = "bs"; // "euro", "bs" , "usd" 
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYjp9kWcudsVtSKfz3U4JOLSCsWFUZkgg6kUnLqOsYRCdnOFcX+hl3nwL7vPhUljgVBP8sEAlpMTTA==";
+var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYgmZWdHVnQtFxC35/+fX678g+cb4WoqqMz0fTs2e08ZFMAN5vmtjHbgHbRgBCtyD2qnK4f3Y4Rsuw==";
+
+
 // ---------------------------------------------------------------------------
 var LocaleConfig = {
 	countries: [
@@ -67,16 +69,16 @@ var BoA = {
 		// nearest_dates_service: "http://localhost/content/fake_services/nearest_dates.php",
 		nearest_dates_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/Calendar",
 		flights_schedule_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
-		validate_flight_selection_service: "http://localhost/content/fake_services/validate_flight_selection_service.php",
-		register_passengers_service: "http://localhost/content/fake_services/register_passengers_service.php",
+		validate_flight_selection_service: "http://localhost/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
+		register_passengers_service: "http://localhost/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
 		change_locale_settings_service: "http://localhost/content/fake_services/change_locale_settings.php"
 	}, 
 
 	defaultConsultaVuelos : {
 		origen: 'CBB',
-		destino: 'EZE',
-		fechaIda : '20160130',//formatCompactDate(new Date()), // today 
-		fechaVuelta: '20160227',//null, // no flight back
+		destino: 'VVI',
+		fechaIda : '20160511',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20160527',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0
