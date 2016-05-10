@@ -714,7 +714,7 @@ function validatePassengers()
 
 		persona["telefono"] = divPersona.find(".telefono").val();
 		persona["nroViajeroFrecuente"] = divPersona.find(".nro-viajero-frecuente").val();
-		if(tipo=='adulto')
+		if(tipo=='adulto'){
 			var tbxemail = divPersona.find(".email");
 
 			if(isEmail(divPersona.find(".email").val())!=true){
@@ -726,6 +726,8 @@ function validatePassengers()
 				persona["email"] = divPersona.find(".email").val();
 
 			}
+		}
+
 
 
 		if(tipo=="infante" || tipo=="ninho" || tipo=="adulto") {
@@ -734,7 +736,45 @@ function validatePassengers()
 				isValid = false;
 				pickerNacimiento.parent().addClass('active');
 			} else {
-				var rawDate = pickerNacimiento.val().split(" ");	
+				var rawDate = pickerNacimiento.val().split(" ");
+				var fecha_nacimiento_para_validar = rawDate[2] +"/"+ MONTHS_LANGUAGE_TABLE[rawDate[1]] +"/"+ rawDate[0];
+
+				var edad = edadPasajero(fecha_nacimiento_para_validar);
+
+				//validamos que la edad de infante o nino corresponda a los establecidos
+				if(tipo=="infante"){
+
+					if(edad[1] < 8){//si es menor a 8 dias entonces no va
+
+						console.log("no puede viajar por que tiene "+edad[1]+" dias es menos de  8 dias");
+						isValid = false;
+						pickerNacimiento.parent().addClass('active');
+					}
+
+					if (edad[0] >= 2){ //si es mayor o igual a 2 anios entonces no es infante
+
+						console.log("no es infante por que es mayor a 2 anios");
+						isValid = false;
+						pickerNacimiento.parent().addClass('active');
+					}
+
+				}else if (tipo=="ninho"){
+
+					if (edad[0] < 2 ){ //si es mayor o igual a 2 anios entonces no es infante
+
+						console.log("no es nihno es infante");
+						isValid = false;
+						pickerNacimiento.parent().addClass('active');
+					}
+
+					if (edad[0] >= 12){ //si es mayor o igual a 2 anios entonces no es infante
+
+						console.log("el nino solo puede ser menor a 12 ");
+						isValid = false;
+						pickerNacimiento.parent().addClass('active');
+					}
+
+				}
 				persona["nacimiento"] = rawDate[2] +""+ MONTHS_LANGUAGE_TABLE[rawDate[1]] +""+ rawDate[0];
 			}
 		}
@@ -1170,6 +1210,7 @@ function buildFlightsTable(tableName, flightOptions, compartments)
 function buildFlightOptionRow(opc, compartments)
 {
 	var row = document.createElement("tr");
+	$(row).addClass("flights-option-row");
 	$(row).addClass("flights-option-row");
 	var vuelosStr = "";
 
@@ -2279,3 +2320,14 @@ function isEmail(email) {
 	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	return regex.test(email);
 }
+
+function edadPasajero(Fecha){
+	fecha = new Date(Fecha);
+	hoy = new Date();
+	ed = parseInt((hoy -fecha)/365/24/60/60/1000);
+	//console.log(parseInt((hoy -fecha)/1000/60/60/24));
+	dias_nacido = parseInt((hoy -fecha)/(1000*60*60*24));
+	var edad = [ed,dias_nacido]; //retorna la edad en anios y de dias de nacido
+	return edad;
+}
+
