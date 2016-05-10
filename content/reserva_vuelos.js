@@ -715,7 +715,18 @@ function validatePassengers()
 		persona["telefono"] = divPersona.find(".telefono").val();
 		persona["nroViajeroFrecuente"] = divPersona.find(".nro-viajero-frecuente").val();
 		if(tipo=='adulto')
-			persona["email"] = divPersona.find(".email").val();
+			var tbxemail = divPersona.find(".email");
+
+			if(isEmail(divPersona.find(".email").val())!=true){
+				isValid = false;
+				tbxemail.parent().addClass('active');
+				console.log('is email',isEmail(divPersona.find(".email").val()));
+
+			}else{
+				persona["email"] = divPersona.find(".email").val();
+
+			}
+
 
 		if(tipo=="infante" || tipo=="ninho" || tipo=="adulto") {
 			var pickerNacimiento = divPersona.find(".nacimiento");
@@ -1730,7 +1741,7 @@ function buildRegistroPersona(tipo, numPx)
 			"<td colspan='"+(isAdulto?'2':'1')+"'>" +
 			/*SI ES ADULTO ENTRA EL EMAIL Y DIFERENTE ENTRA LA FECHA NACIMIENTO*/
 			(isAdulto?
-				"<input type='text' id='tbx_px"+numPx+"_email' class='email'>" :
+				"<div class='validable'><input type='text' id='tbx_px"+numPx+"_email' class='email'></div>" :
 				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
 			) +
 			"</td>" +
@@ -2291,4 +2302,9 @@ function closeSimpleDialog(redirectUrl)
 // ---------------------= =---------------------
 // ---------------------= =---------------------
 // ---------------------= =---------------------
-// ---------------------= =---------------------
+// ---------------------= validar email=---------------------
+
+function isEmail(email) {
+	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	return regex.test(email);
+}
