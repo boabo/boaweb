@@ -1753,8 +1753,9 @@ function buildRegistroPersona(tipo, numPx)
 			"<td colspan='"+(isAdulto?'2':'1')+"'>" +
 			/*SI ES ADULTO ENTRA EL EMAIL Y DIFERENTE ENTRA LA FECHA NACIMIENTO*/
 			(isAdulto?
-				"<div class='validable'><input type='text' id='tbx_px"+numPx+"_email' class='email'></div>" :
-				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
+				//"<div class='validable' style='position: relative;'><div class='tooltip'>Debes Ingresar tu Correo Electronico</div><input type='text' id='tbx_px"+numPx+"_email' class='email' onfocus='validaciones_form.validar_email(this)' onkeyup='validaciones_form.validar_email(this)' ><span class='icon_form'><svg class='svg_icon_form'><use class='alert_form' xlink:href='#alert_form' /></svg></span></div>" :
+				"<div class='validable' style='position: relative;'><div class='tooltip'>Debes Ingresar tu Correo Electronico</div><input type='text' id='tbx_px"+numPx+"_email' class='email' onfocus='validaciones_form.validar_email(this)' onkeyup='validaciones_form.validar_email(this)' ><span class='icon_form'><svg   class='svg_icon_form'><use class='alert_form' xlink:href='#alert_form' /></svg></span></div>" :
+				"<div class='validable' style='position: relative;'><div class='tooltip'>"+(tipo=='infante'?'Infante desde los 8 dias de nacido hasta antes de los 2 a&ntilde;os':'Ni&ntilde;o desde los 2 a&ntilde;os hasta antes de cumplir 12 a&ntilde;os')+"</div><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
 			) +
 			"</td>" +
 			(isAdulto?"":"<td></td>") +

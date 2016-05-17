@@ -1,0 +1,612 @@
+<!--     BOLIVIANA DE AVIACION     -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <title>Boliviana de Aviaci&oacute;n</title>
+    <!-- <link rel="icon" href="content/images/icon.png" type="image/x-icon"> -->
+
+    <!-- JQUERY LIBRARY -->
+    <script type="text/javascript" src="content/lib/jquery-1.11.1.min.js"></script>
+
+    <!-- BROWSER DETECTION -->
+    <script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+    <!-- JQUERY UI -->
+    <link rel="stylesheet" type="text/css" href="content/lib/jquery_ui/css/dot-luv/jquery-ui.min.css">
+    <script src="content/lib/jquery_ui/jquery-ui.min_es.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+    <!-- <script src="content/lib/jquery_ui/jquery-ui.min_en.js"></script>  -->
+    <!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
+
+    <!-- SCROLLBAR LIBRARY -->
+    <link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
+          rel="stylesheet" type="text/css"/>
+    <script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- FLAPPER =o -->
+    <link href="content/lib/flapper/css/flapper.css" type="text/css" rel="stylesheet"/>
+    <script src="content/lib/flapper/transform/dist/jquery.transform-0.9.3.min.js"></script>
+    <script src="content/lib/flapper/src/jquery.flapper.js"></script>
+
+    <!-- HASHTABLE LIBRARY -->
+    <script src="content/lib/jshashtable.js"></script>
+
+    <!-- NUMBER FORMATTER -->
+    <script src="content/lib/jquery.numberformatter-1.2.4.jsmin.js"></script>
+
+    <!-- CUSTOM SCRIPTS -->
+
+    <script>
+        // ---------------------= =---------------------
+        /***** CONFIG PARAMETERS *****/
+        var CACHE_DISABLED = false;
+        var IGNORED_TARIFAS_BY_FARE_CODE = ["SSENIOR"];
+        var ALLOWED_TARIFAS_BY_ESTADO = ['A'];
+        // ---------------------= =---------------------
+        var searchParameters = {
+            origen: "",
+            destino: "",
+            fechaIda: "",
+            fechaVuelta: null,
+            sitios: 0
+        };
+
+        var waitingForFlightsData = false;
+
+        var currentDateIda = "";
+        var currentDateVuelta = "";
+
+        var todayStr = "";
+        var rawDatesCache = {ida: null, vuelta: null};
+
+        var seleccionVuelo = {
+            ida: null,
+            vuelta: null,
+
+            adulto: {
+                num: 0,
+                ida: {
+                    precioBase: 0,
+                    tasas: {}
+                },
+                vuelta: {
+                    precioBase: 0,
+                    tasas: {}
+                },
+                precioTotal: 0,
+                formattedPrecioTotal: "0.00"
+            },
+            ninho: {
+                num: 0,
+                ida: {
+                    precioBase: 0,
+                    tasas: {}
+                },
+                vuelta: {
+                    precioBase: 0,
+                    tasas: {}
+                },
+                precioTotal: 0,
+                formattedPrecioTotal: "0.00"
+            },
+            infante: {
+                num: 0,
+                ida: {
+                    precioBase: 0,
+                    tasas: {}
+                },
+                vuelta: {
+                    precioBase: 0,
+                    tasas: {}
+                },
+                precioTotal: 0,
+                formattedPrecioTotal: "0.00"
+            },
+            // adultosMayores: 0
+            precioTotal: 0
+        };
+
+        var tasasPorPasajero = {
+            adulto: [],
+            ninho: [],
+            infante: []
+        };
+
+        var tasas = {ida: {}, vuelta: {}};
+
+        var selectionConstraints = {};
+        var disabledBanksMessages = {};
+
+        var allOptions = {};
+
+        var currencies = {euro: "&euro;", usd: "USD"};
+
+        var cities = {
+            LPB: "La Paz",
+            CIJ: "Cobija",
+            CBB: "Cochabamba",
+            MAD: "Madrid",
+            VVI: "Santa Cruz",
+            SRE: "Sucre",
+            TJA: "Tarija",
+            TDD: "Trinidad",
+            EZE: "Buenos Aires",
+            GRU: "Sao Paulo"
+        };
+
+        var airports = {
+            LPB: "Aeropuerto Internacional El Alto",
+            CIJ: "Aeropuerto Capit&aacute;n Anibal Arab",
+            CBB: "Aeropuerto Internacional Jorge Wilstermann",
+            MAD: "Aeropuerto Internacional Adolfo Su&aacute;z Madrid-Barajas",
+            VVI: "Aeropuerto Internacional Viru Viru",
+            SRE: "Aeropuerto Juana Azurduy de Padilla",
+            TJA: "Aeropuerto Capitán Oriel Lea Plaza",
+            TDD: "Aeropuerto Teniente Jorge Henrich Arauz",
+            EZE: "Aeropuerto Internacional Ministro Pistarini",
+            GRU: "Aeropuerto Internacional de Guarulhos"
+        };
+
+        var compartmentNames = {"2": "Business", "3": "Econ&oacute;mica"};
+        // ---------------------= =---------------------
+        /*********************************************************
+         ********************** UI HANDLERS **********************
+         **********************************************************/
+        $(document).on('ready', function () {
+
+            initialize_header(true);
+            initialize_ui_sections({anchor_section_headers: false});
+
+
+            todayStr = formatCompactDate(new Date()); // today
+        });
+    </script>
+    <!-- COMMON SCRIPTS -->
+    <script type="text/javascript" src="content/language_data_es.js"></script> <!-- PT, EN -->
+
+    <script type="text/javascript" src="content/common.js"></script>
+    <script type="text/javascript" src="content/custom_handlers.js"></script>
+    <script type="text/javascript" src="content/header.js"></script>
+    <script type="text/javascript" src="content/generic_container.js"></script>
+    <script type="text/javascript" src="content/validaciones_form.js"></script>
+
+    <!-- STYLE.CSS -->
+    <link href="content/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="content/reserva_vuelos.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
+</head>
+<body class="generic-container">
+
+
+<svg style="display: none">
+    <symbol id="svg_cerrar" viewBox="0 0 16 16">
+        <polygon points="14,3.3 12.7,2 8,6.7 3.3,2 2,3.3 6.7,8 2,12.7 3.3,14 8,9.3 12.7,14 14,12.7 9.3,8 "></polygon>
+    </symbol>
+</svg>
+
+
+<svg style="display: none">
+    <symbol id="alert_form" viewBox="0 0 16 16">
+        <path fill="#D80027" d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM9 13h-2v-2h2v2zM9 10h-2v-7h2v7z"/>
+
+    </symbol>
+</svg>
+
+
+<header style="display:block">
+    <a id="btn_return_home" href="http://www.boa.bo"></a>
+    <div class="logo-header"></div>
+    <ul id="main_menu">
+        <li id="menu_item_planifica">
+            <span>PLANIFICA TU VIAJE</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        RESERVAR VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        ESTADO DEL VUELO
+                                    </a>
+                                </li>
+                                <li class="primary" d ata-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        HORARIO DE VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary disabled" data-item="web_check_in">
+                                    <div class="icon"></div>
+                                    WEB CHECK-IN
+                                </li>
+                                <li class="primary disabled" data-item="formas_pago">
+                                    <div class="icon"></div>
+                                    FORMAS DE PAGO
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_antes_viajar">
+            <span>ANTES DE VIAJAR</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="politica_equipaje">
+                                    <div class="icon"></div>
+                                    POL&Iacute;TICA DE EQUIPAJE
+                                </li>
+                                <li data-item="equipaje_mano">Equipaje de mano</li>
+                                <li data-item="equipaje_facturable">Equipaje facturable</li>
+                                <li data-item="exceso_equipaje">Exceso de equipaje</li>
+                                <li data-item="equipaje_especial">Equipaje especial</li>
+                                <li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+                                <li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+                                <li data-item="equipaje_mascotas">Mascotas</li>
+                                <li class="primary disabled" data-item="seguimiento_equipaje">
+                                    <div class="icon"></div>
+                                    SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA
+                                </li>
+                                <li class="primary disabled" data-item="equipajes_demorados">
+                                    <div class="icon"></div>
+                                    EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS
+                                </li>
+                                <li class="primary disabled" data-item="declaracion_equipaje">
+                                    <div class="icon"></div>
+                                    DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE
+                                </li>
+                                <li class="primary" data-item="tips_equipaje">
+                                    <div class="icon"></div>
+                                    TIPS DE EQUIPAJE
+                                </li>
+                                <li class="primary disabled" data-item="equipaje_interlineal">
+                                    <div class="icon"></div>
+                                    EQUIPAJE INTERLINEAL
+                                </li>
+                                <li class="primary" data-item="llegar_aeropuerto">
+                                    <div class="icon"></div>
+                                    LLEGAR AL AEROPUERTO
+                                </li>
+                                <li data-item="hora_limite">Hora l&iacute;mite</li>
+                                <li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+                                <li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+                                <li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="servicios_especiales">
+                                    <div class="icon"></div>
+                                    SERVICIOS ESPECIALES
+                                </li>
+                                <li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+                                <li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes
+                                </li>
+                                <li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales
+                                </li>
+                                <li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+                                <li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til
+                                    (PDMs)
+                                </li>
+                                <li data-item="bebes">Viajando con beb&eacute;s</li>
+                                <li data-item="mascota">Viajando con tu mascota en cabina</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="pasajeros_especiales">
+                                    <div class="icon"></div>
+                                    PASAJEROS ESPECIALES
+                                </li>
+                                <li data-item="embarazadas">Mujeres embarazadas</li>
+                                <li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+                                <li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+                                <li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+                                <li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+                                <li class="primary" data-item="menu_especial">
+                                    <div class="icon"></div>
+                                    MEN&Uacute; ESPECIAL
+                                </li>
+                                <li class="primary" data-item="documentacion_viaje">
+                                    <div class="icon"></div>
+                                    DOCUMENTACI&Oacute;N DE VIAJE, VISA y API
+                                </li>
+                                <li class="primary" data-item="vacunas">
+                                    <div class="icon"></div>
+                                    VACUNAS
+                                </li>
+                                <li class="primary" data-item="derechos_pasajeros" data-action="none">
+                                    <div class="icon"></div>
+                                    DERECHOS DE LOS PASAJEROS
+                                </li>
+                                <li data-is_link="true">
+                                    <a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_promos_destinos" style="display:none">
+            <span>PROMOS Y DESTINOS</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-item="">
+                                    <div class="icon"></div>
+                                    PRINCIPAL
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_experiencia_boa">
+            <span>EXPERIENCIA BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="nuestra_flota">
+                                    <div class="icon"></div>
+                                    NUESTRA FLOTA
+                                </li>
+                                <li class="primary" data-item="experiencia_bordo">
+                                    <div class="icon"></div>
+                                    EXPERIENCIA A BORDO
+                                </li>
+                                <li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+                                <li data-item="" class="disabled">Entretenimiento a Bordo</li>
+                                <li data-item="" class="disabled">Duty Free a Bordo</li>
+                                <li data-item="" class="disabled">Asiento + Confort</li>
+                                <li data-item="" class="disabled">Revista Destinos</li>
+                                <li data-item="" class="disabled">Wi-Fi y GSM</li>
+                                <li class="primary" data-item="seguro_internacional">
+                                    <div class="icon"></div>
+                                    SEGURO INTERNACIONAL
+                                </li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="en_el_aeropuerto">
+                                    <div class="icon"></div>
+                                    EN EL AEROPUERTO
+                                </li>
+                                <li data-item="check_in">Servicio de Check-In</li>
+                                <li data-item="" class="disabled">Kioskos de Check-In</li>
+                                <li data-item="" class="disabled">Mobile Phone Check-In</li>
+                                <li data-item="" class="disabled">Salas VIP</li>
+                                <li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+                                <li data-item="" class="disabled">Parqueos</li>
+                                <li data-item="" class="disabled">Servicio de Chofer</li>
+                                <li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="cabinas">
+                                    <div class="icon"></div>
+                                    CARACTERISTICAS DE LAS CABINAS
+                                </li>
+                                <li data-item="" class="disabled">Clase Business</li>
+                                <li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    VIAJE DE FAMILIA
+                                </li>
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    VIAJE DE GRUPOS
+                                </li>
+
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    NUESTRAS ALIANZAS
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_boa_millas" style="display:none">
+            <span>BoA MILES</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-item="">
+                                    <div class="icon"></div>
+                                    PRINCIPAL
+                                </li>
+                                <li data-item="">Secundario A</li>
+                                <li data-item="">Secundario B</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_somos_boa">
+            <span>SOMOS BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="perfil_corporativo">
+                                    <div class="icon"></div>
+                                    PERFIL CORPORATIVO
+                                </li>
+                                <li class="primary disabled" data-item="liderazgo_corporativo">
+                                    <div class="icon"></div>
+                                    LIDERAZGO CORPORATIVO
+                                </li>
+                                <li class="primary" data-item="somos_iosa">
+                                    <div class="icon"></div>
+                                    SOMOS IOSA
+                                </li>
+                                <li class="primary" data-item="reconocimientos_premios">
+                                    <div class="icon"></div>
+                                    RECONOCIMIENTOS Y PREMIOS
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+    <ul id="sec_menu">
+        <li id="menu_item_agencias">Agencias</li>
+        <li id="menu_item_corporativo" style="display:none">Corporativo</li>
+        <li id="menu_item_login" style="display:none">Login</li>
+    </ul>
+    <div id="menu_locations" class="header-menu">
+        <div class="flag bolivia"></div>
+        <h2><strong>BOLIVIA</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="bolivia selected" data-location="bolivia">
+                <div class="flag"></div>
+                <h2><strong>BOLIVIA</strong></h2>
+            </li>
+            <li class="bsas" data-location="bsas">
+                <div class="flag"></div>
+                <h2><strong>BS. AS.</strong></h2>
+            </li>
+            <li class="madrid" data-location="madrid">
+                <div class="flag"></div>
+                <h2><strong>MADRID</strong></h2>
+            </li>
+            <li class="saopaulo" data-location="saopaulo">
+                <div class="flag"></div>
+                <h2><strong>SAO PAULO</strong></h2>
+            </li>
+            <li class="salta" data-location="salta">
+                <div class="flag"></div>
+                <h2><strong>SALTA</strong></h2>
+            </li>
+            <li class="miami" data-location="miami">
+                <div class="flag"></div>
+                <h2><strong>MIAMI</strong></h2>
+            </li>
+        </ul>
+    </div>
+    <div id="menu_languages" class="header-menu">
+        <h2><strong>ESPA&Ntilde;OL</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="selected" data-language="ES">
+                <h2><strong>ESPA&Ntilde;OL</strong></h2>
+            </li>
+            <!-- <li data-language="EN">
+                <h2><strong>ENGLISH</strong></h2>
+            </li>
+            <li data-language="PT">
+                <h2><strong>PORTUGU&Ecirc;S</strong></h2>
+            </li> -->
+        </ul>
+    </div>
+</header>
+
+<div id="clouds">
+    <canvas id="clouds_canvas" width="2500" height="1000"></canvas>
+</div>
+
+<!-- UI RESERVA VUELOS -->
+<div id="ui_reserva_vuelos" data-mode="normal" class="ui-section wide results selected">
+    <div class="gradient"></div>
+    <div class="header">
+        <div class="stages">
+            <div id="stage_seleccion" class="stage ">
+                <div class="number"><span>1</span></div>
+                <span>SELECCI&Oacute;N</span>
+            </div>
+            <div id="stage_registro" class="stage">
+                <div class="number"><span>2</span></div>
+                <span>REGISTRO DE PASAJEROS</span>
+            </div>
+            <div id="stage_compra" class="stage active">
+                <div class="number"><span>3</span></div>
+                <span>COMPRA</span>
+            </div>
+        </div>
+
+    </div>
+    <div style="position:relative">
+        <!-- RESULTADOS VUELOS -->
+        <div id="info_resultados_vuelos" class="info phase selected active">
+            <div class="descripcion" style="padding: 0;">
+
+                <h3 style="padding-bottom: 60px;">Compra Finalizada</h3>
+
+                <center>
+                    <img src="content/images/ticket.png" width="130">
+                    <p style="margin-top: 10px;">Su ticket electronico ha sido pagado y emitido correctamente.<br/>
+                        <b><a href="#" style="display: inline;">Click aqui</a></b>  para obtener su itinerario/invoice.</p>
+                </center>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- <<< DIALOGS >>> -->
+<div id="dialog_overlay" style="display:none">
+    <div id="simple_dialog" class="dialog" style="display:none">
+        <div class="description">
+
+        </div>
+        <div class="button">CERRAR</div>
+    </div>
+</div>
+<!-- <<< MISC UI >>> -->
+<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+<div id="div_submit"></div>
+</body>
+</html>
