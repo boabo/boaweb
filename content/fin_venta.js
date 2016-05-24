@@ -12,7 +12,7 @@
 
         todayStr = formatCompactDate(new Date()); // today
     });
-    
+
     fin_venta = {
 
         invoce : function (p1,p2) {

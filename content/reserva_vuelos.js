@@ -810,6 +810,10 @@ function validatePassengers()
 			BoA.urls["register_passengers_service"], 
 			asyncRegisterPassengers, 
 			"POST", dataToSend);
+
+		$("#loading_compra").show();
+		$("#btn_validar_pasajeros").hide();
+
 	}
 }
 // ---------------------= =---------------------
