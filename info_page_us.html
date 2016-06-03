@@ -1,0 +1,3189 @@
+<!DOCTYPE html>
+<!--     BOLIVIANA DE AVIACION     -->
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+	<title>Boliviana de Aviaci&oacute;n</title>
+	<link rel="icon" href="content/images/icon.png" type="image/x-icon">
+
+	<!-- JQUERY LIBRARY -->
+	<script type="text/javascript" src="content/lib/jquery-1.11.1.min.js"></script>
+
+	<!-- BROWSER DETECTION -->
+	<script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+	<!-- SCROLLBAR LIBRARY -->
+	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css" 
+		rel="stylesheet" type="text/css" />
+	<script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<!-- ANIMATION LIBRARY -->
+	<script type="text/javascript" src="content/prototypes/Engine.js"></script>
+	<script type="text/javascript" src="content/prototypes/Transformable.js"></script>
+	<script type="text/javascript" src="content/prototypes/Transparent.js"></script>
+	<script type="text/javascript" src="content/prototypes/Cloud.js"></script>
+	<script type="text/javascript" src="content/prototypes/Sky.js"></script>
+	
+	<!-- INFO PAGE CUSTOM SCRIPTS -->
+	<script type="text/javascript" src="content/info_page.js"></script>
+	<script type="text/javascript" src="content/generic_container.js"></script>
+
+	<!-- COMMON SCRIPTS -->
+	<script type="text/javascript" src="content/common.js"></script>
+	<script type="text/javascript" src="content/custom_handlers.js"></script>
+	<script type="text/javascript" src="content/header.js"></script>
+
+	<!-- STYLE.CSS -->
+	<link href="content/style.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body style="padding:0;margin:0;overflow-y:auto !important;overflow-x:hidden !important">
+	<header style="display:block">
+		<a id="btn_return_home" href="http://www.boa.bo"></a>
+		<div class="logo-header"></div>
+		<ul id="main_menu">
+			<li id="menu_item_planifica" >
+				<span>PLANIFICA TU VIAJE</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu">
+									<li class="primary" data-is_link="true">
+										<a href="http://www.boa.bo/bolivia/inicio">
+											<div class="icon"></div>RESERVAR VUELOS
+										</a>
+									</li>
+									<li class="primary" data-is_link="true">
+										<a href="http://www.boa.bo/bolivia/inicio">
+											<div class="icon"></div>ESTADO DEL VUELO
+										</a>
+									</li>
+									<li class="primary" data-is_link="true">
+										<a href="http://www.boa.bo/bolivia/inicio">
+											<div class="icon"></div>HORARIO DE VUELOS
+										</a>
+									</li>
+									<li class="primary disabled"  data-item="web_check_in"><div class="icon"></div>WEB CHECK-IN</li>
+									<li class="primary disabled"  data-item="formas_pago"><div class="icon"></div>FORMAS DE PAGO</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_antes_viajar">
+				<span>ANTES DE VIAJAR</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="politica_equipaje"><div class="icon"></div>POL&Iacute;TICA DE EQUIPAJE</li>
+									<li data-item="equipaje_mano">Equipaje de mano</li>
+									<li data-item="equipaje_facturable">Equipaje facturable</li>
+									<li data-item="exceso_equipaje">Exceso de equipaje</li>
+									<li data-item="equipaje_especial">Equipaje especial</li>
+									<li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+									<li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+									<li data-item="equipaje_mascotas">Mascotas</li>
+									<li class="primary disabled" data-item="seguimiento_equipaje"><div class="icon"></div>SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA</li>
+									<li class="primary disabled"  data-item="equipajes_demorados"><div class="icon"></div>EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS</li>
+									<li class="primary disabled"  data-item="declaracion_equipaje"><div class="icon"></div>DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE</li>
+									<li class="primary" data-item="tips_equipaje"><div class="icon"></div>TIPS DE EQUIPAJE</li>
+									<li class="primary disabled" data-item="equipaje_interlineal"><div class="icon"></div>EQUIPAJE INTERLINEAL</li>
+									<li class="primary" data-item="llegar_aeropuerto"><div class="icon"></div>LLEGAR AL AEROPUERTO</li>
+									<li data-item="hora_limite">Hora l&iacute;mite</li>
+									<li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+									<li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+									<li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="servicios_especiales"><div class="icon"></div>SERVICIOS ESPECIALES</li>
+									<li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+									<li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes</li>
+									<li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales</li>
+									<li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+									<li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til (PDMs)</li>
+									<li data-item="bebes">Viajando con beb&eacute;s</li>
+									<li data-item="mascota">Viajando con tu mascota en cabina</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="pasajeros_especiales"><div class="icon"></div>PASAJEROS ESPECIALES</li>
+									<li data-item="embarazadas">Mujeres embarazadas</li>
+									<li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+									<li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+									<li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+									<li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+									<li class="primary" data-item="menu_especial"><div class="icon"></div>MEN&Uacute; ESPECIAL</li>
+									<li class="primary" data-item="documentacion_viaje"><div class="icon"></div>DOCUMENTACI&Oacute;N DE VIAJE, VISA y API</li>
+									<li class="primary" data-item="vacunas"><div class="icon"></div>VACUNAS</li>
+									<li class="primary" data-item="derechos_pasajeros" data-action="none"><div class="icon"></div>DERECHOS DE LOS PASAJEROS</li>
+									<li data-is_link="true">
+										<a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_promos_destinos" style="display:none">
+				<span>PROMOS Y DESTINOS</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu">
+									<li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_experiencia_boa">
+				<span>EXPERIENCIA BoA</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="nuestra_flota"><div class="icon"></div>NUESTRA FLOTA</li>
+									<li class="primary" data-item="experiencia_bordo"><div class="icon"></div>EXPERIENCIA A BORDO</li>
+									<li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+									<li data-item="" class="disabled">Entretenimiento a Bordo</li>
+									<li data-item="" class="disabled">Duty Free a Bordo</li>
+									<li data-item="" class="disabled">Asiento + Confort</li>
+									<li data-item="" class="disabled">Revista Destinos</li>
+									<li data-item="" class="disabled">Wi-Fi y GSM</li>
+									<li class="primary" data-item="seguro_internacional"><div class="icon"></div>SEGURO INTERNACIONAL</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="night">
+									<li class="primary" data-item="en_el_aeropuerto"><div class="icon"></div>EN EL AEROPUERTO</li>
+									<li data-item="check_in">Servicio de Check-In</li>
+									<li data-item="" class="disabled">Kioskos de Check-In</li>
+									<li data-item="" class="disabled">Mobile Phone Check-In</li>
+									<li data-item="" class="disabled">Salas VIP</li>
+									<li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+									<li data-item="" class="disabled">Parqueos</li>
+									<li data-item="" class="disabled">Servicio de Chofer</li>
+									<li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="night">
+									<li class="primary" data-item="cabinas"><div class="icon"></div>CARACTERISTICAS DE LAS CABINAS</li>
+									<li data-item="" class="disabled">Clase Business</li>
+									<li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE FAMILIA</li>
+									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE GRUPOS</li>
+									
+									<li class="primary disabled" data-item=""><div class="icon"></div>NUESTRAS ALIANZAS</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_boa_millas" style="display:none">
+				<span>BoA MILES</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu">
+									<li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+									<li data-item="">Secundario A</li>
+									<li data-item="">Secundario B</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_somos_boa">
+				<span>SOMOS BoA</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="perfil_corporativo"><div class="icon"></div>PERFIL CORPORATIVO</li>
+									<li class="primary disabled" data-item="liderazgo_corporativo"><div class="icon"></div>LIDERAZGO CORPORATIVO</li>
+									<li class="primary" data-item="somos_iosa"><div class="icon"></div>SOMOS IOSA</li>
+									<li class="primary" data-item="reconocimientos_premios"><div class="icon"></div>RECONOCIMIENTOS Y PREMIOS</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+		</ul>
+		<ul id="sec_menu">
+			<li id="menu_item_agencias">Agencias</li>
+			<li id="menu_item_corporativo" style="display:none">Corporativo</li>
+			<li id="menu_item_login" style="display:none">Login</li>
+		</ul>
+		<div id="menu_locations" class="header-menu">
+			<div class="flag bolivia"></div>
+			<h2><strong>BOLIVIA</strong></h2>
+			<div class="arrow-down-icon"></div>
+			<ul>
+				<li class="bolivia selected" data-location="bolivia">
+					<div class="flag"></div>
+					<h2><strong>BOLIVIA</strong></h2>
+				</li>
+				<li class="bsas"  data-location="bsas">
+					<div class="flag"></div>
+					<h2><strong>BS. AS.</strong></h2>
+				</li>
+				<li class="madrid" data-location="madrid">
+					<div class="flag"></div>
+					<h2><strong>MADRID</strong></h2>
+				</li>
+				<li class="saopaulo"  data-location="saopaulo">
+					<div class="flag"></div>
+					<h2><strong>SAO PAULO</strong></h2>
+				</li>
+				<li class="salta" data-location="salta">
+					<div class="flag"></div>
+					<h2><strong>SALTA</strong></h2>
+				</li>
+				<li class="miami" data-location="miami">
+					<div class="flag"></div>
+					<h2><strong>MIAMI</strong></h2>
+				</li>
+			</ul>
+		</div>
+		<div id="menu_languages" class="header-menu">
+			<h2><strong>ESPA&Ntilde;OL</strong></h2>
+			<div class="arrow-down-icon"></div>
+			<ul>
+				<li class="selected" data-language="ES">
+					<h2><strong>ESPA&Ntilde;OL</strong></h2>
+				</li>
+				<!-- <li data-language="EN">
+					<h2><strong>ENGLISH</strong></h2>
+				</li>
+				<li data-language="PT">
+					<h2><strong>PORTUGU&Ecirc;S</strong></h2>
+				</li> -->
+			</ul>
+		</div>
+	</header>
+
+	<div id="clouds">
+		<canvas id="clouds_canvas" width="2500" height="1000"></canvas>
+	</div>
+	
+	<!-- UI POLITICA DE EQUIPAJE -->
+	<div id="ui_politica_equipaje" class="ui-section">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>BAGGAGE </h3>
+			<h2>POLICY</h2>
+		</div>
+		<div class="header-fixed">
+			<h3>BAGGAGE POLICY</h3>
+		</div>
+		<ul class="first-menu">
+			<li id="submenu_item_equipaje_mano" class="selected" data-info="equipaje_mano">
+				<label>Hand Luggage</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_equipaje_facturable" data-info="equipaje_facturable">
+				<label>Equipaje Facturable</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_exceso_equipaje" data-info="exceso_equipaje">
+				<label>Exceso de Equipaje</label>
+				<div class="icon small"></div>
+			</li>
+
+			<li id="submenu_item_equipaje_especial" data-info="equipaje_especial">
+				<label>Equipaje Especial</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_mercancias_peligrosas" data-info="mercancias_peligrosas">
+				<label>Mercanc&iacute;as Peligrosas</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_equipaje_mascotas" data-info="equipaje_mascotas">
+				<label>Mascotas</label>
+				<div class="icon small"></div>
+			</li>
+		</ul>
+
+		<!-- equipaje mano -->
+		<div id="info_equipaje_mano" class="info selected">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>HAND LUGGAGE</h3>
+				<div class="with-aligned-images">
+					<div id="img_equipaje_mano" class="img-contenido"></div>
+					<div class="paragraph">
+						It is a case that can travel with you in the cabin, can carry personal items,valuable or delicate andyou can also take with you a personal accessory.
+				        <br><br>
+						Should your baggage exceed the weight limits and dimensions,this case can be withdrawn by company officials,to take it inside the baggage compartment from the aircraftand possibly making an additional charge.
+				        <br><br>
+						The maximum dimensions of your hand luggage should be:
+				        <i>55 cm x 25 cm x 35 cm.</i>
+				        <br><br>
+
+						Atthe modules located at airports, you can verify the correct size of your hand luggage.
+						<br><br>
+						Your baggage must not exceed 10 kilos to travel on 767 300 aircrafts (Madrid and Miami).
+						<br><br>
+						Your baggage must not exceed 7 kilos to travel on 737 300,737 500,737-700,737-800 aircrafts (Argentina and Brazil).
+					</div>
+				</div>
+		        <br><br>
+			    <div id="subtitle_franquicia" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>FRANQUICIA Y EXCESO DE EQUIPAJE DE MANO</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table cellspacing="0" cellpadding="0">
+			    			<tr>
+			    				<td class="hidden"></td>
+			    				<th colspan="2">Hand luggage domestic  routes </th>
+			    				<th colspan="2">Hand luggage argentina </th>
+			    				<th colspan="2">Hand luggage brazil</th>
+			    			</tr>
+			    			<tr>
+			    				<th rowspan="3">Equipaje de mano</th>
+			    				<td><div class="maleta"></div></td>
+			    				<td>1 piece 7 kilos or 15 pounds </td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>1 piece 7 kilos or 15 pounds </td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>1 piece 7 kilos  or 15 pounds</td>
+			    			</tr>
+			    			<tr>
+			    				<th colspan="2">Hand luggage spain</th>
+			    				<th colspan="2">Hand luggage united states</th>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>1 piece 10 kilos or 22 pounds</td>
+			    				<td><div class="maleta"></div><div class="maleta"></div></td>
+			    				<td>1 piece 10 kilos or 22 pounds</td>
+			    			</tr>
+			    		</table>
+			    		<br>
+			    	</div>
+			    </div>
+				<!--todo-->
+			    <div id="subtitle_franquicia_espana" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>CONDICIONES DE TRANSPORTE A Y DESDE ESPA&Ntilde;A</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		Consideraciones de transporte desde Sud Am&eacute;rica
+			    		<br><br>
+			    		<table cellspacing="0" cellpadding="0">
+			    			<tr>
+			    				<th>Presentaci&oacute;n</th>
+			    				<th>Caracter&iacute;sticas</th>
+			    				<th>Cargo extra</th>
+			    				<th>Transporte</th>
+			    			</tr>
+			    			<tr>
+			    				<th>En mostradores</th>
+			    				<td>Hasta 10 Kilos, con dimensiones superiores 35 x 55 x 25 cm.</td>
+			    				<td>35 USD</td>
+			    				<td>En buz&oacute;n</td>
+			    			</tr>
+			    		</table>
+			    		<i>* Todo equipaje de mano detectado en puerta de embarque ser&aacute; retirado, etiquetado y cargado en buz&oacute;n, notificando al pasajero que de existir alg&uacute;n objeto de valor, la empresa queda libre de responsabilidad por incumplimiento de la norma</i>
+			    		<br><br>
+
+
+			    		Consideraciones de transporte desde Espa&ntilde;a
+			    		<br><br>
+			    		<table cellspacing="0" cellpadding="0">
+			    			<tr>
+			    				<th>Presentaci&oacute;n</th>
+			    				<th>Caracter&iacute;sticas</th>
+			    				<th>Cargo extra</th>
+			    				<th>Transporte</th>
+			    			</tr>
+			    			<tr>
+			    				<th>En mostradores</th>
+			    				<td>Hasta 10 Kilos, con dimensiones superiores 35 x 55 x 25 cm.</td>
+			    				<td>35 &euro;</td>
+			    				<td>En buz&oacute;n</td>
+			    			</tr>
+			    			<tr>
+			    				<th>En puerto de embarque</th>
+			    				<td>Equipaje de mano extra</td>
+			    				<td>50 &euro;</td>
+			    				<td>En buz&oacute;n</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+			    </div>
+			    <div id="subtitle_ubicacion_equipaje" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>LOCATION OF HAND LUGGAGE</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div id="img_ubicacion_equipaje" class="img-contenido"></div>
+						According to aviation regulations,your hand luggage must fit in the overhead compartment or under the front seat.If your bag exceeds the size or shapeand it does not allowed to be inserted in appropriate places,it will not be accepted in the cabin and it will be register for cargo.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_accesorio_personal" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>PERSONAL ACCESSORIES</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="with-aligned-images">
+			    			<div id="img_accesorio_personal" class="img-contenido"></div>	
+			    			<div class="paragraph">
+								Upon boarding you will be allowed to carry in the passenger cabin without extra cost a personal accessory,as long as its size, volume and weight does not bother other passengers or obstruct emergency exits, hallways or doors.
+						        <br><br>
+								Among the items that you can carry with you are:
+						        <ul style="margin-left: 20px;">
+
+									<li>Women bag orpurse</li>
+									<li>Bag with food and baby diapers</li>
+									<li>Blanket</li>
+									<li>Photographic camera orbinoculars</li>
+									<li>Photographic or video Equipment or laptops</li>
+									<li>A cape, coat, blanket or raincoat</li>
+									<li>Anumbrellaorcane</li>
+									<li>Magazines or books (in reduced amount)</li>
+						        </ul>
+								If you possess a folding wheel,crutches or orthopedic devices to facilitate your movement,these will be shipped in the cargo compartment at no additional cost.The same goes for cribs and folding cars for transporting babies.
+							</div>
+			    		</div>
+				        <br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_articulos_restringidos" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>RESTRICTED ITEMS IN HAND LUGGAGE</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table>
+			    			<tr>
+				    			<td colspan="4" class="table-title">
+			    					<div>RESTRICTED ITEMS IN HAND LUGGAGE</div>
+			    				</td>
+		    				</tr>
+		    				<tr>
+		    					<td>
+		    						<div id="img_articulos_restringidos_herramientas" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_articulos_restringidos_armas" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_articulos_restringidos_contundentes" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_articulos_restringidos_punzantes" class="img-contenido"></div>
+		    					</td>
+		    				</tr>
+		    				<tr>
+		    					<td>Tools</td>
+		    					<td>Firearms and weapons in general</td>
+		    					<td>Blunt objects</td>
+		    					<td>Weapons or sharp objects or edges</td>
+		    				</tr>
+			    		</table>
+
+						These are items that under no circumstances should be transported in the cabin of the aircraft,so if you need to travel and take any of these items you should be informed regarding the rules.
+
+						<br><br>
+				        <strong>Tools</strong><br><br>
+						Transportation or shipment of tools like hammers, drills, saws, radial, etc… It is only permitted as checked baggage or cargo.
+						<br><br>
+				        <strong>Firearms and weapons in general</strong><br><br>
+						Pistols, rifles, shotguns, BB guns/gun signals/toy guns, etc.
+						If you must carry some kind of weapon, please notify in front desk to perform the corresponding procedure.It is important to present your permission to carry guns.
+
+						<br><br>
+				        <strong>Blunt objects</strong><br><br>
+						Any type of blunt objects, bats, golf clubs, skates, martial arts equipment, etc.
+						<br><br>
+				        <strong>Weapons or sharp objects or edges</strong><br><br>
+						Knives, box cutters, folding or retractable blades, ice picks, pointed scissors and other sharp object.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_liquidos_geles" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>LIQUIDS AND GELS </h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="with-aligned-images">
+			    			<div id="img_liquidos_geles" class="img-contenido"></div>
+			    			<div class="paragraph">
+								If you need to transport liquids,is very important to take into account what is classified as liquid:<br><br>
+						        <ul>
+
+									<li>Water, soups, syrups and other beverages.</li>
+									<li>Creams, lotions and oils.</li>
+									<li>Perfumes.</li>
+									<li>Aerosoles.</li>
+									<li>Gels (Shower gels or shampoo).</li>
+									<li>Shavingcreamordeodorant.</li>
+									<li>Creams or pastes, including toothpastes.</li>
+									<li>Mixtures of liquids and solids.</li>
+									<li>Mascara.</li>
+									<li>Any other item of similar consistency.</li>
+									
+
+						        </ul>
+								There are other liquids can be transported in the cabin of the aircraft and its packaging may exceed 100 milliliters.
+								<br><br>
+						        <ul>
+
+									<li>Baby formula, breast milk or juice (food for infants).</li>
+									<li>Prescription Drugs: They must carry the prescription or the medicine package to the owner of the airline ticket.</li>
+									<li>Non-prescription drugs: Insulin and other medications.</li>
+
+
+						        </ul>
+			    			</div>
+			    		</div>
+			    		
+			    		
+				        <strong>Presentation:</strong>
+				        <br><br>
+						To transport liquidsyou must packed in bottles with a maximum capacity of 100 milliliters each.
+						<br>
+						You should accommodate all the bottles inside a transparent ziplockplastic bag no more than 20 x 20 cm (equivalent to 1 liter).<br>
+						This bag completely closed, you must present itseparated from the rest of your luggage for reviewand appropriate security controls.
+				        <br><br>
+						All liquids, gels, aerosols, etc. exceeding 100 milliliters, shall be included in checked luggage otherwise they will be confiscated at the security checkpoint.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_duty_free" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>DUTTY FREE</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="with-aligned-images">
+			    			<div id="img_duty_free" class="img-contenido"></div>
+			    			<div class="paragraph">
+								If you would be transporting in your baggage items exceeding 100 milliliters, these will be confiscated at the security checkpointincluding those purchased at another airport or onboard flight of origin.
+			    			</div>
+			    		</div>
+			    		<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_equipos_electronicos" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>ELECTRONIC EQUIPMENT</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			        <div class="content">
+			        	<div class="with-aligned-images">
+			        		<div id="img_equipos_electronicos" class="img-contenido"></div>
+			        		<div class="paragraph">
+								You can take it connected during the flight: your personal computer,tablet, PDA, music player, photo cameras and mobile phone (in airplane mode). Alwaysrespecttheinstructions of thecrew.
+			        		</div>
+			        	</div>
+			        	<br><br>
+			        </div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- equipaje facturable -->
+		<div id="info_equipaje_facturable" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>CHECK-IN BAGGAGE</h3>
+				Your check-in baggage must have certain characteristics to be transported, this is the baggage that is checked at the airport when the passenger showshimself at countersand travels…………. From the aircraft.
+
+			    <br><br>
+				It is important to verify the information according to your travel route and meet the requirements to avoid any inconvenient.
+			    <br><br>
+
+				To ensure the welfare of our staff, the airline receives suitcases at the counters weighing a maximum weight of 32 Kilosas checked baggage,respecting the restrictions of each route, presenting at the airport a baggage with extra weight may cause delay at the time of chek-in to your flight.
+			    <br><br>
+				<div id="subtitle_franquicia_equipaje_facturable" class="desplegable">
+				    <div class="title">
+			        	<div class="img"></div>
+			    		<h4>EXCESS BAGGAGE CHARGES</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table>
+			    			<tr>
+								<!--todo tabla-->
+			    				<td colspan="3" class="table-title">
+			    					<div>Economy Class</div>
+			    				</td>
+			    			</tr>
+			    			<tr>
+			    				<th>Passenger Type</th>
+			    				<th>No. Pieces Permitted</th>
+			    				<th>Permitted Weight(E/P)</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Adult</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>20 kg</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Child</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>20 kg</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+				<div id="subtitle_vuelos_madrid" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4>FLIGHTS TO/FROM MADRID</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Franquicia Vigente:</strong>
+			    		<br><br>
+						<!--todo tabla-->
+			    		<table>
+			    			<tr>
+				    			<td class="hidden"></td>
+				    			<th colspan="2">Business Class</th>
+				    			<th colspan="2">Economy Class</th>
+			    			</tr>
+			    			<tr>
+			    				<th>Passenger Type</th>
+			    				<th>No. Pieces Permitted</th>
+			    				<th>Permitted Weight(E/P)</th>
+			    				<th>No. Pieces Permitted</th>
+			    				<th>Permitted Weight (E/P)</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Adult</td>
+			    				<td><div class="maleta"></div><div class="maleta"></div><div class="maleta"></div></td>
+			    				<td>23 kg</td>
+			    				<td><div class="maleta"></div><div class="maleta"></div></td>
+			    				<td>23 kg</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Child</td>
+			    				<td><div class="maleta"></div><div class="maleta"></div><div class="maleta"></div></td>
+			    				<td>23 kg</td>
+			    				<td><div class="maleta"></div><div class="maleta"></div></td>
+			    				<td>23 kg</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Baby</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>23 kg + 1 carro p/beb&eacute;</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>23 kg + 1 carro p/beb&eacute;</td>
+			    			</tr>
+			    		</table>
+			    		<br><br>
+			    		<i>* Clase ejecutiva, disponible para vuelos desde Bolivia a Madrid y viceversa.</i>
+			    	</div>
+				</div>
+				<div id="subtitle_vuelos_sp_bsas_salta" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4>1.2.3. FLIGHTS TO/FROM SAO PAULO, BUENOS AIRES, SALTA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						<!--todo table-->
+			    		<table>
+			    			<tr>
+			    				<td colspan="3" class="table-title"><div>Economy Class</div></td>
+			    			</tr>
+			    			<tr>
+			    				<th>Passenger</th>
+			    				<th>No. Pieces Permitted</th>
+			    				<th>Permitted Weight(E/P)</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Adult</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>30 kg</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Child</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>30 kg</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+				<div id="subtitle_vuelos_miami" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4>FLIGHTS TO / FROM MIAMI</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						<!--todo table-->
+			    		<table>
+			    			<tr>
+			    				<td colspan="3" class="table-title"><div>Economy class</div></td>
+			    			</tr>
+			    			<tr>
+			    				<th>Tipo de pasajero</th>
+			    				<th>Nro. de piezas permitidas</th>
+			    				<th>Peso permitido c/u</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Adulto</td>
+			    				<td><div class="maleta"></div><div class="maleta"></div></td>
+			    				<td>23 kg</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Ni&ntilde;o</td>
+			    				<td><div class="maleta"></div></td>
+			    				<td>23 kg</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- exceso equipaje -->
+		<div id="info_exceso_equipaje" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>EXCESS BAGGAGE</h3>
+				Any item that exceeds your free checked baggage allowance is considered excess baggage;the fee for this extra weight will depend basically on the route where you make your trip.
+				<br><br>
+				You can make a payment for excess baggage in offices,with the accurate weight,which will be confirmed at the airportor directly at the time of your check inwith the required in advanced according to your destination.
+				<br><br>
+				<div id="subtitle_exceso_nacionales" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4>DOMESTIC ROUTES</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						<!--todo tabla-->
+			    		<table class="medium">
+			    			<tr>
+			    				<td class="hidden"></td>
+			    				<th>Cost of Overweight</th>
+			    				<th>Exceptions</th>
+			    			</tr>
+			    			<tr>
+			    				<th>Economy class</th>
+			    				<td>1 percent of the full fare from the route</td>
+			    				<td>From Cochabamba, La Paz and Santa Cruz to Cobija 16 Bs for each additional Kilo</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+				<div id="subtitle_exceso_bol_desde_br_arg" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">EXCESS BAGGAGE ON ROUTES TO BOLIVIA FROM BRAZIL AND ARGENTINA.</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						<!--todo tabla-->
+			    		<table class="small">
+			    			<tr>
+			    				<td class="hidden"></td>
+			    				<th>Cost of Overweight</th>
+			    			</tr>
+			    			<tr>
+			    				<th>Economy class</th>
+			    				<td>1 percent of the full fare from the route.</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+				<div id="subtitle_exceso_esp_desde_bo_br_arg" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">ORIGEN/DESTINO ESPA&Ntilde;A DESDE BOLIVIA/BRASIL/ARGENTINA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		Pol&iacute;tica de exceso de equipaje para vuelos desde Sud Am&eacute;rica.
+			    		<br><br>
+			    		<table>
+			    			<tr>
+			    				<th colspan="2">Equipajes con Peso Extra<br>(Economy class)</th>
+			    				<th colspan="2">Piezas de Equipaje Extra<br>(Economy class)</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Mayor a 23 Kg. y menor o igual a 32 Kg.</td>
+			    				<td>35 USD p/pieza</td>
+			    				<td>Tercera pieza de 23 Kg.</td>
+			    				<td>100 USD</td>
+			    			</tr>
+			    			<tr>
+			    				<td class="hidden"></td>
+			    				<td class="hidden"></td>
+			    				<td>Cuarta pieza de 23 Kg.</td>
+			    				<td>150 USD</td>
+			    			</tr>
+			    		</table>
+			    		<i>* No se aceptar&aacute;n mas de <b>2 piezas</b> de equipaje extra por pasajero </i>
+			    		<br><br>
+			    		Pol&iacute;tica de exceso de equipaje para vuelos desde Espa&ntilde;a.
+			    		<br><br>
+			    		<table>
+			    			<tr>
+			    				<th colspan="2">Equipajes con Peso Extra<br>(Economy class)</th>
+			    				<th colspan="2">Piezas de Equipaje Extra<br>(Economy class)</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Mayor a 23 Kg. y menor o igual a 32 Kg.</td>
+			    				<td>35 &euro; p/pieza</td>
+			    				<td>Tercera pieza de 23 Kg.</td>
+			    				<td>100 &euro;</td>
+			    			</tr>
+			    			<tr>
+			    				<td class="hidden"></td>
+			    				<td class="hidden"></td>
+			    				<td>Cuarta pieza de 23 Kg.</td>
+			    				<td>150 &euro;</td>
+			    			</tr>
+			    		</table>
+			    		<i>* No se aceptar&aacute;n mas de <b>2 piezas</b> de equipaje extra por pasajero </i>
+			    	</div>
+				</div>
+				<div id="subtitle_exceso_usa_desde_bo_br_arg" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">ORIGEN/DESTINO USA DESDE BOLIVIA / BRASIL / ARGENTINA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table class="medium">
+			    			<tr>
+			    				<td class="hidden"></td>
+			    				<th>Condiciones de exceso de equipaje</th>
+			    				<th>Costo por exceso de equipaje</th>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>Dimensi&oacute;n superior a 158 cent&iacute;metros e inferior a 230 cent&iacute;metros.</td>
+			    				<td>130 Usd. por pieza</td>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>Peso mayor a 23 Kilos y menor a 32 Kilos.</td>
+			    				<td>100 Usd. por pieza.</td>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>Peso mayor a 32 Kilos y menor a 45 Kilos.</td>
+			    				<td>150 Usd. por pieza.</td>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>Peso menor o igual a 23 Kilos, con dimensiones que no superen los 158 cent&iacute;metros en total.</td>
+			    				<td>100 Usd. por pieza.</td>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>Peso mayor a a 23 Kilos y menor o igual a 32 Kilos, con dimensiones que no superen los 158 cen&iacute;metros en total.</td>
+			    				<td>150 Usd. por pieza.</td>
+			    			</tr>
+			    			<tr>
+			    				<td><div class="maleta"></div></td>
+			    				<td>Peso mayor a 32 Kilos y menor o igual a 45 Kilos, con una dimensi&oacute;n mayor a 158 cent&iacute;metros, pero menor o igual a 230 cent&iacute;metros.</td>
+			    				<td>200 Usd. por pieza.</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- equipaje especial -->
+		<div id="info_equipaje_especial" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>SPECIAL BAGGAGE</h3>
+				It is considered special baggage, all the objects or instruments you wish to transport and which by its characteristics, nature, size, quantity and/orfragility, merecen un tratamiento especial y condiciones diferentes para su manipulación y traslado.
+				<br><br>
+			    <div id="subtitle_equipamiento_deportivo" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>SPORT EQUIPMENT</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="with-aligned-images">
+			    			<div id="image_equipaje_deportivo" class="img-contenido"></div>	
+			    			<div class="paragraph">
+								Fishing equipment -Surfboard - Bicycles- Ski     -      Snow board   -     Bow and Arrow(Archery equipment)    -    Skates and skateboards- Golf Bag(Golf equipment)      -Bowling equipment.
+						        <br><br>
+								All these items will be included in a ……………,in case there is an excess there will be a corresponding extra charge.
+						        <br><br>
+								<!--todo parrafo no traducido-->
+						        <h4>Excepciones</h4>
+						        Si participas en alg&uacute;n evento deportivo en representaci&oacute;n oficial podr&aacute;s presentar la
+						        documentaci&oacute;n correspondiente para quedar exento del cobro de exceso de equipaje.
+						        <br><br>
+						        <h4>Not accepted</h4>
+								If you have a sports item that works with an engine and / or batteries you should note that this will not be received for transportation.
+			    			</div>
+			    		</div>
+				        <br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_instrumentos_musicales" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>3.1.4.2.BULKY/LARGE MUSICAL INSTRUMENTS</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="with-aligned-images">
+			    			<div id="image_equipaje_musical" class="img-contenido"></div>
+			    			<div class="paragraph">
+								Guitars    -    Drums      -       Side Drums     -            Trumpets 
+					    		<br><br>
+
+								Because of the fragility and value of these items, you will be allowed in case of request, transporting any of these instruments in cabin,if it goes in under the conditions of baggage transport it will be without additional charge;otherwise it must be accommodated in a seat, for this you must pay a regular rate, the maximum weight for the instrument to be accepted is 75 Kilos.
+
+					            <br><br>
+								Your instrument can also be transported in the baggage compartment of the aircraft bajo las condiciones de franquicia, under the conditions………………excess baggage.
+			    			</div>
+			    		</div>
+			            <br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_equipaje_voluminoso" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>BULK / LARGE AND FRAGILE LUGGAGE</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="with-aligned-images">
+			    			<div id="image_equipaje_fragil" class="img-contenido"></div>
+			    			<div class="paragraph">
+								If you have planned to carry a TV (Plasma or LED) 42 inches or more,You should be aware that it is considered a special baggageand requires appropriate conditions for their reception,no se considerará como parte de la franquicia,it shall not be considered as part of the ……………, therefore, in addition to pay excess baggage,you must sign a liability waiver to transport it,it is important to present it in its original box.
+			    				<br><br>
+
+			    			</div>
+			    		</div>
+			    		<br><br>
+			    	</div>
+			    </div>
+				<!--todo incompleto condiciones de transporte-->
+			    <div id="subtitle_equipaje_voluminoso_espana" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">CONDICIONES DE TRANSPORTE A/DESDE SUD AM&Eacute;RICA - ESPA&Ntilde;A</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		Si requieres transportar un televisor desde Espa&ntilde;a a Sud Am&eacute;rica o viceversa, toma en cuenta que debes presentarlo en mostradores de Boliviana de Aviaci&oacute;n embalado en su caja original, adecuadamente protegido por dentro y por fuera.
+			    		<br><br>
+			    		<table>
+		    				<tr>
+		    					<th>Medidas(Pulgadas)</th>
+		    					<th>Peso</th>
+		    					<th>Dentro Franquicia</th>
+		    					<th>Fuera Franquicia</th>
+		    				</tr>
+		    				<tr>
+		    					<th>Menor o igual a 36''</th>
+		    					<td>Menor o igual a 23 Kilos</td>
+		    					<td>70 USD</td>
+		    					<td>100 USD</td>
+		    				</tr>
+		    				<tr>
+		    					<th>De 37'' a 46''</th>
+		    					<td>Menor o igual a 23 Kilos</td>
+		    					<td>100 USD</td>
+		    					<td>150 USD</td>
+		    				</tr>
+		    			</table>
+		    			<i>* Estas tarifas se aplican siempre que no se exceda el l&iacute;mite de 23 kilos. En caso de exceso, se aplica un cargo adicional de 35 USD</i>
+		    			<br><br>
+		    			<i>** Es muy importante que consideres que el tama&ntilde;o m&aacute;ximo que recibimos para el transporte es de 46 pulgadas.</i>
+			    		<br><br><br>
+			    		Condiciones de transporte de televisores desde Espa&ntilde;a
+			    		<br><br>
+			    		<table>
+		    				<tr>
+		    					<th>Medidas(Pulgadas)</th>
+		    					<th>Peso</th>
+		    					<th>Dentro Franquicia</th>
+		    					<th>Fuera Franquicia</th>
+		    				</tr>
+		    				<tr>
+		    					<th>Menor o igual a 36''</th>
+		    					<td>Menor o igual a 23 Kilos</td>
+		    					<td>70 &euro;</td>
+		    					<td>100 &euro;</td>
+		    				</tr>
+		    				<tr>
+		    					<th>De 37'' a 46''</th>
+		    					<td>Menor o igual a 23 Kilos</td>
+		    					<td>100 &euro;</td>
+		    					<td>150 &euro;</td>
+		    				</tr>
+		    			</table>
+		    			<i>* Estas tarifas se aplican siempre que no se exceda el l&iacute;mite de 23 kilos. En caso de exceso, se aplica un cargo adicional de 35 &euro;</i>
+		    			<br><br>
+		    			<i>** Es muy importante que consideres que el tama&ntilde;o m&aacute;ximo que recibimos para el transporte es de 46 pulgadas.</i>
+		    			<br><br>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!--TODO CONTINUAR -->
+		<!-- mercancias peligrosas -->
+		<div id="info_mercancias_peligrosas" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+			    <h3>MERCANC&Iacute;AS PELIGROSAS</h3>
+				These are substances that under no circumstances can be carried on the aircraft as baggage,sea de mano o facturado,hand baggage orbilled/checkedfacturadobecause it would jeopardize flight safety, all passengers and crew members.
+				<br>
+				It is important to pay attention to the information that we provideand be aware about the substances that fall into this classificationto avoid having problems when making your trip:
+
+		      	<br><br>
+
+				<!--todo incompleto-->
+		       	Existen elementos considerados mercanc&iacute;as peligrosas, que la aerol&iacute;nea puede transportar como carga a solicitud tuya, bajo normas de seguridad estrictas.
+		       	<br><br>
+				Para mayor informaci&oacute;n puedes consultar el siguiente documento:<br>
+				<a href="http://www.iata.org/whatwedo/cargo/dgr/Documents/passenger-provisions-table-2.3.A-dgr-56-sp.pdf">http://www.iata.org/whatwedo/cargo/dgr/Documents/passenger-provisions-table-2.3.A-dgr-56-sp.pdf</a>
+			    <br><br><br>
+			    <div id="subtitle_lista_mercancias_peligrosas" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>DANGEROUS MERCHANDISE</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>1) Cases with alarm devices.</strong>
+			    		<br><br>
+
+						<strong>2) explosive devices</strong>   Explosives,ammunition, material para expediciones,expedition equipment, flares, fireworks, material para expediciones, safety briefcases with pyrotechnics and pyrotechnics equipment in general.
+
+				       	<br><br>
+
+						<strong>3) Compressed gases.</strong>
+						Flammable compressed gases, non-flammable and poisonous, extinguishers, diving oxygen bottles, refrigerated liquefied or dissolved, whether flammable,toxicor non-flammable and non-toxic, such as:aerosol,breathing appliances, bottles with refrigerant gasesand cylinders in general.
+
+						<br><br>
+
+						<strong> 4)Flammable liquids.</strong>
+						Gas bottles to refill lighters,paints,thinner,fuel,flammable liquids and solids,adhesives, varnishes, cerillosmatches and flammable substances in general.
+
+						<br><br>
+						<strong>5)Flammable solids.</strong>
+						Matches, items easily ignitable, spontaneous combustion orthe ones that get in contact with water emit flammable gases.
+
+				       	<br><br>
+
+						<strong>6)Poisons and infectious substances.</strong>
+						Diagnostic specimens, vaccines,insecticides, toxic or infectious substances andherbicides.
+
+				      	<br><br>
+
+						<strong>7)Radioactive materials.</strong>
+						Equipment with radioactive isotopes.
+
+						<br><br>
+						<strong>8)Corrosive and oxidizing materials.</strong>
+						Acids,alkaline, mercury (thermometers), wet cell batteries, electric accumulators andoxidizing materialsas powder whitening andperoxide.
+
+				       	<br><br>
+
+						<strong>9) Batteries</strong>
+						Besides other items considered dangerous such as ferromagnetic material,dry ice and car batteries.
+
+				      	<br><br>
+						<!--todo-->
+				      	<table>
+			    			<tr>
+				    			<td colspan="4" class="table-title">
+			    					<div>Objetos prohibidos que no pueden viajar en el avi&oacute;n</div>
+			    				</td>
+		    				</tr>
+		    				<tr>
+		    					<td>
+		    						<div id="img_obj_prohi_explosivos" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_obj_prohi_comprimidos" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_obj_prohi_liq_inflamables" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_obj_prohi_sol_inflamables" class="img-contenido"></div>
+		    					</td>
+		    				</tr>
+		    				<tr>
+		    					<th>Explosivos</th>
+		    					<th>Gases comprimidos</th>
+		    					<th>L&iacute;quidos inflamables</th>
+		    					<th>S&oacute;lidos inflamables</th>
+		    				</tr>
+		    				<tr>
+		    					<td>
+		    						<div id="img_obj_prohi_venenos" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_obj_prohi_radioactivos" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_obj_prohi_corrosivos" class="img-contenido"></div>
+		    					</td>
+		    					<td>
+		    						<div id="img_obj_prohi_baterias" class="img-contenido"></div>
+		    					</td>
+		    				</tr>
+		    				<tr>
+		    					<th>Venenos y sustancias infecciosas</th>
+		    					<th>Materiales radioactivos</th>
+		    					<th>Materiales corrosivos y oxidantes</th>
+		    					<th>Pilas y bater&iacute;as</th>
+		    				</tr>
+			    		</table>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- equipaje mascotas -->
+		<div id="info_equipaje_mascotas" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>PETS</h3>
+				<div class="with-aligned-images">
+					<div id="image_mascotas" class="img-contenido"></div>
+					One of the ways that you can take your pet with you when you travel is in the baggage compartment;to take your pet in a domestic and international flightyou must meet several requirements:
+				</div>
+				<br><br>
+			    <div id="subtitle_mascotas_buzon" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>TO TRANSPORT IN THE BAGGAGE COMPARTMENT</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						1. It is essential to book a space for your pet when booking or buying your ticket, you need to inform the breed, weight and the cage measurements; the call center agent orsales agent will make the request to the booking departmentandimmediately will accept or deny transporting your dog or cat.
+						<br>
+						One of the common reasons for denying service in the baggage compartmentis that the breed of your pet should be included in the list of dogs and catsof brachycephalic breed (animals with flat nose).
+			            <table>
+			            	<tr>
+			            		<td class="table-title" colspan="3">
+			            			<div>Restricci&oacute;n de transporte para mascotas de raza braquic&eacute;falo o de nariz chata</div>
+			            		</td>
+			            	</tr>
+			            	<tr>
+			            		<td colspan="2">
+			            			<div id="image_no_dogs" class="img-contenido"></div>
+			            		</td>
+			            		<td>
+			            			<div id="image_no_cats" class="img-contenido"></div>
+			            		</td>
+			            	</tr>
+			            	<tr>
+			            		<td style="text-align: left;">
+			            			<ul>
+			            				<li>Aftenpinscher</li>
+			            				<li>A. Staffordshire Terrier</li>
+			            				<li>Boston Terrier</li>
+			            				<li>Boxer (todas las razas)</li>
+			            				<li>Bull Mastiff</li>
+			            				<li>Bulldog (todas las razas)</li>
+			            				<li>Chow Chow</li>
+			            				<li>Cane Corso</li>
+			            				<li>Dogo de Burdeos</li>
+			            				<li>English Staffordshire Bull Terrier</li>
+			            				<li>English Toy Spaniel</li>
+			            			</ul>
+			            		</td>
+			            		<td style="text-align: left;">
+			            			<ul>
+			            				<li>Grif&oacute;n de Bruselas</li>
+			            				<li>Japanese Chin</li>
+			            				<li>Lhasa Apso</li>
+			            				<li>Mast&iacute;n (todas las razas)</li>
+			            				<li>Pekin&eacute;s</li>
+			            				<li>Pit Bull</li>
+			            				<li>Presa Canario</li>
+			            				<li>Pug (todas las razas)</li>
+			            				<li>Shar Pei</li>
+			            				<li>Shih Tzu</li>
+			            				<li>Spaniel tibetano</li>
+			            			</ul>
+			            		</td>
+			            		<td valign="top" style="text-align: left;">
+			            			<ul>
+			            				<li>Burmese</li>
+			            				<li>Himalayo</li>
+			            				<li>Persa</li>
+			            				<li>Exotic Shorthair</li>
+			            			</ul>
+			            		</td>
+			            	</tr>
+			            </table>
+			            <br><br>
+						2. When purchasing the cageyou should look for one that is resistant, secure, comfortable and with good ventilation; for International Tripsthe material must be more resistantand the locks must ensure that will not open at any time.
+
+
+				      	<br><br>
+						3. Presentation schedules at the airport must be met rigorously to prevent rejection of your pet at counters. You must present proper documentation required by the Airline(link a la tabla documentación requerida de acuerdo a la normativa de cada país), according to the route you are making the trip with your pet;the route will determine the rate payable equivalent to 1% of the highest rateper kilo of the animal and its cage.
+
+
+				     	<br><br>
+						4. If you care about the safety of your pet during travel, we inform you that we have rigorous procedures for the transportation of live animals. This way we guarantee your pet will be treated well and be secure. Note that there is limited space for pets on each flight in the baggage compartment.
+						<br><br>
+
+						For better identification form the cage, you can tag the following information in a visible place:
+
+						<div id="image_mascotas_identificacion" class="img-contenido"></div>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mascotas_documentacion" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">DOCUMENTATION REQUIRED ACCORDING TO REGULATIONS OF EACH COUNTRY</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						<!--todo tabla-->
+			    		<table>
+			    			<tr>
+			    				<th>Pa&iacute;s</th>
+			    				<th class="small-title">Certificado Zoosanitario Internacional</th>
+			    				<th class="small-title">Informe Sanitario</th>
+			    				<th class="small-title">Cartilla de Vacunaci&oacute;n</th>
+			    				<th class="small-title">Microchip / Tatuaje</th>
+			    				<th class="small-title">Certificado de Serolog&iacute;a</th>
+			    				<th class="small-title">Certificado de Vacunaci&oacute;n contra bacterias y par&aacute;sitos</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Nacional</td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    			</tr>
+			    			<tr>
+			    				<td>Bolivia</td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td><div class="cross"></div></td>
+			    			</tr>
+			    			<tr>
+			    				<td>Brasil</td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    				<td></td>
+			    			</tr>
+			    			<tr>
+			    				<td>Argentina</td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    			</tr>
+			    			<tr>
+			    				<td>Espa&ntilde;a</td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    			</tr>
+			    			<tr>
+			    				<td>Estados Unidos</td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td><div class="cross"></div></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    			</tr>
+			    		</table>
+				        <br><br>
+
+						<string>1) International Health Certificate (IHC):</string>
+						document issued by the Health Service, where the animal originally comes from.The terms of regulations of this document will depend on the rules of each country.
+
+				        <br><br>
+
+						<strong>2) Health Report:issued by a veterinarian. </strong>
+						The report shall be valid for 10 days from their date of issue.
+
+
+				        <br><br>
+
+						<strong>3) Immunization Records:</strong>certificate of vaccination against rabies, the vaccine should be applied 30 days before to 01 year before boarding.
+
+				        <br><br>
+
+						<strong>4) Microchip/tattoo:</strong>the microchip implanted should be in the animal´s body or the tattoo behind the ear containing an alphanumeric identification code. It should present the corresponding tag at the time of check in.
+
+				        <br><br>
+						<strong>5) Certificate of Serology:</strong> provided after sending a blood sample from the animal toone of the two laboratories accredited by the European Union (UE) or another laboratory also accredited by the European Community abroad.IMPORTANT: must necessarily spend 90 days from the date of blood sampling until boarding the animal.
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div> <!-- <<< UI POLITICA DE EQUIPAJE >>> -->
+
+	<!--todo aca falta-->
+	<!-- UI SEGUIMIENTO EQUIPAJE EN LINEA -->
+	<div id="ui_seguimiento_equipaje" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>SEGUIMIENTO DE EQUIPAJE</h3>
+			<h2>EN L&Iacute;NEA</h2>
+		</div>
+		<div class="icon"></div>
+		<div class="info">
+			<div class="descripcion">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</div>
+	</div> <!-- <<< UI SEGUIMIENTO EQUIPAJE EN LINEA >>> -->
+
+	<!-- UI EQUIPAJES DEMORADOS EXTRAVIADOS O DAÑADOS -->
+	<div id="ui_equipajes_demorados" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>EQUIPAJES DEMORADOS, EXTRAVIADOS</h3>
+			<h2>O DA&Ntilde;ADOS</h2>
+		</div>
+		<div class="icon"></div>
+		<div class="info">
+			<div class="descripcion">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+			</div>
+		</div>
+	</div> <!-- <<< UI EQUIPAJES DEMORADOS EXTRAVIADOS O DAÑADOS >>> -->
+
+	<!-- UI DECLARACION DEL VALOR DEL EQUIPAJE -->
+	<div id="ui_declaracion_equipaje" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>DECLARACI&Oacute;N DEL VALOR</h3>
+			<h2>DEL EQUIPAJE</h2>
+		</div>
+		<div class="icon"></div>
+		<div class="info">
+			<div class="descripcion">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</div>
+	</div> <!-- <<< UI DECLARACION DEL VALOR DEL EQUIPAJE >>> -->
+
+	<!-- UI TIPS DE EQUIPAJE -->
+	<div id="ui_tips_equipaje" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>BAGGAGE  </h3>
+			<h2>IIPS</h2>
+		</div>
+		<div class="header-fixed">
+			<h3>BAGGAGE IIPS </h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+				Because we want you to have a nice trip without any inconvenienttake into account these suggestions:
+				<ul>
+
+					<li> Do not forget to properly identify your luggage with updated data.</li>
+					<li> If you plan to take valuables items, important documents orvalued and electronic devices,do not forget that these items should be included in your hand luggage.</li>
+					<li> Always pay attention to all notices that Boliviana de Aviación has displayed in offices and airports indicating the items that you may or may not take in your hand baggageand checked baggage.</li>
+
+
+					<li> Remember to inform yourself regarding restrictions about taking different sharps objects, explosive, firearms, magnetic materials andliquids.</li>
+					<li> When you require transporting live animals, informed yourself about current conditions to the route where you need to travel.</li>
+					
+
+				</ul>
+			</div>
+		</div>
+	</div> <!-- <<< UI TIPS DE EQUIPAJE >>> -->
+
+	<!--todo-->
+	<!-- UI EQUIPAJE INTERLINEAL -->
+	<div id="ui_equipaje_interlineal" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>EQUIPAJE</h3>
+			<h2>INTERLINEAL</h2>
+		</div>
+		<div class="icon"></div>
+		<div class="info">
+			<div class="descripcion">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</div>
+	</div> <!-- <<< UI EQUIPAJE INTERLINEAL >>> -->
+
+	<!-- UI LLEGAR AL AEROPUERTO -->
+	<div id="ui_llegar_aeropuerto" class="ui-section">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>LLEGAR AL</h3>
+			<h2>AEROPUERTO</h2>
+		</div>
+		<div class="header-fixed">
+			<h3>LLEGAR AL AEROPUERTO</h3>
+		</div>
+		<ul class="first-menu">
+			<li id="submenu_item_hora_limite" class="selected" data-info="hora_limite">
+				<label>Hora L&iacute;mite</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_aeropuerto_lp" data-info="aeropuerto_lp">
+				<label>Aeropuerto de La Paz</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_aeropuerto_cbba" data-info="aeropuerto_cbba">
+				<label>Aeropuerto de Cochabamba</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_aeropuerto_viruviru" data-info="aeropuerto_viruviru">
+				<label>Aeropuerto de Viru Viru</label>
+				<div class="icon small"></div>
+			</li>
+		</ul>
+
+		<!-- hora limite -->
+		<div id="info_hora_limite" class="info selected">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>HORA L&Iacute;MITE</h3>
+				Para evitar inconvenientes en aeropuerto toma en cuenta la hora límite:
+				<br><br>
+				<table class="medium">
+					<tr>
+						<td class="table-title" colspan="3">
+							<div class="clock">
+								<table>
+									<tr>
+										<td><div class="icon-clock"></div></td>
+										<td>VUELOS NACIONALES</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>Hora sugerida en Aeropuerto</th>
+						<th>Hora l&iacute;mite Check-In (Cierre de Vuelo)</th>
+						<th>Inicio de Embarque</th>
+					</tr>
+					<tr>
+						<td>60 minutos antes del vuelo.</td>
+						<td>30 minutos antes del vuelo</td>
+						<td>25 minutos antes del vuelo</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td class="table-title" colspan="4">
+							<div class="clock" style="height:auto;">
+								<table>
+									<tr>
+										<td><div class="icon-clock"></div></td>
+										<td>VUELOS INTERNACIONALES DESDE ARGENTINA, BOLIVIA Y BRASIL</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>Aeropuertos</th>
+						<th>Hora sugerida en Aeropuerto</th>
+						<th>Hora l&iacute;mite Check-In (Cierre de Vuelo)</th>
+						<th>Inicio de Embarque</th>
+					</tr>
+					<tr>
+						<td>Cochabamba, Aeropuerto Internacional Jorge Wilstermann(CBB)</td>
+						<td rowspan="6">3 horas antes del vuelo</td>
+						<td rowspan="6">75 minutos antes del vuelo</td>
+						<td rowspan="6">60 minutos antes del vuelo</td>
+					</tr>
+					<tr>
+						<td>La Paz, Aeropuerto Internacional El Alto(LPB)</td>
+					</tr>
+					<tr>
+						<td>Santa Cruz, Aeropuerto Internacional Viru Viru(VVI)</td>
+					</tr>
+					<tr>
+						<td>Buenos Aires, Ezeiza(EZE)</td>
+					</tr>
+					<tr>
+						<td>Salta, General Guemes(SLA)</td>
+					</tr>
+					<tr>
+						<td>Sao Paulo, Guarulhos(GRU)</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td class="table-title" colspan="4">
+							<div class="clock" style="height:auto;">
+								<table>
+									<tr>
+										<td><div class="icon-clock"></div></td>
+										<td>VUELOS INTERNACIONALES DESDE ESPA&Ntilde;A Y ESTADOS UNIDOS</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>	
+						<th>Aeropuertos</th>
+						<th>Hora sugerida en Aeropuerto</th>
+						<th>Hora l&iacute;mite Check-In (Cierre de Vuelo)</th>
+						<th>Inicio de Embarque</th>
+					</tr>
+					<tr>
+						<td>Madrid, Adolfo Suarez - Barajas(MAD)</td>
+						<td>3 horas antes del vuelo.</td>
+						<td>90 minutos antes del vuelo</td>
+						<td>75 minutos antes del vuelo</td>
+					</tr>
+					<tr>
+						<td>Miami, Aeropuerto Internacional de Miami(MIA)</td>
+						<td>3 horas antes del vuelo.</td>
+						<td>60 minutos antes del vuelo</td>
+						<td>60 minutos antes del vuelo</td>
+					</tr>
+				</table>
+			    <div id="subtitle_porque_en_hora_nacionales" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">&iquest;Por qu&eacute; presentarte una hora antes en vuelos nacionales?</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		Nuestros agentes de ventas siempre te solicitar&aacute;n presentarte una hora antes de la salida de tu vuelo en mostradores de aeropuerto, para que tengas el tiempo suficiente para facturar, entregar tu equipaje, pasar  los controles de <i>SABSA</i> y de narc&oacute;ticos sin el riesgo de perder tu vuelo. En caso de llegar fuera de horario la l&iacute;nea a&eacute;rea no se responsabiliza.
+			    		<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_porque_en_hora_internacionales" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">&iquest;Por qu&eacute; presentarte tres horas antes en vuelos internacionales?</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		Nuestros agentes de ventas siempre te solicitar&aacute;n presentarte tres horas antes del horario de salida de tu vuelo internacional en mostradores de Boliviana de Aviaci&oacute;n,  para realizar la facturaci&oacute;n, entregar tu equipaje, presentar tus documentos de identidad y viaje (pasaporte, c&eacute;dula de identidad, documento de residencia, autorizaciones de viaje, etc); pasar los controles migratorios, aduanas y narc&oacute;ticos. En caso de llegar fuera de horario la l&iacute;nea a&eacute;rea no se responsabiliza. 
+			    		<br><br>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- aeropuerto La Paz -->
+		<div id="info_aeropuerto_lp" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>AEROPUERTO DE LA PAZ</h3>
+				<strong>Nombre:</strong> Aeropuerto Internacional de El Alto
+				<br><br>
+				<strong>Ciudad:</strong> La Paz
+				<br><br>
+				<strong>Ubicaci&oacute;n:</strong> Av. H&eacute;roes del Kilometro 7 S/N Zona Villa Bolivar
+				<br><br>
+				<strong>Contacto:</strong> Telf. (591-2) 215-7300
+				<br><br>
+				<strong>Temperatura Promedio:</strong> 18 Grados Cent&iacute;grados.
+				<br><br>
+				Para mayor informaci&oacute;n visita:<br>
+				<a href="http://www.sabsa.aero/aeropuerto-el-alto/info-vuelos.aspx">http://www.sabsa.aero/aeropuerto-el-alto/info-vuelos.aspx</a>
+				<br><br>
+				<div id="subtitle_mapa_lp" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">MAPA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="img-contenido"></div>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<!-- aeropuerto Cochabamba -->
+		<div id="info_aeropuerto_cbba" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>AEROPUERTO DE COCHABAMBA</h3>
+				<strong>Nombre:</strong>Aeropuerto Internacional Jorge Wilstermann
+				<br><br>
+				<strong>Ciudad:</strong> Cochabamba
+				<br><br>
+				<strong>Ubicaci&oacute;n:</strong> Av. Guillermo Killman/ Zona Aeropuerto.
+				<br><br>
+				<strong>Contacto:</strong> Telf. (591-4) 412-0400
+				<br><br>
+				<strong>Temperatura promedio:</strong> 20 Grados Cent&iacute;grados.
+				<br><br>
+				Para mayor informaci&oacute;n visita:<br>
+				<a href="http://www.sabsa.aero/aeropuerto-jorge-wilsterman/info_vuelos.aspx">http://www.sabsa.aero/aeropuerto-jorge-wilsterman/info_vuelos.aspx</a><br><br>
+			    <div id="subtitle_mapa_cbba" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>MAPA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="img-contenido"></div>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- aeropuerto Viru Viru -->
+		<div id="info_aeropuerto_viruviru" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>AEROPUERTO DE VIRU VIRU</h3>
+				<strong>Nombre:</strong> Aeropuerto Internacional de Viru Viru.
+				<br><br>
+				<strong>Ciudad:</strong> Santa Cruz de la Sierra
+				<br><br>
+				<strong>Ubicaci&oacute;n:</strong> Km. 11 Carretera al Norte.
+				<br><br>
+				<strong>Contacto:</strong> Telf. (591-3) 338-5000
+				<br><br>
+				<strong>Temperatura Promedio:</strong> 25 Grados Cent&iacute;grados.
+				<br><br>
+				Para mayor informaci&oacute;n visita:<br>
+				<a href="http://www.sabsa.aero/aeropuerto-viru-viru/default.aspx">http://www.sabsa.aero/aeropuerto-viru-viru/default.aspx</a><br><br>
+			    <div id="subtitle_mapa_viruviru" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>MAPA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div class="img-contenido"></div>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div> <!-- <<< UI LLEGAR AL AEROPUERTO >>> -->
+
+	<!-- UI SERVICIOS ESPECIALES -->
+	<div id="ui_servicios_especiales" class="ui-section">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>SPECIAL  </h3>
+			<h2>SERVICES</h2>
+		</div>
+		<div class="header-fixed">
+			<h3 class="for-fixed">SPECIAL SERVICES </h3>
+		</div>
+		<ul class="first-menu">
+			<li id="submenu_item_menores_no_acompanados" class="selected" data-info="menores_no_acompanados">
+				<label>UNACCOMPANIED MINORS</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_pasajeros_necesidades_diferentes"
+				data-info="pasajeros_necesidades_diferentes">
+				<label>Pasajeros con necesidades diferentes</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_condiciones_medicas_especiales" data-info="condiciones_medicas_especiales">
+				<label>Condiciones m&eacute;dicas especiales</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_oxigeno" data-info="oxigeno">
+				<label>Transporte de Ox&iacute;geno</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_dialisis_portatil" data-info="dialisis_portatil">
+				<label>Transporte equipo Di&aacute;lisis Port&aacute;til</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_bebes" data-info="bebes">
+				<label>Viajando con Beb&eacute;s</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_mascota" data-info="mascota">
+				<label>Viajando con tu Mascota en Cabina</label>
+				<div class="icon small"></div>
+			</li>
+		</ul>
+
+		<!-- menores no acompañados -->
+		<div id="info_menores_no_acompanados" class="info selected">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>UNACCOMPANIED MINORS</h3>
+				This service makes it possible for children between 5 and 11 years may travel unaccompanied under controlled circumstances in domestic and international flights of Bolivian Aviation. Because they require special attention and there are requirements to meet, it is very important that you review this information to depth. 
+				<br><br><br>
+			    <div id="subtitle_menores_no_acompanados_nal" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4>National travel requirements.</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+					        <li>
+								At the time of the reservation and purchase of the ticket is necessary for reports to the agent of Bolivian Aviation, that the minor will travel without the company of an adult.
+					        </li>
+							<!--todo-->
+					        <li>
+					        	Debes tomar en cuenta que de acuerdo a la normativa vigente, Ley 548 C&oacute;digo Ni&ntilde;a, Ni&ntilde;o y Adolescente y la Ley 263 Ley Integral Contra la Trata y Tr&aacute;fico de Personas,  en caso que un menor de entre 5 y 17 a&ntilde;os de edad necesite viajar solo dentro del territorio nacional, se te solicitar&aacute; la presentaci&oacute;n de la Autorizaci&oacute;n de Viaje para circulaci&oacute;n de Ni&ntilde;as, Ni&ntilde;os y Adolescentes en el Territorio Nacional, puedes tramitar este documento en las oficinas de la Defensor&iacute;a Municipal de la Ni&ntilde;ez y la Adolescencia y presentarlo al momento de la compra de los boletos.
+					        </li>
+					        <li>
+					        	Ya sea en oficina o en aeropuerto, deber&aacute;s completar el formulario dise&ntilde;ado especialmente para el <i>Servicio de Menor No Acompa&ntilde;ado</i>, siempre con los datos correctos.
+					        </li>
+					        <li>
+								Para presentarte en mostradores debes portar el documento de identidad original del menor (c&eacute;dula de identidad o pasaporte), certificado de nacimiento original, autorizaci&oacute;n de viaje y el formulario completo de Menor No Acompa&ntilde;ado.
+					        </li>
+					        <li>
+								Recuerda que el menor no puede presentarse solo en mostradores, debe necesariamente estar acompa&ntilde;ado por un adulto que est&eacute; a cargo de &eacute;l para realizar el check in y todos los procedimientos aeroportuarios.
+					        </li>
+					    </ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_requisitos_viajes_internacionales" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>International travel requirements.</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						If you require a less than between 5 and 11 years of age perform an international trip without the company of an adult, you must take all necessary precautions, depending on the source and destination of the trip.
+			    		<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_bo_arg_bra" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Travel with origin or destination between Bolivia, Argentina and Brazil. </h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Ni&ntilde;os que viajan solos. (5 - 11 a&ntilde;os)</strong>
+				        <ul>
+				            <li>
+								It is important that you make the request of the unaccompanied minor service at the time of booking or purchase of ticket, presenting the original documentation and force of the minor.
+				            </li>
+				            <li>
+								You must deal with the legal authorization for travel, corresponding to the country of origin.
+							</li>
+				            <li>
+								You must introduce yourself in desks of airport, next to the smaller, 3 hours before the flight with all the original documentation.
+				            </li>
+				            <li>
+								Takes into account that the service has no additional cost, but if space is limited.
+				            </li>
+				        </ul>
+				        <br><br>
+
+						<!--todo-->
+				        <strong>J&oacute;venes que viajan solos. (12 - 17 a&ntilde;os)</strong>
+				        <ul>
+				            <li>
+  								El servicio de menor no acompa&ntilde;ado no es obligatorio para j&oacute;venes viajeros, sin embargo debes realizar la notificaci&oacute;n al momento de hacer la reserva y compra del boleto, presentando la documentaci&oacute;n original y vigente del  menor.
+				            </li>
+				            <li>
+								Deber&aacute;s tramitar la autorizaci&oacute;n legal de viaje que corresponda al pa&iacute;s de origen.
+				            </li>
+				            <li>
+ 								Deber&aacute;s presentarte con el menor tres horas antes del vuelo en mostradores de aeropuerto, siempre portando la documentaci&oacute;n correspondiente.
+				            </li>
+				        </ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_sud_am_a_esp_usa" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Travel with origin or destination of South America to Spain and the United States </h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+				        <ul>
+				            <li>
+								If the passenger is a child between 5 and 11 years, it must also include the assistance service for unaccompanied minors, by both as a parent or legal guardian, you must then make the request at the time of booking or purchase of the ticket, with original documentation and force of the minor.
+				            </li>
+				            <li>
+								<!--todo-->
+				                Tambi&eacute;n deber&aacute;s realizar el tr&aacute;mite de la autorizaci&oacute;n legal de viaje, correspondiente al pa&iacute;s de origen.
+				            </li>
+				            <li>
+								For your total peace of mind, this service includes assistance by the airline during boarding and disembarking, in addition, the company of our airport agents during the procedures of customs and immigration, until delivery to the parents or guardians.
+				            </li>
+				            <li>
+								You must introduce yourself in desks of airport, next to the smaller, 3 hours before the flight with all the original documentation.
+				            </li>
+				            <li>
+								The cost of the service of assistance is $100 , including taxes, depending on the laws of the country of origin. You must take into account that the service is limited.
+				            </li>
+				        </ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_jovenes_sud_am_a_esp_usa" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Young travelers from South America to Spain and the United States. </h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+				            <li>
+								If you require a child between 12 and 17 years trip to Madrid or the United States without company of an adult, we offer you the service of assistance for young travellers, you can request at the time of booking or purchase of the ticket of the minor, presenting their identity and travel documents and existing original.
+
+				            </li>
+				            <li>
+								In the case of minors, the conditions of carriage are similar to that of unaccompanied minors, therefore you will need to complete the processing for the legal authorization for travel to the country of origin.
+				            </li>
+				            <li>
+								The service has a cost of 100 USD., additional to the adult rate.
+				            </li>
+				        </ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_auxiliar" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Unaccompanied minors with auxiliary on board. </h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						We can offer you this service according to the route that you make the trip, the age of minors and our availability of crew, taking into account that the spaces are limited.
+			    		<br><br>
+			    		<strong>National Routes</strong><br>
+						The company offers you this service if you require transport to your child between 2 and 5 years without company of adult family member. It will still be considered unaccompanied minor.
+			            <br><br>
+						You will need to complete the request of the helper service on board at least 72 hours before the flight.
+
+
+			            <br><br>
+						<!--todo-->
+			            <strong>Travel with origin or destination between Bolivia, Argentina and Brazil.</strong><br>
+            			La empresa te ofrece este servicio si requieres que se transporte a tu ni&ntilde;o de entre 2 y 5 a&ntilde;os sin compa&ntilde;&iacute;a de un familiar adulto. A&uacute;n as&iacute; ser&aacute; considerado Menor no Acompa&ntilde;ado.
+            			<br><br>
+			            Deber&aacute;s realizar la solicitud del servicio de Auxiliar a Bordo por lo menos 4 d&iacute;as antes de la fecha de viaje.
+			            <br><br>
+			            Toma en cuenta que para solicitar se destine un tripulante de cabina para el cuidado exclusivo de tu ni&ntilde;o entre 2 a 5 a&ntilde;os, deber&aacute;s pagar los pasajes de ida y vuelta, hotel y proporcionar vi&aacute;ticos a nuestro funcionario.
+			            <br><br>
+						<!--todo-->
+			            <strong>Travel with origin or destination of South America to Spain or the United States. </strong><br>
+				        La empresa te ofrece este servicio si requieres que se transporte a tu ni&ntilde;o de entre 5 y 11 a&ntilde;os sin compa&ntilde;&iacute;a de un familiar adulto. A&uacute;n as&iacute; ser&aacute; considerado Menor no Acompa&ntilde;ado.
+				        <br><br>
+				        Deber&aacute;s realizar la solicitud del servicio de Auxiliar a Bordo por lo menos una semana antes de la fecha de viaje.
+				        <br><br>
+				        Toma en cuenta que para solicitar se destine un tripulante de cabina para el cuidado exclusivo de tu ni&ntilde;o de 5 a 11a&ntilde;os, deber&aacute;s pagar los pasajes de ida y vuelta, hotel y proporcionar vi&aacute;ticos a
+				        nuestro funcionario.
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_restricciones" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Restrictions</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						In any case, the unaccompanied minor service will apply to:
+			        	<br><br>
+				        <ul>
+
+
+							<li>Minors with connecting flights with other airlines.</li>
+							<li>Children who require special assistance during the trip.</li>
+							<li>Children who require wheelchair for their displacement.</li>
+							<li>Children who require medical certification for serious illness or disability.</li>
+
+
+				        </ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_mna_excepciones" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Exceptions</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						Foreign minors or resident abroad, with existing documentation and an entry stamp which ratifies their stay less than 90 days in the territory of the country of destination temporary, should not submit additional travel authorization to the that were used to leave their country of origin and/or residence.
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- pasajeros con necesidades diferentes -->
+		<div id="info_pasajeros_necesidades_diferentes" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>PASAJEROS CON NECESIDADES DIFERENTES</h3>
+				As transport company, we have the obligation to provide an air service accessible for our customers with special capacities and needs  , but there are limitations  related to operational safety. Therefore, with the aim to facilitate and make your travel insurance procedures have been established that should be applied in our offices and airports.
+			    <div id="subtitle_pnd_limitaciones" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>Limitations.</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						The limitations in the transport of passengers with different capacities are, in many cases, related to protocols and standards of operational security and other features on the aircraft and airport terminals.
+			    		<br><br>
+						It is important to bear in mind that there are certain conditions that require, by the airline, special care or a medical certificate that allows legal we can provide the service. 
+
+			            <br><br>
+						There are also exceptional conditions that allow our airport agents deny boarding of a passenger, this procedure is done to safeguard the safety of users, the crew and passenger's own.
+			    	</div>
+			    </div>
+			    <div id="subtitle_px_mov_reducida" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>People with reduced mobility. (PRM)</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						According to international regulations, refers to any person for any temporary or permanent alteration of your physical capabilities and/or sensory impairment, deterioration of intellectual faculties, age or other cause, require special attention and the adaptation of services to your needs.
+			    		<br><br>
+			    		<strong>Transport for people with reduced mobility</strong><br>
+				        <ol>
+
+
+							  <li>If for any reason your deposit within the definition of a person with reducedmobility, you should take into account that you should not submit a legal medical certificate, unless you've developed a special medical condition.</li>
+							    In the event of requiring the use of wheelchair for a part or the full path (during boarding and disembarking), you will need to complete the application corresponding to the reservation agent or sale of tickets at the time of purchase of your ticket.</li>
+							  <li>As airline loans not a medical service, therefore, in case of not being self-sufficient, you must always travel with a companion that will ensure your safety, hygiene and health care.</li>
+							  <li>In an extreme case, if the agents you deny the airport transportation, you must make a clear explanation and specific with regard to the causes.</li>
+							    <li>In case you require transporting a guide dog is of the utmost importance to disclose them to the airline in advance. Remember that for your transport the trained dog should use muzzles and stay next to your feet during the whole journey.</li>
+							   <li>The transport of a guide dog is free, do not apply weight restrictions or path, but you must submit the certification or the official badge and the health documentation required to enter the country of destination or transit.</li>
+							<li>If accounts with objects that facilitate your mobility (wheelchairs, crutches, etc), these will be transported without additional cost in the mailbox of load and you will be delivered once the landing takes place at the destination.</li>
+
+
+				        </ol>
+			    	</div>
+			    </div>
+				<br><br>
+			</div>
+		</div>
+
+		<!-- condiciones medicas especiales -->
+		<div id="info_condiciones_medicas_especiales" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>SPECIAL MEDICAL CONDITIONS</h3>
+				<br><br>
+				<div id="subtitle_condiciones_med_requieren_atencion" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">SPECIAL MEDICAL CONDITIONS</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						As a company of transport and safety regulations, we are in a position of requesting to talk to your doctor before making a trip, mainly if you have any of the following conditions that require attention.
+			    		<ol>
+
+							<li>Cardiovascular problems.</li>
+							<li>Chronic respiratory problems.</li>
+							<li>Severe anemia.</li>
+							<li>Unstable Diabetes.</li>
+							<li>Cancer.</li>
+							<li>Consumption of immunosuppressivemedication.</li>
+							<li>That their general condition is in doubt from any cause.</li>
+
+				        </ol>
+			    	</div>
+			    </div>
+			    <div id="subtitle_condiciones_med_requieren_certificado" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">CONDICIONES QUE REQUIEREN CERTIFICADO M&Eacute;DICO</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						In some cases   doctors proportions and provided that the correct information on your state of health to the reservation agents and sales of the company, you will be prompted as a prerequisite, in order to be shipped, a medical certificate. If you forgot to notify the sales staff on any condition, our agents in airport can prevent your shipment to mere suspicion of risk to your safety or the rest of the passengers.
+
+        				<br><br>
+				        <ol>
+
+							<li>Requirement of oxygensupply.</li>
+							<li>Babies born prematurely.</li>
+							<li>Difficulty to remain seated for the duration of the flight.</li>
+							<li>Suffering from a mental illness.</li>
+							<li>Sufferingfromacuteillnesses, chronic</li>
+							<li>Recent surgical intervention.</li>
+
+
+				        </ol>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!--todo-->
+		<!-- transporte de oxigeno -->
+		<div id="info_oxigeno" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>TRANSPORTE DE OX&Iacute;GENO</h3>
+				<br><br>
+		        Por normativa interna, Boliviana de Aviaci&oacute;n te permitir&aacute; portar un Concentrador de Ox&iacute;geno Port&aacute;til (POC) en cabina para ser usado durante el viaje, o si lo requieres en buz&oacute;n de equipajes, estos aparatos forman parte de la clasificaci&oacute;n de mercanc&iacute;as peligrosas, por eso, es muy importante que tomes en cuenta los siguientes aspectos para su transporte:
+		        <br><br>
+			    <ol>
+			        <li>Debes asegurarte que el tubo est&eacute; certificado para uso en aviones comerciales y que cuente con la autorizaci&oacute;n por parte de la Administraci&oacute;n Federal de Aviaci&oacute;n.</li>
+			        <li>T&uacute; o tus familiares deber&aacute;n enviar, con por lo menos 48 horas de anticipaci&oacute;n al vuelo, los siguientes datos sobre el equipo: fabricante, marca y serie, para que la empresa realice la verificaci&oacute;n y as&iacute; evitarte inconvenientes al momento del embarque.</li>
+			        <li>Para viajar portando este equipo deber&aacute;s presentarte en aeropuerto una hora y media antes, para que el personal de Boliviana de Aviaci&oacute;n efect&uacute;e la revisi&oacute;n correspondiente.</li>
+			        <li>Imprescindiblemente debes presentar en mostradores de aeropuerto el Formulario de Servicios Especiales firmado por tu m&eacute;dico.</li>
+			    </ol>
+			    <div id="subtitle_concentradores_oxigeno_portatil" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">PORTABLE OXIGEN CONCENTRATORS (POC) ALLOWED</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		&Only authorizes the use of the following teams <i>POC</i> onboard our flights:
+				        <ol>
+
+							<li>Airsep "Lifestyle" made by the Airsep Corporation </li>
+							<li>Inogen one made by the Inogen Corporation </li>
+							<li>Airsep "Freestyle" made by the Airsep Corporation </li>
+							<li>SeQual Eclipse made by SeQual Technologies Inc. </li>
+							<li>RespironicsEvergo made by Respironics Inc. </li>
+							<li>Delphi RS 00400 made by Delphi Medical System </li>
+							<li>Invacare's 'XPO2 made by the Invacare Corporation</li>
+
+
+				        </ol>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- dialisis portatil -->
+		<div id="info_dialisis_portatil" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>TRANSPORTATION OF EQUIPAMENT PORTABLE DIALYSIS (PDMs)</h3>
+				<br><br>
+		        Por normativa interna, Boliviana de Aviaci&oacute;n te permitir&aacute; portar un Concentrador de Ox&iacute;geno Port&aacute;til (POC) en cabina para ser usado durante el viaje, o si lo requieres en buz&oacute;n de equipajes, estos aparatos forman parte de la clasificaci&oacute;n de mercanc&iacute;as peligrosas, por eso, es muy importante que tomes en cuenta los siguientes aspectos para su transporte:
+		        <br><br>
+			    <div id="subtitle_condiciones_seguridad_pdms" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">CONDITIONS OF STRICT SECURITY</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						Recalls request this special service at the time of booking or purchase of your ticket, at least 24 hours before the flight.
+			    		<br><br>
+						At the time of next headliner on the desks of Portable dialysis machine must already be totally OFF and remain so until the end of your trip, already in operation that can interfere with the communication systems of the aircraft.
+						<br><br>
+						You will be allowed to carry a quantity of liquid and supplies (medicines, syringes and dialysis fluids), enough for 1 or 2 days. Liquids should be packed tightly.
+						<br><br>
+						At the time of the shipment you will need to present and deliver the MEDIF form for special services, signed by a physician, this enables you to transport is totally free in cabin luggage or mailbox.
+						<br><br>
+						<!--todo-->
+						Para que puedas transportarla en cabina de pasajeros, el equipo port&aacute;til no deber&aacute; exceder el l&iacute;mite permitido para equipaje de mano.
+						<br><br>
+						To carry a machine in the mailbox of checked baggage the maximum allowable weight is 45 kilos. As security procedure you must remove the lithium batteries and keep them separate in your luggage.
+						<br><br>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+		<!-- viajando con bebes -->
+		<div id="info_bebes" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>TRAVELING WITH BABIES </h3>
+				The infants under 2 years not occupying a seat and pay exactly the 10% of the adult fare with whom they travel. If you require your baby occupies a site in the aircraft, you will have to pay, for him,  the child's rate (2 to 11 years) and carry a special CDR seat, with the following stamp:
+				<br><br>
+				<div style="padding: 10px;border: 3px solid #000;">
+				    <strong>
+				        &laquo;This child restraint system conforms to all applicable Federal Motor Vehicle Safety Standars (FMVSS 213), THIS RESTRAINT IS CERTIFIED FOR USE IN MOTOR VEHICLES AND AIRCRAFT.&raquo;
+				    </strong>
+			    </div>
+		        <br><br>
+		        <div id="subtitle_transporte_bebes" class="desplegable">
+		        	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">TRANSPORT OF NEWBORNS</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+
+							<li>By safety regulations, Bolivian aviation transported only infants on the eighth day of birth.  </li>
+							<li>Must travel accompanied by one of their parents or close relatives. </li>
+							<li>For domestic flights, you can present during the 1st month of the baby's life the certificate of live birth, thereafter you will need to present a birth certificate or identity card. </li>
+							<li>For international flights is mandatory submission of the identity card or passport. </li>
+							<li>Premature babies are considered medical case and require medical certificate to make the trip. </li>
+							
+
+				        </ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_adultos_dos_infantes" class="desplegable">
+		        	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small"> ADULTS ACCOMPANIED BY-INFANTS</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						According to the security standards and regulations on transport of juveniles, if you require transport two infants under two years, you must assure the smaller next to you and the other infant must be insured to a special seat COR, that must carry this label:
+						<br>
+						<div style="padding: 10px;border: 3px solid #000;">
+				    		<strong>
+								&laquo;This child restraint system it all applicable Federal Motor Vehicle  Safety Standard  (FMVSS 213), "THIS RESTRAINT IS CERTIFIED FOR USE IN MOTOR VEHICLES AND AIRCRAFT&raquo;
+							</strong>
+						</div>
+						<br>
+						The baby that occupies an additional seat must have a ticket bought with child's rate.
+			    	</div>
+			    </div>
+			</div>
+		</div>
+
+
+		<!--todo-->
+		<!-- viajando con tu mascota en cabina -->
+		<div id="info_mascota" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>TRAVELING WITH YOUR PET IN CABIN</h3>
+				If you require travel with your pet in the cabin, we offer you the service that is intended only to dogs, cats and small birds up to 5 kilos of weight.
+				<br><br>
+				<div id="subtitle_transporte_mascota_cabina" class="desplegable">
+		        	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small"> CONDITIONS FOR TRAVELING WITH YOUR PET IN CABIN</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+
+							<li>You must reserve space for your pet to the commented booking or purchase of your ticket or at least 24 hours before the flight.</li>
+							<li>The maximum weight for the acceptance of your pet in the cabin, will be of 5 kilos, including the carrying bag.</li>
+							<li>At the time of purchasing the carrying case, you should look for a sturdy, ventilated, with impermeable base and quite safe. You will be the maximum dimensions of 45 x 35 x 25 centimeters, for a total of 105 centimeters.</li>
+							<li>In airport you have to submit originals and photocopies of the certificates of vaccination and animal health, in addition to fill out and sign the form for animal transport in cabin.</li>
+							<li>The service has a cost comparable to the excess baggage for a suitcase of 20 kilos. (Taking into account the 1% of the full fare for every kilo</li>
+
+
+				        </ul>
+			    	</div>
+			    </div>
+		        <br><br>
+			</div>
+		</div>
+	</div> <!-- <<< UI SERVICIOS ESPECIALES >>> -->
+
+	<!--todo-->
+	<!-- UI PASAJEROS ESPECIALES -->
+	<div id="ui_pasajeros_especiales" class="ui-section">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>PASAJEROS</h3>
+			<h2>ESPECIALES</h2>
+		</div>
+		<div class="header-fixed"><h3>PASAJEROS ESPECIALES</h3></div>
+		<ul class="first-menu">
+			<li id="submenu_item_embarazadas" class="selected" data-info="embarazadas">
+				<label>Mujeres Embarazadas</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_tercera_edad" data-info="tercera_edad">
+				<label>Pasajeros de la Tercera Edad</label>
+				<div class="icon small"></div>
+			</li>
+			<li id="submenu_item_pasajeros_sobrepeso" data-info="pasajeros_sobrepeso">
+				<label>Pasajeros que Requieren Asiento Extra</label>
+				<div class="icon small"></div>
+			</li>
+		</ul>
+
+		<!-- mujeres embarazadas -->
+		<div id="info_embarazadas" class="info selected">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>PREGNANT WOMEN</h3>
+				According to Bolivian law women in gestation can only travel by plane to the week thirty-four, therefore it is important that you don't forget to inform you that we can properly smooth walls disappear.
+				<br><br><br>
+				<div id="subtitle_gestacion_sin_complicaciones" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">GESTATION WITHOUT MEDICAL COMPLICATIONS</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table id="table_gestacion_sin_complicaciones_a" cellpadding="0" cellspacing="0">
+			    			<tr>
+			    				<td>
+			    					<h1>Gestation without medical complications </h1>
+			    				</td>
+			    				<td rowspan="2"><div id="image_logo_boa" class="img-contenido"></div></td>
+			    			</tr>
+							<!--todo tabla-->
+			    			<tr>
+			    				<td valign="top">
+			    					Porque tu seguridad es nuestra prioridad, te proporcionamos toda la informaci&oacute;n para que puedas realizar tu viaje sin inconvenientes, dependiendo de la etapa de gestaci&oacute;n en la que te encuentres.
+			    				</td>
+			    			</tr>
+			    		</table>
+			    		<table id="table_gestacion_sin_complicaciones_b" cellpadding="0" cellspacing="0">
+			    			<tr>
+			    				<td rowspan="2"><div id="image_gestacion_a" class="img-contenido"></div></td>
+			    				<td><h1>Between week 0 to week 28.</h1></td>
+			    				<td rowspan="2"><div id="image_gestacion_b" class="img-contenido"></div></td>
+			    				<td><h1>Between week 28 to week 34.</h1></td>
+			    			</tr>
+			    			<tr>
+			    				<td valign="top">
+									You need only submit the <strong>form of transient in gestation</strong>. You can request any of our offices or in airports.
+									</td>
+			    				<td valign="top">
+									You must submit a legar medical certificate in order to be able to ship, this should not be older than seven days before the flight. In addition you must submit the <strong>form of transient in gestation</strong>.
+									</td>
+			    			</tr>
+			    			<tr>
+			    				<td rowspan="2"><div id="image_gestacion_c" class="img-contenido"></div></td>
+			    				<td><h1>From week 35 of gestation.</h1></td>
+			    				<td rowspan="2"><div id="image_gestacion_d" class="img-contenido"></div></td>
+			    				<td><h1>Post Partum</h1></td>
+			    			</tr>
+			    			<tr>
+			    				<td valign="top">
+									Your Doctor can determine if you are able to travel or not, in any case according to the regulations is Bolivian accepts the shipment with the presentation of a <strong>medical certificate and legal</strong> only in cases of extreme necessity.
+								</td>
+			    				<td valign="top">
+									If your birth was less than seven days, Bolivian Aviation may not make you feel amazing.</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+			    </div>
+			    <div id="subtitle_gestacion_madrid" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">CONDICIONES DE TRANPORTE DESDE MADRID</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table class="medium" id="table_gestacion_madrid" cellpadding="0" cellspacing="0">
+			    			<tr>
+			    				<th colspan="2">
+			    					<h1>Variaciones en Condiciones de transporte desde Madrid</h1>
+			    				</th>
+			    			</tr>
+			    			<tr>
+			    				<td>
+			    					<div id="image_gestacion_doctor" class="img-contenido"></div>
+			    				</td>
+			    				<td valign="top">
+			    					Mujeres en gestaci&oacute;n entre las 34 semanas y los 7 d&iacute;as antes del parto, deben viajar <b>acompa&ntilde;adas de un m&eacute;dico</b>.
+			    				</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+			    </div>
+			    <div id="subtitle_gestacion_con_riesgo" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">GESTATION WITH RISK</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table id="table_gestacion_con_riesgo" cellpadding="0" cellspacing="0">
+			    			<tr>
+			    				<th colspan="2">
+			    					<h1> Regardless of time of gestation.</h1>
+			    				</th>
+			    			</tr>
+			    			<tr>
+			    				<td colspan="2"><h2>Sin importar el tiempo de gestaci&oacute;n</h2></td>
+			    			</tr>
+			    			<tr>
+			    				<td>
+			    					<div id="image_gestacion_feto" class="img-contenido"></div>
+			    				</td>
+			    				<td valign="top">
+
+									Considered to be a medical event, you must provide a medical <strong>certificate and the legal</strong> form of <strong>medical certification</strong> of the company, signed by your doctor.
+
+
+			    				</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<!-- tercera edad -->
+		<div id="info_tercera_edad" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>PASSENGERS OF THE THIRD AGE</h3>
+				Bolivian citizens over the age of 60, have many advantages with regard to the purchase of tickets national, attention and allocation of seats, thanks to the Article 6 of Law 1886, article 5 of the Supreme Decree 0264 and Article 56 of the Administrative Resolution RA SC -STR-DS-RA-0300/2007.
+				<br><br>
+				<strong>Benefits:</strong><br>
+			    <ul>
+			        <li>With the 40 percent discount on routes a/ single presentation of the Bolivian id cards in force, passport, R. U. N or book of military service and a photocopy.</li>
+			        <li>With preferential attention in offices and airports.</li>
+			    </ul>
+			    <br><br>
+				In the event that you require a special service, such as for example: wheelchair, they can access only doing a simple request.
+				<br><br><br>
+			</div>
+		</div>
+		<!-- pasajeros sobrepeso -->
+		<div id="info_pasajeros_sobrepeso" class="info">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>PASSENGERS WHO REQUIRE EXTRA SEAT</h3>
+				<br><br><br>
+			    <ul>
+
+					<li>In case of being forced to require an extra seat on the aircraft for your trip, you can request this service for your convenience at the time of the purchase of your ticket, stating that you need to buy also the adjacent seat.</li>
+					<li>For greater security of Bolivian Aviation can provide you with a safety extension to simple request on board the aircraft.</li>
+					<li>Takes into account that for the ticket you purchased (extra seat), apply the same initial conditions of the ticket, in terms of penalties and luggage transport. </li>
+
+
+			    </ul>
+			</div>
+		</div>
+	</div> <!-- <<< UI PASAJEROS ESPECIALES >>> -->
+
+	<!-- UI COMIDA ESPECIAL -->
+	<div id="ui_menu_especial" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>SPECIAL </h3>
+			<h2>MENU</h2>
+		</div>
+		<div class="header-fixed">
+			<h3>SPECIAL MENU</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+				There are many health conditions as diabetes,hypertension, intoleranceto certain foods oringredients, eveneating habits as well as own religion or just philosophy, thatmotivate you to ask for a special food on a long  flight.  Boliviana de Aviación offers you a special menú, elaborated to satisfy those needs.
+				<br><br>
+				<strong>¿How can I ask for a special menu?</strong>
+				<br><br>
+				To access to the special menú on your intenational flight, you must ask for a special food at the moment of purchasing the ticket or at least 48 hours before the flight, to our sales counters, through our Call Center or even through your travel agency.
+				<br><br>
+				<!--todo-->
+				<div id="subtitle_menu_especial" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">VER MEN&Uacute;</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<table class="small">
+			    			<tr>
+			    				<th colspan="2">Special Menu</th>
+			    			</tr>
+			    			<tr>
+			    				<td>Menu for diabetics.</td>
+			    				<td>Sugar controled and rapidly absorbed carbohydrates food</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Plate of fruit</td>
+			    				<td>Based on seasonal fruit.</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Gluten free menu</td>
+			    				<td>Doesn't include creals: wheat, rye, barley, oats.</td>
+			    			</tr>
+			    			<tr>
+			    				<td>No salt menu.</td>
+			    				<td>Food without salt.</td>
+			    			</tr>
+			    			<tr>
+			    				<td>Vegetarian menu <br>(lactose free)</td>
+			    				<td>Meatless dish, on occidental style, lactose free products nor eggs.</td>
+			    			</tr>
+			    		</table>
+			    	</div>
+				</div>
+			</div>
+		</div>
+	</div> <!-- <<< UI COMIDA ESPECIAL >>> -->
+
+	<!-- UI DOCUMENTACION DE VIAJE -->
+	<div id="ui_documentacion_viaje" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>TRAVEL </h3>
+			<h2>DOCUMENTS, VISA AND API</h2>
+		</div>
+		<div class="header-fixed">
+			<h3>TRAVEL DOCUMENTS, VISA AND API</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+				Before taking the flight, it is important you to be sure to carry on your valid and in good conditions documets (Passport, identification document, residency document), in order to enforce origen and destination or transit countries migratory rules.
+				<br><br>
+				As traveler you must be informed and have all valid documentation at the moment that each country regulations should ask for, while booking, purchasing the ticket or boarding the flight.
+				<br><br>
+    			Inf&oacute;rmate sobre todos los requisitos. 
+    			<a href="http://www.iatatravelcentre.com">http://www.iatatravelcentre.com</a> (s&oacute;lo disponible en ingl&eacute;s)
+    			<br><br>
+    			<strong>Advanced Passenger Information (API)</strong>
+    			<br><br>
+				As traveler you must be informed and have all valid documentation at the moment that each country regulations should ask for, while booking, purchasing the ticket or boarding the flight.
+				<br><br>
+				<div id="subtitle_documentacion_usa" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">UNITED STATES</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+
+							<li>Type of document <strong>P</strong>: Passport <strong>C</strong>: Identification Document</li>
+							<li>Country of document issuance</li>
+							<li>Document number</li>
+							<li>Passenger nationality.</li>
+							<li>Passenger birth date</li>
+							<li>Passenger sex</li>
+							<li>Document expiration date.</li>
+							<li>Last name and first name (s)</li>
+							<li>Document type (visa or green card)</li>
+							<li>Document number.</li>
+							<li>Document issuance date</li>
+
+				        </ul>
+						<br><br>
+						For more information:<br>
+						<a href="http://www.tsa.gov">http://www.tsa.gov</a><br>
+						<a href="https://help.cbp.gov/app/answers/detail/a_id/725">https://help.cbp.gov/app/answers/detail/a_id/725</a><br>
+				        <a href="http://www.tsa.gov/stakeholders/secure-flight-program">http://www.tsa.gov/stakeholders/secure-flight-program</a>
+				        <br><br>
+				        <strong>Visa Waiver Programm. ESTA (VWP)</strong>
+				        <br><br>
+						The United States have a Visa Waiver Programm, that allows citizens of participating  countries, enter to USA for tourismor business purposes without a visa for stays of 90 days or less,
+						<br><br>
+				        <div class="small-info">
+				            <ul>
+				                <li>
+									Gernany,Andorra, Australia, Austria, Belgium, Brunei, Chile, South Korea (***), Denmark, Slovakia (***), Slovenia (*), Spain, Estonia, Finland, France, Greece (** **), Hungary (***), Ireland, Italy, Japan, Latvia (***), Liechtenstein, Lithuania (***), Luxembourg, Malta (***), Monaco, Norway, New Zealand , Netherlands, Portugal, United Kingdom (**), Czech Republic (***), San Marino, Singapore, Sweden, Switzerland.
+				                </li>
+
+								<li>Eslovenia citizens, may use their country Passport with red cover to enter USA on Visa Waiver Progamm.</li>
+								<li>**Persons who present British Passports, must have the unfettered right to live in Ingland, Scotland, Wales, Northern Ireland, Channel Islands and Man Island to apply for VWP.</li>
+								<li>***Citizens of these countries must present an electronic Passport identified by the ICAO chip logo on the cover.</li>
+								<li>Only the Greek electronic passports, issued by the polize of that country since August 26th, 2006, are valid for VWP.</li>
+
+
+				            </ul>
+				        </div>
+				        <br><br>
+				        <strong>Countries Exempt of Passport extension validity for six months after expiration.</strong>
+				        <br><br>
+						<!--todo-->
+				       	Por norma todos los pa&iacute;ses exigen una vigencia de los documentos superior a los 6 meses de la fecha del vuelo de retorno, Estados Unidos tiene una lista de pa&iacute;ses cuyos ciudadanos est&aacute;n exentos de esta regla.
+				       	<br><br>
+				        <div class="small-info">
+							Germany,Andorra, Angola, Antigua and Barbuda, Antilles, Algeria, Argentina, Armenia, Aruba, Australia, Austria, Las Bahamas, Barbados, Belgium, Belize, Bermuda, Burma, Bolivia, Bosnia - Herzegovina, Brazil, Bulgaria, Canada, Chile Cyprus, Colombia, South Korea, Ivory Coast, Costa Rica, Croatia, Denmark, Dominica, Egypt, El Salvador, United Arab Emirates, Slovakia, Slovenia, Spain, Estonia, Ethiopia, Finland, Fiji, France, Gabon , Georgia, Granada, Greece, Guatemala, Guinea, Guyana, Haiti, Hong Kong, Hungary, India, Indonesia, Ireland, Israel, Italy, Jamaica, Japan, Kuwait, Latvia, Lebanon, Libya, Liechtenstein, Lithuania, Luxembourg, Macau, Macedonia, Madagascar, Malaysia, Maldives, Malta, Mauritania, Mauritius, Mexico, Monaco, Mongolia, Montenegro, Mozambique, Nepal, Nicaragua, Nigeria, Norway, New Zealand, Netherlands, Palau, Panama, Papua New Guinea, Pakistan, Paraguay, Peru, Poland, Portugal, Qatar, United Kingdom, Czech Republic, Dominican Republic, Romania, Russia, Saint Kitts and Nevis, San Marino, Saint Vincent and the Grenadines, Saint Lucia, Serbia, Seychelles, Singapore, Sri Lanka, South Africa , Sweden, Switzerland, Suriname, Thailand, Taiwan, Trinidad and Tobago, Tunisia, Turkey, Tuvalu, Ukraine, Uruguay, Uzbekistan, Vatican, Venezuela, Vietnam and Zimbabwe.
+							</p>
+				        </div>
+			    	</div>
+				</div>
+				<div id="subtitle_documentacion_espana" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Espa&ntilde;a</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+				            <li>Depending on passenger nationality, it is necesary to take into account that the requested information for his/her travel to Spain is needed.
+				            </li>
+							<li>Type of document <strong>P</strong>: Passport <strong>C</strong>: Identification Document</li>
+							<li>Country of document issuance</li>
+							<li>Document number</li>
+							<li>Passenger nationality.</li>
+							<li>Passenger birth date</li>
+							<li>Passenger sex</li>
+							<li>Document expiration date.</li>
+							<li>Last name and first name (s)</li>
+							<li>Document type (visa or foreign registration)</li>
+							<li>Document number.</li>
+							<li>Document issuance date</li>
+							<li>Country to which the visa is applyed</li>
+
+				        </ul>
+				        <br><br>
+						For more information please visit:<br>
+				        <a href="http://www.aena.es/csee/Satellite/HomeAena">http://www.aena.es/csee/Satellite/HomeAena</a><br>
+				        <a href="http://www.seguridadaerea.gob.es/lang_castellano/home.aspx">http://www.seguridadaerea.gob.es/lang_castellano/home.aspx</a>
+			    	</div>
+			    </div>
+			    <div id="subtitle_documentacion_bolivia" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">BOLIVIA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						If you are interested to visit Bolivia, please enter to:<br>
+            			<a href="http://www.rree.gob.bo/webmre/principal.aspx?idpagina=32">http://www.rree.gob.bo/webmre/principal.aspx?idpagina=32</a>
+            			<br><br>
+						Thus you may verify all requirements and correct proccedures at the time to process documentation.
+        				<br><br>
+        				<strong>Viajes nacionales con menores</strong>
+        				<div class="importante">INFORMACI&Oacute;N IMPORTANTE</div>
+        				<br>
+        				Es importante que tomes en cuenta que de acuerdo a la normativa vigente: Ley 548 C&oacute;digo Ni&ntilde;a, Ni&ntilde;o y Adolescente y la Ley 263 Ley Integral Contra la Trata y Tr&aacute;fico de Personas, en caso que un menor de entre 5 y 17 a&ntilde;os de edad necesite viajar solo, con uno de los padres o con una tercera persona dentro del territorio nacional, se te solicitar&aacute; la presentaci&oacute;n de la Autorizaci&oacute;n de Viaje para circulaci&oacute;n de Ni&ntilde;as, Ni&ntilde;os y Adolescentes en el Territorio Nacional (Formulario de Verificaci&oacute;n), puedes tramitar este documento en las oficinas de la Defensor&iacute;a Municipal de la Ni&ntilde;ez y la Adolescencia y deber&aacute;s presentarlo al momento de la compra de los boletos.
+        				<br><br>El personal Boliviana de Aviaci&oacute;n est&aacute; en la obligaci&oacute;n de exigir esta autorizaci&oacute;n de viaje al momento de la compra del boleto, recuerda que en caso de incumplimiento, nuestros agentes pueden ser pasibles a procesos legales y sanciones.
+        				<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_documentacion_argentina" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Argentina</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						If  you are USA, Canada or Australia citizen and you need, for turism or business purposses go to Argentina, you must take into account the payment of Reciprocity Fee to request entering that country, that you have to do on line, by credit card. Once you pay the fee you must print the receipt to present it before boarding and at migratory control .
+			    		<br><br>
+						To make the transaction or obtain more information please visit:<br>
+            			<a href="http://www.migraciones.gov.ar">www.migraciones.gov.ar</a><br>
+            			<a href="http://www.provinciapagos.gov.ar">www.provinciapagos.gov.ar</a>
+        				<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_documentacion_brasil" class="desplegable">
+					<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">BRAZIL</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+						To know more about Brasilian migratory policies, please enter to:<br>
+            			<a href="http://www.portalconsular.mre.gov.br/antes-de-viajar-1/antes-de-viajar">http://www.portalconsular.mre.gov.br/antes-de-viajar-1/antes-de-viajar</a>
+        				<br><br>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div> <!-- <<< UI DOCUMENTACION DE VIAJE >>> -->
+
+	<!-- UI VACUNAS -->
+	<div id="ui_vacunas" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>&nbsp;</h3>
+			<h2>VACINATIONS</h2>
+		</div>
+		<div class="header-fixed">
+			<h3 class="for-fixed">VACINATIONS</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+				Each country has  different regulations about Vaccines requested compulsorily and other recommented for special situations.
+				<br><br>
+				To be informed about vaccinations please go to a health center or vaccinations bank or visit<br>
+				<a href="http://travelcentre.iata.org">http://travelcentre.iata.org</a> (s&oacute;lo en inglés)
+				<br><br>
+				<div id="subtitle_vacunas_argentina" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Argentina</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Generaly recommended vaccinations:</strong><br>
+						HepatitisA /Tetanus -Diphtheria /Tetanus -Diphtheria-PertussisandMMR.
+						<br><br>
+						<strong>Recommendes vacinations on special situations:</strong><br>
+						HepatitisB/Yellow Fever /Rage/Flu/Pneumococcal, Typhoid.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_vacunas_bolivia" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Bolivia</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Requested vaccinations:</strong><br>
+						Yellow Fever (if arriving from endemic country)
+						<br><br>
+						<strong>Generali recommended vacinations:</strong><br>
+						HepatitisA /Tetanus -DiphtheriaandMMR.
+						<br><br>
+						<strong>Recommended vaccines on special situations:</strong><br>
+						Yellow Fever /Typhoid/HepatitisB/Rage/Influenza andPneumococcal.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_vacunas_brasil" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Brazil</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Requested vacinations:</strong><br>
+						Yellow Fever (if arriving from endemic country)
+						<br><br>
+						<strong>Generaly recommended vacinations:</strong><br>
+						HepatitisA /Tetanus -DiphtheriaandMMR.
+						<br><br>
+						<strong>Recommended vaccines on special situations:</strong>
+						Yellow Fever /Typhoid/HepatitisB/Rage/Influenza andPneumococcal.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_vacunas_espana" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Espa&ntilde;a</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Generaly recomended vacinations:</strong><br>
+						Tetanus -Diphtheria /Tetanus -Diphtheria-PertussisandMMR.
+						<br><br>
+						<strong>Recommended vaccines on special situations:</strong><br>
+						HepatitisB/Influenza andPneumococcal
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_vacunas_eeuu" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">Estados Unidos</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>Generaly recomended vacinations:</strong><br>
+						Tetanus -Diphtheria /andMMR.
+						<br><br>
+						<strong>Recommended vaccines on special situations:</strong><br>
+						HepatitisB/Influenza andPneumococcal
+						<br><br>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div> <!-- <<< UI VACUNAS >>> -->
+
+	<!--todo nuestra flota-->
+	<!-- UI NUESTRA FLOTA -->
+	<div id="ui_nuestra_flota" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>OUR </h3>
+			<h2>FLEET</h2>
+		</div>
+		<div class="header-fixed">
+			<h3> OUR FLEET</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+				Bolivian account Aviation fleet with the following:
+			    <br><br>
+
+			    <div id="subtitle_737_300" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>BOEING 737 - 300</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div id="image_737_300_foto" class="img-contenido"></div>
+					    <ul>
+					    	<li>Number of Seats: 138 ; 136</li>
+							<li>Number of aircraft operated by BoA : 11</li>
+					    </ul>
+					    <br>
+						Level of aircraft: 
+					   	<div id="image_737_300_plano" class="img-contenido"></div>
+					   	<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_737_500" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>BOEING 737 - 500</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div id="image_737_500_foto" class="img-contenido"></div>
+					    <ul>
+					        <li>N&uacute;mero de asientos: 122</li>
+					        <li>N&uacute;mero de aeronaves operadas por BoA :  1</li>
+					    </ul>
+					    <br>
+						Level of aircraft: 
+					    <div id="image_737_500_plano" class="img-contenido"></div>
+					   	<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_737_700_ng" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>BOEING 737 - 700 NG</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div id="image_737_700ng" class="img-contenido"></div>
+			    		<ul>
+							<li>Number of Seats: 136</li>
+							<li>Units operated by BoA: 1</li>
+					    </ul>
+					    <br>
+						Level of aircraft: 
+					   	<div id="image_737_700ng_plano" class="img-contenido"></div>
+					   	<br>
+					   	<div id="image_737_700ng_asiento" class="img-contenido"></div>
+					   	<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_767_300" class="desplegable">
+			    	<div class="title">
+			        	<div class="img"></div>
+			    		<h4>BOEING 767 - 300</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<div id="image_767_300_foto" class="img-contenido"></div>
+					    <ul>
+							<li>Number of economy-class seats: 215 </li>
+							<li>Number of Business Class seats: 10</li> 
+							<li>Units operated by BoA: 2</li>
+					    </ul>
+					   	<br><br>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div> <!-- <<< UI NUESTRA FLOTA >>> -->
+
+	<!-- UI EXPERIENCIA A BORDO -->
+	<div id="ui_experiencia_bordo" class="ui-section">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>EXPERIENCE </h3>
+			<h2>ABOARD</h2>
+		</div>
+		<div class="header-fixed">
+			<h3>EXPERIENCE ABOARD</h3>
+		</div>
+		<ul class="first-menu">
+			<li id="submenu_item_gastronomia" class="selected" data-info="gastronomia">
+				<label>GASTRONOMY SNACK AND DRINKS</label>
+				<div class="icon small"></div>
+			</li>
+		</ul>
+
+		<!-- gastronomia, snack y bebidas -->
+		<div id="info_gastronomia" class="info selected">
+			<div class="icon"></div>
+			<div class="descripcion">
+				<h3>GASTRONOMY SNACK AND DRINKS</h3>
+				Both in our international stages (short and long), as in our domestic routes we have planned the menu for that is your total satisfaction.
+				<br><br>
+			    <strong>Menu for domestic destinations :</strong>
+				Presentation: Box with corporate image of Bolivian Aviation that contains:<br>
+			    <ul>
+
+					<li> Biscuit sweet or salty.</li>
+					<li> Caramel.</li>
+					<li> Napkin.</li>
+
+			    </ul>
+			    <div id="image_menu_destinos_nacionales" class="img-contenido"></div>
+			    <strong>Menu to international destinations in South America:</strong>
+			    <br><br>
+				If you are traveling to Brazil or Argentina we offer you this menu prepared especially for these routes:
+			   	<br><br>
+				Presentation: Tray with individual paper, all hygienically manipulated:
+			  	<br>
+			    <ul>
+					 <li>Sandwich </li>
+					<li> Dessert </li>
+					<li> Fruit Salad </li>
+					<li> Yogurt </li>
+					<li> Set of Covered </li>
+					
+
+			    </ul>
+			    <div id="image_menu_destinos_internacionales_samerica" class="img-contenido"></div>
+			    <strong>Menu to international destinations in Europe and the United States.</strong>
+			    <br><br>
+				The food service in our ships 767 - 300, which carried out the service in long stages, is differentiated betweencab of economic class and the cab executive class: 
+			  	<br><br>
+			    <strong>In Economy Class flights to Miami we offer you the following menu: </strong>
+			    <br><br>
+				In the case of long-range trips in economy class we can offer you, according to the flight schedule, breakfast, hot food at lunchtime and dinner.
+			  	<br><br>
+				For Economy Class flights to Miami we offer you the following menu:
+			    <div id="image_menu_destinos_internacionales_economica_miami" class="img-contenido"></div>
+			    <strong>Executive Class on flights to Miami we offer you the following menu:</strong>
+			    <br><br>
+				In executive class, whose cab is composed of ten seats, to provide total comfort for our passengers, offers you a personalized service, very particular about the menu and its presentation, in addition we have a wide variety of drinks in our bar service.
+			   	<br>
+			   	<strong>For the executive class on flights to Miami we offer you the following menu:</strong>
+			   	<div id="image_menu_destinos_internacionales_ejecutiva_miami" class="img-contenido"></div>
+			</div>
+		</div>
+	</div> <!-- <<< UI EXPERIENCIA A BORDO >>> -->
+
+	<!-- UI PERFIL CORPORATIVO -->
+	<div id="ui_perfil_corporativo" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>PERFIL</h3>
+			<h2>CORPORATIVO</h2>
+		</div>
+		<div class="header-fixed">
+			<h3 class="for-fixed">PERFIL CORPORATIVO</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+		        El 24 de Octubre de 2007, mediante el <b>Decreto Supremo Nº 29318</b> se crea la <i>Empresa P&uacute;blica Nacional Estrat&eacute;gica Boliviana de Aviaci&oacute;n – BoA</i>, como una persona jur&iacute;dica de derecho p&uacute;blico; duraci&oacute;n indefinida; patrimonio propio; autonom&iacute;a de gesti&oacute;n administrativa, financiera, legal y t&eacute;cnica, bajo tuici&oacute;n del Ministerio de Obras
+		        P&uacute;blicas, Servicios y Vivienda.
+		        <br><br>
+		        La Direcci&oacute;n Superior de Boliviana de Aviaci&oacute;n – BoA, est&aacute; a cargo de un Directorio como &oacute;rgano m&aacute;ximo de decisi&oacute;n, contando con un Gerente General qui&eacute;n ejerce la representaci&oacute;n institucional, siendo la M&aacute;xima Autoridad Ejecutiva.
+		        <br><br>
+		        En fecha 19 de febrero de 2009 la <i>Direcci&oacute;n de Aeron&aacute;utica Civil (DGAC)</i> otorg&oacute; la Certificaci&oacute;n a Boliviana de Aviaci&oacute;n – BoA como <q><b>Gran Operador A&eacute;reo Nacional e Internacional</b></q>.
+		        <br><br>
+		        El 23 de marzo de 2009, la entonces <i>Superintendencia de Transportes</i> emite la <b>Resoluci&oacute;n Administrativa Nº 0084/2009</b> autorizando a Boliviana de Aviaci&oacute;n la prestaci&oacute;n de servicios aeron&aacute;uticos regulares comerciales.<br>
+		        Esta autorizaci&oacute;n da inicio a las operaciones a&eacute;reas comerciales.
+		        <br><br>
+		        El 30 de marzo de 2009, BoA inicia sus operaciones con vuelos en el eje troncal del pa&iacute;s (Cochabamba, La Paz y Santa Cruz), en fecha 19 de Junio de 2009 se iniciaron operaciones a la ciudad de Tarija, el 5 de septiembre de 2009 se inaugura la ruta a la ciudad de Sucre y el 2 de Diciembre de 2009 se apertura la ruta a la ciudad Cobija.
+		        <br><br>
+		        Continuando con el plan de ampliaci&oacute;n de rutas el 14 de mayo de 2010 se inaugura la estaci&oacute;n y ruta internacional a Buenos Aires-Argentina, el 20 de noviembre de 2010 se realiza la inauguraci&oacute;n de la estaci&oacute;n y ruta a Sao Paulo-Brasil, el 6 de Diciembre de 2012 se inaugura la estaci&oacute;n y ruta internacional a Madrid-Espa&ntilde;a, el 15 de mayo de 2014 de se inician operaciones en la ruta a Salta – Argentina y finalmente en el 6 de Junio de 2014 se inician las operaciones a Miami – Estados Unidos
+		        <br><br>
+		        <div id="image_mision_vision" class="img-contenido">
+		        	<h1>VISI&Oacute;N</h1>
+		        	<p>
+		        		&laquo;Boliviana de Aviaci&oacute;n contribuir&aacute; significativamente a la consecuci&oacute;n de los objetivos estrat&eacute;gicos del <label>pa&iacute;s</label> y al <label>bienestar de los bolivianos</label>, a trav&eacute;s de los servicios aeron&aacute;uticos de calidad&raquo;.
+		        	</p>
+		        	<h1>MISI&Oacute;N</h1>
+		        	<p>
+		        		&laquo;Brindar servicio integral de transporte aerocomercial de alcance nacional e internacional con <label>calidad</label>, <label>seguridad</label> y gesti&oacute;n empresarial transparente&raquo;.	
+		        	</p>
+		        </div>
+			    <br><br>
+			    <strong>Principios</strong>
+			    <br><br>
+		        <b> Equidad</b>, proporcionando un tratamiento igualitario y justo a todos los clientes internos y externos.
+		        <br><br>
+		        <b> Universalidad</b>, generalizando el transporte a&eacute;reo y logrando un nivel de uso y acceso democr&aacute;tico.
+		        <br><br>
+			    <strong>Valores</strong>
+			    <br><br>
+			    <ul>
+			        <li>Honestidad</li>
+			        <li>Transparencia</li>
+			        <li>Vocaci&oacute;n de Servicio</li>
+			        <li>Eficiencia y Productividad</li>
+			        <li>Compromiso</li>
+			        <li>Gerenciamiento Participativo</li>
+			        <li>Cooperaci&oacute;n y Trabajo en Equipo</li>
+			        <li> Proactividad</li>
+			    </ul>
+				<br><br>
+			</div>
+		</div>
+	</div> <!-- <<< UI PERFIL CORPORATIVO >>> -->
+
+	<!-- UI SOMOS IOSA -->
+	<div id="ui_somos_iosa" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>SOMOS</h3>
+			<h2>IOSA</h2>
+		</div>
+		<div class="header-fixed">
+			<h3 class="for-fixed">SOMOS IOSA</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+				<div id="subtitle_somos_iosa" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">SOMOS IOSA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<strong>&iquest;Qu&eacute; es IOSA?</strong><br>
+					    El programa IOSA (<i>IATA Operational Safety Audit</i>) es el est&aacute;ndar de Calidad y Seguridad Operacional m&aacute;s estricto de la industria aeron&aacute;utica, ya que est&aacute; fundamentado en normas de la OACI (<i>Organizaci&oacute;n de Aviaci&oacute;n Civil Internacional</i>). Estas normas generan una modalidad de evaluaci&oacute;n que permite garantizar un alto est&aacute;ndar de
+					    seguridad en las operaciones. Las aerol&iacute;neas deben someterse a profundas auditor&iacute;as cada dos a&ntilde;os para renovar sus certificaciones.
+					    <br><br>
+						<strong>Nuestra primera certificaci&oacute;n.</strong>
+						<br>
+					    En junio de 2012 iniciamos el trabajo para que Boliviana de Aviaci&oacute;n obtenga la certificaci&oacute;n IOSA, bajo la gu&iacute;a de la empresa BRIPSA en coordinaci&oacute;n con un equipo conformado para lograr este nuevo objetivo, se adecuaron los procedimientos y procesos existentes, a los par&aacute;metros de seguridad operacional de la industria aeron&aacute;utica internacional.
+					    <br><br>
+					    Tras seis meses de arduo trabajo, el 7 de diciembre de 2012 la empresa francesa Quali Audit realiz&oacute; la auditor&iacute;a y logramos la certificaci&oacute;n, gracias al compromiso de toda la familia BoA, convencida de que la seguridad operacional es el &uacute;nico valor que nos permitir&aacute; estar entre las mejores l&iacute;neas &aacute;reas de la regi&oacute;n y del mundo.
+					    <br><br>
+						<strong>Nuestra Re – certificaci&oacute;n IOSA.</strong>
+						<br>
+						En agosto de 2014, se inici&oacute; un nuevo reto, la re-certificaci&oacute;n, para esto se conform&oacute;un comit&eacute; IOSA,
+					    veinticinco personas trabajando para que el resultado de esta auditor&iacute;a sea un &eacute;xito para nuestra empresa. El reto entonces consist&iacute;a en demostrar que todos los procesos y procedimientos implementados en 2012 ya eran parte de un Sistema de Gesti&oacute;n de Calidad y Seguridad Operacional, mostrando madurez por parte de Boliviana de Aviaci&oacute;n, en la cultura de seguridad integral.
+					    <br><br>
+					    Este proceso no pudo llegar en mejor momento, ya que el 7 de diciembre de 2014 renovamos nuestra certificaci&oacute;n IOSA, incluyendo la operaci&oacute;n de nuestras naves Boeing 767 300 ER, en las nuestras rutas Miami y Madrid.
+					    <br><br>
+						<strong>Cambios profundos.</strong>
+						<br>
+					    Para la certificaci&oacute;n y re-certificaci&oacute;n se realizaron cambios profundos, se ha generado una Gesti&oacute;n Administrativa de Calidad y Seguridad Operacional, ya que implementamos un Sistema de Gesti&oacute;n de Seguridad, que sobrepasa los requerimientos de las regulaciones nacionales, porque a trav&eacute;s de diferentes procedimientos eliminamos o por lo menos mitigamos los peligros y por consiguiente los riesgos que podr&iacute;an amenazar nuestras operaciones.
+					    <br><br>
+						<strong>Los principales retos.</strong>
+						<br>
+					    Si bien obtener la certificaci&oacute;n y re-certificar ha sido un gran reto para la empresa, mostrar una continuidad y mantener este nivel de compromiso con los m&aacute;s altos niveles de seguridad de la industria a trav&eacute;s de IOSA es el mayor reto dentro de nuestra compa&ntilde;&iacute;a, por algo somos la &uacute;nica aerol&iacute;nea boliviana que tiene esta certificaci&oacute;n.
+					    <br><br>
+					    <div style="padding: 10px;border: 3px solid #000;">
+						    <strong>
+						        &laquo;This child restraint system conforms to all applicable Federal Motor Vehicle Safety Standars (FMVSS 213), THIS RESTRAINT IS CERTIFIED FOR USE IN MOTOR VEHICLES AND AIRCRAFT.&raquo;
+						    </strong>
+					    </div>
+			    	</div>
+			    </div>
+				<div id="subtitle_politica_gerenciamiento" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">POL&Iacute;TICA DE GERENCIAMIENTO</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+				        El equipo Gerencial de Boliviana de Aviaci&oacute;n est&aacute; enfocado en establecer todos sus sistemas operativos y administrativos, y mejorarlo de forma continua en funci&oacute;n de la seguridad (<i>Safety &amp; Security</i>) como el objetivo y medio dentro de la actividad aerocomercial. Con este fin Boliviana de Aviaci&oacute;n se compromete a:
+				        <br><br>
+					    <ol>
+					        <li>Revisar regularmente el rendimiento del sistema en base a indicadores establecidos por la Alta Gerencia.</li>
+					        <li>An&aacute;lisis Peri&oacute;dico de los resultados operacionales no deseados.</li>
+					        <li>Seguimiento de las acciones correctivas y su efectividad para la mejora del rendimiento operacional.</li>
+					    </ol>
+					    <br>
+				        La prestaci&oacute;n de nuestros servicios en el Marco de la Pol&iacute;tica General de la Empresa, ser&aacute; facilitada por el equipo Gerencial en un marco de relaci&oacute;n colaborativa, proactiva y comprendida de todos los miembros de
+				        Boliviana de Aviaci&oacute;n.
+				        <br><br>
+				        As&iacute; mismo, el personal de toda la organizaci&oacute;n debe cumplir sus responsabilidades ajust&aacute;ndose a las regulaciones y los procedimientos en los Manuales aplicables.
+						<br><br>
+			    	</div>
+			    </div>
+			    <div id="subtitle_politica_no_punitiva" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">POL&Iacute;TICA NO PUNITIVA</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+			    		<ul>
+			    			<li>La responsabilidad por la seguridad operacional y la seguridad de la aviaci&oacute;n tiene car&aacute;cter transversal general en Boliviana de Aviaci&oacute;n y por tanto, condiciona cada funci&oacute;n asignada a personal administrativo y operativo de nuestra empresa y de Empresas asociadas.</li>
+			    			<li>En el marco de responsabilidad general, es imperativo que todos los funcionarios de Boliviana de Aviaci&oacute;n y colaboradores de la empresa asociadas notifiquen sin temor, cualquier condici&oacute;n, incidente o suceso que pueda comprometer la seguridad de nuestras operaciones, de las instalaciones o la integridad f&iacute;sica del personal involucrado. Estas notificaciones NO SER&aacute;N objeto de represalia.</li>
+			    			<li>La presente pol&iacute;tica asegura a los funcionarios de Boliviana de Aviaci&oacute;n que la notificaci&oacute;n de errores accidentales o no premeditados no resultar&aacute; en acciones disciplinarias o punitivas contra las personas involucradas, a menos que, por supuesto, dichos errores sean el resultado de actividades ilegales, dolo u otras acciones maliciosas, de acuerdo a lo definido por la empresa. La identidad de cualquier funcionario que informa un error no ser&aacute; revelada, salvo si el mismo o la ley lo autoriza.</li>
+			    			<li>Se insta a todo el personal a utilizar los mecanismos de Manual de Gerenciamiento de Seguridad y Calidad (MQS) para ayudar a que Boliviana de Aviaci&oacute;n mejore continuamente la seguridad, mediante una actitud informativa proactiva y comprometida.</li>
+			    		</ul>
+			    	</div>
+			    </div>
+			    <div id="subtitle_politica_de_personal" class="desplegable">
+			        <div class="title">
+			        	<div class="img"></div>
+			    		<h4 class="small">POL&Iacute;TICA DE PERSONAL</h4>
+			    		<div class="arrow"></div>
+			    	</div>
+			    	<div class="content">
+					  	Dondequiera que sean conducidas las operaciones de Boliviana de Aviaci&oacute;n el personal involucrado, deber&aacute;:
+					  	<br>
+					    <ol>
+					        <li>Desempe&ntilde;arse seg&uacute;n los procedimientos establecidos en los manuales aprobados de Empresa, cumplir con la normativa aplicable y el Est&aacute;ndar IOSA.</li>
+					        <li>Reporta a su Gerencia, Jefatura o al responsable inmediato las necesidades de mejora en el sistema de gesti&oacute;n o el manual operacional del &aacute;rea.</li>
+					        <li>Comprometerse con la cultura de seguridad operacional y la seguridad de la aviaci&oacute;n (<i>Safety &amp;Security</i>)</li>
+					        <li>Asegurar la continuidad de las tareas pertinentes en su &aacute;rea en caso de ausencia temporal mediante la delegaci&oacute;n de funciones no de responsabilidades.</li>
+					        <li>Aceptar la responsabilidad de su propio comportamiento y rendir cuentas del mismo.</li>
+					        <li>Participar Coactivamente en el dise&ntilde;o de normas y procedimientos</li>
+					    </ol>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div> <!-- <<< UI SOMOS IOSA >>> -->
+
+	<!-- UI RECONOCIMIENTOS Y PREMIOS -->
+	<div id="ui_reconocimientos_premios" class="ui-section unique">
+		<div class="gradient"></div>
+		<div class="header">
+			<h3>RECONOCIMIENTOS Y</h3>
+			<h2>PREMIOS</h2>
+		</div>
+		<div class="header-fixed">
+			<h3 class="for-fixed">RECONOCIMIENTOS Y PREMIOS</h3>
+		</div>
+		<ul class="first-menu"></ul>
+		<div class="info">
+			<div class="descripcion">
+			    Durante la gesti&oacute;n 2014, Boliviana de Aviaci&oacute;n se hizo merecedora de varios reconocimientos y distinciones, gracias al trabajo realizado en apoyo a la cultura, responsabilidad social y por la exitosa administraci&oacute;n empresarial.
+			    <br><br>
+
+			    <table>
+			    	<tr>
+			    		<th colspan="2" width="50%">M&eacute;rito Social</th>
+			    		<th colspan="2" width="50%">Trabajo y Liderazgo</th>
+			    	</tr>
+			    	<tr>
+			    		<td><div id="image_premio_merito_social" class="img-contenido"></div></td>
+			    		<td>Otorgado por el Gobierno Aut&oacute;nomo Municipal del Departamento de Cochabamba en marzo de 2014.</td>
+			    		<td><div id="image_premio_trabajo_liderazgo" class="img-contenido"></div></td>
+			    		<td>Otorgado por la Asociaci&oacute;n Boliviana de Agencias de Viajes y Turismo en marzo de 2014.</td>
+			    	</tr>
+			    	<tr>
+			    		<th colspan="2">Empresa Boliviana del A&ntilde;o</th>
+			    		<th colspan="2">Apoyo Solidarios</th>
+			    	</tr>
+			    	<tr>
+			    		<td><div id="image_premio_empresa_del_year" class="img-contenido"></div></td> <!-- :S -->
+			    		<td>Otorgado en mayo de 2014 por Latin American Quality Institute.</td>
+			    		<td><div id="image_premio_apoyo_solidario" class="img-contenido"></div></td>
+			    		<td>Otorgado por la Coordinadora General del Consejo Ind&iacute;gena Yuracar&eacute; en julio de 2014, por el apoyo solidario en el traslado de pacientes renales de la etnia.</td>
+			    	</tr>
+			    	<tr>
+			    		<th colspan="2">Apoyo a la Cultura</th>
+			    		<th colspan="2">M&eacute;rito Social</th>
+			    	</tr>
+			    	<tr>
+			    		<td><div id="image_premio_apoyo_cultura" class="img-contenido"></div></td>
+			    		<td>Otorgado por el Ministerio de Culturas, Gobierno Aut&oacute;nomo Departamental de Cochabamba, Gobierno Aut&oacute;nomo Municipal de Totora y el Comit&eacute; organizador del Festipiano, en octubre de 2014, por el apoyo y respaldo al XI Festival del Piano <q>Hern&aacute;n Rivera U</q>.</td>
+			    		<td><div id="image_premio_merito_social_moxos" class="img-contenido"></div></td>
+			    		<td>Otorgado por los Gobiernos Aut&oacute;nomos Municipales de San Ignacio (Prov. Moxos) y Magdalena (Prov. It&eacute;nez) en noviembre de 2014.</td>
+			    	</tr>
+			    	<tr>
+			    		<th colspan="2">Huesped Ilustre</th>
+			    		<th colspan="2">Merco Bolivia</th>
+			    	</tr>
+			    	<tr>
+			    		<td><div id="image_premio_huesped_ilustre" class="img-contenido"></div></td>
+			    		<td>Otorgado por el Gobierno Aut&oacute;nomo Municipal de al Gerente de Boliviana de Aviaci&oacute;n en diciembre de 2014.</td>
+			    		<td><div id="image_premio_merco_bolivia" class="img-contenido"></div></td>
+			    		<td>
+			    			Otorgado por el Grupo Nueva Econom&iacute;a en diciembre de 2014 por figurar entre las <b>100 Empresas m&aacute;s responsables y con mejor gobierno corporativo</b>.
+			    			<br><br>
+							Otorgado por el Grupo Nueva Econom&iacute;a en diciembre de 2014 al Gerente General de BoA por figurar entre los <b>100 L&iacute;deres con mejor reputaci&oacute;n en Bolivia</b>.
+							<br><br>
+							Otorgado por el Grupo Nueva Econom&iacute;a en diciembre de 2014 por figurar entre las <b>100 Empresas con mejor reputaci&oacute;n en Bolivia</b>.
+						</td>
+			    	</tr>
+			    	<tr>
+			    		<th colspan="2">Prevenci&oacute;n del VIH</th>
+			    	</tr>
+			    	<tr>
+			    		<td><div id="image_premio_prevencion_vih" class="img-contenido"></div></td>
+			    		<td>Otorgado por el Ministerio de Salud y Deportes en diciembre de 2014 por sumarse a la respuesta nacional de prevenci&oacute;n de esta enfermedad.</td>
+			    	</tr>
+			    </table>
+			</div>
+		</div>
+	</div> <!-- <<< UI RECONOCIMIENTOS Y PREMIOS >>> -->
+
+	<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+</body>
+</html>
