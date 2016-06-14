@@ -1260,13 +1260,20 @@ footer #call_center h1 {
 }
 /*------------------*/
 /* footer iconos unicos para mantener mejor favio figueroa*/
+
+.icono_footer_lugar{
+	background-image:url('images/pin_boa_blanco.png');
+}
+.icono_footer_horarios{
+	background-image:url('images/reloj_blanco.png');
+}
  footer .tooltip_icono_ {
 	 position: absolute;
 	 top: 10px;
 	 height: 25px;
 	 width: 25px;
-	 background-color: #FFF;
-	 background-image:url('images/oficinas_pin.png');
+	 background-color: rgba(31, 54, 86, 0.9);
+	 opacity: 0.95;
 	 background-repeat: no-repeat;
 	 background-size: auto 25px;
 	 border-radius: 50px;
@@ -1285,7 +1292,7 @@ footer .tooltip_icono_.animating {
 footer .tooltip_icono_:hover,
 footer .tooltip_icono_.active {
 	background-color: #EFAA35;
-	background-size: auto 45px;
+	background-size: auto 40px;
 	top: 2px;
 	width: 40px;
 	height: 40px;
@@ -1382,13 +1389,13 @@ footer #contacto_asistencia:hover {
 
 footer #horarios {
 	left: 55px;
-	background-position: -33px -3px;
+	/*background-position: -33px -3px;*/
 }
 
 footer #horarios:hover,
 footer #horarios.active {
 	left: 50px;
-	background-position: -47px -2px;
+	/*background-position: -47px -2px;*/
 }
 
 footer #reservas {
@@ -1480,7 +1487,22 @@ footer .validable.active {
 	background-color: #F00;
 }
 /* --------------------------------------------------------------------------- */
+
+
+footer .tooltip_icono_ span{display: none;}
 footer .tooltip.active span{display: none;}
+
+
+footer .tooltip_icono_ .form {
+	position: absolute;
+	width: 810px;
+	height: 50px;
+	left: -400px;
+	bottom: 60px;
+	background-image: url("images/bg_footer_popup.png");
+	padding: 4px 0 12px 10px;
+	display: none
+}
 
 footer .tooltip .form {
 	position: absolute;
@@ -1493,6 +1515,9 @@ footer .tooltip .form {
 	display: none
 }
 
+footer .tooltip_icono_.active .form {
+	display: block;
+}
 footer .tooltip.active .form {
 	display: block;
 }

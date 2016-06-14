@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/info_page_us.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/images/pin_boa_blanco.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/images/reloj.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/images/reloj_blanco.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/lib/pdf/condiciones.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/lib/pdf/guice.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/lib/pdf/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/lib/pdf/jquery.media.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/lib/pdf/jquery.metadata.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/footer.js" afterPath="$PROJECT_DIR$/content/footer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/style.css" afterPath="$PROJECT_DIR$/content/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home.html" afterPath="$PROJECT_DIR$/home.html" />
     </list>
     <ignored path="boaweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,31 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="info_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/info_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4650">
-              <caret line="310" column="29" selection-start-line="310" selection-start-column="29" selection-end-line="310" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="reserva_vuelos.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13905">
-              <caret line="927" column="33" selection-start-line="927" selection-start-column="33" selection-end-line="927" selection-end-column="33" />
+            <state relative-caret-position="345">
+              <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -60,75 +49,77 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/common.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/lib/pdf/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2145">
-              <caret line="143" column="10" selection-start-line="143" selection-start-column="10" selection-end-line="143" selection-end-column="10" />
+            <state relative-caret-position="195">
+              <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/header.js">
+      <file leaf-file-name="jquery.metadata.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/lib/pdf/jquery.metadata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="1350">
+              <caret line="92" column="26" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generic_container.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/generic_container.js">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reserva_vuelos.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="803" column="34" selection-start-line="803" selection-start-column="34" selection-end-line="803" selection-end-column="34" />
+            <state relative-caret-position="44">
+              <caret line="703" column="53" selection-start-line="703" selection-start-column="53" selection-end-line="703" selection-end-column="53" />
               <folding>
-                <marker date="1463588029000" expanded="true" signature="31287:31400" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="35745:36020" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="51950:51959" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="51984:51993" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="52020:52029" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="52064:52073" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="52118:52891" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="53112:55016" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="53240:54557" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="53369:53388" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="53389:53512" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="53389:54540" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="53770:53789" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="54173:54192" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="54601:55002" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="55007:55016" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="55035:55258" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="55035:55523" placeholder="..." />
-                <marker date="1463588029000" expanded="true" signature="55035:55528" placeholder="..." />
+                <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info_page_us.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/info_page_us.html">
+      <file leaf-file-name="footer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/content/footer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="2586" column="960" selection-start-line="2586" selection-start-column="960" selection-end-line="2586" selection-end-column="960" />
+            <state relative-caret-position="270">
+              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="837">
+              <caret line="1288" column="34" selection-start-line="1288" selection-start-column="34" selection-end-line="1288" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1470">
+              <caret line="98" column="1" selection-start-line="98" selection-start-column="1" selection-end-line="98" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.media.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/lib/pdf/jquery.media.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="855">
+              <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
               <folding>
-                <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#1;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,6 +140,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -160,19 +152,23 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/content/fake_services/nearest_dates.json" />
-        <option value="$PROJECT_DIR$/content/style.css" />
-        <option value="$PROJECT_DIR$/content/footer.js" />
         <option value="$PROJECT_DIR$/content/validaciones_form.js" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.css" />
         <option value="$PROJECT_DIR$/info_page.html" />
         <option value="$PROJECT_DIR$/content/fin_venta.js" />
         <option value="$PROJECT_DIR$/fin_venta.html" />
-        <option value="$PROJECT_DIR$/home.html" />
         <option value="$PROJECT_DIR$/reserva_vuelos.html" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
         <option value="$PROJECT_DIR$/content/custom_handlers.js" />
         <option value="$PROJECT_DIR$/info_page_br.html" />
         <option value="$PROJECT_DIR$/info_page_us.html" />
+        <option value="$PROJECT_DIR$/content/common.js" />
+        <option value="$PROJECT_DIR$/content/lib/pdf/jquery.media.js" />
+        <option value="$PROJECT_DIR$/content/lib/pdf/jquery.metadata.js" />
+        <option value="$PROJECT_DIR$/content/lib/pdf/index.html" />
+        <option value="$PROJECT_DIR$/home.html" />
+        <option value="$PROJECT_DIR$/content/style.css" />
+        <option value="$PROJECT_DIR$/content/footer.js" />
       </list>
     </option>
   </component>
@@ -189,7 +185,7 @@
     <option name="x" value="1280" />
     <option name="y" value="23" />
     <option name="width" value="1366" />
-    <option name="height" value="745" />
+    <option name="height" value="691" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -216,6 +212,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,41 +245,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boaweb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boaweb" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/PhpstormProjects/devoluciones Boa" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/images" />
+      <recent name="$PROJECT_DIR$/content/lib/pdf" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/content/lib" />
-      <recent name="$PROJECT_DIR$/content/images" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/content/images" />
     </key>
   </component>
@@ -362,18 +342,24 @@
       <workItem from="1464117347550" duration="6371000" />
       <workItem from="1464385125980" duration="4112000" />
       <workItem from="1464731055300" duration="3874000" />
+      <workItem from="1464979567561" duration="1652000" />
+      <workItem from="1464992139869" duration="329000" />
+      <workItem from="1465217615569" duration="311000" />
+      <workItem from="1465823898426" duration="7633000" />
+      <workItem from="1465843761000" duration="3438000" />
+      <workItem from="1465908487520" duration="6382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125692000" />
+    <option name="totallyTimeSpent" value="145437000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="23" width="1366" height="745" extended-state="6" />
+    <frame x="1280" y="23" width="1366" height="691" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25302115" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27567977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -409,28 +395,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/content/fake_services/register_passengers_service.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/images/bancos/prodem.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/images/bancos/fassil_disabled.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/images/bancos/visa.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/images/pin_boa.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -460,24 +424,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19860">
-          <caret line="1324" column="8" selection-start-line="1324" selection-start-column="8" selection-end-line="1324" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home_movil.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1620">
           <caret line="108" column="44" selection-start-line="108" selection-start-column="44" selection-end-line="108" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/footer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="84" column="1" selection-start-line="84" selection-start-column="1" selection-end-line="84" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -593,13 +543,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content/lib/jquery-1.11.1.min.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="0" column="1824" selection-start-line="0" selection-start-column="1824" selection-end-line="0" selection-end-column="1824" />
         </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/jquery-2.2.3.js">
@@ -617,13 +567,13 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/jquery-2.2.3.min.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/jquery-2.2.3.min.js">
@@ -672,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -683,39 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4650">
           <caret line="310" column="29" selection-start-line="310" selection-start-column="29" selection-end-line="310" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="143" column="10" selection-start-line="143" selection-start-column="10" selection-end-line="143" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13905">
-          <caret line="927" column="33" selection-start-line="927" selection-start-column="33" selection-end-line="927" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -723,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,7 +650,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/info_page_br.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1095">
+          <caret line="2715" column="21" selection-start-line="2715" selection-start-column="16" selection-end-line="2715" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12045">
+          <caret line="803" column="34" selection-start-line="803" selection-start-column="34" selection-end-line="803" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/info_page_us.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46215">
+          <caret line="3081" column="57" selection-start-line="3081" selection-start-column="57" selection-end-line="3081" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#1;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#16;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -743,53 +688,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/info_page_br.html">
+    <entry file="file://$PROJECT_DIR$/content/lib/pdf/jquery.media.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1095">
-          <caret line="2715" column="21" selection-start-line="2715" selection-start-column="16" selection-end-line="2715" selection-end-column="21" />
+        <state relative-caret-position="855">
+          <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
+    <entry file="file://$PROJECT_DIR$/content/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="803" column="34" selection-start-line="803" selection-start-column="34" selection-end-line="803" selection-end-column="34" />
+        <state relative-caret-position="1470">
+          <caret line="98" column="1" selection-start-line="98" selection-start-column="1" selection-end-line="98" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lib/pdf/jquery.metadata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="92" column="26" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lib/pdf/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
           <folding>
-            <marker date="1463588029000" expanded="true" signature="31287:31400" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="35745:36020" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="51950:51959" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="51984:51993" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="52020:52029" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="52064:52073" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="52118:52891" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="53112:55016" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="53240:54557" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="53369:53388" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="53389:53512" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="53389:54540" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="53770:53789" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="54173:54192" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="54601:55002" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="55007:55016" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="55035:55258" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="55035:55523" placeholder="..." />
-            <marker date="1463588029000" expanded="true" signature="55035:55528" placeholder="..." />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/info_page_us.html">
+    <entry file="file://$PROJECT_DIR$/content/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="2586" column="960" selection-start-line="2586" selection-start-column="960" selection-end-line="2586" selection-end-column="960" />
+        <state relative-caret-position="837">
+          <caret line="1288" column="34" selection-start-line="1288" selection-start-column="34" selection-end-line="1288" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="703" column="53" selection-start-line="703" selection-start-column="53" selection-end-line="703" selection-end-column="53" />
           <folding>
-            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#1;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="1185" column="23" selection-start-line="1185" selection-start-column="15" selection-end-line="1185" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
