@@ -4,7 +4,7 @@ var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
 var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYgmZWdHVnQtFxC35/+fX678g+cb4WoqqMz0fTs2e08ZFMAN5vmtjHbgHbRgBCtyD2qnK4f3Y4Rsuw==";
 
-
+var server = '192.168.17.247'; //puede ser "+server+"
 // ---------------------------------------------------------------------------
 var LocaleConfig = {
 	countries: [
@@ -55,30 +55,30 @@ var BoA = {
 		estado_vuelo: 	 	"http://www.boa.bo/bolivia/inicio",
 		horario_vuelos: 	"http://www.boa.bo/bolivia/inicio",
 		/* RESULTADOS DE HORARIOS DE VUELOS */
-		flight_schedule_results : "http://localhost/reserva_vuelos.html",
+		flight_schedule_results : "http://"+server+"/reserva_vuelos.html",
 		/* MAPAS DE OFICINAS */
-		office_maps : "http://localhost",
+		office_maps : "http://"+server+"",
 		/* BOA EN REDES SOCIALES */
-		social_networks: "http://localhost",
+		social_networks: "http://"+server+"",
 		/* CALL CENTER */
-		call_center: "http://localhost", 
+		call_center: "http://"+server+"", 
 		/* WEB CHECK IN */
 		web_check_in : "https://portal.iberia.es/webcki_handling/busquedaLoader.do?aerolinea=OB",
 
 		/* SERVICES */
-		// nearest_dates_service: "http://localhost/content/fake_services/nearest_dates.php",
+		// nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
 		nearest_dates_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/Calendar",
 		flights_schedule_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
-		validate_flight_selection_service: "http://localhost/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
-		register_passengers_service: "http://localhost/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
-		change_locale_settings_service: "http://localhost/content/fake_services/change_locale_settings.php"
+		validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
+		register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
+		change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php"
 	}, 
 
 	defaultConsultaVuelos : {
 		origen: 'CBB',
-		destino: 'POI',
-		fechaIda : '20160525',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20160531',//null, // no flight back
+		destino: 'VVI',
+		fechaIda : '20160625',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20160630',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0
