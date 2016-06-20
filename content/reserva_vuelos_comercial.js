@@ -232,6 +232,8 @@ function changeDay()
 		fillTableWithLoading($("#tbl_regreso")[0]);
 	}
 
+
+
 	requestFlights(currentDateIda, currentDateVuelta);
 }
 // ---------------------= =---------------------
@@ -248,6 +250,104 @@ function toggleWidgetCambiarVuelo()
 	}
 }
 // ---------------------= =---------------------
+
+function selectTarifaComboBox(that){
+	console.log(that.parentNode.parentNode)
+
+	var row = that.parentNode.parentNode;
+
+	if($(row).hasClass("disabled"))
+		return;
+
+	//console.log($(that).find(':selected').data('id_tarifa'));
+
+	var opcCode = $(row).data("opc_code");
+	var opcion = allOptions[opcCode];
+	var compartment = parseInt($(that).find(':selected').data('compartment'));
+	var tarifaID = $(that).find(':selected').data('id_tarifa');
+	var numero_registro = $(that).find(':selected').data('numero_registro');
+
+	// if($(this).find(".rbtn").hasClass("checked"))
+	// 	return;
+
+	console.log('opcion',opcion)
+
+	var table = row.parentNode;
+	while(false == $(table).is("table")) // find parent table
+		table = table.parentNode;
+
+	var tipo = $(table).data("tipo");
+
+	if(tipo=="ida") {
+		seleccionVuelo.ida = {};
+		seleccionVuelo.ida.opcCode = opcCode;
+		seleccionVuelo.ida.compartment = compartment;
+		seleccionVuelo.ida.id_tarifa_ = tarifaID;
+		seleccionVuelo.ida.numero_registro = numero_registro;
+
+		$("#empty_ida_slot").css("display","none");
+
+		constraintTableByTarifa($("#tbl_regreso"), selectionConstraints.ida[tarifaID]);
+
+		constraintTableByFechaHora(opcion, "ida");
+	} else {
+		seleccionVuelo.vuelta = {};
+		seleccionVuelo.vuelta.opcCode = opcCode;
+		seleccionVuelo.vuelta.compartment = compartment;
+		seleccionVuelo.ida.id_tarifa_ = tarifaID;
+		seleccionVuelo.ida.numero_registro = numero_registro;
+
+
+		$("#empty_ida_slot").css("display",
+			seleccionVuelo.ida == null ? "block":"none");
+
+		constraintTableByTarifa($("#tbl_salida"), selectionConstraints.vuelta[tarifaID]);
+	}
+
+
+	$(table).find(".flights-option-row").removeClass("selected");
+	$(row).addClass("selected");
+
+	$(table).find(".flight-details").removeClass("expanded").addClass("collapsed");
+
+	$(table).find(".flight-details[data-opc_code='"+opcCode+"']")
+		.removeClass("collapsed")
+		.addClass("expanded");
+
+	// $(table).find(".rbtn").removeClass("checked");
+	// $(this).find(".rbtn").addClass("checked");
+
+	var tblSeleccion = $("#tbl_seleccion_" + tipo + ", #tbl_seleccion_" + tipo + "_small");
+
+	tblSeleccion.find(".cell-cod-origen-destino h1").html(opcion.origen + " - " + opcion.destino);
+	tblSeleccion.find(".cell-duracion").html(formatExpandedTime(opcion.duracionVuelo) + " vuelo");
+
+	$("#tbl_seleccion_" + tipo).find(".cell-fecha").html(formatExpandedDate(opcion.vuelos[0].fecha));
+	$("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(formatShortDate(opcion.vuelos[0].fecha));
+
+	$("#tbl_seleccion_" + tipo).find(".cell-hora span").html("Salida:<br>" + formatTime(opcion.horaSalida));
+	$("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(formatTime(opcion.horaSalida));
+
+	$("#tbl_seleccion_" + tipo).css("display","block");
+	$("#tbl_seleccion_" + tipo).addClass("changed");
+
+	$("#overlay_"+tipo).css("display","block");
+	$("#btn_borrar_ida").attr("data-opc_code",opcCode);
+
+	$("#div_empty_vuelo").css("display","none");
+
+	updateAllPrices();
+
+	checkCompleteSeleccionVuelo();
+
+	setTimeout(function() {
+		tblSeleccion.removeClass("changed");
+	},100);
+
+
+
+
+}
 function selectTarifa()
 {
 	var row = this.parentNode;
@@ -978,7 +1078,8 @@ function asyncReceiveDates(response)
 {
 	try {
 		// fix to .NET dumbest encoding ever (possible bug here in future)
-		response = $.parseJSON(response.CalendarResult).ResultCalendar; 
+		response = $.parseJSON(response.CalendarResult).ResultCalendar;
+		console.log(response)
 	} catch (e){
 		showSimpleDialog (BoA.defaultApologyMessage, BoA.defaultURLAfterFail);
 
@@ -1043,6 +1144,7 @@ function asyncReceiveFlights(response)
 	// el verdadero response esta mas adentro ¬¬
 	response = response['ResultAvailabilityPlusValuationsShort']; 
 
+	console.log(response);
 	var fechaIdaConsultada = response["fechaIdaConsultada"];
 	var fechaVueltaConsultada = response["fechaVueltaConsultada"];
 	
@@ -1072,6 +1174,8 @@ function asyncReceiveFlights(response)
 		rawTarifas, 
 		fechaIdaConsultada,
 		porcentajesPorPasajero);
+
+	console.log('dataIda',dataIda)
 
 	// reconstruir tabla de fechas (ida)
 	buildDatesSelector(rawDatesCache.ida, searchParameters.fechaIda, $("#tbl_days_selector_salida"), true);
@@ -1108,10 +1212,12 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 		var rawDate = rawDates[i];
 		var tarifaStr = rawDate["tarifas"]["tarifaCalen"]["importe"];
 
-		tarifasByDate[rawDate["fecha"]] = tarifaStr;
+		tarifasByDate[rawDate["fecha"]] = tarifaStr; //ponemos a la fecha el importe
 	}
 
+
 	requestedDate = compactToJSDate(requestedDateStr);
+	console.log(requestedDateStr);
 
 	table.find("tr.months").html(""); // clean months row
 	table.find("tr.days td").remove(); // clean dates row
@@ -1185,6 +1291,8 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 // ---------------------= =---------------------
 function buildFlightsTable(tableName, flightOptions, compartments)
 {
+
+	console.log('flightOptions',flightOptions)
 	var table = $("#"+tableName)[0];
 
 	$(table).find("tr").not(":first").remove(); // clear table results
@@ -1251,19 +1359,48 @@ function buildFlightOptionRow(opc, compartments)
 	row.appendChild(cell);
 
 	// tarifas por compartimiento
+
+	// for(var i=0;i<compartments.length;i++) {
+	// 	var tarifa = opc.tarifas[compartments[i]];
+    //
+	// 	if(tarifa == null)
+	// 		continue; // it should always have tarifas, but it doesn't sometimes :S
+    //
+	// 	cell = document.createElement("td");
+	// 	$(cell).addClass("tarifa");
+	// 	$(cell).html("<div class='rbtn'><div></div></div>" + parseInt(tarifa.monto) /*should be formatted. services issue*/ + " " + HTML_CURRENCIES[CURRENCY]);
+	// 	$(cell).click(selectTarifa);
+	// 	$(cell).attr("data-compartment", tarifa.compart);
+	// 	$(cell).attr("data-id_tarifa", tarifa.ID);
+	// 	row.appendChild(cell);
+	// }
+
+
+	var combobox_tarifas = '<select class="select_precios" onclick="selectTarifaComboBox(this)">';
+	$.each(opc.vuelos[0].tarifas_completas,function (k,v) {
+
+		console.log('opc',v)
+		combobox_tarifas += '<option data-numero_registro="'+v.numero_registro+'" data-compartment="'+v.compart+'" data-id_tarifa="'+v.ID+'" >'+parseInt(v.monto)+'</option>';
+
+
+	}) ;
+	combobox_tarifas += '</select>';
+	console.log('opc')
+
 	for(var i=0;i<compartments.length;i++) {
 		var tarifa = opc.tarifas[compartments[i]];
 
-		if(tarifa == null) 
+		if(tarifa == null)
 			continue; // it should always have tarifas, but it doesn't sometimes :S
 
 		cell = document.createElement("td");
 		$(cell).addClass("tarifa");
-		$(cell).html("<div class='rbtn'><div></div></div>" + parseInt(tarifa.monto) /*should be formatted. services issue*/ + " " + HTML_CURRENCIES[CURRENCY]);
-		$(cell).click(selectTarifa);
+		$(cell).html(combobox_tarifas);
+		//$(cell).click();
 		$(cell).attr("data-compartment", tarifa.compart);
 		$(cell).attr("data-id_tarifa", tarifa.ID);
-		row.appendChild(cell);	
+		row.appendChild(cell);
+
 	}
 
 	return row;
@@ -1515,8 +1652,11 @@ function updatePriceByTipo(tipo, changeFlapper)
 	if(seleccionVuelo.ida != null) {
 		/* CALCULOS PARA IDA */
 		var opcionIda = allOptions[seleccionVuelo.ida.opcCode];
-		
-		var tarifa = opcionIda.tarifas[seleccionVuelo.ida.compartment];
+
+		console.log(opcionIda.vuelos[0].tarifas_completas[seleccionVuelo.ida.numero_registro])
+		console.log(seleccionVuelo.ida.compartment)
+		var tarifa = opcionIda.vuelos[0].tarifas_completas[seleccionVuelo.ida.numero_registro];
+		//var tarifa = opcionIda.tarifas[seleccionVuelo.ida.compartment];
 
 		seleccionVuelo[tipo].num = num;
 		seleccionVuelo[tipo].ida.precioBase = tarifa.monto * tarifa.porcentajes[tipo];
@@ -1948,7 +2088,7 @@ function translatePercentsByPax(from)
 	return to;
 }
 // ---------------------= =---------------------
-function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
+function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass) //vuelo,
 {
 	if(rawFlights == null)
 		return null;
@@ -1964,6 +2104,8 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 	var ratesByClass = {};
 	var fareCodesByClass = {};
 	var rateIDsByClass = {};
+
+	console.log('tarifas',rawTarifas);
 
 	for(var i=0;i<rawTarifas.length;i++) {
 		var rawTarifa = rawTarifas[i];
@@ -2008,7 +2150,8 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 			destino 		: rawFlight["destino"],
 			tipoAvion		: rawFlight["tipo_avion"],
 			fecha 			: date,
-			numOpcion 		: parseInt(rawFlight["num_opcion"])
+			numOpcion 		: parseInt(rawFlight["num_opcion"]),
+			tarifas_completas : {}
 		};
 
 		// hora salida can also be +1 when is second or third flight of complete trip (it departs a day(s) after)
@@ -2046,6 +2189,8 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 		// buscar mejor tarifa por clase
 		var rawClasses = rawFlight["clases"]["clase"];
 
+		console.log('rawClasses',rawClasses)
+
 		for(var k=0;k<rawClasses.length;k++) {
 			if(rawClasses[k]["estado"] != "A") // solo tomar en cuenta estado A
 				continue;
@@ -2067,7 +2212,15 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 				to.compartments.push(compartmentKey);
 
 			// elegir la tarifa mas baja por compartimiento
+
+			console.log('flight.tarifas',flight.tarifas)
+
 			if(compartmentKey in flight.tarifas) {
+
+				console.log('compartmentKey',flight.tarifas)
+				console.log('rateValue',rateValue)
+
+
 				if(rateValue < flight.tarifas[compartmentKey].monto) {
 					flight.tarifas[compartmentKey].monto = rateValue;
 					flight.tarifas[compartmentKey].clase = flightClass;
@@ -2084,7 +2237,25 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 					ID: rateID
 				};
 			}
+
+
+			//agregar a las tarifas completas si barrer nada
+
+				flight.tarifas_completas[k] = { // crear nuevo
+					clase: 	 flightClass,
+					monto: 	 rateValue,
+					compart: compartmentKey,
+					index: 	 to.compartments.indexOf(compartmentKey),
+					fareCode : fareCodesByClass[flightClass],
+					ID: rateID,
+					numero_registro:k,
+					porcentajes:paxPercentsByClass[flightClass]
+				};
+
+
+
 		}
+
 
 		// añadir porcentajes por pasajero por tasa y tipo
 		for(var compartmentKey in flight.tarifas) {
@@ -2106,7 +2277,8 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 				destino 		: "",
 				// los vuelos de una misma opcion deberian tener las mismas tarifas
 				tarifas     	: flight.tarifas,
-				code 			: generateRandomCode(10)
+				code 			: generateRandomCode(10),
+				tarifas_completas : {}
 			};
 
 		} else { // segunda escala, tercera, etc.
@@ -2121,6 +2293,7 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 		to.flightOptions["opcion_" + flight.numOpcion].vuelos.push(flight);
 
 		to.flights.push(flight);
+		console.log('to',to)
 	} // flights
 
 	// completar datos de opciones con informacion de sus vuelos
