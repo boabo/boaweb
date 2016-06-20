@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reserva_vuelos_comercial.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos.js" afterPath="$PROJECT_DIR$/content/reserva_vuelos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reserva_vuelos.html" afterPath="$PROJECT_DIR$/reserva_vuelos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reserva_vuelos_comercial.html" afterPath="$PROJECT_DIR$/reserva_vuelos_comercial.html" />
     </list>
     <ignored path="boaweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -121,9 +117,12 @@
       <file leaf-file-name="reserva_vuelos_comercial.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="69" column="35" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="234">
+              <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,8 +130,8 @@
       <file leaf-file-name="reserva_vuelos_comercial.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/reserva_vuelos_comercial.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="1396" column="35" selection-start-line="1396" selection-start-column="35" selection-end-line="1396" selection-end-column="35" />
+            <state relative-caret-position="131">
+              <caret line="193" column="49" selection-start-line="193" selection-start-column="49" selection-end-line="193" selection-end-column="49" />
               <folding>
                 <marker date="1466432433000" expanded="true" signature="34543:34656" placeholder="..." />
                 <marker date="1466432433000" expanded="true" signature="39939:40214" placeholder="..." />
@@ -418,12 +417,12 @@
       <workItem from="1466167808887" duration="12316000" />
       <workItem from="1466188913404" duration="6307000" />
       <workItem from="1466216484657" duration="239000" />
-      <workItem from="1466426775755" duration="5754000" />
+      <workItem from="1466426775755" duration="6749000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181195000" />
+    <option name="totallyTimeSpent" value="182190000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1366" height="745" extended-state="6" />
@@ -862,8 +861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content/reserva_vuelos_comercial.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="1396" column="35" selection-start-line="1396" selection-start-column="35" selection-end-line="1396" selection-end-column="35" />
+        <state relative-caret-position="131">
+          <caret line="193" column="49" selection-start-line="193" selection-start-column="49" selection-end-line="193" selection-end-column="49" />
           <folding>
             <marker date="1466432433000" expanded="true" signature="34543:34656" placeholder="..." />
             <marker date="1466432433000" expanded="true" signature="39939:40214" placeholder="..." />
@@ -883,9 +882,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="69" column="35" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="234">
+          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -53,6 +53,8 @@
 
 	<link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
 
+
+
 	<style>
 		.select_precios{
 			height: 34px;
@@ -79,6 +81,15 @@
 	<!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
 </head>
 <body class="generic-container">
+
+<script>
+	var dispositivo = navigator.userAgent.toLowerCase();
+	if( dispositivo.search(/iphone|ipod|ipad|android/) > -1 ){
+		//alert('favio')
+	}
+</script>
+
+
 
 
 <svg style="display: none">
@@ -809,7 +820,7 @@
 					</table>
 					<div id="empty_ida_slot" class="empty-selection" style="display:none">SELECCIONE<br>VUELO DE IDA</div>
 					<div id="overlay_ida" class="overlay" style="display:none">
-						<div id="btn_borrar_ida" class="btn-borrar">Quitar este vuelo</div>
+						<div id="btn_borrar_ida" style="display: inline;right: 190px; top: -10px;" class="btn-borrar">Quitar este vuelo</div>
 					</div>
 				</div>
 				<div class="div-seleccion">
@@ -866,7 +877,7 @@
 						</tr>
 					</table>
 					<div id="overlay_vuelta" class="overlay" style="display:none">
-						<div id="btn_borrar_vuelta" class="btn-borrar">Quitar este vuelo</div>
+						<div id="btn_borrar_vuelta" style="display: inline;right: 190px; top: -10px;" class="btn-borrar">Quitar este vuelo</div>
 					</div>
 				</div>
 				<div class="separator"></div>
