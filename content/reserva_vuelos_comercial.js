@@ -1376,7 +1376,7 @@ function buildFlightOptionRow(opc, compartments)
 	// }
 
 
-	var combobox_tarifas = '<select class="select_precios" onclick="selectTarifaComboBox(this)">';
+	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)">';
 	$.each(opc.vuelos[0].tarifas_completas,function (k,v) {
 
 		console.log('opc',v)
