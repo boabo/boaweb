@@ -176,6 +176,13 @@ $(document).on('ready',function()
 
 	// Dialog setup
 	$("#simple_dialog .button").click(closeSimpleDialog);
+
+
+	/*$(".cell-descripcion").click(function () {
+
+		alert('asd')
+	});*/
+
 }); // init
 // ---------------------= =---------------------
 function handleScroll(){
@@ -1376,7 +1383,7 @@ function buildFlightOptionRow(opc, compartments)
 	// }
 
 
-	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)">';
+	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)"><option value="precios" >P</option>';
 	$.each(opc.vuelos[0].tarifas_completas,function (k,v) {
 
 		console.log('opc',v)
@@ -1783,6 +1790,7 @@ function updateFlapper()
 // ---------------------= =---------------------
 function buildDetailPrices(info, tipo)
 {
+
 	var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
 
 	// console.log(info.ida.precioBase);

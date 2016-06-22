@@ -1252,7 +1252,7 @@
 }
 
 #widget_resumen_reserva tr.tarifa.calculated:not(.inactive):hover .tooltip {
-	display: block;	
+	display: block;
 }
 
 #widget_resumen_reserva .cell-descripcion .tooltip table {
