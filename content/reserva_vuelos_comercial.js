@@ -491,7 +491,7 @@ function constraintTableByFechaHora(option, tipo)
 	rows.removeClass("disabled");
 
 
-	
+
 	for(var i=0;i<rows.length;i++) {
 		var otherOptionCode = $(rows[i]).data("opc_code");
 		var otherOption = allOptions[otherOptionCode]; 
@@ -1385,7 +1385,7 @@ function buildFlightOptionRow(opc, compartments)
 	// }
 
 
-	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)">';
+	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)" onclick="selectTarifaComboBox(this)">';
 
 
 

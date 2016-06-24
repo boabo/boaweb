@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" afterPath="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" />
     </list>
     <ignored path="boaweb.iws" />
@@ -139,21 +138,21 @@
       <file leaf-file-name="reserva_vuelos_comercial.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content/reserva_vuelos_comercial.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="493" column="4" selection-start-line="493" selection-start-column="4" selection-end-line="493" selection-end-column="4" />
+            <state relative-caret-position="186">
+              <caret line="1387" column="94" selection-start-line="1387" selection-start-column="94" selection-end-line="1387" selection-end-column="94" />
               <folding>
-                <marker date="1466794900000" expanded="true" signature="34658:34771" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="40263:40538" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="56695:56704" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="56729:56738" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="56765:56774" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="56809:56818" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="56863:57636" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="57857:59761" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="57985:59302" placeholder="..." />
-                <marker date="1466794900000" expanded="false" signature="58515:58534" placeholder="..." />
-                <marker date="1466794900000" expanded="false" signature="58918:58937" placeholder="..." />
-                <marker date="1466794900000" expanded="true" signature="59346:59747" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="34657:34770" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="40299:40574" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="56731:56740" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="56765:56774" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="56801:56810" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="56845:56854" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="56899:57672" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="57893:59797" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="58021:59338" placeholder="..." />
+                <marker date="1466796064000" expanded="false" signature="58551:58570" placeholder="..." />
+                <marker date="1466796064000" expanded="false" signature="58954:58973" placeholder="..." />
+                <marker date="1466796064000" expanded="true" signature="59382:59783" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -435,12 +434,12 @@
       <workItem from="1466720484635" duration="721000" />
       <workItem from="1466735373355" duration="741000" />
       <workItem from="1466772658923" duration="7871000" />
-      <workItem from="1466791689041" duration="2715000" />
+      <workItem from="1466791689041" duration="3547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225972000" />
+    <option name="totallyTimeSpent" value="226804000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1366" height="745" extended-state="6" />
@@ -878,21 +877,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content/reserva_vuelos_comercial.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="493" column="4" selection-start-line="493" selection-start-column="4" selection-end-line="493" selection-end-column="4" />
+        <state relative-caret-position="186">
+          <caret line="1387" column="94" selection-start-line="1387" selection-start-column="94" selection-end-line="1387" selection-end-column="94" />
           <folding>
-            <marker date="1466794900000" expanded="true" signature="34658:34771" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="40263:40538" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="56695:56704" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="56729:56738" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="56765:56774" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="56809:56818" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="56863:57636" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="57857:59761" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="57985:59302" placeholder="..." />
-            <marker date="1466794900000" expanded="false" signature="58515:58534" placeholder="..." />
-            <marker date="1466794900000" expanded="false" signature="58918:58937" placeholder="..." />
-            <marker date="1466794900000" expanded="true" signature="59346:59747" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="34657:34770" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="40299:40574" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="56731:56740" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="56765:56774" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="56801:56810" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="56845:56854" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="56899:57672" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="57893:59797" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="58021:59338" placeholder="..." />
+            <marker date="1466796064000" expanded="false" signature="58551:58570" placeholder="..." />
+            <marker date="1466796064000" expanded="false" signature="58954:58973" placeholder="..." />
+            <marker date="1466796064000" expanded="true" signature="59382:59783" placeholder="..." />
           </folding>
         </state>
       </provider>
