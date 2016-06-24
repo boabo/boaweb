@@ -469,7 +469,7 @@ function constraintTableByTarifa(table, allowedIds)
 		}
 
 		// if entire row is invalid, hide it
-		if(false==allValid) {
+		if(false==allValid && !(typeof otherTable === "undefined")) {
 			// hide entire row
 			row.css("visibility","hidden");
 			otherTable.find("tr.flight-details[data-opc_code='"+row.data("opc_code")+"']").css("visibility","hidden");
@@ -490,6 +490,8 @@ function constraintTableByFechaHora(option, tipo)
 
 	rows.removeClass("disabled");
 
+
+	
 	for(var i=0;i<rows.length;i++) {
 		var otherOptionCode = $(rows[i]).data("opc_code");
 		var otherOption = allOptions[otherOptionCode]; 
@@ -1400,6 +1402,7 @@ function buildFlightOptionRow(opc, compartments)
 
 
 	combobox_tarifas += '</select>';
+
 	console.log('opc')
 
 	for(var i=0;i<compartments.length;i++) {
