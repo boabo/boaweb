@@ -1383,14 +1383,22 @@ function buildFlightOptionRow(opc, compartments)
 	// }
 
 
-	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)"><option value="precios" >P</option>';
-	$.each(opc.vuelos[0].tarifas_completas,function (k,v) {
-
-		console.log('opc',v)
-		combobox_tarifas += '<option data-numero_registro="'+v.numero_registro+'" data-compartment="'+v.compart+'" data-id_tarifa="'+v.ID+'" >'+parseInt(v.monto)+'</option>';
+	var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)">';
 
 
-	}) ;
+
+
+
+
+	var array = $.map(opc.vuelos[0].tarifas_completas, function(el) { return el });
+	array.sort(comparar_ordenar);
+	$.each(array,function (k,v) {
+
+		combobox_tarifas += '<option data-numero_registro="'+v.numero_registro+'" data-compartment="'+v.compart+'" data-id_tarifa="'+v.ID+'" >'+v.clase+'-'+parseInt(v.monto)+'</option>';
+
+	});
+
+
 	combobox_tarifas += '</select>';
 	console.log('opc')
 
@@ -1412,6 +1420,20 @@ function buildFlightOptionRow(opc, compartments)
 
 	return row;
 }
+
+
+
+function comparar_ordenar(a,b) {
+	if (a.monto < b.monto)
+		return -1;
+	if (a.monto > b.monto)
+		return 1;
+	return 0;
+}
+
+
+
+
 // ---------------------= =---------------------
 function buildFlightDetailRow(opc, flight) {
     /*** FILA DE DETALLES ***/
@@ -1874,6 +1896,7 @@ function buildRegistroPersona(tipo, numPx)
 	console.log('tipo',tipo);
 	console.log('tipo',namesByTipo[tipo]);
 	console.log('namesByTipo',namesByTipo);
+
 
 
 	var isAdulto = (tipo=='adulto');
