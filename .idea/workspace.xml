@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info_page.html" afterPath="$PROJECT_DIR$/info_page.html" />
     </list>
     <ignored path="boaweb.iws" />
@@ -179,8 +178,8 @@
       <file leaf-file-name="info_page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/info_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="2296" column="28" selection-start-line="2296" selection-start-column="28" selection-end-line="2296" selection-end-column="28" />
+            <state relative-caret-position="480">
+              <caret line="1350" column="53" selection-start-line="1350" selection-start-column="53" selection-end-line="1350" selection-end-column="53" />
               <folding>
                 <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -462,19 +461,20 @@
       <workItem from="1467150459632" duration="294000" />
       <workItem from="1467204831120" duration="4578000" />
       <workItem from="1467836993525" duration="578000" />
-      <workItem from="1468510365007" duration="2170000" />
+      <workItem from="1468510365007" duration="2738000" />
+      <workItem from="1468611978860" duration="646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257614000" />
+    <option name="totallyTimeSpent" value="258828000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1366" height="745" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2839879" sideWeight="0.49441788" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28776434" sideWeight="0.49441788" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -920,8 +920,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="2296" column="28" selection-start-line="2296" selection-start-column="28" selection-end-line="2296" selection-end-column="28" />
+        <state relative-caret-position="480">
+          <caret line="1350" column="53" selection-start-line="1350" selection-start-column="53" selection-end-line="1350" selection-end-column="53" />
           <folding>
             <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
