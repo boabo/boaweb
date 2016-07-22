@@ -2,7 +2,7 @@
 var CURRENCY = "bs"; // "euro", "bs" , "usd" 
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYgmZWdHVnQtFxC35/+fX678g+cb4WoqqMz0fTs2e08ZFMAN5vmtjHbgHbRgBCtyD2qnK4f3Y4Rsuw==";
+var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYjTK2O2OPIYQ88Ba962wHsqDjHZqAKJgH4cvZT1tQPBNvrqWBbD1UNZ946Htx/1xrSQ+VMd7EZkGQ==";
 
 var server = '192.168.17.247'; //puede ser "+server+"
 // ---------------------------------------------------------------------------
@@ -77,8 +77,8 @@ var BoA = {
 	defaultConsultaVuelos : {
 		origen: 'CBB',
 		destino: 'VVI',
-		fechaIda : '20160629',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20160630',//null, // no flight back
+		fechaIda : '20160729',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20160730',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0

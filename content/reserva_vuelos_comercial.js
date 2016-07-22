@@ -178,6 +178,20 @@ $(document).on('ready',function()
 	$("#simple_dialog .button").click(closeSimpleDialog);
 
 
+	$("#simple_dialog_form_email .cerrar").click(closeSimpleDialogForm);
+	$("#simple_dialog_form_email .enviar").click(function () {
+		enviarCorreo();
+	});
+
+
+
+	$("#correo").click(function () {
+
+		// enviarCorreo();
+		showSimpleDialogForm("hola favio el jefaso ");
+	})
+
+
 	/*$(".cell-descripcion").click(function () {
 
 		alert('asd')
@@ -277,13 +291,18 @@ function selectTarifaComboBox(that){
 	// if($(this).find(".rbtn").hasClass("checked"))
 	// 	return;
 
+	console.log('opcCode',opcCode)
 	console.log('opcion',opcion)
+	console.log('compartment',compartment)
+	console.log('tarifaID',tarifaID)
+	console.log('numero_registro',numero_registro)
 
 	var table = row.parentNode;
 	while(false == $(table).is("table")) // find parent table
 		table = table.parentNode;
 
 	var tipo = $(table).data("tipo");
+	console.log('tipo',tipo)
 
 	if(tipo=="ida") {
 		seleccionVuelo.ida = {};
@@ -301,14 +320,15 @@ function selectTarifaComboBox(that){
 		seleccionVuelo.vuelta = {};
 		seleccionVuelo.vuelta.opcCode = opcCode;
 		seleccionVuelo.vuelta.compartment = compartment;
-		seleccionVuelo.ida.id_tarifa_ = tarifaID;
-		seleccionVuelo.ida.numero_registro = numero_registro;
+		seleccionVuelo.vuelta.id_tarifa_ = tarifaID;
+		seleccionVuelo.vuelta.numero_registro = numero_registro;
 
 
 		$("#empty_ida_slot").css("display",
 			seleccionVuelo.ida == null ? "block":"none");
 
 		constraintTableByTarifa($("#tbl_salida"), selectionConstraints.vuelta[tarifaID]);
+
 	}
 
 
@@ -1717,7 +1737,8 @@ function updatePriceByTipo(tipo, changeFlapper)
 		/* CALCULOS PARA VUELTA */
 		if(seleccionVuelo.vuelta != null) {
 			var opcionVuelta = allOptions[seleccionVuelo.vuelta.opcCode];
-			tarifa = opcionVuelta.tarifas[seleccionVuelo.vuelta.compartment];
+			//tarifa = opcionVuelta.tarifas[seleccionVuelo.vuelta.compartment];
+			var tarifa = opcionVuelta.vuelos[0].tarifas_completas[seleccionVuelo.vuelta.numero_registro];
 
 			seleccionVuelo[tipo].vuelta.precioBase = tarifa.monto * tarifa.porcentajes[tipo];
 
@@ -2509,9 +2530,34 @@ function showSimpleDialog(msg, redirectUrl)
 
 	if(redirectUrl != null)
 		$("#simple_dialog .button").click(function(){
-			closeSimpleDialog(redirectUrl);	
+			closeSimpleDialog(redirectUrl);
 		});
 }
+
+
+
+function showSimpleDialogForm()
+{
+	$("#dialog_overlay_form_email").show();
+	$("#simple_dialog_form_email")
+		.show()
+		.find(".description").html();
+
+	$("#ui_reserva_vuelos").addClass("blured");
+
+
+
+
+
+}
+
+function closeSimpleDialogForm()
+{
+	$("#dialog_overlay_form_email").hide();
+	$("#simple_dialog_form_email").hide();
+	$("#ui_reserva_vuelos").removeClass("blured");
+}
+
 // ---------------------= =---------------------
 function closeSimpleDialog(redirectUrl)
 {
@@ -2546,3 +2592,164 @@ function edadPasajero(Fecha){
 	return edad;
 }
 
+function enviarCorreo(){
+
+	if( isEmail($("#txt_correo_").val()) ){
+
+		var dataToSend = prepareSeleccionVueloToSend();
+
+		/*$.each(dataToSend,function (k,v) {
+
+		 console.log('v',v);
+		 });*/
+
+		console.log(dataToSend)
+
+		var m = '';
+		m+= '<table>';
+		m+= PrintSendWebPasajero(dataToSend.adulto,'Adulto');
+		m+= PrintSendWebPasajero(dataToSend.ninho,'Niño');
+		m+= PrintSendWebPasajero(dataToSend.infante,'Infante');
+		m+= '</table>'
+
+		console.log(m)
+
+	
+		$.ajax({
+			url: 'http://webpreprod.cloudapp.net/Availability/SendCommercial',
+			dataType: 'json',
+			type: 'POST',
+			//contentType: "application/json; charset=utf-8",
+
+			data: '{"body": "'+m+'","to": "'+$("#txt_correo_").val()+'" }',
+			success: function( data, textStatus, jQxhr ){
+				console.log( data );
+			},
+			error: function( jqXhr, textStatus, errorThrown ){
+				console.log( errorThrown );
+				console.log( jqXhr );
+				console.log( textStatus );
+			}
+		});
+
+
+	}else{
+		alert('no es correo');
+	}
+
+}
+
+function PrintSendWebPasajero(pasajero,tipo){
+
+	var m = "";
+	if(pasajero.num > 0){
+
+		m+= "<tr><td align='right' colspan='2'>"+tipo+"</td></tr>";
+		if (pasajero.ida.precioBase > 0){
+
+			var subtotal = 0;
+
+			subtotal = subtotal + pasajero.ida.precioBase;
+
+			m+="<tr>";
+			m+="<td colspan='2'>Ida</td>";
+			m+="</tr>";
+
+			m+="<tr>";
+			m+="<td>Precio Base</td>";
+			m+="<td align='right'>Bs. "+pasajero.ida.precioBase+"</td>";
+			m+="</tr>";
+
+
+			$.each(pasajero.ida.tasas,function (k,v) {
+				m+="<tr>";
+				m+="<td>"+v.key+"</td>";
+				m+="<td align='right'>"+v.value+"</td>";
+				m+="</tr>";
+				subtotal = subtotal + v.value;
+			});
+
+			m+="<tr>";
+			m+="<td>Sub Total</td>";
+			m+="<td align='right'>Bs. "+subtotal+"</td>";
+			m+="</tr>";
+
+			m+="<tr>";
+			m+="<td>Pasajero</td>";
+			m+="<td align='right'>X "+pasajero.num+"</td>";
+			m+="</tr>";
+
+			m+="<tr>";
+			m+="<td>TOTAL</td>";
+			m+="<td align='right'>"+pasajero.precioTotal+"</td>";
+			m+="</tr>";
+
+
+
+
+		}
+
+
+		if (pasajero.vuelta.precioBase > 0){
+
+
+			var subtotal = 0;
+
+			subtotal = subtotal + pasajero.vuelta.precioBase;
+
+			m+="<tr>";
+			m+="<td colspan='2'>Vuelta</td>";
+			m+="</tr>";
+
+			m+="<tr>";
+			m+="<td>Precio Base</td>";
+			m+="<td align='right'>Bs. "+pasajero.vuelta.precioBase+"</td>";
+			m+="</tr>";
+
+			$.each(pasajero.vuelta.tasas,function (k,v) {
+				m+="<tr>";
+				m+="<td>"+v.key+"</td>";
+				m+="<td align='right'>"+v.value+"</td>";
+				m+="</tr>";
+				subtotal = subtotal + v.value;
+			});
+
+			m+="<tr>";
+			m+="<td>Sub Total</td>";
+			m+="<td align='right'>Bs. "+subtotal+"</td>";
+			m+="</tr>";
+
+			m+="<tr>";
+			m+="<td>Pasajero</td>";
+			m+="<td align='right'>X "+pasajero.num+"</td>";
+			m+="</tr>";
+
+			m+="<tr>";
+			m+="<td>TOTAL</td>";
+			m+="<td align='right'>"+pasajero.precioTotal+"</td>";
+			m+="</tr>";
+
+
+		}
+
+		return m;
+
+
+	}else {
+		return "";
+	}
+
+}
+
+function  plantillaTasas(tasas) {
+	var m = "";
+	
+	$.each(tasas,function (k,v) {
+		m+="<tr>";
+		m+="<td>"+v.key+"</td>";
+		m+="<td align='right'>"+v.value+"</td>";
+		m+="</tr>";
+	});
+	return m;
+
+}
