@@ -20,6 +20,8 @@ var currentDateVuelta = "";
 var todayStr = "";
 var rawDatesCache = {ida:null,vuelta:null};
 
+var TipodeCambio = 6.94;
+
 var seleccionVuelo = {
 	ida: 			null,
 	vuelta: 		null, 
@@ -170,6 +172,10 @@ $(document).on('ready',function()
 	setInterval(checkSearchWidgetAvailability, 200);
 
 	flapperTotal = $("#precio_total").flapper({
+		width: 7,
+		align: 'right'
+	});
+	flapperTotalDolar = $("#precio_total_dolar").flapper({
 		width: 7,
 		align: 'right'
 	});
@@ -1805,6 +1811,7 @@ function updatePriceByTipo(tipo, changeFlapper)
 
 		if(changeFlapper)
 			flapperTotal.val("0000000").change();
+			flapperTotalDolar.val("0000000").change();
 	}
 }
 // ---------------------= =---------------------
@@ -1828,10 +1835,16 @@ function updateFlapper()
 
 		var formatted = formatCurrencyQuantity(sum, false, nDecimals);
 
+		console.log(formatted)
+
+		var formattedDolar = formatted / TipodeCambio ;
+		console.log(formattedDolar)
 		flapperTotal.val(formatted).change();
+		flapperTotalDolar.val(formattedDolar.toFixed(2)).change();
 	}
 	else
 		flapperTotal.val("???????").change();
+		//flapperTotalDolar.val("???????").change();
 }
 // ---------------------= =---------------------
 function buildDetailPrices(info, tipo)
@@ -2614,9 +2627,9 @@ function enviarCorreo(){
 
 		console.log(m)
 
-	
+
 		$.ajax({
-			url: 'http://webpreprod.cloudapp.net/Availability/SendCommercial',
+			url: 'http://webpreprod.cloudapp.net/BoaWebSite/Availability/SendCommercial',
 			dataType: 'json',
 			type: 'POST',
 			//contentType: "application/json; charset=utf-8",
