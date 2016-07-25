@@ -2604,7 +2604,7 @@ function enviarCorreo() {
 
 
         $.ajax({
-            url: 'http://webpreprod.cloudapp.net/BoaWebSite/Availability/SendCommercial',
+            url: 'http://webpreprod.cloudapp. ̰‸net/BoaWebSite/Availability/SendCommercial',
             dataType: 'json',
             type: 'POST',
             //contentType: "application/json; charset=utf-8",
