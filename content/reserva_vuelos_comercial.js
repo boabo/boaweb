@@ -116,6 +116,10 @@ var compartmentNames = {"2": "Business", "3": "Econ&oacute;mica"};
  ********************** UI HANDLERS **********************
  **********************************************************/
 $(document).on('ready', function () {
+
+
+
+
     if ($("#ui_reserva_vuelos").data("mode") != "widget") {
         initialize_header(true);
         initialize_ui_sections({anchor_section_headers: false});
@@ -194,6 +198,8 @@ $(document).on('ready', function () {
         // enviarCorreo();
         showSimpleDialogForm("hola favio el jefaso ");
     })
+
+
 
 
     /*$(".cell-descripcion").click(function () {
@@ -2539,8 +2545,10 @@ function edadPasajero(Fecha) {
     var edad = [ed, dias_nacido]; //retorna la edad en anios y de dias de nacido
     return edad;
 }
-
+var total_ida_html = 0;
+var total_vuelta_html = 0;
 function enviarCorreo() {
+
 
     if (isEmail($("#txt_correo_").val())) {
 
@@ -2553,23 +2561,25 @@ function enviarCorreo() {
 
         console.log(dataToSend)
 
-        var m = '';
-        m += '<table>';
-        m += PrintSendWebPasajero(dataToSend.adulto, 'Adulto');
-        m += PrintSendWebPasajero(dataToSend.ninho, 'Niño');
-        m += PrintSendWebPasajero(dataToSend.infante, 'Infante');
-        m += '</table>'
 
-        console.log(tablaHtmlEmail())
-        var html_send = replaceHtml(tablaHtmlEmail(),'<','azx');
+        total_ida_html = 0;
+        total_vuelta_html = 0;
+
+
+        var cell_adulto = SendWebPasajero(dataToSend.adulto, 'Adulto');
+        var cell_nino = SendWebPasajero(dataToSend.ninho, 'Niño');
+        var cell_infane = SendWebPasajero(dataToSend.infante, 'infante');
+        console.log('cell_adult',cell_adulto);
+
+        var ida_html = htmlTotalSend('IDA',total_ida_html);
+        var m = tablaHtmlEmail(cell_adulto+cell_nino+cell_infane+ida_html);
+
+
+        console.log(m)
+        var html_send = replaceHtml(m,'<','azx');
         html_send = replaceHtml(html_send,'>','azy');
 
-        console.log(html_send);
 
-        html_send = replaceHtml(html_send,'azx','<');
-        html_send = replaceHtml(html_send,'azy','>');
-
-        console.log(html_send);
 
         $.ajax({
             url: 'http://webpreprod.cloudapp.net/BoaWebSite/Availability/SendCommercial',
@@ -2577,9 +2587,9 @@ function enviarCorreo() {
             type: 'POST',
             //contentType: "application/json; charset=utf-8",
 
-            data: '{"body": "' + m + '","to": "' + $("#txt_correo_").val() + '" }',
+            data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '" }' },
             success: function (data, textStatus, jQxhr) {
-                console.log(data);
+                console.log('resp',data);
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
@@ -2594,8 +2604,162 @@ function enviarCorreo() {
     }
 
 }
+function SendWebPasajero(pasajero, tipo) {
 
-function PrintSendWebPasajero(pasajero, tipo) {
+    var m = "";
+    if (pasajero.num > 0) {
+
+
+        if (pasajero.ida.precioBase > 0) {
+
+            var subtotal = 0;
+
+            subtotal = subtotal + pasajero.ida.precioBase;
+
+
+            m+= "<tr height='90'>"
+                + "<td style='margin:0;height:60px;'>"
+                + ""+tipo+""
+                + "</td>"
+                + "<td width='40%' style='line-height:15px;' align='left'>"
+                + "<span style='font-weight:600'>"+tipo+"</span><br>"
+                + "<span style='font-weight:600; font-size: 20px;'>CBB-VVI</span><br>"
+                + "<span style='color:rgb(153,153,153)'>Viernes 11/02/2018 14:22 PM</span><br>"
+                + "<span style='color:rgb(153,153,153)'>Ida</span><br>"
+                + "<span style='font-size:10px'></span>"
+                + "</td>"
+                + "<td width='40%' align='right' style='padding:0 20px 0 0;'>"
+
+                + "<table>"
+                +"<tr>"
+                + "<td style='text-align: left; padding-right: 20px; font-weight:200;white-space:nowrap'>Precio Base</td>"
+                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + pasajero.ida.precioBase + "</td>"
+                + "</tr>";
+
+
+
+
+            $.each(pasajero.ida.tasas, function (k, v) {
+
+
+                m += "<tr>"
+                    + "<td style='text-align: left; font-weight:200;white-space:nowrap'>" + v.key + "</td>"
+                    + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + v.value + "</td>"
+                    + "</tr>";
+
+
+
+
+
+                subtotal = subtotal + v.value;
+            });
+
+            m +="<tr height='1'>"
+                + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
+                + "<div style='line-height:2px;min-height:2px;background-color:rgb(238,238,238)'></div>"
+                + "</td>"
+                + "</tr>"
+
+                + "<tr>"
+                + "<td style='text-align: left; font-weight:600;white-space:nowrap'>SUBTOTAL</td>"
+                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + subtotal + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<td style='text-align: left; font-weight:200;white-space:nowrap'>Pasajero</td>"
+                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>X " + pasajero.num + "</td>"
+                + "</tr>"
+
+                + "<tr height='1'>"
+                + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
+                + "<div style='line-height:3px;min-height:3px;background-color:rgb(238,238,238)'></div>"
+                + "</td>"
+                + "</tr>"
+
+                + "<tr>"
+                + "<td style='text-align: left; font-weight:600;white-space:nowrap'>TOTAL VUELO</td>"
+                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + pasajero.precioTotal + "</td>"
+                + "</tr>"
+
+
+                + "</table>"
+
+                + "</td>"
+                + "</tr>";
+
+
+            total_ida_html = parseFloat(total_ida_html) + parseFloat(pasajero.precioTotal);
+
+            m+= "<tr height='1'>"
+                + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
+                + "<div style='line-height:2px;min-height:2px;background-color:rgb(238,238,238)'></div>"
+                + "</td>"
+                + "</tr>";
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+        //aca termina
+
+
+
+
+
+        return m;
+
+
+    } else {
+        return "";
+    }
+
+}
+
+function htmlTotalSend(tipo_ida_vuelta,total){
+    var m = "";
+    m+= "<tr>"
+        + "<td colspan='3'>"
+        + "<div>"
+
+        + "<table width='100%'>"
+        + "<tr height='1'>"
+        + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
+        + "<div style='line-height:1px;min-height:1px;background-color:rgb(238,238,238)'></div>"
+        + "</td>"
+        + "</tr>"
+        + "<tr height='48'>"
+
+        + "<td colspan='2' width='80%' align='right' style='color:rgb(153,153,153);font-size:10px;font-weight:600;border-width:1px;border-color:rgb(238,238,238)'>"
+        + tipo_ida_vuelta+ " TOTAL"
+        + "</td>"
+
+        + "<td  align='right' style='padding:0 20px 0 0;font-size:16px;font-weight:600;white-space:nowrap'>"
+        + "BS "+parseFloat(total).toFixed(2)+""
+        + "</td>"
+        + "</tr>"
+        + "<tr height='1'>"
+        + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
+        + "<div style='line-height:1px;min-height:1px;background-color:rgb(238,238,238)'></div>"
+        + "</td>"
+        + "</tr>"
+        + "</table>"
+        + "</div>"
+        + "</td>"
+        + "</tr>";
+    return m;
+}
+
+
+function PrintPasajero(pasajero, tipo) {
 
     var m = "";
     if (pasajero.num > 0) {
@@ -2708,7 +2872,7 @@ function plantillaTasas(tasas) {
 
 }
 
-function tablaHtmlEmail() {
+function tablaHtmlEmail(cells) {
 
 
     var m = "";
@@ -2733,9 +2897,7 @@ function tablaHtmlEmail() {
         + "</thead>"
         + "<tbody>"
         + "<tr>"
-
-        + "<td align='center'>"
-
+        + "<td align='center' >"
         + "<table width='100%' border='0' cellpadding='0' cellspacing='0' style='border-collapse:collapse;border-spacing:0;width:90%;color:rgb(51,51,51);font-size:12px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif'>"
         + "<tbody>"
         + "<tr height='24' style='background-color:#F5F5F5'>"
@@ -2746,9 +2908,8 @@ function tablaHtmlEmail() {
         + "<span style='color:#999999;font-size:10px;white-space:nowrap'>PRECIO</span>"
         + "</td>"
         + "</tr>"
-
-
-        + "<tr height='90'>"
+            +cells+
+       /* + "<tr height='90'>"
         + "<td style='margin:0;height:60px;'>"
         + "ASD"
         + "</td>"
@@ -2810,9 +2971,9 @@ function tablaHtmlEmail() {
         + "</table>"
 
         + "</td>"
-        + "</tr>"
+        + "</tr>"*/
 
-        + "<tr>"
+       /* + "<tr>"
         + "<td colspan='3'>"
         + "<div>"
 
@@ -2840,7 +3001,7 @@ function tablaHtmlEmail() {
         + "</table>"
         + "</div>"
         + "</td>"
-        + "</tr>"
+        + "</tr>"*/
 
 
         + "</tbody>"
