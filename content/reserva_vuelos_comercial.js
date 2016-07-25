@@ -321,7 +321,7 @@ function selectTarifaComboBox(that) {
 
         constraintTableByTarifa($("#tbl_regreso"), selectionConstraints.ida[tarifaID]);
 
-        constraintTableByFechaHora(opcion, "ida");
+        //constraintTableByFechaHora(opcion, "ida");
     } else {
         seleccionVuelo.vuelta = {};
         seleccionVuelo.vuelta.opcCode = opcCode;
@@ -376,7 +376,6 @@ function selectTarifaComboBox(that) {
     setTimeout(function () {
         tblSeleccion.removeClass("changed");
     }, 100);
-
 
 }
 function selectTarifa() {
@@ -2566,9 +2565,9 @@ function enviarCorreo() {
         total_vuelta_html = 0;
 
 
-        var cell_adulto = SendWebPasajero(dataToSend.adulto, 'Adulto');
-        var cell_nino = SendWebPasajero(dataToSend.ninho, 'Niño');
-        var cell_infane = SendWebPasajero(dataToSend.infante, 'infante');
+        var cell_adulto = SendWebPasajero(dataToSend.adulto, 'Adulto',dataToSend.vuelosIda);
+        var cell_nino = SendWebPasajero(dataToSend.ninho, 'Niño',dataToSend.vuelosIda);
+        var cell_infane = SendWebPasajero(dataToSend.infante, 'infante',dataToSend.vuelosIda);
         console.log('cell_adult',cell_adulto);
 
         var ida_html = htmlTotalSend('IDA',total_ida_html);
@@ -2590,6 +2589,10 @@ function enviarCorreo() {
             data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '" }' },
             success: function (data, textStatus, jQxhr) {
                 console.log('resp',data);
+                if (data.success == true){
+
+                }
+                closeSimpleDialogForm();
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
@@ -2604,10 +2607,26 @@ function enviarCorreo() {
     }
 
 }
-function SendWebPasajero(pasajero, tipo) {
+function SendWebPasajero(pasajero, tipo,vuelo) {
 
     var m = "";
     if (pasajero.num > 0) {
+
+
+        flight_ = {
+            horaSalida:{
+
+            },
+            horaLlegada:{
+
+            }
+        };
+
+        // Formateo de horas
+        flight_.horaSalida.hh = parseInt(vuelo[0].horaSalida.substr(0, 2));
+        flight_.horaSalida.mm = parseInt(vuelo[0].horaSalida.substr(2, 2));
+        flight_.horaLlegada.hh = parseInt(vuelo[0].horaLlegada.substr(0, 2));
+        flight_.horaLlegada.mm = parseInt(vuelo[0].horaLlegada.substr(2, 2));
 
 
         if (pasajero.ida.precioBase > 0) {
@@ -2617,14 +2636,16 @@ function SendWebPasajero(pasajero, tipo) {
             subtotal = subtotal + pasajero.ida.precioBase;
 
 
+
             m+= "<tr height='90'>"
                 + "<td style='margin:0;height:60px;'>"
                 + ""+tipo+""
                 + "</td>"
                 + "<td width='40%' style='line-height:15px;' align='left'>"
                 + "<span style='font-weight:600'>"+tipo+"</span><br>"
-                + "<span style='font-weight:600; font-size: 20px;'>CBB-VVI</span><br>"
-                + "<span style='color:rgb(153,153,153)'>Viernes 11/02/2018 14:22 PM</span><br>"
+                + "<span style='font-weight:600; font-size: 20px;'>"+vuelo[0].origen+"-"+vuelo[0].destino+"</span><br>"
+                + "<span style='color:rgb(153,153,153)'>"+formatExpandedDate(vuelo[0].fechaSalida)+"</span><br>"
+                + "<span style='color:rgb(153,153,153)'>"+formatTime(flight_.horaSalida) +"- "+ formatTime(flight_.horaLlegada)+"</span><br>"
                 + "<span style='color:rgb(153,153,153)'>Ida</span><br>"
                 + "<span style='font-size:10px'></span>"
                 + "</td>"
@@ -2883,7 +2904,7 @@ function tablaHtmlEmail(cells) {
         + "<div style='text-align: center; display: block;'>"
 
 
-        + "<center><img src='http://www.boa.bo/content/images/boa_sobra.png' align='middle' width='150' style='display: block;'/></center>"
+        + "<center><img src='http://www.boa.bo/content/images/boa_sombra.png' align='middle' width='150' style='display: block;'/></center>"
 
 
         + "</div>"
