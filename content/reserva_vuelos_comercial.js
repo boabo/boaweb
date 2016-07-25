@@ -111,11 +111,34 @@ var airports = {
 };
 
 var compartmentNames = {"2": "Business", "3": "Econ&oacute;mica"};
+var texto = "";
 // ---------------------= =---------------------
 /*********************************************************
  ********************** UI HANDLERS **********************
  **********************************************************/
 $(document).on('ready', function () {
+
+
+
+    $.ajax({
+        url: "content/texto.html",
+        dataType: 'html',
+        type: 'GET',
+
+        success: function (data, textStatus, jQxhr) {
+           console.log(data)
+            texto = data;
+            console.log(texto)
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+            console.log(jqXhr);
+            console.log(textStatus);
+        }
+    });
+
+
+
 
 
 
@@ -2586,7 +2609,7 @@ function enviarCorreo() {
             type: 'POST',
             //contentType: "application/json; charset=utf-8",
 
-            data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '" }' },
+            data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '","nombre":"'+$("#txt_nombre_").val()+'" }' },
             success: function (data, textStatus, jQxhr) {
                 console.log('resp',data);
                 if (data.success == true){
@@ -2896,6 +2919,10 @@ function plantillaTasas(tasas) {
 function tablaHtmlEmail(cells) {
 
 
+
+
+    console.log(texto)
+
     var m = "";
     m += "<table width='100%' border='0' cellspacing='0' cellpadding='0' style='background:#fafbfc' bgcolor='#fafbfc' align='center'>"
         + "<thead>"
@@ -3039,6 +3066,8 @@ function tablaHtmlEmail(cells) {
         + "<td>"
         + "<div style='background-color:#2D4D89; height: auto; width: 100%; color: #fff;font-family: 'Roboto', sans-serif;font-weight: 100; font-size: 12px;'>"
         + "BOLIVIANA DE AVIACION LE INFORMA"
+
++texto
 
         + "</div>"
         + "</td>"
