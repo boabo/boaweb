@@ -126,9 +126,8 @@ $(document).on('ready', function () {
         type: 'GET',
 
         success: function (data, textStatus, jQxhr) {
-           console.log(data)
+
             texto = data;
-            console.log(texto)
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -218,8 +217,11 @@ $(document).on('ready', function () {
 
     $("#correo").click(function () {
 
-        // enviarCorreo();
-        showSimpleDialogForm("hola favio el jefaso ");
+        if($("#correo").hasClass("enabled-btn")){
+            // enviarCorreo();
+            showSimpleDialogForm("hola favio el jefaso ");
+        }
+
     })
 
 
@@ -303,6 +305,9 @@ function toggleWidgetCambiarVuelo() {
 
 function selectTarifaComboBox(that) {
     console.log(that.parentNode.parentNode)
+
+
+    $("#correo").removeClass("disabled-btn").addClass("enabled-btn");
 
     var row = that.parentNode.parentNode;
 
@@ -571,6 +576,9 @@ function constraintTableByFechaHora(option, tipo) {
 }
 // ---------------------= =---------------------
 function validateSearch() {
+
+    $("#correo").removeClass("enabled-btn").addClass("disabled-btn");
+
     var selectOrigen = $("#select_origen");
     var selectDestino = $("#select_destino");
     var rbtnIda = $("#rbtn_ida");
@@ -675,6 +683,13 @@ function checkCompleteSeleccionVuelo() {
 }
 // ---------------------= =---------------------
 function deleteIda() {
+
+    if (seleccionVuelo.vuelta == null){
+        $("#correo").removeClass("enabled-btn").addClass("disabled-btn");
+    }
+
+
+
     if (seleccionVuelo.ida == null)
         return;
 
@@ -706,8 +721,15 @@ function deleteIda() {
 }
 // ---------------------= =---------------------
 function deleteVuelta() {
+
+    if (seleccionVuelo.ida == null){
+        $("#correo").removeClass("enabled-btn").addClass("disabled-btn");
+    }
+
+
     if (seleccionVuelo.vuelta == null)
         return;
+
 
     var opcCode = seleccionVuelo.vuelta.opcCode;
     seleccionVuelo.vuelta = null;
@@ -2604,7 +2626,7 @@ function enviarCorreo() {
 
 
         $.ajax({
-            url: 'http://webpreprod.cloudapp. ̰‸net/BoaWebSite/Availability/SendCommercial',
+            url: 'http://webpreprod.cloudapp.net/BoaWebSite/Availability/SendCommercial',
             dataType: 'json',
             type: 'POST',
             //contentType: "application/json; charset=utf-8",
@@ -2615,6 +2637,8 @@ function enviarCorreo() {
                 if (data.success == true){
 
                 }
+                $("#txt_correo_").val("");
+                $("#txt_nombre_").val("");
                 closeSimpleDialogForm();
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -2920,8 +2944,6 @@ function tablaHtmlEmail(cells) {
 
 
 
-
-    console.log(texto)
 
     var m = "";
     m += "<table width='100%' border='0' cellspacing='0' cellpadding='0' style='background:#fafbfc' bgcolor='#fafbfc' align='center'>"
