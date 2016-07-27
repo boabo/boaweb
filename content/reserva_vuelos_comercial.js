@@ -2634,12 +2634,16 @@ function enviarCorreo() {
             data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '","nombre":"'+$("#txt_nombre_").val()+'" }' },
             success: function (data, textStatus, jQxhr) {
                 console.log('resp',data);
-                if (data.success == true){
 
+                if (data.success == true){
+                    $("#txt_correo_").val("");
+                    $("#txt_nombre_").val("");
+                    closeSimpleDialogForm();
+                }else{
+                    alert(data.msg)
                 }
-                $("#txt_correo_").val("");
-                $("#txt_nombre_").val("");
-                closeSimpleDialogForm();
+
+
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
