@@ -1048,7 +1048,8 @@ function asyncValidateSeleccionVuelo(response) {
             dateFormat: 'dd MM yy',
             numberOfMonths: 1,
             maxDate: 0,
-            changeYear: true
+            changeYear: true,
+            yearRange: '1940:2016'
         });
 
         $("#info_resultados_vuelos").removeClass("active");
