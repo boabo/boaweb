@@ -1721,7 +1721,7 @@ function updatePriceByTipo(tipo, changeFlapper) {
         var opcionIda = allOptions[seleccionVuelo.ida.opcCode];
 
         console.log(opcionIda.vuelos[0].tarifas_completas[seleccionVuelo.ida.numero_registro])
-        console.log(seleccionVuelo.ida.compartment)
+        console.log('seleccionVuelo.ida.compartment',seleccionVuelo.ida.compartment)
         var tarifa = opcionIda.vuelos[0].tarifas_completas[seleccionVuelo.ida.numero_registro];
         //var tarifa = opcionIda.tarifas[seleccionVuelo.ida.compartment];
 
@@ -1729,16 +1729,19 @@ function updatePriceByTipo(tipo, changeFlapper) {
         seleccionVuelo[tipo].ida.precioBase = tarifa.monto * tarifa.porcentajes[tipo];
 
         seleccionVuelo[tipo].ida.tasas = {}; // reset
-        for (var i = 0; i < tasasPorPasajero[tipo].length; i++) {
-            var keyTasa = tasasPorPasajero[tipo][i];
-            var tasa = tasas[keyTasa];
+        if(tasasPorPasajero[tipo] != undefined){
+            for (var i = 0; i < tasasPorPasajero[tipo].length; i++) {
+                var keyTasa = tasasPorPasajero[tipo][i];
+                var tasa = tasas[keyTasa];
 
-            // algunas tasas solo existen de vuelta
-            if (tasa.ida != null) {
-                seleccionVuelo[tipo].ida.tasas[keyTasa] =
-                    seleccionVuelo[tipo].ida.precioBase * (tasa.ida.porcentaje / 100.0) + tasa.ida.fijo;
+                // algunas tasas solo existen de vuelta
+                if (tasa.ida != null) {
+                    seleccionVuelo[tipo].ida.tasas[keyTasa] =
+                        seleccionVuelo[tipo].ida.precioBase * (tasa.ida.porcentaje / 100.0) + tasa.ida.fijo;
+                }
             }
         }
+
 
         // tasa BO se calcula de forma distinta
         // BO = (Neto + QM) * %
@@ -1758,16 +1761,20 @@ function updatePriceByTipo(tipo, changeFlapper) {
             seleccionVuelo[tipo].vuelta.precioBase = tarifa.monto * tarifa.porcentajes[tipo];
 
             seleccionVuelo[tipo].vuelta.tasas = {}; // reset
-            for (var i = 0; i < tasasPorPasajero[tipo].length; i++) {
-                var keyTasa = tasasPorPasajero[tipo][i];
-                var tasa = tasas[keyTasa];
 
-                // algunas tasas solo existen de ida
-                if (tasa.vuelta != null) {
-                    seleccionVuelo[tipo].vuelta.tasas[keyTasa] =
-                        seleccionVuelo[tipo].vuelta.precioBase * (tasa.vuelta.porcentaje / 100.0) + tasa.vuelta.fijo;
+            if(tasasPorPasajero[tipo] != undefined){
+                for (var i = 0; i < tasasPorPasajero[tipo].length; i++) {
+                    var keyTasa = tasasPorPasajero[tipo][i];
+                    var tasa = tasas[keyTasa];
+
+                    // algunas tasas solo existen de ida
+                    if (tasa.vuelta != null) {
+                        seleccionVuelo[tipo].vuelta.tasas[keyTasa] =
+                            seleccionVuelo[tipo].vuelta.precioBase * (tasa.vuelta.porcentaje / 100.0) + tasa.vuelta.fijo;
+                    }
                 }
             }
+
 
             // tasa BO se calcula de forma distinta
             // BO = (Neto + QM) * %
@@ -2595,6 +2602,7 @@ var total_vuelta_html = 0;
 function enviarCorreo() {
 
 
+
     if (isEmail($("#txt_correo_").val())) {
 
         var dataToSend = prepareSeleccionVueloToSend();
@@ -2611,13 +2619,22 @@ function enviarCorreo() {
         total_vuelta_html = 0;
 
 
-        var cell_adulto = SendWebPasajero(dataToSend.adulto, 'Adulto',dataToSend.vuelosIda);
-        var cell_nino = SendWebPasajero(dataToSend.ninho, 'Niño',dataToSend.vuelosIda);
-        var cell_infane = SendWebPasajero(dataToSend.infante, 'infante',dataToSend.vuelosIda);
+        var cell_adulto = SendWebPasajero(dataToSend.adulto, 'Adulto',dataToSend.vuelosIda,'ida');
+        var cell_nino = SendWebPasajero(dataToSend.ninho, 'Niño',dataToSend.vuelosIda,'ida');
+        var cell_infane = SendWebPasajero(dataToSend.infante, 'infante',dataToSend.vuelosIda,'ida');
+
+
+        var cell_adulto_vuelta = SendWebPasajero(dataToSend.adulto, 'Adulto',dataToSend.vuelosVuelta,'vuelta');
+        var cell_nino_vuelta = SendWebPasajero(dataToSend.ninho, 'Niño',dataToSend.vuelosVuelta,'vuelta');
+        var cell_infane_vuelta = SendWebPasajero(dataToSend.infante, 'infante',dataToSend.vuelosVuelta,'vuelta');
+
         console.log('cell_adult',cell_adulto);
 
-        var ida_html = htmlTotalSend('IDA',total_ida_html);
-        var m = tablaHtmlEmail(cell_adulto+cell_nino+cell_infane+ida_html);
+        var ida_html = htmlTotalSend('IDA',total_ida_html,'BS');
+        var vuelta_html = htmlTotalSend('VUELTA',total_vuelta_html,'BS');
+        var tota_html = htmlTotalSend('',(total_ida_html+total_vuelta_html),'BS');
+        var tota_usd_html = htmlTotalSend('',(total_ida_html+total_vuelta_html)/ TipodeCambio,'USD');
+        var m = tablaHtmlEmail(cell_adulto+cell_nino+cell_infane+ida_html+cell_adulto_vuelta+cell_nino_vuelta+cell_infane_vuelta+vuelta_html+tota_html+tota_usd_html);
 
 
         console.log(m)
@@ -2659,8 +2676,15 @@ function enviarCorreo() {
     }
 
 }
-function SendWebPasajero(pasajero, tipo,vuelo) {
+function SendWebPasajero(pasajero, tipo,vuelo,tipo_ida_vuelta) {
 
+    var objectPasajero ;
+    if(tipo_ida_vuelta == "ida"){
+
+        objectPasajero = pasajero.ida;
+    }else if (tipo_ida_vuelta == "vuelta"){
+        objectPasajero = pasajero.vuelta;
+    }
     var m = "";
     if (pasajero.num > 0) {
 
@@ -2674,18 +2698,14 @@ function SendWebPasajero(pasajero, tipo,vuelo) {
             }
         };
 
-        // Formateo de horas
-        flight_.horaSalida.hh = parseInt(vuelo[0].horaSalida.substr(0, 2));
-        flight_.horaSalida.mm = parseInt(vuelo[0].horaSalida.substr(2, 2));
-        flight_.horaLlegada.hh = parseInt(vuelo[0].horaLlegada.substr(0, 2));
-        flight_.horaLlegada.mm = parseInt(vuelo[0].horaLlegada.substr(2, 2));
 
 
-        if (pasajero.ida.precioBase > 0) {
+
+        if (objectPasajero.precioBase > 0) {
 
             var subtotal = 0;
 
-            subtotal = subtotal + pasajero.ida.precioBase;
+            subtotal = subtotal + objectPasajero.precioBase;
 
 
 
@@ -2693,26 +2713,39 @@ function SendWebPasajero(pasajero, tipo,vuelo) {
                 + "<td style='margin:0;height:60px;'>"
                 + ""+tipo+""
                 + "</td>"
-                + "<td width='40%' style='line-height:15px;' align='left'>"
-                + "<span style='font-weight:600'>"+tipo+"</span><br>"
-                + "<span style='font-weight:600; font-size: 20px;'>"+vuelo[0].origen+"-"+vuelo[0].destino+"</span><br>"
-                + "<span style='color:rgb(153,153,153)'>"+formatExpandedDate(vuelo[0].fechaSalida)+"</span><br>"
-                + "<span style='color:rgb(153,153,153)'>"+formatTime(flight_.horaSalida) +"- "+ formatTime(flight_.horaLlegada)+"</span><br>"
-                + "<span style='color:rgb(153,153,153)'>Ida</span><br>"
-                + "<span style='font-size:10px'></span>"
-                + "</td>"
+                + "<td width='40%' style='line-height:15px;' align='left'>";
+                $.each(vuelo,function (k,v) {
+                    // Formateo de horas
+                    flight_.horaSalida.hh = parseInt(v.horaSalida.substr(0, 2));
+                    flight_.horaSalida.mm = parseInt(v.horaSalida.substr(2, 2));
+                    flight_.horaLlegada.hh = parseInt(v.horaLlegada.substr(0, 2));
+                    flight_.horaLlegada.mm = parseInt(v.horaLlegada.substr(2, 2));
+                    if (k > 0){
+                        m+= "<span style='font-weight:600'><hr /></span><br>";
+                    }else{
+                        m+= "<span style='font-weight:600'></span><br>";
+                    }
+
+                        m+= "<span style='font-weight:600; font-size: 20px;'>"+v.origen+"-"+v.destino+"</span><br>"
+                        + "<span style='color:rgb(153,153,153)'>"+formatExpandedDate(v.fechaSalida)+"</span><br>"
+                        + "<span style='color:rgb(153,153,153)'>"+formatTime(flight_.horaSalida) +"- "+ formatTime(flight_.horaLlegada)+"</span><br>"
+                        + "<span style='color:rgb(153,153,153)'>Ida</span><br>"
+                        + "<span style='font-size:10px'></span>";
+                });
+
+                m+= "</td>"
                 + "<td width='40%' align='right' style='padding:0 20px 0 0;'>"
 
                 + "<table>"
                 +"<tr>"
                 + "<td style='text-align: left; padding-right: 20px; font-weight:200;white-space:nowrap'>Precio Base</td>"
-                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + pasajero.ida.precioBase + "</td>"
+                + "<td  style='width:100px;text-align: right; font-weight:600;white-space:nowrap'>" + objectPasajero.precioBase + "</td>"
                 + "</tr>";
 
 
 
 
-            $.each(pasajero.ida.tasas, function (k, v) {
+            $.each(objectPasajero.tasas, function (k, v) {
 
 
                 m += "<tr>"
@@ -2727,6 +2760,7 @@ function SendWebPasajero(pasajero, tipo,vuelo) {
                 subtotal = subtotal + v.value;
             });
 
+            var total_vuelo = parseFloat(subtotal) * parseInt(pasajero.num);
             m +="<tr height='1'>"
                 + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
                 + "<div style='line-height:2px;min-height:2px;background-color:rgb(238,238,238)'></div>"
@@ -2750,7 +2784,7 @@ function SendWebPasajero(pasajero, tipo,vuelo) {
 
                 + "<tr>"
                 + "<td style='text-align: left; font-weight:600;white-space:nowrap'>TOTAL VUELO</td>"
-                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + pasajero.precioTotal + "</td>"
+                + "<td style='text-align: right; font-weight:600;white-space:nowrap'>" + total_vuelo + "</td>"
                 + "</tr>"
 
 
@@ -2760,7 +2794,15 @@ function SendWebPasajero(pasajero, tipo,vuelo) {
                 + "</tr>";
 
 
-            total_ida_html = parseFloat(total_ida_html) + parseFloat(pasajero.precioTotal);
+
+
+            if(tipo_ida_vuelta == "ida"){
+
+                total_ida_html = parseFloat(total_ida_html) + parseFloat(total_vuelo);
+            }else if (tipo_ida_vuelta == "vuelta"){
+                total_vuelta_html = parseFloat(total_vuelta_html) + parseFloat(total_vuelo);
+            }
+
 
             m+= "<tr height='1'>"
                 + "<td height='1' colspan='3' style='padding:0 10px 0 10px'>"
@@ -2797,7 +2839,7 @@ function SendWebPasajero(pasajero, tipo,vuelo) {
 
 }
 
-function htmlTotalSend(tipo_ida_vuelta,total){
+function htmlTotalSend(tipo_ida_vuelta,total,moneda){
     var m = "";
     m+= "<tr>"
         + "<td colspan='3'>"
@@ -2816,7 +2858,7 @@ function htmlTotalSend(tipo_ida_vuelta,total){
         + "</td>"
 
         + "<td  align='right' style='padding:0 20px 0 0;font-size:16px;font-weight:600;white-space:nowrap'>"
-        + "BS "+parseFloat(total).toFixed(2)+""
+        + moneda+" "+parseFloat(total).toFixed(2)+""
         + "</td>"
         + "</tr>"
         + "<tr height='1'>"
