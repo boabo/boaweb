@@ -211,18 +211,28 @@ $(document).on('ready', function () {
 
     $("#simple_dialog_form_email .cerrar").click(closeSimpleDialogForm);
     $("#simple_dialog_form_email .enviar").click(function () {
-        enviarCorreo();
+        enviarCorreoImpresion("correo");
     });
 
 
     $("#correo").click(function () {
 
         if($("#correo").hasClass("enabled-btn")){
-            // enviarCorreo();
+            // enviarCorreoImpresion();
             showSimpleDialogForm("hola favio el jefaso ");
         }
 
-    })
+    });
+
+    $("#imprimir_vuelo").click(function () {
+
+        if($("#imprimir_vuelo").hasClass("enabled-btn")){
+            // enviarCorreoImpresion();
+            //showSimpleDialogForm("hola favio el jefaso ");
+            enviarCorreoImpresion("impresion");
+        }
+
+    });
 
 
 
@@ -308,6 +318,7 @@ function selectTarifaComboBox(that) {
 
 
     $("#correo").removeClass("disabled-btn").addClass("enabled-btn");
+    $("#imprimir_vuelo").removeClass("disabled-btn").addClass("enabled-btn");
 
     var row = that.parentNode.parentNode;
 
@@ -578,6 +589,7 @@ function constraintTableByFechaHora(option, tipo) {
 function validateSearch() {
 
     $("#correo").removeClass("enabled-btn").addClass("disabled-btn");
+    $("#imprimir_vuelo").removeClass("enabled-btn").addClass("disabled-btn");
 
     var selectOrigen = $("#select_origen");
     var selectDestino = $("#select_destino");
@@ -686,6 +698,7 @@ function deleteIda() {
 
     if (seleccionVuelo.vuelta == null){
         $("#correo").removeClass("enabled-btn").addClass("disabled-btn");
+        $("#imprimir_vuelo").removeClass("enabled-btn").addClass("disabled-btn");
     }
 
 
@@ -724,6 +737,7 @@ function deleteVuelta() {
 
     if (seleccionVuelo.ida == null){
         $("#correo").removeClass("enabled-btn").addClass("disabled-btn");
+        $("#imprimir_vuelo").removeClass("enabled-btn").addClass("disabled-btn");
     }
 
 
@@ -1044,12 +1058,14 @@ function asyncValidateSeleccionVuelo(response) {
             for (var i = 0; i < seleccionVuelo[key].num; i++)
                 form.append(buildRegistroPersona(key, numPx++));
 
+        var nowYear = new Date();
+
         form.find(".calendar").datepicker({
             dateFormat: 'dd MM yy',
             numberOfMonths: 1,
             maxDate: 0,
             changeYear: true,
-            yearRange: '1940:2016'
+            yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
         });
 
         $("#info_resultados_vuelos").removeClass("active");
@@ -1268,7 +1284,18 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda) {
     // mine some data first
     for (var i = 0; i < rawDates.length; i++) {
         var rawDate = rawDates[i];
-        var tarifaStr = rawDate["tarifas"]["tarifaCalen"]["importe"];
+
+        var esArray = Array.isArray(rawDate["tarifas"]["tarifaCalen"]);
+
+
+        if (esArray){
+            var tarifaStr = rawDate["tarifas"]["tarifaCalen"][0]["importe"];
+        }else{
+
+            var tarifaStr = rawDate["tarifas"]["tarifaCalen"]["importe"];
+        }
+
+
 
         tarifasByDate[rawDate["fecha"]] = tarifaStr; //ponemos a la fecha el importe
     }
@@ -2599,11 +2626,21 @@ function edadPasajero(Fecha) {
 }
 var total_ida_html = 0;
 var total_vuelta_html = 0;
-function enviarCorreo() {
+function enviarCorreoImpresion(tipoCorreoImpresion) {
 
 
+    var aux = true;
+    if (tipoCorreoImpresion == "correo"){
 
-    if (isEmail($("#txt_correo_").val())) {
+        aux = isEmail($("#txt_correo_").val());
+
+    }else if (tipoCorreoImpresion == "impresion"){
+
+        aux = true;
+    }
+
+
+    if (aux) {
 
         var dataToSend = prepareSeleccionVueloToSend();
 
@@ -2634,41 +2671,82 @@ function enviarCorreo() {
         var vuelta_html = htmlTotalSend('VUELTA',total_vuelta_html,'BS');
         var tota_html = htmlTotalSend('',(total_ida_html+total_vuelta_html),'BS');
         var tota_usd_html = htmlTotalSend('',(total_ida_html+total_vuelta_html)/ TipodeCambio,'USD');
-        var m = tablaHtmlEmail(cell_adulto+cell_nino+cell_infane+ida_html+cell_adulto_vuelta+cell_nino_vuelta+cell_infane_vuelta+vuelta_html+tota_html+tota_usd_html);
+        var m = tablaHtmlEmail(tipoCorreoImpresion,cell_adulto+cell_nino+cell_infane+ida_html+cell_adulto_vuelta+cell_nino_vuelta+cell_infane_vuelta+vuelta_html+tota_html+tota_usd_html);
 
 
         console.log(m)
-        var html_send = replaceHtml(m,'<','azx');
-        html_send = replaceHtml(html_send,'>','azy');
 
 
 
-        $.ajax({
-            url: 'http://webpreprod.cloudapp.net/BoaWebSite/Availability/SendCommercial',
-            dataType: 'json',
-            type: 'POST',
-            //contentType: "application/json; charset=utf-8",
 
-            data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '","nombre":"'+$("#txt_nombre_").val()+'" }' },
-            success: function (data, textStatus, jQxhr) {
-                console.log('resp',data);
+        if(tipoCorreoImpresion=="correo"){
 
-                if (data.success == true){
-                    $("#txt_correo_").val("");
-                    $("#txt_nombre_").val("");
-                    closeSimpleDialogForm();
-                }else{
-                    alert(data.msg)
+            var html_send = replaceHtml(m,'<','azx');
+            html_send = replaceHtml(html_send,'>','azy');
+
+            $.ajax({
+                url: 'http://webpreprod.cloudapp.net/BoaWebSite/Availability/SendCommercial',
+                dataType: 'json',
+                type: 'POST',
+                //contentType: "application/json; charset=utf-8",
+
+                data: { datos: '{"body": "' + html_send + '","to": "' + $("#txt_correo_").val() + '","nombre":"'+$("#txt_nombre_").val()+'" }' },
+                success: function (data, textStatus, jQxhr) {
+                    console.log('resp',data);
+
+                    if (data.success == true){
+                        $("#txt_correo_").val("");
+                        $("#txt_nombre_").val("");
+                        closeSimpleDialogForm();
+                    }else{
+                        alert(data.msg)
+                    }
+
+
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    console.log(jqXhr);
+                    console.log(textStatus);
                 }
+            });
+
+        }else if(tipoCorreoImpresion == "impresion"){
 
 
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                console.log(errorThrown);
-                console.log(jqXhr);
-                console.log(textStatus);
+            var impresion = '<!DOCTYPE html>'+
+                '<html>'+
+                '<head>'+
+                '<title></title>'+
+                //'<link type="text/css" rel="stylesheet" href="css/print/print.css" />'+
+
+                //'<link rel="shortcut icon" href="images/favicon.png" />'+
+                '</head>'+
+                ' <body onload="print()">'+
+                    m+
+                '</body>'+
+                '</html>';
+
+            console.log('impresion',impresion)
+
+            var iframes = document.querySelectorAll('iframe');
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].parentNode.removeChild(iframes[i]);
             }
-        });
+
+            ifrm = document.createElement("IFRAME");
+            ifrm.name = 'mifr';
+            ifrm.id = 'mifr';
+            //document.body.appendChild(ifrm);
+            $('#imprimir').append(ifrm);
+            var doc = window.frames['mifr'].document;
+            doc.open();
+            doc.write(impresion);
+            doc.close();
+
+        }
+
+
 
 
     } else {
@@ -2841,6 +2919,20 @@ function SendWebPasajero(pasajero, tipo,vuelo,tipo_ida_vuelta) {
 
 function htmlTotalSend(tipo_ida_vuelta,total,moneda){
     var m = "";
+
+    if(tipo_ida_vuelta == 'IDA'){
+
+        if (seleccionVuelo.ida == null){
+            return "";
+        }
+
+    }else if (tipo_ida_vuelta == 'VUELTA'){
+
+        if (seleccionVuelo.vuelta == null){
+            return "";
+        }
+    }
+
     m+= "<tr>"
         + "<td colspan='3'>"
         + "<div>"
@@ -2870,6 +2962,8 @@ function htmlTotalSend(tipo_ida_vuelta,total,moneda){
         + "</div>"
         + "</td>"
         + "</tr>";
+
+
     return m;
 }
 
@@ -2987,7 +3081,7 @@ function plantillaTasas(tasas) {
 
 }
 
-function tablaHtmlEmail(cells) {
+function tablaHtmlEmail(tipoCorreoImpresion,cells) {
 
 
 
@@ -3025,7 +3119,7 @@ function tablaHtmlEmail(cells) {
         + "<span style='color:#999999;font-size:10px;white-space:nowrap'>PRECIO</span>"
         + "</td>"
         + "</tr>"
-            +cells+
+            +cells
        /* + "<tr height='90'>"
         + "<td style='margin:0;height:60px;'>"
         + "ASD"
@@ -3134,11 +3228,15 @@ function tablaHtmlEmail(cells) {
         + "<tr>"
         + "<td>"
         + "<div style='background-color:#2D4D89; height: auto; width: 100%; color: #fff;font-family: 'Roboto', sans-serif;font-weight: 100; font-size: 12px;'>"
-        + "BOLIVIANA DE AVIACION LE INFORMA"
+        + "BOLIVIANA DE AVIACION LE INFORMA";
 
-+texto
+        if (tipoCorreoImpresion == "correo"){
+            m+=texto;
+        }
 
-        + "</div>"
+
+
+        m+= "</div>"
         + "</td>"
         + "</tr>"
 

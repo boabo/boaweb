@@ -501,7 +501,7 @@
                         <td width="50%"><label>Origen:</label></td>
                         <td width="50%"><label>Destino:</label></td>
                     </tr>
-                    <tr>
+                     <tr>
                         <td class='input-container'>
                             <div class="validable">
                                 <select id="select_origen" class="origen-destino">
@@ -871,7 +871,7 @@
         <div class="separator"></div>
         <div style="margin: 10px;
 	padding: 10px 0 0 0; line-height: 34px; height:40px; ">
-            <div style="background-color: #cccccc; float: left; width: 50%; font-size: 15px; text-align: center; cursor: pointer;">Imprimir</div>
+            <div id="imprimir_vuelo" class="disabled-btn" style="float: left; width: 50%; font-size: 15px; text-align: center; cursor: pointer;">Imprimir</div>
             <div id="correo" class="disabled-btn" style=" float: left; width: 50%; font-size: 15px; text-align: center; cursor: pointer;">
                 Enviar
             </div>
@@ -1164,6 +1164,8 @@
     </div>
 </div>
 
+
+<div id="imprimir" style="display: none;" ></div>
 <!-- <<< MISC UI >>> -->
 <a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
 <div id="div_submit"></div>
