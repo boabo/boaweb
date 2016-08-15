@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="validacion de boton enviar correo">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info_page.html" afterPath="$PROJECT_DIR$/info_page.html" />
     </list>
     <ignored path="boaweb.iws" />
@@ -306,8 +305,8 @@
       <file leaf-file-name="info_page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/info_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="910" column="43" selection-start-line="910" selection-start-column="43" selection-end-line="910" selection-end-column="43" />
+            <state relative-caret-position="134">
+              <caret line="884" column="74" selection-start-line="884" selection-start-column="74" selection-end-line="884" selection-end-column="74" />
               <folding>
                 <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -669,12 +668,12 @@
       <workItem from="1471014568669" duration="1446000" />
       <workItem from="1471120757665" duration="604000" />
       <workItem from="1471270045627" duration="1000" />
-      <workItem from="1471292623563" duration="271000" />
+      <workItem from="1471292623563" duration="551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="370628000" />
+    <option name="totallyTimeSpent" value="370908000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1291,8 +1290,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="910" column="43" selection-start-line="910" selection-start-column="43" selection-end-line="910" selection-end-column="43" />
+        <state relative-caret-position="134">
+          <caret line="884" column="74" selection-start-line="884" selection-start-column="74" selection-end-line="884" selection-end-column="74" />
           <folding>
             <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
