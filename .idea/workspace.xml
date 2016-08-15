@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="validacion de boton enviar correo">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" afterPath="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reserva_vuelos_comercial.html" afterPath="$PROJECT_DIR$/reserva_vuelos_comercial.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info_page.html" afterPath="$PROJECT_DIR$/info_page.html" />
     </list>
     <ignored path="boaweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +35,8 @@
       <file leaf-file-name="reserva_vuelos_comercial.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="729" column="37" selection-start-line="729" selection-start-column="37" selection-end-line="729" selection-end-column="37" />
+            <state relative-caret-position="10440">
+              <caret line="696" column="18" selection-start-line="696" selection-start-column="18" selection-end-line="696" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#svg#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -71,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reserva_vuelos_comercial.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reserva_vuelos_comercial.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/reserva_vuelos_comercial.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="1292" column="14" selection-start-line="1292" selection-start-column="14" selection-end-line="1292" selection-end-column="14" />
+            <state relative-caret-position="45">
+              <caret line="1209" column="75" selection-start-line="1209" selection-start-column="75" selection-end-line="1209" selection-end-column="75" />
               <folding>
                 <marker date="1470857635000" expanded="true" signature="67219:67228" placeholder="..." />
                 <marker date="1470857635000" expanded="true" signature="67253:67262" placeholder="..." />
@@ -298,18 +296,18 @@
       <file leaf-file-name="custom_handlers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="1035">
               <caret line="69" column="29" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info_page.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="info_page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/info_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13455">
-              <caret line="897" column="32" selection-start-line="897" selection-start-column="32" selection-end-line="897" selection-end-column="32" />
+            <state relative-caret-position="464">
+              <caret line="910" column="43" selection-start-line="910" selection-start-column="43" selection-end-line="910" selection-end-column="43" />
               <folding>
                 <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -353,7 +351,6 @@
         <option value="192.168.17.247/~faviofigueroa/boaweb/reserva_vuelos.html" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
         <option value="$PROJECT_DIR$/reserva_vuelos.html" />
-        <option value="$PROJECT_DIR$/info_page.html" />
         <option value="$PROJECT_DIR$/content/style.css" />
         <option value="$PROJECT_DIR$/content/texto.json" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.css" />
@@ -362,6 +359,7 @@
         <option value="$PROJECT_DIR$/reserva_vuelos_comercial.html" />
         <option value="$PROJECT_DIR$/prueba_html.html" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" />
+        <option value="$PROJECT_DIR$/info_page.html" />
       </list>
     </option>
   </component>
@@ -421,20 +419,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="boaweb" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boaweb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boaweb" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -523,15 +507,15 @@
       <recent name="http://192.168.17.247/~faviofigueroa/boaweb/reserva_vuelos.html" />
       <recent name="http://172.17.45.229" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/content/images" />
-      <recent name="$PROJECT_DIR$/content/lib/pdf" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/content/images" />
       <recent name="$PROJECT_DIR$/content" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/content/lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/images" />
+      <recent name="$PROJECT_DIR$/content/lib/pdf" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.reserva_vuelos_comercial.html">
@@ -680,12 +664,17 @@
       <workItem from="1470747146501" duration="10508000" />
       <workItem from="1470767723064" duration="4468000" />
       <workItem from="1470834731910" duration="8141000" />
-      <workItem from="1470855034007" duration="2061000" />
+      <workItem from="1470855034007" duration="5490000" />
+      <workItem from="1470919928935" duration="903000" />
+      <workItem from="1471014568669" duration="1446000" />
+      <workItem from="1471120757665" duration="604000" />
+      <workItem from="1471270045627" duration="1000" />
+      <workItem from="1471292623563" duration="271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="363974000" />
+    <option name="totallyTimeSpent" value="370628000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -701,24 +690,24 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25981873" sideWeight="0.48803827" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2620846" sideWeight="0.48803827" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4692443" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25755286" sideWeight="0.5119617" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39712918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290938" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39712918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -738,7 +727,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="37" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1002,7 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2430">
           <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1010,9 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-735">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1027,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="40" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,20 +1134,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/info_page.html">
+    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13455">
-          <caret line="897" column="32" selection-start-line="897" selection-start-column="32" selection-end-line="897" selection-end-column="32" />
-          <folding>
-            <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="1035">
+          <caret line="69" column="29" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="729" column="37" selection-start-line="729" selection-start-column="37" selection-end-line="729" selection-end-column="37" />
+        <state relative-caret-position="10440">
+          <caret line="696" column="18" selection-start-line="696" selection-start-column="18" selection-end-line="696" selection-end-column="18" />
           <folding>
             <element signature="n#style#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#svg#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1192,18 +1177,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="69" column="29" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/reserva_vuelos_comercial.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="1292" column="14" selection-start-line="1292" selection-start-column="14" selection-end-line="1292" selection-end-column="14" />
+        <state relative-caret-position="45">
+          <caret line="1209" column="75" selection-start-line="1209" selection-start-column="75" selection-end-line="1209" selection-end-column="75" />
           <folding>
             <marker date="1470857635000" expanded="true" signature="67219:67228" placeholder="..." />
             <marker date="1470857635000" expanded="true" signature="67253:67262" placeholder="..." />
@@ -1308,6 +1285,16 @@
             <marker date="1470857635000" expanded="true" signature="110076:110298" placeholder="..." />
             <marker date="1470857635000" expanded="true" signature="110093:110298" placeholder="..." />
             <marker date="1470857635000" expanded="true" signature="110119:110197" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/info_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="910" column="43" selection-start-line="910" selection-start-column="43" selection-end-line="910" selection-end-column="43" />
+          <folding>
+            <element signature="n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
