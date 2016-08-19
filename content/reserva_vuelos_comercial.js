@@ -128,6 +128,34 @@ $(document).on('ready', function () {
         success: function (data, textStatus, jQxhr) {
 
             texto = data;
+            $("#texto_html_contenidos").append(texto);
+
+
+            $.each($("#texto_html_contenidos").children("div"),function (k,v) {
+                var id_cambiado = replaceHtml(v.id,' ','_');
+                id_cambiado = replaceHtml(id_cambiado,',','-');
+
+                var informacion_check = replaceHtml(v.id,'_',' ');
+                informacion_check = replaceHtml(informacion_check,'-',',');
+
+                var m = '<tr><td><div data-contenido="'+id_cambiado+'" id="ID_'+id_cambiado+'" class="checkbox" style="display: block; font-size: 16px;"></div></td><td><div>'+informacion_check+'</div></td></tr>';
+                $("#dialog_overlay_form_imprimir").find(".form").children("table").append(m)
+
+
+
+                $("#ID_"+id_cambiado).click(function(){
+
+                    if($(this).hasClass("checked"))
+                        $(this).removeClass("checked");
+                    else
+                        $(this).addClass("checked");
+
+
+                });
+
+            });
+
+
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -214,6 +242,13 @@ $(document).on('ready', function () {
         enviarCorreoImpresion("correo");
     });
 
+    $("#simple_dialog_form_imprimir .cerrar_imprimir").click(closeSimpleDialogImprimir);
+    $("#simple_dialog_form_imprimir .enviar_imprimir").click(function () {
+       // enviarCorreoImpresion("correo");
+        enviarCorreoImpresion("impresion");
+    });
+
+
 
     $("#correo").click(function () {
 
@@ -228,8 +263,8 @@ $(document).on('ready', function () {
 
         if($("#imprimir_vuelo").hasClass("enabled-btn")){
             // enviarCorreoImpresion();
-            //showSimpleDialogForm("hola favio el jefaso ");
-            enviarCorreoImpresion("impresion");
+            showSimpleDialogImprimir("hola favio el jefaso ");
+            //enviarCorreoImpresion("impresion");
         }
 
     });
@@ -246,6 +281,8 @@ $(document).on('ready', function () {
 // ---------------------= =---------------------
 function handleScroll() {
     var h = $(this).scrollTop();
+
+
 
     $("#ui_resultados_vuelos .header").css("margin", ((h > 50) ? (h - 50) : 0) + "px 0 0 0");
     // $("#widget_resumen_reserva").css("margin",((h>145)?(h-35):110)+"px 0 0 0");
@@ -2592,6 +2629,29 @@ function closeSimpleDialogForm() {
     $("#ui_reserva_vuelos").removeClass("blured");
 }
 
+
+function showSimpleDialogImprimir() {
+    $("#dialog_overlay_form_imprimir").show();
+    $("#simple_dialog_form_imprimir")
+        .show()
+        .find(".description").html();
+
+
+    //limpiamos los checkbox
+    $.each($("#dialog_overlay_form_imprimir").find(".form").children("table").find(".checkbox.checked"),function (k,v) {
+       $(v).removeClass("checked");
+    });
+
+    $("#ui_reserva_vuelos").addClass("blured");
+
+
+}
+function closeSimpleDialogImprimir() {
+    $("#dialog_overlay_form_imprimir").hide();
+    $("#simple_dialog_form_imprimir").hide();
+    $("#ui_reserva_vuelos").removeClass("blured");
+}
+
 // ---------------------= =---------------------
 function closeSimpleDialog(redirectUrl) {
     $("#dialog_overlay").hide();
@@ -2744,6 +2804,8 @@ function enviarCorreoImpresion(tipoCorreoImpresion) {
             doc.write(impresion);
             doc.close();
 
+            closeSimpleDialogImprimir();
+
         }
 
 
@@ -2784,7 +2846,6 @@ function SendWebPasajero(pasajero, tipo,vuelo,tipo_ida_vuelta) {
             var subtotal = 0;
 
             subtotal = subtotal + objectPasajero.precioBase;
-
 
 
             m+= "<tr height='90'>"
@@ -3228,10 +3289,23 @@ function tablaHtmlEmail(tipoCorreoImpresion,cells) {
         + "<tr>"
         + "<td>"
         + "<div style='background-color:#2D4D89; height: auto; width: 100%; color: #fff;font-family: 'Roboto', sans-serif;font-weight: 100; font-size: 12px;'>"
-        + "BOLIVIANA DE AVIACION LE INFORMA";
+        + "BOLIVIANA DE AVIACION LE INFORMA <br />";
 
         if (tipoCorreoImpresion == "correo"){
+
+
             m+=texto;
+        }else{
+
+           $.each($("#dialog_overlay_form_imprimir").find(".form").children("table").find(".checkbox.checked"),function (k,v) {
+
+               console.log(v)
+               console.log($(v).data("contenido"))
+               var id_contenido = $(v).data("contenido");
+               console.log($("#texto_html_contenidos").find("#"+id_contenido)[0].innerHTML);
+               m+"<br />";
+               m+=$("#texto_html_contenidos").find("#"+id_contenido)[0].innerHTML;
+           });
         }
 
 
