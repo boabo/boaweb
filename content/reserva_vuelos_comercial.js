@@ -1724,6 +1724,7 @@ function requestSearchParameters(parms) {
         xmlOrJson: false  // false=json ; true=xml
     };
 
+    console.log(data)
     ajaxRequest(
         BoA.urls["nearest_dates_service"],
         asyncReceiveDates,
@@ -1770,6 +1771,7 @@ function requestFlights(dateIda, dateVuelta, totalSites) {
         to: searchParameters.destino
     };
 
+    console.log(data)
     ajaxRequest(
         BoA.urls["flights_schedule_service"],
         asyncReceiveFlights,
@@ -1807,6 +1809,9 @@ function updatePriceByTipo(tipo, changeFlapper) {
         }
 
 
+        //todo cambiar el bo con el total si es con la ida precio solobase solo ida si es ida y vuelta suma de los dos precios bases
+        console.log(seleccionVuelo)
+        console.log(tasas)
         // tasa BO se calcula de forma distinta
         // BO = (Neto + QM) * %
         if ('BO' in seleccionVuelo[tipo].ida.tasas &&

@@ -35,6 +35,8 @@ function initialize_header(is_info_page)
 	$(window).resize(function(ev) {
 		adjust_call_center(this.innerWidth);
 	});
+	
+	
 
 	$("#menu_locations li").click(click_menu_locations);
 	$("#menu_languages li").click(click_menu_languages);
