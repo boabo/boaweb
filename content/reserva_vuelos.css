@@ -903,13 +903,13 @@
 #info_pago_bancos .codigo-reserva {
 	font-size: 100px;
     font-family: "HelveticaNeueProMd";
-    background-color: rgba(31, 54, 89, 0.31);
+    /*background-color: rgba(31, 54, 89, 0.31);*/
     padding: 10px 30px 0 30px;
     margin: 10px auto;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: #1F3656;
-    border-width: 4px;
+    /*border-radius: 20px;*/
+    /*border-style: solid;*/
+    /*border-color: #1F3656;*/
+    /*border-width: 4px;*/
 }
 
 /*------------------------------------------------------*/
@@ -1754,6 +1754,14 @@
 	background-color: #EFAA35;
 }
 /*--------------------------------------------------------*/
+/*css para codigo de reserva contenido*/
+
+.tipo_de_pago{
+	background-color: rgba(255, 255, 255, 0.8) !important;
+	text-align: left !important;
+	width: 33%;
+	vertical-align: top;
+}
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

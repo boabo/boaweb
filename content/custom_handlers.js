@@ -2,7 +2,7 @@
 var CURRENCY = "bs"; // "euro", "bs" , "usd" 
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYjTK2O2OPIYQ88Ba962wHsqDjHZqAKJgH4cvZT1tQPBNvrqWBbD1UNZ946Htx/1xrSQ+VMd7EZkGQ==";
+var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYip7o/Whzzvr7iWPT/aFf2dZfmOauQ3Ogj6Kv41hOuN6AqlFSWxcupbsfXFrkkFBkjsq5X2rUK2SA==";
 
 var server = '192.168.17.247'; //puede ser "+server+"
 // ---------------------------------------------------------------------------
@@ -75,10 +75,10 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'CBB',
-		destino: 'VVI',
-		fechaIda : '20160824',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20160922',//null, // no flight back
+		origen: 'LPB',
+		destino: 'CBB',
+		fechaIda : '20161004',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20161022',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0
@@ -141,7 +141,79 @@ var BoA = {
 			enabled: true,
 			url: "http://www.kittenwar.com"
 		}
-	}, 
+	},
+
+	//configuracion de bancos nuevo
+	bancos :
+		{
+			debito:[
+				{
+					nombre:"banco_union",
+					img:"content/images/banco-union.jpg",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"economico",
+					img:"content/images/bancos/economico.png",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				}
+			],
+			credito:[
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				}
+			],
+			billetera:[
+				{
+					nombre:"tigo",
+					img:"content/images/tigo.jpg",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				},
+				{
+					nombre:"proximamente",
+					img:"content/images/proximamente.jpg",
+					url:"http://www.google.com",
+					visible:true
+				}
+			]
+		}
+	,
 
 	// Configuracion de Widget (compra)
 	widgetReservas: {

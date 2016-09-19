@@ -120,6 +120,12 @@ $(document).on('ready',function()
 		initialize_ui_sections({anchor_section_headers:false});	
 	}
 
+	//dibuja los bancos
+	dibujarBancos(BoA.bancos.debito,"debito");
+	dibujarBancos(BoA.bancos.credito,"credito");
+	dibujarBancos(BoA.bancos.billetera,"billetera");
+
+
 	todayStr = formatCompactDate(new Date()); // today 
 
 	/*----------= UI SETUP HANDLERS =-----------*/
@@ -177,6 +183,32 @@ $(document).on('ready',function()
 	// Dialog setup
 	$("#simple_dialog .button").click(closeSimpleDialog);
 }); // init
+
+function dibujarBancos(objeto,titulo){
+
+	$.each(objeto,function (k,v) {
+		if(v.visible == true){
+			var banco = '<div id="'+v.nombre+'" style="cursor:pointer;background-color:#cccccc;width:48%;height:auto;margin-right:1%;margin-left:1%;float:left;">'+
+				'<img src="'+v.img+'" width="100%">'+
+				'</div>';
+			/*
+			 * nombre:"proximamente",
+			 img:"content/images/proximamente.jpg",
+			 url:"http://www.google.com",
+			 visible:true
+			 */
+			$("#"+titulo).append(banco);
+
+			$("#"+v.nombre).click(function () {
+
+				window.open(v.url);
+			});
+		}
+
+
+	});
+
+}
 // ---------------------= =---------------------
 function handleScroll(){
 	var h = $(this).scrollTop();
