@@ -1762,6 +1762,18 @@
 	width: 33%;
 	vertical-align: top;
 }
+.bancos_{
+	margin-bottom: 5px;
+}
+.bancos_:hover{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	/*width: 100px;
+	height: 100px;*/
+	border: 10px solid #EFAA35;
+	/*margin: 10px;*/
+}
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

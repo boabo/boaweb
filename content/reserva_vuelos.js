@@ -188,7 +188,7 @@ function dibujarBancos(objeto,titulo){
 
 	$.each(objeto,function (k,v) {
 		if(v.visible == true){
-			var banco = '<div id="'+v.nombre+'" style="cursor:pointer;background-color:#cccccc;width:48%;height:auto;margin-right:1%;margin-left:1%;float:left;">'+
+			var banco = '<div class="bancos_" id="'+v.nombre+'" style="cursor:pointer;width:47%;height:auto;margin-right:1%;margin-left:1%;float:left;">'+
 				'<img src="'+v.img+'" width="100%">'+
 				'</div>';
 			/*
