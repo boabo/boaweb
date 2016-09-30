@@ -149,7 +149,7 @@ var BoA = {
 			debito:[
 				{
 					nombre:"banco_union",
-					img:"content/images/banco-union.jpg",
+					img:"content/images/bancos/banco-union.jpg",
 					url:"http://www.google.com",
 					visible:true,
 					enabled:true
