@@ -151,65 +151,69 @@ var BoA = {
 					nombre:"banco_union",
 					img:"content/images/banco-union.jpg",
 					url:"http://www.google.com",
-					visible:true
+					visible:true,
+					enabled:true
 				},
 				{
 					nombre:"economico",
-					img:"content/images/bancos/economico.png",
+					img:"content/images/bancos/banco_economico.jpg",
 					url:"http://www.google.com",
-					visible:true
+					visible:true,
+					enabled:true
 				},
 				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
+					nombre:"bnb",
+					img:"content/images/bancos/bnb.png",
 					url:"http://www.google.com",
-					visible:true
+					visible:true,
+					enabled:false
+				},
+				{
+					nombre:"bcp",
+					img:"content/images/bancos/bcp.png",
+					url:"http://www.google.com",
+					visible:true,
+					enabled:false
+				},
+				{
+					nombre:"bisa",
+					img:"content/images/bancos/banco_bisa.png",
+					url:"http://www.google.com",
+					visible:true,
+					enabled:false
+				},
+				{
+					nombre:"ecofuturo",
+					img:"content/images/bancos/banco_ecofuturo.jpg",
+					url:"http://www.google.com",
+					visible:true,
+					enabled:false
 				}
 			],
 			credito:[
 				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
+					nombre:"visa",
+					img:"content/images/bancos/visa.png",
 					url:"http://www.google.com",
-					visible:true
+					visible:true,
+					enabled:true
 				},
 				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
+					nombre:"mastercard",
+					img:"content/images/bancos/mastercard.png",
 					url:"http://www.google.com",
-					visible:true
-				},
-				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
-					url:"http://www.google.com",
-					visible:true
-				},
-				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
-					url:"http://www.google.com",
-					visible:true
+					visible:true,
+					enabled:true
 				}
+
 			],
 			billetera:[
 				{
 					nombre:"tigo",
 					img:"content/images/tigo.jpg",
 					url:"http://www.google.com",
-					visible:true
-				},
-				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
-					url:"http://www.google.com",
-					visible:true
-				},
-				{
-					nombre:"proximamente",
-					img:"content/images/proximamente.jpg",
-					url:"http://www.google.com",
-					visible:true
+					visible:true,
+					enabled:true
 				}
 			]
 		}

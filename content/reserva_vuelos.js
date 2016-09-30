@@ -186,23 +186,32 @@ $(document).on('ready',function()
 
 function dibujarBancos(objeto,titulo){
 
+	console.log(objeto)
 	$.each(objeto,function (k,v) {
 		if(v.visible == true){
-			var banco = '<div class="bancos_" id="'+v.nombre+'" style="cursor:pointer;width:47%;height:auto;margin-right:1%;margin-left:1%;float:left;">'+
+
+			var style= "";
+			var clase= "";
+			if(v.enabled == false){
+				style= "opacity: 0.8;";
+				clase = "banco_disabled";
+
+			}else{
+				clase = "bancos_";
+			}
+			var banco = '<div class="'+clase+'" id="'+v.nombre+'">'+
 				'<img src="'+v.img+'" width="100%">'+
 				'</div>';
-			/*
-			 * nombre:"proximamente",
-			 img:"content/images/proximamente.jpg",
-			 url:"http://www.google.com",
-			 visible:true
-			 */
 			$("#"+titulo).append(banco);
 
-			$("#"+v.nombre).click(function () {
+			if(v.enabled == true){
+				$("#"+v.nombre).click(function () {
 
-				window.open(v.url);
-			});
+					window.open(v.url);
+				});
+
+			}
+
 		}
 
 

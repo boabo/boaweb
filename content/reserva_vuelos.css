@@ -1762,8 +1762,28 @@
 	width: 33%;
 	vertical-align: top;
 }
+.banco_disabled {
+	margin-bottom: 5px;
+	cursor:not-allowed;
+	width:47%;
+	height:auto;
+	margin-right:1%;
+	margin-left:1%;
+	float:left;
+	opacity: 0.2;
+}
 .bancos_{
 	margin-bottom: 5px;
+	cursor:pointer;
+	width:47%;
+	height:auto;
+	margin-right:1%;
+	margin-left:1%;
+	float:left;
+
+	-webkit-transition: .3s ease-in-out;
+	-moz-transition: .3s ease-in-out;
+	-o-transition: .3s ease-in-out;
 }
 .bancos_:hover{
 	box-sizing: border-box;
