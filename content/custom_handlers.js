@@ -210,7 +210,7 @@ var BoA = {
 			billetera:[
 				{
 					nombre:"tigo",
-					img:"content/images/tigo.jpg",
+					img:"content/images/bancos/tigo.jpg",
 					url:"http://www.google.com",
 					visible:true,
 					enabled:true
