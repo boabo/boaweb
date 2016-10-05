@@ -251,9 +251,30 @@ function dibujarBancos(objeto,titulo){
 			if(v.enabled == true){
 				$("#"+v.nombre).click(function () {
 
-					console.log("nit",$("#nit").val());
-					console.log("razon social",$("#razon_social").val());
+					var validado = true;
+
 					//window.open(v.url);
+					if($("#nit").val() == ''){
+						validado = false;
+						$("#nit").css({"border":"1px solid red"});
+						console.log($("#nit"))
+					}else{
+						$("#nit").css({"border":""});
+					}
+
+					if($("#razon_social").val() == ''){
+
+						validado = false;
+						$("#razon_social").css({"border":"1px solid red"});
+					}else{
+						$("#razon_social").css({"border":""});
+					}
+
+					if (validado){
+						//aca haces la accion
+						console.log("nit",$("#nit").val());
+						console.log("razon social",$("#razon_social").val());
+					}
 				});
 
 			}
