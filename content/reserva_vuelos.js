@@ -120,10 +120,7 @@ $(document).on('ready',function()
 		initialize_ui_sections({anchor_section_headers:false});	
 	}
 
-	//dibuja los bancos
-	dibujarBancos(BoA.bancos.debito,"debito");
-	dibujarBancos(BoA.bancos.credito,"credito");
-	dibujarBancos(BoA.bancos.billetera,"billetera");
+
 
 
 	todayStr = formatCompactDate(new Date()); // today 
@@ -182,6 +179,53 @@ $(document).on('ready',function()
 
 	// Dialog setup
 	$("#simple_dialog .button").click(closeSimpleDialog);
+
+
+	//dibuja los bancos
+	dibujarBancos(BoA.bancos.debito,"debito");
+	dibujarBancos(BoA.bancos.credito,"credito");
+	dibujarBancos(BoA.bancos.billetera,"billetera");
+
+
+	//pagar reserva
+
+
+
+	$("#pagar_reserva").click(function () {
+
+		var self = this;
+		if( $(this).hasClass("activado") ){
+			$(this).removeClass("activado");
+			//$(this).siblings('td').hide("slide");
+			$("#contenedor_pagar").hide("slide",function () {
+				$("#cod_reserva").css({"margin-top":"30px"});
+				$(self).siblings('td').show();
+			});
+
+
+
+
+
+			$("#razon_social").val('');
+			$("#nit").val('');
+
+		}else{
+
+
+
+			$(this).addClass("activado");
+			$(this).siblings('td').hide("slow",function () {
+				$("#contenedor_pagar").show("slide");
+				$("#cod_reserva").css({"margin-top":"0px"});
+
+
+
+
+			});
+
+		}
+
+	});
 }); // init
 
 function dibujarBancos(objeto,titulo){
@@ -207,7 +251,9 @@ function dibujarBancos(objeto,titulo){
 			if(v.enabled == true){
 				$("#"+v.nombre).click(function () {
 
-					window.open(v.url);
+					console.log("nit",$("#nit").val());
+					console.log("razon social",$("#razon_social").val());
+					//window.open(v.url);
 				});
 
 			}
@@ -920,13 +966,24 @@ function asyncValidateSeleccionVuelo(response)
 		for(var key in {adulto:null,ninho:null,infante:null}) // weirdo and fast :P
 			for(var i=0;i<seleccionVuelo[key].num;i++)
 				form.append(buildRegistroPersona(key,numPx++));
-
+		var nowYear = new Date();
 		form.find(".calendar").datepicker({ 
 			dateFormat: 'dd MM yy',
 			numberOfMonths: 1, 
 			maxDate: 0,
-			changeYear:true
+			changeYear:true,
+			changeMonth:true,
+			yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
 		});
+
+		console.log(nowYear.getFullYear() - 12);
+		//mandamos date al picker
+		var date = new Date(parseInt(nowYear.getFullYear() - 80),01,01);
+		form.find(".calendar").datepicker().datepicker("setDate", date);
+
+
+
+
 
 		$("#info_resultados_vuelos").removeClass("active");
 		$("#info_registro_pasajeros").addClass("active");

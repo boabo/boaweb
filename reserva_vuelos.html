@@ -20,7 +20,7 @@
 	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
 
 	<!-- SCROLLBAR LIBRARY -->
-	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css" 
+	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
 		rel="stylesheet" type="text/css" />
 	<script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 
@@ -37,7 +37,7 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script type="text/javascript" src="content/reserva_vuelos.js"></script>
-	
+
 	<!-- COMMON SCRIPTS -->
 	<script type="text/javascript" src="content/language_data_es.js"></script> <!-- PT, EN -->
 
@@ -231,7 +231,7 @@
 									<li data-item="" class="disabled">Clase Econ&oacute;mica</li>
 									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE FAMILIA</li>
 									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE GRUPOS</li>
-									
+
 									<li class="primary disabled" data-item=""><div class="icon"></div>NUESTRAS ALIANZAS</li>
 								</ul>
 							</td>
@@ -335,7 +335,7 @@
 	<div id="clouds">
 		<canvas id="clouds_canvas" width="2500" height="1000"></canvas>
 	</div>
-	
+
 	<!-- UI RESERVA VUELOS -->
 	<div id="ui_reserva_vuelos" data-mode="normal" class="ui-section wide results selected">
 		<div class="gradient"></div>
@@ -384,7 +384,7 @@
 						                <option value="TDD">TRINIDAD</option>
 						                <option value="EZE">BUENOS AIRES</option>
 						                <option value="GRU">SAO PAULO</option>
-									</select>	
+									</select>
 								</div>
 							</td>
 							<td class='input-container'>
@@ -458,7 +458,7 @@
 					<table cellspacing="0" cellpadding="0">
 						<tr>
 							<td colspan="6">
-								<table class="days-selector" data-salida_regreso="salida" 
+								<table class="days-selector" data-salida_regreso="salida"
 									id="tbl_days_selector_salida">
 									<tr class="months"></tr> <!-- CELDAS PARA MESES -->
 									<tr class="days">
@@ -537,7 +537,7 @@
 					<table id="tbl_dayselector_regreso" cellspacing="0" cellpadding="0">
 						<tr>
 							<td colspan="6">
-								<table class="days-selector" data-salida_regreso="regreso" 
+								<table class="days-selector" data-salida_regreso="regreso"
 									id="tbl_days_selector_regreso">
 									<tr class="months"></tr> <!-- CELDAS PARA MESES -->
 									<tr class="days">
@@ -605,7 +605,7 @@
 									<tr>
 										<td colspan="4">
 											<span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span>
-											
+
 										</td>
 									</tr>
 								</table>
@@ -650,7 +650,7 @@
 									<tr>
 										<td colspan="4">
 											<span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span>
-											
+
 										</td>
 									</tr>
 								</table>
@@ -667,9 +667,9 @@
 			<!-- PAGO DE BANCOS -->
 			<div id="info_pago_bancos" class="info phase selected">
 				<div class="descripcion wide">
-					<table>
+					<table style="margin-top:30px;" id="cod_reserva">
 						<tr>
-							<td colspan="3" valign="top">
+							<td colspan="2" valign="top">
 								<h2>C&Oacute;DIGO DE RESERVA</h2>
 								<div id="lbl_codigo_reserva" class="codigo-reserva">89873</div>
 
@@ -716,45 +716,112 @@
 							</td>-->
 						</tr>
 						<tr>
-							<td class="tipo_de_pago">
-								<span style="display: block;"><strong>BANCA ELECTRONICA</strong></span>
+
+							<td style="text-align: right; width: 50%;"><b>Enviar Datos de Reserva</b></td>
+							<td id="pagar_reserva" style="text-align: left;width: 50%;"><b>Pagar Reserva</b></td>
+
+						</tr>
+						<tr >
+
+							<td id="contenedor_pagar" colspan="2" style="background-color: #E1E1E1;">
+								<div id="formulario_pagar" class="form">
+									<table width="60%" style="margin: auto; width: 60%;">
+                                        <tr>
+                                            <td colspan="2">
+                                                <br/>
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span style=" text-align: left;"><strong>RAZON SOCIAL</strong></span>
+                                            </td>
+
+											<td align="right" style="width: 50%;">
+
+												<div style="float: left; width:auto; ">
+
+													<input id="razon_social" type='text'  class="input-comprar">
+												</div>
+
+											</td>
+
+                                            <td>
+                                                <span style="text-align: left;"><strong>NIT..</strong></span>
+                                            </td>
+
+											<td align="left" style="width: 50%;">
+												<div style="float: left; width:auto; ">
+
+													<input id="nit"  type='text'  class="input-comprar">
+												</div>
+											</td>
+										</tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <br/>
+												Selecciona la forma de Pago.
+                                            </td>
+                                        </tr>
+
+										<tr>
+											<td colspan="4">
+
+												<table>
+													<tr >
+														<td class="tipo_de_pago">
+															<span style="display: block;"><strong>BANCA ELECTRONICA</strong></span>
 								<span>
 									PAGA DESDE EL SITIO WEB O DESDE LAS OFICINAS DEL BANCO DE TU ELECCIÓN.
 								</span>
-							</td>
-							<td class="tipo_de_pago">
-								<span style="display: block;"><strong>TARJETA DE CRÉDITO</strong></span>
+														</td>
+														<td class="tipo_de_pago">
+															<span style="display: block;"><strong>TARJETA DE CRÉDITO</strong></span>
 								<span>
 									PAGA CON TU TARJETA DE CRÉDITO UTILIZANDO NUESTRA PASARELA DE PAGO.
 								</span>
-							</td>
-							<td class="tipo_de_pago">
-								<span style="display: block;"><strong>BILLETERA ELECTRÓNICA</strong></span>
+														</td>
+														<td class="tipo_de_pago">
+															<span style="display: block;"><strong>BILLETERA ELECTRÓNICA</strong></span>
 								<span>
 									COMPRA TU PASAJE UTILIZANDO TU BILLETERA ELECTRÓNICA Y SIGUE LAS INSTRUCCIONES QUE SALDRAN EN TU CELULAR.
 								</span>
+														</td>
+
+													</tr>
+
+													<tr>
+														<td class="tipo_de_pago" id="debito">
+
+
+
+
+														</td>
+														<td class="tipo_de_pago" id="credito">
+
+
+														</td>
+														<td class="tipo_de_pago" id="billetera">
+
+
+														</td>
+
+
+													</tr>
+												</table>
+											</td>
+										</tr>
+
+
+									</table>
+								</div>
+
 							</td>
+
+
 
 						</tr>
 
-						<tr>
-							<td class="tipo_de_pago" id="debito">
-
-
-
-
-							</td>
-							<td class="tipo_de_pago" id="credito">
-
-
-							</td>
-							<td class="tipo_de_pago" id="billetera">
-
-
-							</td>
-
-
-						</tr>
+						<!---->
 
 					</table>
 				</div>
@@ -985,14 +1052,14 @@
 						</td>
 					</tr>
 				</table>
-			</div>	
+			</div>
 	</div> <!-- <<< UI RESERVA VUELOS >>> -->
 
 	<!-- <<< DIALOGS >>> -->
 	<div id="dialog_overlay" style="display:none">
 		<div id="simple_dialog" class="dialog" style="display:none">
 			<div class="description">
-				
+
 			</div>
 			<div class="button">CERRAR</div>
 		</div>

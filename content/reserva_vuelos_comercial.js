@@ -1105,6 +1105,8 @@ function asyncValidateSeleccionVuelo(response) {
             yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
         });
 
+        
+
         $("#info_resultados_vuelos").removeClass("active");
         $("#info_registro_pasajeros").addClass("active");
 
