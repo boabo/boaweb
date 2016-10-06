@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="checkbox contenido impresion">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos.js" afterPath="$PROJECT_DIR$/content/reserva_vuelos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reserva_vuelos.html" afterPath="$PROJECT_DIR$/reserva_vuelos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
     </list>
     <ignored path="boaweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reserva_vuelos.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reserva_vuelos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="194" column="93" selection-start-line="194" selection-start-column="93" selection-end-line="194" selection-end-column="93" />
+            <state relative-caret-position="208">
+              <caret line="197" column="12" selection-start-line="197" selection-start-column="12" selection-end-line="197" selection-end-column="12" />
               <folding>
                 <marker date="1475764854000" expanded="true" signature="4604:4621" placeholder="..." />
                 <marker date="1475764854000" expanded="true" signature="33998:34111" placeholder="..." />
@@ -96,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom_handlers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="custom_handlers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="45" column="43" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="43" />
+            <state relative-caret-position="444">
+              <caret line="194" column="62" selection-start-line="194" selection-start-column="62" selection-end-line="194" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -152,10 +150,10 @@
         <option value="$PROJECT_DIR$/form.html" />
         <option value="$PROJECT_DIR$/prueba_iframe.html" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" />
-        <option value="$PROJECT_DIR$/content/custom_handlers.js" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.css" />
         <option value="$PROJECT_DIR$/reserva_vuelos.html" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
+        <option value="$PROJECT_DIR$/content/custom_handlers.js" />
       </list>
     </option>
   </component>
@@ -203,8 +201,79 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches">
-        <subPane />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bancos" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
@@ -270,7 +339,7 @@
         </subPane>
         <subPane subId="Tests" />
       </pane>
-      <pane id="ProjectPane">
+      <pane id="Scratches">
         <subPane />
       </pane>
     </panes>
@@ -533,7 +602,7 @@
       <workItem from="1475613230886" duration="6670000" />
       <workItem from="1475671485479" duration="8269000" />
       <workItem from="1475692666380" duration="7961000" />
-      <workItem from="1475757713916" duration="6256000" />
+      <workItem from="1475757713916" duration="9961000" />
     </task>
     <task id="LOCAL-00001" summary="validacion de boton enviar correo">
       <created>1471364598070</created>
@@ -560,7 +629,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="664391000" />
+    <option name="totallyTimeSpent" value="668096000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -576,7 +645,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22280967" sideWeight="0.4753577" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22280967" sideWeight="0.4753577" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1078,14 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="45" column="43" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -1115,8 +1176,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="194" column="93" selection-start-line="194" selection-start-column="93" selection-end-line="194" selection-end-column="93" />
+        <state relative-caret-position="208">
+          <caret line="197" column="12" selection-start-line="197" selection-start-column="12" selection-end-line="197" selection-end-column="12" />
           <folding>
             <marker date="1475764854000" expanded="true" signature="4604:4621" placeholder="..." />
             <marker date="1475764854000" expanded="true" signature="33998:34111" placeholder="..." />
@@ -1132,6 +1193,14 @@
             <marker date="1475764854000" expanded="false" signature="56883:56902" placeholder="..." />
             <marker date="1475764854000" expanded="true" signature="57311:57712" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="194" column="62" selection-start-line="194" selection-start-column="62" selection-end-line="194" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

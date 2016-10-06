@@ -189,6 +189,13 @@ var BoA = {
 					url:"http://www.google.com",
 					visible:true,
 					enabled:false
+				},
+				{
+					nombre:"comunidad",
+					img:"content/images/bancos/banco_comunidad.jpg",
+					url:"http://www.google.com",
+					visible:true,
+					enabled:false
 				}
 			],
 			credito:[
