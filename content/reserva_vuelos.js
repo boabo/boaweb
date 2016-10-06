@@ -192,7 +192,7 @@ $(document).on('ready',function()
 
 
 	$("#pagar_reserva").click(function () {
-
+		$(this).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
 		var self = this;
 		if( $(this).hasClass("activado") ){
 			$(this).removeClass("activado");
@@ -214,6 +214,7 @@ $(document).on('ready',function()
 
 
 			$(this).addClass("activado");
+			$(this).empty().append('x Pagar Reserva');
 			$(this).siblings('td').hide("slow",function () {
 				$("#contenedor_pagar").show("slide");
 				$("#cod_reserva").css({"margin-top":"0px"});
@@ -257,7 +258,6 @@ function dibujarBancos(objeto,titulo){
 					if($("#nit").val() == ''){
 						validado = false;
 						$("#nit").css({"border":"1px solid red"});
-						console.log($("#nit"))
 					}else{
 						$("#nit").css({"border":""});
 					}
@@ -348,6 +348,7 @@ function toggleWidgetCambiarVuelo()
 	if($(this).hasClass("searching")) return;
 
 	var widget = $(this.parentNode);
+	console.log('widget',widget)
 
 	if(widget.hasClass("collapsed")) {
 		widget.removeClass("collapsed").addClass("expanded");
@@ -695,6 +696,7 @@ function deleteVuelta()
 // ---------------------= =---------------------
 function changeNumPassengers()
 {
+	console.log(this)
 	var ul = $(this.parentNode);
 	var count = parseInt($(this).data("count"));
 
@@ -917,12 +919,14 @@ function validatePassengers()
 			seleccionVuelo: selVueloToSend
 		};
 
+		$("#loading_compra").show();
+
 		ajaxRequest(
 			BoA.urls["register_passengers_service"], 
 			asyncRegisterPassengers, 
 			"POST", dataToSend);
 
-		$("#loading_compra").show();
+
 		$("#btn_validar_pasajeros").hide();
 
 	}
@@ -1033,8 +1037,19 @@ function asyncValidateSeleccionVuelo(response)
 // ---------------------= =---------------------
 function backToFlightStage() 
 {
+	console.log('vuelve atras')
+
+	if($("#info_pago_bancos").hasClass("active")){
+
+		$("#widget_resumen_reserva").show();
+		$("#loading_compra").hide();
+		$("#stage_compra").removeClass("active");
+	}
+
 	$("#info_resultados_vuelos").addClass("active");
 	$("#info_registro_pasajeros").removeClass("active");
+
+	$("#info_pago_bancos").removeClass("active");
 
 	$("#stage_seleccion").addClass("active");
 	$("#stage_registro").removeClass("active");
@@ -1488,7 +1503,7 @@ function handleInitialRequest()
 		var list = $("#widget_resumen_reserva .selector-pax ul[data-tipo='"+tipo+"']");
 
 		list.find("li.selected").click();
-		list.find("li[data-count='"+pxCount+"']").click();	
+		list.find("li[data-count='"+pxCount+"']").click();
 	}
 
 	searchParameters.sitios = defaultSitesCount; // start value
