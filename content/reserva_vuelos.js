@@ -121,6 +121,9 @@ $(document).on('ready',function()
 	}
 
 
+	$("#tbl_salida").find("tr").not(":first").remove(); // clear table results
+	$("#tbl_regreso").find("tr").not(":first").remove(); // clear table results
+
 
 
 	todayStr = formatCompactDate(new Date()); // today 
@@ -196,14 +199,11 @@ $(document).on('ready',function()
 		var self = this;
 		if( $(this).hasClass("activado") ){
 			$(this).removeClass("activado");
-			//$(this).siblings('td').hide("slide");
+
 			$("#contenedor_pagar").hide("slide",function () {
 				$("#cod_reserva").css({"margin-top":"30px"});
 				$(self).siblings('td').show();
 			});
-
-
-
 
 
 			$("#razon_social").val('');
@@ -211,15 +211,11 @@ $(document).on('ready',function()
 
 		}else{
 
-
-
 			$(this).addClass("activado");
 			$(this).empty().append('x Pagar Reserva');
 			$(this).siblings('td').hide("slow",function () {
 				$("#contenedor_pagar").show("slide");
 				$("#cod_reserva").css({"margin-top":"0px"});
-
-
 
 
 			});
@@ -1565,7 +1561,7 @@ function requestSearchParameters(parms)
 	var currentTimeStr = formatCompactTime(new Date());
 
 	var data = {
-		tokenAv 		: SERVICE_CREDENTIALS_KEY, 
+		tokenAv 		: SERVICE_CREDENTIALS_KEY,
 		language 		: "ES",
 		currency 		: CODE_CURRENCIES[CURRENCY],
 		locationType 	: "N",
@@ -1915,7 +1911,7 @@ function buildRegistroPersona(tipo, numPx)
 		.append("" +
 			(isAdulto?
 				"<tr><th colspan='2' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><td colspan='2'><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td>" :
-				"<tr><td colspan='4'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+				"<tr><td colspan='4'><span style='color: #4c0a00; font-size: 15px;'><b>Se debe presentar documentos para confirmar la edad</b></span><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
 			) +
 
 			"");
