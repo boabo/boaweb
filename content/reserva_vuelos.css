@@ -233,11 +233,11 @@
 
 #ui_reserva_vuelos .descripcion > h2 {
 	font-size: 21px;
-	padding: 10px 0 10px 60px;
+	padding: 10px 0 10px 35px;
 	background-image: url('images/icon_avion_reservas.png');
 	background-size: 30px auto;
 	background-repeat: no-repeat;
-	background-position: 20px 5px;
+	/*background-position: 20px 5px;*/
 }
 
 #ui_reserva_vuelos .info .descripcion {

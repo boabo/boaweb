@@ -1303,6 +1303,7 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 		var td = $(document.createElement("td"));
 		td.attr("colspan",monthsInDays[key])
 		  .css("width",(100 * (monthsInDays[key]/7.0))+"%")
+			.css("display","none")
 		  .addClass("month")
 		  .html("<h3>" + MONTHS_2_CHARS_LANGUAGE_TABLE[parseInt(key)] + "</h3>");
 		monthsRow.append(td);
@@ -1529,12 +1530,19 @@ function requestSearchParameters(parms)
 	var cityOrigen = cities[origen];
 	var cityDestino = cities[destino];
 
-	$("#lbl_info_salida").html("Ida: "+cityOrigen+"("+origen+") - "+cityDestino+"("+destino+")");
+	$("#lbl_info_salida").html("VUELO DE IDA");
+	$("#lbl_info_salida").css({"font-size":"12px"});
+	$("#lbl_info_salida").after("<b style='font-size: 25px;'>"+cityOrigen+"("+origen+") - "+cityDestino+"("+destino+") </b>");
 
 	// regreso
 	if(parms.fechaVuelta != null) {
  		$("#lbl_info_regreso, #tbl_dayselector_regreso, #tbl_regreso").show();
-		$("#lbl_info_regreso").html("Retorno: "+cityDestino+"("+destino+") - "+cityOrigen+"("+origen+")");
+		$("#lbl_info_regreso").html("VUELO DE VUELTA: ");
+
+		$("#lbl_info_regreso").css({"font-size":"12px"});
+		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityOrigen+"("+origen+") - "+cityDestino+"("+destino+") </b>");
+
+
 	} else {
 		$("#lbl_info_regreso, #tbl_dayselector_regreso, #tbl_regreso").hide();
 		$("#lbl_info_regreso").hide();
@@ -1652,16 +1660,23 @@ function updatePriceByTipo(tipo, changeFlapper)
 		seleccionVuelo[tipo].ida.precioBase = tarifa.monto * tarifa.porcentajes[tipo];
 
 		seleccionVuelo[tipo].ida.tasas = {}; // reset
-		for(var i=0;i<tasasPorPasajero[tipo].length;i++) {
-			var keyTasa = tasasPorPasajero[tipo][i];
-			var tasa = tasas[keyTasa];
+		if(tasasPorPasajero[tipo] != undefined) {
 
-			// algunas tasas solo existen de vuelta
-			if(tasa.ida != null) {
-				seleccionVuelo[tipo].ida.tasas[keyTasa] = 
-				seleccionVuelo[tipo].ida.precioBase * (tasa.ida.porcentaje/100.0) + tasa.ida.fijo;		
+			for (var i = 0; i < tasasPorPasajero[tipo].length; i++) {
+				var keyTasa = tasasPorPasajero[tipo][i];
+				var tasa = tasas[keyTasa];
+
+				// algunas tasas solo existen de vuelta
+				if (tasa.ida != null) {
+					seleccionVuelo[tipo].ida.tasas[keyTasa] =
+						seleccionVuelo[tipo].ida.precioBase * (tasa.ida.porcentaje / 100.0) + tasa.ida.fijo;
+				}
 			}
 		}
+
+
+
+
 
 		// tasa BO se calcula de forma distinta
 		// BO = (Neto + QM) * %
@@ -1680,14 +1695,16 @@ function updatePriceByTipo(tipo, changeFlapper)
 			seleccionVuelo[tipo].vuelta.precioBase = tarifa.monto * tarifa.porcentajes[tipo];
 
 			seleccionVuelo[tipo].vuelta.tasas = {}; // reset
-			for(var i=0;i<tasasPorPasajero[tipo].length;i++) {
-				var keyTasa = tasasPorPasajero[tipo][i];
-				var tasa = tasas[keyTasa];
+			if(tasasPorPasajero[tipo] != undefined) {
+				for (var i = 0; i < tasasPorPasajero[tipo].length; i++) {
+					var keyTasa = tasasPorPasajero[tipo][i];
+					var tasa = tasas[keyTasa];
 
-				// algunas tasas solo existen de ida
-				if(tasa.vuelta != null) {
-					seleccionVuelo[tipo].vuelta.tasas[keyTasa] = 
-						seleccionVuelo[tipo].vuelta.precioBase * (tasa.vuelta.porcentaje/100.0) + tasa.vuelta.fijo;
+					// algunas tasas solo existen de ida
+					if (tasa.vuelta != null) {
+						seleccionVuelo[tipo].vuelta.tasas[keyTasa] =
+							seleccionVuelo[tipo].vuelta.precioBase * (tasa.vuelta.porcentaje / 100.0) + tasa.vuelta.fijo;
+					}
 				}
 			}
 
@@ -1771,8 +1788,7 @@ function updateFlapper()
 		flapperTotal.val("???????").change();
 }
 // ---------------------= =---------------------
-function buildDetailPrices(info, tipo)
-{
+function buildDetailPrices(info, tipo) {
 	var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
 
 	// console.log(info.ida.precioBase);
