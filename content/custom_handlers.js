@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-var CURRENCY = "bs"; // "euro", "bs" , "usd" 
+var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
 var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi6K8aIL+nvxxeirQAFMYfbYL5o7IDCS6H22QU0GPB7Zy0oyzdto0uLTAItGeLEAe2z1QeRpfs8U2w==";
@@ -76,9 +76,9 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'GRU',
+		origen: 'EZE',
 		destino: 'VVI',
-		fechaIda : '20161029',//formatCompactDate(new Date()), // today
+		fechaIda : '20161014',//formatCompactDate(new Date()), // today
 		fechaVuelta: '20161122',//null, // no flight back
 		adulto: 1,
 		infante: 0,

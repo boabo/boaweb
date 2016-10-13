@@ -1691,9 +1691,13 @@ function updatePriceByTipo(tipo, changeFlapper)
 				if (tasa.ida != null) {
 					seleccionVuelo[tipo].ida.tasas[keyTasa] =
 						seleccionVuelo[tipo].ida.precioBase * (tasa.ida.porcentaje / 100.0) + tasa.ida.fijo;
+
+
+
 				}
 			}
 		}
+
 
 
 
@@ -1725,6 +1729,9 @@ function updatePriceByTipo(tipo, changeFlapper)
 					if (tasa.vuelta != null) {
 						seleccionVuelo[tipo].vuelta.tasas[keyTasa] =
 							seleccionVuelo[tipo].vuelta.precioBase * (tasa.vuelta.porcentaje / 100.0) + tasa.vuelta.fijo;
+
+
+
 					}
 				}
 			}
@@ -1737,7 +1744,35 @@ function updatePriceByTipo(tipo, changeFlapper)
 					(seleccionVuelo[tipo].vuelta.precioBase + seleccionVuelo[tipo].vuelta.tasas['QM']) * 
 					(tasas['BO'].vuelta.porcentaje/100.0);
 			}
+
+			//calculamos tasas que apliquen a ambos ida y vuelta
+			//si es AR APLICAR si tiene vuelta en ambos precios bases
+			$.each(seleccionVuelo[tipo].ida.tasas,function (k,v) {
+
+				if (k == "AR") {
+					var precio_base_ida_vuelta = seleccionVuelo[tipo].ida.precioBase + seleccionVuelo[tipo].vuelta.precioBase;
+					seleccionVuelo[tipo].ida.tasas[keyTasa] =
+						precio_base_ida_vuelta * (tasa.ida.porcentaje / 100.0) + tasa.ida.fijo;
+
+				}
+
+			});
+
 		}
+
+
+		/*CALCULO DE TOTAL DE TASAS*/
+		var total_solo_tasas = 0;
+		$.each(seleccionVuelo[tipo].ida.tasas,function (k,v) {
+
+			total_solo_tasas = total_solo_tasas + v;
+		});
+		$.each(seleccionVuelo[tipo].vuelta.tasas,function (k,v) {
+
+			total_solo_tasas = total_solo_tasas + v;
+		});
+
+
 
 
 		/* CALCULO DE PRECIO TOTAL */
@@ -1770,24 +1805,9 @@ function updatePriceByTipo(tipo, changeFlapper)
 
 		var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
 		var total_base = 0;
-		var total_solo_tasas = 0;
 
 		if (seleccionVuelo[tipo].formattedPrecioTotal != 0) {
 			total_base = parseInt(seleccionVuelo[tipo].ida.precioBase + seleccionVuelo[tipo].vuelta.precioBase);
-
-			//sumamos las tasas solo tasas
-			$.each(seleccionVuelo[tipo].ida.tasas,function (k,v) {
-
-				total_solo_tasas = total_solo_tasas + v;
-			});
-
-			if(seleccionVuelo.vuelta != null) {
-				$.each(seleccionVuelo[tipo].vuelta.tasas,function (k,v) {
-
-					total_solo_tasas = total_solo_tasas + v;
-				});
-			}
-
 
 
 		}
@@ -2051,7 +2071,8 @@ function translateTaxes(fromResponse)
 		rawVueltaTaxes = fromResponse['tasaVuelta']['tasa'];
 
 	//aca verificamos que este en un array las vueltas
-	if (!Array.isArray(rawVueltaTaxes)){
+
+	if (rawVueltaTaxes!= null && !Array.isArray(rawVueltaTaxes)){
 		var array_vuelta_aux = new Array();
 		array_vuelta_aux.push(rawVueltaTaxes);
 		rawVueltaTaxes = array_vuelta_aux;
