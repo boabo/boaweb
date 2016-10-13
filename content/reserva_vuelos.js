@@ -408,13 +408,25 @@ function selectTarifa()
 	
 	var tblSeleccion = $("#tbl_seleccion_" + tipo + ", #tbl_seleccion_" + tipo + "_small");
 
-	tblSeleccion.find(".cell-cod-origen-destino h1").html(opcion.origen + " - " + opcion.destino);
-	tblSeleccion.find(".cell-duracion").html(formatExpandedTime(opcion.duracionVuelo) + " vuelo");
+	tblSeleccion.find(".fecha_salida_").html(formatShortDate(opcion.vuelos[0].fecha));
+	tblSeleccion.find(".fecha_llegada_").html("Llegada<br> "+formatShortDate(opcion.vuelos[0].fechaLlegada));
+
+	tblSeleccion.find(".salida_").html("<span style='float: left; padding-left: 5px; font-size: 15px;'>"+formatTime(opcion.horaSalida)+"</span><h1 style='float: left;'>"+opcion.origen+"</h1>");
+	tblSeleccion.find(".llegada_").html("<h1 style='float: right;'>"+opcion.destino+"</h1><span style='float: right; font-size: 15px;'>"+formatTime(opcion.horaLlegada)+"</span>");
+
+
+	tblSeleccion.find(".citie_salida_").html(cities[opcion.origen]);
+	tblSeleccion.find(".citie_llegada_").html(cities[opcion.destino]);
+
+	//
+
+	//tblSeleccion.find(".cell-cod-origen-destino h1").html(opcion.origen + " - " + opcion.destino);
+	// tblSeleccion.find(".cell-duracion").html(formatExpandedTime(opcion.duracionVuelo) + " vuelo");
 	
-	$("#tbl_seleccion_" + tipo).find(".cell-fecha").html(formatExpandedDate(opcion.vuelos[0].fecha));
+	// $("#tbl_seleccion_" + tipo).find(".cell-fecha").html(formatExpandedDate(opcion.vuelos[0].fecha));
 	$("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(formatShortDate(opcion.vuelos[0].fecha));
 
-	$("#tbl_seleccion_" + tipo).find(".cell-hora span").html("Salida:<br>" + formatTime(opcion.horaSalida));
+	// $("#tbl_seleccion_" + tipo).find(".cell-hora span").html("Salida:<br>" + formatTime(opcion.horaSalida));
 	$("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(formatTime(opcion.horaSalida));
 
 	$("#tbl_seleccion_" + tipo).css("display","block");
@@ -1253,7 +1265,13 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 	for(var i=-3;i<=3;i++) {
 		// same process for days after
 		var d = new Date(requestedDate);
+
+
 		d.setDate(requestedDate.getDate() + i);
+
+		var mess = COMPACT_MONTH_NAMES[d.getMonth()];
+
+
 
 		var mm = "" + (d.getMonth()+1);
 		if(false == (mm in monthsInDays))
@@ -1267,7 +1285,8 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 
 		$(cell).addClass("day-selector").data("date", dateStr);
 
-		$(cell).html("<h2>" + WEEKDAYS_2_CHARS_LANGUAGE_TABLE[d.getDay()] + 
+
+		$(cell).html("<span>"+WEEKDAYS_LONG_2_CHARS_LANGUAGE_TABLE[d.getDay()]+"</span><h2>" + mess  +
 			"<span>" + (("00" + d.getDate()).slice(-2)) + "</span></h2>");
 
 		var inRange = true;
@@ -1530,17 +1549,19 @@ function requestSearchParameters(parms)
 	var cityOrigen = cities[origen];
 	var cityDestino = cities[destino];
 
+	$("#lbl_info_salida").siblings('b').remove(); //este elimina a los dos b de ida y de regreso para volver a poner
 	$("#lbl_info_salida").html("VUELO DE IDA");
 	$("#lbl_info_salida").css({"font-size":"12px"});
-	$("#lbl_info_salida").after("<b style='font-size: 25px;'>"+cityOrigen+"("+origen+") - "+cityDestino+"("+destino+") </b>");
+	$("#lbl_info_salida").after("<b style='font-size: 25px;'>"+cityOrigen+" ( "+origen+" ) - "+cityDestino+" ( "+destino+" ) </b>");
 
 	// regreso
 	if(parms.fechaVuelta != null) {
+		$("#lbl_info_regreso").empty();
  		$("#lbl_info_regreso, #tbl_dayselector_regreso, #tbl_regreso").show();
 		$("#lbl_info_regreso").html("VUELO DE VUELTA: ");
 
 		$("#lbl_info_regreso").css({"font-size":"12px"});
-		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityOrigen+"("+origen+") - "+cityDestino+"("+destino+") </b>");
+		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityOrigen+" ( "+origen+" ) - "+cityDestino+" ( "+destino+") </b>");
 
 
 	} else {
@@ -1718,10 +1739,12 @@ function updatePriceByTipo(tipo, changeFlapper)
 			}
 		}
 
+
 		/* CALCULO DE PRECIO TOTAL */
 		seleccionVuelo[tipo].precioTotal = seleccionVuelo[tipo].ida.precioBase;
 		for(var keyTasa in seleccionVuelo[tipo].ida.tasas)  // ida
 			seleccionVuelo[tipo].precioTotal += seleccionVuelo[tipo].ida.tasas[keyTasa];
+
 
 		if(seleccionVuelo.vuelta != null) {
 			seleccionVuelo[tipo].precioTotal += seleccionVuelo[tipo].vuelta.precioBase;
@@ -1746,12 +1769,37 @@ function updatePriceByTipo(tipo, changeFlapper)
 		buildDetailPrices(seleccionVuelo[tipo], tipo);
 
 		var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
-		span.html(seleccionVuelo[tipo].formattedPrecioTotal);
+		var total_base = 0;
+		var total_solo_tasas = 0;
+
+		if (seleccionVuelo[tipo].formattedPrecioTotal != 0) {
+			total_base = parseInt(seleccionVuelo[tipo].ida.precioBase + seleccionVuelo[tipo].vuelta.precioBase);
+
+			//sumamos las tasas solo tasas
+			$.each(seleccionVuelo[tipo].ida.tasas,function (k,v) {
+
+				total_solo_tasas = total_solo_tasas + v;
+			});
+
+			if(seleccionVuelo.vuelta != null) {
+				$.each(seleccionVuelo[tipo].vuelta.tasas,function (k,v) {
+
+					total_solo_tasas = total_solo_tasas + v;
+				});
+			}
+
+
+
+		}
+
+		span.html(total_base);
 		span.parent().parent().addClass("calculated");
 
 		if(changeFlapper){
 			updateFlapper();
 		}
+
+
 	}
 	else{
 		span.html("0");
@@ -1988,11 +2036,26 @@ function translateTaxes(fromResponse)
 	else 
 		rawIdaTaxes = [];
 
+	//aca verificamos que este en un array las idastaxes
+	if (!Array.isArray(rawIdaTaxes)){
+		var array_ida_aux = new Array();
+		array_ida_aux.push(rawIdaTaxes);
+		rawIdaTaxes = array_ida_aux;
+	}
+
+
 	var rawVueltaTaxes;
 	if(fromResponse['tasaVuelta'] == null)  // podria no existir
 		rawVueltaTaxes = null;
 	else
 		rawVueltaTaxes = fromResponse['tasaVuelta']['tasa'];
+
+	//aca verificamos que este en un array las vueltas
+	if (!Array.isArray(rawVueltaTaxes)){
+		var array_vuelta_aux = new Array();
+		array_vuelta_aux.push(rawVueltaTaxes);
+		rawVueltaTaxes = array_vuelta_aux;
+	}
 
 	var to = {
 		byPassenger: {},
@@ -2024,6 +2087,7 @@ function translateTaxes(fromResponse)
 		if(to.byPassenger[pxKey].indexOf(taxKey) == -1) // add to list if not exists
 			to.byPassenger[pxKey].push(taxKey);
 	}
+
 
 	// tasas ida
 	for(var i=0;i<rawIdaTaxes.length;i++) {

@@ -339,22 +339,26 @@
 	<!-- UI RESERVA VUELOS -->
 	<div id="ui_reserva_vuelos" data-mode="normal" class="ui-section wide results selected">
 		<div class="gradient"></div>
-		<div class="header">
+		<div class="header" style="border: 0px;">
 			<div class="stages">
+				<div id="stage_eleccion" class="stage">
+					<div class="number"><span>1</span></div><span>Busqueda</span>
+				</div>
+
 				<div id="stage_seleccion" class="stage active">
-					<div class="number"><span>1</span></div><span>SELECCI&Oacute;N</span>
+					<div class="number"><span>2</span></div><span>Elija su Vuelo</span>
 				</div>
 				<div id="stage_registro" class="stage">
-					<div class="number"><span>2</span></div><span>REGISTRO DE PASAJEROS</span>
+					<div class="number"><span>3</span></div><span>Reservar</span>
 				</div>
 				<div id="stage_compra" class="stage">
-					<div class="number"><span>3</span></div><span>COMPRA</span>
+					<div class="number"><span>4</span></div><span>Pagar</span>
 				</div>
 			</div>
 
 			<div id="widget_cambiar_vuelo" class="collapsed">
 				<div id="btn_cambiar_vuelo" class="btn-expand">
-					<span class="cambiar">Cambiar Vuelo</span>
+					<span class="cambiar">Modificar Busqueda</span>
 					<span class="buscando">Buscando...</span>
 					<div class="icon-loading"></div>
 					<div class="icon-cross"></div>
@@ -829,28 +833,59 @@
 
 			<!-- WIDGET RESUMEN -->
 			<div id="widget_resumen_reserva">
-				<div class="head-tu-vuelo"></div>
+				<div class="head-tu-vuelo">
+					<div style="float: left;">
+						<img src="content/images/carrito.png" width="50" style="float: left;">
+						<span style=" float: left;margin-left: 10px; text-align: left; font-family: 'FuturaLight';font-size: 28px;">
+							Su Cesta<br>de Compra
+						</span>
+					</div>
+
+				</div>
 				<div class="separator"></div>
 				<div class="empty-selection" id="div_empty_vuelo">SELECCIONA<br>TU VUELO</div>
-				<div class="div-seleccion">
-					<table id="tbl_seleccion_ida" style="display:none">
+				<div class="div-seleccion" style=" padding-right: 10px; padding-left: 10px;">
+					<table id="tbl_seleccion_ida" style="display:none;">
+						<tr style="position: absolute;right: 10px; top: -3px;">
+							<td colspan="7" align="right">
+								<img style="cursor: pointer;" id="btn_borrar_ida" src="content/images/remove.png" width="15">
+							</td>
+						</tr>
 						<tr>
 							<td rowspan="2" class="cell-icon-ida">
-								<div class="icon-ida"></div>
+
+								<img src="content/images/avion.png" style="margin-top: 20px;">
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+							<td colspan="3" class="cell-origen-destino fecha_salida_" style="text-align: left; padding-left: 5px;">
 								<span>Origen</span>
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+							<td></td>
+							<td colspan="3" class="cell-origen-destino fecha_llegada_" style="text-align: left;">
 								<span class="lbl-origen-destino">Destino</span>
+
 							</td>
 						</tr>
 						<tr>
-							<td colspan="6" class="cell-cod-origen-destino">
-								<h1>LPB - VVI</h1>
+							<td colspan="3" class="cell-cod-origen-destino salida_">
+
+							</td>
+							<td style="width: 15px"><img src="content/images/flecha.png" width="15"></td>
+							<td colspan="3" class="cell-cod-origen-destino llegada_">
+								<h1>LPB</h1>
 							</td>
 						</tr>
 						<tr>
+							<td></td>
+							<td colspan="3" style="text-align: left; font-size: 15px; padding-left: 5px; " class="citie_salida_">Cochabamba</td>
+							<td></td>
+							<td colspan="3" style="text-align: right; font-size: 15px; " class="citie_llegada_">La paz</td>
+						</tr>
+						<tr>
+							<td colspan="7">
+								<hr />
+							</td>
+						</tr>
+						<!--<tr>
 							<td class="cell-duracion">
 								Duraci&oacute;n: 40 min.
 							</td>
@@ -860,7 +895,7 @@
 							<td class="cell-hora">
 								<span>14:30 PM</span>
 							</td>
-						</tr>
+						</tr>-->
 					</table>
 					<table id="tbl_seleccion_ida_small" style="display:none">
 						<tr>
@@ -886,38 +921,50 @@
 						</tr>
 					</table>
 					<div id="empty_ida_slot" class="empty-selection" style="display:none">SELECCIONE<br>VUELO DE IDA</div>
-					<div id="overlay_ida" class="overlay" style="display:none">
+					<!--<div id="overlay_ida" class="overlay" style="display:none">
 						<div id="btn_borrar_ida" class="btn-borrar">Quitar este vuelo</div>
-					</div>
+					</div>-->
 				</div>
-				<div class="div-seleccion">
+				<div class="div-seleccion" style=" padding-right: 10px; padding-left: 10px;">
 					<table id="tbl_seleccion_vuelta" style="display:none">
-						<tr>
-							<td rowspan="2" class="cell-icon-vuelta">
-								<div class="icon-vuelta"></div>
+
+						<tr style="position: absolute;right: 10px; top: -3px;">
+							<td colspan="7" align="right">
+								<img style="cursor: pointer;" id="btn_borrar_vuelta" src="content/images/remove.png" width="15">
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+						</tr>
+
+						<tr>
+							<td rowspan="2" class="cell-icon-ida">
+
+								<img src="content/images/avion.png" style="margin-top: 20px; transform: rotate(180deg);">
+							</td>
+							<td colspan="3" class="cell-origen-destino fecha_salida_" style="text-align: left; padding-left: 5px;">
 								<span>Origen</span>
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+							<td></td>
+							<td colspan="3" class="cell-origen-destino fecha_llegada_" style="text-align: left;">
 								<span class="lbl-origen-destino">Destino</span>
+
+							</td>
+						</tr>
+
+
+
+						<tr>
+							<td colspan="3" class="cell-cod-origen-destino salida_">
+
+							</td>
+							<td style="width: 15px"><img src="content/images/flecha.png" width="15"></td>
+							<td colspan="3" class="cell-cod-origen-destino llegada_">
+								<h1>LPB</h1>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="6" class="cell-cod-origen-destino">
-								<h1>VVI - LPB</h1>
-							</td>
-						</tr>
-						<tr>
-							<td class="cell-duracion">
-								Duraci&oacute;n: 40 min.
-							</td>
-							<td colspan="5" class="cell-fecha">
-								<span>Martes 8 de Octubre</span>
-							</td>
-							<td class="cell-hora">
-								<span>09:15 PM</span>
-							</td>
+							<td></td>
+							<td colspan="3" style="text-align: left; font-size: 15px; padding-left: 5px; " class="citie_salida_">Cochabamba</td>
+							<td></td>
+							<td colspan="3" style="text-align: right; font-size: 15px; " class="citie_llegada_">La paz</td>
 						</tr>
 					</table>
 					<table id="tbl_seleccion_vuelta_small" style="display:none">
@@ -943,9 +990,9 @@
 							</td>
 						</tr>
 					</table>
-					<div id="overlay_vuelta" class="overlay" style="display:none">
+					<!--<div id="overlay_vuelta" class="overlay" style="display:none">
 						<div id="btn_borrar_vuelta" class="btn-borrar">Quitar este vuelo</div>
-					</div>
+					</div>-->
 				</div>
 				<div class="separator"></div>
 				<table cellspacing="0" cellpadding="0">

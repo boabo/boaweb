@@ -2,7 +2,7 @@
 var CURRENCY = "bs"; // "euro", "bs" , "usd" 
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYjgxxgFs2xPu09m6gni+iCLWFik5sOKDsOf0wCotfnPT5AOZXSct0o8Da40YIkHrklskU/T2Z+eMw==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi6K8aIL+nvxxeirQAFMYfbYL5o7IDCS6H22QU0GPB7Zy0oyzdto0uLTAItGeLEAe2z1QeRpfs8U2w==";
 
 var server = '192.168.17.247'; //puede ser "+server+"
 
@@ -68,18 +68,18 @@ var BoA = {
 
 		/* SERVICES */
 		// nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-		nearest_dates_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/Calendar",
-		flights_schedule_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
+		nearest_dates_service: "https://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
+		flights_schedule_service: "https://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
 		validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
 		register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
 		change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php"
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'LPB',
-		destino: 'CBB',
-		fechaIda : '20161014',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20161022',//null, // no flight back
+		origen: 'GRU',
+		destino: 'VVI',
+		fechaIda : '20161029',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20161122',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0

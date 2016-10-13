@@ -989,7 +989,7 @@
     background-color: #EFAA35;
 }
 
-#widget_cambiar_vuelo.collapsed {width: 200px; height: 40px;}
+#widget_cambiar_vuelo.collapsed {width: 250px; height: 40px;}
 #widget_cambiar_vuelo.expanded {width: 500px;height: 270px;}
 
 #widget_cambiar_vuelo .form input[type="text"] {
