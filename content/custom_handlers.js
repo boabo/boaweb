@@ -2,7 +2,7 @@
 var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi6K8aIL+nvxxeirQAFMYfbYL5o7IDCS6H22QU0GPB7Zy0oyzdto0uLTAItGeLEAe2z1QeRpfs8U2w==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5D0eaq2WLXkYasO4LPS7Hz66XeZ5Ew5AqBKUb4r5f5+2bwX8HaD/WZ10AEMVDbTNI8JqnMgbEthA==";
 
 var server = '192.168.17.247'; //puede ser "+server+"
 
@@ -76,10 +76,10 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'EZE',
-		destino: 'VVI',
-		fechaIda : '20161014',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20161122',//null, // no flight back
+		origen: 'MAD',
+		destino: 'EZE',
+		fechaIda : '20161021',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20161022',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0

@@ -2047,8 +2047,25 @@ function buildBanks(banks)
 // ---------------------= =---------------------
 function translateTaxes(fromResponse) 
 {
-	
-	var rawTaxesByPx = fromResponse['tasaTipoPasajero']['TasaTipoPasajero'];
+	if(fromResponse['tasaTipoPasajero'] == null){
+
+
+		var tasaTipoPasajero = new Array();
+		$.each(fromResponse['tasaIda'].tasa,function (k,v) {
+			tasaTipoPasajero.push({
+				"tipoTasa":v.tipo_tasa["#text"],
+				"tipoPasajero":"Adulto",
+				"tasa":""
+			});
+
+		});
+
+		var rawTaxesByPx =tasaTipoPasajero;
+		
+	}else{
+		var rawTaxesByPx = fromResponse['tasaTipoPasajero']['TasaTipoPasajero'];
+	}
+
 
 	var rawIdaTaxes;
 	if(fromResponse['tasaIda'] != null) 
@@ -2071,7 +2088,7 @@ function translateTaxes(fromResponse)
 		rawVueltaTaxes = fromResponse['tasaVuelta']['tasa'];
 
 	//aca verificamos que este en un array las vueltas
-
+	
 	if (rawVueltaTaxes!= null && !Array.isArray(rawVueltaTaxes)){
 		var array_vuelta_aux = new Array();
 		array_vuelta_aux.push(rawVueltaTaxes);
