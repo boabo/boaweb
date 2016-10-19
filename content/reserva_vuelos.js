@@ -1243,7 +1243,7 @@ function asyncReceiveFlights(response)
 	var lista_negra_clases = [];
 	$.each(response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"],function(k,v){
 		if(v.num_opcion in lista_negra_clases){
-			tamano_aux = lista_negra_clases[v.num_opcion].clase.length
+			tamano_aux = lista_negra_clases[v.num_opcion].clase.length;
 			if(lista_negra_clases[v.num_opcion].clase.length > v.clases.clase.length){
 				response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"][k-1].validado = 'no';
 				response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"][k].validado = 'si';
@@ -1283,7 +1283,7 @@ function asyncReceiveFlights(response)
 		lista_negra_clases = [];
 		$.each(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],function(k,v){
 			if(v.num_opcion in lista_negra_clases){
-				tamano_aux = lista_negra_clases[v.num_opcion].clase.length
+				tamano_aux = lista_negra_clases[v.num_opcion].clase.length;
 				if(lista_negra_clases[v.num_opcion].clase.length > v.clases.clase.length){
 					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k-1].validado = 'no';
 					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
@@ -2544,7 +2544,10 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 				flight.origen = opc.vuelos[opc.vuelos.length-1].destino;
 
 
-				to.flightOptions["opcion_" + flight.numOpcion].tarifas = (flight.validado=='si')?flight.tarifas:null;
+				if (to.flightOptions["opcion_" + flight.numOpcion].tarifas == null){
+					to.flightOptions["opcion_" + flight.numOpcion].tarifas = (flight.validado=='si')?flight.tarifas:null;
+				}
+
 
 			}
 		}
