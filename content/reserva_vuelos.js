@@ -24,6 +24,22 @@ var seleccionVuelo = {
 	ida: 			null,
 	vuelta: 		null, 
 
+	tasasTotales:{
+
+		adulto:{
+			tasas:{},
+			total:0
+		},
+		ninho:{
+			tasas:{},
+			total:0
+		},
+		infante:{
+			tasas:{},
+			total:0
+		},
+		total:0
+	},
 	adulto: 		{
 		num: 			0,
 		ida:{
@@ -374,7 +390,13 @@ function selectTarifa()
 
 	var tipo = $(table).data("tipo");
 
+
+
+
+
 	if(tipo=="ida") {
+
+
 		seleccionVuelo.ida = {};
 		seleccionVuelo.ida.opcCode = opcCode;
 		seleccionVuelo.ida.compartment = compartment;
@@ -1209,6 +1231,35 @@ function asyncReceiveFlights(response)
 
 	allOptions = {}; // reset before translating
 
+	//todo
+	//verificamos si es array lo que nos llega o solo un registro
+	if (!Array.isArray(response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"])){
+		var array_ida_aux = new Array();
+		array_ida_aux.push(response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"]);
+		response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"] = array_ida_aux;
+	}
+
+	//selecciomos un vuelo con menos tarifas
+	var lista_negra_clases = [];
+	$.each(response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"],function(k,v){
+		if(v.num_opcion in lista_negra_clases){
+			tamano_aux = lista_negra_clases[v.num_opcion].clase.length
+			if(lista_negra_clases[v.num_opcion].clase.length > v.clases.clase.length){
+				response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"][k-1].validado = 'no';
+				response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"][k].validado = 'si';
+			}else{
+				response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"][k].validado = 'no';
+			}
+		}else{
+			lista_negra_clases[v.num_opcion] = v.clases;
+			response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"][k].validado = 'si';
+		}
+	});
+
+
+
+
+	console.log('fuera')
 	var dataIda = translateFlights(
 		response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"], 
 		rawTarifas, 
@@ -1221,6 +1272,30 @@ function asyncReceiveFlights(response)
 	buildFlightsTable("tbl_salida", dataIda.flightOptions, dataIda.compartments);
 
 	if(currentDateVuelta != null) {
+
+		//verificamos si es array
+		//verificamos si es array lo que nos llega o solo un registro
+		if (!Array.isArray(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"])){
+			var array_ida_aux = new Array();
+			array_ida_aux.push(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"]);
+			response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"] = array_ida_aux;
+		}
+		lista_negra_clases = [];
+		$.each(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],function(k,v){
+			if(v.num_opcion in lista_negra_clases){
+				tamano_aux = lista_negra_clases[v.num_opcion].clase.length
+				if(lista_negra_clases[v.num_opcion].clase.length > v.clases.clase.length){
+					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k-1].validado = 'no';
+					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
+				}else{
+					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'no';
+				}
+			}else{
+				lista_negra_clases[v.num_opcion] = v.clases;
+				response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
+			}
+		});
+
 		var dataVuelta = translateFlights(
 			response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],
 			rawTarifas, 
@@ -1671,6 +1746,8 @@ function updatePriceByTipo(tipo, changeFlapper)
 	var precio = -1;
 	var num = seleccionVuelo[tipo].num;
 
+	//seleccionVuelo[tipo].tasasTotales = {};
+
 	if(seleccionVuelo.ida != null) {
 		/* CALCULOS PARA IDA */
 		var opcionIda = allOptions[seleccionVuelo.ida.opcCode];
@@ -1745,32 +1822,98 @@ function updatePriceByTipo(tipo, changeFlapper)
 					(tasas['BO'].vuelta.porcentaje/100.0);
 			}
 
-			//calculamos tasas que apliquen a ambos ida y vuelta
-			//si es AR APLICAR si tiene vuelta en ambos precios bases
-			$.each(seleccionVuelo[tipo].ida.tasas,function (k,v) {
 
-				if (k == "AR") {
-					var precio_base_ida_vuelta = seleccionVuelo[tipo].ida.precioBase + seleccionVuelo[tipo].vuelta.precioBase;
-					seleccionVuelo[tipo].ida.tasas[keyTasa] =
-						precio_base_ida_vuelta * (tasa.ida.porcentaje / 100.0) + tasa.ida.fijo;
 
-				}
 
-			});
+
 
 		}
 
 
-		/*CALCULO DE TOTAL DE TASAS*/
-		var total_solo_tasas = 0;
+
+		seleccionVuelo.tasasTotales[tipo].tasas={};
+		seleccionVuelo.tasasTotales[tipo].total=0;
+
+
+
+
+		//sumamos las tasas de ambos
+		//calculamos tasas que apliquen a ambos ida y vuelta
+		//si es AR APLICAR si tiene vuelta en ambos precios bases
 		$.each(seleccionVuelo[tipo].ida.tasas,function (k,v) {
 
-			total_solo_tasas = total_solo_tasas + v;
-		});
-		$.each(seleccionVuelo[tipo].vuelta.tasas,function (k,v) {
+			var tasa = tasas[k];
 
-			total_solo_tasas = total_solo_tasas + v;
+			if (seleccionVuelo[tipo].num > 0){
+
+				if(k in seleccionVuelo.tasasTotales[tipo].tasas){//suma en los existentes
+
+					if (k == "AR") {
+						seleccionVuelo[tipo].ida.tasas[k] = AR(seleccionVuelo[tipo].ida.precioBase ,seleccionVuelo[tipo].vuelta.precioBase,tasa.ida.porcentaje,tasa.ida.fijo);
+						seleccionVuelo.tasasTotales[tipo].tasas[k] += seleccionVuelo[tipo].ida.tasas[k];
+
+					}else{
+						seleccionVuelo.tasasTotales[tipo].tasas[k] += v;
+					}
+
+
+				}else{
+
+					if (k == "BO" && seleccionVuelo[tipo].vuelta.tasas["BO"] == null && seleccionVuelo.vuelta != null) {
+						var qmIda = seleccionVuelo[tipo].ida.tasas['QM'] == null ? 0 : seleccionVuelo[tipo].ida.tasas['QM'];
+						var qmVuelta = seleccionVuelo[tipo].vuelta.tasas['QM'] == null ? 0 : seleccionVuelo[tipo].vuelta.tasas['QM'];
+
+						var precio_base_ida_vuelta = seleccionVuelo[tipo].ida.precioBase + seleccionVuelo[tipo].vuelta.precioBase;
+						seleccionVuelo[tipo].ida.tasas[k] =
+							(precio_base_ida_vuelta + qmIda + qmVuelta) * (tasas[k].ida.porcentaje / 100.0);
+
+						seleccionVuelo.tasasTotales[tipo].tasas[k] = seleccionVuelo[tipo].ida.tasas[k];
+
+
+					}else if (k == "AR") {
+						seleccionVuelo[tipo].ida.tasas[k] = AR(seleccionVuelo[tipo].ida.precioBase ,seleccionVuelo[tipo].vuelta.precioBase,tasa.ida.porcentaje,tasa.ida.fijo);
+						seleccionVuelo.tasasTotales[tipo].tasas[k] = seleccionVuelo[tipo].ida.tasas[k];
+
+					}else{
+						seleccionVuelo.tasasTotales[tipo].tasas[k] = v;
+					}
+
+				}
+
+				seleccionVuelo.tasasTotales[tipo].total+= seleccionVuelo[tipo].ida.tasas[k];
+
+
+
+
+			}
+
+
 		});
+
+		if(seleccionVuelo.vuelta != null) {
+			$.each(seleccionVuelo[tipo].vuelta.tasas,function (k,v) {
+
+				if (seleccionVuelo[tipo].num > 0){
+					if(k in seleccionVuelo.tasasTotales[tipo].tasas){
+						seleccionVuelo.tasasTotales[tipo].tasas[k] += v;
+					}else{
+						seleccionVuelo.tasasTotales[tipo].tasas[k] = v;
+					}
+					seleccionVuelo.tasasTotales[tipo].total+= v;
+				}
+
+
+
+			});
+		}
+
+
+
+
+
+		/*CALCULO DE TOTAL DE TASAS*/
+		$("#totalTasas").html(parseFloat((seleccionVuelo.tasasTotales["adulto"].total * seleccionVuelo["adulto"].num) + (seleccionVuelo.tasasTotales["ninho"].total * seleccionVuelo["ninho"].num)+ (seleccionVuelo.tasasTotales["infante"].total * seleccionVuelo["infante"].num)).toFixed(2));
+
 
 
 
@@ -1812,7 +1955,7 @@ function updatePriceByTipo(tipo, changeFlapper)
 
 		}
 
-		span.html(total_base);
+		span.html(total_base*seleccionVuelo[tipo].num);
 		span.parent().parent().addClass("calculated");
 
 		if(changeFlapper){
@@ -1828,6 +1971,14 @@ function updatePriceByTipo(tipo, changeFlapper)
 		if(changeFlapper)
 			flapperTotal.val("0000000").change();
 	}
+}
+
+// ---------------------= =---------------------
+function AR(precio_base_ida,precio_base_vuelta,porcentaje,fijo){
+	var precio_base_ida_vuelta = precio_base_ida + precio_base_vuelta;
+	var res = precio_base_ida_vuelta * (porcentaje / 100.0) + fijo;
+
+	return res;
 }
 // ---------------------= =---------------------
 function updateAllPrices()
@@ -1879,7 +2030,7 @@ function buildDetailPrices(info, tipo) {
 		.append("<tr><th><h3>Precio Base</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+ formattedPrecioBase +"</td></tr>")
 		.append("<tr><td colspan='3' class='divisor'></td></tr>");
 
-	for(var keyTasa in info.ida.tasas) {
+	/*for(var keyTasa in info.ida.tasas) {
 		var tr = document.createElement("tr");
 		$(tr).append("<th>"+keyTasa+"</th>")
 		     .append("<td></td>")
@@ -1888,24 +2039,46 @@ function buildDetailPrices(info, tipo) {
 		tbl.append(tr);
 		tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
 		tbl.append("<tr><td class='detail' colspan='3'>"+tasas[keyTasa].nombre+"</tr>");
-	}
+	}*/
 
 	if(seleccionVuelo.vuelta != null) {
 		tbl.append("<tr><th class='subtitle' colspan='3'><div>Vuelta</div></th></tr>");
 		tbl.append("<tr><th><h3>Precio Base</h3></th><td class='currency'>Bs.</td><td class='qty'>"+formatCurrencyQuantity(info.vuelta.precioBase,false,nDecimals)+"</td></tr>");
 		tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
 
-		for(var keyTasa in info.vuelta.tasas) {
+		/*for(var keyTasa in info.vuelta.tasas) {
 			var tr = document.createElement("tr");
 			$(tr).append("<th>"+keyTasa+"</th>")
 			     .append("<td></td>")
 			     .append("<td class='qty'>"+formatCurrencyQuantity(info.vuelta.tasas[keyTasa],false,nDecimals)+"</td>");
-			     
+
 			tbl.append(tr);
 			tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
 			tbl.append("<tr><td class='detail' colspan='3'>"+tasas[keyTasa].nombre+"</tr>");
-		}
+		}*/
 	}
+
+	tbl.append("<tr><th class='subtitle' colspan='3'><div>Tasas</div></th></tr>")
+		.append("<tr><td colspan='3' class='divisor'></td></tr>");
+
+	$.each(seleccionVuelo.tasasTotales[tipo].tasas,function (k,v) {
+
+		var tr = document.createElement("tr");
+		$(tr).append("<th>"+k+"</th>")
+			.append("<td></td>")
+			.append("<td class='qty'>"+formatCurrencyQuantity(v,false,nDecimals)+"</td>");
+
+		tbl.append(tr);
+		tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+		tbl.append("<tr><td class='detail' colspan='3'>"+tasas[k].nombre+"</tr>");
+
+
+
+	});
+
+	tbl.append("<tr><th><h3>Total Tasas</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+formatCurrencyQuantity(seleccionVuelo.tasasTotales[tipo].total,false,nDecimals)+"</td></tr>");
+	tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+
 
 	// Calculations just for UI purposes 
 	var subtotal = parseFloat(formatCurrencyQuantity(info.ida.precioBase,false,nDecimals));
@@ -2256,7 +2429,8 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 			destino 		: rawFlight["destino"],
 			tipoAvion		: rawFlight["tipo_avion"],
 			fecha 			: date,
-			numOpcion 		: parseInt(rawFlight["num_opcion"])
+			numOpcion 		: parseInt(rawFlight["num_opcion"]),
+			validado		:rawFlight["validado"]
 		};
 
 		// hora salida can also be +1 when is second or third flight of complete trip (it departs a day(s) after)
@@ -2294,16 +2468,17 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 		// buscar mejor tarifa por clase
 		var rawClasses = rawFlight["clases"]["clase"];
 
-		for(var k=0;k<rawClasses.length;k++) {
-			if(rawClasses[k]["estado"] != "A") // solo tomar en cuenta estado A
+		//
+		for (var k = 0; k < rawClasses.length; k++) {
+			if (rawClasses[k]["estado"] != "A") // solo tomar en cuenta estado A
 				continue;
 
 			var flightClass = rawClasses[k]["cls"];
 
-			if(false==(flightClass in ratesByClass)) 
+			if (false == (flightClass in ratesByClass))
 				continue;
 
-			if(false==(flightClass in paxPercentsByClass)) // parche!
+			if (false == (flightClass in paxPercentsByClass)) // parche!
 				continue;
 
 			var rateValue = ratesByClass[flightClass];
@@ -2311,12 +2486,13 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 			var rateID = rateIDsByClass[flightClass];
 
 			// Tabla para mantener un orden unico de compartimientos al mostrar
-			if(to.compartments.indexOf(compartmentKey) == -1) // no encontrado
+			if (to.compartments.indexOf(compartmentKey) == -1) // no encontrado
 				to.compartments.push(compartmentKey);
 
 			// elegir la tarifa mas baja por compartimiento
-			if(compartmentKey in flight.tarifas) {
-				if(rateValue < flight.tarifas[compartmentKey].monto) {
+
+			if (compartmentKey in flight.tarifas) {
+				if (rateValue < flight.tarifas[compartmentKey].monto) {
 					flight.tarifas[compartmentKey].monto = rateValue;
 					flight.tarifas[compartmentKey].clase = flightClass;
 					flight.tarifas[compartmentKey].fareCode = fareCodesByClass[flightClass];
@@ -2324,15 +2500,18 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 				}
 			} else {
 				flight.tarifas[compartmentKey] = { // crear nuevo
-					clase: 	 flightClass,
-					monto: 	 rateValue,
+					clase: flightClass,
+					monto: rateValue,
 					compart: compartmentKey,
-					index: 	 to.compartments.indexOf(compartmentKey),
-					fareCode : fareCodesByClass[flightClass],
+					index: to.compartments.indexOf(compartmentKey),
+					fareCode: fareCodesByClass[flightClass],
 					ID: rateID
 				};
 			}
+
+
 		}
+
 
 		// añadir porcentajes por pasajero por tasa y tipo
 		for(var compartmentKey in flight.tarifas) {
@@ -2353,7 +2532,7 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 				origen 			: "",
 				destino 		: "",
 				// los vuelos de una misma opcion deberian tener las mismas tarifas
-				tarifas     	: flight.tarifas,
+				tarifas     	: (flight.validado=='si')?flight.tarifas:null,
 				code 			: generateRandomCode(10)
 			};
 
@@ -2363,6 +2542,10 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 				// el origen es el destino del ultimo vuelo
 				var opc = to.flightOptions["opcion_" + flight.numOpcion];
 				flight.origen = opc.vuelos[opc.vuelos.length-1].destino;
+
+
+				to.flightOptions["opcion_" + flight.numOpcion].tarifas = (flight.validado=='si')?flight.tarifas:null;
+
 			}
 		}
 

@@ -76,7 +76,7 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'MAD',
+		origen: 'CBB',
 		destino: 'EZE',
 		fechaIda : '20161021',//formatCompactDate(new Date()), // today
 		fechaVuelta: '20161022',//null, // no flight back
