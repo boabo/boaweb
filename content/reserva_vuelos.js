@@ -125,12 +125,15 @@ var airports = {
 };
 
 var compartmentNames = {"2":"Business","3":"Econ&oacute;mica"};
+
+var contadorNuevaPeticion = 0;
 // ---------------------= =---------------------
 /********************************************************* 
  ********************** UI HANDLERS **********************
  **********************************************************/
 $(document).on('ready',function()
 {
+	contadorNuevaPeticion = 0;
 	if($("#ui_reserva_vuelos").data("mode") !="widget") {
 		initialize_header(true);
 		initialize_ui_sections({anchor_section_headers:false});	
@@ -181,8 +184,10 @@ $(document).on('ready',function()
 	$(".validable .calendar").datepicker("option", "nextText", '<i class="fa fa-arrow-right"></i>');
 
 	$("#btn_validar_vuelos").click(validateSeleccionVuelo);
+	$("#btn_validar_vuelos2").click(validateSeleccionVuelo);
 	$("#btn_volver_vuelos").click(backToFlightStage);
 	$("#btn_validar_pasajeros").click(validatePassengers);
+	$("#btn_validar_pasajeros2").click(validatePassengers);
 
 	// WINDOW SETUP
 	$(window).resize(checkResultsTableWidth);
@@ -239,6 +244,19 @@ $(document).on('ready',function()
 		}
 
 	});
+
+
+	//controlar el scroll
+	$( window ).scroll(function() {
+		if($(window).scrollTop() > 140){
+			$("#widget_resumen_reserva").css({"position":"fixed","right":"60px"});
+			$(".head-tu-vuelo").hide();
+		}else{
+			$("#widget_resumen_reserva").css({"position":"absolute","right":""});
+			$(".head-tu-vuelo").show();
+		}
+	});
+
 }); // init
 
 function dibujarBancos(objeto,titulo){
@@ -402,9 +420,14 @@ function selectTarifa()
 		seleccionVuelo.ida.compartment = compartment;
 		$("#empty_ida_slot").css("display","none");
 
-		constraintTableByTarifa($("#tbl_regreso"), selectionConstraints.ida[tarifaID]);
+		///az
+		if ($("#tbl_regreso").css("display") != "none") {
+			constraintTableByTarifa($("#tbl_regreso"), selectionConstraints.ida[tarifaID]);
 
-		constraintTableByFechaHora(opcion, "ida");
+			constraintTableByFechaHora(opcion, "ida");
+		}
+
+
 	} else {
 		seleccionVuelo.vuelta = {};
 		seleccionVuelo.vuelta.opcCode = opcCode;	
@@ -501,7 +524,7 @@ function constraintTableByTarifa(table, allowedIds)
 		}
 
 		// if entire row is invalid, hide it
-		if(false==allValid) {
+		if(false==allValid && !(typeof otherTable === "undefined")) {
 			// hide entire row
 			row.css("visibility","hidden");
 			otherTable.find("tr.flight-details[data-opc_code='"+row.data("opc_code")+"']").css("visibility","hidden");
@@ -524,23 +547,23 @@ function constraintTableByFechaHora(option, tipo)
 
 	for(var i=0;i<rows.length;i++) {
 		var otherOptionCode = $(rows[i]).data("opc_code");
-		var otherOption = allOptions[otherOptionCode]; 
+		var otherOption = allOptions[otherOptionCode];
 
-		var dateTimeCrosses;		
+		var dateTimeCrosses;
 
 		if(tipo=="ida") {
-			var optionWeight = option.fechaLlegada.substr(2,6) * 10000 + 
+			var optionWeight = option.fechaLlegada.substr(2,6) * 10000 +
 				option.horaLlegada.hh * 100 + option.horaLlegada.mm;
 
-			var otherOptionWeight = otherOption.fechaSalida.substr(2,6) * 10000 + 
+			var otherOptionWeight = otherOption.fechaSalida.substr(2,6) * 10000 +
 				otherOption.horaSalida.hh * 100 + otherOption.horaSalida.mm;
 
 			dateTimeCrosses = optionWeight >= otherOptionWeight;
 		} else if(tipo=="vuelta") {
-			var optionWeight = option.fechaSalida.substr(2,6) * 10000 + 
+			var optionWeight = option.fechaSalida.substr(2,6) * 10000 +
 				option.horaSalida.hh * 100 + option.horaSalida.mm;
 
-			var otherOptionWeight = otherOption.fechaLlegada.substr(2,6) * 10000 + 
+			var otherOptionWeight = otherOption.fechaLlegada.substr(2,6) * 10000 +
 				otherOption.horaLlegada.hh * 100 + otherOption.horaLlegada.mm;
 
 			dateTimeCrosses = optionWeight >= otherOptionWeight;
@@ -560,6 +583,10 @@ function constraintTableByFechaHora(option, tipo)
 // ---------------------= =---------------------
 function validateSearch()
 {
+
+	$("#tabla_tipo").hide();
+	$("#totalTasas").html("0");
+
 	var selectOrigen = $("#select_origen");
 	var selectDestino = $("#select_destino");
 	var rbtnIda = $("#rbtn_ida");
@@ -655,12 +682,17 @@ function checkWarningPxNumber()
 function checkCompleteSeleccionVuelo()
 {
 	var btn = $("#btn_validar_vuelos");
+	var btn2 = $("#btn_validar_vuelos2");
 
 	if(seleccionVuelo.ida == null || 
-	  (seleccionVuelo.adulto.num == 0 && seleccionVuelo.ninho.num==0 && seleccionVuelo.infante.num==0 ))
+	  (seleccionVuelo.adulto.num == 0 && seleccionVuelo.ninho.num==0 && seleccionVuelo.infante.num==0 )){
 		btn.hide();
-	else
+		btn2.hide();
+	}else{
 		btn.show();
+		btn2.show();
+	}
+
 }
 // ---------------------= =---------------------
 function deleteIda()
@@ -726,6 +758,8 @@ function deleteVuelta()
 // ---------------------= =---------------------
 function changeNumPassengers()
 {
+
+
 	console.log(this)
 	var ul = $(this.parentNode);
 	var count = parseInt($(this).data("count"));
@@ -767,9 +801,16 @@ function changeNumPassengers()
 
 			// calculo de precio a pagar
 			seleccionVuelo[tipo].num = count;
-			updatePriceByTipo(tipo,true);
+			/*updatePriceByTipo(tipo,true);
 			checkCompleteSeleccionVuelo();
-			checkWarningPxNumber();
+			checkWarningPxNumber();*/
+
+
+			if(contadorNuevaPeticion == 1 ){
+				contadorNuevaPeticion +=1;
+				setTimeout(validateSearch, 2000);
+			}
+
 
 			ul.parent().find("span").html($(this).html());
 		}
@@ -780,6 +821,8 @@ function changeNumPassengers()
 
 		$(this.parentNode).addClass("active");
 	}
+
+
 
 	
 }
@@ -795,7 +838,9 @@ function validateSeleccionVuelo()
 		"POST", dataToSend);
 
 	$("#loading_compra").show();
+	$("#loading_compra2").show();
 	$("#btn_validar_vuelos").hide();
+	$("#btn_validar_vuelos2").hide();
 }
 // ---------------------= =---------------------
 function validatePassengers()
@@ -950,6 +995,7 @@ function validatePassengers()
 		};
 
 		$("#loading_compra").show();
+		$("#loading_compra2").show();
 
 		ajaxRequest(
 			BoA.urls["register_passengers_service"], 
@@ -958,6 +1004,7 @@ function validatePassengers()
 
 
 		$("#btn_validar_pasajeros").hide();
+		$("#btn_validar_pasajeros2").hide();
 
 	}
 }
@@ -1061,7 +1108,9 @@ function asyncValidateSeleccionVuelo(response)
 		$("#btn_volver_vuelos").show();
 
 		$("#loading_compra").hide();
+		$("#loading_compra2").hide();
 		$("#btn_validar_pasajeros").show();
+		$("#btn_validar_pasajeros2").show();
 	}
 }
 // ---------------------= =---------------------
@@ -1073,6 +1122,7 @@ function backToFlightStage()
 
 		$("#widget_resumen_reserva").show();
 		$("#loading_compra").hide();
+		$("#loading_compra2").hide();
 		$("#stage_compra").removeClass("active");
 	}
 
@@ -1097,7 +1147,9 @@ function backToFlightStage()
 	$("#tbl_seleccion_vuelta_small").hide();
 
 	$("#btn_validar_pasajeros").hide();
+	$("#btn_validar_pasajeros2").hide();
 	$("#btn_validar_vuelos").show();
+	$("#btn_validar_vuelos2").show();
 
 	window.scrollTo(0,0); // scroll hacia arriba
 }
@@ -1140,6 +1192,10 @@ function checkResultsTableWidth()
 // ---------------------= =---------------------
 function asyncReceiveDates(response)
 {
+
+	contadorNuevaPeticion = 1;
+	$("#tabla_tipo").show();
+
 	try {
 		// fix to .NET dumbest encoding ever (possible bug here in future)
 		response = $.parseJSON(response.CalendarResult).ResultCalendar; 
@@ -1168,7 +1224,7 @@ function asyncReceiveDates(response)
 	//	antes de construir el selector de fechas)
 	buildDatesSelector(
 		response["calendarioOW"]["OW_Ida"]["salidas"]["salida"],
-		response["fechaIdaConsultada"], 
+		response["fechaIdaConsultada"],
 		$("#tbl_days_selector_salida"),
 		true // isIda
 	);
@@ -1259,7 +1315,6 @@ function asyncReceiveFlights(response)
 
 
 
-	console.log('fuera')
 	var dataIda = translateFlights(
 		response["vuelosYTarifas"]["Vuelos"]["ida"]["vuelos"]["vuelo"], 
 		rawTarifas, 
@@ -1582,7 +1637,7 @@ function handleInitialRequest()
 	}
 
 	// date pickers setup
-	$('#picker_salida').datepicker("setDate", new Date() );
+	//$('#picker_salida').datepicker("setDate", new Date() );
 
 	// setup config passengers initial parameters
 	var defaultSitesCount = 0;
@@ -1636,7 +1691,7 @@ function requestSearchParameters(parms)
 		$("#lbl_info_regreso").html("VUELO DE VUELTA: ");
 
 		$("#lbl_info_regreso").css({"font-size":"12px"});
-		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityOrigen+" ( "+origen+" ) - "+cityDestino+" ( "+destino+") </b>");
+		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityOrigen+" ( "+destino+" ) - "+cityDestino+" ( "+origen+") </b>");
 
 
 	} else {
@@ -1880,7 +1935,10 @@ function updatePriceByTipo(tipo, changeFlapper)
 
 				}
 
-				seleccionVuelo.tasasTotales[tipo].total+= seleccionVuelo[tipo].ida.tasas[k];
+				var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
+				seleccionVuelo.tasasTotales[tipo].total+= parseFloat(formatCurrencyQuantity(seleccionVuelo[tipo].ida.tasas[k],false,nDecimals));
+
+				//seleccionVuelo.tasasTotales[tipo].total+= seleccionVuelo[tipo].ida.tasas[k];
 
 
 
@@ -1899,7 +1957,9 @@ function updatePriceByTipo(tipo, changeFlapper)
 					}else{
 						seleccionVuelo.tasasTotales[tipo].tasas[k] = v;
 					}
-					seleccionVuelo.tasasTotales[tipo].total+= v;
+					//seleccionVuelo.tasasTotales[tipo].total+= v;
+					var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
+					seleccionVuelo.tasasTotales[tipo].total+= parseFloat(formatCurrencyQuantity(v,false,nDecimals));
 				}
 
 
@@ -1912,10 +1972,10 @@ function updatePriceByTipo(tipo, changeFlapper)
 
 
 		/*CALCULO DE TOTAL DE TASAS*/
-		$("#totalTasas").html(parseFloat((seleccionVuelo.tasasTotales["adulto"].total * seleccionVuelo["adulto"].num) + (seleccionVuelo.tasasTotales["ninho"].total * seleccionVuelo["ninho"].num)+ (seleccionVuelo.tasasTotales["infante"].total * seleccionVuelo["infante"].num)).toFixed(2));
-
-
-
+		var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
+		var total_tasas = (seleccionVuelo.tasasTotales["adulto"].total * seleccionVuelo["adulto"].num) + (seleccionVuelo.tasasTotales["ninho"].total * seleccionVuelo["ninho"].num)+ (seleccionVuelo.tasasTotales["infante"].total * seleccionVuelo["infante"].num);
+		$("#totalTasas").html(formatCurrencyQuantity(total_tasas,false,nDecimals));
+		updateTasasToolTip();
 
 
 		/* CALCULO DE PRECIO TOTAL */
@@ -1950,12 +2010,13 @@ function updatePriceByTipo(tipo, changeFlapper)
 		var total_base = 0;
 
 		if (seleccionVuelo[tipo].formattedPrecioTotal != 0) {
-			total_base = parseInt(seleccionVuelo[tipo].ida.precioBase + seleccionVuelo[tipo].vuelta.precioBase);
+			total_base = seleccionVuelo[tipo].ida.precioBase + ((seleccionVuelo.vuelta != null)?seleccionVuelo[tipo].vuelta.precioBase:0);
 
 
 		}
 
-		span.html(total_base*seleccionVuelo[tipo].num);
+		var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
+		span.html(formatCurrencyQuantity(total_base*seleccionVuelo[tipo].num,false,nDecimals));
 		span.parent().parent().addClass("calculated");
 
 		if(changeFlapper){
@@ -1986,6 +2047,8 @@ function updateAllPrices()
 	updatePriceByTipo("adulto",  false);
 	updatePriceByTipo("ninho",   false);
 	updatePriceByTipo("infante", false);
+
+
 
 	updateFlapper();
 }
@@ -2773,3 +2836,65 @@ function edadPasajero(Fecha){
 	return edad;
 }
 
+function updateTasasToolTip(){
+
+	var objTasas = {};
+	if(seleccionVuelo.tasasTotales.adulto.total > 0 ){
+		$.each(seleccionVuelo.tasasTotales.adulto.tasas,function (k,v) {
+
+			if(k in objTasas){
+				objTasas[k] += v * seleccionVuelo.adulto.num;
+			}else{
+				objTasas[k] = v * seleccionVuelo.adulto.num;
+			}
+		});
+	}
+
+	if(seleccionVuelo.tasasTotales.ninho.total > 0 ){
+		$.each(seleccionVuelo.tasasTotales.ninho.tasas,function (k,v) {
+
+			if(k in objTasas){
+				objTasas[k] += v * seleccionVuelo.ninho.num;
+			}else{
+				objTasas[k] = v * seleccionVuelo.ninho.num;
+			}
+		});
+	}
+
+	if(seleccionVuelo.tasasTotales.infante.total > 0 ){
+		$.each(seleccionVuelo.tasasTotales.infante.tasas,function (k,v) {
+
+			if(k in objTasas){
+				objTasas[k] += v * seleccionVuelo.infante.num;
+			}else{
+				objTasas[k] = v * seleccionVuelo.infante.num;
+			}
+		});
+	}
+
+	console.log(objTasas);
+	var tooltip = $("#tooltip_tasas");
+	$("#tooltip_tasas").html("");
+	var tbl = document.createElement("table");
+	tooltip.append(tbl);
+	$(tbl).attr("cellpadding","0").attr("cellspacing",0);
+	tbl.appendChild(document.createElement("tbody"));
+	tbl = $(tbl).find("tbody");
+
+
+	tbl.append("<tr><th class='subtitle' colspan='3'><div>TASAS TOTALES</div></th></tr>");
+	tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+
+	var nDecimals = LocaleConfig.decimalDigitsByCurrency[CURRENCY];
+	$.each(objTasas,function (k,v) {
+		var tr = document.createElement("tr");
+		$(tr).append("<th>"+k+"</th>")
+			.append("<td></td>")
+			.append("<td class='qty'>"+formatCurrencyQuantity(v,false,nDecimals)+"</td>");
+
+		tbl.append(tr);
+		tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+		tbl.append("<tr><td class='detail' colspan='3'>"+tasas[k].nombre+"</tr>");
+	});
+
+}

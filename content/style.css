@@ -120,7 +120,8 @@ body {
 
 body.generic-container
 {
-	background-color: #A4C6EF;
+	/*background-color: #A4C6EF;*/
+	background-color: #F0F0F0;
 	padding:0;
 	margin:0;
 	overflow-y:auto !important;

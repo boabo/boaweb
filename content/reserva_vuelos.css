@@ -430,6 +430,7 @@
 	background-color: #78A2BF;
 }
 
+
 #ui_reserva_vuelos .descripcion table tr.flights-option-row .rbtn {
 	display: inline-block;
 	width: 20px;
@@ -438,7 +439,7 @@
 	border-radius: 100px;
 	margin: 4px 4px 10px 4px;
 	vertical-align: middle;
-	opacity: 0;
+	/*opacity: 0;*/
 }
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row:hover .rbtn,
@@ -1331,7 +1332,7 @@
 #widget_resumen_reserva .cell-submit {
 	position: relative;
 	height: 60px;
-	background-image: url('images/icon_compra.png');
+	/*background-image: url('images/icon_compra.png');*/
     background-size: 40px;
     background-repeat: no-repeat;
     background-position: 30px 15px;
@@ -1342,8 +1343,8 @@
     top: 20px;
     right: 5px;
 	width: 200px;
-    background-color: #1F3656;
-    color: #DB9F3C;
+    background-color: #DB9F3C;
+    color: #ffffff;
     font-family: "FuturaLight";
     text-align: center;
     font-size: 17px;
@@ -1354,7 +1355,7 @@
 
 #widget_resumen_reserva .cell-submit .button:hover {
 	color: #FFF;
-	background-color: #DB9F3C;
+	background-color: #1F3656;
 }
 
 #widget_resumen_reserva .cell-submit .loading {
@@ -1563,6 +1564,11 @@
 	background-color: #496892;
 	cursor: pointer;
 }
+
+#widget_resumen_reserva tr.tarifa:not(.inactive):hover .tooltip {
+	display: block;
+}
+
 
 #widget_resumen_reserva tr.tarifa.inactive td {
 	color: gray;
@@ -1835,6 +1841,24 @@ td#pagar_reserva.activado {
 	font-family: "HelveticaNeuePro";
 	color: #1F3656;
 	border: 1px solid;
+}
+
+
+
+#btn_borrar_ida .quitar_vuelo_ida {
+	display: none;
+}
+#btn_borrar_ida:hover .quitar_vuelo_ida{
+	background-color: red;
+	display: inline;
+}
+
+#btn_borrar_vuelta .quitar_vuelo_vuelta {
+	display: none;
+}
+#btn_borrar_vuelta:hover .quitar_vuelo_vuelta{
+	background-color: red;
+	display: inline;
 }
 
 /*--------------------------------------------------------*/
