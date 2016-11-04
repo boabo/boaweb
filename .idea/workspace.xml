@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="checkbox contenido impresion">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/images/ico_boa.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos.css" afterPath="$PROJECT_DIR$/content/reserva_vuelos.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos.js" afterPath="$PROJECT_DIR$/content/reserva_vuelos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/style.css" afterPath="$PROJECT_DIR$/content/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reserva_vuelos.html" afterPath="$PROJECT_DIR$/reserva_vuelos.html" />
     </list>
     <ignored path="boaweb.iws" />
@@ -39,31 +39,41 @@
       <file leaf-file-name="reserva_vuelos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="683" column="39" selection-start-line="683" selection-start-column="39" selection-end-line="683" selection-end-column="39" />
+            <state relative-caret-position="211">
+              <caret line="1643" column="0" selection-start-line="1643" selection-start-column="0" selection-end-line="1643" selection-end-column="0" />
               <folding>
-                <marker date="1477513708000" expanded="true" signature="5084:5101" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="10774:10786" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="10774:10822" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="10875:10887" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="10964:10977" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="11015:11045" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="38605:38679" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="43050:43325" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="47876:47892" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="48267:48283" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="64429:64438" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="64463:64472" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="64499:64508" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="64543:64552" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="64597:65370" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="65591:67495" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="65719:67036" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="66249:66268" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="66652:66671" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="67080:67481" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="67898:67913" placeholder="..." />
-                <marker date="1477513708000" expanded="true" signature="67898:67930" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="5287:5304" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="10983:10995" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="10983:11031" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="11084:11096" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="11173:11186" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="11224:11254" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="38833:38907" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="41868:41882" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="43861:43894" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="44002:44017" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="44394:44424" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="47904:47935" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="48007:48038" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="48904:48918" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="48904:48935" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="49085:49099" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="49085:49116" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="49536:49811" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="54468:54484" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="54859:54875" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="71021:71030" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="71055:71064" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="71091:71100" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="71135:71144" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="71189:71962" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="72183:74087" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="72311:73628" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="72841:72860" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="73244:73263" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="73672:74073" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="74490:74505" placeholder="..." />
+                <marker date="1478298809000" expanded="true" signature="74490:74522" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -72,42 +82,54 @@
       <file leaf-file-name="reserva_vuelos.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="1130" column="29" selection-start-line="1130" selection-start-column="29" selection-end-line="1130" selection-end-column="29" />
+            <state relative-caret-position="165">
+              <caret line="966" column="33" selection-start-line="966" selection-start-column="33" selection-end-line="966" selection-end-column="33" />
               <folding>
-                <element signature="n#style#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#0;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#td#0;n#tr#2;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#2;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#3;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#4;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#4;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#4;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#td#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#td#0;n#tr#2;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#2;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#4;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#4;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#4;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iberia.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/images/iberia.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="reserva_vuelos.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="1334" column="32" selection-start-line="1334" selection-start-column="32" selection-end-line="1334" selection-end-column="32" />
+            <state relative-caret-position="147">
+              <caret line="1884" column="19" selection-start-line="1884" selection-start-column="19" selection-end-line="1884" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom_handlers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1065">
+              <caret line="71" column="32" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -162,10 +184,13 @@
         <option value="$PROJECT_DIR$/widget_reserva/content/reserva_vuelos.css" />
         <option value="$PROJECT_DIR$/content/common.js" />
         <option value="$PROJECT_DIR$/content/style.css" />
+        <option value="$PROJECT_DIR$/content/images/tiempo_vuelo/tiempo_vuelo.svg" />
+        <option value="$PROJECT_DIR$/content/images/tiempo_vuelo/tiempo_vuelo2.svg" />
         <option value="$PROJECT_DIR$/content/custom_handlers.js" />
-        <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
-        <option value="$PROJECT_DIR$/content/reserva_vuelos.css" />
+        <option value="$PROJECT_DIR$/content/images/tiempo_vuelo/tiempo_vuelo3.svg" />
         <option value="$PROJECT_DIR$/reserva_vuelos.html" />
+        <option value="$PROJECT_DIR$/content/reserva_vuelos.css" />
+        <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
       </list>
     </option>
   </component>
@@ -186,7 +211,7 @@
     <option name="x" value="1280" />
     <option name="y" value="23" />
     <option name="width" value="1366" />
-    <option name="height" value="745" />
+    <option name="height" value="693" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -213,6 +238,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -246,9 +272,26 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,16 +330,16 @@
       <recent name="http://192.168.17.247/~faviofigueroa/boaweb/reserva_vuelos.html" />
       <recent name="http://172.17.45.229" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/content/images" />
-      <recent name="$PROJECT_DIR$/content/lib/pdf" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/content/images/bancos" />
       <recent name="$PROJECT_DIR$/content/images" />
+      <recent name="$PROJECT_DIR$/content/images/bancos" />
       <recent name="$PROJECT_DIR$/content" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/content/lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/images" />
+      <recent name="$PROJECT_DIR$/content/lib/pdf" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.reserva_vuelos.html">
@@ -558,7 +601,25 @@
       <workItem from="1477494436339" duration="1412000" />
       <workItem from="1477497899455" duration="40000" />
       <workItem from="1477498115764" duration="1254000" />
-      <workItem from="1477507136944" duration="11469000" />
+      <workItem from="1477507136944" duration="12335000" />
+      <workItem from="1477572180845" duration="6618000" />
+      <workItem from="1477581042479" duration="3065000" />
+      <workItem from="1477593625797" duration="9839000" />
+      <workItem from="1477658455754" duration="10030000" />
+      <workItem from="1477679786246" duration="10396000" />
+      <workItem from="1477917789124" duration="9928000" />
+      <workItem from="1477939081490" duration="11986000" />
+      <workItem from="1477953486345" duration="299000" />
+      <workItem from="1478004507340" duration="9338000" />
+      <workItem from="1478023168214" duration="8534000" />
+      <workItem from="1478035454544" duration="299000" />
+      <workItem from="1478176926341" duration="11431000" />
+      <workItem from="1478201032013" duration="1917000" />
+      <workItem from="1478203186335" duration="7124000" />
+      <workItem from="1478212252372" duration="155000" />
+      <workItem from="1478212427991" duration="180000" />
+      <workItem from="1478263509702" duration="8741000" />
+      <workItem from="1478283952908" duration="10634000" />
     </task>
     <task id="LOCAL-00001" summary="validacion de boton enviar correo">
       <created>1471364598070</created>
@@ -585,7 +646,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="970637000" />
+    <option name="totallyTimeSpent" value="1092017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -597,20 +658,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="23" width="1366" height="745" extended-state="6" />
+    <frame x="1280" y="23" width="1366" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19410875" sideWeight="0.4753577" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20694864" sideWeight="0.4753577" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32750398" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869694" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46422893" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46263912" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24848942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32750398" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21978852" sideWeight="0.5246423" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37519872" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21837088" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -622,26 +683,26 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32750398" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46570972" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46263912" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290938" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807016" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32750398" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1978852" sideWeight="0.4753577" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20166163" sideWeight="0.4753577" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869694" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290938" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24848942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21978852" sideWeight="0.5246423" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37388724" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20031796" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -666,7 +727,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="448" />
+      <option name="time" value="489" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
@@ -678,68 +739,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="http://192.168.17.247/~faviofigueroa/boaweb/reserva_vuelos.html">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/contenidos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5265">
-          <caret line="351" column="30" selection-start-line="351" selection-start-column="30" selection-end-line="351" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/lib/flapper/css/flapper.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/lib/custom_scrollbar/jquery.mCustomScrollbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/validaciones_form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="40" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/info_page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/block.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="228" column="16" selection-start-line="228" selection-start-column="16" selection-end-line="228" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/info_page_br.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4980">
-          <caret line="2715" column="21" selection-start-line="2715" selection-start-column="16" selection-end-line="2715" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/info_page_us.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
@@ -977,7 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1845">
           <caret line="123" column="30" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,7 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1635">
           <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,15 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7170">
           <caret line="478" column="54" selection-start-line="478" selection-start-column="54" selection-end-line="478" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,73 +1106,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.css">
+    <entry file="file://$PROJECT_DIR$/content/images/ico_boa.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/tiempo_vuelo/salida.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/tiempo_vuelo/linea.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/icon_salida_llegada.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/tiempo_vuelo/llegada.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/tiempo_vuelo/tiempo_vuelo.svg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="1334" column="32" selection-start-line="1334" selection-start-column="32" selection-end-line="1334" selection-end-column="32" />
+        <state relative-caret-position="200">
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/tiempo_vuelo/tiempo_vuelo2.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="176" column="31" selection-start-line="176" selection-start-column="15" selection-end-line="176" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/iberia.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/images/tiempo_vuelo/tiempo_vuelo3.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="259" column="22" selection-start-line="259" selection-start-column="22" selection-end-line="259" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="71" column="32" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="1130" column="29" selection-start-line="1130" selection-start-column="29" selection-end-line="1130" selection-end-column="29" />
+        <state relative-caret-position="165">
+          <caret line="966" column="33" selection-start-line="966" selection-start-column="33" selection-end-line="966" selection-end-column="33" />
           <folding>
-            <element signature="n#style#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#td#0;n#tr#0;n#table#4;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#0;n#tr#2;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#2;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#3;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#4;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#4;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#4;n#table#0;n#div#3;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#td#0;n#tr#0;n#table#2;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#0;n#tr#2;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#2;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#4;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#4;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#4;n#table#0;n#div#4;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="1884" column="19" selection-start-line="1884" selection-start-column="19" selection-end-line="1884" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="683" column="39" selection-start-line="683" selection-start-column="39" selection-end-line="683" selection-end-column="39" />
+        <state relative-caret-position="211">
+          <caret line="1643" column="0" selection-start-line="1643" selection-start-column="0" selection-end-line="1643" selection-end-column="0" />
           <folding>
-            <marker date="1477513708000" expanded="true" signature="5084:5101" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="10774:10786" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="10774:10822" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="10875:10887" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="10964:10977" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="11015:11045" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="38605:38679" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="43050:43325" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="47876:47892" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="48267:48283" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="64429:64438" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="64463:64472" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="64499:64508" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="64543:64552" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="64597:65370" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="65591:67495" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="65719:67036" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="66249:66268" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="66652:66671" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="67080:67481" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="67898:67913" placeholder="..." />
-            <marker date="1477513708000" expanded="true" signature="67898:67930" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="5287:5304" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="10983:10995" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="10983:11031" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="11084:11096" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="11173:11186" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="11224:11254" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="38833:38907" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="41868:41882" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="43861:43894" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="44002:44017" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="44394:44424" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="47904:47935" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="48007:48038" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="48904:48918" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="48904:48935" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="49085:49099" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="49085:49116" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="49536:49811" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="54468:54484" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="54859:54875" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="71021:71030" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="71055:71064" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="71091:71100" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="71135:71144" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="71189:71962" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="72183:74087" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="72311:73628" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="72841:72860" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="73244:73263" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="73672:74073" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="74490:74505" placeholder="..." />
+            <marker date="1478298809000" expanded="true" signature="74490:74522" placeholder="..." />
           </folding>
         </state>
       </provider>

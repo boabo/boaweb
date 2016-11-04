@@ -414,7 +414,8 @@
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row:not(.disabled) td {
 	cursor: pointer;
-	background-color: #CADAE5;
+	/*background-color: #CADAE5;*/
+	background-color: #f1f1f1;
 }
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row:hover td {
@@ -466,6 +467,11 @@
 #ui_reserva_vuelos .descripcion table tr.flights-option-row.selected td {
 	background-color: #EFCF9B !important;
 }
+
+#ui_reserva_vuelos .descripcion table tr.flights-option-row.selected td.tarifa {
+	background-color: #EFAA35 !important;
+}
+
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row.selected td{cursor: default;}
 
@@ -1187,7 +1193,7 @@
 	color: #DB9F3C;
 	font-family: "FuturaHeavy";
 	letter-spacing: 1px;
-	font-size: 23px;
+	font-size: 18px;
 	padding: 13px 0 0 23px;
 	vertical-align: bottom;
 }
@@ -1480,7 +1486,7 @@
 
 #widget_resumen_reserva td.selector-pax ul {
 	position: absolute;
-	top: 12px;
+	top: 4px;
 	left: 6px;
 	width: 40px;
 	height: 40px;
@@ -1861,6 +1867,46 @@ td#pagar_reserva.activado {
 	display: inline;
 }
 
+
+.ico_time{
+	background-image: url('images/time.png');
+	width: 20px;
+	height: 20px;
+	background-size: cover;
+	margin: auto;
+}
+.ico_boa{
+	background-image: url('images/ico_boa.png');
+	width: 20px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+	float: left;
+	margin-left: 10px;
+}
+.ico_iberia{
+	background-image: url('images/iberia.jpg');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+	float: left;
+	margin-left: 10px;
+}
+
+
+.tiempo_vuelo svg text{
+	font-family: "FuturaMedium";
+}
+.uno{
+	width: 80%;
+}
+.dos{
+	width: 90%;
+}
+.tres{
+	width: 100%;
+}
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

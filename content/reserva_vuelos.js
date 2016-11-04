@@ -108,6 +108,7 @@ var cities = {
 	TJA: "Tarija",
 	TDD: "Trinidad",
 	EZE: "Buenos Aires",
+	BCN: "Barcelona",
 	GRU: "Sao Paulo"
 };
 
@@ -121,9 +122,21 @@ var airports = {
 	TJA: "Aeropuerto Capitán Oriel Lea Plaza",
 	TDD: "Aeropuerto Teniente Jorge Henrich Arauz",
 	EZE: "Aeropuerto Internacional Ministro Pistarini",
-	GRU: "Aeropuerto Internacional de Guarulhos"
+	GRU: "Aeropuerto Internacional de Guarulhos",
+	BCN: "Aeropuerto Internacional El Prat",
+	CCA: "Aeropuerto Internacional Chimore",
 };
 
+var linea_clase = {
+
+	OB:"ico_boa",
+	IB:"ico_iberia"
+};
+var lineas = {
+
+	OB:"BoA",
+	IB:"Iberia"
+};
 var compartmentNames = {"2":"Business","3":"Econ&oacute;mica"};
 
 var contadorNuevaPeticion = 0;
@@ -442,6 +455,7 @@ function selectTarifa()
 	$(table).find(".flights-option-row").removeClass("selected");
 	$(row).addClass("selected");
 
+	//este abre detalle
 	$(table).find(".flight-details").removeClass("expanded").addClass("collapsed");
 
 	$(table).find(".flight-details[data-opc_code='"+opcCode+"']")
@@ -454,7 +468,7 @@ function selectTarifa()
 	var tblSeleccion = $("#tbl_seleccion_" + tipo + ", #tbl_seleccion_" + tipo + "_small");
 
 	tblSeleccion.find(".fecha_salida_").html(formatShortDate(opcion.vuelos[0].fecha));
-	tblSeleccion.find(".fecha_llegada_").html("Llegada<br> "+formatShortDate(opcion.vuelos[0].fechaLlegada));
+	tblSeleccion.find(".fecha_llegada_").html(formatShortDate(opcion.vuelos[0].fechaLlegada));
 
 	tblSeleccion.find(".salida_").html("<span style='float: left; padding-left: 5px; font-size: 15px;'>"+formatTime(opcion.horaSalida)+"</span><h1 style='float: left;'>"+opcion.origen+"</h1>");
 	tblSeleccion.find(".llegada_").html("<h1 style='float: right;'>"+opcion.destino+"</h1><span style='float: right; font-size: 15px;'>"+formatTime(opcion.horaLlegada)+"</span>");
@@ -766,6 +780,7 @@ function changeNumPassengers()
 
 	var tipo = $(this.parentNode).data("tipo");
 
+	console.log(tipo)
 	var counting = ["one","two","three","four","five","six","seven","eight"];
 
 	if(ul.hasClass("active")) {
@@ -1484,13 +1499,73 @@ function buildFlightsTable(tableName, flightOptions, compartments)
 		var row = buildFlightOptionRow(opcion, compartments);
 		table.appendChild(row);
 
-		for(var i=0;i<opcion.vuelos.length;i++) {
+
+		/** aca armaremos el grafico de vuelo **/
+		/*var cantidad_de_vuelos = opcion.vuelos.length;
+		var cantidad_de_columnas = cantidad_de_vuelos * 2;
+		var $t = $('<table/>');
+		var $r = $('<tr/>');
+		for (var i = 0; i < cantidad_de_columnas; i++){
+			var tipo = ((i%2 == 0) || i ==0)?'ida'+i:'vuelta'+i;
+			$col = $('<td class="'+tipo+'"/>');
+			$r.append($col);
+		}
+		$t.append($r);
+		console.log($t)*/
+
+		var row_detalle= document.createElement("tr");
+		$(row_detalle).attr("data-opc_code", opcion.code)
+			.addClass("flight-details").addClass("collapsed")
+			.html("<td colspan='2' class='cell-details'>" +
+				"<div class='expandable'>" +
+				"</div>" +
+				"</td>");
+
+
+
+		var countVuelos = opcion.vuelos.length;
+		var clase = '';
+		if(countVuelos == 1){
+
+			clase = 'uno';
+
+		}else if(countVuelos == 2){
+			clase = 'dos';
+		}else if (countVuelos == 3){
+			clase = 'tres';
+		}
+		var expandable = $(row_detalle).find(".expandable");
+		var line_tiempo = $('<div id="tiempo_vuelo_'+opcion.code+'" class="tiempo_vuelo '+clase+'" style=" margin: auto;"/>');
+
+
+
+
+		 expandable.append(line_tiempo);
+
+		table.appendChild(row_detalle);
+
+
+
+
+
+
+		cargarDetalleVueloSvg(opcion,countVuelos);
+
+		/*for(var i=0;i<opcion.vuelos.length;i++) {
+			var vuelo = opcion.vuelos[i];
+
+			var detail = cargarDetalleVueloSvg(opcion, vuelo,1);
+
+
+		}*/
+		/*for(var i=0;i<opcion.vuelos.length;i++) {
 			var vuelo = opcion.vuelos[i];
 
 			var detail = buildFlightDetailRow(opcion, vuelo);
 
+			console.log(detail)
 			table.appendChild(detail);
-		}
+		}*/
 	}
 }
 // ---------------------= =---------------------
@@ -1512,7 +1587,7 @@ function buildFlightOptionRow(opc, compartments)
 	var iconLlegada = (opc.horaLlegada.hh >= 5 && opc.horaLlegada.hh <= 12) ? "am" : 
 		((opc.horaLlegada.hh <= 18) ? "pm" : "night");
 
-	var strDuracion = 
+	/*var strDuracion =
 		"<div class='icon-dia-noche salida " + iconSalida + "'></div>" + 
 		formatTime(opc.horaSalida) + "&nbsp;&nbsp;-&nbsp;&nbsp;" +
 		formatTime(opc.horaLlegada) +
@@ -1525,8 +1600,38 @@ function buildFlightOptionRow(opc, compartments)
 		strDuracion += 
 			"<span>Duraci&oacute;n en Vuelo: <label>"+formatExpandedTime(opc.duracionVuelo)+"</label></span><br>" +
 			"<span>Duraci&oacute;n Total: <label>" + formatExpandedTime(opc.duracionTotal) + "</label></span>";
+			*/
 
-	$(cell).html(strDuracion);
+	var $t = $('<table/>');
+
+	var m = '';
+	var aux_object = {};
+	$.each(opc.vuelos,function (k,v) {
+
+		if (v.linea in aux_object){
+
+		}else{
+
+			var clase_de_operador = linea_clase[v.linea];
+			m += '<div class="'+clase_de_operador+'"><span style="bottom: -24px;position: relative;">'+lineas[v.linea]+'</span></div>';
+			aux_object[v.linea] = v.linea;
+
+		}
+
+
+
+	});
+
+	$t.append('<tr style="color: #2D4565;">' +
+		'<td align="left"><span>SALIDA</span><div><b>'+formatTime(opc.horaSalida)+' '+opc.origen+'</b></div></td>' +
+		'<td><div class="ico_time"></div><span><label>Duración Total : '+formatExpandedTime(opc.duracionTotal)+'</label></span></td>' +
+		'<td><span>LLEGADA</span><div><b>'+formatTime(opc.horaLlegada)+' '+opc.destino+'</b></div></td>' +
+		'<td align="center" style="position: relative;top: -10px;"><span><label>Operado por:</span></label><br>'+m+'</td>' +
+		'</tr>');
+
+
+
+	$(cell).html($t);
 
 	row.appendChild(cell);
 
@@ -1549,6 +1654,118 @@ function buildFlightOptionRow(opc, compartments)
 	return row;
 }
 // ---------------------= =---------------------
+
+function cargarDetalleVueloSvg(opc,countVuelos){
+
+	var ruta = '';
+	if (countVuelos == 1){
+		ruta = 'content/images/tiempo_vuelo/tiempo_vuelo.svg';
+	}else if(countVuelos == 2){
+		ruta = 'content/images/tiempo_vuelo/tiempo_vuelo2.svg';
+	}else if(countVuelos == 3){
+		ruta = 'content/images/tiempo_vuelo/tiempo_vuelo3.svg';
+	}
+
+	$("#tiempo_vuelo_"+opc.code).load(ruta, function (response) {
+
+
+		if (!response) { // Error loading SVG// ERROR AL CARGAR LA IMAGEN SVG
+			$(this).html('Error svg al insertar<strong><a href="disydes.com">importante</a></strong>');
+			$("#ERROR").html("<b>ERROR</b>");
+
+		} else {
+
+			//dibuja los vuelos
+			for(var i=0;i<opc.vuelos.length;i++) {
+			 	var flight = opc.vuelos[i];
+				var nivel = i+1;
+
+				var timeStrSalida = formatTime(flight.horaSalida);
+				var timeStrLlegada = formatTime(flight.horaLlegada);
+				$(this).children('svg').find('[data="salida'+nivel+'"]').html(flight.origen);
+				$(this).children('svg').find('[data="llegada'+nivel+'"]').html(flight.destino);
+				$(this).children('svg').find('[data="lineaVuelo'+nivel+'"]').html(flight.linea+""+flight.numVuelo);
+				$(this).children('svg').find('[data="operado'+nivel+'"]').html(operadorSvg(flight.operador));
+				$(this).children('svg').find('[data="horaSalida'+nivel+'"]').html(timeStrSalida);
+				$(this).children('svg').find('[data="horaLlegada'+nivel+'"]').html(timeStrLlegada);
+				$(this).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').html((nivel==1)?separarAeropuertoSvg(airports[flight.origen]):'');
+
+				$(this).children('svg').find('[data="aeropuertoLlegada'+nivel+'"]').html(separarAeropuertoSvg(airports[flight.destino]));
+				$(this).children('svg').find('[data="duracion'+nivel+'"]').html(formatExpandedTime(flight.duracion));
+			 }
+
+
+			//dibaja el tiempo de transito si esque existe
+			if (countVuelos == 2){
+				//sacar fecha llegada
+				var hora_llegada_1 = opc.vuelos[0].horaLlegada;
+				var hora_salida_2 = opc.vuelos[1].horaSalida;
+
+				var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
+				$(this).children('svg').find('[data="transito1"]').html(transito);
+
+
+			}else if(countVuelos == 3){
+				var hora_llegada_1 = opc.vuelos[0].horaLlegada;
+				var hora_salida_2 = opc.vuelos[1].horaSalida;
+
+				var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
+				$(this).children('svg').find('[data="transito1"]').html(transito);
+
+				var hora_llegada_3 = opc.vuelos[1].horaLlegada;
+				var hora_salida_4 = opc.vuelos[2].horaSalida;
+
+				var transito2 = tiempoTransito(hora_llegada_3,hora_salida_4);
+				$(this).children('svg').find('[data="transito2"]').html(transito2);
+
+			}
+
+
+
+
+
+
+		}
+	});
+
+}
+function operadorSvg(operador){
+	var str = '<tspan style="fill: #ffffff; font-size: 14px;"  x="0" y="0" class="st3">Operado por:</tspan>';
+
+	str+='<tspan style="fill: #ffffff; font-size: 14px;" x="22" y="18" class="st3">'+operador+'</tspan>';
+	return str;
+
+}
+function tiempoTransito(hora_llegada_1,hora_salida_2){
+
+	var t1 = new Date(),
+		t2 = new Date();
+
+	t1.setHours(hora_salida_2.hh, hora_salida_2.mm,"00");
+	t2.setHours(hora_llegada_1.hh, hora_llegada_1.mm, "00");
+
+	//Aquí hago la resta
+	t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
+
+	//Imprimo el resultado
+	 return (t1.getHours() ? t1.getHours() + (t1.getHours() > 1 ? " h" : " h") : "") + (t1.getMinutes() ? ", " + t1.getMinutes() + (t1.getMinutes() > 1 ? " min" : " min") : "") + (t1.getSeconds() ? (t1.getHours() || t1.getMinutes() ? " y " : "") + t1.getSeconds() + (t1.getSeconds() > 1 ? " segundos" : " segundo") : "");
+
+}
+function separarAeropuertoSvg(aeropuerto){
+
+	var m = aeropuerto.split(' ');
+
+	var str = '<tspan style="fill: #ffffff; font-size: 14px;"  x="0" y="0" class="st3">'+m[0]+' '+m[1]+'</tspan>';
+	var aux = '';
+	for(var i = 2; i < m.length; i++){
+
+		aux += m[i]+' ';
+	}
+	str+='<tspan style="fill: #ffffff; font-size: 14px;" x="14.7" y="18" class="st3">'+aux+'</tspan>';
+
+	return str;
+}
+// ---------------------= =---------------------
 function buildFlightDetailRow(opc, flight) {
     /*** FILA DE DETALLES ***/
     row = document.createElement("tr");
@@ -1562,8 +1779,11 @@ function buildFlightDetailRow(opc, flight) {
 		  			"</div>" + 
 		  			"<div class='separator'></div>" +
 		  		"</td>");
- 
+
+
+
     var expandable = $(row).find(".expandable");
+
     for (var m = 0; m < 2; m++) {
         var isSalida = (m == 0);
         var timeStr = formatTime(isSalida ? flight.horaSalida : flight.horaLlegada);
@@ -1637,6 +1857,7 @@ function handleInitialRequest()
 	}
 
 	// date pickers setup
+	//esto es importante  comentar para la actualizacion en la peticion cuando se seleccione mas pasajeros
 	//$('#picker_salida').datepicker("setDate", new Date() );
 
 	// setup config passengers initial parameters
@@ -1691,7 +1912,7 @@ function requestSearchParameters(parms)
 		$("#lbl_info_regreso").html("VUELO DE VUELTA: ");
 
 		$("#lbl_info_regreso").css({"font-size":"12px"});
-		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityOrigen+" ( "+destino+" ) - "+cityDestino+" ( "+origen+") </b>");
+		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityDestino+" ( "+destino+" ) - "+cityOrigen+" ( "+origen+") </b>");
 
 
 	} else {
@@ -2496,6 +2717,14 @@ function translateFlights(rawFlights, rawTarifas, date, paxPercentsByClass)
 			validado		:rawFlight["validado"]
 		};
 
+		if(rawFlight["co_operador"] !=null){
+			if(rawFlight["co_operador"] == 'IB'){
+				flight.operador = "Iberia";
+				flight.linea = rawFlight["co_operador"];
+			}
+
+		}
+
 		// hora salida can also be +1 when is second or third flight of complete trip (it departs a day(s) after)
 		if (rawFlight["hora_salida"].length == 6 && rawFlight["hora_salida"].substr(4, 2) == "+1") {
             // one day after
@@ -2722,7 +2951,7 @@ function getSelectedSitesCount()
 		var ul = $(pxSelections[i]);
 		var tipo = ul.data("tipo");
 
-		if(tipo=="adulto" || tipo=="ninho") 
+		if(tipo=="adulto" || tipo=="ninho")
 			total += parseInt(ul.find("li.selected").data("count"));
 	}
 
