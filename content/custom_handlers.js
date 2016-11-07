@@ -76,8 +76,8 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'TJA',
-		destino: 'EZE',
+		origen: 'CBB',
+		destino: 'LPB',
 		fechaIda : '20161110',//formatCompactDate(new Date()), // today
 		fechaVuelta: '20161111',//null, // no flight back
 		adulto: 1,

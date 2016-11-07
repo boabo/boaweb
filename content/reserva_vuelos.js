@@ -399,11 +399,41 @@ function toggleWidgetCambiarVuelo()
 		widget.removeClass("expanded").addClass("collapsed");
 	}
 }
+
+//----
+function view_detail_connections(that) {
+	var row = $(that).parent().parent()[0];
+	var opcCode = $(row).data("opc_code");
+	var table = row.parentNode;
+
+	while(false == $(table).is("table")) // find parent table
+		table = table.parentNode;
+
+	if(!$(that).hasClass('active')){
+
+
+		$(that).addClass('active');
+		$(that).html('( - ) Detalle');
+		$(table).find(".flight-details").removeClass("expanded").addClass("collapsed");
+
+		$(table).find(".flight-details[data-opc_code='"+opcCode+"']")
+			.removeClass("collapsed")
+			.addClass("expanded");
+	}else{
+		$(table).find(".flight-details[data-opc_code='"+opcCode+"']")
+			.removeClass("expanded")
+			.addClass("collapsed");
+		$(that).removeClass('active');
+		$(that).html('( + ) Detalle');
+	}
+
+
+}
 // ---------------------= =---------------------
 function selectTarifa()
 {
-	var row = this.parentNode;
 
+	var row = this.parentNode;
 	if($(row).hasClass("disabled"))
 		return;
 
@@ -455,15 +485,20 @@ function selectTarifa()
 	$(table).find(".flights-option-row").removeClass("selected");
 	$(row).addClass("selected");
 
-	//este abre detalle
 	$(table).find(".flight-details").removeClass("expanded").addClass("collapsed");
+
+	//este abre detalle
+	/*
 
 	$(table).find(".flight-details[data-opc_code='"+opcCode+"']")
 		.removeClass("collapsed")
- 		.addClass("expanded");
+ 		.addClass("expanded");*/
 
+	$(table).find('div.btn_view_detail').hide();
 	$(table).find(".rbtn").removeClass("checked");
+
 	$(this).find(".rbtn").addClass("checked");
+	$(this).children('div.btn_view_detail').show();
 	
 	var tblSeleccion = $("#tbl_seleccion_" + tipo + ", #tbl_seleccion_" + tipo + "_small");
 
@@ -503,6 +538,20 @@ function selectTarifa()
 	setTimeout(function() {
 		tblSeleccion.removeClass("changed");
 	},100);
+
+	if(tipo == 'ida'){
+		if(currentDateVuelta != null) {
+			$("html, body").delay(1000).animate({scrollTop: $('#lbl_info_regreso').offset().top - 120 }, 3000);
+
+		}else{
+			$("html, body").delay(1000).animate({scrollTop: $('#btn_validar_vuelos2').offset().top }, 3000);
+		}
+	}else{
+		$("html, body").delay(1000).animate({scrollTop: $('#btn_validar_vuelos2').offset().top  }, 3000);
+	}
+
+
+
 }
 // ---------------------= =---------------------
 /* Lock restricted rates in table */ 
@@ -814,6 +863,9 @@ function changeNumPassengers()
 			else
 				row.removeClass("inactive");
 
+			//vemos las cantidades de pasajeros
+			getTypeSelectedSitesCount(tipo);
+
 			// calculo de precio a pagar
 			seleccionVuelo[tipo].num = count;
 			/*updatePriceByTipo(tipo,true);
@@ -823,7 +875,7 @@ function changeNumPassengers()
 
 			if(contadorNuevaPeticion == 1 ){
 				contadorNuevaPeticion +=1;
-				setTimeout(validateSearch, 2000);
+				setTimeout(validateSearch, 2500);
 			}
 
 
@@ -1644,7 +1696,7 @@ function buildFlightOptionRow(opc, compartments)
 
 		cell = document.createElement("td");
 		$(cell).addClass("tarifa");
-		$(cell).html("<div class='rbtn'><div></div></div>" + parseInt(tarifa.monto) /*should be formatted. services issue*/ + " " + HTML_CURRENCIES[CURRENCY]);
+		$(cell).html("<div class='rbtn'><div></div></div>" + parseInt(tarifa.monto) /*should be formatted. services issue*/ + " " + HTML_CURRENCIES[CURRENCY]+"<div onclick='view_detail_connections(this)' class='btn_view_detail'>(+) Detalle</div>");
 		$(cell).click(selectTarifa);
 		$(cell).attr("data-compartment", tarifa.compart);
 		$(cell).attr("data-id_tarifa", tarifa.ID);
@@ -2957,6 +3009,66 @@ function getSelectedSitesCount()
 
 	return total;
 }
+
+// ---------------------= =---------------------
+function getTypeSelectedSitesCount(tipo_seleccionado)
+{
+	var pxSelections = $("#widget_resumen_reserva .selector-pax ul");
+	console.log(pxSelections)
+	var sitio_seleccionados = {
+		total_adulto : 0,
+		total_ninho: 0
+	};
+
+	for(var i=0;i<pxSelections.length;i++) {
+		var ul = $(pxSelections[i]);
+		var tipo = ul.data("tipo");
+
+		if(tipo=="adulto"){
+			sitio_seleccionados.total_adulto += parseInt(ul.find("li.selected").data("count"));
+
+		}else if(tipo=="ninho"){
+			sitio_seleccionados.total_ninho += parseInt(ul.find("li.selected").data("count"));
+		}
+
+	}
+
+	if(tipo_seleccionado == 'adulto'){
+		var count = sitio_seleccionados.total_adulto;
+		var total_para_seleccionar = 9 - count;
+		console.log('total_para seleccionar ',total_para_seleccionar);
+
+		$.each($(pxSelections[1]).children('li'),function (k,v) {
+
+			console.log(v)
+			if(total_para_seleccionar < k){
+				$(v).hide();
+			}else{
+				$(v).css({"display":""});
+			}
+
+		});
+
+	}else if (tipo_seleccionado == 'ninho'){
+		var count = sitio_seleccionados.total_ninho;
+		var total_para_seleccionar = 9 - count;
+		console.log('total_para seleccionar ',total_para_seleccionar);
+
+		$.each($(pxSelections[0]).children('li'),function (k,v) {
+
+			console.log(v)
+			if(total_para_seleccionar < k){
+				$(v).hide();
+			}else{
+				$(v).css({"display":""});
+			}
+
+		});
+	}
+
+	return sitio_seleccionados;
+}
+
 // ---------------------= =---------------------
 function translateSeleccionVueloForService(sel) 
 {

@@ -1907,6 +1907,14 @@ td#pagar_reserva.activado {
 .tres{
 	width: 100%;
 }
+
+.btn_view_detail{
+	display: block;
+	font-family: Futura;
+	font-size: 13px;
+	cursor: pointer;
+	display: none;
+}
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
