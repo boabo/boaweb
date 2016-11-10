@@ -1875,6 +1875,22 @@ td#pagar_reserva.activado {
 	background-size: cover;
 	margin: auto;
 }
+
+.ico_con_conexion{
+	background-image: url('images/azul1.png');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+}
+.ico_sin_conexion{
+	background-image: url('images/azul2.png');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+}
+
 .ico_boa{
 	background-image: url('images/ico_boa.png');
 	width: 20px;
@@ -1914,6 +1930,13 @@ td#pagar_reserva.activado {
 	font-size: 13px;
 	cursor: pointer;
 	display: none;
+}
+.btn_view_detail span::before{
+	content: '+';
+}
+
+.btn_view_detail.active span::before{
+	content: '-';
 }
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

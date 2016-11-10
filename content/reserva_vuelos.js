@@ -140,6 +140,9 @@ var lineas = {
 var compartmentNames = {"2":"Business","3":"Econ&oacute;mica"};
 
 var contadorNuevaPeticion = 0;
+
+var menor_tarifa_ida = 0;
+var menor_tarifa_vuelta = 0;
 // ---------------------= =---------------------
 /********************************************************* 
  ********************** UI HANDLERS **********************
@@ -413,7 +416,7 @@ function view_detail_connections(that) {
 
 
 		$(that).addClass('active');
-		$(that).html('( - ) Detalle');
+		$(that).html('<span></span> Detalle');
 		$(table).find(".flight-details").removeClass("expanded").addClass("collapsed");
 
 		$(table).find(".flight-details[data-opc_code='"+opcCode+"']")
@@ -424,7 +427,7 @@ function view_detail_connections(that) {
 			.removeClass("expanded")
 			.addClass("collapsed");
 		$(that).removeClass('active');
-		$(that).html('( + ) Detalle');
+		$(that).html('<span></span> Detalle');
 	}
 
 
@@ -487,6 +490,9 @@ function selectTarifa()
 
 	$(table).find(".flight-details").removeClass("expanded").addClass("collapsed");
 
+	//busca el boton para abrir el detalle y lo renicia aquellos que fueron abiertos
+	$(table).find(".flights-option-row").find('.btn_view_detail').removeClass('active');
+
 	//este abre detalle
 	/*
 
@@ -539,7 +545,8 @@ function selectTarifa()
 		tblSeleccion.removeClass("changed");
 	},100);
 
-	if(tipo == 'ida'){
+	//scroll automatico
+	/*if(tipo == 'ida'){
 		if(currentDateVuelta != null) {
 			$("html, body").delay(1000).animate({scrollTop: $('#lbl_info_regreso').offset().top - 120 }, 3000);
 
@@ -548,7 +555,7 @@ function selectTarifa()
 		}
 	}else{
 		$("html, body").delay(1000).animate({scrollTop: $('#btn_validar_vuelos2').offset().top  }, 3000);
-	}
+	}*/
 
 
 
@@ -1393,6 +1400,10 @@ function asyncReceiveFlights(response)
 	// construir tabla de vuelos
 	buildFlightsTable("tbl_salida", dataIda.flightOptions, dataIda.compartments);
 
+	//agregamos la tarifa minima encontrado en la tabla seleccionado
+	var tarifa_minima_ida = verTarifaMinima(dataIda.flightOptions,dataIda.compartments);
+	$("#tbl_days_selector_salida").find('.selected').find('h3').html(formatCurrencyQuantity(tarifa_minima_ida, true, 0));
+
 	if(currentDateVuelta != null) {
 
 		//verificamos si es array
@@ -1428,6 +1439,11 @@ function asyncReceiveFlights(response)
 		buildDatesSelector(rawDatesCache.vuelta, searchParameters.fechaVuelta, $("#tbl_days_selector_regreso"), false);
 		// construir tabla de vuelos
 		buildFlightsTable("tbl_regreso", dataVuelta.flightOptions, dataIda.compartments);
+
+		//agregamos la tarifa minima encontrado en la tabla seleccionado
+		var tarifa_minima_vuelta = verTarifaMinima(dataVuelta.flightOptions,dataVuelta.compartments);
+		$("#tbl_days_selector_regreso").find('.selected').find('h3').html(formatCurrencyQuantity(tarifa_minima_vuelta, true, 0));
+
 	}
 
 	checkResultsTableWidth(); // acomodar tablas segun tamaño
@@ -1435,12 +1451,40 @@ function asyncReceiveFlights(response)
 
 }
 
+
+function verTarifaMinima (flightOptions,compartments){
+	var menor_tarifa =0;
+	for(var key in flightOptions) {
+		var opcion = flightOptions[key];
+		// tarifas por compartimiento
+		for(var i=0;i<compartments.length;i++) {
+			var tarifa = opcion.tarifas[compartments[i]];
+
+			if(tarifa == null)
+				continue; // it should always have tarifas, but it doesn't sometimes :S
+
+			//todo ver cual es la menor tarifa
+			if (menor_tarifa == 0 || menor_tarifa == null) {
+				menor_tarifa = parseInt(tarifa.monto);
+			} else {
+				if (parseInt(tarifa.monto) < menor_tarifa) {
+					menor_tarifa = parseInt(tarifa.monto);
+				}
+			}
+		}
+
+	}
+	return menor_tarifa;
+
+
+
+}
 /***************************************************** 
  *************** UI BUILDING FUNCTIONS ***************
  *****************************************************/
 function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 {
-	var tarifasByDate = { };
+	var tarifasByDate = {};
 
 	// mine some data first
 	for(var i=0;i<rawDates.length;i++){
@@ -1504,7 +1548,8 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 			$(cell).addClass("no-flights")
 				   .append("<h3>No hay<br>vuelos</h3>");
 		} else {
-			$(cell).append("<h3>" + formatCurrencyQuantity(tarifasByDate[dateStr], true, 0) +"</h3>");
+			//$(cell).append("<h3>" + formatCurrencyQuantity(tarifasByDate[dateStr], true, 0) +"</h3>");
+			$(cell).append("<h3></h3>");
 		}
 
 		if(dateStr == (isIda?currentDateIda:currentDateVuelta))
@@ -1665,7 +1710,7 @@ function buildFlightOptionRow(opc, compartments)
 		}else{
 
 			var clase_de_operador = linea_clase[v.linea];
-			m += '<div class="'+clase_de_operador+'"><span style="bottom: -24px;position: relative;">'+lineas[v.linea]+'</span></div>';
+			m += '<div class="'+clase_de_operador+'"><span style="bottom:-24px;position:relative;">'+lineas[v.linea]+'</span></div>';
 			aux_object[v.linea] = v.linea;
 
 		}
@@ -1674,9 +1719,17 @@ function buildFlightOptionRow(opc, compartments)
 
 	});
 
+	var ico_conexion = '';
+	if(opc.vuelos.length >= 2){
+		ico_conexion = 'ico_con_conexion';
+	}else{
+		ico_conexion = 'ico_sin_conexion';
+	}
+
+
 	$t.append('<tr style="color: #2D4565;">' +
 		'<td align="left"><span>SALIDA</span><div><b>'+formatTime(opc.horaSalida)+' '+opc.origen+'</b></div></td>' +
-		'<td><div class="ico_time"></div><span><label>Duración Total : '+formatExpandedTime(opc.duracionTotal)+'</label></span></td>' +
+		'<td><div class="'+ico_conexion+'"></div><span><label>Duración Total : '+formatExpandedTime(opc.duracionTotal)+'</label></span></td>' +
 		'<td><span>LLEGADA</span><div><b>'+formatTime(opc.horaLlegada)+' '+opc.destino+'</b></div></td>' +
 		'<td align="center" style="position: relative;top: -10px;"><span><label>Operado por:</span></label><br>'+m+'</td>' +
 		'</tr>');
@@ -1687,6 +1740,8 @@ function buildFlightOptionRow(opc, compartments)
 
 	row.appendChild(cell);
 
+
+
 	// tarifas por compartimiento
 	for(var i=0;i<compartments.length;i++) {
 		var tarifa = opc.tarifas[compartments[i]];
@@ -1694,14 +1749,24 @@ function buildFlightOptionRow(opc, compartments)
 		if(tarifa == null) 
 			continue; // it should always have tarifas, but it doesn't sometimes :S
 
+		//todo ver cual es la menor tarifa
+		/*if(menor_tarifa ==0 || menor_tarifa == null){
+			menor_tarifa = parseInt(tarifa.monto);
+		}else{
+			if(parseInt(tarifa.monto) < menor_tarifa){
+				menor_tarifa = parseInt(tarifa.monto);
+			}
+		}*/
+
 		cell = document.createElement("td");
 		$(cell).addClass("tarifa");
-		$(cell).html("<div class='rbtn'><div></div></div>" + parseInt(tarifa.monto) /*should be formatted. services issue*/ + " " + HTML_CURRENCIES[CURRENCY]+"<div onclick='view_detail_connections(this)' class='btn_view_detail'>(+) Detalle</div>");
+		$(cell).html("<div class='rbtn'><div></div></div>" + parseInt(tarifa.monto) /*should be formatted. services issue*/ + " " + HTML_CURRENCIES[CURRENCY]+"<div onclick='view_detail_connections(this)' class='btn_view_detail'><span></span>Detalle</div>");
 		$(cell).click(selectTarifa);
 		$(cell).attr("data-compartment", tarifa.compart);
 		$(cell).attr("data-id_tarifa", tarifa.ID);
 		row.appendChild(cell);	
 	}
+
 
 	return row;
 }
@@ -1722,7 +1787,7 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 
 
 		if (!response) { // Error loading SVG// ERROR AL CARGAR LA IMAGEN SVG
-			$(this).html('Error svg al insertar<strong><a href="disydes.com">importante</a></strong>');
+			$(this).html('Error svg al insertar<strong><a href="">importante</a></strong>');
 			$("#ERROR").html("<b>ERROR</b>");
 
 		} else {
@@ -3160,7 +3225,7 @@ function closeSimpleDialog(redirectUrl)
 // ---------------------= =---------------------
 // ---------------------= =---------------------
 // ---------------------= =---------------------
-// ---------------------= validar email=---------------------
+// ---------------------= validar email =---------------------
 
 function isEmail(email) {
 	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
