@@ -1377,7 +1377,7 @@
 	margin: 0;
   	padding: 0;
   	font-family: "FuturaBook";
-  	font-size: 30px;
+  	font-size: 26px;
 }
 
 #widget_resumen_reserva .cell-origen-destino{
@@ -1899,6 +1899,7 @@ td#pagar_reserva.activado {
 	margin: auto;
 	float: left;
 	margin-left: 10px;
+	margin-top: 5px;
 }
 .ico_iberia{
 	background-image: url('images/iberia.jpg');
@@ -1908,6 +1909,7 @@ td#pagar_reserva.activado {
 	margin: auto;
 	float: left;
 	margin-left: 10px;
+	margin-top: 5px;
 }
 
 

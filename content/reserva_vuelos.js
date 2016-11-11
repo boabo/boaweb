@@ -386,7 +386,9 @@ function changeDay()
 		fillTableWithLoading($("#tbl_regreso")[0]);
 	}
 
-	requestFlights(currentDateIda, currentDateVuelta);
+	var sitios = getSelectedSitesCount();
+
+	requestFlights(currentDateIda, currentDateVuelta,sitios);
 }
 // ---------------------= =---------------------
 function toggleWidgetCambiarVuelo()
@@ -1315,7 +1317,9 @@ function asyncReceiveDates(response)
 
 	waitingForFlightsData = true;
 
-	requestFlights(currentDateIda, currentDateVuelta);
+	searchParameters.sitios = getSelectedSitesCount();
+
+	requestFlights(currentDateIda, currentDateVuelta,searchParameters.sitios);
 }
 // ---------------------= =---------------------
 function asyncReceiveFlights(response)
@@ -1727,9 +1731,10 @@ function buildFlightOptionRow(opc, compartments)
 	}
 
 
+
 	$t.append('<tr style="color: #2D4565;">' +
 		'<td align="left"><span>SALIDA</span><div><b>'+formatTime(opc.horaSalida)+' '+opc.origen+'</b></div></td>' +
-		'<td><div class="'+ico_conexion+'"></div><span><label>Duración Total : '+formatExpandedTime(opc.duracionTotal)+'</label></span></td>' +
+		'<td><div class="'+ico_conexion+'"></div><span><label class="duracion_total" >Duración Total : '+formatExpandedTime(opc.duracionTotal)+'</label></span></td>' +
 		'<td><span>LLEGADA</span><div><b>'+formatTime(opc.horaLlegada)+' '+opc.destino+'</b></div></td>' +
 		'<td align="center" style="position: relative;top: -10px;"><span><label>Operado por:</span></label><br>'+m+'</td>' +
 		'</tr>');
@@ -1792,6 +1797,7 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 
 		} else {
 
+			var duracion = {horas:0,minutos:0};
 			//dibuja los vuelos
 			for(var i=0;i<opc.vuelos.length;i++) {
 			 	var flight = opc.vuelos[i];
@@ -1809,6 +1815,10 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 
 				$(this).children('svg').find('[data="aeropuertoLlegada'+nivel+'"]').html(separarAeropuertoSvg(airports[flight.destino]));
 				$(this).children('svg').find('[data="duracion'+nivel+'"]').html(formatExpandedTime(flight.duracion));
+
+				//agregamos el tiempo de vuelo a la duracion
+				duracion.horas = duracion.horas + parseInt(flight.duracion.hrs);
+				duracion.minutos = duracion.minutos + parseInt(flight.duracion.mins);
 			 }
 
 
@@ -1819,7 +1829,11 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 				var hora_salida_2 = opc.vuelos[1].horaSalida;
 
 				var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
-				$(this).children('svg').find('[data="transito1"]').html(transito);
+				$(this).children('svg').find('[data="transito1"]').html(transito.Str);
+
+				//agregamos el tiempo de transito a la duracion
+				duracion.horas = duracion.horas + parseInt(transito.Hrs);
+				duracion.minutos = duracion.minutos + parseInt(transito.Mins);
 
 
 			}else if(countVuelos == 3){
@@ -1827,19 +1841,35 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 				var hora_salida_2 = opc.vuelos[1].horaSalida;
 
 				var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
-				$(this).children('svg').find('[data="transito1"]').html(transito);
+				$(this).children('svg').find('[data="transito1"]').html(transito.Str);
+
+				//agregamos el tiempo de transito a la duracion
+				duracion.horas = duracion.horas + parseInt(transito.Hrs);
+				duracion.minutos = duracion.minutos + parseInt(transito.Mins);
 
 				var hora_llegada_3 = opc.vuelos[1].horaLlegada;
 				var hora_salida_4 = opc.vuelos[2].horaSalida;
 
 				var transito2 = tiempoTransito(hora_llegada_3,hora_salida_4);
-				$(this).children('svg').find('[data="transito2"]').html(transito2);
+				$(this).children('svg').find('[data="transito2"]').html(transito2.Str);
+
+				//agregamos el tiempo de transito a la duracion
+				duracion.horas = duracion.horas + parseInt(transito2.Hrs);
+				duracion.minutos = duracion.minutos + parseInt(transito2.Mins);
+
 
 			}
 
-
-
-
+			//verificamos si los minutos pueden ser horas y el restante minutos
+			if(duracion.minutos > 59){
+				var aux_res = duracion.minutos / 60;
+				var hrs = parseInt(aux_res);
+				var min = (aux_res - hrs) * 60;
+				duracion.horas = duracion.horas + hrs;
+				duracion.minutos = min;
+			}
+			//agregamos la duracion total a la celda principal de este vuelo
+			$('[data-opc_code="'+opc.code+'"]').find(".duracion_total").html("Duración Total : "+((duracion.horas > 0)?duracion.horas+" hrs. ":"")+((duracion.minutos>0)?duracion.minutos+" mins.":" "))
 
 
 		}
@@ -1864,9 +1894,13 @@ function tiempoTransito(hora_llegada_1,hora_salida_2){
 	//Aquí hago la resta
 	t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
 
+	var res = {Str:"",Hrs:"",Mins:""};
 	//Imprimo el resultado
-	 return (t1.getHours() ? t1.getHours() + (t1.getHours() > 1 ? " h" : " h") : "") + (t1.getMinutes() ? ", " + t1.getMinutes() + (t1.getMinutes() > 1 ? " min" : " min") : "") + (t1.getSeconds() ? (t1.getHours() || t1.getMinutes() ? " y " : "") + t1.getSeconds() + (t1.getSeconds() > 1 ? " segundos" : " segundo") : "");
+	res.Hrs = t1.getHours();
+	res.Mins = t1.getMinutes();
+	 res.Str = (t1.getHours() ? t1.getHours() + (t1.getHours() > 1 ? " h" : " h") : "") + (t1.getMinutes() ? ", " + t1.getMinutes() + (t1.getMinutes() > 1 ? " min" : " min") : "") + (t1.getSeconds() ? (t1.getHours() || t1.getMinutes() ? " y " : "") + t1.getSeconds() + (t1.getSeconds() > 1 ? " segundos" : " segundo") : "");
 
+	return res;
 }
 function separarAeropuertoSvg(aeropuerto){
 
@@ -2093,6 +2127,7 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 	var now = new Date();
 	var currentTimeStr = ("00" + (now.getHours())).slice(-2) + "" + ("00" + (now.getMinutes())).slice(-2);
 
+	var sitios = (totalSites > 0 || totalSites != null || totalSites != '')?totalSites:"1";
 	var data = {
 		tokenAv 		: SERVICE_CREDENTIALS_KEY,
 		language 		: "ES",
@@ -2106,7 +2141,7 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 
 		departing 		: dateIda,
 		returning 		: (dateVuelta==null?"":dateVuelta),
-		sites 			: "1",
+		sites 			: sitios,
 		compartment 	: "0",
 		classes 		: "",
 		classesState 	: "",
