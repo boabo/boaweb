@@ -997,15 +997,22 @@ header .att-div{
 	color: #1F3656;
 }
 
-#buscador_vuelos .menu:nth-child(3)
-/*#buscador_vuelos .menu.selected:nth-child(3):hover*/{
+/*#buscador_vuelos .menu:nth-child(3)
+!*#buscador_vuelos .menu.selected:nth-child(3):hover*!{
 	background-color: rgba(175, 175, 175, 0.9);
 	color: #797979;
 	cursor: not-allowed;
-	/* ENABLED COLORS
+	!* ENABLED COLORS
 	background-color: #DDE0E1;	
-	color: #1F3656;*/
+	color: #1F3656;*!
+}*/
+
+#buscador_vuelos .menu:nth-child(3),
+#buscador_vuelos .menu.selected:nth-child(3):hover {
+	background-color: #8590a5;
+	color: #fff;
 }
+
 
 #buscador_vuelos .menu{
 	position:relative;

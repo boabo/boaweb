@@ -1,10 +1,9 @@
 // ---------------------------------------------------------------------------
-var CURRENCY = "usd"; // "euro", "bs" , "usd"
+var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi6td5qfd6IYJva1xT0e49BXtRG2d5trE/WkSy86Cf90h7ZUhJr3jI8M61EYCiVoTYsPJ6Xelxntrg==";
-
-var server = '192.168.17.247'; //puede ser "+server+"
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5CrZbrASeE/ejP7pYq44C3GddWzQSBmumotNLogDW8Ukp56fNNOU+bE38Iypdqq631t55YxydQSA==";
+var server = '10.0.1.7'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
 var LocaleConfig = {
@@ -76,10 +75,10 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'CBB',
-		destino: 'BCN',
-		fechaIda : '20161115',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20161125',//null, // no flight back
+		origen: 'EZE',
+		destino: 'TJA',
+		fechaIda : '20170207',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20170222',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0

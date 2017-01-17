@@ -332,11 +332,21 @@
 					<h2>WEB</h2>
 					<h1>CHECK IN</h1>
 				</li>
-				<li class="menu" data-content="estado_vuelo" title="Disponible Pr&oacute;ximamente">
+
+
+
+
+				<!--<li class="menu" data-content="estado_vuelo" title="Disponible Pr&oacute;ximamente">
 					<div class="label-prox">(pr&oacute;ximamente)</div>
 					<h2>ESTADO DE MI</h2>
 					<h1>VUELO</h1>
+				</li>-->
+
+				<li id="tab_web_rent_car" class="menu" data-content="web_rent_car" title="Disponible Pr&oacute;ximamente">
+					<h2>RENT</h2>
+					<h1>CAR</h1>
 				</li>
+
 			</ul>
 			<!-- CONTENT -->
 				<div id="reserva_vuelos" class="content form selected">
@@ -570,7 +580,7 @@
 						</tr>
 						<tr>
 							<td>
-								
+
 							</td>
 						</tr>
 					</table>
@@ -604,6 +614,11 @@
 						</tr>
 					</table>
 					<div id="btn_buscar_estado_vuelo" class="button">BUSCAR</div>
+				</div>
+
+				<div id="web_rent_car" class="content form" style="background-color:rgb(133, 144, 165); padding: 5px; border: none;">
+					<iframe style="border: none;" height="340px" width="100%" src="http://integrations.rentalcars.com/partners/integrations/stand-alone-app/?preflang=es&fts=true&affiliateCode=boliviana&css=true" name="myIframe" id="myIframe"></iframe>
+
 				</div>
 		</div>
 	</div>
