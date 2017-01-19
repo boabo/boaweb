@@ -1500,6 +1500,52 @@ function buildFlightOptionRow(opc, compartments) {
 
     var combobox_tarifas = '<select class="select_precios" onchange="selectTarifaComboBox(this)" onclick="selectTarifaComboBox(this)">';
 
+    var lista_negra_clases = [];
+    var clases_validadas = []; //esto aplica cuando un vuelo tiene mas de una opcion o tiene escalas
+
+    $.each(opc.vuelos,function(k,v){
+
+        var tarifas_ = [];
+        $.each(v.tarifas_completas,function(i,k){
+
+            tarifas_.push(k);
+        });
+
+        if(v.numOpcion in lista_negra_clases){
+
+
+
+            var object_clases_validadas = [];
+            $.each(clases_validadas[v.numOpcion],function (index,$clase) {
+
+                var result = $.grep(tarifas_, function(e){
+                   console.log(e)
+                    return e.clase == $clase.clase;
+                });
+
+                if(result.length > 0){
+                    object_clases_validadas.push(result[0]);
+
+                }
+
+            });
+            opc.vuelos[0].tarifas_completas = object_clases_validadas;
+
+
+
+
+
+
+
+        }else{
+
+            lista_negra_clases[v.numOpcion] = tarifas_;
+
+            clases_validadas[v.numOpcion] = tarifas_;
+
+        }
+    });
+
 
     var array = $.map(opc.vuelos[0].tarifas_completas, function (el) {
         return el
