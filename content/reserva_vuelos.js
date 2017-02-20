@@ -762,14 +762,39 @@ function checkCompleteSeleccionVuelo()
 	var btn = $("#btn_validar_vuelos");
 	var btn2 = $("#btn_validar_vuelos2");
 
-	if(seleccionVuelo.ida == null || 
-	  (seleccionVuelo.adulto.num == 0 && seleccionVuelo.ninho.num==0 && seleccionVuelo.infante.num==0 )){
-		btn.hide();
-		btn2.hide();
-	}else{
+	var validado_ = false;
+
+	if(currentDateIda != null){
+		if(seleccionVuelo.ida == null ||
+			(seleccionVuelo.adulto.num == 0 && seleccionVuelo.ninho.num==0 && seleccionVuelo.infante.num==0 )){
+			validado_ = false;
+
+		}else{
+			validado_ = true;
+
+		}
+	}
+
+
+	if(currentDateVuelta != null){
+		if(seleccionVuelo.vuelta == null ||
+			(seleccionVuelo.adulto.num == 0 && seleccionVuelo.ninho.num==0 && seleccionVuelo.infante.num==0 )){
+			validado_ = false;
+
+		}else{
+			validado_ = true;
+
+		}
+	}
+
+	if(validado_){
 		btn.show();
 		btn2.show();
+	}else {
+		btn.hide();
+		btn2.hide();
 	}
+
 
 }
 // ---------------------= =---------------------

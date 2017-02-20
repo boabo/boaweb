@@ -1,8 +1,9 @@
 // ---------------------------------------------------------------------------
-var CURRENCY = "bs"; // "euro", "bs" , "usd"
+
+var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7BPrLYsj0ybqhm09TblUOjslx8EaCD/6OuQm99ikDGxbC0ywUxXeSVZmWbmlPBb7ocj8xxwfiT/g==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi4nvpHxshTanDIlunWvTlFNUdq3MbG1/ePgDuzhwK+wAPRuaaglvukbjF2/adYrbBORz8xv15c5MA==";
 var server = '10.0.1.7'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
