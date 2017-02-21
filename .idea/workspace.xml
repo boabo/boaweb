@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="checkbox contenido impresion">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info_page_us.html" afterPath="$PROJECT_DIR$/info_page_us.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info_page_br.html" afterPath="$PROJECT_DIR$/info_page_br.html" />
     </list>
     <ignored path="boaweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -241,11 +241,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info_page_us.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="info_page_us.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/info_page_us.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="3342" column="24" selection-start-line="3342" selection-start-column="24" selection-end-line="3342" selection-end-column="24" />
+            <state relative-caret-position="75">
+              <caret line="3101" column="34" selection-start-line="3101" selection-start-column="13" selection-end-line="3101" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -256,11 +256,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info_page_br.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="info_page_br.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/info_page_br.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="2736" column="57" selection-start-line="2736" selection-start-column="57" selection-end-line="2736" selection-end-column="57" />
+            <state relative-caret-position="365">
+              <caret line="3072" column="70" selection-start-line="3072" selection-start-column="70" selection-end-line="3072" selection-end-column="70" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -323,8 +323,8 @@
         <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
         <option value="$PROJECT_DIR$/home.html" />
         <option value="$PROJECT_DIR$/info_page.html" />
-        <option value="$PROJECT_DIR$/info_page_br.html" />
         <option value="$PROJECT_DIR$/info_page_us.html" />
+        <option value="$PROJECT_DIR$/info_page_br.html" />
       </list>
     </option>
   </component>
@@ -853,7 +853,7 @@
       <workItem from="1487594535439" duration="11259000" />
       <workItem from="1487616013415" duration="8541000" />
       <workItem from="1487681193859" duration="3632000" />
-      <workItem from="1487702365390" duration="3447000" />
+      <workItem from="1487702365390" duration="4279000" />
     </task>
     <task id="LOCAL-00001" summary="validacion de boton enviar correo">
       <created>1471364598070</created>
@@ -880,7 +880,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1761803000" />
+    <option name="totallyTimeSpent" value="1762635000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2081,16 +2081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/info_page_br.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="2736" column="57" selection-start-line="2736" selection-start-column="57" selection-end-line="2736" selection-end-column="57" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -2117,13 +2107,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page_us.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="3342" column="24" selection-start-line="3342" selection-start-column="24" selection-end-line="3342" selection-end-column="24" />
+        <state relative-caret-position="75">
+          <caret line="3101" column="34" selection-start-line="3101" selection-start-column="13" selection-end-line="3101" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/info_page_br.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="3072" column="70" selection-start-line="3072" selection-start-column="70" selection-end-line="3072" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
