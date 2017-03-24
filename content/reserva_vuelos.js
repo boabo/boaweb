@@ -220,7 +220,7 @@ $(document).on('ready',function()
 	});
 
 	// Dialog setup
-	$("#simple_dialog .button").click(closeSimpleDialog);
+	//$("#simple_dialog .button").click(closeSimpleDialog);
 
 
 	//dibuja los bancos
@@ -292,7 +292,7 @@ function dibujarBancos(objeto,titulo){
 			}else{
 				clase = "bancos_";
 			}
-			var banco = '<div class="'+clase+'" id="'+v.nombre+'">'+
+			var banco = '<div data-mensaje="'+v.mensaje+'" class="'+clase+'" id="'+v.nombre+'">'+
 				'<img src="'+v.img+'" width="100%">'+
 				'</div>';
 			$("#"+titulo).append(banco);
@@ -301,6 +301,7 @@ function dibujarBancos(objeto,titulo){
 				$("#"+v.nombre).click(function () {
 
 					var validado = true;
+
 
 					//window.open(v.url);
 					if($("#nit").val() == ''){
@@ -318,10 +319,28 @@ function dibujarBancos(objeto,titulo){
 						$("#razon_social").css({"border":""});
 					}
 
+					var mensaje = $("#"+v.nombre).data("mensaje");
+					console.log(mensaje);
+					console.log($("#"+v.nombre));
+
 					if (validado){
 						//aca haces la accion
-						console.log("nit",$("#nit").val());
-						console.log("razon social",$("#razon_social").val());
+
+						if(mensaje == 'undefined'){
+							//la funcion go
+							if(v.type_ == "POST"){
+
+								//go post
+							}else if(v.type_ == "GET"){
+								//go get
+							}
+
+
+						}else{
+							//mostramos el mensaje
+							showSimpleDialog2(mensaje);
+						}
+
 					}
 				});
 
@@ -3324,10 +3343,12 @@ function showSimpleDialog(msg, redirectUrl)
 
 	$("#ui_reserva_vuelos").addClass("blured");
 
-	if(redirectUrl != null)
+	if(redirectUrl != null){
 		$("#simple_dialog .button").click(function(){
-			closeSimpleDialog(redirectUrl);	
+			closeSimpleDialog(redirectUrl);
 		});
+	}
+
 }
 // ---------------------= =---------------------
 function closeSimpleDialog(redirectUrl)
@@ -3339,6 +3360,28 @@ function closeSimpleDialog(redirectUrl)
 	if(redirectUrl != null)
 		window.location.href = redirectUrl;
 }
+
+function showSimpleDialog2(msg)
+{
+	$("#dialog_overlay").show();
+	$("#simple_dialog")
+		.show()
+		.find(".description").html(msg);
+
+	$("#ui_reserva_vuelos").addClass("blured");
+
+
+		$("#simple_dialog .button").click(function(){
+			$("#dialog_overlay").hide();
+			$("#simple_dialog").hide();
+			$("#ui_reserva_vuelos").removeClass("blured");
+		});
+
+
+}
+
+
+
 // ---------------------= =---------------------
 // ---------------------= =---------------------
 // ---------------------= =---------------------

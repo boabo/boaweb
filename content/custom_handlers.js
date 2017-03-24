@@ -3,8 +3,8 @@
 var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi4nvpHxshTanDIlunWvTlFNUdq3MbG1/ePgDuzhwK+wAPRuaaglvukbjF2/adYrbBORz8xv15c5MA==";
-var server = '10.0.1.7'; //puede ser "+server+"
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi4rZqIoX6BY0QlwKrcKPEM1ESKRm1j3K86poYuHhd1JkmrlIR5XMFGImN0y6IGS0OssmCMVB58Akg==";
+var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
 var LocaleConfig = {
@@ -76,10 +76,10 @@ var BoA = {
 	}, 
 
 	defaultConsultaVuelos : {
-		origen: 'EZE',
-		destino: 'TJA',
-		fechaIda : '20170207',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20170222',//null, // no flight back
+		origen: 'LPB',
+		destino: 'CBB',
+		fechaIda : '20170423',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20170522',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0
@@ -153,49 +153,56 @@ var BoA = {
 					img:"content/images/bancos/banco-union.jpg",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:true
+					enabled:true,
+					type_:"POST"
 				},
 				{
 					nombre:"economico",
 					img:"content/images/bancos/banco_economico.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:true
+					enabled:true,
+					type_:"POST"
 				},
 				{
 					nombre:"bnb",
 					img:"content/images/bancos/bnb.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:false
+					enabled:false,
+					type_:"POST"
 				},
 				{
 					nombre:"bcp",
 					img:"content/images/bancos/banco_bcp.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:false
+					enabled:false,
+					type_:"POST"
 				},
 				{
 					nombre:"bisa",
 					img:"content/images/bancos/banco_bisa.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:false
+					enabled:false,
+					type_:"POST"
 				},
 				{
 					nombre:"ecofuturo",
 					img:"content/images/bancos/banco_ecofuturo.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:false
+					enabled:false,
+					type_:"POST"
 				},
 				{
 					nombre:"comunidad",
 					img:"content/images/bancos/banco_comunidad.jpg",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:false
+					enabled:false,
+					type_:"POST"
 				}
 			],
 			credito:[
@@ -204,14 +211,19 @@ var BoA = {
 					img:"content/images/bancos/visa.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:true
+					enabled:true,
+					type_:"POST",
+					mensaje:"Por motivos en mejoras sobre nuestra plataforma para pago con Tarjetas de Credito. Nos vemos obligados a suspender este servicio. Por favor intente realizar su pago por medio de Banca Electronica o Billtera Electronica. Disculpe las molestias"
 				},
 				{
 					nombre:"mastercard",
 					img:"content/images/bancos/mastercard.png",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:true
+					enabled:true,
+					type_:"POST",
+					mensaje:"Por motivos en mejoras sobre nuestra plataforma para pago con Tarjetas de Credito. Nos vemos obligados a suspender este servicio. Por favor intente realizar su pago por medio de Banca Electronica o Billtera Electronica. Disculpe las molestias"
+
 				}
 
 			],
@@ -221,7 +233,8 @@ var BoA = {
 					img:"content/images/bancos/tigo.jpg",
 					url:"http://www.google.com",
 					visible:true,
-					enabled:true
+					enabled:true,
+					type_:"POST"
 				}
 			]
 		}
