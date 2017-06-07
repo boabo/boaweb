@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/widget_reserva/content/custom_handlers.js" afterPath="$PROJECT_DIR$/widget_reserva/content/custom_handlers.js" />
+=======
     <list default="true" id="399f56f3-b274-49b8-b293-510a4822639a" name="Default" comment="checkbox contenido impresion">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/lib/validate.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/custom_handlers.js" afterPath="$PROJECT_DIR$/content/custom_handlers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/reserva_vuelos.js" afterPath="$PROJECT_DIR$/content/reserva_vuelos.js" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reserva_vuelos.html" afterPath="$PROJECT_DIR$/reserva_vuelos.html" />
+=======
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
     </list>
     <ignored path="boaweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,6 +43,9 @@
     <favorites_list name="boaweb" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="custom_handlers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
@@ -56,6 +68,7 @@
         </entry>
       </file>
     </leaf>
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,6 +139,15 @@
         <option value="$PROJECT_DIR$/content/style.css" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos_comercial.js" />
         <option value="$PROJECT_DIR$/home.html" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/content/footer.js" />
+        <option value="$PROJECT_DIR$/content/custom_handlers.js" />
+        <option value="$PROJECT_DIR$/widget_reserva/content/custom_handlers.js" />
+=======
+        <option value="$PROJECT_DIR$/info_page.html" />
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         <option value="$PROJECT_DIR$/info_page_us.html" />
         <option value="$PROJECT_DIR$/info_page_br.html" />
         <option value="localhost/~faviofigueroa/boaweb/content/reserva_vuelos.js" />
@@ -133,7 +155,11 @@
         <option value="$PROJECT_DIR$/reserva_vuelos.html" />
         <option value="$PROJECT_DIR$/content/custom_handlers.js" />
         <option value="$PROJECT_DIR$/content/reserva_vuelos.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/content/lib/validate.js" />
+=======
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
       </list>
     </option>
   </component>
@@ -214,6 +240,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boaweb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fake_services" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -393,6 +437,9 @@
       <workItem from="1462538616491" duration="1057000" />
       <workItem from="1462549072910" duration="4183000" />
       <workItem from="1462559939515" duration="1096000" />
+<<<<<<< HEAD
+      <workItem from="1462798409767" duration="7930000" />
+=======
       <workItem from="1462798409767" duration="5823000" />
       <workItem from="1462810725363" duration="3928000" />
       <workItem from="1462822317784" duration="2383000" />
@@ -786,12 +833,24 @@
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
       <updated>1471364689226</updated>
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1880057000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="31378000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1281" y="24" width="1366" height="677" extended-state="6" />
+    <editor active="false" />
+=======
+    <option name="totallyTimeSpent" value="1798900000" />
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -805,6 +864,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="731" extended-state="6" />
     <editor active="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2180937" sideWeight="0.4610493" order="0" side_tool="false" content_ui="combo" />
@@ -952,6 +1012,56 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
+=======
+    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15555">
+          <caret line="1037" column="0" selection-start-line="1037" selection-start-column="0" selection-end-line="1037" selection-end-column="0" />
+          <folding>
+            <marker date="1490392715000" expanded="true" signature="5399:5416" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="12859:12871" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="12859:12907" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="12960:12972" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="13049:13062" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="13100:13130" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="44117:44191" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="47186:47200" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="49179:49210" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="49390:49405" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="49590:49605" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="49590:49622" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="49743:49758" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="50192:50222" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="55300:55331" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="55403:55434" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="56407:56421" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="56407:56438" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="56588:56602" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="56588:56619" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="57039:57314" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="61971:61987" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="62362:62378" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="78614:78623" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="78648:78657" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="78684:78693" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="78728:78737" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="78782:79555" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="79776:81680" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="79904:81221" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="80434:80453" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="80837:80856" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="81265:81666" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="82083:82098" placeholder="..." />
+            <marker date="1490392715000" expanded="true" signature="82083:82115" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
     <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6180">
@@ -1082,16 +1192,61 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6255">
+<<<<<<< HEAD
           <caret line="417" column="24" lean-forward="false" selection-start-line="417" selection-start-column="24" selection-end-line="430" selection-end-column="32" />
+=======
+          <caret line="417" column="24" selection-start-line="417" selection-start-column="24" selection-end-line="430" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+<<<<<<< HEAD
+            <element signature="n#style#0;n#label#0;n#td#1;n#tr#3;n#table#0;n#div#2;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#3;n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+=======
+            <element signature="n#style#0;n#li#2;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#4;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#2;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#16;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page_us.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="12915">
           <caret line="861" column="75" lean-forward="false" selection-start-line="861" selection-start-column="75" selection-end-line="861" selection-end-column="75" />
+=======
+        <state relative-caret-position="18285">
+          <caret line="1219" column="63" selection-start-line="1219" selection-start-column="63" selection-end-line="1219" selection-end-column="63" />
+          <folding>
+<<<<<<< HEAD
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
@@ -1156,8 +1311,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="10185">
+          <caret line="679" column="75" selection-start-line="679" selection-start-column="75" selection-end-line="679" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+=======
         <state relative-caret-position="6180">
+<<<<<<< HEAD
           <caret line="412" column="49" lean-forward="false" selection-start-line="412" selection-start-column="49" selection-end-line="412" selection-end-column="49" />
+=======
+          <caret line="412" column="49" selection-start-line="412" selection-start-column="49" selection-end-line="412" selection-end-column="49" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
@@ -1285,22 +1455,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="180">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+=======
         <state relative-caret-position="6255">
+<<<<<<< HEAD
           <caret line="417" column="24" lean-forward="false" selection-start-line="417" selection-start-column="24" selection-end-line="430" selection-end-column="32" />
+=======
+          <caret line="417" column="24" selection-start-line="417" selection-start-column="24" selection-end-line="430" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#4;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#2;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#16;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page_us.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="12915">
+          <caret line="861" column="75" selection-start-line="861" selection-start-column="75" selection-end-line="861" selection-end-column="75" />
+          <folding>
+<<<<<<< HEAD
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#td#1;n#tr#3;n#table#0;n#div#2;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#3;n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+=======
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page_br.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5820">
+<<<<<<< HEAD
           <caret line="388" column="68" lean-forward="false" selection-start-line="388" selection-start-column="68" selection-end-line="388" selection-end-column="68" />
+=======
+          <caret line="388" column="68" selection-start-line="388" selection-start-column="68" selection-end-line="388" selection-end-column="68" />
+          <folding>
+<<<<<<< HEAD
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
@@ -1465,15 +1694,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content/style.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="180">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+=======
         <state relative-caret-position="15150">
+<<<<<<< HEAD
           <caret line="1010" column="43" lean-forward="false" selection-start-line="1010" selection-start-column="43" selection-end-line="1010" selection-end-column="43" />
+=======
+          <caret line="1010" column="43" selection-start-line="1010" selection-start-column="43" selection-end-line="1010" selection-end-column="43" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          <folding />
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
+<<<<<<< HEAD
           <caret line="44" column="10" lean-forward="false" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+=======
+          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
+          <folding>
+<<<<<<< HEAD
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#td#1;n#tr#3;n#table#0;n#div#2;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#3;n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+=======
+            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
@@ -1487,8 +1741,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/info_page.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="6645">
           <caret line="443" column="33" lean-forward="false" selection-start-line="443" selection-start-column="33" selection-end-line="443" selection-end-column="33" />
+=======
+        <state relative-caret-position="6255">
+          <caret line="417" column="24" selection-start-line="417" selection-start-column="24" selection-end-line="430" selection-end-column="32" />
+          <folding>
+<<<<<<< HEAD
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#4;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#2;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#16;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         </state>
       </provider>
     </entry>
@@ -1499,11 +1782,17 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="http://localhost/~faviofigueroa/boaweb/content/reserva_vuelos.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
       </provider>
     </entry>
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/content/fake_services/register_passengers_service.php">
+=======
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
     <entry file="file://$PROJECT_DIR$/info_page_br.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46935">
@@ -1511,7 +1800,12 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/content/style.css">
+=======
+    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
@@ -1653,15 +1947,29 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/info_page.html">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/content/images/icons_footer.png">
+      <provider selected="true" editor-type-id="images">
+=======
+    <entry file="file://$PROJECT_DIR$/reserva_vuelos_comercial.html">
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31770">
           <caret line="2118" column="32" lean-forward="false" selection-start-line="2118" selection-start-column="32" selection-end-line="2118" selection-end-column="32" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/content/images/bancos/banco_bcp.png">
       <provider selected="true" editor-type-id="images">
+=======
+    <entry file="http://localhost/~faviofigueroa/boaweb/content/reserva_vuelos.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
         <state />
       </provider>
     </entry>
@@ -1680,7 +1988,14 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/content/common.js">
+=======
+    <entry file="file://$PROJECT_DIR$/home.html">
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11460">
           <caret line="764" column="0" lean-forward="false" selection-start-line="764" selection-start-column="0" selection-end-line="764" selection-end-column="0" />
@@ -1690,12 +2005,36 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/content/images/bancos/visa.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content/validaciones_form.js">
+=======
+    <entry file="file://$PROJECT_DIR$/content/style.css">
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/info_movil.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="74" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home_movil.html">
+=======
+    <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1703,9 +2042,39 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/content/images/bancos/tigo.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
+=======
+    <entry file="file://$PROJECT_DIR$/info_page.html">
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="108" column="33" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
+          <folding>
+<<<<<<< HEAD
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#4;n#ul#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#1;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#2;n#div#1;n#div#3;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#8;n#div#8;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#16;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+          </folding>
+        </state>
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content/fin_venta.js">
@@ -1721,6 +2090,7 @@
         <state relative-caret-position="33105">
           <caret line="2207" column="66" lean-forward="true" selection-start-line="2207" selection-start-column="66" selection-end-line="2207" selection-end-column="66" />
           <folding>
+<<<<<<< HEAD
             <marker date="1496755112000" expanded="true" signature="6701:6718" ph="..." />
             <marker date="1496755112000" expanded="true" signature="14714:14726" ph="..." />
             <marker date="1496755112000" expanded="true" signature="14714:14762" ph="..." />
@@ -1764,14 +2134,129 @@
             <marker date="1496755112000" expanded="true" signature="83939:83971" ph="..." />
             <marker date="1496755112000" expanded="true" signature="84061:84069" ph="¿" />
             <marker date="1496755112000" expanded="true" signature="84111:84119" ph="Í" />
+=======
+<<<<<<< HEAD
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#td#5;n#tr#0;n#table#0;n#div#1;n#div#2;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+=======
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#4;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-642">
           <caret line="227" column="0" lean-forward="true" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="180">
+          <caret line="84" column="1" selection-start-line="84" selection-start-column="1" selection-end-line="84" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widget_reserva/widget_reserva.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7394">
+          <caret line="151" column="20" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generic_container.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1515">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/language_data_es.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/language_data_pt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widget_reserva/content/language_data_es.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reserva_vuelos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="551" column="78" selection-start-line="551" selection-start-column="78" selection-end-line="551" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#td#1;n#tr#3;n#table#0;n#div#2;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#3;n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/fake_services/validate_flight_selection_service.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/custom_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="71" column="74" selection-start-line="71" selection-start-column="74" selection-end-line="71" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/reserva_vuelos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="649" column="32" selection-start-line="649" selection-start-column="32" selection-end-line="649" selection-end-column="32" />
+          <folding>
+            <marker date="1454021823000" expanded="true" signature="29667:29780" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="34085:34360" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="50155:50164" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="50189:50198" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="50225:50234" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="50269:50278" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="50323:51096" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="51272:51853" placeholder="..." />
+            <marker date="1454021823000" expanded="true" signature="51402:51698" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widget_reserva/content/custom_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+=======
+        <state relative-caret-position="450">
+          <caret line="156" column="25" selection-start-line="156" selection-start-column="20" selection-end-line="156" selection-end-column="25" />
+>>>>>>> 22ef0ebe378d4069edcc5b975fd77fe8c6e3b47a
+>>>>>>> 0d3e56ca3f2d7ca9f49bc29782c0d503a0764887
           <folding />
         </state>
       </provider>
