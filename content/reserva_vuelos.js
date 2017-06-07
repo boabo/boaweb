@@ -145,135 +145,169 @@ var contadorNuevaPeticion = 0;
 
 var menor_tarifa_ida = 0;
 var menor_tarifa_vuelta = 0;
+
+var reserva_redirect = true;
 // ---------------------= =---------------------
 /********************************************************* 
  ********************** UI HANDLERS **********************
  **********************************************************/
 $(document).on('ready',function()
 {
-	contadorNuevaPeticion = 0;
-	if($("#ui_reserva_vuelos").data("mode") !="widget") {
-		initialize_header(true);
-		initialize_ui_sections({anchor_section_headers:false});	
-	}
+
+    (function(a){a.fn.validCampos=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
 
 
-	$("#tbl_salida").find("tr").not(":first").remove(); // clear table results
-	$("#tbl_regreso").find("tr").not(":first").remove(); // clear table results
+    $('#razon_social').validCampos(' abcdefghijklmnñopqrstuvwxyzáéiou');
+    $('#nit').validCampos('1234567890');
+
+
+    if(reserva_redirect == true){
+
+        $("#pagar_reserva").addClass("activado");
+        $("#pagar_reserva").empty().append('x Pagar Reserva');
+        $("#pagar_reserva").siblings('td').hide("slow",function () {
+            $("#contenedor_pagar").show("slide");
+            $("#cod_reserva").css({"margin-top":"0px"});
+
+
+        });
+        $("#info_registro_pasajeros").removeClass("active");
+        $("#stage_registro").removeClass("active");
+        $("#widget_resumen_reserva").hide();
+        $("#info_pago_bancos").addClass("active");
+        $("#stage_compra").addClass("active");
+	}else {
+
+
+        contadorNuevaPeticion = 0;
+        if ($("#ui_reserva_vuelos").data("mode") != "widget") {
+            initialize_header(true);
+            initialize_ui_sections({anchor_section_headers: false});
+        }
+
+
+        $("#tbl_salida").find("tr").not(":first").remove(); // clear table results
+        $("#tbl_regreso").find("tr").not(":first").remove(); // clear table results
+
+
+        todayStr = formatCompactDate(new Date()); // today
+
+		/*----------= UI SETUP HANDLERS =-----------*/
+        $("#widget_cambiar_vuelo #btn_cambiar_vuelo").click(toggleWidgetCambiarVuelo);
+        $("#widget_cambiar_vuelo .form .radio-button").click(toggleRbtnIdaVuelta);
+        $("#widget_resumen_reserva td.selector-pax ul li").click(changeNumPassengers);
+        $("#widget_resumen_reserva td.selector-pax ul").mouseleave(function () {
+            if ($(this).hasClass("active"))
+                $(this).removeClass("active");
+        });
+
+        $("#btn_borrar_ida").click(deleteIda);
+        $("#btn_borrar_vuelta").click(deleteVuelta);
+        $("#btn_buscar_vuelo").click(validateSearch);
+
+        // Initial search of flights
+        setTimeout(handleInitialRequest, 500);
+
+        // DATE PICKERs SETUP
+        $("#picker_salida").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 2,
+            minDate: 0,
+            onSelect: function (selectedDate) {
+                $("#picker_regreso").datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+        $("#picker_regreso, #picker_estado_vuelo").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 2,
+            minDate: 0
+        });
+
+        // support for "font-awesome" icon library
+        $(".validable .calendar").datepicker("option", "prevText", '<i class="fa fa-arrow-left"></i>');
+        $(".validable .calendar").datepicker("option", "nextText", '<i class="fa fa-arrow-right"></i>');
+
+        $("#btn_validar_vuelos").click(validateSeleccionVuelo);
+        $("#btn_validar_vuelos2").click(validateSeleccionVuelo);
+        $("#btn_volver_vuelos").click(backToFlightStage);
+        $("#btn_validar_pasajeros").click(validatePassengers);
+        $("#btn_validar_pasajeros2").click(validatePassengers);
+
+        // WINDOW SETUP
+        $(window).resize(checkResultsTableWidth);
+        handleScroll();
+        $(window).scroll(handleScroll);
+
+        setInterval(checkSearchWidgetAvailability, 200);
+
+        flapperTotal = $("#precio_total").flapper({
+            width: 7,
+            align: 'right'
+        });
+
+        // Dialog setup
+        //$("#simple_dialog .button").click(closeSimpleDialog);
 
 
 
-	todayStr = formatCompactDate(new Date()); // today 
-
-	/*----------= UI SETUP HANDLERS =-----------*/
-	$("#widget_cambiar_vuelo #btn_cambiar_vuelo").click(toggleWidgetCambiarVuelo);
-	$("#widget_cambiar_vuelo .form .radio-button").click(toggleRbtnIdaVuelta);
-	$("#widget_resumen_reserva td.selector-pax ul li").click(changeNumPassengers);
-	$("#widget_resumen_reserva td.selector-pax ul").mouseleave(function(){
-		if($(this).hasClass("active"))
-			$(this).removeClass("active");
-	});
-
-	$("#btn_borrar_ida").click(deleteIda);
-	$("#btn_borrar_vuelta").click(deleteVuelta);
-	$("#btn_buscar_vuelo").click(validateSearch);
-
-	// Initial search of flights
-	setTimeout(handleInitialRequest, 500);
-
-	// DATE PICKERs SETUP
-	$("#picker_salida").datepicker({ 
-		dateFormat: 'dd MM yy',
-		numberOfMonths: 2, 
-		minDate: 0,
-		onSelect:function(selectedDate){
-			$( "#picker_regreso" ).datepicker( "option", "minDate", selectedDate );
-		}
-	});
-
-	$("#picker_regreso, #picker_estado_vuelo").datepicker({ 
-		dateFormat: 'dd MM yy',
-		numberOfMonths: 2, 
-		minDate: 0
-	});
-
-	// support for "font-awesome" icon library
-	$(".validable .calendar").datepicker("option", "prevText", '<i class="fa fa-arrow-left"></i>');
-	$(".validable .calendar").datepicker("option", "nextText", '<i class="fa fa-arrow-right"></i>');
-
-	$("#btn_validar_vuelos").click(validateSeleccionVuelo);
-	$("#btn_validar_vuelos2").click(validateSeleccionVuelo);
-	$("#btn_volver_vuelos").click(backToFlightStage);
-	$("#btn_validar_pasajeros").click(validatePassengers);
-	$("#btn_validar_pasajeros2").click(validatePassengers);
-
-	// WINDOW SETUP
-	$(window).resize(checkResultsTableWidth);
-	handleScroll();
-	$(window).scroll(handleScroll);
-
-	setInterval(checkSearchWidgetAvailability, 200);
-
-	flapperTotal = $("#precio_total").flapper({
-		width: 7,
-		align: 'right'
-	});
-
-	// Dialog setup
-	//$("#simple_dialog .button").click(closeSimpleDialog);
 
 
-	//dibuja los bancos
-	dibujarBancos(BoA.bancos.debito,"debito");
-	dibujarBancos(BoA.bancos.credito,"credito");
-	dibujarBancos(BoA.bancos.billetera,"billetera");
+        //pagar reserva
+
+        $("#pagar_reserva").click(function () {
+            $(this).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
+            var self = this;
+            if ($(this).hasClass("activado")) {
+                $(this).removeClass("activado");
+
+                $("#contenedor_pagar").hide("slide", function () {
+                    $("#cod_reserva").css({"margin-top": "30px"});
+                    $(self).siblings('td').show();
+                });
 
 
-	//pagar reserva
-	
-	$("#pagar_reserva").click(function () {
-		$(this).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
-		var self = this;
-		if( $(this).hasClass("activado") ){
-			$(this).removeClass("activado");
+                $("#razon_social").val('');
+                $("#nit").val('');
 
-			$("#contenedor_pagar").hide("slide",function () {
-				$("#cod_reserva").css({"margin-top":"30px"});
-				$(self).siblings('td').show();
-			});
+            } else {
+
+                $(this).addClass("activado");
+                $(this).empty().append('x Pagar Reserva');
+                $(this).siblings('td').hide("slow", function () {
+                    $("#contenedor_pagar").show("slide");
+                    $("#cod_reserva").css({"margin-top": "0px"});
 
 
-			$("#razon_social").val('');
-			$("#nit").val('');
-
-		}else{
-
-			$(this).addClass("activado");
-			$(this).empty().append('x Pagar Reserva');
-			$(this).siblings('td').hide("slow",function () {
-				$("#contenedor_pagar").show("slide");
-				$("#cod_reserva").css({"margin-top":"0px"});
+                });
 
 
-			});
+            }
 
-		}
-
-	});
+        });
 
 
-	//controlar el scroll
-	$( window ).scroll(function() {
-		if($(window).scrollTop() > 140){
-			//$("#widget_resumen_reserva").css({"position":"fixed","right":"60px"});
-			$("#widget_resumen_reserva").addClass("reserva_fixed");
-			$(".head-tu-vuelo").hide();
-		}else{
-			//$("#widget_resumen_reserva").css({"position":"absolute","right":""});
-			$("#widget_resumen_reserva").removeClass("reserva_fixed");
-			$(".head-tu-vuelo").show();
-		}
-	});
+        //controlar el scroll
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 140) {
+                //$("#widget_resumen_reserva").css({"position":"fixed","right":"60px"});
+                $("#widget_resumen_reserva").addClass("reserva_fixed");
+                $(".head-tu-vuelo").hide();
+            } else {
+                //$("#widget_resumen_reserva").css({"position":"absolute","right":""});
+                $("#widget_resumen_reserva").removeClass("reserva_fixed");
+                $(".head-tu-vuelo").show();
+            }
+        });
+    }
+
+    //dibuja los bancos
+    dibujarBancos(BoA.bancos.debito, "debito");
+    dibujarBancos(BoA.bancos.credito, "credito");
+    dibujarBancos(BoA.bancos.billetera, "billetera");
+
+
+
 
 }); // init
 
@@ -1040,6 +1074,7 @@ function validatePassengers()
 				persona["email"] = divPersona.find(".email").val();
 
 			}
+
 		}
 
 

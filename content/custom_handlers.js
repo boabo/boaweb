@@ -3,7 +3,7 @@
 var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi4rZqIoX6BY0QlwKrcKPEM1ESKRm1j3K86poYuHhd1JkmrlIR5XMFGImN0y6IGS0OssmCMVB58Akg==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7RgDT68vc3IEOPPvd2h//NTi10Gsf1T/5NEixEzS6+akVGv5fvjobMjBCoszhTa4/tomBc6fyAXg==";
 var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
@@ -68,8 +68,8 @@ var BoA = {
 
 		/* SERVICES */
 		// nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-		nearest_dates_service: "https://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
-		flights_schedule_service: "https://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
+		nearest_dates_service: "http://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
+		flights_schedule_service: "http://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
 		validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
 		register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
 		change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php"
@@ -78,8 +78,8 @@ var BoA = {
 	defaultConsultaVuelos : {
 		origen: 'LPB',
 		destino: 'CBB',
-		fechaIda : '20170423',//formatCompactDate(new Date()), // today
-		fechaVuelta: '20170522',//null, // no flight back
+		fechaIda : '20170621',//formatCompactDate(new Date()), // today
+		fechaVuelta: '20170622',//null, // no flight back
 		adulto: 1,
 		infante: 0,
 		ninho: 0
