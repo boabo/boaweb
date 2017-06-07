@@ -11,7 +11,9 @@ $(document).on('ready',function()
 		clearInterval(footerIconsAnimationInterval);
 	});
 
+	/**/
 	$("footer .tooltip_icono_").on('mouseenter',function(){
+		console.log('click')
 		clearInterval(footerIconsAnimationInterval);
 	});
 
@@ -40,7 +42,9 @@ function animateFooterIcons()
 	$.each(obj_iconos_footer,function (k,v) {
 
 
+		console.log($("footer #"+$(v).context.id));
 		if ($("footer #"+$(v).context.id).is(":hover") === false ){
+
 
 			if(k == 0){
 				animateTooltip($(v).context.id);
@@ -58,8 +62,7 @@ function animateFooterIcons()
 
 }
 // ---------------------------------------------------------------------------
-function animateTooltip(id)
-{
+function animateTooltip(id) {
 
 
 	setTimeout(function(){
@@ -173,7 +176,7 @@ function toggleFooterTooltip(ev)
 	if(ev.target != this) return;
 
 	var isActive = $(this).hasClass("active");
-	$("footer .tooltip").removeClass("active");
+	$("footer .tooltip_icono_").removeClass("active");
 	
 	if(isActive == false)
 		$(this).addClass("active");

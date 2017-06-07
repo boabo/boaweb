@@ -1,4 +1,4 @@
-<!--     BOLIVIANA DE AVIACION     -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,8 +8,7 @@
 	<!-- <link rel="icon" href="content/images/icon.png" type="image/x-icon"> -->
 
 	<!-- JQUERY LIBRARY -->
-	<script type="text/javascript" src="content/lib/jquery-1.11.1.min.js"></script>
-
+	<script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
 	<!-- BROWSER DETECTION -->
 	<script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
 
@@ -21,7 +20,7 @@
 	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
 
 	<!-- SCROLLBAR LIBRARY -->
-	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css" 
+	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
 		rel="stylesheet" type="text/css" />
 	<script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 
@@ -38,7 +37,7 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script type="text/javascript" src="content/reserva_vuelos.js"></script>
-	
+
 	<!-- COMMON SCRIPTS -->
 	<script type="text/javascript" src="content/language_data_es.js"></script> <!-- PT, EN -->
 
@@ -46,15 +45,34 @@
 	<script type="text/javascript" src="content/custom_handlers.js"></script>
 	<script type="text/javascript" src="content/header.js"></script>
 	<script type="text/javascript" src="content/generic_container.js"></script>
+	<script type="text/javascript" src="content/validaciones_form.js"></script>
 
 	<!-- STYLE.CSS -->
 	<link href="content/style.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="content/reserva_vuelos.css" media="screen" rel="stylesheet" type="text/css" />
 
 	<link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
+
 	<!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
 </head>
 <body class="generic-container">
+
+
+<svg style="display: none">
+	<symbol id="svg_cerrar" viewBox="0 0 16 16">
+		<polygon points="14,3.3 12.7,2 8,6.7 3.3,2 2,3.3 6.7,8 2,12.7 3.3,14 8,9.3 12.7,14 14,12.7 9.3,8 "></polygon>
+	</symbol>
+</svg>
+
+
+<svg style="display: none" >
+	<symbol id="alert_form" viewBox="0 0 16 16">
+		<path fill="#D80027" d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM9 13h-2v-2h2v2zM9 10h-2v-7h2v7z"></path>
+
+	</symbol>
+</svg>
+
+
 	<header style="display:block">
 		<a id="btn_return_home" href="http://www.boa.bo"></a>
 		<div class="logo-header"></div>
@@ -213,7 +231,7 @@
 									<li data-item="" class="disabled">Clase Econ&oacute;mica</li>
 									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE FAMILIA</li>
 									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE GRUPOS</li>
-									
+
 									<li class="primary disabled" data-item=""><div class="icon"></div>NUESTRAS ALIANZAS</li>
 								</ul>
 							</td>
@@ -317,26 +335,30 @@
 	<div id="clouds">
 		<canvas id="clouds_canvas" width="2500" height="1000"></canvas>
 	</div>
-	
+
 	<!-- UI RESERVA VUELOS -->
 	<div id="ui_reserva_vuelos" data-mode="normal" class="ui-section wide results selected">
 		<div class="gradient"></div>
-		<div class="header">
+		<div class="header" style="border: 0px;">
 			<div class="stages">
+				<div id="stage_eleccion" class="stage">
+					<div class="number"><span>1</span></div><span>Busqueda</span>
+				</div>
+
 				<div id="stage_seleccion" class="stage active">
-					<div class="number"><span>1</span></div><span>SELECCI&Oacute;N</span>
+					<div class="number"><span>2</span></div><span>Elija su Vuelo</span>
 				</div>
 				<div id="stage_registro" class="stage">
-					<div class="number"><span>2</span></div><span>REGISTRO DE PASAJEROS</span>
+					<div class="number"><span>3</span></div><span>Reservar</span>
 				</div>
 				<div id="stage_compra" class="stage">
-					<div class="number"><span>3</span></div><span>COMPRA</span>
+					<div class="number"><span>4</span></div><span>Pagar</span>
 				</div>
 			</div>
 
 			<div id="widget_cambiar_vuelo" class="collapsed">
 				<div id="btn_cambiar_vuelo" class="btn-expand">
-					<span class="cambiar">Cambiar Vuelo</span>
+					<span class="cambiar">Modificar Busqueda</span>
 					<span class="buscando">Buscando...</span>
 					<div class="icon-loading"></div>
 					<div class="icon-cross"></div>
@@ -360,13 +382,16 @@
 						                <option value="CBB">COCHABAMBA</option>
 						                <option value="LPB">LA PAZ</option>
 						                <option value="MAD">MADRID</option>
+						                <option value="BCN">BARCA</option>
 						                <option value="VVI">SANTA CRUZ</option>
 						                <option value="SRE">SUCRE</option>
 						                <option value="TJA">TARIJA</option>
 						                <option value="TDD">TRINIDAD</option>
 						                <option value="EZE">BUENOS AIRES</option>
 						                <option value="GRU">SAO PAULO</option>
-									</select>	
+										<option value="CCA">CHIMORE</option>
+										<option value="MIA">MIAMI</option>
+									</select>
 								</div>
 							</td>
 							<td class='input-container'>
@@ -377,12 +402,15 @@
 						                <option value="CBB">COCHABAMBA</option>
 						                <option value="LPB">LA PAZ</option>
 						                <option value="MAD">MADRID</option>
+										<option value="BCN">BARCA</option>
 						                <option value="VVI">SANTA CRUZ</option>
 						                <option value="SRE">SUCRE</option>
 						                <option value="TJA">TARIJA</option>
 						                <option value="TDD">TRINIDAD</option>
 						                <option value="EZE">BUENOS AIRES</option>
 						                <option value="GRU">SAO PAULO</option>
+						                <option value="CCA">CHIMORE</option>
+										<option value="MIA">MIAMI</option>
 									</select>
 								</div>
 							</td>
@@ -431,16 +459,16 @@
 				</div>
 			</div>
 		</div>
-		<div style="position:relative">
+		<div style="position:relative; ">
 			<!-- RESULTADOS VUELOS -->
-			<div id="info_resultados_vuelos" class="info phase selected active">
+			<div id="info_resultados_vuelos" class="info phase selected active" >
 				<div class="descripcion">
-					<h3>Selecciona tu(s) vuelo(s)</h3>
+					<!--<h3>Selecciona tu(s) vuelo(s)</h3>-->
 					<h2 id="lbl_info_salida"></h2>
-					<table cellspacing="0" cellpadding="0">
+					<table cellspacing="0" cellpadding="0" >
 						<tr>
 							<td colspan="6">
-								<table class="days-selector" data-salida_regreso="salida" 
+								<table class="days-selector" data-salida_regreso="salida"
 									id="tbl_days_selector_salida">
 									<tr class="months"></tr> <!-- CELDAS PARA MESES -->
 									<tr class="days">
@@ -519,7 +547,7 @@
 					<table id="tbl_dayselector_regreso" cellspacing="0" cellpadding="0">
 						<tr>
 							<td colspan="6">
-								<table class="days-selector" data-salida_regreso="regreso" 
+								<table class="days-selector" data-salida_regreso="regreso"
 									id="tbl_days_selector_regreso">
 									<tr class="months"></tr> <!-- CELDAS PARA MESES -->
 									<tr class="days">
@@ -539,7 +567,22 @@
 					<table id="tbl_regreso" cellspacing="0" cellpadding="0" data-tipo="vuelta">
 						<!-- ROWS OF FLIGHTS HERE -->
 					</table>
+
+					<br>
+					<table style="border: none;padding: 0;background-color: #fff;">
+						<tr style="background-color: #fff;">
+							<td style="background-color: #fff;" align="right" class="cell-submit" colspan="2">
+								<div id="loading_compra2" class="loading" style="display:none"></div>
+								<div id="btn_validar_vuelos2" class="button" style="display:none;position: relative;float: right;">Continuar mi compra</div>
+								<div id="btn_validar_pasajeros2" class="button" style="display:none">Realizar Pago</div>
+							</td>
+						</tr>
+					</table>
+
+
+
 				</div>
+			</div>
 			</div>
 
 			<!-- REGISTRO DE PASAJEROS -->
@@ -586,7 +629,7 @@
 									<tr>
 										<td colspan="4">
 											<span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span>
-											
+
 										</td>
 									</tr>
 								</table>
@@ -631,7 +674,7 @@
 									<tr>
 										<td colspan="4">
 											<span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span>
-											
+
 										</td>
 									</tr>
 								</table>
@@ -648,21 +691,14 @@
 			<!-- PAGO DE BANCOS -->
 			<div id="info_pago_bancos" class="info phase selected">
 				<div class="descripcion wide">
-					<table>1
+					<table style="margin-top:30px;" id="cod_reserva">
 						<tr>
-							<td valign="top">
-								<h2>C&oacute;digo de reserva</h2>
+							<td colspan="2" valign="top">
+								<h2>C&Oacute;DIGO DE RESERVA</h2>
 								<div id="lbl_codigo_reserva" class="codigo-reserva">89873</div>
-								<div>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
+								<b style="color:#C28318;; ">Reserva de Pago Inmediato.</b>
 							</td>
-							<td>
+							<!--<td>
 								<h2>Bancos Locales</h2>
 								<table class='banks-container'>
 									<tbody>
@@ -701,36 +737,189 @@
 										</tr>
 									</tbody>
 								</table>
-							</td>
+							</td>-->
 						</tr>
+						<tr>
+
+							<td style="background-color: #cccccc; text-align: right; width: 50%;"><b>Enviar Datos de Reserva</b></td>
+							<td id="pagar_reserva" style="text-align: left;width: 50%;"><b class="button" style="position: static;">Pagar Reserva</b></td>
+
+						</tr>
+						<tr >
+
+							<td id="contenedor_pagar" colspan="2" style="background-color: #E1E1E1;">
+								<div id="formulario_pagar" class="form">
+									<table width="60%" style="margin: auto; width: 60%;">
+                                        <tr>
+                                            <td colspan="2">
+                                                <br/>
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <td>
+                                                <span style=" text-align: left;"><strong>RAZON SOCIAL</strong></span>
+                                            </td>
+
+											<td align="right" style="width: 50%;">
+
+												<div style="float: left; width:auto; ">
+
+													<input id="razon_social" type='text'  class="input-comprar">
+												</div>
+
+											</td>
+
+                                            <td>
+                                                <span style="text-align: left;"><strong>NIT..</strong></span>
+                                            </td>
+
+											<td align="left" style="width: 50%;">
+												<div style="float: left; width:auto; ">
+
+													<input id="nit"  type='text'  class="input-comprar">
+												</div>
+											</td>
+										</tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <br/>
+												Elige tu medio de pago y termina la compra de tu pasaje.
+                                            </td>
+                                        </tr>
+
+										<tr>
+											<td colspan="4">
+
+												<table>
+													<tr >
+														<td class="tipo_de_pago">
+															<span style="display: block;"><strong>BANCA ELECTRONICA</strong></span>
+								<span>
+									PAGA DESDE EL SITIO WEB O DESDE LAS OFICINAS DEL BANCO DE TU ELECCIÓN.
+								</span>
+														</td>
+														<td class="tipo_de_pago">
+															<span style="display: block;"><strong>TARJETA DE CRÉDITO</strong></span>
+								<span>
+									PAGA CON TU TARJETA DE CRÉDITO UTILIZANDO NUESTRA PASARELA DE PAGO.
+								</span>
+														</td>
+														<td class="tipo_de_pago">
+															<span style="display: block;"><strong>BILLETERA ELECTRÓNICA</strong></span>
+								<span>
+									COMPRA TU PASAJE UTILIZANDO TU BILLETERA ELECTRÓNICA Y SIGUE LAS INSTRUCCIONES QUE SALDRAN EN TU CELULAR.
+								</span>
+														</td>
+
+													</tr>
+
+													<tr>
+														<td class="tipo_de_pago" id="debito">
+
+
+
+
+														</td>
+														<td class="tipo_de_pago" id="credito">
+
+
+														</td>
+														<td class="tipo_de_pago" id="billetera">
+
+
+														</td>
+
+
+													</tr>
+												</table>
+											</td>
+										</tr>
+
+
+									</table>
+								</div>
+
+							</td>
+
+
+
+						</tr>
+
+						<!---->
+
 					</table>
 				</div>
 			</div>
 
 			<!-- WIDGET RESUMEN -->
 			<div id="widget_resumen_reserva">
-				<div class="head-tu-vuelo"></div>
+				<div class="head-tu-vuelo">
+					<div style="float: left;">
+						<img src="content/images/carrito.png" width="50" style="float: left;">
+						<span style=" float: left;margin-left: 10px; text-align: left; font-family: 'FuturaLight';font-size: 28px;">
+							Su Cesta<br>de Compra
+						</span>
+					</div>
+
+				</div>
 				<div class="separator"></div>
 				<div class="empty-selection" id="div_empty_vuelo">SELECCIONA<br>TU VUELO</div>
-				<div class="div-seleccion">
-					<table id="tbl_seleccion_ida" style="display:none">
+				<div class="div-seleccion" style=" padding-right: 10px; padding-left: 10px;">
+					<table id="tbl_seleccion_ida" style="display:none;">
+						<tr style="position: absolute;right: 10px; top: -3px;">
+
+							<td id="btn_borrar_ida" colspan="7" align="right">
+								<span class="quitar_vuelo_ida" style="padding: 5px;">Quitar Vuelo</span>
+								<img alt="quitar vuelo" style="cursor: pointer;"  src="content/images/remove.png" width="15">
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="1"></td>
+							<td colspan="3" align="left" style="text-align: left; font-family: Futura;" class="cell-cod-origen-destino">
+								Salida
+							</td>
+							<td colspan="1"></td>
+							<td colspan="3" style="text-align: left; font-family: Futura;" class="cell-cod-origen-destino">
+								Llegada
+							</td>
+						</tr>
+
 						<tr>
 							<td rowspan="2" class="cell-icon-ida">
-								<div class="icon-ida"></div>
+
+								<img src="content/images/avion.png" style="/*margin-top: 20px;*/">
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+							<td colspan="3" class="cell-origen-destino fecha_salida_" style="text-align: left; padding-left: 5px; font-size: 12px;">
 								<span>Origen</span>
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+							<td></td>
+							<td colspan="3" class="cell-origen-destino fecha_llegada_" style="text-align: left; font-size: 12px;">
 								<span class="lbl-origen-destino">Destino</span>
+
 							</td>
 						</tr>
 						<tr>
-							<td colspan="6" class="cell-cod-origen-destino">
-								<h1>LPB - VVI</h1>
+							<td colspan="3" class="cell-cod-origen-destino salida_">
+
+							</td>
+							<td style="width: 15px"><img src="content/images/flecha.png" width="15"></td>
+							<td colspan="3" class="cell-cod-origen-destino llegada_">
+								<h1>LPB</h1>
 							</td>
 						</tr>
+						<tr style="line-height: 0;">
+							<td></td>
+							<td colspan="3" style="text-align: left; font-size: 12px; padding-left: 5px; " class="citie_salida_">Cochabamba</td>
+							<td></td>
+							<td colspan="3" style="text-align: right; font-size: 12px; " class="citie_llegada_">La paz</td>
+						</tr>
 						<tr>
+							<td colspan="7">
+								<hr />
+							</td>
+						</tr>
+						<!--<tr>
 							<td class="cell-duracion">
 								Duraci&oacute;n: 40 min.
 							</td>
@@ -740,7 +929,7 @@
 							<td class="cell-hora">
 								<span>14:30 PM</span>
 							</td>
-						</tr>
+						</tr>-->
 					</table>
 					<table id="tbl_seleccion_ida_small" style="display:none">
 						<tr>
@@ -766,38 +955,60 @@
 						</tr>
 					</table>
 					<div id="empty_ida_slot" class="empty-selection" style="display:none">SELECCIONE<br>VUELO DE IDA</div>
-					<div id="overlay_ida" class="overlay" style="display:none">
+					<!--<div id="overlay_ida" class="overlay" style="display:none">
 						<div id="btn_borrar_ida" class="btn-borrar">Quitar este vuelo</div>
-					</div>
+					</div>-->
 				</div>
-				<div class="div-seleccion">
+				<div class="div-seleccion" style=" padding-right: 10px; padding-left: 10px;">
 					<table id="tbl_seleccion_vuelta" style="display:none">
-						<tr>
-							<td rowspan="2" class="cell-icon-vuelta">
-								<div class="icon-vuelta"></div>
+
+						<tr style="position: absolute;right: 10px; top: -3px;">
+							<td id="btn_borrar_vuelta" colspan="7" align="right">
+								<span class="quitar_vuelo_vuelta" style="padding: 5px;">Quitar Vuelo</span>
+								<img style="cursor: pointer;"  src="content/images/remove.png" width="15">
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+						</tr>
+						<tr>
+							<td colspan="1"></td>
+							<td colspan="3" align="left" style="text-align: left; font-family: Futura;" class="cell-cod-origen-destino">
+								Salida
+							</td>
+							<td colspan="1"></td>
+							<td colspan="3" style="text-align: left; font-family: Futura;" class="cell-cod-origen-destino">
+								Llegada
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="2" class="cell-icon-ida">
+
+								<img src="content/images/avion.png" style="/*margin-top: 20px;*/ transform: rotate(180deg);">
+							</td>
+							<td colspan="3" class="cell-origen-destino fecha_salida_" style="text-align: left; padding-left: 5px;">
 								<span>Origen</span>
 							</td>
-							<td colspan="3" class="cell-origen-destino">
+							<td></td>
+							<td colspan="3" class="cell-origen-destino fecha_llegada_" style="text-align: left;">
 								<span class="lbl-origen-destino">Destino</span>
+
 							</td>
 						</tr>
+
+
+
 						<tr>
-							<td colspan="6" class="cell-cod-origen-destino">
-								<h1>VVI - LPB</h1>
+							<td colspan="3" class="cell-cod-origen-destino salida_">
+
+							</td>
+							<td style="width: 15px"><img src="content/images/flecha.png" width="15"></td>
+							<td colspan="3" class="cell-cod-origen-destino llegada_">
+								<h1>LPB</h1>
 							</td>
 						</tr>
-						<tr>
-							<td class="cell-duracion">
-								Duraci&oacute;n: 40 min.
-							</td>
-							<td colspan="5" class="cell-fecha">
-								<span>Martes 8 de Octubre</span>
-							</td>
-							<td class="cell-hora">
-								<span>09:15 PM</span>
-							</td>
+						<tr style="line-height: 0;">
+							<td></td>
+							<td colspan="3" style="text-align: left; font-size: 12px; padding-left: 5px; " class="citie_salida_">Cochabamba</td>
+							<td></td></td>
+							<td colspan="3" style="text-align: right; font-size: 12px; " class="citie_llegada_">La paz</td>
 						</tr>
 					</table>
 					<table id="tbl_seleccion_vuelta_small" style="display:none">
@@ -823,12 +1034,12 @@
 							</td>
 						</tr>
 					</table>
-					<div id="overlay_vuelta" class="overlay" style="display:none">
+					<!--<div id="overlay_vuelta" class="overlay" style="display:none">
 						<div id="btn_borrar_vuelta" class="btn-borrar">Quitar este vuelo</div>
-					</div>
+					</div>-->
 				</div>
 				<div class="separator"></div>
-				<table cellspacing="0" cellpadding="0">
+				<table id="tabla_tipo" cellspacing="0" cellpadding="0">
 					<!-- <tr><th colspan="3">Tarifas</th></tr> -->
 					<tr>
 						<td colspan="3" class="cell-separator"><div></div></td>
@@ -892,7 +1103,7 @@
 					<tr class="tarifa inactive">
 						<td class="cell-descripcion">
 							Infantes
-							<div id="tooltip_infante" class="tooltip"></div>
+							<div id="tooltip_infante"  class="tooltip"></div>
 						</td>
 						<td class="selector-pax">
 							<span>x4</span>
@@ -903,9 +1114,6 @@
 								</li>
 								<li class="plus-one" data-count="1">x1</li>
 								<li class="plus-two" data-count="2">x2</li>
-								<li class="plus-three" data-count="3">x3</li>
-								<li class="plus-four" data-count="4">x4</li>
-								<li class="plus-five" data-count="5">x5</li>
 							</ul>
 						</td>
 						<td class="cell-cantidad">
@@ -918,29 +1126,58 @@
 				</table>
 				<div class="separator"></div>
 				<table>
+
+					<tr id="tasas" class="tarifa">
+						<td class="cell-descripcion" style="width: 45px;">
+							Tasas
+							<div id="tooltip_tasas" style="bottom: 0px;" class="tooltip"></div>
+						</td>
+						<td class="cell-cantidad" id="totalTasas">
+							<span>0</span>
+						</td>
+					</tr>
+
+
+
 					<tr class="tarifa">
-						<td class="cell-descripcion">Total</td>
+						<td class="cell-descripcion" style="width: 45px;">Precio Total</td>
 						<td class="cell-cantidad">
 							<input id="precio_total" class="display XS">
 						</td>
 					</tr>
 					<tr>
-						<td class="cell-submit" colspan="2">
+						<td colspan="2">
+							<br>
+						</td>
+					</tr>
+
+					<!--<tr style="background-color: #ffffff;">
+						<td style="background-color: #ffffff;" class="cell-submit" colspan="2">
 							<div id="loading_compra" class="loading" style="display:none"></div>
 							<div id="btn_validar_vuelos" class="button" style="display:none">Continuar mi compra</div>
 							<div id="btn_validar_pasajeros" class="button" style="display:none">Realizar Pago</div>
 						</td>
+					</tr>-->
+
+				</table>
+
+				<table style="border: none;padding: 0;background-color: #fff;">
+					<tr style="background-color: #fff;">
+						<td style="background-color: #fff;" class="cell-submit" colspan="2">
+							<div id="loading_compra" class="loading" style="display:none"></div>
+							<div id="btn_validar_vuelos" class="button" style="display:none">Continuar mi compra</div>
+							<div id="btn_validar_pasajeros" class="button" style="display:none; width: 100%; line-height: 30px; right: 0;">Realizar Pago</div>
+						</td>
 					</tr>
 				</table>
-			</div>	
-		</div>
+			</div>
 	</div> <!-- <<< UI RESERVA VUELOS >>> -->
 
 	<!-- <<< DIALOGS >>> -->
 	<div id="dialog_overlay" style="display:none">
 		<div id="simple_dialog" class="dialog" style="display:none">
 			<div class="description">
-				
+
 			</div>
 			<div class="button">CERRAR</div>
 		</div>

@@ -233,11 +233,11 @@
 
 #ui_reserva_vuelos .descripcion > h2 {
 	font-size: 21px;
-	padding: 10px 0 10px 60px;
+	padding: 10px 0 10px 35px;
 	background-image: url('images/icon_avion_reservas.png');
 	background-size: 30px auto;
 	background-repeat: no-repeat;
-	background-position: 20px 5px;
+	/*background-position: 20px 5px;*/
 }
 
 #ui_reserva_vuelos .info .descripcion {
@@ -414,7 +414,8 @@
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row:not(.disabled) td {
 	cursor: pointer;
-	background-color: #CADAE5;
+	/*background-color: #CADAE5;*/
+	background-color: #f1f1f1;
 }
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row:hover td {
@@ -430,6 +431,7 @@
 	background-color: #78A2BF;
 }
 
+
 #ui_reserva_vuelos .descripcion table tr.flights-option-row .rbtn {
 	display: inline-block;
 	width: 20px;
@@ -438,7 +440,7 @@
 	border-radius: 100px;
 	margin: 4px 4px 10px 4px;
 	vertical-align: middle;
-	opacity: 0;
+	/*opacity: 0;*/
 }
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row:hover .rbtn,
@@ -465,6 +467,11 @@
 #ui_reserva_vuelos .descripcion table tr.flights-option-row.selected td {
 	background-color: #EFCF9B !important;
 }
+
+#ui_reserva_vuelos .descripcion table tr.flights-option-row.selected td.tarifa {
+	background-color: #EFAA35 !important;
+}
+
 
 #ui_reserva_vuelos .descripcion table tr.flights-option-row.selected td{cursor: default;}
 
@@ -901,15 +908,15 @@
 #info_pago_bancos a.disabled .bank.disabled { cursor: default; }
 
 #info_pago_bancos .codigo-reserva {
-	font-size: 100px;
+	font-size: 80px;
     font-family: "HelveticaNeueProMd";
-    background-color: rgba(31, 54, 89, 0.31);
+    /*background-color: rgba(31, 54, 89, 0.31);*/
     padding: 10px 30px 0 30px;
     margin: 10px auto;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: #1F3656;
-    border-width: 4px;
+    /*border-radius: 20px;*/
+    /*border-style: solid;*/
+    /*border-color: #1F3656;*/
+    /*border-width: 4px;*/
 }
 
 /*------------------------------------------------------*/
@@ -949,20 +956,20 @@
 
 #widget_cambiar_vuelo .btn-expand .icon-cross {
 	position: absolute;
-	top: 5px;
+	top: 13px;
 	left: 180px;
 	width: 30px;
 	height: 30px;
 
-	background-image: url('images/cross.png');
+	background-image: url('images/f_abajo.png');
 	background-repeat: no-repeat;
-	background-size: 30px;
+	background-size: 15px;
 
-	transform: rotate(135deg);
+	/*transform: rotate(135deg);
 	-webkit-transform: rotate(135deg);
 	-moz-transform: rotate(135deg);
 	-o-transform: rotate(135deg);
-	-ms-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);*/
 }
 #widget_cambiar_vuelo .btn-expand.searching .icon-cross{display: none;}
 
@@ -1017,7 +1024,7 @@
     background-color: #EFAA35;
 }
 
-#widget_cambiar_vuelo.collapsed {width: 200px; height: 40px;}
+#widget_cambiar_vuelo.collapsed {width: 250px; height: 40px;}
 #widget_cambiar_vuelo.expanded {width: 500px;height: 270px;}
 
 #widget_cambiar_vuelo .form input[type="text"] {
@@ -1127,12 +1134,12 @@
 }
 
 #widget_resumen_reserva .head-tu-vuelo {
-	width: 170px;
+	width: 300px;
 	height: 63px;
-	background-image: url('images/icon_tu_vuelo.png');
+	/*background-image: url('images/icon_tu_vuelo.png');*/
 	background-repeat: no-repeat;
 	background-size: 170px;
-	margin: 15px 0 0 21px;
+	margin: 15px 0 0 51px;
 }
 
 #widget_resumen_reserva table{width:100%;}
@@ -1148,13 +1155,13 @@
 }
 
 #widget_resumen_reserva .cell-icon-ida,
-#widget_resumen_reserva .cell-icon-vuelta {width:92px;}
+#widget_resumen_reserva .cell-icon-vuelta {width:52px;}
 
 #widget_resumen_reserva .cell-icon-ida.small{width:auto;}
 
 #widget_resumen_reserva .icon-ida,
 #widget_resumen_reserva .icon-vuelta{
-	width: 72;
+	width: 72px;
 	height: 69px;
 	background-image: url('images/icon_avion_compra.png');
 	background-repeat: no-repeat;
@@ -1170,7 +1177,7 @@
 }
 
 #widget_resumen_reserva .icon-vuelta {
-	width: 72;
+	width: 72px;
 	height: 69px;
 	background-image: url('images/icon_avion_compra.png');
 	background-position: 0 -69px;
@@ -1186,7 +1193,7 @@
 	color: #DB9F3C;
 	font-family: "FuturaHeavy";
 	letter-spacing: 1px;
-	font-size: 23px;
+	font-size: 18px;
 	padding: 13px 0 0 23px;
 	vertical-align: bottom;
 }
@@ -1221,7 +1228,7 @@
 	width: 450px;
 	height: 90px;
 	top: -98px;
-	right: -50;
+	right: -50px;
 	background-color: #D6840B;
 	color: #FFF;
 	font-size: 14px;
@@ -1252,7 +1259,7 @@
 }
 
 #widget_resumen_reserva tr.tarifa.calculated:not(.inactive):hover .tooltip {
-	display: block;	
+	display: block;
 }
 
 #widget_resumen_reserva .cell-descripcion .tooltip table {
@@ -1331,7 +1338,7 @@
 #widget_resumen_reserva .cell-submit {
 	position: relative;
 	height: 60px;
-	background-image: url('images/icon_compra.png');
+	/*background-image: url('images/icon_compra.png');*/
     background-size: 40px;
     background-repeat: no-repeat;
     background-position: 30px 15px;
@@ -1342,8 +1349,8 @@
     top: 20px;
     right: 5px;
 	width: 200px;
-    background-color: #1F3656;
-    color: #DB9F3C;
+    background-color: #DB9F3C;
+    color: #ffffff;
     font-family: "FuturaLight";
     text-align: center;
     font-size: 17px;
@@ -1354,7 +1361,7 @@
 
 #widget_resumen_reserva .cell-submit .button:hover {
 	color: #FFF;
-	background-color: #DB9F3C;
+	background-color: #1F3656;
 }
 
 #widget_resumen_reserva .cell-submit .loading {
@@ -1370,7 +1377,7 @@
 	margin: 0;
   	padding: 0;
   	font-family: "FuturaBook";
-  	font-size: 30px;
+  	font-size: 26px;
 }
 
 #widget_resumen_reserva .cell-origen-destino{
@@ -1446,7 +1453,7 @@
 }
 
 #widget_resumen_reserva .div-seleccion .overlay:hover {
-	background-color: rgba(0, 110, 255, 0.49);
+	/*background-color: rgba(0, 110, 255, 0.49);*/
 }
 
 #widget_resumen_reserva .div-seleccion .overlay .btn-borrar{
@@ -1464,11 +1471,11 @@
 }
 
 #widget_resumen_reserva .div-seleccion .overlay .btn-borrar:hover {
-	background-color:#B70000;
+	/*background-color:#B70000;*/
 }
 
 #widget_resumen_reserva .div-seleccion .overlay:hover .btn-borrar{
-	display: block;
+	/*display: block;*/
 }
 
 /*--------------------------------------------------------*/
@@ -1479,7 +1486,7 @@
 
 #widget_resumen_reserva td.selector-pax ul {
 	position: absolute;
-	top: 12px;
+	top: 4px;
 	left: 6px;
 	width: 40px;
 	height: 40px;
@@ -1564,6 +1571,11 @@
 	cursor: pointer;
 }
 
+#widget_resumen_reserva tr.tarifa:not(.inactive):hover .tooltip {
+	display: block;
+}
+
+
 #widget_resumen_reserva tr.tarifa.inactive td {
 	color: gray;
 }
@@ -1643,8 +1655,306 @@
 	-webkit-filter: blur(7px);
 }
 /*--------------------------------------------------------*/
+
+
+
+.icon_form {
+	position: absolute;
+	right: -10px;
+	padding: 10px 12px;
+	pointer-events: none;
+
+	top: -15px;
+	margin-right: 15px;
+	display: none;
+
+
+}
+
+.svg_icon_form {
+	width: 16px;
+	height: 16px;
+	display: none;
+	margin: auto;
+	transition: all .1s;
+}
+
+
+
+/*tooltip para el formulario*/
+.validable .tooltip {
+	background: #1496bb;
+	bottom: 100%;
+	color: #fff;
+	display: block;
+	left: -25px;
+	margin-bottom: 15px;
+	opacity: 0;
+	padding: 20px;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	-ms-transform: translateY(10px);
+	-o-transform: translateY(10px);
+	transform: translateY(10px);
+	-webkit-transition: all .25s ease-out;
+	-moz-transition: all .25s ease-out;
+	-ms-transition: all .25s ease-out;
+	-o-transition: all .25s ease-out;
+	transition: all .25s ease-out;
+	-webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+	-moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+	-ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+	-o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+/* This bridges the gap so you can mouse into the tooltip without it disappearing */
+.validable .tooltip:before {
+	bottom: -20px;
+	content: " ";
+	display: block;
+	height: 20px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+
+/* CSS Triangles - see Trevor's post */
+.validable .tooltip:after {
+	border-left: solid transparent 10px;
+	border-right: solid transparent 10px;
+	border-top: solid #1496bb 10px;
+	bottom: -10px;
+	content: " ";
+	height: 0;
+	left: 50%;
+	margin-left: -13px;
+	position: absolute;
+	width: 0;
+}
+
+.validable:hover .tooltip {
+	opacity: 0.9;
+	pointer-events: auto;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	-o-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
+/* IE can just show/hide with no transition */
+.lte8 .validable .tooltip {
+	display: none;
+}
+
+.lte8 .validable:hover .tooltip {
+	display: block;
+}
+
+
+
+
+
+.disabled-btn{
+	background-color: #cccccc;
+}
+.enabled-btn{
+	background-color: #EFAA35;
+}
 /*--------------------------------------------------------*/
+/*css para codigo de reserva contenido*/
+
+.tipo_de_pago{
+	background-color: rgba(255, 255, 255, 0.8) !important;
+	text-align: left !important;
+	width: 33%;
+	vertical-align: top;
+}
+.banco_disabled {
+	margin-bottom: 5px;
+	cursor:not-allowed;
+	width:47%;
+	height:auto;
+	margin-right:1%;
+	margin-left:1%;
+	float:left;
+	opacity: 0.2;
+}
+.bancos_{
+	margin-bottom: 5px;
+	cursor:pointer;
+	width:47%;
+	height:auto;
+	margin-right:1%;
+	margin-left:1%;
+	float:left;
+
+	-webkit-transition: .3s ease-in-out;
+	-moz-transition: .3s ease-in-out;
+	-o-transition: .3s ease-in-out;
+}
+.bancos_:hover{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	/*width: 100px;
+	height: 100px;*/
+	border: 10px solid #EFAA35;
+	/*margin: 10px;*/
+}
 /*--------------------------------------------------------*/
+
+#contenedor_pagar {
+	display: none;
+}
+#cod_reserva{
+	-webkit-transition: .3s ease-in-out;
+	-moz-transition: .3s ease-in-out;
+	-o-transition: .3s ease-in-out;
+}
+
+#formulario_pagar{
+	width: 100%;
+
+	background-color: #ffffff;
+
+}
+#formulario_pagar td {
+	background-color: #ffffff !important;
+}
+
+td#pagar_reserva{
+	cursor: pointer;
+}
+td#pagar_reserva.activado {
+
+	background-color: #1F3656; !important;
+	color: #ffffff !important;
+}
+.input-comprar{
+	width: 100%;
+	height: 25px;
+	border-width: 1px;
+	border-color: #A0A0A0;
+	border-radius: 0px;
+	border-style: solid;
+	background-color: #FFF;
+	font-size: 20px;
+	font-family: "HelveticaNeuePro";
+	color: #1F3656;
+	border: 1px solid;
+}
+
+
+
+#btn_borrar_ida .quitar_vuelo_ida {
+	display: none;
+}
+#btn_borrar_ida:hover .quitar_vuelo_ida{
+	background-color: red;
+	display: inline;
+}
+
+#btn_borrar_vuelta .quitar_vuelo_vuelta {
+	display: none;
+}
+#btn_borrar_vuelta:hover .quitar_vuelo_vuelta{
+	background-color: red;
+	display: inline;
+}
+
+
+.ico_time{
+	background-image: url('images/time.png');
+	width: 20px;
+	height: 20px;
+	background-size: cover;
+	margin: auto;
+}
+
+.ico_con_conexion{
+	background-image: url('images/azul1.png');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+}
+.ico_sin_conexion{
+	background-image: url('images/azul2.png');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+}
+
+.ico_boa{
+	background-image: url('images/ico_boa.png');
+	width: 20px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+.ico_iberia{
+	background-image: url('images/iberia.jpg');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+
+.tiempo_vuelo svg text{
+	font-family: "FuturaMedium";
+}
+.uno{
+	width: 80%;
+}
+.dos{
+	width: 90%;
+}
+.tres{
+	width: 100%;
+}
+
+.btn_view_detail{
+	display: block;
+	font-family: Futura;
+	font-size: 13px;
+	cursor: pointer;
+	display: none;
+}
+.btn_view_detail span::before{
+	content: 'Ver ';
+}
+
+.btn_view_detail.active span::before{
+	content: 'Menos ';
+}
+
+
+
+/*widget reserva responsive */
+.reserva_fixed {
+
+	position: fixed !important;
+}
+
+@media only screen and (min-width: 1100px) {
+	.reserva_fixed {
+		right: 55px !important;
+	}
+}
+
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

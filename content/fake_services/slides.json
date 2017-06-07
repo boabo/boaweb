@@ -1,4 +1,13 @@
 {
+	"darkSite":"false",
+	"darkSiteSlider":[{
+		"secondary_text_a":"DARK SITE",
+		"main_text":"SITUACIÓN DE EMERGENCIA",
+		"secondary_text_b":"",
+		"url":"content\/fake_services\/slides\/black.jpg",
+		"text_valign" : "top",
+		"href":"http://sms.obairlines.bo/darksite/"
+	}],
 	"success":"true",
 	"slides":[
 	{

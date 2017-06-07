@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+
+<a id="boton" >press</a>
+<iframe onload="test(this)" name="ifrm" src="https://www.resiberweb.com/PaxBoaV2/Forms/BusquedaReservas.aspx" class="sppro_cboxIframe" id="ifrm" width="100%" height="600vw" ></iframe>
+<!--<iframe src="form.html" class="sppro_cboxIframe" id="ifrm2" width="100%" height="600vw" ></iframe>-->
+
+<script>
+    function test(frame)
+    {
+        console.log(frame.contentDocument)
+        var cDoc = frame.contentDocument;
+
+    }
+</script>
+<script>
+
+
+
+    $('#ifrm').on('load', function() {
+
+
+        window.location.hash = "hello";
+        console.log(window)
+        console.log($('iframe').contents())
+//        console.log(frames[0].document);
+//        console.log(jQuery('.sppro_cboxIframe').contents().find('.cuerpoContenedorMaster'));
+        var content = document.getElementsByClassName('sppro_cboxIframe')[0].contentWindow;
+        console.log('asd',content)
+        $('iframe').contents().find('input#ctl00_MainContentPlaceHolder_UCBR21_TxtApellido1').val("favio figueroa");
+        console.log($('iframe').contents().find('input#ctl00_MainContentPlaceHolder_UCBR21_TxtApellido1'));
+
+        var content = document.getElementsByClassName('sppro_cboxIframe')[0].contenteditable;
+        console.log(content);
+
+        console.log($("#ifrm").contents().find('#ctl00_MainContentPlaceHolder_UCBR21_TxtLocalizadorBus'))
+        $($("#ifrm").contents().find('#ctl00_MainContentPlaceHolder_UCBR21_TxtLocalizadorBus')).val('FAVIO');
+    });
+
+
+</script>
+
+
+</body>
+</html>

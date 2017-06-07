@@ -8,7 +8,7 @@
 	
 	<!--  LIBRERIAS JAVASCRIPT  -->
 	<!-- JQUERY -->
-	<script src="content/lib/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
 	
 	<!-- BROWSER DETECTION -->
 	<script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
@@ -127,6 +127,7 @@
 									<li data-item="embarazadas">Mujeres embarazadas</li>
 									<li data-item="tercera_edad">Pasajeros de la tercera edad</li>
 									<li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+									<li data-item="pasajeros_custodia_legal">Pasajeros bajo custodia legal.</li>
 									<li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
 									<li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
 									<li class="primary" data-item="menu_especial"><div class="icon"></div>MEN&Uacute; ESPECIAL</li>
@@ -314,6 +315,7 @@
 			<h2 id="lbl_secondary_a"></h2>
 			<h1 id="lbl_primary"></h1>
 			<h3 id="lbl_secondary_b"></h3>
+			<a id="lbl_href"></a>
 		</div>
 	</div>
 	<!-- UI HOME -->
@@ -330,11 +332,21 @@
 					<h2>WEB</h2>
 					<h1>CHECK IN</h1>
 				</li>
-				<li class="menu" data-content="estado_vuelo" title="Disponible Pr&oacute;ximamente">
+
+
+
+
+				<!--<li class="menu" data-content="estado_vuelo" title="Disponible Pr&oacute;ximamente">
 					<div class="label-prox">(pr&oacute;ximamente)</div>
 					<h2>ESTADO DE MI</h2>
 					<h1>VUELO</h1>
+				</li>-->
+
+				<li id="tab_web_rent_car" class="menu" data-content="web_rent_car" title="Disponible Pr&oacute;ximamente">
+					<h2>RENT</h2>
+					<h1>CAR</h1>
 				</li>
+
 			</ul>
 			<!-- CONTENT -->
 				<div id="reserva_vuelos" class="content form selected">
@@ -568,7 +580,7 @@
 						</tr>
 						<tr>
 							<td>
-								
+
 							</td>
 						</tr>
 					</table>
@@ -602,6 +614,11 @@
 						</tr>
 					</table>
 					<div id="btn_buscar_estado_vuelo" class="button">BUSCAR</div>
+				</div>
+
+				<div id="web_rent_car" class="content form" style="background-color:rgb(133, 144, 165); padding: 5px; border: none;">
+					<iframe style="border: none;" height="380px" width="100%" src="http://integrations.rentalcars.com/partners/integrations/stand-alone-app/?preflang=es&fts=true&affiliateCode=boliviana&css=true" name="myIframe" id="myIframe"></iframe>
+
 				</div>
 		</div>
 	</div>
@@ -677,7 +694,7 @@
 		<div id="icons_seguridad"></div>
 		<div id="icons_util">
 
-			<div id="pin_boa" class="tooltip_icono_" style="right: 135px;">
+			<div id="pin_boa" class="tooltip_icono_ icono_footer_lugar" style="right: 135px;">
 				<span>Mis Oficinas</span>
 				<div class="arrow"></div>
 			</div>
@@ -687,7 +704,8 @@
 				<span>Mis reservas</span>
 				<div class="arrow"></div>
 			</div>
-			<div id="horarios" class="tooltip">
+
+			<div id="horarios" class="tooltip_icono_ icono_footer_horarios">
 				<span>Itinerarios</span>
 				<div class="arrow"></div>
 				<div class="form">
@@ -726,7 +744,7 @@
 						                <option value="EZE">BUENOS AIRES</option>
 						                <option value="GRU">SAO PAULO</option>
 									</select>
-								<div class="validable">
+								</div>
 							</td>
 							<td>
 								<div class="validable">

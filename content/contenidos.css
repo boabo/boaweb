@@ -117,15 +117,20 @@
 #subtitle_instrumentos_musicales 				.title .img {background-position: 0 -125px;}
 #subtitle_equipaje_voluminoso 					.title .img {background-position: 0 -250px;}
 #subtitle_equipaje_voluminoso_espana			.title .img {background-position: 0 -375px;}
+#subtitle_equipaje_armas_de_fuego			.title .img {background-position: 0 -375px;}
 
 #subtitle_equipamiento_deportivo.collapsed		.title .img { background-position: 0 0;}
 #subtitle_instrumentos_musicales.collapsed 		.title .img {background-position: 0 -40px;}
 #subtitle_equipaje_voluminoso.collapsed 		.title .img {background-position: 0 -80px;}
 #subtitle_equipaje_voluminoso_espana.collapsed	.title .img {background-position: 0 -120px;}
+#subtitle_equipaje_armas_de_fuego.collapsed	.title .img {background-position: 0 -120px;}
 
 #image_equipaje_deportivo 	{margin: 0;background-position: 0px 0px;}
 #image_equipaje_musical 	{height: 340px;background-position: 0px -200px;}
 #image_equipaje_fragil  	{background-position: 0px -600px;}
+
+
+
 
 /* ---- MERCANCIAS PELIGROSAS ---- */
 #info_mercancias_peligrosas .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mercancias_peligrosas.png'); }
@@ -334,14 +339,17 @@
 #submenu_item_embarazadas 			.icon{background-position: 0px 0px;}
 #submenu_item_tercera_edad 			.icon{background-position: 0px -25px;}
 #submenu_item_pasajeros_sobrepeso 	.icon{background-position: 0px -50px;}
+#submenu_item_pasajeros_custodia_legal 	.icon{background-position: 0px -50px;}
 
 #info_embarazadas 				.icon{background-position: 	0px 0px; }
 #info_tercera_edad 				.icon{background-position: 	0px -80px; }
 #info_pasajeros_sobrepeso 		.icon{background-position: 	0px -160px; }
+#info_pasajeros_custodia_legal 		.icon{background-position: 	0px -160px; }
 
 #info_embarazadas.fixed 			.icon{background-position:	0px 0px; }
 #info_tercera_edad.fixed 			.icon{background-position: 	0px -50px; }
 #info_pasajeros_sobrepeso.fixed 	.icon{background-position: 	0px -100px; }
+#info_pasajeros_custodia_legal.fixed 	.icon{background-position: 	0px -100px; }
 
 /* mujeres embarazadas */
 #info_embarazadas .desplegable .title .img { background-image: url('images/contenidos/icons_pasajeros_especiales_embarazadas.png'); }

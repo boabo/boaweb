@@ -120,7 +120,8 @@ body {
 
 body.generic-container
 {
-	background-color: #A4C6EF;
+	/*background-color: #A4C6EF;*/
+	background-color: #F0F0F0;
 	padding:0;
 	margin:0;
 	overflow-y:auto !important;
@@ -996,15 +997,22 @@ header .att-div{
 	color: #1F3656;
 }
 
-#buscador_vuelos .menu:nth-child(3)
-/*#buscador_vuelos .menu.selected:nth-child(3):hover*/{
+/*#buscador_vuelos .menu:nth-child(3)
+!*#buscador_vuelos .menu.selected:nth-child(3):hover*!{
 	background-color: rgba(175, 175, 175, 0.9);
 	color: #797979;
 	cursor: not-allowed;
-	/* ENABLED COLORS
+	!* ENABLED COLORS
 	background-color: #DDE0E1;	
-	color: #1F3656;*/
+	color: #1F3656;*!
+}*/
+
+#buscador_vuelos .menu:nth-child(3),
+#buscador_vuelos .menu.selected:nth-child(3):hover {
+	background-color: #8590a5;
+	color: #fff;
 }
+
 
 #buscador_vuelos .menu{
 	position:relative;
@@ -1260,13 +1268,20 @@ footer #call_center h1 {
 }
 /*------------------*/
 /* footer iconos unicos para mantener mejor favio figueroa*/
+
+.icono_footer_lugar{
+	background-image:url('images/pin_boa_blanco.png');
+}
+.icono_footer_horarios{
+	background-image:url('images/reloj_blanco.png');
+}
  footer .tooltip_icono_ {
 	 position: absolute;
 	 top: 10px;
 	 height: 25px;
 	 width: 25px;
-	 background-color: #FFF;
-	 background-image:url('images/oficinas_pin.png');
+	 background-color: rgba(31, 54, 86, 0.9);
+	 opacity: 0.95;
 	 background-repeat: no-repeat;
 	 background-size: auto 25px;
 	 border-radius: 50px;
@@ -1285,7 +1300,7 @@ footer .tooltip_icono_.animating {
 footer .tooltip_icono_:hover,
 footer .tooltip_icono_.active {
 	background-color: #EFAA35;
-	background-size: auto 45px;
+	background-size: auto 40px;
 	top: 2px;
 	width: 40px;
 	height: 40px;
@@ -1382,13 +1397,13 @@ footer #contacto_asistencia:hover {
 
 footer #horarios {
 	left: 55px;
-	background-position: -33px -3px;
+	/*background-position: -33px -3px;*/
 }
 
 footer #horarios:hover,
 footer #horarios.active {
 	left: 50px;
-	background-position: -47px -2px;
+	/*background-position: -47px -2px;*/
 }
 
 footer #reservas {
@@ -1480,7 +1495,22 @@ footer .validable.active {
 	background-color: #F00;
 }
 /* --------------------------------------------------------------------------- */
+
+
+footer .tooltip_icono_ span{display: none;}
 footer .tooltip.active span{display: none;}
+
+
+footer .tooltip_icono_ .form {
+	position: absolute;
+	width: 810px;
+	height: 50px;
+	left: -400px;
+	bottom: 60px;
+	background-image: url("images/bg_footer_popup.png");
+	padding: 4px 0 12px 10px;
+	display: none
+}
 
 footer .tooltip .form {
 	position: absolute;
@@ -1493,6 +1523,9 @@ footer .tooltip .form {
 	display: none
 }
 
+footer .tooltip_icono_.active .form {
+	display: block;
+}
 footer .tooltip.active .form {
 	display: block;
 }
@@ -2502,6 +2535,25 @@ footer .form .button {
     z-index: 2000;
 }
 
+#dialog_overlay_form_email{
+	background-color: rgba(66, 66, 66, 0.55);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+#dialog_overlay_form_imprimir{
+	background-color: rgba(66, 66, 66, 0.55);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
 .dialog {
 	position: relative;
 	width: 700px;
@@ -2541,3 +2593,15 @@ div.blured {
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
+.main-label a{
+	font-size: 25px;
+
+}
+.main-label a:link{
+	text-decoration: none;
+	color: #cccccc;
+}
+.main-label a:visited{
+	text-decoration: none;
+	color: #cccccc;
+}

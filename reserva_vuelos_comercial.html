@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <title>Boliviana de Aviaci&oacute;n</title>
+    <!-- <link rel="icon" href="content/images/icon.png" type="image/x-icon"> -->
+
+    <!-- JQUERY LIBRARY -->
+    <script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
+    <!-- BROWSER DETECTION -->
+    <script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+    <!-- JQUERY UI -->
+    <link rel="stylesheet" type="text/css" href="content/lib/jquery_ui/css/dot-luv/jquery-ui.min.css">
+    <script src="content/lib/jquery_ui/jquery-ui.min_es.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+    <!-- <script src="content/lib/jquery_ui/jquery-ui.min_en.js"></script>  -->
+    <!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
+
+    <!-- SCROLLBAR LIBRARY -->
+    <link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
+          rel="stylesheet" type="text/css"/>
+    <script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- FLAPPER =o -->
+    <link href="content/lib/flapper/css/flapper.css" type="text/css" rel="stylesheet"/>
+    <script src="content/lib/flapper/transform/dist/jquery.transform-0.9.3.min.js"></script>
+    <script src="content/lib/flapper/src/jquery.flapper.js"></script>
+
+    <!-- HASHTABLE LIBRARY -->
+    <script src="content/lib/jshashtable.js"></script>
+
+    <!-- NUMBER FORMATTER -->
+    <script src="content/lib/jquery.numberformatter-1.2.4.jsmin.js"></script>
+
+    <!-- CUSTOM SCRIPTS -->
+    <script type="text/javascript" src="content/reserva_vuelos_comercial.js"></script>
+
+    <!-- COMMON SCRIPTS -->
+    <script type="text/javascript" src="content/language_data_es.js"></script> <!-- PT, EN -->
+
+    <script type="text/javascript" src="content/common.js"></script>
+    <script type="text/javascript" src="content/custom_handlers.js"></script>
+    <script type="text/javascript" src="content/header.js"></script>
+    <script type="text/javascript" src="content/generic_container.js"></script>
+    <script type="text/javascript" src="content/validaciones_form.js"></script>
+
+    <!-- STYLE.CSS -->
+    <link href="content/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="content/reserva_vuelos.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css"/>
+
+
+    <style>
+        .select_precios {
+            height: 34px;
+            border-radius: 0px;
+            border-width: 0 0 2px 0;
+            border-style: solid;
+            border-color: #959595;
+            font-family: "HelveticaNeuePro";
+            font-size: 15px;
+            color: #1F3656;
+            padding: 2px 44px 0 10px;
+            background-image: url('content/images/icon_arrow_down.png');
+
+            background-repeat: no-repeat;
+            background-position: 80px 10px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            text-indent: 0.01px;
+            text-overflow: '';
+        }
+    </style>
+    <!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
+</head>
+<body class="generic-container" ontouchstart="">
+
+<script>
+    var dispositivo = navigator.userAgent.toLowerCase();
+    if (dispositivo.search(/iphone|ipod|ipad|android/) > -1) {
+        //alert('favio')
+    }
+</script>
+
+
+<svg style="display: none">
+    <symbol id="svg_cerrar" viewBox="0 0 16 16">
+        <polygon points="14,3.3 12.7,2 8,6.7 3.3,2 2,3.3 6.7,8 2,12.7 3.3,14 8,9.3 12.7,14 14,12.7 9.3,8 "></polygon>
+    </symbol>
+</svg>
+
+
+<svg style="display: none">
+    <symbol id="alert_form" viewBox="0 0 16 16">
+        <path fill="#D80027"
+              d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM9 13h-2v-2h2v2zM9 10h-2v-7h2v7z"></path>
+
+    </symbol>
+</svg>
+
+
+<header style="display:block">
+    <a id="btn_return_home" href="http://www.boa.bo"></a>
+    <div class="logo-header"></div>
+    <ul id="main_menu">
+        <li id="menu_item_planifica">
+            <span>PLANIFICA TU VIAJE</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        RESERVAR VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        ESTADO DEL VUELO
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        HORARIO DE VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary disabled" data-item="web_check_in">
+                                    <div class="icon"></div>
+                                    WEB CHECK-IN
+                                </li>
+                                <li class="primary disabled" data-item="formas_pago">
+                                    <div class="icon"></div>
+                                    FORMAS DE PAGO
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_antes_viajar">
+            <span>ANTES DE VIAJAR</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="politica_equipaje">
+                                    <div class="icon"></div>
+                                    POL&Iacute;TICA DE EQUIPAJE
+                                </li>
+                                <li data-item="equipaje_mano">Equipaje de mano</li>
+                                <li data-item="equipaje_facturable">Equipaje facturable</li>
+                                <li data-item="exceso_equipaje">Exceso de equipaje</li>
+                                <li data-item="equipaje_especial">Equipaje especial</li>
+                                <li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+                                <li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+                                <li data-item="equipaje_mascotas">Mascotas</li>
+                                <li class="primary disabled" data-item="seguimiento_equipaje">
+                                    <div class="icon"></div>
+                                    SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA
+                                </li>
+                                <li class="primary disabled" data-item="equipajes_demorados">
+                                    <div class="icon"></div>
+                                    EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS
+                                </li>
+                                <li class="primary disabled" data-item="declaracion_equipaje">
+                                    <div class="icon"></div>
+                                    DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE
+                                </li>
+                                <li class="primary" data-item="tips_equipaje">
+                                    <div class="icon"></div>
+                                    TIPS DE EQUIPAJE
+                                </li>
+                                <li class="primary disabled" data-item="equipaje_interlineal">
+                                    <div class="icon"></div>
+                                    EQUIPAJE INTERLINEAL
+                                </li>
+                                <li class="primary" data-item="llegar_aeropuerto">
+                                    <div class="icon"></div>
+                                    LLEGAR AL AEROPUERTO
+                                </li>
+                                <li data-item="hora_limite">Hora l&iacute;mite</li>
+                                <li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+                                <li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+                                <li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="servicios_especiales">
+                                    <div class="icon"></div>
+                                    SERVICIOS ESPECIALES
+                                </li>
+                                <li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+                                <li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes
+                                </li>
+                                <li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales
+                                </li>
+                                <li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+                                <li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til
+                                    (PDMs)
+                                </li>
+                                <li data-item="bebes">Viajando con beb&eacute;s</li>
+                                <li data-item="mascota">Viajando con tu mascota en cabina</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="pasajeros_especiales">
+                                    <div class="icon"></div>
+                                    PASAJEROS ESPECIALES
+                                </li>
+                                <li data-item="embarazadas">Mujeres embarazadas</li>
+                                <li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+                                <li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+                                <li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+                                <li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+                                <li class="primary" data-item="menu_especial">
+                                    <div class="icon"></div>
+                                    MEN&Uacute; ESPECIAL
+                                </li>
+                                <li class="primary" data-item="documentacion_viaje">
+                                    <div class="icon"></div>
+                                    DOCUMENTACI&Oacute;N DE VIAJE, VISA y API
+                                </li>
+                                <li class="primary" data-item="vacunas">
+                                    <div class="icon"></div>
+                                    VACUNAS
+                                </li>
+                                <li class="primary" data-item="derechos_pasajeros" data-action="none">
+                                    <div class="icon"></div>
+                                    DERECHOS DE LOS PASAJEROS
+                                </li>
+                                <li data-is_link="true">
+                                    <a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_promos_destinos" style="display:none">
+            <span>PROMOS Y DESTINOS</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-item="">
+                                    <div class="icon"></div>
+                                    PRINCIPAL
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_experiencia_boa">
+            <span>EXPERIENCIA BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="nuestra_flota">
+                                    <div class="icon"></div>
+                                    NUESTRA FLOTA
+                                </li>
+                                <li class="primary" data-item="experiencia_bordo">
+                                    <div class="icon"></div>
+                                    EXPERIENCIA A BORDO
+                                </li>
+                                <li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+                                <li data-item="" class="disabled">Entretenimiento a Bordo</li>
+                                <li data-item="" class="disabled">Duty Free a Bordo</li>
+                                <li data-item="" class="disabled">Asiento + Confort</li>
+                                <li data-item="" class="disabled">Revista Destinos</li>
+                                <li data-item="" class="disabled">Wi-Fi y GSM</li>
+                                <li class="primary" data-item="seguro_internacional">
+                                    <div class="icon"></div>
+                                    SEGURO INTERNACIONAL
+                                </li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="en_el_aeropuerto">
+                                    <div class="icon"></div>
+                                    EN EL AEROPUERTO
+                                </li>
+                                <li data-item="check_in">Servicio de Check-In</li>
+                                <li data-item="" class="disabled">Kioskos de Check-In</li>
+                                <li data-item="" class="disabled">Mobile Phone Check-In</li>
+                                <li data-item="" class="disabled">Salas VIP</li>
+                                <li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+                                <li data-item="" class="disabled">Parqueos</li>
+                                <li data-item="" class="disabled">Servicio de Chofer</li>
+                                <li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="cabinas">
+                                    <div class="icon"></div>
+                                    CARACTERISTICAS DE LAS CABINAS
+                                </li>
+                                <li data-item="" class="disabled">Clase Business</li>
+                                <li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    VIAJE DE FAMILIA
+                                </li>
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    VIAJE DE GRUPOS
+                                </li>
+
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    NUESTRAS ALIANZAS
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_boa_millas" style="display:none">
+            <span>BoA MILES</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-item="">
+                                    <div class="icon"></div>
+                                    PRINCIPAL
+                                </li>
+                                <li data-item="">Secundario A</li>
+                                <li data-item="">Secundario B</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_somos_boa">
+            <span>SOMOS BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="perfil_corporativo">
+                                    <div class="icon"></div>
+                                    PERFIL CORPORATIVO
+                                </li>
+                                <li class="primary disabled" data-item="liderazgo_corporativo">
+                                    <div class="icon"></div>
+                                    LIDERAZGO CORPORATIVO
+                                </li>
+                                <li class="primary" data-item="somos_iosa">
+                                    <div class="icon"></div>
+                                    SOMOS IOSA
+                                </li>
+                                <li class="primary" data-item="reconocimientos_premios">
+                                    <div class="icon"></div>
+                                    RECONOCIMIENTOS Y PREMIOS
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+    <ul id="sec_menu">
+        <li id="menu_item_agencias">Agencias</li>
+        <li id="menu_item_corporativo" style="display:none">Corporativo</li>
+        <li id="menu_item_login" style="display:none">Login</li>
+    </ul>
+    <div id="menu_locations" class="header-menu">
+        <div class="flag bolivia"></div>
+        <h2><strong>BOLIVIA</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="bolivia selected" data-location="bolivia">
+                <div class="flag"></div>
+                <h2><strong>BOLIVIA</strong></h2>
+            </li>
+            <li class="bsas" data-location="bsas">
+                <div class="flag"></div>
+                <h2><strong>BS. AS.</strong></h2>
+            </li>
+            <li class="madrid" data-location="madrid">
+                <div class="flag"></div>
+                <h2><strong>MADRID</strong></h2>
+            </li>
+            <li class="saopaulo" data-location="saopaulo">
+                <div class="flag"></div>
+                <h2><strong>SAO PAULO</strong></h2>
+            </li>
+            <li class="salta" data-location="salta">
+                <div class="flag"></div>
+                <h2><strong>SALTA</strong></h2>
+            </li>
+            <li class="miami" data-location="miami">
+                <div class="flag"></div>
+                <h2><strong>MIAMI</strong></h2>
+            </li>
+        </ul>
+    </div>
+    <div id="menu_languages" class="header-menu">
+        <h2><strong>ESPA&Ntilde;OL</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="selected" data-language="ES">
+                <h2><strong>ESPA&Ntilde;OL</strong></h2>
+            </li>
+            <!-- <li data-language="EN">
+                <h2><strong>ENGLISH</strong></h2>
+            </li>
+            <li data-language="PT">
+                <h2><strong>PORTUGU&Ecirc;S</strong></h2>
+            </li> -->
+        </ul>
+    </div>
+</header>
+
+<div id="clouds">
+    <canvas id="clouds_canvas" width="2500" height="1000"></canvas>
+</div>
+
+<!-- UI RESERVA VUELOS -->
+<div id="ui_reserva_vuelos" data-mode="normal" class="ui-section wide results selected">
+    <div class="gradient"></div>
+    <div class="header">
+        <div class="stages">
+            <div id="stage_seleccion" class="stage active">
+                <div class="number"><span>1</span></div>
+                <span>SELECCI&Oacute;N</span>
+            </div>
+            <div id="stage_registro" class="stage">
+                <div class="number"><span>2</span></div>
+                <span>REGISTRO DE PASAJEROS</span>
+            </div>
+            <div id="stage_compra" class="stage">
+                <div class="number"><span>3</span></div>
+                <span>COMPRA</span>
+            </div>
+        </div>
+
+
+        <div id="widget_cambiar_vuelo" class="collapsed">
+            <div id="btn_cambiar_vuelo" class="btn-expand">
+                <span class="cambiar">Cambiar Vuelo</span>
+                <span class="buscando">Buscando...</span>
+                <div class="icon-loading"></div>
+                <div class="icon-cross"></div>
+            </div>
+            <div id="btn_volver_vuelos" class="btn-expand" style="display:none">
+                <span class="cambiar">Volver a vuelos</span>
+                <div class="icon-back"></div>
+            </div>
+
+
+            <div class="form">
+                <table>
+                    <tr>
+                        <td width="50%"><label>Origen:</label></td>
+                        <td width="50%"><label>Destino:</label></td>
+                    </tr>
+                     <tr>
+                        <td class='input-container'>
+                            <div class="validable">
+                                <select id="select_origen" class="origen-destino">
+                                    <option value="">Origen</option>
+                                    <option value="CIJ">COBIJA</option>
+                                    <option value="CBB">COCHABAMBA</option>
+                                    <option value="LPB">LA PAZ</option>
+                                    <option value="MAD">MADRID</option>
+                                    <option value="VVI">SANTA CRUZ</option>
+                                    <option value="SRE">SUCRE</option>
+                                    <option value="TJA">TARIJA</option>
+                                    <option value="TDD">TRINIDAD</option>
+                                    <option value="EZE">BUENOS AIRES</option>
+                                    <option value="GRU">SAO PAULO</option>
+                                    <option value="ORU">ORURO</option>
+                                    <option value="POI">POTOSI</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class='input-container'>
+                            <div class="validable">
+                                <select id="select_destino" class="origen-destino">
+                                    <option value="">Destino</option>
+                                    <option value="CIJ">COBIJA</option>
+                                    <option value="CBB">COCHABAMBA</option>
+                                    <option value="LPB">LA PAZ</option>
+                                    <option value="MAD">MADRID</option>
+                                    <option value="VVI">SANTA CRUZ</option>
+                                    <option value="SRE">SUCRE</option>
+                                    <option value="TJA">TARIJA</option>
+                                    <option value="TDD">TRINIDAD</option>
+                                    <option value="EZE">BUENOS AIRES</option>
+                                    <option value="GRU">SAO PAULO</option>
+                                    <option value="ORU">ORURO</option>
+                                    <option value="POI">POTOSI</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="rbtn_ida" class="radio-button checked" data-group="ida_vuelta">
+                                <div class="btn">
+                                    <div></div>
+                                </div>
+                                <label>Solo ida</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="rbtn_ida_vuelta" class="radio-button" data-group="ida_vuelta">
+                                <div class="btn">
+                                    <div></div>
+                                </div>
+                                <label>Ida y Vuelta</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Salida:</label></td>
+                        <td><label id="lbl_regreso" style="display:none">Regreso:</label></td>
+                    </tr>
+                    <tr>
+                        <td class='input-container'>
+                            <div class="validable">
+                                <input type="text" id="picker_salida" class="calendar" text="(Ingrese fecha)"
+                                       onkeypress="return false;">
+                            </div>
+                        </td>
+                        <td class='input-container'>
+                            <div class="validable">
+                                <input type="text" id="picker_regreso" class="calendar" style="display:none"
+                                       onkeypress="return false;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="btn_buscar_vuelo" class="button">BUSCAR</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="position:relative">
+        <!-- RESULTADOS VUELOS -->
+        <div id="info_resultados_vuelos" class="info phase selected active">
+            <div class="descripcion">
+
+                <h3>Selecciona tu(s) vuelo(s)</h3>
+                <h2 id="lbl_info_salida"></h2>
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="6">
+                            <table class="days-selector" data-salida_regreso="salida"
+                                   id="tbl_days_selector_salida">
+                                <tr class="months"></tr> <!-- CELDAS PARA MESES -->
+                                <tr class="days">
+                                    <!-- CELDAS DE DIAS AQUI -->
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table id="tbl_salida" cellpadding="0" cellspacing="0" data-tipo="ida">
+                    <tbody>
+                    <tr>
+                        <th>Salida - Llegada</th>
+                        <!-- ROWS OF FLIGHTS HERE -->
+                    </tr>
+                    </tbody>
+                    <tr data-num_vuelo="640" class="flight-row selected">
+                        <td>
+                            12:50&nbsp;&nbsp;-&nbsp;&nbsp;13:35<br>
+                            <span>Duración: 45 m</span>
+                        </td>
+                        <td>BoA</td>
+                        <td class="tarifa">
+                            <div class="rbtn checked">
+                                <div></div>
+                            </div>
+                            485 Bs.
+                        </td>
+                    </tr>
+                    <tr class="flight-details expanded">
+                        <td colspan="10" class="cell-details">
+                            <div class="expandable">
+                                <table class="detail left" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="icon-cell" rowspan="2">
+                                            <div class="icon-salida"></div>
+                                        </td>
+                                        <td class="time-cell">12:50<br>Hrs.</td>
+                                        <td class="airport-cell">
+                                            Aeropuerto Internacional Jorge Wilstermann
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ciudad-cell">Cochabamba</td>
+                                        <td class="duracion-cell">Duraci&oacute;n: 45 mins.</td>
+                                    </tr>
+                                </table>
+                                <table class="detail right" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="icon-cell" rowspan="2">
+                                            <div class="icon-salida"></div>
+                                        </td>
+                                        <td class="time-cell">13:35<br>Hrs.</td>
+                                        <td class="airport-cell">
+                                            Aeropuerto Internacional Viru Viru
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ciudad-cell">Cochabamba</td>
+                                        <td class="duracion-cell">Duraci&oacute;n: 45 mins.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><label></label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
+                <h2 id="lbl_info_regreso"></h2>
+                <table id="tbl_dayselector_regreso" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="6">
+                            <table class="days-selector" data-salida_regreso="regreso"
+                                   id="tbl_days_selector_regreso">
+                                <tr class="months"></tr> <!-- CELDAS PARA MESES -->
+                                <tr class="days">
+                                    <!-- CELDAS DE DIAS AQUI -->
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                    <td class="day-selector"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table id="tbl_regreso" cellspacing="0" cellpadding="0" data-tipo="vuelta">
+                    <!-- ROWS OF FLIGHTS HERE -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTRO DE PASAJEROS -->
+    <div id="info_registro_pasajeros" class="info phase selected">
+        <div class="descripcion">
+            <div id="div_formulario_personas">
+                <div class="persona">
+                    <div class="left-label">
+                        <label class="lbl-tipo">ADULTO</label>
+                        <label class="nro-pasajero">PASAJERO 1</label>
+                        <div class="icon-pasajero"></div>
+                    </div>
+                    <div class="form">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>NOMBRES</th>
+                                <th>TIPO DE DOCUMENTO</th>
+                                <th># DE DOCUMENTO</th>
+                                <th>TEL&Eacute;FONO</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="tbx_px1_nombres"></td>
+                                <td>
+                                    <select id="select_px1_tipo_documento">
+                                        <option value="">Tipo de Documento</option>
+                                        <option value="CI">CI</option>
+                                        <option value="PASAPORTE">PASAPORTE</option>
+                                        <option value="DNI">DNI</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" id="tbx_px1_documento"></td>
+                                <td><input type="text" id="tbx_px1_telefono"></td>
+                            </tr>
+                            <tr>
+                                <th>APELLIDOS</th>
+                                <th colspan="2">EMAIL</th>
+                                <th># VIAJERO FRECUENTE</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="tbx_px1_apellidos"></td>
+                                <td colspan="2"><input type="text" id="tbx_px1_email"></td>
+                                <td><input type="text" id="tbx_px1_px_frecuente"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="persona inactive">
+                    <div class="left-label">
+                        <label class="lbl-tipo">ADULTO</label>
+                        <label class="nro-pasajero">PASAJERO 1</label>
+                    </div>
+                    <div class="form">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>NOMBRES</th>
+                                <th>TIPO DE DOCUMENTO</th>
+                                <th># DE DOCUMENTO</th>
+                                <th>TEL&Eacute;FONO</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="tbx_px1_nombres"></td>
+                                <td>
+                                    <select id="select_px1_tipo_documento">
+                                        <option value="">Tipo de Documento</option>
+                                        <option value="CI">CI</option>
+                                        <option value="PASAPORTE">PASAPORTE</option>
+                                        <option value="DNI">DNI</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" id="tbx_px1_documento"></td>
+                                <td><input type="text" id="tbx_px1_telefono"></td>
+                            </tr>
+                            <tr>
+                                <th>APELLIDOS</th>
+                                <th colspan="2">EMAIL</th>
+                                <th># VIAJERO FRECUENTE</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="tbx_px1_apellidos"></td>
+                                <td colspan="2"><input type="text" id="tbx_px1_email"></td>
+                                <td><input type="text" id="tbx_px1_px_frecuente"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="persona">
+                </div>
+                <div class="persona">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGO DE BANCOS -->
+    <div id="info_pago_bancos" class="info phase selected">
+        <div class="descripcion wide">
+            <table>
+                <tr>
+                    <td valign="top">
+                        <h2>C&oacute;digo de reserva</h2>
+                        <div id="lbl_codigo_reserva" class="codigo-reserva">89873</div>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </td>
+                    <td>
+                        <h2>Bancos Locales</h2>
+                        <table class='banks-container'>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#">
+                                        <div class='bank union'></div>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                                <td>
+                                    <div class='bank union'></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- WIDGET RESUMEN -->
+    <div id="widget_resumen_reserva">
+        <div class="head-tu-vuelo"></div>
+        <div class="separator"></div>
+        <div style="margin: 10px;
+	padding: 10px 0 0 0; line-height: 34px; height:40px; ">
+            <div id="imprimir_vuelo" class="disabled-btn" style="float: left; width: 50%; font-size: 15px; text-align: center; cursor: pointer;">Imprimir</div>
+            <div id="correo" class="disabled-btn" style=" float: left; width: 50%; font-size: 15px; text-align: center; cursor: pointer;">
+                Enviar
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="empty-selection" id="div_empty_vuelo">SELECCIONA<br>TU VUELO</div>
+        <div class="div-seleccion">
+            <table id="tbl_seleccion_ida" style="display:none">
+                <tr>
+                    <td rowspan="2" class="cell-icon-ida">
+                        <div class="icon-ida"></div>
+                    </td>
+                    <td colspan="3" class="cell-origen-destino">
+                        <span>Origen</span>
+                    </td>
+                    <td colspan="3" class="cell-origen-destino">
+                        <span class="lbl-origen-destino">Destino</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="cell-cod-origen-destino">
+                        <h1>LPB - VVI</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell-duracion">
+                        Duraci&oacute;n: 40 min.
+                    </td>
+                    <td colspan="5" class="cell-fecha">
+                        <span>Mi&eacute;rcoles 28 de Septiembre</span>
+                    </td>
+                    <td class="cell-hora">
+                        <span>14:30 PM</span>
+                    </td>
+                </tr>
+            </table>
+            <table id="tbl_seleccion_ida_small" style="display:none">
+                <tr>
+                    <td rowspan="3" class="cell-icon-ida small">
+                        <div class="icon-ida small"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell-cod-origen-destino small">
+                        <h1>LPB - VVI</h1>
+                    </td>
+                    <td class="cell-hora">
+                        <span>14:30 PM</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell-fecha">
+                        <span>28 de Septiembre</span>
+                    </td>
+                    <td class="cell-duracion">
+                        40 min vuelo.
+                    </td>
+                </tr>
+            </table>
+            <div id="empty_ida_slot" class="empty-selection" style="display:none">SELECCIONE<br>VUELO DE IDA</div>
+            <div id="overlay_ida" class="overlay" style="display:none">
+                <div id="btn_borrar_ida" style="display: inline;right: 190px; top: -10px;" class="btn-borrar">Quitar
+                    este vuelo
+                </div>
+            </div>
+        </div>
+        <div class="div-seleccion">
+            <table id="tbl_seleccion_vuelta" style="display:none">
+                <tr>
+                    <td rowspan="2" class="cell-icon-vuelta">
+                        <div class="icon-vuelta"></div>
+                    </td>
+                    <td colspan="3" class="cell-origen-destino">
+                        <span>Origen</span>
+                    </td>
+                    <td colspan="3" class="cell-origen-destino">
+                        <span class="lbl-origen-destino">Destino</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="cell-cod-origen-destino">
+                        <h1>VVI - LPB</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell-duracion">
+                        Duraci&oacute;n: 40 min.
+                    </td>
+                    <td colspan="5" class="cell-fecha">
+                        <span>Martes 8 de Octubre</span>
+                    </td>
+                    <td class="cell-hora">
+                        <span>09:15 PM</span>
+                    </td>
+                </tr>
+            </table>
+            <table id="tbl_seleccion_vuelta_small" style="display:none">
+                <tr>
+                    <td rowspan="3" class="cell-icon-ida small">
+                        <div class="icon-vuelta small"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell-cod-origen-destino small">
+                        <h1>LPB - VVI</h1>
+                    </td>
+                    <td class="cell-hora">
+                        <span>14:30 PM</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell-fecha">
+                        <span>28 de Septiembre</span>
+                    </td>
+                    <td class="cell-duracion">
+                        40 min vuelo.
+                    </td>
+                </tr>
+            </table>
+            <div id="overlay_vuelta" class="overlay" style="display:none">
+                <div id="btn_borrar_vuelta" style="display: inline;right: 190px; top: -10px;" class="btn-borrar">Quitar
+                    este vuelo
+                </div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <table cellspacing="0" cellpadding="0">
+            <!-- <tr><th colspan="3">Tarifas</th></tr> -->
+            <tr>
+                <td colspan="3" class="cell-separator">
+                    <div></div>
+                </td>
+            </tr>
+            <tr class="tarifa inactive">
+                <td class="cell-descripcion">
+                    Adultos
+                    <div id="tooltip_adulto" class="tooltip"></div>
+                    <div class="warning-icon">!
+                        <div>El n&uacute;mero de pasajeros seleccionado es mayor a la última b&uacute;squeda
+                            realizada.<br>
+                            Es posible que no existan los sitios disponibles seleccionados.<br>Debe realizar una nueva b&uacute;squeda
+                            con el nuevo n&uacute;mero de pasajeros.
+                        </div>
+                    </div>
+                </td>
+                <td class="selector-pax">
+                    <span>x4</span>
+                    <ul data-tipo="adulto">
+                        <li class="selected" data-count="0">
+                            <span>0</span>
+                            <div class="btn-plus"></div>
+                        </li>
+                        <li class="plus-one" data-count="1">x1</li>
+                        <li class="plus-two" data-count="2">x2</li>
+                        <li class="plus-three" data-count="3">x3</li>
+                        <li class="plus-four" data-count="4">x4</li>
+                        <li class="plus-five" data-count="5">x5</li>
+                        <li class="plus-six" data-count="6">x6</li>
+                        <li class="plus-seven" data-count="7">x7</li>
+                        <li class="plus-eight" data-count="8">x8</li>
+                    </ul>
+                </td>
+                <td class="cell-cantidad">
+                    <span id="precio_adulto">0</span>
+                </td>
+            </tr>
+            <tr class="tarifa inactive">
+                <td class="cell-descripcion">
+                    Ni&ntilde;o
+                    <div id="tooltip_ninho" class="tooltip"></div>
+                </td>
+                <td class="selector-pax">
+                    <span>x4</span>
+                    <ul data-tipo="ninho">
+                        <li class="selected" data-count="0">
+                            <span>0</span>
+                            <div class="btn-plus"></div>
+                        </li>
+                        <li class="plus-one" data-count="1">x1</li>
+                        <li class="plus-two" data-count="2">x2</li>
+                        <li class="plus-three" data-count="3">x3</li>
+                        <li class="plus-four" data-count="4">x4</li>
+                        <li class="plus-five" data-count="5">x5</li>
+                        <li class="plus-six" data-count="6">x6</li>
+                        <li class="plus-seven" data-count="7">x7</li>
+                        <li class="plus-eight" data-count="8">x8</li>
+                    </ul>
+                </td>
+                <td class="cell-cantidad">
+                    <span id="precio_ninho">0</span>
+                </td>
+            </tr>
+            <tr class="tarifa inactive">
+                <td class="cell-descripcion">
+                    Infantes
+                    <div id="tooltip_infante" class="tooltip"></div>
+                </td>
+                <td class="selector-pax">
+                    <span>x4</span>
+                    <ul data-tipo="infante">
+                        <li class="selected" data-count="0">
+                            <span>0</span>
+                            <div class="btn-plus"></div>
+                        </li>
+                        <li class="plus-one" data-count="1">x1</li>
+                        <li class="plus-two" data-count="2">x2</li>
+                        <li class="plus-three" data-count="3">x3</li>
+                        <li class="plus-four" data-count="4">x4</li>
+                        <li class="plus-five" data-count="5">x5</li>
+                    </ul>
+                </td>
+                <td class="cell-cantidad">
+                    <span id="precio_infante">0</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="cell-separator">
+                    <div></div>
+                </td>
+            </tr>
+        </table>
+        <div class="separator"></div>
+        <table>
+            <tr class="tarifa">
+                <td class="cell-descripcion">Bs</td>
+                <td class="cell-cantidad">
+                    <input id="precio_total" class="display XS">
+                </td>
+            </tr>
+
+            <tr class="tarifa">
+                <td class="cell-descripcion">USD</td>
+                <td class="cell-cantidad">
+                    <input id="precio_total_dolar" class="display XS">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="cell-submit" colspan="2">
+                    <div id="loading_compra" class="loading" style="display:none"></div>
+                    <div id="btn_validar_vuelos" class="button" style="display:none">Continuar mi compra</div>
+                    <div id="btn_validar_pasajeros" class="button" style="display:none">Realizar Pago</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div> <!-- <<< UI RESERVA VUELOS >>> -->
+
+<!-- <<< DIALOGS >>> -->
+<div id="dialog_overlay" style="display:none">
+    <div id="simple_dialog" class="dialog" style="display:none">
+        <div class="description">
+
+        </div>
+        <div class="button">CERRAR</div>
+    </div>
+</div>
+
+
+<!-- <<< DIALOGS >>> -->
+<div id="dialog_overlay_form_email" style="display:none">
+    <div id="simple_dialog_form_email" class="dialog" style="display:none; min-height: 200px; " >
+        <div class="description">
+            <div class="form">
+                <table width="100%">
+
+                    <tr>
+                        <td width="100%"><label>Nombre:</label></td>
+
+                    <tr>
+                        <td class='input-container'>
+                            <input id="txt_nombre_" class="" type="text" style="width: 100%; height: 30px; font-size: 18px;"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="100%"><label>Email:</label></td>
+
+                    <tr>
+                        <td class='input-container'>
+                            <input id="txt_correo_" class="" type="text" style="width: 100%; height: 30px; font-size: 18px;"/>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div style="float:left; width: 40%; margin-right: 10%;" class="button cerrar">CERRAR</div>
+        <div style="float:left; width: 40%;" class="button enviar">ENVIAR</div>
+    </div>
+</div>
+
+<!-- <<< DIALOGS >>> -->
+<div id="dialog_overlay_form_imprimir" style="display:none">
+    <div id="simple_dialog_form_imprimir" class="dialog" style="display:none; min-height: 200px; width: 700px; " >
+        <div class="description">
+            <div class="form">
+
+                <strong>INFORMACIONES</strong>
+                <table>
+
+                </table>
+
+            </div>
+        </div>
+        <div style="float:left; width: 40%; margin-right: 10%;" class="button cerrar_imprimir">CERRAR</div>
+        <div style="float:left; width: 40%;" class="button enviar_imprimir">ENVIAR</div>
+    </div>
+</div>
+
+
+<div id="imprimir" style="display: none;" ></div>
+<div id="texto_html_contenidos" style="display: none"></div>
+<!-- <<< MISC UI >>> -->
+<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+<div id="div_submit"></div>
+</body>
+</html>

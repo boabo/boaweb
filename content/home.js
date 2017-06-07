@@ -140,7 +140,16 @@ function async_receive_slides(response)
 		return;
 	}
 
-	slides = response["slides"];
+
+	if("true" == response["darkSite"]){
+		console.log(response)
+		slides = response["darkSiteSlider"];
+	}else{
+		slides = response["slides"];
+
+	}
+
+
 
 	if(slides.length==0) return;
 
@@ -156,6 +165,17 @@ function async_receive_slides(response)
 	lbl_val("primary",slides[0]["main_text"]);
 	lbl_val("secondary_a",slides[0]["secondary_text_a"]);
 	lbl_val("secondary_b",slides[0]["secondary_text_b"]);
+
+	if("true" == response["darkSite"]) {
+		lbl_val("href", slides[0]["href"]);
+
+		$("#sec_menu").append('<li style="color: orangered; font-weight: bold;" id="dark_site">Dark Site</li>');
+
+		$("#dark_site").click(function () {
+			window.open(slides[0]["href"]);
+		});
+	}
+
 
 	$("#slider_paginator li").click(select_slide_from_paginator);
 
@@ -223,6 +243,7 @@ function change_next_slide()
 	lbl_val("secondary_a",slides[current_slide].secondary_text_a);
 	lbl_val("secondary_b",slides[current_slide].secondary_text_b);
 
+
 	var valign = "top";
 	if("text_valign" in slides[current_slide])
 		valign = slides[current_slide].text_valign;
@@ -255,6 +276,11 @@ function lbl_val(key, value)
 	if(value==null) value="";
 
 	$("#lbl_" + key).html(value);
+
+	if(key == "href"){
+		$("#lbl_" + key).attr("href",value);
+		$("#lbl_" + key).attr("target","_blank");
+	}
 }
 // ---------------------= =---------------------
 function toggle_checkbox()

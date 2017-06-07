@@ -69,7 +69,7 @@ function formatShortDate(date)
 
 	var d = new Date(yyyy, mm, dd, 0,0,0,0);
 
-	var formatted = d.getDate() + " " + COMPACT_MONTH_NAMES[d.getMonth()] + " " + yyyy;
+	var formatted = WEEKDAYS_2_CHARS_LANGUAGE_TABLE[d.getDay()] +","+ d.getDate() + " " + COMPACT_MONTH_NAMES[d.getMonth()] + " " + yyyy;
 
 	return formatted; 
 }
@@ -113,9 +113,10 @@ function formatCurrencyQuantity(quantity, includeCurrency, digits)
 	var decimalPart = (zeroes + parseInt(mult%digitFactor)).slice(-digits);
 
 	if(digits == 0)
-		str = str + Math.round(parseFloat(mult/digitFactor));
+		str = str +" "+Math.round(parseFloat(mult/digitFactor));
 	else
-		str =  str + parseInt(mult/digitFactor) + "." + decimalPart;
+		str =  str + " "+parseInt(mult/digitFactor) + "." + decimalPart ;
+
 
 	return  str;
 }
