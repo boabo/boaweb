@@ -153,7 +153,6 @@ var validacion_ = {
     nit: {
         numericality: {
             onlyInteger: true,
-            greaterThan:0,
             message:"Solo numero campeon",
         },
 
