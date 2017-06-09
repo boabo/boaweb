@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-2.2.3.min.js"></script>
+    <script src="validate.min.js"></script>
+</head>
+<body>
+
+
+<script>
+
+
+    var constraints = {
+        creditCardNumber: {
+            presence: true,
+            format: {
+                pattern: /^(34|37|4|5[1-5]).*$/,
+                message: function(value, attribute, validatorOptions, attributes, globalOptions) {
+                    return validate.format("^%{num} is not a valid credit card number", {
+                        num: value
+                    });
+                }
+            },
+            length: function(value, attributes, attributeName, options, constraints) {
+                if (value) {
+                    // Amex
+                    if ((/^(34|37).*$/).test(value)) return {is: 15};
+                    // Visa, Mastercard
+                    if ((/^(4|5[1-5]).*$/).test(value)) return {is: 16};
+                }
+                // Unknown card, don't validate length
+                return false;
+            }
+        },
+        creditCardZip: function(value, attributes, attributeName, options, constraints) {
+            if (!(/^(34|37).*$/).test(attributes.creditCardNumber)) return null;
+            return {
+                presence: {message: "is required when using AMEX"},
+                length: {is: 5}
+            };
+        }
+    };
+
+    //console.log(validate({creditCardNumber: "4"}, constraints));
+
+
+    var constraints = {
+        username: {
+            presence: true,
+            exclusion: {
+                within: ["nicklas"],
+                message: "'%{value}' is not allowed"
+            }
+        },
+        password: {
+            presence: true,
+            length: {
+                minimum: 6,
+                message: "must be at least 6 characters"
+            }
+        }
+    };
+
+    //console.log(validate({password: "bad1212",username:"nicklas1"}, constraints));
+
+
+    var constraints2 = {
+        duration: {
+            numericality: {
+                onlyInteger: true,
+                greaterThan:0,
+                //lessThanOrEqualTo: 341,
+                //even: true,
+                //notEven: "must be evenly divisible by two"
+            }
+        }
+    };
+    console.log(validate({duration: 046}, constraints2));
+
+    /*var constraints = {
+        username: {
+            format: {
+                pattern: "[0-9]+",
+                flags: "i",
+                message: "solo numeros del 1 al 9 o cero intermedio"
+            }
+        }
+    };
+    console.log(validate({username: "5298636"}, constraints));
+*/
+
+
+
+
+</script>
+
+</body>
+</html>
