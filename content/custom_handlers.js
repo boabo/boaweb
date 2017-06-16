@@ -3,7 +3,7 @@
 var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi4rZqIoX6BY0QlwKrcKPEM1ESKRm1j3K86poYuHhd1JkmrlIR5XMFGImN0y6IGS0OssmCMVB58Akg==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7z2Lymsbf5EisYijC6zomqjKJv1rzqCEPAwq8E3TCETFMew3O58TzcpHQ2kmc3KJgtQWFYd7PATw==";
 var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------

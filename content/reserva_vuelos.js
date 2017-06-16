@@ -146,7 +146,7 @@ var contadorNuevaPeticion = 0;
 var menor_tarifa_ida = 0;
 var menor_tarifa_vuelta = 0;
 
-var reserva_redirect = true;
+var reserva_redirect = false;
 
 
 var validacion_ = {
