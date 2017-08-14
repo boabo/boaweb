@@ -1,9 +1,9 @@
 // ---------------------------------------------------------------------------
 
-var CURRENCY = "usd"; // "euro", "bs" , "usd"
+var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5q8wFfSM549dvnEPZCtH5aLSSwKgBQY5RRB/Vy6M0fjB9qLsa35rto7GC9Uo3ZUMAUxfeA2O38Ow==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5jCCz9Wjw9QRQBoa5PfQoCa/bCZRN40V+c/aPrUj4L5qXJAmmNVHtpFQATgKAZyafuX1Mmp6LNUQ==";
 var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
@@ -68,19 +68,19 @@ var BoA = {
 
 		/* SERVICES */
         // nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-        nearest_dates_service: "https://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
-        flights_schedule_service: "https://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
+        nearest_dates_service: "http://skbpruebas.cloudapp.net/ServicesA1/BasicReservationServiceA1.svc/Calendar",
+        flights_schedule_service: "http://skbpruebas.cloudapp.net/ServicesA1/BasicReservationServiceA1.svc/AvailabilityPlusValuationsShort",
         validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
         change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php"
     },
 
     defaultConsultaVuelos : {
-        origen: 'LPB',
+        origen: 'VVI',
         destino: 'CBB',
-        fechaIda : '20170623',//formatCompactDate(new Date()), // today
-        fechaVuelta: '20170625',//null, // no flight back
-        adulto: 1,
+        fechaIda : '20170815',//formatCompactDate(new Date()), // today
+        fechaVuelta: null,//null, // no flight back
+        adulto: 3,
         infante: 0,
         ninho: 0
     },

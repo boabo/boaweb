@@ -1960,3 +1960,35 @@ td#pagar_reserva.activado {
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
+
+
+.familias ul {
+	display: flex;
+	align-items: center; /* Default */
+	justify-content: space-between;
+	width: 50%;
+	background: #cacaca;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.familias ul li {
+	display: block;
+	flex: 0 1 auto; /* Default */
+	list-style-type: none;
+	background: #fafafa;
+}
+.familia_boton li {
+	width: 33% !important;
+}
+.familia_boton div {
+
+	background-color: #0A3E67;
+	width: 33%;
+	height: 80px;
+}
+
+
+#salidas_ span{
+	font-size: 13px;
+}

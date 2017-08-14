@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="content/lib/jquery-2.2.3.min.js"></script>
+
+    <link rel="stylesheet" href="chatG/css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="chatG/css/chatUI.css" type="text/css"/>
+
+    <script src="chatG/wow.min.js"></script>
+
+</head>
+<body>
+
+
+<script src="chatG/js/chatG.js"></script>
+<script src="chatG/js/require.js"></script>
+<script>
+    (function ($) {
+
+
+        requirejs.config({
+            //enforceDefine: true, //esta linea sirve para  IE
+            paths: {
+                js: "chatG/js",
+            }
+        });
+        require([
+            "js/ajax_dyd",
+            "js/chatUI",
+        ], function () {
+
+            var obj = Object.create(chatUI);
+            obj.dibujarIconoChat();
+
+
+        });
+    })(jQuery);
+</script>
+
+</body>
+</html>
