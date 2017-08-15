@@ -1893,8 +1893,8 @@ td#pagar_reserva.activado {
 
 .ico_boa{
 	background-image: url('images/ico_boa.png');
-	width: 20px;
-	height: 25px;
+	width: 15px;
+	height: 20px;
 	background-size: cover;
 	margin: auto;
 	float: left;
@@ -1991,4 +1991,26 @@ td#pagar_reserva.activado {
 
 #salidas_ span{
 	font-size: 13px;
+}
+
+.dispo_rojo{
+	color: red !important;
+}
+
+
+.dispo_naranja{
+	color: orange !important;
+}
+
+
+.dispo_verde{
+	color: green !important;
+}
+
+
+.Detalle_cerrado {
+	display: none;
+}
+.Detalle_abierto{
+	display: block;
 }

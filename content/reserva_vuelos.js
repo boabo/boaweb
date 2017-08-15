@@ -1453,7 +1453,7 @@ function asyncReceiveFlights(response)
 	console.log('vuelos_store.vueloMatriz',vuelos_store.vueloMatriz)
 
 	$("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias(vuelosDibujador.familyInformation))
-	$("#salidas_").append(vuelosDibujador.dibujarVuelos('salidas'));
+	vuelosDibujador.dibujarVuelos('salidas',vuelos_store);
 
 // 	// process tasas
 // 	var taxes = translateTaxes(response);
@@ -1530,80 +1530,80 @@ function asyncReceiveFlights(response)
 //     fechaIdaConsultada,
 //     porcentajesPorPasajero);
 
-	// reconstruir tabla de fechas (ida)
-	buildDatesSelector(rawDatesCache.ida, vuelos_store.fechaIdaConsultada, $("#tbl_days_selector_salida"), true);
-	// construir tabla de vuelos
-	buildFlightsTable("tbl_salida", vuelos_store.vuelosIda);
-
-	//agregamos la tarifa minima encontrado en la tabla seleccionado
-	var tarifa_minima_ida = verTarifaMinima(dataIda.flightOptions,dataIda.compartments);
-	$("#tbl_days_selector_salida").find('.selected').find('h3').html(formatCurrencyQuantity(tarifa_minima_ida, true, 0));
-
-	if(currentDateVuelta != null) {
-
-		//verificamos si es array
-		//verificamos si es array lo que nos llega o solo un registro
-		if (!Array.isArray(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"])){
-			var array_ida_aux = new Array();
-			array_ida_aux.push(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"]);
-			response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"] = array_ida_aux;
-		}
-		lista_negra_clases = [];
-		$.each(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],function(k,v){
-			if(v.num_opcion in lista_negra_clases){
-
-				var object_clases_validadas = [];
-				$.each(clases_validadas_vuelta[v.num_opcion].clase,function (index,$clase) {
-
-					var result = $.grep(v.clases.clase, function(e){ return e.cls == $clase.cls; });
-
-					if(result.length > 0){
-						object_clases_validadas.push(result[0]);
-
-					}
-
-				});
-				response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].clases.clase = object_clases_validadas;
-				clases_validadas_vuelta[v.num_opcion].clase = object_clases_validadas;
-
-
-
-				tamano_aux = lista_negra_clases[v.num_opcion].clase.length;
-				if(lista_negra_clases[v.num_opcion].clase.length > v.clases.clase.length){
-					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k-1].validado = 'no';
-					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
-				}else{
-					response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'no';
-				}
-			}else{
-				lista_negra_clases[v.num_opcion] = v.clases;
-				response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
-
-				clases_validadas_vuelta[v.num_opcion] = v.clases;
-
-			}
-		});
-
-
-		var dataVuelta = translateFlights(
-			response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],
-			rawTarifas, 
-			fechaVueltaConsultada,
-			porcentajesPorPasajero);
-
-		// reconstruir tabla de fechas (vuelta)
-		buildDatesSelector(rawDatesCache.vuelta, searchParameters.fechaVuelta, $("#tbl_days_selector_regreso"), false);
-		// construir tabla de vuelos
-		buildFlightsTable("tbl_regreso", dataVuelta.flightOptions, dataIda.compartments);
-
-		//agregamos la tarifa minima encontrado en la tabla seleccionado
-		var tarifa_minima_vuelta = verTarifaMinima(dataVuelta.flightOptions,dataVuelta.compartments);
-		$("#tbl_days_selector_regreso").find('.selected').find('h3').html(formatCurrencyQuantity(tarifa_minima_vuelta, true, 0));
-
-	}
-
-	checkResultsTableWidth(); // acomodar tablas segun tamaño
-
+	// // reconstruir tabla de fechas (ida)
+	// buildDatesSelector(rawDatesCache.ida, vuelos_store.fechaIdaConsultada, $("#tbl_days_selector_salida"), true);
+	// // construir tabla de vuelos
+	// buildFlightsTable("tbl_salida", vuelos_store.vuelosIda);
+    //
+	// //agregamos la tarifa minima encontrado en la tabla seleccionado
+	// var tarifa_minima_ida = verTarifaMinima(dataIda.flightOptions,dataIda.compartments);
+	// $("#tbl_days_selector_salida").find('.selected').find('h3').html(formatCurrencyQuantity(tarifa_minima_ida, true, 0));
+    //
+	// if(currentDateVuelta != null) {
+    //
+	// 	//verificamos si es array
+	// 	//verificamos si es array lo que nos llega o solo un registro
+	// 	if (!Array.isArray(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"])){
+	// 		var array_ida_aux = new Array();
+	// 		array_ida_aux.push(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"]);
+	// 		response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"] = array_ida_aux;
+	// 	}
+	// 	lista_negra_clases = [];
+	// 	$.each(response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],function(k,v){
+	// 		if(v.num_opcion in lista_negra_clases){
+    //
+	// 			var object_clases_validadas = [];
+	// 			$.each(clases_validadas_vuelta[v.num_opcion].clase,function (index,$clase) {
+    //
+	// 				var result = $.grep(v.clases.clase, function(e){ return e.cls == $clase.cls; });
+    //
+	// 				if(result.length > 0){
+	// 					object_clases_validadas.push(result[0]);
+    //
+	// 				}
+    //
+	// 			});
+	// 			response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].clases.clase = object_clases_validadas;
+	// 			clases_validadas_vuelta[v.num_opcion].clase = object_clases_validadas;
+    //
+    //
+    //
+	// 			tamano_aux = lista_negra_clases[v.num_opcion].clase.length;
+	// 			if(lista_negra_clases[v.num_opcion].clase.length > v.clases.clase.length){
+	// 				response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k-1].validado = 'no';
+	// 				response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
+	// 			}else{
+	// 				response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'no';
+	// 			}
+	// 		}else{
+	// 			lista_negra_clases[v.num_opcion] = v.clases;
+	// 			response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"][k].validado = 'si';
+    //
+	// 			clases_validadas_vuelta[v.num_opcion] = v.clases;
+    //
+	// 		}
+	// 	});
+    //
+    //
+	// 	var dataVuelta = translateFlights(
+	// 		response["vuelosYTarifas"]["Vuelos"]["vuelta"]["vuelos"]["vuelo"],
+	// 		rawTarifas,
+	// 		fechaVueltaConsultada,
+	// 		porcentajesPorPasajero);
+    //
+	// 	// reconstruir tabla de fechas (vuelta)
+	// 	buildDatesSelector(rawDatesCache.vuelta, searchParameters.fechaVuelta, $("#tbl_days_selector_regreso"), false);
+	// 	// construir tabla de vuelos
+	// 	buildFlightsTable("tbl_regreso", dataVuelta.flightOptions, dataIda.compartments);
+    //
+	// 	//agregamos la tarifa minima encontrado en la tabla seleccionado
+	// 	var tarifa_minima_vuelta = verTarifaMinima(dataVuelta.flightOptions,dataVuelta.compartments);
+	// 	$("#tbl_days_selector_regreso").find('.selected').find('h3').html(formatCurrencyQuantity(tarifa_minima_vuelta, true, 0));
+    //
+	// }
+    //
+	// checkResultsTableWidth(); // acomodar tablas segun tamaño
+    //
 
 }
 
@@ -1936,7 +1936,7 @@ function buildFlightOptionRow(opc, compartments)
 }
 // ---------------------= =---------------------
 
-function cargarDetalleVueloSvg(opc,countVuelos){
+function cargarDetalleVueloSvg(opc,countVuelos,id_contenedor){
 
 	var ruta = '';
 	if (countVuelos == 1){
@@ -1947,7 +1947,8 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 		ruta = 'content/images/tiempo_vuelo/tiempo_vuelo3.svg';
 	}
 
-	$("#tiempo_vuelo_"+opc.code).load(ruta, function (response) {
+	//vuelosIda_1_detalle
+	$("#"+id_contenedor).load(ruta, function (response) {
 
 
 		if (!response) { // Error loading SVG// ERROR AL CARGAR LA IMAGEN SVG
@@ -1962,8 +1963,8 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 			 	var flight = opc.vuelos[i];
 				var nivel = i+1;
 
-				var timeStrSalida = formatTime(flight.horaSalida);
-				var timeStrLlegada = formatTime(flight.horaLlegada);
+				var timeStrSalida = formatTime(opc.horaSalida);
+				var timeStrLlegada = formatTime(opc.horaLlegada);
 				$(this).children('svg').find('[data="salida'+nivel+'"]').html(flight.origen);
 				$(this).children('svg').find('[data="llegada'+nivel+'"]').html(flight.destino);
 				$(this).children('svg').find('[data="lineaVuelo'+nivel+'"]').html(flight.linea+""+flight.numVuelo);
@@ -1973,65 +1974,65 @@ function cargarDetalleVueloSvg(opc,countVuelos){
 				$(this).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').html((nivel==1)?separarAeropuertoSvg(airports[flight.origen]):'');
 
 				$(this).children('svg').find('[data="aeropuertoLlegada'+nivel+'"]').html(separarAeropuertoSvg(airports[flight.destino]));
-				$(this).children('svg').find('[data="duracion'+nivel+'"]').html(formatExpandedTime(flight.duracion));
+				//$(this).children('svg').find('[data="duracion'+nivel+'"]').html(formatExpandedTime(flight.duracion));
 
 				//agregamos el tiempo de vuelo a la duracion
-				duracion.horas = duracion.horas + parseInt(flight.duracion.hrs);
-				duracion.minutos = duracion.minutos + parseInt(flight.duracion.mins);
+				//duracion.horas = duracion.horas + parseInt(flight.duracion.hrs);
+				//duracion.minutos = duracion.minutos + parseInt(flight.duracion.mins);
 			 }
 
 
 			//dibaja el tiempo de transito si esque existe
-			if (countVuelos == 2){
-				//sacar fecha llegada
-				var hora_llegada_1 = opc.vuelos[0].horaLlegada;
-				var hora_salida_2 = opc.vuelos[1].horaSalida;
-
-				var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
-				$(this).children('svg').find('[data="transito1"]').html(transito.Str);
-
-				//agregamos el tiempo de transito a la duracion
-				duracion.horas = duracion.horas + parseInt(transito.Hrs);
-				duracion.minutos = duracion.minutos + parseInt(transito.Mins);
-
-
-			}else if(countVuelos == 3){
-				var hora_llegada_1 = opc.vuelos[0].horaLlegada;
-				var hora_salida_2 = opc.vuelos[1].horaSalida;
-
-				var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
-				$(this).children('svg').find('[data="transito1"]').html(transito.Str);
-
-				//agregamos el tiempo de transito a la duracion
-				duracion.horas = duracion.horas + parseInt(transito.Hrs);
-				duracion.minutos = duracion.minutos + parseInt(transito.Mins);
-
-				var hora_llegada_3 = opc.vuelos[1].horaLlegada;
-				var hora_salida_4 = opc.vuelos[2].horaSalida;
-
-				var transito2 = tiempoTransito(hora_llegada_3,hora_salida_4);
-				$(this).children('svg').find('[data="transito2"]').html(transito2.Str);
-
-				//agregamos el tiempo de transito a la duracion
-				duracion.horas = duracion.horas + parseInt(transito2.Hrs);
-				duracion.minutos = duracion.minutos + parseInt(transito2.Mins);
-
-
-			}
-
-			//verificamos si los minutos pueden ser horas y el restante minutos
-			if(duracion.minutos > 59){
-				var aux_res = duracion.minutos / 60;
-				var hrs = parseInt(aux_res);
-				var min = Math.round((aux_res - hrs) * 60);
-				duracion.horas = duracion.horas + hrs;
-				duracion.minutos = min;
-			}
-			//agregamos la duracion total a la celda principal de este vuelo
-			$('[data-opc_code="'+opc.code+'"]').find(".duracion_total").html("Duración Total : "
-				+((duracion.horas > 0)?duracion.horas+" hrs. ":"")
-				+((duracion.minutos>0)?duracion.minutos+" mins.":" ")
-			);
+			// if (countVuelos == 2){
+			// 	//sacar fecha llegada
+			// 	var hora_llegada_1 = opc.vuelos[0].horaLlegada;
+			// 	var hora_salida_2 = opc.vuelos[1].horaSalida;
+            //
+			// 	var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
+			// 	$(this).children('svg').find('[data="transito1"]').html(transito.Str);
+            //
+			// 	//agregamos el tiempo de transito a la duracion
+			// 	duracion.horas = duracion.horas + parseInt(transito.Hrs);
+			// 	duracion.minutos = duracion.minutos + parseInt(transito.Mins);
+            //
+            //
+			// }else if(countVuelos == 3){
+			// 	var hora_llegada_1 = opc.vuelos[0].horaLlegada;
+			// 	var hora_salida_2 = opc.vuelos[1].horaSalida;
+            //
+			// 	var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
+			// 	$(this).children('svg').find('[data="transito1"]').html(transito.Str);
+            //
+			// 	//agregamos el tiempo de transito a la duracion
+			// 	duracion.horas = duracion.horas + parseInt(transito.Hrs);
+			// 	duracion.minutos = duracion.minutos + parseInt(transito.Mins);
+            //
+			// 	var hora_llegada_3 = opc.vuelos[1].horaLlegada;
+			// 	var hora_salida_4 = opc.vuelos[2].horaSalida;
+            //
+			// 	var transito2 = tiempoTransito(hora_llegada_3,hora_salida_4);
+			// 	$(this).children('svg').find('[data="transito2"]').html(transito2.Str);
+            //
+			// 	//agregamos el tiempo de transito a la duracion
+			// 	duracion.horas = duracion.horas + parseInt(transito2.Hrs);
+			// 	duracion.minutos = duracion.minutos + parseInt(transito2.Mins);
+            //
+            //
+			// }
+            //
+			// //verificamos si los minutos pueden ser horas y el restante minutos
+			// if(duracion.minutos > 59){
+			// 	var aux_res = duracion.minutos / 60;
+			// 	var hrs = parseInt(aux_res);
+			// 	var min = Math.round((aux_res - hrs) * 60);
+			// 	duracion.horas = duracion.horas + hrs;
+			// 	duracion.minutos = min;
+			// }
+			// //agregamos la duracion total a la celda principal de este vuelo
+			// $('[data-opc_code="'+opc.code+'"]').find(".duracion_total").html("Duración Total : "
+			// 	+((duracion.horas > 0)?duracion.horas+" hrs. ":"")
+			// 	+((duracion.minutos>0)?duracion.minutos+" mins.":" ")
+			// );
 
 
 		}

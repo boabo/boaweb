@@ -147,6 +147,7 @@
                                     objectTarifasAux.totalAmount = tarifa.totalAmount;
                                     objectTarifasAux.totalTaxes = tarifa.totalTaxes;
                                     objectTarifasAux.iv = iv;
+                                    objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
                                     objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
                                     arrayTarifasAux.push(objectTarifasAux);
 
@@ -197,6 +198,8 @@
                                 objectTarifasAux.totalAmount = tarifa.totalAmount;
                                 objectTarifasAux.totalTaxes = tarifa.totalTaxes;
                                 objectTarifasAux.iv = iv;
+                                objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
+
                                 objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
                                 arrayTarifasAux.push(objectTarifasAux);
 
