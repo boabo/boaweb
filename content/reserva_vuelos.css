@@ -1912,9 +1912,12 @@ td#pagar_reserva.activado {
 	margin-top: 5px;
 }
 
-
+.tiempo_vuelo svg rect,path,text {
+	fill: #fff;
+}
 .tiempo_vuelo svg text{
 	font-family: "FuturaMedium";
+	font-size: 12px;
 }
 .uno{
 	width: 80%;
@@ -1990,6 +1993,9 @@ td#pagar_reserva.activado {
 
 
 #salidas_ span{
+	font-size: 13px;
+}
+#llegadas_ span{
 	font-size: 13px;
 }
 

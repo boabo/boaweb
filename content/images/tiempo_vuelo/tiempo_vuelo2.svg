@@ -44,14 +44,12 @@
 		<rect x="112.9" y="69.8" class="st2" width="58.5" height="1.2"/>
 	</g>
 	<text data="salida1" transform="matrix(1 0 0 1 83.1104 29.4263)" class="st0 st3 st4">CIJ</text>
-	<rect x="201" y="10.3" class="st1" width="61" height="32"/>
 	<text data="lineaVuelo1" transform="matrix(1 0 0 1 213.3841 29.4263)" class="st0 st3 st4">OB405</text>
 	<text data="aeropuertoSalida1" transform="matrix(1 0 0 1 39.5276 134.2554)" class="st5"></text>
 	<text data="aeropuertoLlegada1" transform="matrix(1 0 0 1 252.1018 134.2554)" class="st5"></text>
 	<text transform="matrix(1 0 0 1 48.0157 134.2556)" class="st7 st8">  </text>
 	<text transform="matrix(1 0 0 1 132.8522 134.2556)" class="st7 st8">  </text>
 	<text transform="matrix(1 0 0 1 137.3393 152.2556)" class="st7 st8"> </text>
-	<rect x="59.7" y="101.3" class="st1" width="61" height="20.5"/>
 	<text data="horaSalida1" transform="matrix(1 0 0 1 76.0243 120.4265)" class="st0 st3 st4">11:35</text>
 	<text data="horaLlegada1" transform="matrix(1 0 0 1 358.3909 120.4265)" class="st0 st3 st4">12:35</text>
 	<g>
@@ -76,7 +74,6 @@
 	<text data="llegada1" transform="matrix(1 0 0 1 363.7029 29.8382)" class="st0 st3 st4">LPB</text>
 	<line class="st9" x1="90.2" y1="190.7" x2="372.8" y2="190.7"/>
 	<g>
-		<rect x="215.4" y="171.2" class="st1" width="67.1" height="15"/>
 		<text data="duracion1" transform="matrix(1 0 0 1 215.4611 183.6024)" class="st0 st3 st6">01:00</text>
 		<g>
 			<path class="st2" d="M208.8,177.7H206v-3.3c0-0.3-0.2-0.5-0.5-0.5s-0.5,0.2-0.5,0.5v3.7c0,0.3,0.2,0.5,0.5,0.5h3.3
@@ -98,7 +95,6 @@
 	</g>
 	<text transform="matrix(1 0 0 1 423.3263 96.7695)" class="st5"><tspan x="0" y="0" class="st0 st3 st6">Tiempo </tspan><tspan x="-7.4" y="18" class="st0 st3 st6">en Transito</tspan></text>
 	<g>
-		<rect x="421.9" y="60.5" class="st1" width="67.1" height="15"/>
 		<text data="transito1" transform="matrix(1 0 0 1 422.0167 72.9631)" class="st0 st3 st6">01:00</text>
 		<g>
 			<path class="st2" d="M415.3,67h-2.8v-3.3c0-0.3-0.2-0.5-0.5-0.5s-0.5,0.2-0.5,0.5v3.7c0,0.3,0.2,0.5,0.5,0.5h3.3
@@ -142,10 +138,9 @@
 		<rect x="531.9" y="69.8" class="st2" width="58.5" height="1.2"/>
 	</g>
 	<text data="salida2" transform="matrix(1 0 0 1 502.0371 29.4263)" class="st0 st3 st4">CIJ</text>
-	<rect x="620" y="10.3" class="st1" width="61" height="32"/>
 	<text data="lineaVuelo2" transform="matrix(1 0 0 1 632.3108 29.4263)" class="st0 st3 st4">OB405</text>
 	<text data="aeropuertoSalida2" transform="matrix(1 0 0 1 498.4543 134.2554)" class="st5"><tspan x="0" y="0" class="st0 st3 st6">Aero</tspan><tspan x="7.6" y="18" class="st0 st3 st6">1</tspan></text>
-	<text data="aeropuertoLlegada2" transform="matrix(1 0 0 1 751.0285 134.2554)" class="st5"><tspan x="0" y="0" class="st0 st3 st6">Aero</tspan><tspan x="7.6" y="18" class="st0 st3 st6">1</tspan></text>
+	<text data="aeropuertoLlegada2" transform="matrix(1 0 0 1 721.0285 134.2554)" class="st5"><tspan x="0" y="0" class="st0 st3 st6">Aero</tspan><tspan x="7.6" y="18" class="st0 st3 st6">1</tspan></text>
 	<text transform="matrix(1 0 0 1 551.7789 134.2556)" class="st7 st8">  </text>
 	<text transform="matrix(1 0 0 1 556.2661 152.2556)" class="st7 st8"> </text>
 	<text data="horaSalida2" transform="matrix(1 0 0 1 494.951 120.4265)" class="st0 st3 st4">11:35</text>
@@ -173,7 +168,6 @@
 	<text data="llegada2" transform="matrix(1 0 0 1 782.6296 29.8382)" class="st0 st3 st4">LPB</text>
 	<line class="st9" x1="509.2" y1="190.7" x2="791.7" y2="190.7"/>
 	<g>
-		<rect x="634.3" y="171.2" class="st1" width="67.1" height="15"/>
 		<text  data="duracion2" transform="matrix(1 0 0 1 634.3878 183.6024)" class="st0 st3 st6">01:00</text>
 		<g>
 			<path class="st2" d="M627.7,177.7h-2.8v-3.3c0-0.3-0.2-0.5-0.5-0.5s-0.5,0.2-0.5,0.5v3.7c0,0.3,0.2,0.5,0.5,0.5h3.3

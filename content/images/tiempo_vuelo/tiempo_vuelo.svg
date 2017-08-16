@@ -3,13 +3,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 880 201" style="enable-background:new 0 0 880 201;" xml:space="preserve">
 <style type="text/css">
-	.uno .st0{fill:none;}
-	.uno .st1{fill:#2C4465;}
-	.uno .st2{fill:#FFFFFF;}
-	.uno .st4{font-size:23px;}
-	.uno .st5{font-size:15px;}
-	.uno .st7{font-size:12px;}
-	.uno .st8{fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;}
+
 </style>
 <g id="Layer_1_1_">
 	<g>
@@ -73,11 +67,8 @@
 		</g>
 	</g>
 </g>
-<rect x="45.3" y="10.8" class="st0" width="61" height="32"/>
 <text data="salida1" transform="matrix(1 0 0 1 65.5654 29.8763)" class="st2 st3 st4">CIJ</text>
-<rect x="411.6" y="10.8" class="st0" width="61" height="32"/>
 <text data="lineaVuelo1" transform="matrix(1 0 0 1 417.6066 29.8763)" class="st2 st3 st4">OB405</text>
-<rect x="374.2" y="35.8" class="st0" width="135.8" height="19.1"/>
 <text data="operado1" transform="matrix(1 0 0 1 410.4587 48.3028)" class="st2 st3 st5">
 	<tspan x="0" y="0" class="st0 st3 st6">Operado por:</tspan>
 	<tspan  x="22" y="18" class="st0 st3 st6">boa</tspan>
@@ -85,15 +76,11 @@
 <text transform="matrix(1 0 0 1 33.5726 134.7056)" class="st7">  </text>
 <text transform="matrix(1 0 0 1 118.4091 134.7056)" class="st7">  </text>
 <text transform="matrix(1 0 0 1 122.8962 152.7056)" class="st7"> </text>
-<rect x="45.3" y="101.8" class="st0" width="61" height="20.5"/>
 <text data="horaSalida1" transform="matrix(1 0 0 1 54.3909 120.8765)" class="st2 st3 st4">11:35</text>
-<rect x="777.5" y="101.8" class="st0" width="61" height="20.5"/>
 <text data="horaLlegada1" transform="matrix(1 0 0 1 786.63 120.8765)" class="st2 st3 st4">12:35</text>
-<rect x="777.5" y="10.8" class="st0" width="61" height="32"/>
 <text data="llegada1" transform="matrix(1 0 0 1 794.9573 29.8763)" class="st2 st3 st4">LPB</text>
 <line class="st8" x1="75.8" y1="191.1" x2="808" y2="191.1"/>
 <g>
-	<rect x="434.6" y="170.7" class="st0" width="67.1" height="15"/>
 	<text data="duracion1" transform="matrix(1 0 0 1 434.6813 183.1512)" class="st2 st3 st5">01:00</text>
 	<g>
 		<path class="st1" d="M428,177.2h-2.8v-3.3c0-0.3-0.2-0.5-0.5-0.5s-0.5,0.2-0.5,0.5v3.7c0,0.3,0.2,0.5,0.5,0.5h3.3
@@ -102,8 +89,6 @@
 			 M424.7,183.7c-3.3,0-6.1-2.7-6.1-6.1c0-3.3,2.7-6.1,6.1-6.1c3.3,0,6.1,2.7,6.1,6.1S428.1,183.7,424.7,183.7z"/>
 	</g>
 </g>
-<rect x="12.8" y="128.4" class="st0" width="126" height="62.7"/>
 <text data="aeropuertoSalida1" transform="matrix(1 0 0 1 17.1423 140.8712)"></text>
-<rect x="745" y="128.4" class="st0" width="126" height="62.7"/>
-<text data="aeropuertoLlegada1" transform="matrix(1 0 0 1 749.3429 140.8712)"></text>
+<text data="aeropuertoLlegada1" transform="matrix(1 0 0 1 720.3429 140.8712)"></text>
 </svg>

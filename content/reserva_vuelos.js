@@ -978,10 +978,10 @@ function changeNumPassengers()
 			checkWarningPxNumber();*/
 
 
-			if(contadorNuevaPeticion == 1 ){
+			/*if(contadorNuevaPeticion == 1 ){
 				contadorNuevaPeticion +=1;
 				setTimeout(validateSearch, 2500);
-			}
+			}*/
 
 
 			ul.parent().find("span").html($(this).html());
@@ -1449,11 +1449,18 @@ function asyncReceiveFlights(response)
 	//todo aca cambiar y armar la matriz de matrices
 	var vuelos_store = Object.create(vuelosStore);
 	vuelos_store.armarVuelos(response);
+	//iniciamos el dibujador con el store de datos que se tiene
+	vuelosDibujador.iniciarDibujador(vuelos_store);
 
 	console.log('vuelos_store.vueloMatriz',vuelos_store.vueloMatriz)
 
-	$("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias(vuelosDibujador.familyInformation))
+	$("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias(vuelosDibujador.familyInformation,'salidas'));
 	vuelosDibujador.dibujarVuelos('salidas',vuelos_store);
+
+	if(vuelos_store.tieneVuelta == true){
+        $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias(vuelosDibujador.familyInformation,'llegadas'));
+        vuelosDibujador.dibujarVuelos('llegadas',vuelos_store);
+	}
 
 // 	// process tasas
 // 	var taxes = translateTaxes(response);
@@ -1967,8 +1974,8 @@ function cargarDetalleVueloSvg(opc,countVuelos,id_contenedor){
 				var timeStrLlegada = formatTime(opc.horaLlegada);
 				$(this).children('svg').find('[data="salida'+nivel+'"]').html(flight.origen);
 				$(this).children('svg').find('[data="llegada'+nivel+'"]').html(flight.destino);
-				$(this).children('svg').find('[data="lineaVuelo'+nivel+'"]').html(flight.linea+""+flight.numVuelo);
-				$(this).children('svg').find('[data="operado'+nivel+'"]').html(operadorSvg(flight.operador));
+				$(this).children('svg').find('[data="lineaVuelo'+nivel+'"]').html(flight.linea+""+flight.num_vuelo);
+				$(this).children('svg').find('[data="operado'+nivel+'"]').html(operadorSvg(flight.linea));
 				$(this).children('svg').find('[data="horaSalida'+nivel+'"]').html(timeStrSalida);
 				$(this).children('svg').find('[data="horaLlegada'+nivel+'"]').html(timeStrLlegada);
 				$(this).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').html((nivel==1)?separarAeropuertoSvg(airports[flight.origen]):'');

@@ -67,8 +67,12 @@
                     objIda.vuelos = new Array();
                     objIda.vuelos.push(ida);
                     objIda.num_opcion = ida.num_opcion;
-                    objIda.origen = 'VVI';
-                    objIda.destino = 'CBB';
+                    objIda.origen = ida.origen;
+                    objIda.destino = ida.destino;
+                    objIda.num_vuelo = ida.num_vuelo;
+                    objIda.tipo_avion = ida.tipo_avion;
+                    objIda.co_operador = ida.co_operador;
+
                     //lo que se necesita
                     objIda.horaSalida = {};
                     objIda.horaSalida.hh = parseInt(ida.hora_salida.substr(0,2));
@@ -109,13 +113,29 @@
 
 
                         }else{
-                            objVuelta.vuelos = new Array();
-                            objVuelta.vuelos.push(vuelta);
-                            objVuelta.num_opcion = vuelta.num_opcion;
-                            objVuelta.origen = 'CBB';
-                            objVuelta.destino = 'VVI';
 
-                            vuelosStore.vuelosIda[vuelta.num_opcion]= objVuelta;
+                            objVuelta.vuelos = new Array();
+                            objVuelta.vuelos.push(ida);
+                            objVuelta.num_opcion = ida.num_opcion;
+                            objVuelta.origen = ida.origen;
+                            objVuelta.destino = ida.destino;
+                            objVuelta.num_vuelo = ida.num_vuelo;
+                            objVuelta.tipo_avion = ida.tipo_avion;
+                            objVuelta.co_operador = ida.co_operador;
+
+                            //lo que se necesita
+                            objVuelta.horaSalida = {};
+                            objVuelta.horaSalida.hh = parseInt(ida.hora_salida.substr(0,2));
+                            objVuelta.horaSalida.mm = parseInt(ida.hora_salida.substr(2,2));
+
+                            objVuelta.horaLlegada = {};
+                            objVuelta.horaLlegada.hh = parseInt(ida.hora_llegada.substr(0,2));
+                            objVuelta.horaLlegada.mm = parseInt(ida.hora_llegada.substr(2,2));
+
+                            objVuelta.duracionTotal = '0100';
+
+                            vuelosStore.vuelosVuelta[objVuelta.num_opcion]= objVuelta;
+
 
                         }
 
@@ -128,6 +148,17 @@
                         objectAux.ida = ida;
                         objectAux.vuelta = vuelta;
 
+
+
+                        //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+                        if (!Array.isArray(object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort)){
+
+                            var arrayTarifaPersoCombinabilityIdaVueltaShort = [];
+                            arrayTarifaPersoCombinabilityIdaVueltaShort.push(object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort);
+
+                            object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort = arrayTarifaPersoCombinabilityIdaVueltaShort;
+
+                        }
 
                         //combinacion de tarifas
                         var arrayTarifasAux = [];
