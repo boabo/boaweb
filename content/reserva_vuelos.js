@@ -215,10 +215,10 @@ $(document).on('ready',function()
 
         $("#btn_borrar_ida").click(deleteIda);
         $("#btn_borrar_vuelta").click(deleteVuelta);
-        $("#btn_buscar_vuelo").click(validateSearch);
+        //$("#btn_buscar_vuelo").click(validateSearch);
 
         // Initial search of flights
-        setTimeout(handleInitialRequest, 500);
+       	 handleInitialRequest();
 
         // DATE PICKERs SETUP
         $("#picker_salida").datepicker({
@@ -599,7 +599,7 @@ function selectTarifa()
 	// $("#tbl_seleccion_" + tipo).find(".cell-fecha").html(formatExpandedDate(opcion.vuelos[0].fecha));
 	$("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(formatShortDate(opcion.vuelos[0].fecha));
 
-	// $("#tbl_seleccion_" + tipo).find(".cell-hora span").html("Salida:<br>" + formatTime(opcion.horaSalida));
+	$("#tbl_seleccion_" + tipo).find(".cell-hora span").html("Salida:<br>" + formatTime(opcion.horaSalida));
 	$("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(formatTime(opcion.horaSalida));
 
 	$("#tbl_seleccion_" + tipo).css("display","block");
@@ -980,7 +980,7 @@ function changeNumPassengers()
 
 			/*if(contadorNuevaPeticion == 1 ){
 				contadorNuevaPeticion +=1;
-				setTimeout(validateSearch, 2500);
+				setTiimeout(validateSearch, 2500);
 			}*/
 
 
@@ -1810,7 +1810,7 @@ function buildFlightsTable(tableName, flightOptions)
 
 
 
-		cargarDetalleVueloSvg(opcion,countVuelos);
+		//cargarDetalleVueloSvg(opcion,countVuelos);
 
 		/*for(var i=0;i<opcion.vuelos.length;i++) {
 			var vuelo = opcion.vuelos[i];
@@ -2277,9 +2277,9 @@ function requestSearchParameters(parms)
 		.addClass("loading-cell")
 		.html("<div class='loading'></div>");
 
-	fillTableWithLoading($("#tbl_salida")[0]);
-	if(parms.fechaVuelta != null)
-		fillTableWithLoading($("#tbl_regreso")[0]);
+	// fillTableWithLoading($("#tbl_salida")[0]);
+	// if(parms.fechaVuelta != null)
+	// 	fillTableWithLoading($("#tbl_regreso")[0]);
 
 	$("#widget_cambiar_vuelo .btn-expand").addClass("searching");
 
