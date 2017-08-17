@@ -31,15 +31,22 @@
         iniciarDibujador:function (store) {
             vuelosDibujador.store = store;
         },
-        dibujarHeaderFamilias: function (familias,tipo) {
+        dibujarHeaderFamilias: function (tipo) {
+
 
             if(tipo == 'salidas'){
-                var m = '<div id="salidas_" style="width: 100%; ">\n    <div style="display: block; height: 20px;">\n        <div style="width: 60%; float: left">TIPOS</div>\n        <div style="width: 40%; float: left">\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n        </div>\n    </div>\n    \n</div>';
+                var m = $('<div id="salidas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }else if(tipo == 'llegadas'){
-                var m = '<div id="llegadas_" style="width: 100%; ">\n    <div style="display: block; height: 20px;">\n        <div style="width: 60%; float: left">TIPOS</div>\n        <div style="width: 40%; float: left">\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n        </div>\n    </div>\n    \n</div>';
+                var m = '<div id="llegadas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left">\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n        </div>\n    </div>\n    \n</div>';
 
             }
+
+            $.each(vuelosDibujador.store.familyInformation,function (k,v) {
+
+                $(m).find('.familias_').append('<div style="float: left;width: 33%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
+            });
+
             return m;
         },
         dibujarVuelos:function (tipo,store) {
@@ -71,9 +78,18 @@
             var vuelos = store[ida_vuelta];
             $.each(vuelos,function (k,v) {
 
+
+                var ico_conexion = '';
+                var escala = '';
+                if(v.vuelos.length >= 2){
+                    ico_conexion = 'ico_con_conexion';
+                }else{
+                    ico_conexion = 'ico_sin_conexion';
+                }
+
                 console.log(formatTime(v.horaLlegada))
                 console.log('v',v)
-                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px; cursor: pointer;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalida)+' '+v.origen+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="ico_sin_conexion"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegada)+' '+v.destino+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br><div class="ico_boa"><span style="bottom:-18px;position:relative;">BoA</span></div>\n        </div>\n    </div>\n</div>');
+                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px; cursor: pointer;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br><div class="ico_boa"><span style="bottom:-18px;position:relative;">BoA</span></div>\n        </div>\n    </div>\n</div>');
 
                 var opcion_vuelo_indice ='';
                 //no tiene vuelta entonces dibujamos directamente con sus opciones y vuelta como cero ej: 1-0
@@ -187,8 +203,14 @@
             //ocultamos el seleccionar vuelo de la vista
             $("#div_empty_vuelo").hide();
 
+
             var opcion = $(that).data('opcion');
             var tipo = $(that).data('tipo');
+
+            $('body').find('.'+tipo+'_seleccionado').removeClass(tipo+'_seleccionado')
+
+            $(that).addClass(tipo+'_seleccionado');
+
             var opcion_vuelo_indice;
 
             var filtros_opciones = [];
@@ -232,8 +254,55 @@
                     }
 
                 });
-                console.log(tarifas)
-                
+
+               var tarifa_del_vuelo_seleccionado = tarifas[0];
+
+
+               var total_seleccion = tarifa_del_vuelo_seleccionado.totalAmount;
+               var total_taxes = tarifa_del_vuelo_seleccionado.totalTaxes;
+
+               //dibujamos los totales en la vista
+                flapperTotal.val(total_seleccion).change();
+                //dibujamos el total de los taxes
+                $("#totalTasas").html(total_taxes);
+
+
+                //dibujamos detalle de las taxes en el tooltip
+                var tooltip = $("#tooltip_tasas");
+                $("#tooltip_tasas").html("");
+                var tbl = document.createElement("table");
+                tooltip.append(tbl);
+                $(tbl).attr("cellpadding","0").attr("cellspacing",0);
+                tbl.appendChild(document.createElement("tbody"));
+                tbl = $(tbl).find("tbody");
+
+
+                tbl.append("<tr><th class='subtitle' colspan='3'><div>TASAS TOTALES</div></th></tr>");
+                tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+
+                var subTotal = 0;
+                var cantidad_pax = 0;
+                $.each(tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero,function (k,v) {
+                    var tr = document.createElement("tr");
+                    $(tr).append("<th>"+v.tipoTasa+"</th>")
+                        .append("<td></td>")
+                        .append("<td class='qty'>"+v.monto+"</td>");
+
+                    tbl.append(tr);
+                    tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+                    tbl.append("<tr><td class='detail' colspan='3'>"+v.tasa+"</tr>");
+                    subTotal = parseFloat(subTotal)+parseFloat(v.monto);
+                    cantidad_pax = parseInt(v.cantidadPax);
+                });
+
+                tbl.append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
+                    .append("<tr><th><h3>Subtotal</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal+"</td></tr>")
+                    .append("<tr><td></td><td></td><td class='qty'><h3>x "+cantidad_pax+"</h3></td></tr>")
+                    .append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
+                    .append("<tr><th><h3>TOTAL</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal*cantidad_pax+"</td></tr>");
+
+
+
 
             }
             console.log('importes seleccionado',vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice]);
@@ -250,12 +319,12 @@
             tblSeleccion.find(".fecha_salida_").html(/*formatShortDate(opcion.vuelos[0].fecha)*/);
             tblSeleccion.find(".fecha_llegada_").html(/*formatShortDate(opcion.vuelos[0].fechaLlegada)*/);
 
-            tblSeleccion.find(".salida_").html("<span style='float: left; padding-left: 5px; font-size: 15px;'>"+formatTime(vueloSeleccionado.horaSalida)+"</span><h1 style='float: left;'>"+vueloSeleccionado.origen+"</h1>");
-            tblSeleccion.find(".llegada_").html("<h1 style='float: right;'>"+vueloSeleccionado.destino+"</h1><span style='float: right; font-size: 15px;'>"+formatTime(vueloSeleccionado.horaLlegada)+"</span>");
+            tblSeleccion.find(".salida_").html("<span style='float: left; padding-left: 5px; font-size: 15px;'>"+formatTime(vueloSeleccionado.horaSalidaVuelo)+"</span><h1 style='float: left;'>"+vueloSeleccionado.origenVuelo+"</h1>");
+            tblSeleccion.find(".llegada_").html("<h1 style='float: right;'>"+vueloSeleccionado.destinoVuelo+"</h1><span style='float: right; font-size: 15px;'>"+formatTime(vueloSeleccionado.horaLlegadaVuelo)+"</span>");
 
 
-            tblSeleccion.find(".citie_salida_").html(cities[vueloSeleccionado.origen]);
-            tblSeleccion.find(".citie_llegada_").html(cities[vueloSeleccionado.destino]);
+            tblSeleccion.find(".citie_salida_").html(cities[vueloSeleccionado.origenVuelo]);
+            tblSeleccion.find(".citie_llegada_").html(cities[vueloSeleccionado.destinoVuelo]);
 
 
             //dibujamos el selector small para cuando se este llenando datos del pasajero

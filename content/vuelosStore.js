@@ -15,7 +15,7 @@
         vuelosVuelta: {},
         fechaIdaConsultada: '',
         fechaVueltaConsultada: '',
-
+        familyInformation:'',
         //funcion para ver si es ida o ida y vuelta
         verIdayVuelta: function (fechaIda, fechaVuelta) {
 
@@ -41,6 +41,7 @@
 
             console.log('object ++', object);
 
+            vuelosStore.familyInformation = object.vuelosYTarifas.familyInformation.FamilyInformation;
             this.verIdayVuelta(object.fechaIdaConsultada, object.fechaVueltaConsultada);
 
             console.log(vuelosStore.ida)
@@ -53,11 +54,11 @@
 
 
                 var arraIda = [];
-                var objIda = {};
+
                 //si ya esta como un objeto es por que la numero de opcion ya esta
                 //existe ya un vuelo con la misma opcion asi que debe entrar como conexion
                 if (typeof vuelosStore.vuelosIda[ida.num_opcion] === 'object') {
-
+                    var objIda = {};
                     //lo que se necesita
                     objIda.horaSalida = {};
                     objIda.horaSalida.hh = parseInt(ida.hora_salida.substr(0, 2));
@@ -72,12 +73,16 @@
 
                     vuelosStore.vuelosIda[ida.num_opcion].vuelos.push(ida);
 
+                    //CAMBIAMOS su destino por que tiene conexion
+                    vuelosStore.vuelosIda[ida.num_opcion].destinoVuelo = ida.destino;
+                    vuelosStore.vuelosIda[ida.num_opcion].horaLlegadaVuelo = objIda.horaLlegada;
+
 
                 } else {
-
+                    var objIda = {};
                     objIda.num_opcion = ida.num_opcion;
-                    objIda.origen = ida.origen;
-                    objIda.destino = ida.destino;
+                    objIda.origenVuelo = ida.origen;
+                    objIda.destinoVuelo = ida.destino;
                     objIda.num_vuelo = ida.num_vuelo;
                     objIda.tipo_avion = ida.tipo_avion;
                     objIda.co_operador = ida.co_operador;
@@ -89,15 +94,20 @@
                     objIda.horaSalida.mm = parseInt(ida.hora_salida.substr(2, 2));
                     ida.horaSalida = objIda.horaSalida;
 
+                    objIda.horaSalidaVuelo = objIda.horaSalida;
+
                     objIda.horaLlegada = {};
                     objIda.horaLlegada.hh = parseInt(ida.hora_llegada.substr(0, 2));
                     objIda.horaLlegada.mm = parseInt(ida.hora_llegada.substr(2, 2));
                     ida.horaLlegada = objIda.horaLlegada;
 
+                    objIda.horaLlegadaVuelo = objIda.horaLlegada;
+
+
                     objIda.duracionTotal = '0100';
 
                     objIda.vuelos = new Array();
-                    objIda.vuelos.push(objIda);
+                    objIda.vuelos.push(ida);
 
                     vuelosStore.vuelosIda[ida.num_opcion] = objIda;
 
@@ -233,11 +243,11 @@
                 $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (indexVuelta, vuelta) {
 
 
-                    var objVuelta = {};
+
                     //si ya esta como un objeto es por que la numero de opcion ya esta
                     //existe ya un vuelo con la misma opcion asi que debe entrar como conexion
                     if (typeof vuelosStore.vuelosVuelta[vuelta.num_opcion] === 'object') {
-
+                        var objVuelta = {};
 
                         //lo que se necesita
                         objVuelta.horaSalida = {};
@@ -252,15 +262,15 @@
 
 
                         vuelosStore.vuelosVuelta[vuelta.num_opcion].vuelos.push(vuelta);
-
+                        //CAMBIAMOS su destino por que tiene conexion
+                        vuelosStore.vuelosIda[vuelta.num_opcion].destinoVuelo = vuelta.destino;
 
                     } else {
+                        var objVuelta = {};
 
-                        objVuelta.vuelos = new Array();
-                        objVuelta.vuelos.push(vuelta);
                         objVuelta.num_opcion = vuelta.num_opcion;
-                        objVuelta.origen = vuelta.origen;
-                        objVuelta.destino = vuelta.destino;
+                        objVuelta.origenVuelo = vuelta.origen;
+                        objVuelta.destinoVuelo = vuelta.destino;
                         objVuelta.num_vuelo = vuelta.num_vuelo;
                         objVuelta.tipo_avion = vuelta.tipo_avion;
                         objVuelta.co_operador = vuelta.co_operador;
@@ -278,6 +288,9 @@
                         vuelta.horaLlegada = objVuelta.horaLlegada;
 
                         objVuelta.duracionTotal = '0100';
+
+                        objVuelta.vuelos = new Array();
+                        objVuelta.vuelos.push(vuelta);
 
                         vuelosStore.vuelosVuelta[objVuelta.num_opcion] = objVuelta;
 

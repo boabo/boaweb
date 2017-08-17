@@ -2020,3 +2020,17 @@ td#pagar_reserva.activado {
 .Detalle_abierto{
 	display: block;
 }
+
+.vuelosIda_seleccionado{
+	background-color: #EFAA35 !important;
+}
+.vuelosIda_seleccionado b{
+	color: #34598C !important;
+	font-family: HelveticaNeueProMd;
+
+}
+.vuelosIda_seleccionado span{
+	color: #fff !important;
+
+
+}

@@ -1454,11 +1454,11 @@ function asyncReceiveFlights(response)
 
 	console.log('vuelos_store.vueloMatriz',vuelos_store.vueloMatriz)
 
-	$("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias(vuelosDibujador.familyInformation,'salidas'));
+	$("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('salidas'));
 	vuelosDibujador.dibujarVuelos('salidas',vuelos_store);
 
 	if(vuelos_store.tieneVuelta == true){
-        $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias(vuelosDibujador.familyInformation,'llegadas'));
+        $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('llegadas'));
         vuelosDibujador.dibujarVuelos('llegadas',vuelos_store);
 	}
 
