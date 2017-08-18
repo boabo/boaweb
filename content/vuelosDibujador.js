@@ -25,8 +25,11 @@
             "comercialFamily": "CFFBOA"
         }],
 
+
+
         opcionIdaSeleccionado:'',
         opcionVueltaSeleccionado:'',
+        familiaIdaSeleccionado:'',
         store:'',
         iniciarDibujador:function (store) {
             vuelosDibujador.store = store;
@@ -217,26 +220,32 @@
             //el seleccionado es ida
             if(tipo == "vuelosIda"){
 
-                if(vuelosDibujador.tieneVuelta == true){
+                if (vuelosDibujador.store.tieneVuelta == true) {
                     console.log(vuelosDibujador.store.vuelosVuelta)
-                    if(vuelosDibujador.store.tieneVuelta == true){
-
-                        $("#llegadas_").empty();
-                        vuelosDibujador.opcionIdaSeleccionado = opcion;
-                        vuelosDibujador.dibujarVuelos('llegadas',vuelosDibujador.store);
 
 
-                    }
-                }else{
+                    $("#llegadas_").empty();
+                    vuelosDibujador.opcionIdaSeleccionado = opcion;
+                    var familia = $(that).data('fi');
+                    vuelosDibujador.familiaIdaSeleccionado = familia;
+                    vuelosDibujador.dibujarVuelos('llegadas', vuelosDibujador.store);
+
+
+                } else {
                     //si no tiene entonces mapeamos los montos y taxes con la opcion -0 ejemplo 1-0 o 2-0
 
                     var familia = $(that).data('fi'); // familia ida es 1 o 2 o 3
-                    vuelosDibujador.dibujarMontosTaxesTotales(opcion+'-0',familia,null);
+                    vuelosDibujador.dibujarMontosTaxesTotales(opcion + '-0', familia, null);
                 }
 
 
                 //mandamos para que se dibuje  los datos del vuelo seleccionado
                 vuelosDibujador.dibujarSeleccionVuelo('ida',vuelosDibujador.store.vuelosIda[opcion]);
+
+            }else if(tipo == "vuelosVuelta"){
+
+                var familia = $(that).data('fv'); // familia ida es 1 o 2 o 3
+                vuelosDibujador.dibujarMontosTaxesTotales(vuelosDibujador.opcionIdaSeleccionado + opcion, vuelosDibujador.familiaIdaSeleccionado, familia);
 
             }
             console.log(filtros_opciones);
@@ -387,7 +396,7 @@
 
 
                     console.log('convertido svg',$("#"+idjQuery).children("svg"));
-
+                    var duracion = {horas:0,minutos:0};
                     for(var i=0;i<vuelo.vuelos.length;i++) {
                         var flight = vuelo.vuelos[i];
                         var nivel = i+1;
@@ -403,12 +412,68 @@
                         $("#"+idjQuery).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').html((nivel==1)?separarAeropuertoSvg(airports[flight.origen]):'');
 
                         $("#"+idjQuery).children('svg').find('[data="aeropuertoLlegada'+nivel+'"]').html(separarAeropuertoSvg(airports[flight.destino]));
-                        //$(this).children('svg').find('[data="duracion'+nivel+'"]').html(formatExpandedTime(flight.duracion));
+                        $("#"+idjQuery).children('svg').find('[data="duracion'+nivel+'"]').html(flight.tiempoVuelo.Hrs +" hrs , "+flight.tiempoVuelo.Mins+" mins.");
 
                         //agregamos el tiempo de vuelo a la duracion
-                        //duracion.horas = duracion.horas + parseInt(flight.duracion.hrs);
-                        //duracion.minutos = duracion.minutos + parseInt(flight.duracion.mins);
+                        duracion.horas = duracion.horas + parseInt(flight.tiempoVuelo.Hrs);
+                        duracion.minutos = duracion.minutos + parseInt(flight.tiempoVuelo.Mins);
+
+
+
                     }
+
+                    //dibUJa el tiempo de transito si esque existe
+                    if (vuelo.vuelos.length == 2){
+                        //sacar fecha llegada
+                        var hora_llegada_1 = vuelo.vuelos[0].horaLlegada;
+                        var hora_salida_2 = vuelo.vuelos[1].horaSalida;
+
+                        var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
+                        $("#"+idjQuery).children('svg').find('[data="transito1"]').html(transito.Str);
+
+                        //agregamos el tiempo de transito a la duracion
+                        duracion.horas = duracion.horas + parseInt(transito.Hrs);
+                        duracion.minutos = duracion.minutos + parseInt(transito.Mins);
+
+
+                    }else if(vuelo.vuelos.length == 3){
+                        var hora_llegada_1 = vuelo.vuelos[0].horaLlegada;
+                        var hora_salida_2 = vuelo.vuelos[1].horaSalida;
+
+                        var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
+                        $("#"+idjQuery).children('svg').find('[data="transito1"]').html(transito.Str);
+
+                        //agregamos el tiempo de transito a la duracion
+                        duracion.horas = duracion.horas + parseInt(transito.Hrs);
+                        duracion.minutos = duracion.minutos + parseInt(transito.Mins);
+
+                        var hora_llegada_3 = vuelo.vuelos[1].horaLlegada;
+                        var hora_salida_4 = vuelo.vuelos[2].horaSalida;
+
+                        var transito2 = tiempoTransito(hora_llegada_3,hora_salida_4);
+                        $("#"+idjQuery).children('svg').find('[data="transito2"]').html(transito2.Str);
+
+                        //agregamos el tiempo de transito a la duracion
+                        duracion.horas = duracion.horas + parseInt(transito2.Hrs);
+                        duracion.minutos = duracion.minutos + parseInt(transito2.Mins);
+
+
+                    }
+
+                    //verificamos si los minutos pueden ser horas y el restante minutos
+                    if(duracion.minutos > 59){
+                        var aux_res = duracion.minutos / 60;
+                        var hrs = parseInt(aux_res);
+                        var min = Math.round((aux_res - hrs) * 60);
+                        duracion.horas = duracion.horas + hrs;
+                        duracion.minutos = min;
+                    }
+                    //agregamos la duracion total a la celda principal de este vuelo
+                    $('#'+vuelo.tipo+'_'+vuelo.num_opcion).find(".duracion_total").html("Duración Total :<br> "
+                     +((duracion.horas > 0)?duracion.horas+" hrs. ":"")
+                     +((duracion.minutos>0)?duracion.minutos+" mins.":" ")
+                     );
+
 
 
 

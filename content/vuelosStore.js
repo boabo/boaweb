@@ -7,7 +7,21 @@
 
 
     vuelosStore = {
+        diferenciaHoraria:{
 
+            'CBB-MAD':[{
+                valor:6,
+                tipo:"-"
+            }],
+            'MAD-CBB':[{
+                valor:6,
+                tipo:"+"
+            }],
+            'VVI-MAD':[{
+                valor:6,
+                tipo:"-"
+            }],
+        },
         vueloMatriz: '',
         tieneIda: false,
         tieneVuelta: false,
@@ -65,11 +79,22 @@
                     objIda.horaSalida.mm = parseInt(ida.hora_salida.substr(2, 2));
                     ida.horaSalida = objIda.horaSalida;
 
+
+
                     objIda.horaLlegada = {};
                     objIda.horaLlegada.hh = parseInt(ida.hora_llegada.substr(0, 2));
                     objIda.horaLlegada.mm = parseInt(ida.hora_llegada.substr(2, 2));
                     ida.horaLlegada = objIda.horaLlegada;
 
+                    //calculamos el tiempo del vuelo
+                    ida.tiempoVuelo = tiempoTransito(objIda.horaSalida,objIda.horaLlegada);
+                    //cuando llega al dia siguiente
+                    if(ida.variacion_tiempo == "1"){
+                        var tipo_operacion = vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
+                        var valor = parseInt(vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);
+                        var str = ida.tiempoVuelo.Hrs + tipo_operacion + valor+"";
+                        ida.tiempoVuelo.Hrs = eval(str);
+                    }
 
                     vuelosStore.vuelosIda[ida.num_opcion].vuelos.push(ida);
 
@@ -104,11 +129,23 @@
                     objIda.horaLlegadaVuelo = objIda.horaLlegada;
 
 
+                    //calculamos el tiempo del vuelo
+                    ida.tiempoVuelo = tiempoTransito(objIda.horaSalida,objIda.horaLlegada);
+
+                    //cuando llega al dia siguiente
+                    if(ida.variacion_tiempo == "1"){
+                        var tipo_operacion = vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
+                        var valor = parseInt(vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);
+                        var str = ida.tiempoVuelo.Hrs + tipo_operacion + valor+"";
+                        ida.tiempoVuelo.Hrs = eval(str);
+                    }
+
                     objIda.duracionTotal = '0100';
 
                     objIda.vuelos = new Array();
                     objIda.vuelos.push(ida);
 
+                    objIda.tipo ='vuelosIda';
                     vuelosStore.vuelosIda[ida.num_opcion] = objIda;
 
 
@@ -248,7 +285,6 @@
                     //existe ya un vuelo con la misma opcion asi que debe entrar como conexion
                     if (typeof vuelosStore.vuelosVuelta[vuelta.num_opcion] === 'object') {
                         var objVuelta = {};
-
                         //lo que se necesita
                         objVuelta.horaSalida = {};
                         objVuelta.horaSalida.hh = parseInt(vuelta.hora_salida.substr(0, 2));
@@ -260,14 +296,16 @@
                         objVuelta.horaLlegada.mm = parseInt(vuelta.hora_llegada.substr(2, 2));
                         vuelta.horaLlegada = objVuelta.horaLlegada;
 
+                    //calculamos el tiempo del vuelo
+                    vuelta.tiempoVuelo = tiempoTransito(objVuelta.horaSalida,objVuelta.horaLlegada);
 
                         vuelosStore.vuelosVuelta[vuelta.num_opcion].vuelos.push(vuelta);
                         //CAMBIAMOS su destino por que tiene conexion
-                        vuelosStore.vuelosIda[vuelta.num_opcion].destinoVuelo = vuelta.destino;
+                        vuelosStore.vuelosVuelta[vuelta.num_opcion].destinoVuelo = vuelta.destino;
+                        vuelosStore.vuelosVuelta[vuelta.num_opcion].horaLlegadaVuelo = objVuelta.horaLlegada;
 
                     } else {
                         var objVuelta = {};
-
                         objVuelta.num_opcion = vuelta.num_opcion;
                         objVuelta.origenVuelo = vuelta.origen;
                         objVuelta.destinoVuelo = vuelta.destino;
@@ -282,16 +320,26 @@
                         objVuelta.horaSalida.mm = parseInt(vuelta.hora_salida.substr(2, 2));
                         vuelta.horaSalida = objVuelta.horaSalida;
 
+                        objVuelta.horaSalidaVuelo = objVuelta.horaSalida;
+
                         objVuelta.horaLlegada = {};
                         objVuelta.horaLlegada.hh = parseInt(vuelta.hora_llegada.substr(0, 2));
                         objVuelta.horaLlegada.mm = parseInt(vuelta.hora_llegada.substr(2, 2));
                         vuelta.horaLlegada = objVuelta.horaLlegada;
+
+                        objVuelta.horaLlegadaVuelo = objVuelta.horaLlegada;
+
+
+                         //calculamos el tiempo del vuelo
+                        vuelta.tiempoVuelo = tiempoTransito(objVuelta.horaSalida,objVuelta.horaLlegada);
+
 
                         objVuelta.duracionTotal = '0100';
 
                         objVuelta.vuelos = new Array();
                         objVuelta.vuelos.push(vuelta);
 
+                         objVuelta.tipo ='vuelosVuelta';
                         vuelosStore.vuelosVuelta[objVuelta.num_opcion] = objVuelta;
 
 
