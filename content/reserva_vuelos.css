@@ -2034,3 +2034,16 @@ td#pagar_reserva.activado {
 
 
 }
+.vuelosVuelta_seleccionado{
+	background-color: #EFAA35 !important;
+}
+.vuelosVuelta_seleccionado b{
+	color: #34598C !important;
+	font-family: HelveticaNeueProMd;
+
+}
+.vuelosVuelta_seleccionado span{
+	color: #fff !important;
+
+
+}

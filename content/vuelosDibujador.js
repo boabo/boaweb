@@ -41,12 +41,13 @@
                 var m = $('<div id="salidas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }else if(tipo == 'llegadas'){
-                var m = '<div id="llegadas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left">\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n            <div style="float: left;width: 33%; text-align: center; background-color: #333333; color:#fff;">F1</div>\n        </div>\n    </div>\n    \n</div>';
+                var m = $('<div id="llegadas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }
 
             $.each(vuelosDibujador.store.familyInformation,function (k,v) {
 
+                console.log('familias' , $(m).find('.familias_'))
                 $(m).find('.familias_').append('<div style="float: left;width: 33%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
             });
 
@@ -92,7 +93,7 @@
 
                 console.log(formatTime(v.horaLlegada))
                 console.log('v',v)
-                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px; cursor: pointer;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br><div class="ico_boa"><span style="bottom:-18px;position:relative;">BoA</span></div>\n        </div>\n    </div>\n</div>');
+                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br><div class="ico_boa"><span style="bottom:-18px;position:relative;">BoA</span></div>\n        </div>\n    </div>\n</div>');
 
                 var opcion_vuelo_indice ='';
                 //no tiene vuelta entonces dibujamos directamente con sus opciones y vuelta como cero ej: 1-0
@@ -146,7 +147,7 @@
                     }
                     ///FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>'+importe+' '+moneda+'</b></div>');
 
-                    objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+                    objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: pointer;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
 
 
                 });
@@ -157,7 +158,7 @@
                         FamiliasImportes.append(objectAux[familia.refNumber]);
 
                     }else{
-                        FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #cccccc; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>No<br> Disponible</b></div>');
+                        FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #cccccc; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: no-drop;"><b>No<br> Disponible</b></div>');
                     }
 
 
@@ -189,15 +190,19 @@
 
         verDetalleConexion:function (that) {
 
+           
             var id_detalle_seleccionado = $(that).parent().parent().parent().attr('id')+'_detalle';
 
             if($("#"+id_detalle_seleccionado).hasClass('Detalle_abierto')){
                 $("#"+id_detalle_seleccionado).removeClass('Detalle_abierto');
                 $("#"+id_detalle_seleccionado).addClass('Detalle_cerrado');
+                $(that).removeClass('active');
             }else{
                 $("#"+id_detalle_seleccionado).removeClass('Detalle_cerrado');
 
                 $("#"+id_detalle_seleccionado).addClass('Detalle_abierto');
+
+                $(that).addClass('active');
             }
 
         },
@@ -221,7 +226,7 @@
             if(tipo == "vuelosIda"){
 
                 if (vuelosDibujador.store.tieneVuelta == true) {
-                    console.log(vuelosDibujador.store.vuelosVuelta)
+                    console.log(vuelosDibujador.store.vuelosVuelta);
 
 
                     $("#llegadas_").empty();
@@ -305,7 +310,7 @@
                 });
 
                 tbl.append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
-                    .append("<tr><th><h3>Subtotal</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal+"</td></tr>")
+                    .append("<tr><th><4>Subtotal</4></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal+"</td></tr>")
                     .append("<tr><td></td><td></td><td class='qty'><h3>x "+cantidad_pax+"</h3></td></tr>")
                     .append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
                     .append("<tr><th><h3>TOTAL</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal*cantidad_pax+"</td></tr>");
