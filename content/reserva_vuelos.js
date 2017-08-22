@@ -240,11 +240,13 @@ $(document).on('ready',function()
         $(".validable .calendar").datepicker("option", "prevText", '<i class="fa fa-arrow-left"></i>');
         $(".validable .calendar").datepicker("option", "nextText", '<i class="fa fa-arrow-right"></i>');
 
-        $("#btn_validar_vuelos").click(validateSeleccionVuelo);
+
+       /* $("#btn_validar_vuelos").click(validateSeleccionVuelo);
+
         $("#btn_validar_vuelos2").click(validateSeleccionVuelo);
         $("#btn_volver_vuelos").click(backToFlightStage);
         $("#btn_validar_pasajeros").click(validatePassengers);
-        $("#btn_validar_pasajeros2").click(validatePassengers);
+        $("#btn_validar_pasajeros2").click(validatePassengers);*/
 
         // WINDOW SETUP
         $(window).resize(checkResultsTableWidth);
@@ -1153,7 +1155,8 @@ function validatePassengers()
 	}
 
 	if(isAllValid) { 
-		var selVueloToSend = prepareSeleccionVueloToSend();
+		//var selVueloToSend = prepareSeleccionVueloToSend();
+		var selVueloToSend = vuelosDibujador.objectEnviar.seleccionVuelo;
 
 		for(var tipo in pasajeros) {
 			if(pasajeros[tipo].length==0)
@@ -2353,7 +2356,7 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 		releasingTime 	: "1",
 		ipAddress 		: "127.0.0.1", // xD
 		xmlOrJson 		: "false", // false is Json
-        sitesDetail		: [["ADT","3"]],
+        sitesDetail		: [["ADT","2"]],
 
 
 		from: searchParameters.origen,

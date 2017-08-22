@@ -79,8 +79,8 @@ var BoA = {
         origen: 'VVI',
         destino: 'CBB',
         fechaIda : '20170826',//formatCompactDate(new Date()), // today
-        fechaVuelta:'20170827',//null, // no flight back
-        adulto: 3,
+        fechaVuelta:null,//null, // no flight back
+        adulto: 2,
         infante: 0,
         ninho: 0
     },

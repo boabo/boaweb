@@ -25,11 +25,12 @@
             "comercialFamily": "CFFBOA"
         }],
 
-
-
+        objectEnviar:'',
+        TasasPorTipoPasajero:'',
         opcionIdaSeleccionado:'',
         opcionVueltaSeleccionado:'',
         familiaIdaSeleccionado:'',
+        familiaVueltaSeleccionado:'',
         store:'',
         iniciarDibujador:function (store) {
             vuelosDibujador.store = store;
@@ -127,8 +128,10 @@
 
 
 
-                    var importe = tarifa.TarifaPersoCombinabilityID[importe_vuelo];
-                    var moneda = tarifa.TarifaPersoCombinabilityID.moneda;
+
+
+                    var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
+                    var moneda = tarifa.TarifaPersoCombinabilityID[0].moneda;
                     var disponibilidad = parseInt(tarifa.iv[disponibilidadTipoidaVuelta]);
 
                     var clase_disponibilidad = '';
@@ -226,7 +229,7 @@
             if(tipo == "vuelosIda"){
 
                 if (vuelosDibujador.store.tieneVuelta == true) {
-                    console.log(vuelosDibujador.store.vuelosVuelta);
+                    console.log(vuelosDibujador.store.vuelosVuelta)
 
 
                     $("#llegadas_").empty();
@@ -239,8 +242,20 @@
                 } else {
                     //si no tiene entonces mapeamos los montos y taxes con la opcion -0 ejemplo 1-0 o 2-0
 
+
+
+
                     var familia = $(that).data('fi'); // familia ida es 1 o 2 o 3
+
+                    //agregamos a las variables globales de selccion del objecto
+                    vuelosDibujador.opcionIdaSeleccionado = opcion;
+                    vuelosDibujador.familiaIdaSeleccionado = familia;
+                    vuelosDibujador.opcionVueltaSeleccionado = 0;
+                    vuelosDibujador.familiaVueltaSeleccionado = null;
+
                     vuelosDibujador.dibujarMontosTaxesTotales(opcion + '-0', familia, null);
+
+                    vuelosDibujador.dibujarBotonParaContinuarComprar(opcion + '-0', familia,null);
                 }
 
 
@@ -250,77 +265,152 @@
             }else if(tipo == "vuelosVuelta"){
 
                 var familia = $(that).data('fv'); // familia ida es 1 o 2 o 3
-                vuelosDibujador.dibujarMontosTaxesTotales(vuelosDibujador.opcionIdaSeleccionado + opcion, vuelosDibujador.familiaIdaSeleccionado, familia);
+                vuelosDibujador.dibujarMontosTaxesTotales(vuelosDibujador.opcionIdaSeleccionado +'-'+ opcion, vuelosDibujador.familiaIdaSeleccionado, familia);
+
+                //agregamos a las variables globales de selccion del objecto
+                vuelosDibujador.opcionVueltaSeleccionado = opcion;
+                vuelosDibujador.familiaVueltaSeleccionado = familia;
+
+                vuelosDibujador.dibujarBotonParaContinuarComprar(vuelosDibujador.opcionIdaSeleccionado +'-'+ opcion, vuelosDibujador.familiaIdaSeleccionado,familia);
+
+
+                //mandamos para que se dibuje  los datos del vuelo seleccionado
+                vuelosDibujador.dibujarSeleccionVuelo('vuelta',vuelosDibujador.store.vuelosVuelta[opcion]);
+
 
             }
             console.log(filtros_opciones);
         },
         dibujarMontosTaxesTotales:function(opcion_vuelo_indice,familiaIda,familiaVuelta){
 
+            var tarifas;
             //cuando es solo la peticion por ida
-            if(familiaVuelta == null){
+            if (familiaVuelta == null) {
 
                 //buscamos por la opcion de vuelo indice y por la familia de ida
                 var object = vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice];
-                var tarifas = $.map( object.tarifas, function( value, index ) {
-                    if(value.FI == familiaIda){
+                tarifas = $.map(object.tarifas, function (value, index) {
+                    if (value.FI == familiaIda) {
                         return value;
                     }
 
                 });
-
-               var tarifa_del_vuelo_seleccionado = tarifas[0];
-
-
-               var total_seleccion = tarifa_del_vuelo_seleccionado.totalAmount;
-               var total_taxes = tarifa_del_vuelo_seleccionado.totalTaxes;
-
-               //dibujamos los totales en la vista
-                flapperTotal.val(total_seleccion).change();
-                //dibujamos el total de los taxes
-                $("#totalTasas").html(total_taxes);
+            }else{
 
 
-                //dibujamos detalle de las taxes en el tooltip
-                var tooltip = $("#tooltip_tasas");
-                $("#tooltip_tasas").html("");
-                var tbl = document.createElement("table");
-                tooltip.append(tbl);
-                $(tbl).attr("cellpadding","0").attr("cellspacing",0);
-                tbl.appendChild(document.createElement("tbody"));
-                tbl = $(tbl).find("tbody");
+                //buscamos por la opcion de vuelo indice y por la familia de ida
+                var object = vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice];
+                tarifas = $.map(object.tarifas, function (value, index) {
+                    if (value.FI == familiaIda && value.FV == familiaVuelta) {
+                        return value;
+                    }
 
-
-                tbl.append("<tr><th class='subtitle' colspan='3'><div>TASAS TOTALES</div></th></tr>");
-                tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
-
-                var subTotal = 0;
-                var cantidad_pax = 0;
-                $.each(tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero,function (k,v) {
-                    var tr = document.createElement("tr");
-                    $(tr).append("<th>"+v.tipoTasa+"</th>")
-                        .append("<td></td>")
-                        .append("<td class='qty'>"+v.monto+"</td>");
-
-                    tbl.append(tr);
-                    tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
-                    tbl.append("<tr><td class='detail' colspan='3'>"+v.tasa+"</tr>");
-                    subTotal = parseFloat(subTotal)+parseFloat(v.monto);
-                    cantidad_pax = parseInt(v.cantidadPax);
                 });
-
-                tbl.append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
-                    .append("<tr><th><4>Subtotal</4></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal+"</td></tr>")
-                    .append("<tr><td></td><td></td><td class='qty'><h3>x "+cantidad_pax+"</h3></td></tr>")
-                    .append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
-                    .append("<tr><th><h3>TOTAL</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal*cantidad_pax+"</td></tr>");
-
-
-
-
+                console.log(tarifas)
             }
-            console.log('importes seleccionado',vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice]);
-            console.log('opcion_vuelo_indice',opcion_vuelo_indice)
+
+
+            var tarifa_del_vuelo_seleccionado = tarifas[0];
+
+            //dibujar montos por tipo de pasajero
+            $.each(tarifa_del_vuelo_seleccionado.TarifaPersoCombinabilityID, function (k, v) {
+
+                //precio_adulto
+                //precio_ninho
+                //precio_infante
+
+                var tipoPasajero = '';
+                if (v.typePax == 'ADT') {
+                    tipoPasajero = 'precio_adulto';
+                } else if (v.typePax == 'CH') {
+                    tipoPasajero = 'precio_ninho';
+                }
+
+                $("#" + tipoPasajero).html(parseFloat(v.importe * parseInt(v.countPax)));
+
+
+            });
+            //fin de dibujar montos por tipo de pasajero
+
+
+            var total_seleccion = tarifa_del_vuelo_seleccionado.totalAmount;
+            var total_taxes = tarifa_del_vuelo_seleccionado.totalTaxes;
+
+            //dibujamos los totales en la vista
+            flapperTotal.val(total_seleccion).change();
+            //dibujamos el total de los taxes
+            $("#totalTasas").html(total_taxes);
+
+
+            //dibujamos detalle de las taxes en el tooltip
+            var tooltip = $("#tooltip_tasas");
+            $("#tooltip_tasas").html("");
+            var tbl = document.createElement("table");
+            tooltip.append(tbl);
+            $(tbl).attr("cellpadding", "0").attr("cellspacing", 0);
+            tbl.appendChild(document.createElement("tbody"));
+            tbl = $(tbl).find("tbody");
+
+
+            tbl.append("<tr><th class='subtitle' colspan='3'><div>TASAS TOTALES</div></th></tr>");
+            tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+
+            var subTotal = 0;
+            var cantidad_pax = 0;
+            var ObjectTasasTotalesPorTipo = {};
+            var ObjectTasasPorTipoPasajero = {};
+            $.each(tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero, function (k, v) {
+
+                if (ObjectTasasTotalesPorTipo[v.tipoTasa] != undefined) {
+                    ObjectTasasTotalesPorTipo[v.tipoTasa].valor += parseFloat(v.monto) * parseFloat(v.cantidadPax);
+                } else {
+                    ObjectTasasTotalesPorTipo[v.tipoTasa] = {};
+                    ObjectTasasTotalesPorTipo[v.tipoTasa].tasa = v.tasa;
+                    ObjectTasasTotalesPorTipo[v.tipoTasa].valor = parseFloat(v.monto) * parseFloat(v.cantidadPax);
+                }
+
+                //obtenemos las tasas por pasajero
+                if (ObjectTasasPorTipoPasajero[v.tipoPasajero] != undefined) {
+                    ObjectTasasPorTipoPasajero[v.tipoPasajero].push({
+                        key: v.tipoTasa,
+                        value: parseFloat(v.monto) * parseFloat(v.cantidadPax)
+                    });
+                } else {
+                    ObjectTasasPorTipoPasajero[v.tipoPasajero] = [];
+                    ObjectTasasPorTipoPasajero[v.tipoPasajero].push({
+                        key: v.tipoTasa,
+                        value: parseFloat(v.monto) * parseFloat(v.cantidadPax)
+                    });
+                }
+
+
+            });
+
+            vuelosDibujador.TasasPorTipoPasajero = ObjectTasasPorTipoPasajero;
+
+            $.each(ObjectTasasTotalesPorTipo, function (k, v) {
+                var tr = document.createElement("tr");
+                $(tr).append("<th >" + k + "</th>")
+                    .append("<td></td>")
+                    .append("<td class='qty'>" + v.valor + "</td>");
+
+                tbl.append(tr);
+                tbl.append("<tr><td colspan='3' class='divisor'></td></tr>");
+                tbl.append("<tr><td class='detail' colspan='3'>" + v.tasa + "</tr>");
+                subTotal = parseFloat(subTotal) + parseFloat(v.monto);
+                cantidad_pax = parseInt(v.cantidadPax);
+            });
+
+            /*tbl.append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
+             .append("<tr><th><h3>Subtotal</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal+"</td></tr>")
+             .append("<tr><td></td><td></td><td class='qty'><h3>x "+cantidad_pax+"</h3></td></tr>")
+             .append("<tr><td class='cell-separator' colspan='3'><div></div></td></tr>")
+             .append("<tr><th><h3>TOTAL</h3></th><td class='currency'>"+HTML_CURRENCIES[CURRENCY]+"</td><td class='qty'>"+subTotal*cantidad_pax+"</td></tr>");
+             */
+
+
+            console.log('importes seleccionado', vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice]);
+            console.log('opcion_vuelo_indice', opcion_vuelo_indice)
         },
         dibujarSeleccionVuelo:function (tipo,vueloSeleccionado) {
 
@@ -344,7 +434,7 @@
             //dibujamos el selector small para cuando se este llenando datos del pasajero
             //este solo se mostrara estando en esa interfaz
             $("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(/*formatShortDate(vueloSeleccionado.vuelos[0].fecha)*/);
-            $("#tbl_seleccion_" + tipo + "_small").find(".cell-cod-origen-destino").html('<h1>'+vueloSeleccionado.origen+' - '+vueloSeleccionado.destino+'</h1>');
+            $("#tbl_seleccion_" + tipo + "_small").find(".cell-cod-origen-destino").html('<h1>'+vueloSeleccionado.origenVuelo+' - '+vueloSeleccionado.destinoVuelo+'</h1>');
             $("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(/*formatTime(vueloSeleccionado.horaSalida)*/);
             $("#tbl_seleccion_" + tipo).css("display","block");
             $("#tbl_seleccion_" + tipo).addClass("changed");
@@ -359,6 +449,191 @@
 
             //mostramos
             $("#tbl_seleccion_" + tipo).show();
+
+        },
+        dibujarBotonParaContinuarComprar:function (){
+
+            var m = '';
+            //cuando es solo la peticion por ida
+
+
+            m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">Continuar mi compra</div>';
+
+            $('.cell-submit').html(m);
+
+        },
+        continuarCompra:function (that) {
+
+            var opcion_indice = vuelosDibujador.opcionIdaSeleccionado+'-'+vuelosDibujador.opcionVueltaSeleccionado;
+            console.log(opcion_indice);
+
+
+
+            //buscamos por la opcion de vuelo indice y por la familia de ida
+            var object = vuelosDibujador.store.vueloMatriz[opcion_indice];
+            var tarifas = $.map(object.tarifas, function (value, index) {
+                //cuando es solo la peticion por ida
+                if(vuelosDibujador.store.tieneVuelta == false) {
+                    if (value.FI == vuelosDibujador.familiaIdaSeleccionado) {
+                        return value;
+                    }
+                }else{//cuando tiene ida y vuelta filtrar por las dos familias
+                    if (value.FI == vuelosDibujador.familiaIdaSeleccionado && value.FV == vuelosDibujador.familiaVueltaSeleccionado) {
+                        return value;
+                    }
+                }
+
+
+            });
+
+
+            var tarifa_del_vuelo_seleccionado = tarifas[0];
+           // var tarifa_del_vuelo_seleccionado.TarifaPersoCombinabilityID.fare_code
+
+
+            var total_seleccion = tarifa_del_vuelo_seleccionado.totalAmount;
+            var total_taxes = tarifa_del_vuelo_seleccionado.totalTaxes;
+
+
+            var objectEnviar = {};
+            objectEnviar.seleccionVuelo = {};
+
+            $.each(tarifas[0].TarifaPersoCombinabilityID,function (k,v) {
+
+                var tipoPasajero = ''
+                if (v.typePax == 'ADT' ){
+
+                    tipoPasajero = 'adulto';
+                }else if(v.typePax == 'CH' ){
+                    tipoPasajero = 'ninho';
+                }
+                objectEnviar.seleccionVuelo[tipoPasajero] = {
+                    num : v.countPax,
+                    precioTotal : (parseFloat(v.importe) *  parseFloat(v.countPax) ),
+                    ida:{
+                        precioBase:parseFloat(v.importe_orig) - parseFloat(v.tax_orig),
+                        tasas:vuelosDibujador.TasasPorTipoPasajero[v.typePax],
+                    },
+
+
+                };
+
+                //si tiene vuelta
+                if(vuelosDibujador.store.tieneVuelta == true){
+
+                    objectEnviar.seleccionVuelo[tipoPasajero].vuelta = {
+                        precioBase:parseFloat(v.importe_return) - parseFloat(v.tax_return)
+                        
+                    };
+                    var tasasVueltas = [];
+                    $.each(vuelosDibujador.TasasPorTipoPasajero[v.typePax],function (indexTasa,tasa) {
+                        console.log(tasa)
+                        tasasVueltas.push({
+                            key:tasa.key,
+                            value:0
+                        });
+                    })
+                    objectEnviar.seleccionVuelo[tipoPasajero].vuelta.tasas = tasasVueltas;
+                }else{//si no tiene se le manda la plantilla del objecto
+
+
+                    objectEnviar.seleccionVuelo[tipoPasajero].vuelta = {
+                        precioBase: 0,
+                        tasas: 		{}
+
+                    };
+
+                }
+            });
+
+
+            //agregamos plantillas a los objetos que faltan de los tipos de pasajeros esta parte es una mamada
+            if(objectEnviar.seleccionVuelo.adulto == undefined){
+                objectEnviar.seleccionVuelo.adulto = {
+                    num: 			0,
+                    ida:{
+                        precioBase: 0,
+                        tasas: 		{}
+                    },
+                    vuelta:{
+                        precioBase: 0,
+                        tasas: 		{}
+                    },
+                    precioTotal: 		0,
+                    formattedPrecioTotal: "0.00"
+                };
+            }
+            if(objectEnviar.seleccionVuelo.ninho == undefined){
+                objectEnviar.seleccionVuelo.ninho = {
+                    num: 			0,
+                    ida:{
+                        precioBase: 0,
+                        tasas: 		{}
+                    },
+                    vuelta:{
+                        precioBase: 0,
+                        tasas: 		{}
+                    },
+                    precioTotal: 		0,
+                    formattedPrecioTotal: "0.00"
+                };
+            }
+            if(objectEnviar.seleccionVuelo.infante == undefined){
+                objectEnviar.seleccionVuelo.infante = {
+                    num: 			0,
+                    ida:{
+                        precioBase: 0,
+                        tasas: 		{}
+                    },
+                    vuelta:{
+                        precioBase: 0,
+                        tasas: 		{}
+                    },
+                    precioTotal: 		0,
+                    formattedPrecioTotal: "0.00"
+                };
+            }
+
+            objectEnviar.seleccionVuelo.vuelosIda = [];
+            //agregamos los vuelos de ida a nuestro arreglo para enviar
+            $.each(vuelosDibujador.store.vuelosIda[vuelosDibujador.opcionIdaSeleccionado].vuelos,function (indexVueloIda,dato) {
+
+
+                objectEnviar.seleccionVuelo.vuelosIda.push({
+                    horaSalida: ("00"+dato.horaSalida.hh).slice(-2) + ("00"+dato.horaSalida.mm).slice(-2),
+                    horaLlegada: ("00"+dato.horaLlegada.hh).slice(-2) + ("00"+dato.horaLlegada.mm).slice(-2),
+
+                    numVuelo:dato.num_vuelo,
+                    tipoAvion:dato.tipo_avion,
+                    fechaSalida:dato.fecha_salida,
+                    fareCode:tarifas[0].TarifaPersoCombinabilityID[0].fare_code,
+                    clase:tarifas[0].TarifaPersoCombinabilityID[0].clases,
+                    origen:dato.origen,
+                    destino:dato.destino
+                })
+
+            });
+
+
+
+
+            console.log(objectEnviar)
+
+            var seleccionVuelo = {};
+
+            vuelosDibujador.objectEnviar = objectEnviar;
+
+
+            ajaxRequest(
+                BoA.urls["validate_flight_selection_service"],
+                asyncValidateSeleccionVuelo,
+                "POST", objectEnviar);
+
+            $(that).hide();
+            $(".cell-submit").html('<div onclick="validatePassengers()" id="btn_validar_pasajeros" class="button" >Realizar Pago</div>');
+
+
+
 
         }
         

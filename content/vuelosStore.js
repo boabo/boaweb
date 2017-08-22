@@ -205,6 +205,17 @@
                                     objectTarifasAux.totalAmount = tarifa.totalAmount;
                                     objectTarifasAux.totalTaxes = tarifa.totalTaxes;
                                     objectTarifasAux.iv = iv;
+
+                                    //validamos que sea un array TarifaPersoCombinabilityID
+                                    //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+                                    if (!Array.isArray(tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID)) {
+                                        var arrayTarifaPersoCombinabilityID = [];
+                                        arrayTarifaPersoCombinabilityID.push(tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID);
+                                        tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID = arrayTarifaPersoCombinabilityID;
+
+                                    }
+                                    //fin validacion
+
                                     objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
                                     objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
                                     arrayTarifasAux.push(objectTarifasAux);
@@ -255,6 +266,18 @@
                                 objectTarifasAux.totalAmount = tarifa.totalAmount;
                                 objectTarifasAux.totalTaxes = tarifa.totalTaxes;
                                 objectTarifasAux.iv = iv;
+
+
+                                //validamos que sea un array TarifaPersoCombinabilityID
+                                //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+                                if (!Array.isArray(tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID)) {
+                                    var arrayTarifaPersoCombinabilityID = [];
+                                    arrayTarifaPersoCombinabilityID.push(tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID);
+                                    tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID = arrayTarifaPersoCombinabilityID;
+
+                                }
+                                //fin validacion
+
                                 objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
 
                                 objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
