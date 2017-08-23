@@ -1456,16 +1456,18 @@ function asyncReceiveFlights(response)
 	var vuelos_store = Object.create(vuelosStore);
 	vuelos_store.armarVuelos(response);
 	//iniciamos el dibujador con el store de datos que se tiene
-	vuelosDibujador.iniciarDibujador(vuelos_store);
+
+	var vuelos_dibujador = Object.create(vuelosDibujador);
+    vuelos_dibujador.__proto__.store = vuelos_store;
 
 	console.log('vuelos_store.vueloMatriz',vuelos_store.vueloMatriz)
 
-	$("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('salidas'));
-	vuelosDibujador.dibujarVuelos('salidas',vuelos_store);
+	$("#salidasHeaderFamilias").append(vuelos_dibujador.dibujarHeaderFamilias('salidas'));
+    vuelos_dibujador.dibujarVuelos('salidas',vuelos_store);
 
 	if(vuelos_store.tieneVuelta == true){
-        $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('llegadas'));
-        vuelosDibujador.dibujarVuelos('llegadas',vuelos_store);
+        $("#llegadasHeaderFamilias").append(vuelos_dibujador.dibujarHeaderFamilias('llegadas'));
+        vuelos_dibujador.dibujarVuelos('llegadas',vuelos_store);
 	}
 
 // 	// process tasas

@@ -14,10 +14,8 @@
         opcionVueltaSeleccionado:'',
         familiaIdaSeleccionado:'',
         familiaVueltaSeleccionado:'',
-        store:'',
-        iniciarDibujador:function (store) {
-            this.store = store;
-        },
+        //store:'',
+
         dibujarHeaderFamilias: function (tipo) {
 
 
@@ -67,6 +65,10 @@
                 importe_vuelo = "importe_return";
 
             }
+
+            //limpiamos los vuelos
+            console.log($("#"+tabla))
+            $("#"+tabla).empty();
             var vuelos = store[ida_vuelta];
             $.each(vuelos,function (k,v) {
 

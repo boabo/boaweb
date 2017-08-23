@@ -25,8 +25,8 @@
         vueloMatriz: '',
         tieneIda: false,
         tieneVuelta: false,
-        vuelosIda: {},
-        vuelosVuelta: {},
+        vuelosIda: '',
+        vuelosVuelta: '',
         fechaIdaConsultada: '',
         fechaVueltaConsultada: '',
         familyInformation:'',
@@ -55,6 +55,8 @@
         armarVuelos: function (object) {
 
             var that = this;
+            that.vuelosIda = {};
+            that.vuelosVuelta = {};
 
             console.log('object ++', object);
 
@@ -63,6 +65,17 @@
 
 
             var objectVuelosMatriz = {};
+
+
+            //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+            if (!Array.isArray(object.vuelosYTarifas.Vuelos.ida.Item.vuelo)) {
+
+                var arrayVuelo = [];
+                arrayVuelo.push(object.vuelosYTarifas.Vuelos.ida.Item.vuelo);
+
+                object.vuelosYTarifas.Vuelos.ida.Item.vuelo = arrayVuelo;
+
+            }
 
             //recorremos los vuelos de ida
             $.each(object.vuelosYTarifas.Vuelos.ida.Item.vuelo, function (indexIda, ida) {
