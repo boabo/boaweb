@@ -2226,6 +2226,7 @@ function handleInitialRequest()
 
 	searchParameters.sitesDetail = array_asientos;
 
+
 	// new loop because change num parameters needs searchParameters.sitios to 
 	// check
 	// for(var tipo in {adulto:null,ninho:null,infante:null}) {
@@ -2316,6 +2317,8 @@ function requestSearchParameters(parms)
         sitesDetail		: parms.sitesDetail,
 	};
 
+    searchParameters.sitesDetail = parms.sitesDetail;
+
 	ajaxRequest(
 		BoA.urls["nearest_dates_service"], 
 		asyncReceiveDates, 
@@ -2359,7 +2362,7 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 		releasingTime 	: "1",
 		ipAddress 		: "127.0.0.1", // xD
 		xmlOrJson 		: "false", // false is Json
-        sitesDetail		: [["ADT","1"]],
+        sitesDetail		:  searchParameters.sitesDetail,
 
 
 		from: searchParameters.origen,

@@ -7,23 +7,6 @@
 
 
     vuelosDibujador = {
-        familyInformation: [{
-            "refNumber": 1,
-            "fareFamilyName": "PROMODOM",
-            "cabin": "Y",
-            "comercialFamily": "CFFBOA"
-        }, {
-            "refNumber": 2,
-            "fareFamilyName": "ECODOM",
-            "cabin": "Y",
-            "comercialFamily": "CFFBOA"
-        }
-        , {
-            "refNumber": 3,
-            "fareFamilyName": "ECOPREDOM",
-            "cabin": "Y",
-            "comercialFamily": "CFFBOA"
-        }],
 
         objectEnviar:'',
         TasasPorTipoPasajero:'',
@@ -33,7 +16,7 @@
         familiaVueltaSeleccionado:'',
         store:'',
         iniciarDibujador:function (store) {
-            vuelosDibujador.store = store;
+            this.store = store;
         },
         dibujarHeaderFamilias: function (tipo) {
 
@@ -46,7 +29,7 @@
 
             }
 
-            $.each(vuelosDibujador.store.familyInformation,function (k,v) {
+            $.each(this.store.familyInformation,function (k,v) {
 
                 console.log('familias' , $(m).find('.familias_'))
                 $(m).find('.familias_').append('<div style="float: left;width: 33%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
@@ -55,6 +38,10 @@
             return m;
         },
         dibujarVuelos:function (tipo,store) {
+
+            //vamos a poner a un scope en vez de el that
+            var scope = this;
+
 
             var m ='';
             var tabla = tipo+"_";
@@ -111,8 +98,8 @@
                         opcion_vuelo_indice = v.num_opcion+'-'+v.num_opcion;
                     }
                 }else if(ida_vuelta == "vuelosVuelta"){
-                    if(vuelosDibujador.opcionIdaSeleccionado != ''){
-                        opcion_vuelo_indice = vuelosDibujador.opcionIdaSeleccionado+'-'+v.num_opcion;
+                    if(scope.opcionIdaSeleccionado != ''){
+                        opcion_vuelo_indice = scope.opcionIdaSeleccionado+'-'+v.num_opcion;
                     }else{
                         opcion_vuelo_indice = 1+'-'+v.num_opcion;
                     }
@@ -154,7 +141,7 @@
 
 
                 });
-                $.each(vuelosDibujador.familyInformation,function (indexFamilia,familia) {
+                $.each(scope.store.familyInformation,function (indexFamilia,familia) {
 
                     if (objectAux[familia.refNumber] != undefined){
 
@@ -193,6 +180,8 @@
 
         verDetalleConexion:function (that) {
 
+            var scope = this;
+
            
             var id_detalle_seleccionado = $(that).parent().parent().parent().attr('id')+'_detalle';
 
@@ -211,6 +200,9 @@
         },
         seleccionarTarifa : function (that) {
 
+
+            var scope = this;
+
             //ocultamos el seleccionar vuelo de la vista
             $("#div_empty_vuelo").hide();
 
@@ -228,15 +220,15 @@
             //el seleccionado es ida
             if(tipo == "vuelosIda"){
 
-                if (vuelosDibujador.store.tieneVuelta == true) {
-                    console.log(vuelosDibujador.store.vuelosVuelta)
+                if (scope.store.tieneVuelta == true) {
+                    console.log(scope.store.vuelosVuelta)
 
 
                     $("#llegadas_").empty();
-                    vuelosDibujador.opcionIdaSeleccionado = opcion;
+                    scope.opcionIdaSeleccionado = opcion;
                     var familia = $(that).data('fi');
-                    vuelosDibujador.familiaIdaSeleccionado = familia;
-                    vuelosDibujador.dibujarVuelos('llegadas', vuelosDibujador.store);
+                    scope.familiaIdaSeleccionado = familia;
+                    scope.dibujarVuelos('llegadas', scope.store);
 
 
                 } else {
@@ -248,34 +240,34 @@
                     var familia = $(that).data('fi'); // familia ida es 1 o 2 o 3
 
                     //agregamos a las variables globales de selccion del objecto
-                    vuelosDibujador.opcionIdaSeleccionado = opcion;
-                    vuelosDibujador.familiaIdaSeleccionado = familia;
-                    vuelosDibujador.opcionVueltaSeleccionado = 0;
-                    vuelosDibujador.familiaVueltaSeleccionado = null;
+                    scope.opcionIdaSeleccionado = opcion;
+                    scope.familiaIdaSeleccionado = familia;
+                    scope.opcionVueltaSeleccionado = 0;
+                    scope.familiaVueltaSeleccionado = null;
 
-                    vuelosDibujador.dibujarMontosTaxesTotales(opcion + '-0', familia, null);
+                    scope.dibujarMontosTaxesTotales(opcion + '-0', familia, null);
 
-                    vuelosDibujador.dibujarBotonParaContinuarComprar(opcion + '-0', familia,null);
+                    scope.dibujarBotonParaContinuarComprar(opcion + '-0', familia,null);
                 }
 
 
                 //mandamos para que se dibuje  los datos del vuelo seleccionado
-                vuelosDibujador.dibujarSeleccionVuelo('ida',vuelosDibujador.store.vuelosIda[opcion]);
+                scope.dibujarSeleccionVuelo('ida',scope.store.vuelosIda[opcion]);
 
             }else if(tipo == "vuelosVuelta"){
 
                 var familia = $(that).data('fv'); // familia ida es 1 o 2 o 3
-                vuelosDibujador.dibujarMontosTaxesTotales(vuelosDibujador.opcionIdaSeleccionado +'-'+ opcion, vuelosDibujador.familiaIdaSeleccionado, familia);
+                scope.dibujarMontosTaxesTotales(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado, familia);
 
                 //agregamos a las variables globales de selccion del objecto
-                vuelosDibujador.opcionVueltaSeleccionado = opcion;
-                vuelosDibujador.familiaVueltaSeleccionado = familia;
+                scope.opcionVueltaSeleccionado = opcion;
+                scope.familiaVueltaSeleccionado = familia;
 
-                vuelosDibujador.dibujarBotonParaContinuarComprar(vuelosDibujador.opcionIdaSeleccionado +'-'+ opcion, vuelosDibujador.familiaIdaSeleccionado,familia);
+                scope.dibujarBotonParaContinuarComprar(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado,familia);
 
 
                 //mandamos para que se dibuje  los datos del vuelo seleccionado
-                vuelosDibujador.dibujarSeleccionVuelo('vuelta',vuelosDibujador.store.vuelosVuelta[opcion]);
+                scope.dibujarSeleccionVuelo('vuelta',scope.store.vuelosVuelta[opcion]);
 
 
             }
@@ -283,12 +275,15 @@
         },
         dibujarMontosTaxesTotales:function(opcion_vuelo_indice,familiaIda,familiaVuelta){
 
+
+            var scope = this;
+
             var tarifas;
             //cuando es solo la peticion por ida
             if (familiaVuelta == null) {
 
                 //buscamos por la opcion de vuelo indice y por la familia de ida
-                var object = vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice];
+                var object = scope.store.vueloMatriz[opcion_vuelo_indice];
                 tarifas = $.map(object.tarifas, function (value, index) {
                     if (value.FI == familiaIda) {
                         return value;
@@ -299,7 +294,7 @@
 
 
                 //buscamos por la opcion de vuelo indice y por la familia de ida
-                var object = vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice];
+                var object = scope.store.vueloMatriz[opcion_vuelo_indice];
                 tarifas = $.map(object.tarifas, function (value, index) {
                     if (value.FI == familiaIda && value.FV == familiaVuelta) {
                         return value;
@@ -386,7 +381,7 @@
 
             });
 
-            vuelosDibujador.TasasPorTipoPasajero = ObjectTasasPorTipoPasajero;
+            scope.TasasPorTipoPasajero = ObjectTasasPorTipoPasajero;
 
             $.each(ObjectTasasTotalesPorTipo, function (k, v) {
                 var tr = document.createElement("tr");
@@ -409,10 +404,13 @@
              */
 
 
-            console.log('importes seleccionado', vuelosDibujador.store.vueloMatriz[opcion_vuelo_indice]);
+            console.log('importes seleccionado', scope.store.vueloMatriz[opcion_vuelo_indice]);
             console.log('opcion_vuelo_indice', opcion_vuelo_indice)
         },
         dibujarSeleccionVuelo:function (tipo,vueloSeleccionado) {
+
+
+            var scope = this;
 
             //dibujamos
 
@@ -453,6 +451,8 @@
         },
         dibujarBotonParaContinuarComprar:function (){
 
+            var scope = this;
+
             var m = '';
             //cuando es solo la peticion por ida
 
@@ -464,21 +464,23 @@
         },
         continuarCompra:function (that) {
 
-            var opcion_indice = vuelosDibujador.opcionIdaSeleccionado+'-'+vuelosDibujador.opcionVueltaSeleccionado;
+            var scope = this;
+            
+            var opcion_indice = scope.opcionIdaSeleccionado+'-'+scope.opcionVueltaSeleccionado;
             console.log(opcion_indice);
 
 
 
             //buscamos por la opcion de vuelo indice y por la familia de ida
-            var object = vuelosDibujador.store.vueloMatriz[opcion_indice];
+            var object = scope.store.vueloMatriz[opcion_indice];
             var tarifas = $.map(object.tarifas, function (value, index) {
                 //cuando es solo la peticion por ida
-                if(vuelosDibujador.store.tieneVuelta == false) {
-                    if (value.FI == vuelosDibujador.familiaIdaSeleccionado) {
+                if(scope.store.tieneVuelta == false) {
+                    if (value.FI == scope.familiaIdaSeleccionado) {
                         return value;
                     }
                 }else{//cuando tiene ida y vuelta filtrar por las dos familias
-                    if (value.FI == vuelosDibujador.familiaIdaSeleccionado && value.FV == vuelosDibujador.familiaVueltaSeleccionado) {
+                    if (value.FI == scope.familiaIdaSeleccionado && value.FV == scope.familiaVueltaSeleccionado) {
                         return value;
                     }
                 }
@@ -512,21 +514,21 @@
                     precioTotal : (parseFloat(v.importe) *  parseFloat(v.countPax) ),
                     ida:{
                         precioBase:parseFloat(v.importe_orig) - parseFloat(v.tax_orig),
-                        tasas:vuelosDibujador.TasasPorTipoPasajero[v.typePax],
+                        tasas:scope.TasasPorTipoPasajero[v.typePax],
                     },
 
 
                 };
 
                 //si tiene vuelta
-                if(vuelosDibujador.store.tieneVuelta == true){
+                if(scope.store.tieneVuelta == true){
 
                     objectEnviar.seleccionVuelo[tipoPasajero].vuelta = {
                         precioBase:parseFloat(v.importe_return) - parseFloat(v.tax_return)
                         
                     };
                     var tasasVueltas = [];
-                    $.each(vuelosDibujador.TasasPorTipoPasajero[v.typePax],function (indexTasa,tasa) {
+                    $.each(scope.TasasPorTipoPasajero[v.typePax],function (indexTasa,tasa) {
                         console.log(tasa)
                         tasasVueltas.push({
                             key:tasa.key,
@@ -596,7 +598,7 @@
 
             objectEnviar.seleccionVuelo.vuelosIda = [];
             //agregamos los vuelos de ida a nuestro arreglo para enviar
-            $.each(vuelosDibujador.store.vuelosIda[vuelosDibujador.opcionIdaSeleccionado].vuelos,function (indexVueloIda,dato) {
+            $.each(scope.store.vuelosIda[scope.opcionIdaSeleccionado].vuelos,function (indexVueloIda,dato) {
 
 
                 objectEnviar.seleccionVuelo.vuelosIda.push({
@@ -621,7 +623,7 @@
 
             var seleccionVuelo = {};
 
-            vuelosDibujador.objectEnviar = objectEnviar;
+            scope.objectEnviar = objectEnviar;
 
 
             ajaxRequest(
