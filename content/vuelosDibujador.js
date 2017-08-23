@@ -649,6 +649,21 @@
 
 
 
+        },
+        resetearVista:function () {
+            $("#tbl_seleccion_ida").hide();
+            $("#tbl_seleccion_vuelta").hide();
+            $("#div_empty_vuelo").show();
+
+            $(".cell-submit").empty();
+            $("#precio_adulto").html(0);
+            $("#precio_ninho").html(0);
+            $("#precio_infante").html(0);
+            $("#tooltip_tasas").empty();
+            $("#totalTasas").html(0);
+
+            flapperTotal.val(0).change();
+
         }
         
     };

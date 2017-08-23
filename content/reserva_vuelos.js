@@ -432,6 +432,7 @@ function changeDay()
 {
 
 	loadingBoa.cargarBoa();
+	vuelosDibujador.resetearVista();
 	console.log('cambio de dia');
 	deleteIda();
 	deleteVuelta();
@@ -736,6 +737,9 @@ function validateSearch()
 {
 
 	loadingBoa.cargarBoa();
+	vuelosDibujador.resetearVista();
+
+
 	$("#tabla_tipo").hide();
 	$("#totalTasas").html("0");
 
