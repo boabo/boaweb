@@ -32,36 +32,37 @@
         familyInformation:'',
         //funcion para ver si es ida o ida y vuelta
         verIdayVuelta: function (fechaIda, fechaVuelta) {
+            var that = this;
 
             if (fechaIda == null || fechaIda == '' || fechaIda == 'null' || fechaIda == undefined) {
 
-                vuelosStore.tieneIda = false;
+                that.tieneIda = false;
             } else {
-                vuelosStore.tieneIda = true;
-                vuelosStore.fechaIdaConsultada = fechaIda;
+                that.tieneIda = true;
+                that.fechaIdaConsultada = fechaIda;
             }
 
 
             if (fechaVuelta == null || fechaVuelta == '' || fechaVuelta == 'null' || fechaVuelta == undefined) {
 
-                vuelosStore.tieneVuelta = false;
+                that.tieneVuelta = false;
             } else {
-                vuelosStore.tieneVuelta = true;
-                vuelosStore.fechaVueltaConsultada = fechaVuelta;
+                that.tieneVuelta = true;
+                that.fechaVueltaConsultada = fechaVuelta;
 
             }
         },
         armarVuelos: function (object) {
 
+            var that = this;
+
             console.log('object ++', object);
 
-            vuelosStore.familyInformation = object.vuelosYTarifas.familyInformation.FamilyInformation;
+            this.familyInformation = object.vuelosYTarifas.familyInformation.FamilyInformation;
             this.verIdayVuelta(object.fechaIdaConsultada, object.fechaVueltaConsultada);
 
-            console.log(vuelosStore.ida)
-            console.log(vuelosStore.vuelta)
-            var objectVuelosMatriz = {};
 
+            var objectVuelosMatriz = {};
 
             //recorremos los vuelos de ida
             $.each(object.vuelosYTarifas.Vuelos.ida.Item.vuelo, function (indexIda, ida) {
@@ -71,7 +72,7 @@
 
                 //si ya esta como un objeto es por que la numero de opcion ya esta
                 //existe ya un vuelo con la misma opcion asi que debe entrar como conexion
-                if (typeof vuelosStore.vuelosIda[ida.num_opcion] === 'object') {
+                if (typeof that.vuelosIda[ida.num_opcion] === 'object') {
                     var objIda = {};
                     //lo que se necesita
                     objIda.horaSalida = {};
@@ -90,17 +91,17 @@
                     ida.tiempoVuelo = tiempoTransito(objIda.horaSalida,objIda.horaLlegada);
                     //cuando llega al dia siguiente
                     if(ida.variacion_tiempo == "1"){
-                        var tipo_operacion = vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
-                        var valor = parseInt(vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);
+                        var tipo_operacion = that.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
+                        var valor = parseInt(that.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);
                         var str = ida.tiempoVuelo.Hrs + tipo_operacion + valor+"";
                         ida.tiempoVuelo.Hrs = eval(str);
                     }
 
-                    vuelosStore.vuelosIda[ida.num_opcion].vuelos.push(ida);
+                    that.vuelosIda[ida.num_opcion].vuelos.push(ida);
 
                     //CAMBIAMOS su destino por que tiene conexion
-                    vuelosStore.vuelosIda[ida.num_opcion].destinoVuelo = ida.destino;
-                    vuelosStore.vuelosIda[ida.num_opcion].horaLlegadaVuelo = objIda.horaLlegada;
+                    that.vuelosIda[ida.num_opcion].destinoVuelo = ida.destino;
+                    that.vuelosIda[ida.num_opcion].horaLlegadaVuelo = objIda.horaLlegada;
 
 
                 } else {
@@ -134,8 +135,8 @@
 
                     //cuando llega al dia siguiente
                     if(ida.variacion_tiempo == "1"){
-                        var tipo_operacion = vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
-                        var valor = parseInt(vuelosStore.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);
+                        var tipo_operacion = that.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
+                        var valor = parseInt(that.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);
                         var str = ida.tiempoVuelo.Hrs + tipo_operacion + valor+"";
                         ida.tiempoVuelo.Hrs = eval(str);
                     }
@@ -146,17 +147,17 @@
                     objIda.vuelos.push(ida);
 
                     objIda.tipo ='vuelosIda';
-                    vuelosStore.vuelosIda[ida.num_opcion] = objIda;
+                    that.vuelosIda[ida.num_opcion] = objIda;
 
 
                 }
 
 
-                console.log(vuelosStore.vuelosIda)
+                console.log(that.vuelosIda)
 
 
                 //verificamos si existe vuelta
-                if (vuelosStore.tieneVuelta == true) {
+                if (that.tieneVuelta == true) {
                     $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (indexVuelta, vuelta) {
 
 
@@ -299,14 +300,14 @@
             });
 
 
-            if (vuelosStore.tieneVuelta == true) {
+            if (that.tieneVuelta == true) {
                 $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (indexVuelta, vuelta) {
 
 
 
                     //si ya esta como un objeto es por que la numero de opcion ya esta
                     //existe ya un vuelo con la misma opcion asi que debe entrar como conexion
-                    if (typeof vuelosStore.vuelosVuelta[vuelta.num_opcion] === 'object') {
+                    if (typeof that.vuelosVuelta[vuelta.num_opcion] === 'object') {
                         var objVuelta = {};
                         //lo que se necesita
                         objVuelta.horaSalida = {};
@@ -322,10 +323,10 @@
                     //calculamos el tiempo del vuelo
                     vuelta.tiempoVuelo = tiempoTransito(objVuelta.horaSalida,objVuelta.horaLlegada);
 
-                        vuelosStore.vuelosVuelta[vuelta.num_opcion].vuelos.push(vuelta);
+                        that.vuelosVuelta[vuelta.num_opcion].vuelos.push(vuelta);
                         //CAMBIAMOS su destino por que tiene conexion
-                        vuelosStore.vuelosVuelta[vuelta.num_opcion].destinoVuelo = vuelta.destino;
-                        vuelosStore.vuelosVuelta[vuelta.num_opcion].horaLlegadaVuelo = objVuelta.horaLlegada;
+                        that.vuelosVuelta[vuelta.num_opcion].destinoVuelo = vuelta.destino;
+                        that.vuelosVuelta[vuelta.num_opcion].horaLlegadaVuelo = objVuelta.horaLlegada;
 
                     } else {
                         var objVuelta = {};
@@ -363,7 +364,7 @@
                         objVuelta.vuelos.push(vuelta);
 
                          objVuelta.tipo ='vuelosVuelta';
-                        vuelosStore.vuelosVuelta[objVuelta.num_opcion] = objVuelta;
+                        that.vuelosVuelta[objVuelta.num_opcion] = objVuelta;
 
 
                     }
@@ -375,7 +376,7 @@
             // console.log('1-1',objectVuelosMatriz['1-1'])
             // console.log(objectVuelosMatriz)
 
-            vuelosStore.vueloMatriz = objectVuelosMatriz;
+            this.vueloMatriz = objectVuelosMatriz;
         }
     };
 

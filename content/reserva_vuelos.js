@@ -215,7 +215,7 @@ $(document).on('ready',function()
 
         $("#btn_borrar_ida").click(deleteIda);
         $("#btn_borrar_vuelta").click(deleteVuelta);
-        //$("#btn_buscar_vuelo").click(validateSearch);
+        $("#btn_buscar_vuelo").click(validateSearch);
 
         // Initial search of flights
        	 handleInitialRequest();
@@ -1449,6 +1449,9 @@ function asyncReceiveFlights(response)
 
 	waitingForFlightsData = false; // mutex data
 
+	$('#salidas_').empty();
+	$('#llegadas_').empty();
+
 	//todo aca cambiar y armar la matriz de matrices
 	var vuelos_store = Object.create(vuelosStore);
 	vuelos_store.armarVuelos(response);
@@ -2356,7 +2359,7 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 		releasingTime 	: "1",
 		ipAddress 		: "127.0.0.1", // xD
 		xmlOrJson 		: "false", // false is Json
-        sitesDetail		: [["ADT","2"]],
+        sitesDetail		: [["ADT","1"]],
 
 
 		from: searchParameters.origen,
