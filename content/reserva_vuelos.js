@@ -1,4 +1,8 @@
 // ---------------------= =---------------------
+
+var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+
 /***** CONFIG PARAMETERS *****/
 var CACHE_DISABLED = false;
 var IGNORED_TARIFAS_BY_FARE_CODE = ["SSENIOR"];
@@ -168,6 +172,7 @@ $(document).on('ready',function()
 
     //(function(a){a.fn.validCampos=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
 
+	loadingBoa.cargarBoa();
 
     $('#razon_social').validCampos(' abcdefghijklmnñopqrstuvwxyzáéiou');
     $('#nit').validCampos('1234567890');
@@ -426,6 +431,7 @@ function toggleRbtnIdaVuelta()
 function changeDay()
 {
 
+	loadingBoa.cargarBoa();
 	console.log('cambio de dia');
 	deleteIda();
 	deleteVuelta();
@@ -729,6 +735,7 @@ function constraintTableByFechaHora(option, tipo)
 function validateSearch()
 {
 
+	loadingBoa.cargarBoa();
 	$("#tabla_tipo").hide();
 	$("#totalTasas").html("0");
 
@@ -1423,6 +1430,8 @@ function asyncReceiveDates(response)
 // ---------------------= =---------------------
 function asyncReceiveFlights(response)
 {
+
+    loadingBoa.terminarCargarBoa();
 	checkWarningPxNumber() ;
 	
 	if(waitingForFlightsData == false) // response ya fue procesado
@@ -1431,7 +1440,7 @@ function asyncReceiveFlights(response)
 	response = $.parseJSON(response.AvailabilityPlusValuationsShortResult);
 
 	if(response.ResultInfoOrError != null) {
-		fillTableWithMessage($("#tbl_salida")[0], response.ResultInfoOrError.messageError);
+		//fillTableWithMessage($("#tbl_salida")[0], response.ResultInfoOrError.messageError);
 		waitingForFlightsData = false; // mutex data
 
 		return;
