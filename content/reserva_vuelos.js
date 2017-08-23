@@ -448,11 +448,11 @@ function changeDay()
 
 	if(isSalida){
 		currentDateIda = selected_date;
-		fillTableWithLoading($("#tbl_salida")[0]);
+		//fillTableWithLoading($("#tbl_salida")[0]);
 	}
 	else {
 		currentDateVuelta = selected_date;
-		fillTableWithLoading($("#tbl_regreso")[0]);
+		//fillTableWithLoading($("#tbl_regreso")[0]);
 	}
 
 	var sitios = getSelectedSitesCount();

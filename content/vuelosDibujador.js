@@ -18,6 +18,7 @@
 
         dibujarHeaderFamilias: function (tipo) {
 
+            $("#"+tipo+"_").remove();
 
             if(tipo == 'salidas'){
                 var m = $('<div id="salidas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
@@ -27,10 +28,15 @@
 
             }
 
+
+
+            var tam = parseInt(100 / this.store.familyInformation.length);
+
+
             $.each(this.store.familyInformation,function (k,v) {
 
                 console.log('familias' , $(m).find('.familias_'))
-                $(m).find('.familias_').append('<div style="float: left;width: 33%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
+                $(m).find('.familias_').append('<div style="float: left;width: '+tam+'%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
             });
 
             return m;
@@ -67,8 +73,7 @@
             }
 
             //limpiamos los vuelos
-            console.log($("#"+tabla))
-            $("#"+tabla).empty();
+
             var vuelos = store[ida_vuelta];
             $.each(vuelos,function (k,v) {
 
@@ -112,6 +117,8 @@
                 //buscaremos sus distinatas tarifas por familias
                 var FamiliasImportes = $('<div style="width: 40%; float: left; ">\n</div>');
 
+                var tam = parseInt(100 / scope.store.familyInformation.length) -1;
+
                 var objectAux = {};
                 $.each(store.vueloMatriz[opcion_vuelo_indice].tarifas, function (indexTarifa, tarifa) {
 
@@ -139,10 +146,13 @@
                     }
                     ///FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>'+importe+' '+moneda+'</b></div>');
 
-                    objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: pointer;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+                    objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: '++'%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: pointer;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
 
 
                 });
+
+
+
                 $.each(scope.store.familyInformation,function (indexFamilia,familia) {
 
                     if (objectAux[familia.refNumber] != undefined){
@@ -150,7 +160,7 @@
                         FamiliasImportes.append(objectAux[familia.refNumber]);
 
                     }else{
-                        FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #cccccc; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: no-drop;"><b>No<br> Disponible</b></div>');
+                        FamiliasImportes.append('<div style="float: left;width: '+tam+'%; text-align: center; background-color: #cccccc; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: no-drop;"><b>No<br> Disponible</b></div>');
                     }
 
 
