@@ -332,6 +332,8 @@
                     tipoPasajero = 'precio_adulto';
                 } else if (v.typePax == 'CH') {
                     tipoPasajero = 'precio_ninho';
+                } else if (v.typePax == 'IN') {
+                    tipoPasajero = 'precio_infante';
                 }
 
                 $("#" + tipoPasajero).html(parseFloat(v.importe * parseInt(v.countPax)));
