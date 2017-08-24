@@ -2451,13 +2451,15 @@ loading svg {
 
 .loading_girar {
 	transition: 300ms all;
-
+	-ms-transition: 300ms all;
 	transform: scale(0.7);
 	opacity: 1;
 	-webkit-animation: rotation 2s infinite linear;
 	-moz-animation: rotation 2s infinite linear;
 	-o-animation: rotation 2s infinite linear;
 	animation: rotation 2s infinite linear;
+
+	
 
 
 
@@ -2479,6 +2481,5 @@ loading svg {
 	from {transform: rotate(0deg);}
 	to   {transform: rotate(359deg);}
 }
-
 
 /* fin loading boa favio figueroa**/

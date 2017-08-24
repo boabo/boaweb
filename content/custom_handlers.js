@@ -76,13 +76,13 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'VVI',
-        destino: 'MAD',
-        fechaIda : '20170914',//formatCompactDate(new Date()), // today
-        fechaVuelta:null,//null, // no flight back
+        origen: 'CBB',
+        destino: 'VVI',
+        fechaIda : '20170924',//formatCompactDate(new Date()), // today
+        fechaVuelta:'20170928',//null, // no flight back
         adulto: 1,
-        infante: 0,
-        ninho: 0
+        infante: 1,
+        ninho: 1
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",
