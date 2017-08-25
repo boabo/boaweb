@@ -176,27 +176,21 @@ $(document).on('ready',function()
 
      vuelos_store = Object.create(vuelosStore);
 
-    console.log(vuelos_store)
+    console.log(vuelos_store);
     $("#btn_borrar_ida").click(function () {
 
     	var tipo = 'vuelosIda';
 		vuelosDibujador.resetearVista();
         $('body').find('.'+tipo+'_seleccionado').removeClass(tipo+'_seleccionado')
 
-
-
     });
-
     $("#btn_borrar_vuelta").click(function () {
 
         var tipoIda = 'vuelosIda';
         var tipoVuelta = 'vuelosVuelta';
-
         vuelosDibujador.resetearVista();
         $('body').find('.'+tipoIda+'_seleccionado').removeClass(tipoIda+'_seleccionado')
         $('body').find('.'+tipoVuelta+'_seleccionado').removeClass(tipoVuelta+'_seleccionado')
-
-
 
     });
 

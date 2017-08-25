@@ -102,11 +102,15 @@
 
 
                     }else{
-                        opcion_vuelo_indice = v.num_opcion+'-'+v.num_opcion;
+                        //buscamos combinaciones que tengan tarifas esto ida pero buscamos con vuelos vuelta
+                        var array_tarifas_encontradas = scope.buscarOpcionConTarifa(v.num_opcion,'vuelosVuelta');
+                        opcion_vuelo_indice = array_tarifas_encontradas[0];
                     }
                 }else if(ida_vuelta == "vuelosVuelta"){
                     if(scope.opcionIdaSeleccionado != ''){
+
                         opcion_vuelo_indice = scope.opcionIdaSeleccionado+'-'+v.num_opcion;
+
                     }else{
                         opcion_vuelo_indice = 1+'-'+v.num_opcion;
                     }
@@ -124,6 +128,16 @@
                 if(typeof store.vueloMatriz[opcion_vuelo_indice] === 'object'){
                     $.each(store.vueloMatriz[opcion_vuelo_indice].tarifas, function (indexTarifa, tarifa) {
 
+                        //verificamos si ya se selecciona la ida debemos filtrar tambien por la familia que se a seleccionado para no mostrar tarifas que no se podrian combinar
+                        if(ida_vuelta == "vuelosVuelta"){
+                            if(scope.familiaIdaSeleccionado != ''){
+
+                                if(parseInt(scope.familiaIdaSeleccionado) != parseInt(tarifa.FI)){
+                                    return false;
+                                }
+
+                            }
+                        }
 
                         var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
                         var moneda = tarifa.TarifaPersoCombinabilityID[0].moneda;
@@ -667,6 +681,25 @@
             $("#totalTasas").html(0);
 
             flapperTotal.val(0).change();
+
+        },
+        buscarOpcionConTarifa:function (opcion,ida_vuelta) {
+            var scope = this;
+            var opcionIndice = opcion;
+            var vuelos = this.store[ida_vuelta];
+            console.log(vuelos);
+
+            var array = [];
+            $.each(vuelos,function (index,obj) {
+
+                var combinacion = scope.store.vueloMatriz[opcion+'-'+index];
+
+                if(combinacion.tarifas.length > 0){
+                    array.push(opcion+'-'+index);
+                }
+            })
+
+            return array;
 
         }
         
