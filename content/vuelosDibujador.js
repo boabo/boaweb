@@ -585,11 +585,11 @@
                     num: 			0,
                     ida:{
                         precioBase: 0,
-                        tasas: 		{}
+                        tasas: 		[]
                     },
                     vuelta:{
                         precioBase: 0,
-                        tasas: 		{}
+                        tasas: 		[]
                     },
                     precioTotal: 		0,
                     formattedPrecioTotal: "0.00"
@@ -600,11 +600,11 @@
                     num: 			0,
                     ida:{
                         precioBase: 0,
-                        tasas: 		{}
+                        tasas: 		[]
                     },
                     vuelta:{
                         precioBase: 0,
-                        tasas: 		{}
+                        tasas: 		[]
                     },
                     precioTotal: 		0,
                     formattedPrecioTotal: "0.00"
@@ -615,11 +615,11 @@
                     num: 			0,
                     ida:{
                         precioBase: 0,
-                        tasas: 		{}
+                        tasas: 		[]
                     },
                     vuelta:{
                         precioBase: 0,
-                        tasas: 		{}
+                        tasas: 		[]
                     },
                     precioTotal: 		0,
                     formattedPrecioTotal: "0.00"
