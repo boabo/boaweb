@@ -180,17 +180,23 @@ $(document).on('ready',function()
     $("#btn_borrar_ida").click(function () {
 
     	var tipo = 'vuelosIda';
+        vuelosDibujador.familiaIdaSeleccionado ='';
+        vuelosDibujador.opcionIdaSeleccionado = '';
+
+		vuelosDibujador.resetearSeleccion('tbl_seleccion_ida');
 		vuelosDibujador.resetearVista();
+
         $('body').find('.'+tipo+'_seleccionado').removeClass(tipo+'_seleccionado')
 
     });
     $("#btn_borrar_vuelta").click(function () {
 
-        var tipoIda = 'vuelosIda';
         var tipoVuelta = 'vuelosVuelta';
+        vuelosDibujador.familiaVueltaSeleccionado ='';
+        vuelosDibujador.opcionVueltaSeleccionado = '';
+        vuelosDibujador.resetearSeleccion('tbl_seleccion_vuelta');
         vuelosDibujador.resetearVista();
-        $('body').find('.'+tipoIda+'_seleccionado').removeClass(tipoIda+'_seleccionado')
-        $('body').find('.'+tipoVuelta+'_seleccionado').removeClass(tipoVuelta+'_seleccionado')
+		$('body').find('.'+tipoVuelta+'_seleccionado').removeClass(tipoVuelta+'_seleccionado')
 
     });
 
@@ -454,6 +460,7 @@ function changeDay()
 {
 
 	loadingBoa.cargarBoa();
+    vuelosDibujador.resetearSeleccion();
 	vuelosDibujador.resetearVista();
 	console.log('cambio de dia');
 	deleteIda();
@@ -759,6 +766,7 @@ function validateSearch()
 {
 
 	loadingBoa.cargarBoa();
+    vuelosDibujador.resetearSeleccion();
 	vuelosDibujador.resetearVista();
 
 

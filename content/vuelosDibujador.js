@@ -102,9 +102,19 @@
 
 
                     }else{
-                        //buscamos combinaciones que tengan tarifas esto ida pero buscamos con vuelos vuelta
-                        var array_tarifas_encontradas = scope.buscarOpcionConTarifa(v.num_opcion,'vuelosVuelta');
-                        opcion_vuelo_indice = array_tarifas_encontradas[0];
+
+                        //cuando ya se a seleccionado primero la vuelta
+                        if(scope.opcionVueltaSeleccionado != ''){
+
+                            opcion_vuelo_indice = v.num_opcion +'-'+scope.opcionVueltaSeleccionado;
+
+                        }else{//cuando no se a seleccionado nada
+                            //buscamos combinaciones que tengan tarifas esto ida pero buscamos con vuelos vuelta
+                            var array_tarifas_encontradas = scope.buscarOpcionConTarifa(v.num_opcion,'vuelosVuelta');
+                            opcion_vuelo_indice = array_tarifas_encontradas[0];
+                        }
+
+
                     }
                 }else if(ida_vuelta == "vuelosVuelta"){
                     if(scope.opcionIdaSeleccionado != ''){
@@ -112,7 +122,9 @@
                         opcion_vuelo_indice = scope.opcionIdaSeleccionado+'-'+v.num_opcion;
 
                     }else{
-                        opcion_vuelo_indice = 1+'-'+v.num_opcion;
+                        var array_tarifas_encontradas = scope.buscarOpcionConTarifa(v.num_opcion,'vuelosIda');
+
+                        opcion_vuelo_indice = array_tarifas_encontradas [0];
                     }
 
                 }
@@ -138,6 +150,18 @@
 
                             }
                         }
+
+                        //verificamos si ya se selecciona la ida debemos filtrar tambien por la familia que se a seleccionado para no mostrar tarifas que no se podrian combinar
+                        if(ida_vuelta == "vuelosIda"){
+                            if(scope.familiaVueltaSeleccionado != ''){
+
+                                if(parseInt(scope.familiaVueltaSeleccionado) != parseInt(tarifa.FV)){
+                                    return false;
+                                }
+
+                            }
+                        }
+
 
                         var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
                         var moneda = tarifa.TarifaPersoCombinabilityID[0].moneda;
@@ -250,12 +274,30 @@
                 if (scope.store.tieneVuelta == true) {
                     console.log(scope.store.vuelosVuelta)
 
+                    //ya esta seleccionado una vuelta
+                    if(scope.opcionVueltaSeleccionado != ''){
 
-                    $("#llegadas_").empty();
-                    scope.opcionIdaSeleccionado = opcion;
-                    var familia = $(that).data('fi');
-                    scope.familiaIdaSeleccionado = familia;
-                    scope.dibujarVuelos('llegadas', scope.store);
+
+                        var familia = $(that).data('fi'); // familia ida es 1 o 2 o 3
+                        scope.dibujarMontosTaxesTotales(opcion +'-'+ scope.opcionVueltaSeleccionado, familia, scope.familiaVueltaSeleccionado);
+
+                        //agregamos a las variables globales de selccion del objecto
+                        scope.opcionIdaSeleccionado = opcion;
+                        scope.familiaIdaSeleccionado = familia;
+
+                        scope.dibujarBotonParaContinuarComprar(opcion +'-'+ scope.opcionVueltaSeleccionado,familia,scope.familiaVueltaSeleccionado);
+
+
+
+                    }else{//no se a seleccionado nada aun entonces debemos redibjar las vueltas
+                        $("#llegadas_").empty();
+                        scope.opcionIdaSeleccionado = opcion;
+                        var familia = $(that).data('fi');
+                        scope.familiaIdaSeleccionado = familia;
+                        scope.dibujarVuelos('llegadas', scope.store);
+
+                    }
+
 
 
                 } else {
@@ -283,16 +325,29 @@
 
             }else if(tipo == "vuelosVuelta"){
 
-                var familia = $(that).data('fv'); // familia ida es 1 o 2 o 3
-                scope.dibujarMontosTaxesTotales(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado, familia);
+                //cuando la ida esta seleccionado
+                if(scope.opcionIdaSeleccionado != ''){
+                    var familia = $(that).data('fv'); // familia ida es 1 o 2 o 3
+                    scope.dibujarMontosTaxesTotales(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado, familia);
 
-                //agregamos a las variables globales de selccion del objecto
-                scope.opcionVueltaSeleccionado = opcion;
-                scope.familiaVueltaSeleccionado = familia;
+                    //agregamos a las variables globales de selccion del objecto
+                    scope.opcionVueltaSeleccionado = opcion;
+                    scope.familiaVueltaSeleccionado = familia;
 
-                scope.dibujarBotonParaContinuarComprar(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado,familia);
+                    scope.dibujarBotonParaContinuarComprar(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado,familia);
 
 
+
+                }else{//cuando no se a seleccionado la ida entonces se debe redibujar la ida con la opcion seleccionada de la vuelta
+
+                    $("#salidas_").empty();
+                    scope.opcionVueltaSeleccionado = opcion;
+                    var familia = $(that).data('fv');
+                    scope.familiaVueltaSeleccionado = familia;
+                    scope.dibujarVuelos('salidas', scope.store);
+
+
+                }
                 //mandamos para que se dibuje  los datos del vuelo seleccionado
                 scope.dibujarSeleccionVuelo('vuelta',scope.store.vuelosVuelta[opcion]);
 
@@ -668,10 +723,37 @@
 
 
         },
+        //cuando no mandamos nada en tbl este sera falso y ocultara las dos selecciones
+        resetearSeleccion:function (tbl = false) {
+
+
+
+            if(tbl == false){
+                $("#tbl_seleccion_ida").hide();
+                $("#tbl_seleccion_vuelta").hide();
+            }else{
+                $("#"+tbl).hide();
+            }
+
+
+            if ($("#tbl_seleccion_ida").is(':visible') == false && $("#tbl_seleccion_vuelta").is(':visible') == false) {
+
+                $("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('salidas'));
+                vuelosDibujador.dibujarVuelos('salidas',vuelosDibujador.store);
+
+                if(vuelosDibujador.store.tieneVuelta == true){
+                    $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('llegadas'));
+                    vuelosDibujador.dibujarVuelos('llegadas',vuelosDibujador.store);
+                }
+
+                $("#div_empty_vuelo").show()
+            }
+
+
+
+        },
         resetearVista:function () {
-            $("#tbl_seleccion_ida").hide();
-            $("#tbl_seleccion_vuelta").hide();
-            $("#div_empty_vuelo").show();
+
 
             $(".cell-submit").empty();
             $("#precio_adulto").html(0);
@@ -684,6 +766,10 @@
 
         },
         buscarOpcionConTarifa:function (opcion,ida_vuelta) {
+            //cuando ida_vuelta es vuelosVuelta entonces estamos buscando para la ida
+            //cuando ida_vuelta es vuelosIda entonces estamos buscando para la vuelta
+
+
             var scope = this;
             var opcionIndice = opcion;
             var vuelos = this.store[ida_vuelta];
@@ -692,11 +778,22 @@
             var array = [];
             $.each(vuelos,function (index,obj) {
 
-                var combinacion = scope.store.vueloMatriz[opcion+'-'+index];
+                if(ida_vuelta == 'vuelosVuelta'){
+                    var combinacion = scope.store.vueloMatriz[opcion+'-'+index];
 
-                if(combinacion.tarifas.length > 0){
-                    array.push(opcion+'-'+index);
+                    if(combinacion.tarifas.length > 0){
+                        array.push(opcion+'-'+index);
+                    }
+                }else if(ida_vuelta == 'vuelosIda'){
+                    var combinacion = scope.store.vueloMatriz[index+'-'+opcion];
+
+                    if(combinacion.tarifas.length > 0){
+                        array.push(index+'-'+opcion);
+                    }
                 }
+
+
+
             })
 
             return array;
