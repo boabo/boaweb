@@ -18,6 +18,20 @@
 
         dibujarHeaderFamilias: function (tipo) {
 
+            var that = this;
+
+            $('#picker_salida').datepicker("setDate",
+                compactToJSDate(that.store.fechaIdaConsultada)
+            );
+
+            if(BoA.defaultConsultaVuelos.fechaVuelta != null) {
+                $("#rbtn_ida_vuelta").click();
+                $("#picker_regreso").datepicker("setDate",
+                    compactToJSDate(that.store.fechaVueltaConsultada)
+                );
+            }
+
+
             $("#"+tipo+"_").remove();
 
             if(tipo == 'salidas'){

@@ -780,6 +780,7 @@ function validateSearch()
 	var pickerSalida = $("#picker_salida");
 	var pickerRegreso = $("#picker_regreso");
 
+	console.log(vuelos_store)
 	var parms = {
 		origen: selectOrigen.val(),
 		destino: selectDestino.val(),
@@ -1021,10 +1022,10 @@ function changeNumPassengers()
 			checkWarningPxNumber();*/
 
 
-			/*if(contadorNuevaPeticion == 1 ){
+			if(contadorNuevaPeticion == 1 ){
 				contadorNuevaPeticion +=1;
-				setTiimeout(validateSearch, 2500);
-			}*/
+				setTimeout(validateSearch, 2500);
+			}
 
 
 			ul.parent().find("span").html($(this).html());
@@ -2368,6 +2369,9 @@ function requestSearchParameters(parms)
 		BoA.urls["nearest_dates_service"], 
 		asyncReceiveDates, 
 		"POST", data);
+
+
+
 }
 // ---------------------= =---------------------
 function requestFlights(dateIda, dateVuelta, totalSites)
@@ -3347,14 +3351,42 @@ function getSelectedSitesCount()
 {
 	var pxSelections = $("#widget_resumen_reserva .selector-pax ul");
 	var total = 0;
-
+    var array_asientos = [];
 	for(var i=0;i<pxSelections.length;i++) {
 		var ul = $(pxSelections[i]);
 		var tipo = ul.data("tipo");
 
-		if(tipo=="adulto" || tipo=="ninho")
-			total += parseInt(ul.find("li.selected").data("count"));
-	}
+		if(tipo=="adulto") {
+			if(parseInt(ul.find("li.selected").data("count")) > 0){
+                array_asientos[i] = [ "ADT", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+			}
+
+
+            total += parseInt(ul.find("li.selected").data("count"));
+
+        } else if (tipo=="ninho"){
+
+            if(parseInt(ul.find("li.selected").data("count")) > 0){
+                array_asientos[i] = [ "CHD", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+            }
+
+
+
+            total += parseInt(ul.find("li.selected").data("count"));
+		}else{
+            if(parseInt(ul.find("li.selected").data("count")) > 0){
+                array_asientos[i] = [ "INF", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+
+            }
+        }
+    }
+
+
+
+
+
+
+    searchParameters.sitesDetail = array_asientos;
 
 	return total;
 }
