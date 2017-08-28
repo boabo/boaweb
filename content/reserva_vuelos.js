@@ -131,6 +131,7 @@ var airports = {
 	BCN: "Aeropuerto Internacional El Prat",
 	CCA: "Aeropuerto Internacional Chimore",
 	MIA: "Aeropuerto Internacional Miami",
+	POI: "Aeropuerto Capit&aacute;n Nicolas Rojas"
 };
 
 var linea_clase = {
