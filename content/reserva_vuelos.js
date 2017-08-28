@@ -1763,8 +1763,8 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 			$(cell).addClass("no-flights")
 				   .append("<h3>No hay<br>vuelos</h3>");
 		} else {
-			//$(cell).append("<h3>" + formatCurrencyQuantity(tarifasByDate[dateStr], true, 0) +"</h3>");
-			$(cell).append("<h3></h3>");
+			$(cell).append("<h3>" + formatCurrencyQuantity(tarifasByDate[dateStr], true, 0) +"</h3>");
+			//$(cell).append("<h3></h3>");
 		}
 
 		if(dateStr == (isIda?currentDateIda:currentDateVuelta))
