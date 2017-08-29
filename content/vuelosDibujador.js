@@ -327,7 +327,7 @@
                     scope.opcionIdaSeleccionado = opcion;
                     scope.familiaIdaSeleccionado = familia;
                     scope.opcionVueltaSeleccionado = 0;
-                    scope.familiaVueltaSeleccionado = null;
+                    scope.familiaVueltaSeleccionado = "";
 
                     scope.dibujarMontosTaxesTotales(opcion + '-0', familia, null);
 
@@ -738,11 +738,11 @@
 
         },
         //cuando no mandamos nada en tbl este sera falso y ocultara las dos selecciones
-        resetearSeleccion:function (tbl = false) {
+        resetearSeleccion:function (tbl) {
 
 
 
-            if(tbl == false){
+            if(tbl == undefined || tbl == false){
                 $("#tbl_seleccion_ida").hide();
                 $("#tbl_seleccion_vuelta").hide();
             }else{
