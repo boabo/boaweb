@@ -192,6 +192,9 @@ $(document).on('ready',function()
             vuelosDibujador.familiaIdaSeleccionado ='';
             vuelosDibujador.opcionIdaSeleccionado = '';
 
+            vuelosDibujador.familiaVueltaSeleccionado ='';
+            vuelosDibujador.opcionVueltaSeleccionado = '';
+
             vuelosDibujador.resetearSeleccion('tbl_seleccion_ida');
             vuelosDibujador.resetearVista();
 
