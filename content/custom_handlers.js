@@ -5,7 +5,7 @@ var VISTAPAGOS = false;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5jCCz9Wjw9QRQBoa5PfQoCa/bCZRN40V+c/aPrUj4L5qXJAmmNVHtpFQATgKAZyafuX1Mmp6LNUQ==";
+var SERVICE_CREDENTIALS_KEY = "favio";
 var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
@@ -78,8 +78,8 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'LPB',
-        destino: 'CBB',
+        origen: 'CBB',
+        destino: 'CIJ',
         fechaIda : '20170914',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
         adulto: 1,

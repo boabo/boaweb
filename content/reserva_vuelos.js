@@ -747,6 +747,8 @@ function changeNumPassengers()
 
 function validatePassengers()
 {
+
+	loadingBoa.cargarBoa();
 	var divPersonas = $("#div_formulario_personas .persona");
 
 
@@ -915,6 +917,8 @@ function validatePassengers()
 // ---------------------= =---------------------
 function asyncRegisterPassengers(response)
 {
+
+	loadingBoa.terminarCargarBoa();
 	if(response["success"] == false) {
 		console.log(response["reason"]);
 		return;
@@ -963,6 +967,7 @@ function asyncValidateSeleccionVuelo(response)
 
 	/*aca inicia el cambio de ventana de seleccion de vualo a formulario*/
 
+	loadingBoa.terminarCargarBoa();
 	if(response["success"] == true) {
 		// continuando compra
 		var form = $("#div_formulario_personas");

@@ -569,6 +569,7 @@
             console.log(opcion_indice);
 
 
+            loadingBoa.cargarBoa();
 
             //buscamos por la opcion de vuelo indice y por la familia de ida
             var object = scope.store.vueloMatriz[opcion_indice];
