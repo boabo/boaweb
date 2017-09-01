@@ -420,7 +420,7 @@
                     tipoPasajero = 'precio_infante';
                 }
 
-                $("#" + tipoPasajero).html(parseFloat(v.importe * parseInt(v.countPax)));
+                $("#" + tipoPasajero).html((parseFloat(v.importe) * parseInt(v.countPax)) - ( (parseFloat(v.tax_orig) + parseFloat(v.tax_return)) * parseInt(v.countPax)) );
 
 
             });
