@@ -608,6 +608,13 @@ function validateSearch()
     vuelosDibujador.resetearSeleccion();
     vuelosDibujador.resetearVista();
 
+    vuelosDibujador.familiaIdaSeleccionado ='';
+    vuelosDibujador.opcionIdaSeleccionado = '';
+
+    vuelosDibujador.familiaVueltaSeleccionado ='';
+    vuelosDibujador.opcionVueltaSeleccionado = '';
+
+
 
     searchParameters.sitios = getSelectedSitesCount();
 	requestSearchParameters(searchParameters);
