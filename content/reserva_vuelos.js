@@ -528,9 +528,6 @@ function toggleWidgetCambiarVuelo()
 function validateSearch()
 {
 
-	loadingBoa.cargarBoa();
-    vuelosDibujador.resetearSeleccion();
-	vuelosDibujador.resetearVista();
 
 
 	$("#tabla_tipo").hide();
@@ -607,7 +604,12 @@ function validateSearch()
 		searchParameters.fechaVuelta = rawDate[2] +""+ MONTHS_LANGUAGE_TABLE[rawDate[1]] +""+ rawDate[0];
 	}
 
-	searchParameters.sitios = getSelectedSitesCount();
+    loadingBoa.cargarBoa();
+    vuelosDibujador.resetearSeleccion();
+    vuelosDibujador.resetearVista();
+
+
+    searchParameters.sitios = getSelectedSitesCount();
 	requestSearchParameters(searchParameters);
 
 	$("#widget_cambiar_vuelo").removeClass("expanded").addClass("collapsed");
@@ -978,7 +980,7 @@ function asyncValidateSeleccionVuelo(response)
 			for(var i=0;i<seleccionVuelo[key].num;i++)
 				form.append(buildRegistroPersona(key,numPx++));
 		var nowYear = new Date();
-		form.find(".calendar").datepicker({ 
+		/*form.find(".calendar").datepicker({
 			dateFormat: 'dd MM yy',
 			numberOfMonths: 1, 
 			maxDate: 0,
@@ -986,11 +988,46 @@ function asyncValidateSeleccionVuelo(response)
 			changeMonth:true,
 			yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
 		});
-
 		console.log(nowYear.getFullYear() - 12);
 		//mandamos date al picker
 		var date = new Date(parseInt(nowYear.getFullYear() - 80),01,01);
-		form.find(".calendar").datepicker().datepicker("setDate", date);
+		form.find(".calendar").datepicker().datepicker("setDate", date);*/
+
+
+        form.children('[data-tipo=adulto]').find(".calendar").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 1,
+            maxDate: 0,
+            changeYear: true,
+            yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
+        });
+
+        var dateADT = new Date(parseInt(nowYear.getFullYear() - 80), 01, 01);
+        form.children('[data-tipo=adulto]').find(".calendar").datepicker().datepicker("setDate", dateADT);
+
+
+        form.children('[data-tipo=ninho]').find(".calendar").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 1,
+            maxDate: 0,
+            changeYear: true,
+            yearRange: (nowYear.getFullYear() - 12).toString() + ':' + (nowYear.getFullYear() - 2).toString()
+        });
+
+        var dateCHD = new Date(parseInt(nowYear.getFullYear() - 12), 01, 01);
+        form.children('[data-tipo=ninho]').find(".calendar").datepicker().datepicker("setDate", dateCHD);
+
+
+        form.children('[data-tipo=infante]').find(".calendar").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 1,
+            maxDate: 0,
+            changeYear: true,
+            yearRange: (nowYear.getFullYear() - 2).toString() + ':' + (nowYear.getFullYear() - 0).toString()
+        });
+
+        var dateINF = new Date(parseInt(nowYear.getFullYear() - 2), 01, 01);
+        form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("setDate", dateINF);
 
 
 
