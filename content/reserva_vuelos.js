@@ -1174,7 +1174,8 @@ function asyncReceiveFlights(response)
 	if(response.ResultInfoOrError != null) {
 		//fillTableWithMessage($("#tbl_salida")[0], response.ResultInfoOrError.messageError);
 		waitingForFlightsData = false; // mutex data
-
+        $("#salidas_").remove();
+        $("#llegadas_").remove();
 		return;
 	}
 

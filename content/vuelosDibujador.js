@@ -22,13 +22,13 @@
             var that = this;
 
             $('#picker_salida').datepicker("setDate",
-                compactToJSDate(that.store.fechaIdaConsultada)
+                compactToJSDate(BoA.defaultConsultaVuelos.fechaIda)
             );
 
             if(BoA.defaultConsultaVuelos.fechaVuelta != null) {
                 $("#rbtn_ida_vuelta").click();
                 $("#picker_regreso").datepicker("setDate",
-                    compactToJSDate(that.store.fechaVueltaConsultada)
+                    compactToJSDate(BoA.defaultConsultaVuelos.fechaVuelta)
                 );
             }
 
@@ -732,7 +732,7 @@
             scope.objectEnviar = objectEnviar;
 
 
-            if(DIRECCIONAR == false){
+            if(DIRECCIONAR == false || DIRECCIONAR == undefined || DIRECCIONAR == ''){
                 ajaxRequest(
                     BoA.urls["validate_flight_selection_service"],
                     asyncValidateSeleccionVuelo,

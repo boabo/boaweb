@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 
 var VISTAPAGOS = false;
-var DIRECCIONAR = true;
+var DIRECCIONAR = false;
 
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
