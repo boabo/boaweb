@@ -561,6 +561,7 @@
             var m = '';
             //cuando es solo la peticion por ida
 
+
             m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">Continuar mi compra</div>';
 
             $('.cell-submit').html(m);
@@ -731,14 +732,21 @@
             scope.objectEnviar = objectEnviar;
 
 
-            ajaxRequest(
-                BoA.urls["validate_flight_selection_service"],
-                asyncValidateSeleccionVuelo,
-                "POST", objectEnviar);
+            if(DIRECCIONAR == false){
+                ajaxRequest(
+                    BoA.urls["validate_flight_selection_service"],
+                    asyncValidateSeleccionVuelo,
+                    "POST", objectEnviar);
 
-            $(that).hide();
-            $(".cell-submit").html('<div onclick="validatePassengers()" id="btn_validar_pasajeros" class="button" >Realizar Pago</div>');
+                $(that).hide();
+                $(".cell-submit").html('<div onclick="validatePassengers()" id="btn_validar_pasajeros" class="button" >Realizar Pago</div>');
 
+
+            }else{
+                //mandamos a otro lado
+                window.location.replace(BoA.urls.itinerario);
+
+            }
 
 
 

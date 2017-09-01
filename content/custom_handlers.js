@@ -1,6 +1,7 @@
 // ---------------------------------------------------------------------------
 
 var VISTAPAGOS = false;
+var DIRECCIONAR = true;
 
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
@@ -74,7 +75,9 @@ var BoA = {
         flights_schedule_service: "http://skbpruebas.cloudapp.net/ServicesA1/BasicReservationServiceA1.svc/AvailabilityPlusValuationsShort",
         validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
-        change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php"
+        change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php",
+        itinerario: "http://stackoverflow.com",
+
     },
 
     defaultConsultaVuelos : {
