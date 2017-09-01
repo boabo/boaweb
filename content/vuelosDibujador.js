@@ -864,16 +864,30 @@
 
                         var timeStrSalida = formatTime(flight.horaSalida);
                         var timeStrLlegada = formatTime(flight.horaLlegada);
-                        $("#"+idjQuery).children('svg').find('[data="salida'+nivel+'"]').html(flight.origen);
-                        $("#"+idjQuery).children('svg').find('[data="llegada'+nivel+'"]').html(flight.destino);
-                        $("#"+idjQuery).children('svg').find('[data="lineaVuelo'+nivel+'"]').html(flight.linea+""+flight.num_vuelo);
-                        $("#"+idjQuery).children('svg').find('[data="operado'+nivel+'"]').html(operadorSvg(flight.linea));
-                        $("#"+idjQuery).children('svg').find('[data="horaSalida'+nivel+'"]').html(timeStrSalida);
-                        $("#"+idjQuery).children('svg').find('[data="horaLlegada'+nivel+'"]').html(timeStrLlegada);
-                        $("#"+idjQuery).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').html((nivel==1)?separarAeropuertoSvg(airports[flight.origen]):'');
+                        $("#"+idjQuery).children('svg').find('[data="salida'+nivel+'"]').empty().append(flight.origen);
+                        $("#"+idjQuery).children('svg').find('[data="llegada'+nivel+'"]').empty().append(flight.destino);
+                        $("#"+idjQuery).children('svg').find('[data="lineaVuelo'+nivel+'"]').empty().append(flight.linea+""+flight.num_vuelo);
+                        $("#"+idjQuery).children('svg').find('[data="operado'+nivel+'"]').append(operadorSvg(flight.linea));
+                        $("#"+idjQuery).children('svg').find('[data="horaSalida'+nivel+'"]').empty().append(timeStrSalida);
+                        $("#"+idjQuery).children('svg').find('[data="horaLlegada'+nivel+'"]').empty().append(timeStrLlegada);
+
+
+
+
+                        if(nivel==1){
+                            $("#"+idjQuery).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').empty().append(separarAeropuertoSvg(airports[flight.origen]));
+                        }else{
+                            $("#"+idjQuery).children('svg').find('[data="aeropuertoSalida'+nivel+'"]').empty();
+
+                        }
+
 
                         $("#"+idjQuery).children('svg').find('[data="aeropuertoLlegada'+nivel+'"]').html(separarAeropuertoSvg(airports[flight.destino]));
-                        $("#"+idjQuery).children('svg').find('[data="duracion'+nivel+'"]').html(flight.tiempoVuelo.Hrs +" hrs , "+flight.tiempoVuelo.Mins+" mins.");
+                        $("#"+idjQuery).children('svg').find('[data="duracion'+nivel+'"]').empty().append(flight.tiempoVuelo.Hrs +" hrs , "+flight.tiempoVuelo.Mins+" mins.");
+
+
+
+
 
                         //agregamos el tiempo de vuelo a la duracion
                         duracion.horas = duracion.horas + parseInt(flight.tiempoVuelo.Hrs);
@@ -890,7 +904,7 @@
                         var hora_salida_2 = vuelo.vuelos[1].horaSalida;
 
                         var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
-                        $("#"+idjQuery).children('svg').find('[data="transito1"]').html(transito.Str);
+                        $("#"+idjQuery).children('svg').find('[data="transito1"]').empty().append(transito.Str);
 
                         //agregamos el tiempo de transito a la duracion
                         duracion.horas = duracion.horas + parseInt(transito.Hrs);
@@ -902,7 +916,7 @@
                         var hora_salida_2 = vuelo.vuelos[1].horaSalida;
 
                         var transito = tiempoTransito(hora_llegada_1,hora_salida_2);
-                        $("#"+idjQuery).children('svg').find('[data="transito1"]').html(transito.Str);
+                        $("#"+idjQuery).children('svg').find('[data="transito1"]').empty().append(transito.Str);
 
                         //agregamos el tiempo de transito a la duracion
                         duracion.horas = duracion.horas + parseInt(transito.Hrs);
@@ -912,7 +926,7 @@
                         var hora_salida_4 = vuelo.vuelos[2].horaSalida;
 
                         var transito2 = tiempoTransito(hora_llegada_3,hora_salida_4);
-                        $("#"+idjQuery).children('svg').find('[data="transito2"]').html(transito2.Str);
+                        $("#"+idjQuery).children('svg').find('[data="transito2"]').empty().append(transito2.Str);
 
                         //agregamos el tiempo de transito a la duracion
                         duracion.horas = duracion.horas + parseInt(transito2.Hrs);
@@ -930,7 +944,7 @@
                         duracion.minutos = min;
                     }
                     //agregamos la duracion total a la celda principal de este vuelo
-                    $('#'+vuelo.tipo+'_'+vuelo.num_opcion).find(".duracion_total").html("Duración Total :<br> "
+                    $('#'+vuelo.tipo+'_'+vuelo.num_opcion).find(".duracion_total").empty().append("Duración Total :<br> "
                      +((duracion.horas > 0)?duracion.horas+" hrs. ":"")
                      +((duracion.minutos>0)?duracion.minutos+" mins.":" ")
                      );

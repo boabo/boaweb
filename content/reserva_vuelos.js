@@ -1328,21 +1328,52 @@ function tiempoTransito(hora_llegada_1,hora_salida_2){
 
 	return res;
 }
-function separarAeropuertoSvg(aeropuerto){
+function separarAeropuertoSvg(aeropuerto) {
 
-	var m = aeropuerto.split(' ');
+	/*var m = aeropuerto.split(' ');
 
-	var str = '<tspan style="fill: #ffffff; font-size: 14px;"  x="0" y="0" class="st3">'+m[0]+' '+m[1]+'</tspan>';
-	var aux = '';
-	for(var i = 2; i < m.length; i++){
+	 var str = '<tspan style="fill: #ffffff; font-size: 14px;"  x="0" y="0" class="st3">'+m[0]+' '+m[1]+'</tspan>';
+	 var aux = '';
+	 for(var i = 2; i < m.length; i++){
 
-		aux += m[i]+' ';
-	}
-	str+='<tspan style="fill: #ffffff; font-size: 14px;" x="14.7" y="18" class="st3">'+aux+'</tspan>';
+	 aux += m[i]+' ';
+	 }
+	 str+='<tspan style="fill: #ffffff; font-size: 14px;" x="14.7" y="18" class="st3">'+aux+'</tspan>';
 
-	return str;
+	 return str;*/
+
+
+    //agregamos aeropuerto
+    var svg_aer = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    var m = aeropuerto.split(' ');
+    $(svg_aer).text(m[0] + ' ' + m[1]);
+    $(svg_aer).attr("style", 'fill: #ffffff; font-size: 14px;');
+    $(svg_aer).attr("x", '0');
+    $(svg_aer).attr("y", '0');
+    $(svg_aer).attr("class", 'st3');
+
+    if (m.length > 2) {
+        var aux = '';
+        for (var i = 2; i < m.length; i++) {
+
+            aux += m[i] + ' ';
+        }
+
+        var svg_aer_aux = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        $(svg_aer_aux).text(aux);
+        $(svg_aer_aux).attr("style", 'fill: #ffffff; font-size: 14px;');
+        $(svg_aer_aux).attr("x", '14.7');
+        $(svg_aer_aux).attr("y", '18');
+        $(svg_aer_aux).attr("class", 'st3');
+
+        $(svg_aer).append($(svg_aer_aux));
+
+
+
+    }
+
+    return $(svg_aer);
 }
-
 
 /******************************************************* 
  *************** LOGIC HANDLER FUNCTIONS ***************
