@@ -517,8 +517,13 @@
             var tblSeleccion = $("#tbl_seleccion_" + tipo + ", #tbl_seleccion_" + tipo + "_small");
 
             //el selector grande tbl_seleccion_ida o tbl_seleccion_vuelta
-            tblSeleccion.find(".fecha_salida_").html(/*formatShortDate(opcion.vuelos[0].fecha)*/);
-            tblSeleccion.find(".fecha_llegada_").html(/*formatShortDate(opcion.vuelos[0].fechaLlegada)*/);
+            tblSeleccion.find(".fecha_salida_").html(formatShortDate(vueloSeleccionado.vuelos[0].fecha_salida));
+
+            //buscamos la ultima fecha de llegada para agregarle
+            $.each(vueloSeleccionado.vuelos,function (indexVuelo,vuelo) {
+                tblSeleccion.find(".fecha_llegada_").html(formatShortDate(vuelo.fecha_llegada));
+
+            });
 
             tblSeleccion.find(".salida_").html("<span style='float: left; padding-left: 5px; font-size: 15px;'>"+formatTime(vueloSeleccionado.horaSalidaVuelo)+"</span><h1 style='float: left;'>"+vueloSeleccionado.origenVuelo+"</h1>");
             tblSeleccion.find(".llegada_").html("<h1 style='float: right;'>"+vueloSeleccionado.destinoVuelo+"</h1><span style='float: right; font-size: 15px;'>"+formatTime(vueloSeleccionado.horaLlegadaVuelo)+"</span>");
@@ -778,6 +783,14 @@
             $("#totalTasas").html(0);
 
             flapperTotal.val(0).change();
+
+
+            vuelosDibujador.familiaIdaSeleccionado ='';
+            vuelosDibujador.opcionIdaSeleccionado = '';
+
+            vuelosDibujador.familiaVueltaSeleccionado ='';
+            vuelosDibujador.opcionVueltaSeleccionado = '';
+
 
         },
         buscarOpcionConTarifa:function (opcion,ida_vuelta) {
