@@ -85,6 +85,7 @@ var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 
         },
         cargarBoa:function () {
+            $("#ui_reserva_vuelos").addClass("blured");
 
             $("loading").addClass('MostrarLoading');
             $(".MostrarLoading").one(animationEnd, function () {
@@ -108,6 +109,8 @@ var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 
         },
         terminarCargarBoa:function () {
+
+            $("#ui_reserva_vuelos").removeClass("blured");
 
             $("loading").addClass('ocultarLoading');
             $(".ocultarLoading").one(animationEnd, function () {

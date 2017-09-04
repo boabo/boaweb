@@ -1178,6 +1178,10 @@ function asyncReceiveFlights(response)
 		waitingForFlightsData = false; // mutex data
         $("#salidas_").remove();
         $("#llegadas_").remove();
+
+        //quitamos seleccion y le ponemos que no hay vuelos
+		$('.days').find('.selected').find('h3').html('NO HAY VUELOS');
+		$('.days').find('.selected').removeClass('selected').addClass('no-flights');
 		return;
 	}
 

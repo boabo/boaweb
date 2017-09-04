@@ -2062,7 +2062,7 @@ loading {
 	-moz-transition: opacity 350ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 	-ms-transition: opacity 350ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 	transition: opacity 350ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-	opacity: .96;
+	opacity: .80;
 }
 
 loading path{
