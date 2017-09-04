@@ -173,12 +173,61 @@ $(document).on('ready',function()
 
     //(function(a){a.fn.validCampos=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
 
+
+
+	function pagarReserva(that) {
+        var self = this;
+		if(that == undefined){
+            var self = this;
+
+        }else{
+            var self = $("#pagar_reserva")[0];
+		}
+
+        $(self).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
+
+        if ($(self).hasClass("activado")) {
+            $(self).removeClass("activado");
+
+            $("#contenedor_pagar").hide("slide", function () {
+                $("#cod_reserva").css({"margin-top": "30px"});
+                $(self).siblings('td').show();
+            });
+
+
+            $("#razon_social").val('');
+            $("#nit").val('');
+
+        } else {
+
+            $(self).addClass("activado");
+            $(self).empty().append('x Pagar Reserva');
+            $(self).siblings('td').hide("slow", function () {
+                $("#contenedor_pagar").show("slide");
+                $("#cod_reserva").css({"margin-top": "0px"});
+
+
+            });
+
+
+        }
+
+    }
 	if (VISTAPAGOS == true ){
 		$("#info_pago_bancos").show();
         $("#info_pago_bancos").css({"left":0});
 
         $("#info_resultados_vuelos").hide();
         $("#widget_resumen_reserva").hide();
+
+
+        //para mostrar los medios de pagos directamente
+
+		pagarReserva(false);
+
+		$(".stages").find('.active').removeClass('active');
+		$("#stage_compra").addClass('active');
+
 	}else{
 
         loadingBoa.cargarBoa();
@@ -312,38 +361,7 @@ $(document).on('ready',function()
 
 
 
-            //pagar reserva
 
-            $("#pagar_reserva").click(function () {
-                $(this).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
-                var self = this;
-                if ($(this).hasClass("activado")) {
-                    $(this).removeClass("activado");
-
-                    $("#contenedor_pagar").hide("slide", function () {
-                        $("#cod_reserva").css({"margin-top": "30px"});
-                        $(self).siblings('td').show();
-                    });
-
-
-                    $("#razon_social").val('');
-                    $("#nit").val('');
-
-                } else {
-
-                    $(this).addClass("activado");
-                    $(this).empty().append('x Pagar Reserva');
-                    $(this).siblings('td').hide("slow", function () {
-                        $("#contenedor_pagar").show("slide");
-                        $("#cod_reserva").css({"margin-top": "0px"});
-
-
-                    });
-
-
-                }
-
-            });
 
 
             //controlar el scroll
@@ -360,13 +378,20 @@ $(document).on('ready',function()
             });
         }
 
-        //dibuja los bancos
-        dibujarBancos(BoA.bancos.debito, "debito");
-        dibujarBancos(BoA.bancos.credito, "credito");
-        dibujarBancos(BoA.bancos.billetera, "billetera");
+
 
 	}
 
+
+    //pagar reserva
+
+    $("#pagar_reserva").click(pagarReserva);
+
+
+//dibuja los bancos
+    dibujarBancos(BoA.bancos.debito, "debito");
+    dibujarBancos(BoA.bancos.credito, "credito");
+    dibujarBancos(BoA.bancos.billetera, "billetera");
 
 
 

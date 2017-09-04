@@ -39,8 +39,8 @@ var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 
 
 
-                    $('.loading_boa').addClass('loading_girar');
-                    console.log($('.loading_boa'));
+                    $svg.find('.loading_boa').addClass('loading_girar');
+
 
                     $(".roja1").one(animationEnd, function () {
                         $('.amarilla1_').addClass('amarilla1');
