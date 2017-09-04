@@ -1429,18 +1429,19 @@ function handleInitialRequest()
             if(tipo == 'adulto'){
             	if (pxCount>0){
                     array_asientos[aux_count] = [ "ADT", ""+pxCount+"" ];
+                    aux_count++;
                 }
 			}else if(tipo == 'ninho'){
             	if(pxCount>0){
                     array_asientos[aux_count] = [ "CHD", ""+pxCount+"" ];
-
+                    aux_count++;
                 }
 			}
 
 		}else{
 			if(pxCount>0){
                 array_asientos[aux_count] = [ "INF", ""+pxCount+"" ];
-
+                aux_count++;
             }
 		}
 
@@ -1450,7 +1451,7 @@ function handleInitialRequest()
 		list.find("li.selected").click();
 		list.find("li[data-count='"+pxCount+"']").click();
 
-        aux_count++;
+
 	}
 
 	searchParameters.sitios = defaultSitesCount; // start value
@@ -1718,13 +1719,15 @@ function getSelectedSitesCount()
 	var pxSelections = $("#widget_resumen_reserva .selector-pax ul");
 	var total = 0;
     var array_asientos = [];
+    var array_count_asientos = 0;
 	for(var i=0;i<pxSelections.length;i++) {
 		var ul = $(pxSelections[i]);
 		var tipo = ul.data("tipo");
 
 		if(tipo=="adulto") {
 			if(parseInt(ul.find("li.selected").data("count")) > 0){
-                array_asientos[i] = [ "ADT", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+                array_asientos[array_count_asientos] = [ "ADT", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+                array_count_asientos ++;
 			}
 
 
@@ -1733,7 +1736,8 @@ function getSelectedSitesCount()
         } else if (tipo=="ninho"){
 
             if(parseInt(ul.find("li.selected").data("count")) > 0){
-                array_asientos[i] = [ "CHD", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+                array_asientos[array_count_asientos] = [ "CHD", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+                array_count_asientos ++;
             }
 
 
@@ -1741,8 +1745,8 @@ function getSelectedSitesCount()
             total += parseInt(ul.find("li.selected").data("count"));
 		}else{
             if(parseInt(ul.find("li.selected").data("count")) > 0){
-                array_asientos[i] = [ "INF", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
-
+                array_asientos[array_count_asientos] = [ "INF", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+                array_count_asientos ++;
             }
         }
     }
