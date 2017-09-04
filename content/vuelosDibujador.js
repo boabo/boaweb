@@ -789,18 +789,21 @@
             }
 
 
-            if ($("#tbl_seleccion_ida").is(':visible') == false && $("#tbl_seleccion_vuelta").is(':visible') == false) {
+            if(vuelosDibujador.store != undefined){
+                if ($("#tbl_seleccion_ida").is(':visible') == false && $("#tbl_seleccion_vuelta").is(':visible') == false) {
 
-                $("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('salidas'));
-                vuelosDibujador.dibujarVuelos('salidas',vuelosDibujador.store);
+                    $("#salidasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('salidas'));
+                    vuelosDibujador.dibujarVuelos('salidas',vuelosDibujador.store);
 
-                if(vuelosDibujador.store.tieneVuelta == true){
-                    $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('llegadas'));
-                    vuelosDibujador.dibujarVuelos('llegadas',vuelosDibujador.store);
+                    if(vuelosDibujador.store.tieneVuelta == true){
+                        $("#llegadasHeaderFamilias").append(vuelosDibujador.dibujarHeaderFamilias('llegadas'));
+                        vuelosDibujador.dibujarVuelos('llegadas',vuelosDibujador.store);
+                    }
+
+                    $("#div_empty_vuelo").show()
                 }
-
-                $("#div_empty_vuelo").show()
             }
+
 
 
 
