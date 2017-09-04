@@ -1112,10 +1112,12 @@ function asyncReceiveDates(response)
 
 	try {
 		// fix to .NET dumbest encoding ever (possible bug here in future)
+
 		response = $.parseJSON(response.CalendarResult).ResultCalendar; 
 	} catch (e){
 		showSimpleDialog (BoA.defaultApologyMessage, BoA.defaultURLAfterFail);
 
+		loadingBoa.terminarCargarBoa();
 		console.log(e);
 
 		return;
