@@ -757,7 +757,7 @@ function changeNumPassengers()
 function validatePassengers()
 {
 
-	loadingBoa.cargarBoa();
+
 	var divPersonas = $("#div_formulario_personas .persona");
 
 
@@ -911,6 +911,8 @@ function validatePassengers()
 
 		$("#loading_compra").show();
 		$("#loading_compra2").show();
+
+        loadingBoa.cargarBoa();
 
 		ajaxRequest(
 			BoA.urls["register_passengers_service"], 
