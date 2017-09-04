@@ -228,6 +228,8 @@ $(document).on('ready',function()
 		$(".stages").find('.active').removeClass('active');
 		$("#stage_compra").addClass('active');
 
+		$("#widget_cambiar_vuelo").hide();
+
 	}else{
 
         loadingBoa.cargarBoa();
