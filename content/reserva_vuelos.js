@@ -236,7 +236,6 @@ $(document).on('ready',function()
 
         vuelos_store = Object.create(vuelosStore);
 
-        console.log(vuelos_store);
         $("#btn_borrar_ida").click(function () {
 
             var tipo = 'vuelosIda';
@@ -402,7 +401,6 @@ $(document).on('ready',function()
 
 function dibujarBancos(objeto,titulo){
 
-	console.log(objeto)
 	$.each(objeto,function (k,v) {
 		if(v.visible == true){
 
@@ -443,8 +441,7 @@ function dibujarBancos(objeto,titulo){
 					}
 
 					var mensaje = $("#"+v.nombre).data("mensaje");
-					console.log(mensaje);
-					console.log($("#"+v.nombre));
+
 
 					if (validado){
 						//aca haces la accion
@@ -504,11 +501,9 @@ function changeDay()
 	loadingBoa.cargarBoa();
     vuelosDibujador.resetearSeleccion();
 	vuelosDibujador.resetearVista();
-	console.log('cambio de dia');
 
 
 	var table = this;
-	console.log(table)
 
 	while(false == $(table).is("table")) // find parent table
 		table = table.parentNode;
@@ -542,7 +537,6 @@ function toggleWidgetCambiarVuelo()
 	if($(this).hasClass("searching")) return;
 
 	var widget = $(this.parentNode);
-	console.log('widget',widget)
 
 	if(widget.hasClass("collapsed")) {
 		widget.removeClass("collapsed").addClass("expanded");
@@ -567,7 +561,6 @@ function validateSearch()
 	var pickerSalida = $("#picker_salida");
 	var pickerRegreso = $("#picker_regreso");
 
-	console.log(vuelos_store)
 	var parms = {
 		origen: selectOrigen.val(),
 		destino: selectDestino.val(),
@@ -710,13 +703,11 @@ function changeNumPassengers()
 {
 
 
-	console.log(this)
 	var ul = $(this.parentNode);
 	var count = parseInt($(this).data("count"));
 
 	var tipo = $(this.parentNode).data("tipo");
 
-	console.log(tipo)
 	var counting = ["one","two","three","four","five","six","seven","eight"];
 
 	if(ul.hasClass("active")) {
@@ -848,7 +839,6 @@ function validatePassengers()
 			if(isEmail(divPersona.find(".email").val())!=true){
 				isValid = false;
 				tbxemail.parent().addClass('active');
-				console.log('is email',isEmail(divPersona.find(".email").val()));
 
 			}else{
 				persona["email"] = divPersona.find(".email").val();
@@ -875,14 +865,12 @@ function validatePassengers()
 
 					if(edad[1] < 8){//si es menor a 8 dias entonces no va
 
-						console.log("no puede viajar por que tiene "+edad[1]+" dias es menos de  8 dias");
 						isValid = false;
 						pickerNacimiento.parent().addClass('active');
 					}
 
 					if (edad[0] >= 2){ //si es mayor o igual a 2 anios entonces no es infante
 
-						console.log("no es infante por que es mayor a 2 anios");
 						isValid = false;
 						pickerNacimiento.parent().addClass('active');
 					}
@@ -891,14 +879,12 @@ function validatePassengers()
 
 					if (edad[0] < 2 ){ //si es mayor o igual a 2 anios entonces no es infante
 
-						console.log("no es nihno es infante");
 						isValid = false;
 						pickerNacimiento.parent().addClass('active');
 					}
 
 					if (edad[0] >= 12){ //si es mayor o igual a 2 anios entonces no es infante
 
-						console.log("el nino solo puede ser menor a 12 ");
 						isValid = false;
 						pickerNacimiento.parent().addClass('active');
 					}
@@ -958,7 +944,6 @@ function asyncRegisterPassengers(response)
 
 	loadingBoa.terminarCargarBoa();
 	if(response["success"] == false) {
-		console.log(response["reason"]);
 		showSimpleDialog2(response["msg"]);
 		return;
 	}
@@ -1150,7 +1135,6 @@ function asyncReceiveDates(response)
 		showSimpleDialog (BoA.defaultApologyMessage, BoA.defaultURLAfterFail);
 
 		loadingBoa.terminarCargarBoa();
-		console.log(e);
 
 		return;
 	}
@@ -1240,7 +1224,6 @@ function asyncReceiveFlights(response)
 	var vuelos_dibujador = Object.create(vuelosDibujador);
     vuelos_dibujador.__proto__.store = vuelos_store;
 
-	console.log('vuelos_store.vueloMatriz',vuelos_store.vueloMatriz)
 
 	$("#salidasHeaderFamilias").append(vuelos_dibujador.dibujarHeaderFamilias('salidas'));
     vuelos_dibujador.dibujarVuelos('salidas',vuelos_store);
@@ -1638,9 +1621,7 @@ function buildRegistroPersona(tipo, numPx)
 {
 	var namesByTipo = {adulto:"ADULTO",ninho:"NI&Ntilde;O",infante:"INFANTE"};
 
-	console.log('tipo',tipo);
-	console.log('tipo',namesByTipo[tipo]);
-	console.log('namesByTipo',namesByTipo);
+
 
 
 	var isAdulto = (tipo=='adulto');
@@ -1797,7 +1778,6 @@ function getSelectedSitesCount()
 function getTypeSelectedSitesCount(tipo_seleccionado)
 {
 	var pxSelections = $("#widget_resumen_reserva .selector-pax ul");
-	console.log(pxSelections)
 	var sitio_seleccionados = {
 		total_adulto : 0,
 		total_ninho: 0
@@ -1819,11 +1799,10 @@ function getTypeSelectedSitesCount(tipo_seleccionado)
 	if(tipo_seleccionado == 'adulto'){
 		var count = sitio_seleccionados.total_adulto;
 		var total_para_seleccionar = 9 - count;
-		console.log('total_para seleccionar ',total_para_seleccionar);
 
 		$.each($(pxSelections[1]).children('li'),function (k,v) {
 
-			console.log(v)
+
 			if(total_para_seleccionar < k){
 				$(v).hide();
 			}else{
@@ -1835,11 +1814,9 @@ function getTypeSelectedSitesCount(tipo_seleccionado)
 	}else if (tipo_seleccionado == 'ninho'){
 		var count = sitio_seleccionados.total_ninho;
 		var total_para_seleccionar = 9 - count;
-		console.log('total_para seleccionar ',total_para_seleccionar);
 
 		$.each($(pxSelections[0]).children('li'),function (k,v) {
 
-			console.log(v)
 			if(total_para_seleccionar < k){
 				$(v).hide();
 			}else{

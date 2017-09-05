@@ -58,7 +58,6 @@
             that.vuelosIda = {};
             that.vuelosVuelta = {};
 
-            console.log('object ++', object);
 
             this.familyInformation = object.vuelosYTarifas.familyInformation.FamilyInformation;
             this.verIdayVuelta(object.fechaIdaConsultada, object.fechaVueltaConsultada);
@@ -166,7 +165,6 @@
                 }
 
 
-                console.log(that.vuelosIda)
 
 
                 //verificamos si existe vuelta
@@ -175,7 +173,6 @@
 
 
                         var objectAux = {};
-                        console.log('opcion vuelta ', vuelta.num_opcion);
 
                         objectAux.ida = ida;
                         objectAux.vuelta = vuelta;
@@ -386,8 +383,7 @@
 
 
 
-            // console.log('1-1',objectVuelosMatriz['1-1'])
-            // console.log(objectVuelosMatriz)
+
 
             this.vueloMatriz = objectVuelosMatriz;
         }

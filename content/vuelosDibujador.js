@@ -50,7 +50,6 @@
 
             $.each(this.store.familyInformation,function (k,v) {
 
-                console.log('familias' , $(m).find('.familias_'))
                 $(m).find('.familias_').append('<div style="float: left;width: '+tam+'%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
             });
 
@@ -101,8 +100,6 @@
                     ico_conexion = 'ico_sin_conexion';
                 }
 
-                console.log(formatTime(v.horaLlegada))
-                console.log('v',v)
                 m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br><div class="ico_boa"><span style="bottom:-18px;position:relative;">BoA</span></div>\n        </div>\n    </div>\n</div>');
 
                 var opcion_vuelo_indice ='';
@@ -113,7 +110,6 @@
 
                         //cuando es la primera entra aca para dibujar
                         opcion_vuelo_indice = v.num_opcion+'-'+0;
-                        console.log(store.vueloMatriz[opcion_vuelo_indice]);
 
 
                     }else{
@@ -187,14 +183,11 @@
                         if(disponibilidad > 0 && disponibilidad <= 3){
 
                             clase_disponibilidad = 'dispo_rojo';
-                            console.log(disponibilidad);
                         }else if(disponibilidad > 3 && disponibilidad <= 6){
                             clase_disponibilidad = 'dispo_naranja';
-                            console.log(disponibilidad);
                         }else if(disponibilidad > 6 && disponibilidad <= 9){
 
                             clase_disponibilidad = 'dispo_verde';
-                            console.log(disponibilidad);
                         }
                         ///FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>'+importe+' '+moneda+'</b></div>');
 
@@ -237,7 +230,6 @@
                 $("#"+tabla).append('<div id="'+ida_vuelta+'_'+v.num_opcion+'_detalle" style="background:#EFAA35;width: 100%;height: 200px;" class="tiempo_vuelo Detalle_cerrado"><figure data-src="'+svg+'" class="svg"></figure></div>');
 
 
-                console.log($('#'+ida_vuelta+'_'+v.num_opcion+'_detalle'));
                 iconSvg.convertirFigureSvg(''+ida_vuelta+'_'+v.num_opcion+'_detalle',v);
             });
            
@@ -287,7 +279,6 @@
             if(tipo == "vuelosIda"){
 
                 if (scope.store.tieneVuelta == true) {
-                    console.log(scope.store.vuelosVuelta)
 
                     //ya esta seleccionado una vuelta
                     if(scope.opcionVueltaSeleccionado != ''){
@@ -368,7 +359,6 @@
 
 
             }
-            console.log(filtros_opciones);
         },
         dibujarMontosTaxesTotales:function(opcion_vuelo_indice,familiaIda,familiaVuelta){
 
@@ -398,7 +388,6 @@
                     }
 
                 });
-                console.log(tarifas)
             }
 
 
@@ -503,8 +492,6 @@
              */
 
 
-            console.log('importes seleccionado', scope.store.vueloMatriz[opcion_vuelo_indice]);
-            console.log('opcion_vuelo_indice', opcion_vuelo_indice)
         },
         dibujarSeleccionVuelo:function (tipo,vueloSeleccionado) {
 
@@ -580,7 +567,6 @@
             var scope = this;
             
             var opcion_indice = scope.opcionIdaSeleccionado+'-'+scope.opcionVueltaSeleccionado;
-            console.log(opcion_indice);
 
 
             loadingBoa.cargarBoa();
@@ -643,7 +629,6 @@
                     };
                     var tasasVueltas = [];
                     $.each(scope.TasasPorTipoPasajero[v.typePax],function (indexTasa,tasa) {
-                        console.log(tasa)
                         tasasVueltas.push({
                             key:tasa.key,
                             value:0
@@ -758,7 +743,6 @@
 
 
 
-            console.log(objectEnviar)
 
             var seleccionVuelo = {};
 
@@ -845,7 +829,6 @@
             var scope = this;
             var opcionIndice = opcion;
             var vuelos = this.store[ida_vuelta];
-            console.log(vuelos);
 
             var array = [];
             $.each(vuelos,function (index,obj) {
@@ -883,8 +866,7 @@
 
         convertirFigureSvg : function (idjQuery,vuelo) {
 
-            console.log($("#"+idjQuery).children("figure"))
-            console.log(vuelo)
+
 
                 var $img = jQuery($("#"+idjQuery).children("figure"));
                 var imgID = $img.attr('id');
@@ -913,7 +895,6 @@
 
 
 
-                    console.log('convertido svg',$("#"+idjQuery).children("svg"));
                     var duracion = {horas:0,minutos:0};
                     for(var i=0;i<vuelo.vuelos.length;i++) {
                         var flight = vuelo.vuelos[i];
