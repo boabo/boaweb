@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 
-var VISTAPAGOS = true;
+var VISTAPAGOS = false;
 var DIRECCIONAR = false;
 
 var CURRENCY = "bs"; // "euro", "bs" , "usd"

@@ -514,6 +514,8 @@
             //dibujamos
 
 
+
+
             var tblSeleccion = $("#tbl_seleccion_" + tipo + ", #tbl_seleccion_" + tipo + "_small");
 
             //el selector grande tbl_seleccion_ida o tbl_seleccion_vuelta
@@ -537,7 +539,13 @@
             //este solo se mostrara estando en esa interfaz
             $("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(/*formatShortDate(vueloSeleccionado.vuelos[0].fecha)*/);
             $("#tbl_seleccion_" + tipo + "_small").find(".cell-cod-origen-destino").html('<h1>'+vueloSeleccionado.origenVuelo+' - '+vueloSeleccionado.destinoVuelo+'</h1>');
-            $("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(/*formatTime(vueloSeleccionado.horaSalida)*/);
+            $("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(formatTime(vueloSeleccionado.horaSalidaVuelo));
+
+            $("#tbl_seleccion_" + tipo + "_small").find(".cell-duracion").html(
+                ((vueloSeleccionado.duracionTotalVuelo.horas > 0)?vueloSeleccionado.duracionTotalVuelo.horas+" hrs. ":"")
+                +((vueloSeleccionado.duracionTotalVuelo.minutos>0)?vueloSeleccionado.duracionTotalVuelo.minutos+" mins.":" ")
+            );
+
             $("#tbl_seleccion_" + tipo).css("display","block");
             $("#tbl_seleccion_" + tipo).addClass("changed");
             //animamos un efecto de seleccion
@@ -997,6 +1005,8 @@
                      +((duracion.horas > 0)?duracion.horas+" hrs. ":"")
                      +((duracion.minutos>0)?duracion.minutos+" mins.":" ")
                      );
+
+                    vuelo.duracionTotalVuelo = duracion;
 
 
 

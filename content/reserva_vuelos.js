@@ -959,6 +959,7 @@ function asyncRegisterPassengers(response)
 	loadingBoa.terminarCargarBoa();
 	if(response["success"] == false) {
 		console.log(response["reason"]);
+		showSimpleDialog2(response["msg"]);
 		return;
 	}
 
@@ -1093,6 +1094,8 @@ function asyncValidateSeleccionVuelo(response)
 		$("#loading_compra2").hide();
 		$("#btn_validar_pasajeros").show();
 		$("#btn_validar_pasajeros2").show();
+	}else{
+        showSimpleDialog (BoA.defaultApologyMessage, BoA.defaultURLAfterFail);
 	}
 }
 
