@@ -336,11 +336,11 @@ $(document).on('ready',function()
             $(".validable .calendar").datepicker("option", "prevText", '<i class="fa fa-arrow-left"></i>');
             $(".validable .calendar").datepicker("option", "nextText", '<i class="fa fa-arrow-right"></i>');
 
-
+            $("#btn_volver_vuelos").click(backToFlightStage);
 			/* $("#btn_validar_vuelos").click(validateSeleccionVuelo);
 
 			 $("#btn_validar_vuelos2").click(validateSeleccionVuelo);
-			 $("#btn_volver_vuelos").click(backToFlightStage);
+
 			 $("#btn_validar_pasajeros").click(validatePassengers);
 			 $("#btn_validar_pasajeros2").click(validatePassengers);*/
 
@@ -1923,4 +1923,53 @@ function edadPasajero(Fecha){
 	dias_nacido = parseInt((hoy -fecha)/(1000*60*60*24));
 	var edad = [ed,dias_nacido]; //retorna la edad en anios y de dias de nacido
 	return edad;
+}
+
+function backToFlightStage()
+{
+
+    if($("#info_pago_bancos").hasClass("active")){
+
+        $("#widget_resumen_reserva").show();
+        $("#loading_compra").hide();
+        $("#loading_compra2").hide();
+        $("#stage_compra").removeClass("active");
+    }
+
+    $("#info_resultados_vuelos").addClass("active");
+    $("#info_registro_pasajeros").removeClass("active");
+
+    $("#info_pago_bancos").removeClass("active");
+
+    $("#stage_seleccion").addClass("active");
+    $("#stage_registro").removeClass("active");
+
+    $("#btn_cambiar_vuelo").show();
+    $("#btn_volver_vuelos").hide();
+
+    $("#widget_resumen_reserva").removeClass("read-only");
+
+    $("#tbl_seleccion_ida").show();
+    if(seleccionVuelo.vuelta != null)
+        $("#tbl_seleccion_vuelta").show();
+
+    $("#tbl_seleccion_ida_small").hide();
+    $("#tbl_seleccion_vuelta_small").hide();
+
+    $("#btn_validar_pasajeros").hide();
+    $("#btn_validar_pasajeros2").hide();
+    $("#btn_validar_vuelos").show();
+    $("#btn_validar_vuelos2").show();
+
+    window.scrollTo(0,0); // scroll hacia arriba
+
+
+    var m = '';
+    //cuando es solo la peticion por ida
+
+
+    m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">Continuar mi compra</div>';
+
+    $('.cell-submit').html(m);
+
 }
