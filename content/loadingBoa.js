@@ -104,7 +104,7 @@ var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
             $("loading").show();
             $("loading").html('<figure data-src="boa" class="svg"></figure>');
 
-            $('loading').find('figure').append('<img width="120" src="content/images/loading_boa2.gif?'+ new Date().getTime()+'" />');
+            $('loading').find('figure').append('<img width="125" src="content/images/loading_boa3.gif?'+ new Date().getTime()+'" />');
 
             //loadingBoa.convertirFigureSvgLoading();
 
