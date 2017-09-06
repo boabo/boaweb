@@ -637,26 +637,7 @@
                     objectEnviar.seleccionVuelo[tipoPasajero].vuelta.tasas = tasasVueltas;
 
 
-                    //mandamos vuelos vuelta al objeto
-                    objectEnviar.seleccionVuelo.vuelosVuelta = [];
-                    //agregamos los vuelos de ida a nuestro arreglo para enviar
-                    $.each(scope.store.vuelosVuelta[scope.opcionIdaSeleccionado].vuelos,function (indexVueloVuelta,dato) {
 
-
-                        objectEnviar.seleccionVuelo.vuelosVuelta.push({
-                            horaSalida: ("00"+dato.horaSalida.hh).slice(-2) + ("00"+dato.horaSalida.mm).slice(-2),
-                            horaLlegada: ("00"+dato.horaLlegada.hh).slice(-2) + ("00"+dato.horaLlegada.mm).slice(-2),
-
-                            numVuelo:dato.num_vuelo,
-                            tipoAvion:dato.tipo_avion,
-                            fechaSalida:dato.fecha_salida,
-                            fareCode:tarifas[0].TarifaPersoCombinabilityID[0].fare_code,
-                            clase:tarifas[0].TarifaPersoCombinabilityID[0].clases,
-                            origen:dato.origen,
-                            destino:dato.destino
-                        })
-
-                    });
 
 
 
@@ -740,6 +721,29 @@
 
             });
 
+
+            if (scope.store.tieneVuelta == true){
+                //mandamos vuelos vuelta al objeto
+                objectEnviar.seleccionVuelo.vuelosVuelta = [];
+                //agregamos los vuelos de ida a nuestro arreglo para enviar
+                $.each(scope.store.vuelosVuelta[scope.opcionIdaSeleccionado].vuelos,function (indexVueloVuelta,dato) {
+
+
+                    objectEnviar.seleccionVuelo.vuelosVuelta.push({
+                        horaSalida: ("00"+dato.horaSalida.hh).slice(-2) + ("00"+dato.horaSalida.mm).slice(-2),
+                        horaLlegada: ("00"+dato.horaLlegada.hh).slice(-2) + ("00"+dato.horaLlegada.mm).slice(-2),
+
+                        numVuelo:dato.num_vuelo,
+                        tipoAvion:dato.tipo_avion,
+                        fechaSalida:dato.fecha_salida,
+                        fareCode:tarifas[0].TarifaPersoCombinabilityID[0].fare_code,
+                        clase:tarifas[0].TarifaPersoCombinabilityID[0].clases,
+                        origen:dato.origen,
+                        destino:dato.destino
+                    })
+
+                });
+            }
 
 
 
