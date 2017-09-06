@@ -100,7 +100,20 @@
                     ico_conexion = 'ico_sin_conexion';
                 }
 
-                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br><div class="ico_boa"><span style="bottom:-18px;position:relative;">BoA</span></div>\n        </div>\n    </div>\n</div>');
+                //dibujamos el icono de los operadores
+                var iconos_operador = '';
+                var objectAuxOperador = {};
+                $.each(v.vuelos,function (indexVuelo,vuelo) {
+
+                    if (objectAuxOperador[vuelo.co_operador] == undefined){
+                        objectAuxOperador[vuelo.co_operador] = vuelo.co_operador;
+                        var clase = linea_clase[vuelo.co_operador];
+                        iconos_operador += '<div class="'+clase+'"><span style="bottom:-22px;position:relative;">'+lineas[vuelo.co_operador]+'</span></div>';
+                    }
+                    console.log(vuelo.co_operador)
+                });
+
+                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total :<br> 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br>'+iconos_operador+'\n        </div>\n    </div>\n</div>');
 
                 var opcion_vuelo_indice ='';
                 //no tiene vuelta entonces dibujamos directamente con sus opciones y vuelta como cero ej: 1-0
@@ -914,7 +927,7 @@
                         $("#"+idjQuery).children('svg').find('[data="salida'+nivel+'"]').empty().append(flight.origen);
                         $("#"+idjQuery).children('svg').find('[data="llegada'+nivel+'"]').empty().append(flight.destino);
                         $("#"+idjQuery).children('svg').find('[data="lineaVuelo'+nivel+'"]').empty().append(flight.linea+""+flight.num_vuelo);
-                        $("#"+idjQuery).children('svg').find('[data="operado'+nivel+'"]').append(operadorSvg(flight.linea));
+                        $("#"+idjQuery).children('svg').find('[data="operado'+nivel+'"]').empty().append(operadorSvg(flight.co_operador));
                         $("#"+idjQuery).children('svg').find('[data="horaSalida'+nivel+'"]').empty().append(timeStrSalida);
                         $("#"+idjQuery).children('svg').find('[data="horaLlegada'+nivel+'"]').empty().append(timeStrLlegada);
 

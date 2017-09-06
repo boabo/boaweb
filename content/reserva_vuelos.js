@@ -1332,10 +1332,31 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 }
 
 function operadorSvg(operador){
-	var str = '<tspan style="fill: #ffffff; font-size: 14px;"  x="0" y="0" class="st3">Operado por:</tspan>';
+
+    //agregamos aeropuerto
+    var svg_aer = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    $(svg_aer).text('Operado por: ');
+    $(svg_aer).attr("style", 'fill: #ffffff; font-size: 14px;');
+    $(svg_aer).attr("x", '0');
+    $(svg_aer).attr("y", '0');
+    $(svg_aer).attr("class", 'st3');
+
+    var svg_aer_aux = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    $(svg_aer_aux).text(lineas[operador]);
+    $(svg_aer_aux).attr("style", 'fill: #ffffff; font-size: 14px;');
+    $(svg_aer_aux).attr("x", '22');
+    $(svg_aer_aux).attr("y", '18');
+    $(svg_aer_aux).attr("class", 'st3');
+
+    $(svg_aer).append($(svg_aer_aux));
+
+    return $(svg_aer);
+
+
+	/*var str = '<tspan style="fill: #ffffff; font-size: 14px;"  x="0" y="0" class="st3">Operado por:</tspan>';
 
 	str+='<tspan style="fill: #ffffff; font-size: 14px;" x="22" y="18" class="st3">'+operador+'</tspan>';
-	return str;
+	return str;*/
 
 }
 function tiempoTransito(hora_llegada_1,hora_salida_2){
