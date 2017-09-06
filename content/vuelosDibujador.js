@@ -926,7 +926,7 @@
                         var timeStrLlegada = formatTime(flight.horaLlegada);
                         $("#"+idjQuery).children('svg').find('[data="salida'+nivel+'"]').empty().append(flight.origen);
                         $("#"+idjQuery).children('svg').find('[data="llegada'+nivel+'"]').empty().append(flight.destino);
-                        $("#"+idjQuery).children('svg').find('[data="lineaVuelo'+nivel+'"]').empty().append(flight.linea+""+flight.num_vuelo);
+                        $("#"+idjQuery).children('svg').find('[data="lineaVuelo'+nivel+'"]').empty().append(flight.co_operador+""+flight.num_vuelo);
                         $("#"+idjQuery).children('svg').find('[data="operado'+nivel+'"]').empty().append(operadorSvg(flight.co_operador));
                         $("#"+idjQuery).children('svg').find('[data="horaSalida'+nivel+'"]').empty().append(timeStrSalida);
                         $("#"+idjQuery).children('svg').find('[data="horaLlegada'+nivel+'"]').empty().append(timeStrLlegada);

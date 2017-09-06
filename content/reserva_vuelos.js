@@ -119,9 +119,9 @@ var cities = {
 
 var airports = {
 	LPB: "Aeropuerto Internacional El Alto",
-	CIJ: "Aeropuerto Capit&aacute;n Anibal Arab",
+	CIJ: "Aeropuerto Capitán Anibal Arab",
 	CBB: "Aeropuerto Internacional Jorge Wilstermann",
-	MAD: "Aeropuerto Internacional Adolfo Su&aacute;z Madrid-Barajas",
+	MAD: "Aeropuerto Internacional Adolfo Suárez Madrid-Barajas",
 	VVI: "Aeropuerto Internacional Viru Viru",
 	SRE: "Aeropuerto Juana Azurduy de Padilla",
 	TJA: "Aeropuerto Capitán Oriel Lea Plaza",
@@ -131,7 +131,7 @@ var airports = {
 	BCN: "Aeropuerto Internacional El Prat",
 	CCA: "Aeropuerto Internacional Chimore",
 	MIA: "Aeropuerto Internacional Miami",
-	POI: "Aeropuerto Capit&aacute;n Nicolas Rojas"
+	POI: "Aeropuerto Capitán Nicolas Rojas"
 };
 
 var linea_clase = {
