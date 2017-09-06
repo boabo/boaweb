@@ -524,7 +524,7 @@
 
             //dibujamos el selector small para cuando se este llenando datos del pasajero
             //este solo se mostrara estando en esa interfaz
-            $("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(/*formatShortDate(vueloSeleccionado.vuelos[0].fecha)*/);
+            $("#tbl_seleccion_" + tipo + "_small").find(".cell-fecha").html(formatShortDate(vueloSeleccionado.vuelos[0].fecha_salida));
             $("#tbl_seleccion_" + tipo + "_small").find(".cell-cod-origen-destino").html('<h1>'+vueloSeleccionado.origenVuelo+' - '+vueloSeleccionado.destinoVuelo+'</h1>');
             $("#tbl_seleccion_" + tipo + "_small").find(".cell-hora span").html(formatTime(vueloSeleccionado.horaSalidaVuelo));
 

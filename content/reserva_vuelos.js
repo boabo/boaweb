@@ -1067,7 +1067,7 @@ function asyncValidateSeleccionVuelo(response)
 		$("#tbl_seleccion_vuelta").hide();
 		$("#tbl_seleccion_ida_small").show();
 
-		if(seleccionVuelo.vuelta != null)
+		if(vuelos_store.tieneVuelta == true)
 			$("#tbl_seleccion_vuelta_small").show();
 
 		window.scrollTo(0,0); // scroll hacia arriba
@@ -1927,7 +1927,7 @@ function backToFlightStage()
     $("#widget_resumen_reserva").removeClass("read-only");
 
     $("#tbl_seleccion_ida").show();
-    if(seleccionVuelo.vuelta != null)
+    if(vuelos_store.tieneVuelta == true)
         $("#tbl_seleccion_vuelta").show();
 
     $("#tbl_seleccion_ida_small").hide();
