@@ -151,12 +151,14 @@
                 if(typeof store.vueloMatriz[opcion_vuelo_indice] === 'object'){
                     $.each(store.vueloMatriz[opcion_vuelo_indice].tarifas, function (indexTarifa, tarifa) {
 
+                        var continuar = true;
                         //verificamos si ya se selecciona la ida debemos filtrar tambien por la familia que se a seleccionado para no mostrar tarifas que no se podrian combinar
                         if(ida_vuelta == "vuelosVuelta"){
                             if(scope.familiaIdaSeleccionado != ''){
 
                                 if(parseInt(scope.familiaIdaSeleccionado) != parseInt(tarifa.FI)){
-                                    return false;
+                                    continuar = false;
+
                                 }
 
                             }
@@ -167,31 +169,34 @@
                             if(scope.familiaVueltaSeleccionado != ''){
 
                                 if(parseInt(scope.familiaVueltaSeleccionado) != parseInt(tarifa.FV)){
-                                    return false;
+                                    continuar = false;
                                 }
 
                             }
                         }
 
+                        if(continuar == true){
+                            var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
+                            var moneda = tarifa.TarifaPersoCombinabilityID[0].moneda;
+                            var disponibilidad = parseInt(tarifa.iv[disponibilidadTipoidaVuelta]);
 
-                        var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
-                        var moneda = tarifa.TarifaPersoCombinabilityID[0].moneda;
-                        var disponibilidad = parseInt(tarifa.iv[disponibilidadTipoidaVuelta]);
+                            var clase_disponibilidad = '';
+                            //vemos la disponibilidad para agregar la clase correspondiente un color etc
+                            if(disponibilidad > 0 && disponibilidad <= 3){
 
-                        var clase_disponibilidad = '';
-                        //vemos la disponibilidad para agregar la clase correspondiente un color etc
-                        if(disponibilidad > 0 && disponibilidad <= 3){
+                                clase_disponibilidad = 'dispo_rojo';
+                            }else if(disponibilidad > 3 && disponibilidad <= 6){
+                                clase_disponibilidad = 'dispo_naranja';
+                            }else if(disponibilidad > 6 && disponibilidad <= 9){
 
-                            clase_disponibilidad = 'dispo_rojo';
-                        }else if(disponibilidad > 3 && disponibilidad <= 6){
-                            clase_disponibilidad = 'dispo_naranja';
-                        }else if(disponibilidad > 6 && disponibilidad <= 9){
+                                clase_disponibilidad = 'dispo_verde';
+                            }
+                            ///FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>'+importe+' '+moneda+'</b></div>');
 
-                            clase_disponibilidad = 'dispo_verde';
+                            objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: '+tam+'%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: pointer;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+
+
                         }
-                        ///FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>'+importe+' '+moneda+'</b></div>');
-
-                        objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: '+tam+'%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: pointer;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
 
 
                     });
