@@ -167,8 +167,21 @@
 
 
 
+
+
                 //verificamos si existe vuelta
                 if (that.tieneVuelta == true) {
+
+                    //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+                    if (!Array.isArray(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo)) {
+
+                        var arrayVueloVuelta = [];
+                        arrayVueloVuelta.push(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo);
+
+                        object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo = arrayVueloVuelta;
+
+                    }
+
                     $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (indexVuelta, vuelta) {
 
 
