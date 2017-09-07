@@ -82,9 +82,9 @@ var BoA = {
 
     defaultConsultaVuelos : {
         origen: 'CBB',
-        destino: 'BCN',
-        fechaIda : '20171028',//formatCompactDate(new Date()), // today
-        fechaVuelta:'20171128',//null, // no flight back
+        destino: 'EZE',
+        fechaIda : '20170914',//formatCompactDate(new Date()), // today
+        fechaVuelta:'20171024',//null, // no flight back
         adulto: 1,
         infante: 0,
         ninho: 0

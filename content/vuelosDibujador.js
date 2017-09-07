@@ -744,7 +744,7 @@
                 //mandamos vuelos vuelta al objeto
                 objectEnviar.seleccionVuelo.vuelosVuelta = [];
                 //agregamos los vuelos de ida a nuestro arreglo para enviar
-                $.each(scope.store.vuelosVuelta[scope.opcionIdaSeleccionado].vuelos,function (indexVueloVuelta,dato) {
+                $.each(scope.store.vuelosVuelta[scope.opcionVueltaSeleccionado].vuelos,function (indexVueloVuelta,dato) {
 
 
                     objectEnviar.seleccionVuelo.vuelosVuelta.push({

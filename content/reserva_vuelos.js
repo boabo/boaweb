@@ -824,14 +824,21 @@ function validatePassengers()
 		}
 
 		var tbxNroDocumento = divPersona.find(".nro-documento");
-		if($.trim(tbxNroDocumento.val()) == "") {
-			isValid = false;
-			tbxNroDocumento.parent().addClass('active');
-		} else {
-			persona["nroDocumento"] = tbxNroDocumento.val();
-		}
+        if($.trim(tbxNroDocumento.val()) == "") {
+            isValid = false;
+            tbxNroDocumento.parent().addClass('active');
+        } else {
+            persona["nroDocumento"] = tbxNroDocumento.val();
+        }
 
+        //VALIDAMOS EL TELEFONO
+        var tbxTelefono = divPersona.find(".telefono");
 		persona["telefono"] = divPersona.find(".telefono").val();
+        if(persona.telefono.length > 24 ) {
+            isValid = false;
+           showSimpleDialog2('Telefono no tiene que ser mayor a 24 caracters');
+        }
+
 		persona["nroViajeroFrecuente"] = divPersona.find(".nro-viajero-frecuente").val();
 		if(tipo=='adulto'){
 			var tbxemail = divPersona.find(".email");
@@ -1198,8 +1205,13 @@ function asyncReceiveFlights(response)
         //quitamos seleccion y le ponemos que no hay vuelos
 		$('.days').find('.selected').find('h3').html('NO HAY VUELOS');
 		$('.days').find('.selected').removeClass('selected').addClass('no-flights');
+
+		$("#salidasHeaderFamilias").empty().append('<div style="width: 100%; height: 70px; background-color: #EFAA35;    color: #111;padding-top: 25px;text-align: center;">'+response.ResultInfoOrError.messageError+'</div>');
+		$("#llegadasHeaderFamilias").empty().append('<div style="width: 100%; height: 70px; background-color: #EFAA35;    color: #111;padding-top: 25px;text-align: center;">'+response.ResultInfoOrError.messageError+'</div>');
 		return;
 	}
+    $("#salidasHeaderFamilias").empty();
+    $("#llegadasHeaderFamilias").empty();
 
 	// el verdadero response esta mas adentro ¬¬
 	response = response['ResultAvailabilityPlusValuationsShort']; 
