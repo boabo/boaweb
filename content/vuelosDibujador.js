@@ -737,7 +737,8 @@
                     fareCode:tarifas[0].TarifaPersoCombinabilityID[0].fare_code,
                     clase:tarifas[0].TarifaPersoCombinabilityID[0].clases,
                     origen:dato.origen,
-                    destino:dato.destino
+                    destino:dato.destino,
+                    operador:dato.co_operador
                 })
 
             });
@@ -760,7 +761,8 @@
                         fareCode:tarifas[0].TarifaPersoCombinabilityID[0].fare_code,
                         clase:tarifas[0].TarifaPersoCombinabilityID[0].clases,
                         origen:dato.origen,
-                        destino:dato.destino
+                        destino:dato.destino,
+                        operador:dato.co_operador
                     })
 
                 });
