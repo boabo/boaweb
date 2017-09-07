@@ -24,8 +24,11 @@
             $('#picker_salida').datepicker("setDate",
                 compactToJSDate(BoA.defaultConsultaVuelos.fechaIda)
             );
+            console.log('$("#rbtn_ida")',$("#rbtn_ida"))
+            $("#rbtn_ida").click();
 
-            if(BoA.defaultConsultaVuelos.fechaVuelta != null) {
+            if(this.store.tieneVuelta == true) {
+
                 $("#rbtn_ida_vuelta").click();
                 $("#picker_regreso").datepicker("setDate",
                     compactToJSDate(BoA.defaultConsultaVuelos.fechaVuelta)
