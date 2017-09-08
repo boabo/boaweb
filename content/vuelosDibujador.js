@@ -477,13 +477,13 @@
                 if (ObjectTasasPorTipoPasajero[v.tipoPasajero] != undefined) {
                     ObjectTasasPorTipoPasajero[v.tipoPasajero].push({
                         key: v.tipoTasa,
-                        value: parseFloat(v.monto) * parseFloat(v.cantidadPax)
+                        value: parseFloat(v.monto)
                     });
                 } else {
                     ObjectTasasPorTipoPasajero[v.tipoPasajero] = [];
                     ObjectTasasPorTipoPasajero[v.tipoPasajero].push({
                         key: v.tipoTasa,
-                        value: parseFloat(v.monto) * parseFloat(v.cantidadPax)
+                        value: parseFloat(v.monto)
                     });
                 }
 
