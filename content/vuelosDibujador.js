@@ -316,11 +316,33 @@
 
 
 
+                        //eliminaremos los vuelos de la ida pero mantendremos las familias
+                        $.each($("#llegadas_").children('div'),function (i,v) {
+                            if(i != 0){
+                                $(v).remove();
+                            }
+
+                        });
+                        scope.dibujarVuelos('llegadas', scope.store);
+                        //volvemos a seleecionar la vuelta que seleeciono
+                        $("#vuelosVuelta_"+scope.opcionVueltaSeleccionado).find('[data-fv="'+scope.familiaVueltaSeleccionado+'"]').addClass('vuelosVuelta_seleccionado');
+
+
+
                     }else{//no se a seleccionado nada aun entonces debemos redibjar las vueltas
-                        $("#llegadas_").empty();
+
                         scope.opcionIdaSeleccionado = opcion;
                         var familia = $(that).data('fi');
                         scope.familiaIdaSeleccionado = familia;
+
+                        //eliminaremos los vuelos de la ida pero mantendremos las familias
+                        $.each($("#llegadas_").children('div'),function (i,v) {
+                            if(i != 0){
+                                $(v).remove();
+                            }
+
+                        });
+
                         scope.dibujarVuelos('llegadas', scope.store);
 
                     }
@@ -363,6 +385,19 @@
 
                     scope.dibujarBotonParaContinuarComprar(scope.opcionIdaSeleccionado +'-'+ opcion, scope.familiaIdaSeleccionado,familia);
 
+
+                    //actualizamos los vuelos ida con referencia de vuelos vuelta
+                    //aca debemos mantener seleccionado el vuelo ida en este caso redibujar y vlver a seleccionarlo
+
+                    //eliminaremos los vuelos de la ida pero mantendremos las familias
+                    $.each($("#salidas_").children('div'),function (i,v) {
+                        if(i != 0){
+                            $(v).remove();
+                        }
+
+                    });
+                    scope.dibujarVuelos('salidas', scope.store);
+                    $("#vuelosIda_"+scope.opcionIdaSeleccionado).find('[data-fi="'+scope.familiaIdaSeleccionado+'"]').addClass('vuelosIda_seleccionado');
 
 
                 }else{//cuando no se a seleccionado la ida entonces se debe redibujar la ida con la opcion seleccionada de la vuelta
