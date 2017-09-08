@@ -805,6 +805,12 @@ function validatePassengers()
 			persona["nombres"] = tbxNombres.val();
 		}
 
+        if(persona.nombres.length < 2 ) {
+            isValid = false;
+            //showSimpleDialog2('Nombre Incorrecto ');
+        }
+
+
 		// apellidos
 		var tbxApellidos = divPersona.find(".apellidos");
 		if($.trim(tbxApellidos.val())=="") {
@@ -1009,18 +1015,26 @@ function asyncValidateSeleccionVuelo(response)
 			for(var i=0;i<seleccionVuelo[key].num;i++)
 				form.append(buildRegistroPersona(key,numPx++));
 		var nowYear = new Date();
-		/*form.find(".calendar").datepicker({
-			dateFormat: 'dd MM yy',
-			numberOfMonths: 1, 
-			maxDate: 0,
-			changeYear:true,
-			changeMonth:true,
-			yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
-		});
-		console.log(nowYear.getFullYear() - 12);
-		//mandamos date al picker
-		var date = new Date(parseInt(nowYear.getFullYear() - 80),01,01);
-		form.find(".calendar").datepicker().datepicker("setDate", date);*/
+
+
+        $(".nombres").validCampos(' abcdefghijklmnopqrstuvwxyzáéiou');
+        $(".apellidos").validCampos(' abcdefghijklmnopqrstuvwxyzáéiou');
+        $(".telefono").validCampos(' 0123456789+()-');
+        $(".nro-documento").validCampos(' 0123456789abcdefghijklmnopqrstuvwxyz-');
+
+
+        /*form.find(".calendar").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 1,
+            maxDate: 0,
+            changeYear:true,
+            changeMonth:true,
+            yearRange: (nowYear.getFullYear() - 80).toString() + ':' + (nowYear.getFullYear() - 12).toString()
+        });
+        console.log(nowYear.getFullYear() - 12);
+        //mandamos date al picker
+        var date = new Date(parseInt(nowYear.getFullYear() - 80),01,01);
+        form.find(".calendar").datepicker().datepicker("setDate", date);*/
 
 
         form.children('[data-tipo=adulto]').find(".calendar").datepicker({
@@ -1716,6 +1730,7 @@ function buildRegistroPersona(tipo, numPx)
 			"");
 
 	$(persona).find("input").focusin(focusOnPersona);
+
 
 	return persona;
 }
