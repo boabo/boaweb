@@ -664,6 +664,8 @@
                     tipoPasajero = 'adulto';
                 }else if(v.typePax == 'CH' ){
                     tipoPasajero = 'ninho';
+                }else if(v.typePax == 'IN' ){
+                    tipoPasajero = 'infante';
                 }
                 objectEnviar.seleccionVuelo[tipoPasajero] = {
                     num : v.countPax,

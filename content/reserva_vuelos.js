@@ -807,7 +807,7 @@ function validatePassengers()
 
         if(persona.nombres.length < 2 ) {
             isValid = false;
-            //showSimpleDialog2('Nombre Incorrecto ');
+            showSimpleDialog2('Nombre Incorrecto Tiene que ser mas de dos caracteres');
         }
 
 
@@ -819,6 +819,12 @@ function validatePassengers()
 		} else {
 			persona["apellidos"] = tbxApellidos.val();
 		}
+
+
+        if(persona.apellidos.length < 2 ) {
+            isValid = false;
+            showSimpleDialog2('Apellido Incorrecto Tiene que ser mas de dos caracteres');
+        }
 
 		// tipo de documento
 		var selectTipoDocumento = divPersona.find(".tipo-documento");

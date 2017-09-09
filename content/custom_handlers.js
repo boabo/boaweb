@@ -85,8 +85,8 @@ var BoA = {
         destino: 'EZE',
         fechaIda : '20170914',//formatCompactDate(new Date()), // today
         fechaVuelta:'20171024',//null, // no flight back
-        adulto: 2,
-        infante: 0,
+        adulto: 1,
+        infante: 1,
         ninho: 0
     },
 
