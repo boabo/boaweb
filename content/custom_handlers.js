@@ -71,8 +71,8 @@ var BoA = {
 
 		/* SERVICES */
         // nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-        nearest_dates_service: "http://skbpruebas.cloudapp.net/ServicesA1/BasicReservationServiceA1.svc/Calendar",
-        flights_schedule_service: "http://skbpruebas.cloudapp.net/ServicesA1/BasicReservationServiceA1.svc/AvailabilityPlusValuationsShort",
+        nearest_dates_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/Calendar",
+        flights_schedule_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
         validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
         change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php",
@@ -82,11 +82,11 @@ var BoA = {
 
     defaultConsultaVuelos : {
         origen: 'CBB',
-        destino: 'EZE',
-        fechaIda : '20170914',//formatCompactDate(new Date()), // today
+        destino: 'VVI',
+        fechaIda : '20171014',//formatCompactDate(new Date()), // today
         fechaVuelta:'20171024',//null, // no flight back
         adulto: 1,
-        infante: 1,
+        infante: 0,
         ninho: 0
     },
 

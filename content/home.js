@@ -116,6 +116,51 @@ $(document).on('ready',function()
 	$("#locale_dialog .button").click(validateAndSelectLocaleDialog);
 
 	// showLocaleSettingsDialog();
+
+
+	//cantidad de pasajeros
+    $("#select_nro_adultos").change(function () {
+        var pasajeros_adultos = $("#select_nro_adultos").val();
+        var count_permitidos = 9 - parseInt(pasajeros_adultos);
+
+		$.each($("#select_nro_ninhos").children(),function (k,v) {
+
+			if(count_permitidos < k ){
+				$(v).hide();
+			}else {
+                $(v).show();
+			}
+			console.log(v)
+        });
+		$.each($("#select_nro_bebes").children(),function (k,v) {
+
+			if(pasajeros_adultos < k ){
+				$(v).hide();
+			}else{
+                $(v).show();
+
+            }
+			console.log(v)
+        });
+    });
+
+    $("#select_nro_ninhos").change(function () {
+        var pasajeros_ninos = $("#select_nro_ninhos").val();
+        var count_permitidos = 9 - parseInt(pasajeros_ninos);
+
+        $.each($("#select_nro_adultos").children(),function (k,v) {
+
+            if(count_permitidos < k ){
+                $(v).hide();
+            }else {
+                $(v).show();
+            }
+            console.log(v)
+        });
+
+    });
+
+
 });
 // ---------------------------------------------------------------------------
 function click_menu_buscador_vuelos()

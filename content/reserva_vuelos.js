@@ -753,6 +753,7 @@ function changeNumPassengers()
 
 			if(contadorNuevaPeticion == 1 ){
 				contadorNuevaPeticion +=1;
+				$('.cell-submit').empty();
 				setTimeout(validateSearch, 2500);
 			}
 
@@ -1834,7 +1835,7 @@ function getTypeSelectedSitesCount(tipo_seleccionado)
 	var pxSelections = $("#widget_resumen_reserva .selector-pax ul");
 	var sitio_seleccionados = {
 		total_adulto : 0,
-		total_ninho: 0
+		total_ninho: 0,
 	};
 
 	for(var i=0;i<pxSelections.length;i++) {
@@ -1864,6 +1865,19 @@ function getTypeSelectedSitesCount(tipo_seleccionado)
 			}
 
 		});
+
+		//CAMBIAMOS LA CANTIDAD DE LOS INFANTES DEPENDIENDO DE LA CANTIDAD DE ADULTOS 1 INFANTE POR ADULTO
+        $.each($(pxSelections[2]).children('li'),function (k,v) {
+
+
+            if(count < k){
+                $(v).hide();
+            }else{
+                $(v).css({"display":""});
+            }
+
+        });
+
 
 	}else if (tipo_seleccionado == 'ninho'){
 		var count = sitio_seleccionados.total_ninho;
