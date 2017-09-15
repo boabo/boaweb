@@ -21,6 +21,22 @@
                 valor:6,
                 tipo:"-"
             }],
+            'CBB-MIA':[{
+                valor:1,
+                tipo:"-"
+            }],
+            'VVI-MIA':[{
+                valor:1,
+                tipo:"-"
+            }],
+            'MIA-CBB':[{
+                valor:1,
+                tipo:"+"
+            }],
+            'MIA-VVI':[{
+                valor:1,
+                tipo:"+"
+            }],
         },
         vueloMatriz: '',
         tieneIda: false,
