@@ -22,7 +22,7 @@
             var that = this;
 
             $('#picker_salida').datepicker("setDate",
-                compactToJSDate(BoA.defaultConsultaVuelos.fechaIda)
+                compactToJSDate(that.store.fechaIdaConsultada)
             );
             console.log('$("#rbtn_ida")',$("#rbtn_ida"))
             $("#rbtn_ida").click();
@@ -31,7 +31,7 @@
 
                 $("#rbtn_ida_vuelta").click();
                 $("#picker_regreso").datepicker("setDate",
-                    compactToJSDate(BoA.defaultConsultaVuelos.fechaVuelta)
+                    compactToJSDate(that.store.fechaVueltaConsultada)
                 );
             }
 
