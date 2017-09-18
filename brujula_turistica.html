@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<!--     BOLIVIANA DE AVIACION     -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <title>Boliviana de Aviaci&oacute;n</title>
+    <link rel="icon" href="content/images/icon.png" type="image/x-icon">
+
+    <!-- JQUERY LIBRARY -->
+    <script type="text/javascript" src="content/lib/jquery-1.11.1.min.js"></script>
+
+    <!-- BROWSER DETECTION -->
+    <script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+    <!-- SCROLLBAR LIBRARY -->
+    <link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
+          rel="stylesheet" type="text/css" />
+    <script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- ANIMATION LIBRARY -->
+    <script type="text/javascript" src="content/prototypes/Engine.js"></script>
+    <script type="text/javascript" src="content/prototypes/Transformable.js"></script>
+    <script type="text/javascript" src="content/prototypes/Transparent.js"></script>
+    <script type="text/javascript" src="content/prototypes/Cloud.js"></script>
+    <script type="text/javascript" src="content/prototypes/Sky.js"></script>
+
+    <!-- BRUJULA TURISTICA SCRIPTS -->
+    <script type="text/javascript" src="content/brujula_turistica.js"></script>
+
+    <!-- INFO PAGE CUSTOM SCRIPTS -->
+    <script type="text/javascript" src="content/info_page.js"></script>
+    <script type="text/javascript" src="content/generic_container.js"></script>
+
+    <!-- COMMON SCRIPTS -->
+    <script type="text/javascript" src="content/common.js"></script>
+    <script type="text/javascript" src="content/custom_handlers.js"></script>
+    <script type="text/javascript" src="content/header.js"></script>
+    <script>
+        INFO_PAGE_LINK_ADDRESS = "info_page.html";
+    </script>
+
+    <!-- STYLE.CSS -->
+    <link href="content/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body style="padding:0;margin:0;overflow-y:auto !important;overflow-x:hidden !important">
+<header style="display:block">
+    <a id="btn_return_home" href="http://www.boa.bo"></a>
+    <div class="logo-header"></div>
+    <ul id="main_menu">
+        <li id="menu_item_planifica" >
+            <span>PLANIFICA TU VIAJE</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>RESERVAR VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>ESTADO DEL VUELO
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>HORARIO DE VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary disabled"  data-item="web_check_in"><div class="icon"></div>WEB CHECK-IN</li>
+                                <li class="primary disabled"  data-item="formas_pago"><div class="icon"></div>FORMAS DE PAGO</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_antes_viajar">
+            <span>ANTES DE VIAJAR</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="politica_equipaje"><div class="icon"></div>POL&Iacute;TICA DE EQUIPAJE</li>
+                                <li data-item="equipaje_mano">Equipaje de mano</li>
+                                <li data-item="equipaje_facturable">Equipaje facturable</li>
+                                <li data-item="exceso_equipaje">Exceso de equipaje</li>
+                                <li data-item="equipaje_especial">Equipaje especial</li>
+                                <li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+                                <li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+                                <li data-item="equipaje_mascotas">Mascotas</li>
+                                <li class="primary disabled" data-item="seguimiento_equipaje"><div class="icon"></div>SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA</li>
+                                <li class="primary disabled"  data-item="equipajes_demorados"><div class="icon"></div>EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS</li>
+                                <li class="primary disabled"  data-item="declaracion_equipaje"><div class="icon"></div>DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE</li>
+                                <li class="primary" data-item="tips_equipaje"><div class="icon"></div>TIPS DE EQUIPAJE</li>
+                                <li class="primary disabled" data-item="equipaje_interlineal"><div class="icon"></div>EQUIPAJE INTERLINEAL</li>
+                                <li class="primary" data-item="llegar_aeropuerto"><div class="icon"></div>LLEGAR AL AEROPUERTO</li>
+                                <li data-item="hora_limite">Hora l&iacute;mite</li>
+                                <li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+                                <li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+                                <li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="servicios_especiales"><div class="icon"></div>SERVICIOS ESPECIALES</li>
+                                <li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+                                <li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes</li>
+                                <li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales</li>
+                                <li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+                                <li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til (PDMs)</li>
+                                <li data-item="bebes">Viajando con beb&eacute;s</li>
+                                <li data-item="mascota">Viajando con tu mascota en cabina</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="pasajeros_especiales"><div class="icon"></div>PASAJEROS ESPECIALES</li>
+                                <li data-item="embarazadas">Mujeres embarazadas</li>
+                                <li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+                                <li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+                                <li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+                                <li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+                                <li class="primary" data-item="menu_especial"><div class="icon"></div>MEN&Uacute; ESPECIAL</li>
+                                <li class="primary" data-item="documentacion_viaje"><div class="icon"></div>DOCUMENTACI&Oacute;N DE VIAJE, VISA y API</li>
+                                <li class="primary" data-item="vacunas"><div class="icon"></div>VACUNAS</li>
+                                <li class="primary" data-item="derechos_pasajeros"><div class="icon"></div>DERECHOS DE LOS PASAJEROS</li>
+                                <li data-is_link="true">
+                                    <a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_promos_destinos" style="display:none">
+            <span>PROMOS Y DESTINOS</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_experiencia_boa">
+            <span>EXPERIENCIA BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="nuestra_flota"><div class="icon"></div>NUESTRA FLOTA</li>
+                                <li class="primary" data-item="experiencia_bordo"><div class="icon"></div>EXPERIENCIA A BORDO</li>
+                                <li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+                                <li data-item="" class="disabled">Entretenimiento a Bordo</li>
+                                <li data-item="" class="disabled">Duty Free a Bordo</li>
+                                <li data-item="" class="disabled">Asiento + Confort</li>
+                                <li data-item="" class="disabled">Revista Destinos</li>
+                                <li data-item="" class="disabled">Wi-Fi y GSM</li>
+                                <li class="primary" data-item="seguro_internacional"><div class="icon"></div>SEGURO INTERNACIONAL</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="en_el_aeropuerto"><div class="icon"></div>EN EL AEROPUERTO</li>
+                                <li data-item="check_in">Servicio de Check-In</li>
+                                <li data-item="" class="disabled">Kioskos de Check-In</li>
+                                <li data-item="" class="disabled">Mobile Phone Check-In</li>
+                                <li data-item="" class="disabled">Salas VIP</li>
+                                <li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+                                <li data-item="" class="disabled">Parqueos</li>
+                                <li data-item="" class="disabled">Servicio de Chofer</li>
+                                <li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="cabinas"><div class="icon"></div>CARACTERISTICAS DE LAS CABINAS</li>
+                                <li data-item="" class="disabled">Clase Business</li>
+                                <li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+                                <li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE FAMILIA</li>
+                                <li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE GRUPOS</li>
+
+                                <li class="primary disabled" data-item=""><div class="icon"></div>NUESTRAS ALIANZAS</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_boa_millas" style="display:none">
+            <span>BoA MILES</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+                                <li data-item="">Secundario A</li>
+                                <li data-item="">Secundario B</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_somos_boa">
+            <span>SOMOS BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="perfil_corporativo"><div class="icon"></div>PERFIL CORPORATIVO</li>
+                                <li class="primary disabled" data-item="liderazgo_corporativo"><div class="icon"></div>LIDERAZGO CORPORATIVO</li>
+                                <li class="primary" data-item="somos_iosa"><div class="icon"></div>SOMOS IOSA</li>
+                                <li class="primary" data-item="reconocimientos_premios"><div class="icon"></div>RECONOCIMIENTOS Y PREMIOS</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+    <ul id="sec_menu">
+        <li id="menu_item_agencias">Agencias</li>
+        <li id="menu_item_corporativo" style="display:none">Corporativo</li>
+        <li id="menu_item_login" style="display:none">Login</li>
+    </ul>
+    <div id="menu_locations" class="header-menu">
+        <div class="flag bolivia"></div>
+        <h2><strong>BOLIVIA</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="bolivia selected" data-location="bolivia">
+                <div class="flag"></div>
+                <h2><strong>BOLIVIA</strong></h2>
+            </li>
+            <li class="bsas"  data-location="bsas">
+                <div class="flag"></div>
+                <h2><strong>BS. AS.</strong></h2>
+            </li>
+            <li class="madrid" data-location="madrid">
+                <div class="flag"></div>
+                <h2><strong>MADRID</strong></h2>
+            </li>
+            <li class="saopaulo"  data-location="saopaulo">
+                <div class="flag"></div>
+                <h2><strong>SAO PAULO</strong></h2>
+            </li>
+            <li class="salta" data-location="salta">
+                <div class="flag"></div>
+                <h2><strong>SALTA</strong></h2>
+            </li>
+            <li class="miami" data-location="miami">
+                <div class="flag"></div>
+                <h2><strong>MIAMI</strong></h2>
+            </li>
+        </ul>
+    </div>
+    <div id="menu_languages" class="header-menu">
+        <h2><strong>ESPA&Ntilde;OL</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="selected" data-language="ES">
+                <h2><strong>ESPA&Ntilde;OL</strong></h2>
+            </li>
+            <!-- <li data-language="EN">
+                    <h2><strong>ENGLISH</strong></h2>
+                </li>
+                <li data-language="PT">
+                    <h2><strong>PORTUGU&Ecirc;S</strong></h2>
+                </li> -->
+        </ul>
+    </div>
+</header>
+
+
+<div id="clouds">
+    <canvas id="clouds_canvas" width="2600" height="1010"></canvas>
+</div>
+<!-- UI Brujula Turisticca -->
+<div id="ui_brujula_turistica" class="ui-section">
+    <div class="header" id="shadow_header">
+        <h3>DESCUBRE</h3>
+        <h2>BOLIVIA</h2>
+    </div>
+    <div class="header-fixed" style="width: 900px;margin-left: 200px;">
+        <h3>DESCUBRE BOLIVIA</h3>
+    </div>
+    <div id="info_departamentos_bolivia" class="info selected" style="width: 100%;margin-left: -200px;min-height: 450px;">
+        <div class="icon"></div>
+        <div class="descripcion">
+            <div class="content_brujula" >
+                <div style="width: 100%;background-color: #00bff3; height: 438px;">
+                    <div>
+                        <div id="slider" >
+                            <a href=""><img class="slide" src="content/images/contenidos/brujula_turistica/descubre_bolivia_img.jpg" alt=""></a>
+                            <a href=""><img class="slide" src="content/images/contenidos/brujula_turistica/cochabamba_slide.jpg" alt=""></a>
+                            <a href=""><img class="slide" src="content/images/contenidos/brujula_turistica/potosi_slide.jpg" alt=""></a>
+                        </div>
+                        <div>
+                            <a href="javascript:" class="next"><img src="content/images/contenidos/brujula_turistica/flecha_der.png" alt="Siguiente"></a>
+                            <a href="javascript:" class="previous"><img src="content/images/contenidos/brujula_turistica/flecha_izq.png" alt="Anterior"></a>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div style="float: left;margin-top: 10px;">
+                        <div style="width: 100%;">
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad1" >
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/beni.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Beni.jpg" alt="">
+                                <div class="dropdown-content_mapa" id="myDropdown_mapa1" >
+                                    <a class="dep" data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad2">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/cochabamba.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Cochabamba.jpg" alt="">
+                                <div id="myDropdown_mapa2" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad3">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/chuquisaca.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Chuquisaca.jpg" alt="">
+                                <div  id="myDropdown_mapa3" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad4">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/lapaz.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/LaPaz.jpg" alt="">
+                                <div  id="myDropdown_mapa4" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad5">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/potosi.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Potosi.jpg" alt="">
+                                <div  id="myDropdown_mapa5" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad6">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/pando.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Pando.jpg" alt="">
+                                <div  id="myDropdown_mapa6" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad7">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/oruro.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Oruro.jpg" alt="">
+                                <div  id="myDropdown_mapa7" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad8">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/tarija.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/Tarija.jpg" alt="">
+                                <div  id="myDropdown_mapa8" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="dropbtn_mapa" id="ciudad9">
+                                <img class="ciudad" src="content/images/contenidos/brujula_turistica/santacruz.png" alt="">
+                                <img style="width: 99%;" src="content/images/contenidos/brujula_turistica/SantaCruz.jpg" alt="">
+                                <div  id="myDropdown_mapa9" class="dropdown-content_mapa">
+                                    <a data-item="ciudades" href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Destinos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde dormir</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Eventos</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Donde comer</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Ofertas tur&iacute;sticas</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Qu&eacute; comprar</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Esenciales</a>
+                                    <a href=""><img style="margin-right: 5px;" src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">Local tips</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_brujula">
+                    <img src="content/images/contenidos/brujula_turistica/footer_brujula.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info_ciudades" class="info " style="width: 100%; height: auto !important;margin-left: -200px;">
+        <ul class="breadcrumbs">
+            <li>
+                <a href="Brujula_turistica.html">Cochabamba</a>
+                <img src="content/images/contenidos/brujula_turistica/flecha_min.png" alt="">
+            </li>
+            <li style="font-weight: bold;">
+                Destinos
+            </li>
+        </ul>
+        <div class="icon"></div>
+        <div class="descripcion">
+            <div class="content_brujula" style="position: relative !important;">
+                <div class="divider"></div>
+                <div class="cabecera_contenido">
+                    <div class="dropdown">
+                        <div class="dropbtn"><img class="imgbtn" onclick="myFunction()" style="margin-right: 10px;z-index: 0;" src="content/images/contenidos/brujula_turistica/boton_menu.png">Cochabamba</div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="">Departamentos de Bolivia</a>
+                            <a href="">Destinos</a>
+                            <a href="">Donde dormir</a>
+                            <a href="">Eventos</a>
+                            <a href="">Donde comer</a>
+                            <a href="">Ofertas tur&iacute;sticas</a>
+                            <a href="">Qu&eacute; comprar</a>
+                            <a href="">Esenciales</a>
+                            <a href="">Local tips</a>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;">
+                        <input class="search" type="search" name="search" placeholder="Escribe aqu&iacute; tu busqueda">
+                    </div>
+                </div>
+                <div style="width: 120%">
+                    <div style="float: left;width: 29%;">
+                        <h2 style="color: #00bff3;margin-left: 0;margin-top: 30px;margin-left: 60px;">Destinos</h2>
+                        <div class="divider_min"></div>
+                    </div>
+                    <div style="display: inline-block;width: 70%;">
+                        <form>
+                            <select class="select_brujula" name="" style="margin-left: 140px;">
+                                <option value="disabled">Precio</option>
+                            </select>
+                            <select class="select_brujula" name="">
+                                <option value="disabled">Los m&aacute;s visitados</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="cont_accordion" onclick="girar('img1', 'ac')">
+                    <div class="accordion" id="ac">Section 1 <img class="normal" id="img1" src="content/images/contenidos/brujula_turistica/flecha_derecha.png" alt=""></div>
+                    <div class="panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div style="width: 100%;">
+                            <div class="accordion1">
+                                <img class="mySlides" src="content/images/contenidos/brujula_turistica/img_accordeon.jpg">
+                                <img class="mySlides" src="content/images/contenidos/brujula_turistica/red.jpg">
+                                <img class="mySlides" src="content/images/contenidos/brujula_turistica/img_accordeon.jpg">
+                                <div style="background-color: #333333; height: 20px;margin-top: 0;width: 340px">
+                                    <a class="anterior" onclick="plusDivs(-1)"><img src="content/images/contenidos/brujula_turistica/flecha_izq.png" style="margin-top: -7px!important;width: 10px" alt="Anterior"></a>
+                                    <a class="siguiente" onclick="plusDivs(1)"><img src="content/images/contenidos/brujula_turistica/flecha_der.png" style="margin-top: -7px;width: 10px" alt="Siguiente"></a>
+                                </div>
+                            </div>
+                            <div class="accordion2">
+                                <img src="content/images/contenidos/brujula_turistica/mapa.jpg" alt="">
+                                <label>Direcci&oacute;n:</label>
+                                <br>
+                                <label>Horarios:</label>
+                                <br>
+                                <label>Sugerencias:</label>
+                                <br>
+                                <label>Mini Bus Parada:</label>
+                                <br>
+                                <label>Costo:</label>
+                                <br>
+                                <label style="">Horario de Salidas:</label>
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cont_accordion" onclick="girar('img2', 'ac1')">
+                    <div class="accordion" id="ac1">Section 2 <img class="normal" id="img2" src="content/images/contenidos/brujula_turistica/flecha_derecha.png" alt=""></div>
+                    <div class="panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="accordion1">
+                            <img class="mySlides1" src="content/images/contenidos/brujula_turistica/img_accordeon.jpg">
+                            <img class="mySlides1" src="content/images/contenidos/brujula_turistica/red.jpg">
+                            <img class="mySlides1" src="content/images/contenidos/brujula_turistica/img_accordeon.jpg">
+                            <div style="background-color: #333333; height: 20px;margin-top: 0;width: 340px">
+                                <a class="anterior" onclick="plusDivs1(-1)"><img src="content/images/contenidos/brujula_turistica/flecha_izq.png" style="margin-top: -7px!important;width: 10px" alt="Anterior"></a>
+                                <a class="siguiente" onclick="plusDivs1(1)"><img src="content/images/contenidos/brujula_turistica/flecha_der.png" style="margin-top: -7px;width: 10px" alt="Siguiente"></a>
+                            </div>
+                        </div>
+                        <div class="accordion2">
+                            <img src="content/images/contenidos/brujula_turistica/mapa.jpg" alt="">
+                            <label>Direcci&oacute;n:</label>
+                            <br>
+                            <label>Horarios:</label>
+                            <br>
+                            <label>Sugerencias:</label>
+                            <br>
+                            <label>Mini Bus Parada:</label>
+                            <br>
+                            <label>Costo:</label>
+                            <br>
+                            <label style="">Horario de Salidas:</label>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cont_accordion"onclick="girar('img3', 'ac2')">
+                    <div class="accordion" id="ac2">Section 3 <img class="normal" id="img3" src="content/images/contenidos/brujula_turistica/flecha_derecha.png" alt=""></div>
+                    <div class="panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="accordion1">
+                            <img class="mySlides2" src="content/images/contenidos/brujula_turistica/img_accordeon.jpg">
+                            <img class="mySlides2" src="content/images/contenidos/brujula_turistica/red.jpg">
+                            <img class="mySlides2" src="content/images/contenidos/brujula_turistica/img_accordeon.jpg">
+                            <div style="background-color: #333333; height: 20px;margin-top: 0;width: 340px">
+                                <a class="anterior" onclick="plusDivs2(-1)"><img src="content/images/contenidos/brujula_turistica/flecha_izq.png" style="margin-top: -7px!important;width: 10px" alt="Anterior"></a>
+                                <a class="siguiente" onclick="plusDivs2(1)"><img src="content/images/contenidos/brujula_turistica/flecha_der.png" style="margin-top: -7px;width: 10px" alt="Siguiente"></a>
+                            </div>
+                        </div>
+                        <div class="accordion2">
+                            <img src="content/images/contenidos/brujula_turistica/mapa.jpg" alt="">
+                            <label>Direcci&oacute;n:</label>
+                            <br>
+                            <label>Horarios:</label>
+                            <br>
+                            <label>Sugerencias:</label>
+                            <br>
+                            <label>Mini Bus Parada:</label>
+                            <br>
+                            <label>Costo:</label>
+                            <br>
+                            <label style="">Horario de Salidas:</label>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = x.length
+        }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+
+    var slideIndex = 1;
+    showDivs1(slideIndex);
+    function plusDivs1(n) {
+        showDivs1(slideIndex += n);
+    }
+    function showDivs1(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides1");
+        if (n > x.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = x.length
+        }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+
+    var slideIndex = 1;
+    showDivs2(slideIndex);
+    function plusDivs2(n) {
+        showDivs2(slideIndex += n);
+    }
+    function showDivs2(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides2");
+        if (n > x.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = x.length
+        }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>
+</body>
+</html>

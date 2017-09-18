@@ -606,6 +606,20 @@
 #info_redes_sociales.fixed 			.icon{background-position: 	0px -150px; }
 #info_itinerario.fixed 				.icon{background-position: 	0px -200px; }
 #info_reclamos_sugerencias.fixed 	.icon{background-position: 	0px -250px; }
+
+
+
+
+
+/* ----------------------------------------------------- */
+/* ------------= Brujula Turística =----------------- */
+/* ----------------------------------------------------- */
+#ui_brujula_turistica .info .icon,
+#ui_brujula_turistica .first-menu li .icon { background-image: url("images/contenidos/brujula_turistica/icono.png"); }
+
+#info_departamentos_bolivia				.icon{background-position: 	0px 0px; margin:0 0 0 300px;}
+#info_ciudades  						.icon{background-position: 	0px 0px; margin:0 0 0 300px;}
+
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
