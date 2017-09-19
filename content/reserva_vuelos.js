@@ -1079,6 +1079,14 @@ function asyncValidateSeleccionVuelo(response)
         var dateINF = new Date(parseInt(nowYear.getFullYear() - 2), 01, 01);
         form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("setDate", dateINF);
 
+        var dateInfanteMin = new Date();
+
+        //console.log(new Date(''+dateInfanteMin.getFullYear() - 1+'/'+dateInfanteMin.getMonth()+'/'+dateInfanteMin.getDate()+''));
+        var fechaMinInf = new Date(''+dateInfanteMin.getFullYear() - 2+'/'+ (dateInfanteMin.getMonth() + 1) +'/'+dateInfanteMin.getDate()+'');
+
+        form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinInf );
+
+
 
 
 
