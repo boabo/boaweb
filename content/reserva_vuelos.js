@@ -1082,9 +1082,11 @@ function asyncValidateSeleccionVuelo(response)
         var dateInfanteMin = new Date();
 
         //console.log(new Date(''+dateInfanteMin.getFullYear() - 1+'/'+dateInfanteMin.getMonth()+'/'+dateInfanteMin.getDate()+''));
+        var fechaMinNino = new Date(''+dateInfanteMin.getFullYear() - 12+'/'+ (dateInfanteMin.getMonth() + 1) +'/'+dateInfanteMin.getDate()+'');
         var fechaMinInf = new Date(''+dateInfanteMin.getFullYear() - 2+'/'+ (dateInfanteMin.getMonth() + 1) +'/'+dateInfanteMin.getDate()+'');
 
         form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinInf );
+        form.children('[data-tipo=ninho]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinNino );
 
 
 
