@@ -21,6 +21,10 @@
                 valor:6,
                 tipo:"-"
             }],
+            'MAD-VVI':[{
+                valor:6,
+                tipo:"+"
+            }],
             'CBB-MIA':[{
                 valor:1,
                 tipo:"-"
