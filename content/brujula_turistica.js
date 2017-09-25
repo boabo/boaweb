@@ -1,3 +1,7 @@
+
+
+
+
 $(document).ready(function () {
 
     var acc = document.getElementsByClassName("accordion");
@@ -62,3 +66,4 @@ function girar(img, ac) {
         rot.className = "normal";
     }
 }
+

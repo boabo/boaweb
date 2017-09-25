@@ -81,9 +81,9 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'LPB',
-        destino: 'TJA',
-        fechaIda : '20171013',//formatCompactDate(new Date()), // today
+        origen: 'MAD',
+        destino: 'VVI',
+        fechaIda : '20171101',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
         adulto: 1,
         infante: 0,
