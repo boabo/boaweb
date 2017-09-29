@@ -174,6 +174,10 @@ $(document).on('ready',function()
     //(function(a){a.fn.validCampos=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
 
 
+	setTimeout(function () {
+        $("#ui_reserva_vuelos").removeClass("blured");
+		showSimpleDialog('Actualmente está inactivo <br> Puede iniciar una nueva búsqueda.',BoA.defaultURLAfterFail);
+    },TIME_END * 1000);
 
 	function pagarReserva(that) {
         var self = this;
@@ -1263,6 +1267,7 @@ function asyncReceiveFlights(response)
 
 	vuelos_store.armarVuelos(response);
 	//iniciamos el dibujador con el store de datos que se tiene
+	console.log(vuelos_store)
 
 	var vuelos_dibujador = Object.create(vuelosDibujador);
     vuelos_dibujador.__proto__.store = vuelos_store;
