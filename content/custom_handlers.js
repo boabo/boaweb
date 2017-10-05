@@ -2,7 +2,7 @@
 
 var VISTAPAGOS = false;
 var DIRECCIONAR = false;
-var TIME_END = 150;
+var TIME_END = 500;
 
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
@@ -83,7 +83,7 @@ var BoA = {
 
     defaultConsultaVuelos : {
         origen: 'CBB',
-        destino: 'POI',
+        destino: 'MIA',
         fechaIda : '20171006',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
         adulto: 1,

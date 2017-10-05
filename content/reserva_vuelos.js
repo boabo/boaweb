@@ -7,6 +7,8 @@ var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 var CACHE_DISABLED = false;
 var IGNORED_TARIFAS_BY_FARE_CODE = ["SSENIOR"];
 var ALLOWED_TARIFAS_BY_ESTADO = ['A'];
+
+var ENABLE_GENDER = false;
 // ---------------------= =---------------------
 var searchParameters = {
 	origen : "", 
@@ -1031,7 +1033,7 @@ function asyncValidateSeleccionVuelo(response)
         $(".nombres").validCampos(' abcdefghijklmnopqrstuvwxyzáéiou');
         $(".apellidos").validCampos(' abcdefghijklmnopqrstuvwxyzáéiou');
         $(".telefono").validCampos(' 0123456789+()-');
-        $(".nro-documento").validCampos(' 0123456789abcdefghijklmnopqrstuvwxyz-');
+        $(".nro-documento").validCampos('0123456789abcdefghijklmnopqrstuvwxyz');
 
 
         /*form.find(".calendar").datepicker({
@@ -1625,6 +1627,12 @@ function requestSearchParameters(parms)
         sitesDetail		: parms.sitesDetail,
 	};
 
+
+	//agregamos si es miami
+	if (parms.destino == 'MIA'){
+		data.gender = '';
+	}
+
     searchParameters.sitesDetail = parms.sitesDetail;
 
 	ajaxRequest(
@@ -1680,6 +1688,15 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 		to: searchParameters.destino
 	};
 
+    //agregamos si es miami
+    if (searchParameters.destino == 'MIA'){
+        data.gender = '';
+        ENABLE_GENDER = true;
+    }else{
+    	ENABLE_GENDER = false;
+	}
+
+
 	ajaxRequest(
 		BoA.urls["flights_schedule_service"], 
 		asyncReceiveFlights, 
@@ -1692,6 +1709,7 @@ function buildRegistroPersona(tipo, numPx)
 
 
 
+	alert(ENABLE_GENDER)
 
 	var isAdulto = (tipo=='adulto');
 
@@ -1742,14 +1760,23 @@ function buildRegistroPersona(tipo, numPx)
 
 			"</tr>"
 		)
+		.append(
+			""+(ENABLE_GENDER==true?
+				""+(isAdulto?
+                        "<tr><th colspan='1'>GENERO</th><th colspan='1'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr> <tr><td><select id='tbx_px"+numPx+"_genero'><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td><td><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>":
+                   		 "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero'><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>"
+				)+""
+                :
+                "" +
+                (isAdulto?
+                        "<tr><th colspan='2' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><td colspan='2'><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td>" :
+                        "<tr><td colspan='4'><span style='color: #4c0a00; font-size: 15px;'><b>Se debe presentar documentos para confirmar la edad</b></span><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+                ) +""
+			)
 
-		.append("" +
-			(isAdulto?
-				"<tr><th colspan='2' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><td colspan='2'><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td>" :
-				"<tr><td colspan='4'><span style='color: #4c0a00; font-size: 15px;'><b>Se debe presentar documentos para confirmar la edad</b></span><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
-			) +
 
-			"");
+        );
+
 
 	$(persona).find("input").focusin(focusOnPersona);
 
