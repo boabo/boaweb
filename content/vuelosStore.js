@@ -284,6 +284,17 @@
 
                     //combinacion de tarifas
                     var arrayTarifasAux = [];
+
+                    //VALIDAMOS QUE SEA ARRAY TarifaPersoCombinabilityIdaVueltaShort
+                    if (!Array.isArray(object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort)) {
+
+                        var arrayTarifaPersoCombinabilityIdaVueltaShort = [];
+                        arrayTarifaPersoCombinabilityIdaVueltaShort.push(object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort);
+
+                        object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort = arrayTarifaPersoCombinabilityIdaVueltaShort;
+
+                    }
+
                     $.each(object.vuelosYTarifas.Tarifas.TarifaPersoCombinabilityIdaVueltaShort, function (indexTarifas, tarifa) {
 
                         //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO

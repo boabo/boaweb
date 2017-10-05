@@ -2,7 +2,7 @@
 
 var VISTAPAGOS = false;
 var DIRECCIONAR = false;
-var TIME_END = 10;
+var TIME_END = 150;
 
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
@@ -83,9 +83,9 @@ var BoA = {
 
     defaultConsultaVuelos : {
         origen: 'CBB',
-        destino: 'VVI',
-        fechaIda : '20171101',//formatCompactDate(new Date()), // today
-        fechaVuelta:'20171116',//null, // no flight back
+        destino: 'POI',
+        fechaIda : '20171006',//formatCompactDate(new Date()), // today
+        fechaVuelta:null,//null, // no flight back
         adulto: 1,
         infante: 0,
         ninho: 0
