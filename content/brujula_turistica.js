@@ -20,11 +20,11 @@ $(document).ready(function () {
     }
 
     $(function () {
-        $('#slider a:gt(0)').hide();
+        $('#slider-bt a:gt(0)').hide();
         var interval = setInterval(changeDiv, 6000);
 
         function changeDiv() {
-            $('#slider a:first-child').fadeOut(1000).next('a').fadeIn(1000).end().appendTo('#slider');
+            $('#slider-bt a:first-child').fadeOut(1000).next('a').fadeIn(1000).end().appendTo('#slider-bt');
         };
         $('.next').click(function () {
             changeDiv();
@@ -32,8 +32,8 @@ $(document).ready(function () {
             interval = setInterval(changeDiv, 6000);
         });
         $('.previous').click(function () {
-            $('#slider a:first-child').fadeOut(1000);
-            $('#slider a:last-child').fadeIn(1000).prependTo('#slider');
+            $('#slider-bt a:first-child').fadeOut(1000);
+            $('#slider-bt a:last-child').fadeIn(1000).prependTo('#slider-bt');
             clearInterval(interval);
             interval = setInterval(changeDiv, 6000);
         });

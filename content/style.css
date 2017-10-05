@@ -2888,18 +2888,20 @@ div.panel {
 	display: none;
 }
 
-#slider{
+#slider-bt{
+	position: absolute;
 	float: left;
 	width: 50.5%;
 	height: 421px;
 	top: 10px;
 }
 
-#slider a{
+#slider-bt a{
 	margin: 0 0 !important;
 }
 
-#slider img{
+#slider-bt img{
+	position: absolute;
 	transition: opacity 2s;
 	-webkit-transition: opacity 2s;
 	-moz-transition: opacity 2s;
@@ -2909,7 +2911,7 @@ div.panel {
 	opacity: 0;
 }
 
-#slider img:nth-child(1){
+#slider-bt img:nth-child(1){
 	opacity: 1;
 }
 
