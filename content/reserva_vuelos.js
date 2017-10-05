@@ -796,7 +796,8 @@ function validatePassengers()
 			tipoDocumento : "",
 			nroDocumento  : "",
 			telefono : "",
-			nroViajeroFrecuente: ""
+			nroViajeroFrecuente: "",
+			genero:""
 		};
 
 		var tipo = divPersona.attr("data-tipo");
@@ -871,6 +872,20 @@ function validatePassengers()
 
 			}
 
+		}
+
+		if(ENABLE_GENDER){
+			// nombres
+            var tbxGenero = divPersona.find(".genero").val();
+
+            if(tbxGenero == 'NONE' ){
+                isValid = false;
+                showSimpleDialog2('Genero Invalido');
+			}else{
+            	persona.genero = divPersona.find(".genero").val();
+			}
+
+            console.log('GENEROOOOOO',tbxGenero)
 		}
 
 
@@ -1709,7 +1724,6 @@ function buildRegistroPersona(tipo, numPx)
 
 
 
-	alert(ENABLE_GENDER)
 
 	var isAdulto = (tipo=='adulto');
 
@@ -1763,8 +1777,8 @@ function buildRegistroPersona(tipo, numPx)
 		.append(
 			""+(ENABLE_GENDER==true?
 				""+(isAdulto?
-                        "<tr><th colspan='1'>GENERO</th><th colspan='1'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr> <tr><td><select id='tbx_px"+numPx+"_genero'><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td><td><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>":
-                   		 "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero'><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>"
+                        "<tr><th colspan='1'>GENERO</th><th colspan='1'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td><td><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>":
+                   		 "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>"
 				)+""
                 :
                 "" +
