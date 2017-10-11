@@ -908,6 +908,10 @@
             $("#tooltip_tasas").empty();
             $("#totalTasas").html(0);
 
+            $("#precio_adultoMayor").html(0);
+
+
+
             flapperTotal.val(0).change();
 
 

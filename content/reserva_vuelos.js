@@ -1271,7 +1271,7 @@ function asyncReceiveDates(response)
 
 	waitingForFlightsData = true;
 
-	//searchParameters.sitios = getSelectedSitesCount();
+	searchParameters.sitios = getSelectedSitesCount();
 
 	requestFlights(currentDateIda, currentDateVuelta,searchParameters.sitios);
 }
