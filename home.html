@@ -434,11 +434,15 @@
 							<td><label>Adultos</label></td>
 							<td><label>Ni&ntilde;os<br>(2-11)a&ntilde;os</label></td>
 							<td><label>Beb&eacute;s<br>(0-1)a&ntilde;os</label></td>
+							<td><label>Adultos Mayor</label></td>
 							<td style="display:none"><label>Flexible en Fechas</label></td>
+
 						</tr>
 						<tr>
 							<td class="input-container">
 								<select id="select_nro_adultos" class="number">
+									<option value="0">0</option>
+
 									<option value="1" selected>1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -464,6 +468,9 @@
 									<option value="9">9</option>
 								</select>
 							</td>
+
+
+
 							<td class="input-container">
 								<select id="select_nro_bebes" class="number">
 									<option value="0" selected>0</option>
@@ -471,10 +478,29 @@
 									<option value="1">2</option>
 								</select>
 							</td>
+
+							<td class="input-container">
+								<select id="select_nro_adultos_mayor" class="number">
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+								</select>
+							</td>
+
 							<td valign="top" style="display:none">
 								<div id="cbx_flexible_en_fechas" class="checkbox"></div>
 							</td>
 						</tr>
+
+
+
 						<tr style="display:none">
 							<td><label>Moneda:</label></td>
 						</tr>
@@ -487,6 +513,10 @@
 							</td>
 						</tr>
 					</table>
+					<br>
+					<br>
+					<br>
+					<br>
 					<div id="btn_buscar_vuelos" class="button">BUSCAR</div>
 				</div>
 				<div id="web_check_in" class="content form">

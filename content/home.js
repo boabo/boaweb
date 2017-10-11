@@ -159,6 +159,43 @@ $(document).on('ready',function()
         });
 
     });
+    $("#select_nro_adultos_mayor").change(function () {
+
+    	if($("#select_nro_adultos_mayor").val() > 0){
+            $("#select_nro_adultos").val(0);
+            $("#select_nro_bebes").val(0);
+            $("#select_nro_ninhos").val(0);
+
+            $("#select_nro_adultos").prop('disabled', true);
+            $("#select_nro_bebes").prop('disabled', true);
+            $("#select_nro_ninhos").prop('disabled', true);
+
+            $("#select_nro_adultos").css({"background-color":"#ccc"});
+            $("#select_nro_bebes").css({"background-color":"#ccc"});
+            $("#select_nro_ninhos").css({"background-color":"#ccc"});
+
+
+
+
+        }else{
+            $("#select_nro_adultos").prop('disabled', false);
+            $("#select_nro_bebes").prop('disabled', false);
+            $("#select_nro_ninhos").prop('disabled', false);
+
+            $("#select_nro_adultos").val(1);
+
+
+
+            $("#select_nro_adultos").css({"background-color":""});
+            $("#select_nro_bebes").css({"background-color":""});
+            $("#select_nro_ninhos").css({"background-color":""});
+
+
+        }
+
+
+
+    });
 
 
 

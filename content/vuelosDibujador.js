@@ -48,8 +48,20 @@
 
 
 
-            var tam = parseInt(100 / this.store.familyInformation.length);
 
+
+
+            //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+            if (!Array.isArray(this.store.familyInformation)) {
+
+                var familyInformation = [];
+                familyInformation.push(this.store.familyInformation);
+
+                this.store.familyInformation = familyInformation;
+
+            }
+
+            var tam = parseInt(100 / this.store.familyInformation.length);
 
             $.each(this.store.familyInformation,function (k,v) {
 
@@ -463,6 +475,8 @@
                     tipoPasajero = 'precio_ninho';
                 } else if (v.typePax == 'IN') {
                     tipoPasajero = 'precio_infante';
+                } else if (v.typePax == 'SNN') {
+                    tipoPasajero = 'precio_adultoMayor';
                 }
 
                 $("#" + tipoPasajero).html((parseFloat(v.importe) * parseInt(v.countPax)) - ( (parseFloat(v.tax_orig) + parseFloat(v.tax_return)) * parseInt(v.countPax)) );
@@ -666,6 +680,8 @@
                     tipoPasajero = 'ninho';
                 }else if(v.typePax == 'IN' ){
                     tipoPasajero = 'infante';
+                }else if(v.typePax == 'SNN' ){
+                    tipoPasajero = 'adultoMayor';
                 }
                 objectEnviar.seleccionVuelo[tipoPasajero] = {
                     num : v.countPax,
@@ -759,6 +775,23 @@
                 };
             }
 
+            if(objectEnviar.seleccionVuelo.adultoMayor == undefined){
+                objectEnviar.seleccionVuelo.adultoMayor = {
+                    num: 			0,
+                    ida:{
+                        precioBase: 0,
+                        tasas: 		[]
+                    },
+                    vuelta:{
+                        precioBase: 0,
+                        tasas: 		[]
+                    },
+                    precioTotal: 		0,
+                    formattedPrecioTotal: "0.00"
+                };
+            }
+
+
             objectEnviar.seleccionVuelo.vuelosIda = [];
             //agregamos los vuelos de ida a nuestro arreglo para enviar
             $.each(scope.store.vuelosIda[scope.opcionIdaSeleccionado].vuelos,function (indexVueloIda,dato) {
@@ -814,10 +847,11 @@
 
 
             if(DIRECCIONAR == false || DIRECCIONAR == undefined || DIRECCIONAR == ''){
-                ajaxRequest(
+                /*ajaxRequest(
                     BoA.urls["validate_flight_selection_service"],
                     asyncValidateSeleccionVuelo,
-                    "POST", objectEnviar);
+                    "POST", objectEnviar);*/
+                asyncValidateSeleccionVuelo({success:true});
 
                 $(that).hide();
                 $(".cell-submit").html('<div onclick="validatePassengers()" id="btn_validar_pasajeros" class="button" >Realizar Pago</div>');

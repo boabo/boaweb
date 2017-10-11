@@ -85,6 +85,21 @@ var seleccionVuelo = {
 		precioTotal: 	0,
 		formattedPrecioTotal: "0.00"
 	},
+
+    adultoMayor: 		{
+        num: 			0,
+        ida:{
+            precioBase: 0,
+            tasas: 		{}
+        },
+        vuelta:{
+            precioBase: 0,
+            tasas: 		{}
+        },
+        precioTotal: 		0,
+        formattedPrecioTotal: "0.00"
+    },
+
 	// adultosMayores: 0
 	precioTotal:    	0
 };
@@ -786,7 +801,7 @@ function validatePassengers()
 	var divPersonas = $("#div_formulario_personas .persona");
 
 
-	var pasajeros = {adulto:[],infante:[],ninho:[]};
+	var pasajeros = {adulto:[],infante:[],ninho:[],adultoMayor:[]};
 	var isAllValid = true;
 	for(var i=0;i<divPersonas.length;i++) {
 		var divPersona = $(divPersonas[i]);
@@ -860,7 +875,7 @@ function validatePassengers()
         }
 
 		persona["nroViajeroFrecuente"] = divPersona.find(".nro-viajero-frecuente").val();
-		if(tipo=='adulto'){
+		if(tipo=='adulto' || tipo=='adultoMayor'){
 			var tbxemail = divPersona.find(".email");
 
 			if(isEmail(divPersona.find(".email").val())!=true){
@@ -873,6 +888,17 @@ function validatePassengers()
 			}
 
 		}
+
+        if( tipo=='adultoMayor'){
+
+            var pickerNacimiento = divPersona.find(".nacimiento");
+            if($.trim(pickerNacimiento.val())=="" ) {
+                isValid = false;
+                pickerNacimiento.parent().addClass('active');
+            }
+
+        }
+
 
 		if(ENABLE_GENDER){
 			// nombres
@@ -1039,7 +1065,7 @@ function asyncValidateSeleccionVuelo(response)
 		form.html("");
 
 		var numPx = 1;
-		for(var key in {adulto:null,ninho:null,infante:null}) // weirdo and fast :P
+		for(var key in {adulto:null,ninho:null,infante:null,adultoMayor:null}) // weirdo and fast :P
 			for(var i=0;i<seleccionVuelo[key].num;i++)
 				form.append(buildRegistroPersona(key,numPx++));
 		var nowYear = new Date();
@@ -1100,14 +1126,25 @@ function asyncValidateSeleccionVuelo(response)
         var dateINF = new Date(parseInt(nowYear.getFullYear() - 2), 01, 01);
         form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("setDate", dateINF);
 
+
+
+
+
         var dateInfanteMin = new Date();
 
         //console.log(new Date(''+dateInfanteMin.getFullYear() - 1+'/'+dateInfanteMin.getMonth()+'/'+dateInfanteMin.getDate()+''));
         var fechaMinNino = new Date(''+dateInfanteMin.getFullYear() - 12+'/'+ (dateInfanteMin.getMonth() + 1) +'/'+dateInfanteMin.getDate()+'');
         var fechaMinInf = new Date(''+dateInfanteMin.getFullYear() - 2+'/'+ (dateInfanteMin.getMonth() + 1) +'/'+dateInfanteMin.getDate()+'');
 
+        var fechaMinAdultoMayor = new Date(''+dateInfanteMin.getFullYear() - 60+'/'+ (dateInfanteMin.getMonth() + 1) +'/'+dateInfanteMin.getDate()+'');
+
         form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinInf );
         form.children('[data-tipo=ninho]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinNino );
+
+        form.children('[data-tipo=adultoMayor]').find(".calendar").datepicker().datepicker("option", "maxDate", fechaMinAdultoMayor );
+
+        form.children('[data-tipo=adultoMayor]').find(".calendar").datepicker().datepicker("option", "changeYear", true );
+
 
 
 
@@ -1129,7 +1166,9 @@ function asyncValidateSeleccionVuelo(response)
 		if(vuelos_store.tieneVuelta == true)
 			$("#tbl_seleccion_vuelta_small").show();
 
-		window.scrollTo(0,0); // scroll hacia arriba
+		//window.scrollTo(0,0); // scroll hacia arriba
+
+        $("html, body").animate({ scrollTop: 0 }, "slow");
 
 		$("#btn_cambiar_vuelo").hide();
 		$("#btn_volver_vuelos").show();
@@ -1232,7 +1271,7 @@ function asyncReceiveDates(response)
 
 	waitingForFlightsData = true;
 
-	searchParameters.sitios = getSelectedSitesCount();
+	//searchParameters.sitios = getSelectedSitesCount();
 
 	requestFlights(currentDateIda, currentDateVuelta,searchParameters.sitios);
 }
@@ -1523,7 +1562,15 @@ function handleInitialRequest()
 	// setup config passengers initial parameters
 	var defaultSitesCount = 0;
 	var aux_count = 0;
-	for(var tipo in {adulto:null,ninho:null,infante:null}) {
+
+	//validamos que si es adulto mayor entonces solo sea ese
+	if (BoA.defaultConsultaVuelos['adultoMayor'] > 0) {
+        BoA.defaultConsultaVuelos['adulto'] = 0;
+        BoA.defaultConsultaVuelos['ninho'] = 0;
+        BoA.defaultConsultaVuelos['infante'] = 0;
+	}
+
+	for(var tipo in {adulto:null,ninho:null,infante:null,adultoMayor:null}) {
 		var pxCount = BoA.defaultConsultaVuelos[tipo];
 		if(tipo != 'infante'){
             defaultSitesCount += pxCount;
@@ -1537,6 +1584,11 @@ function handleInitialRequest()
                     array_asientos[aux_count] = [ "CHD", ""+pxCount+"" ];
                     aux_count++;
                 }
+			}else if(tipo == 'adultoMayor'){
+            	if(pxCount>0){
+                    array_asientos[aux_count] = [ "SNN", ""+pxCount+"" ];
+                    aux_count++;
+                }
 			}
 
 		}else{
@@ -1545,6 +1597,8 @@ function handleInitialRequest()
                 aux_count++;
             }
 		}
+
+
 
 
 		var list = $("#widget_resumen_reserva .selector-pax ul[data-tipo='"+tipo+"']");
@@ -1720,12 +1774,12 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 // ---------------------= dibujador del formulario =---------------------
 function buildRegistroPersona(tipo, numPx)
 {
-	var namesByTipo = {adulto:"ADULTO",ninho:"NI&Ntilde;O",infante:"INFANTE"};
+	var namesByTipo = {adulto:"ADULTO",ninho:"NI&Ntilde;O",infante:"INFANTE",adultoMayor:"ADULTO_MAYOR"};
 
 
 
 
-	var isAdulto = (tipo=='adulto');
+	var isAdulto = (tipo=='adulto') || (tipo=='adultoMayor');
 
 	var persona = document.createElement("div");
 	$(persona).addClass("persona")
@@ -1867,11 +1921,22 @@ function getSelectedSitesCount()
 
 
             total += parseInt(ul.find("li.selected").data("count"));
-		}else{
+		}else if(tipo=="infante"){
             if(parseInt(ul.find("li.selected").data("count")) > 0){
                 array_asientos[array_count_asientos] = [ "INF", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
                 array_count_asientos ++;
             }
+        }else{
+
+            if(parseInt(ul.find("li.selected").data("count")) > 0){
+                array_asientos[array_count_asientos] = [ "SNN", ""+parseInt(ul.find("li.selected").data("count"))+"" ];
+                array_count_asientos ++;
+            }
+
+            total += parseInt(ul.find("li.selected").data("count"));
+
+
+
         }
     }
 
