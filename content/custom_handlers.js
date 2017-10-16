@@ -82,14 +82,14 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'CBB',
-        destino: 'LPB',
-        fechaIda : '20171015',//formatCompactDate(new Date()), // today
+        origen: 'GRU',
+        destino: 'CBB',
+        fechaIda : '20171021',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
         adulto: 1,
         infante: 0,
         ninho: 0,
-        adultoMayor:2
+        adultoMayor:0
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",

@@ -512,6 +512,16 @@
             var cantidad_pax = 0;
             var ObjectTasasTotalesPorTipo = {};
             var ObjectTasasPorTipoPasajero = {};
+
+            //validamos si es array
+            if (!Array.isArray(tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero)) {
+
+                var arraTasaTipoPasajero = [];
+                arraTasaTipoPasajero.push(tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero);
+
+                tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero = arraTasaTipoPasajero;
+
+            }
             $.each(tarifa_del_vuelo_seleccionado.TasaTipoPasajero.TasaTipoPasajero, function (k, v) {
 
                 if (ObjectTasasTotalesPorTipo[v.tipoTasa] != undefined) {

@@ -355,7 +355,7 @@
 
 
             if (that.tieneVuelta == true) {
-                $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (indexVuelta, vuelta) {
+                $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (igndexVuelta, vuelta) {
 
 
 
@@ -392,7 +392,8 @@
                         objVuelta.co_operador = vuelta.co_operador;
                         objVuelta.linea = vuelta.linea;
 
-                        //lo que se necesita
+
+                        //lo que se necesita=
                         objVuelta.horaSalida = {};
                         objVuelta.horaSalida.hh = parseInt(vuelta.hora_salida.substr(0, 2));
                         objVuelta.horaSalida.mm = parseInt(vuelta.hora_salida.substr(2, 2));
