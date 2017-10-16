@@ -9,6 +9,21 @@ var tipo_documento = "DOC_IDENTIFICACION";
 var changing_slides_interval = false;
 var parallaxLocked = false;
 var autoCollapseTimeout;
+
+var ruta1 = "https://portal.iberia.es/webcki_handling/busquedaLoader.do?aerolinea=OB";
+var ruta2 = "https://checkin.si.amadeus.net/static/PRD/OB/#/identification";
+var listOrigen = {
+    CIJ:ruta1,
+    CBB:ruta1,
+    LPB:ruta1,
+    MAD:ruta1,
+    VVI:ruta1,
+    SRE:ruta1,
+    TJA:ruta2,
+    TDD:ruta1,
+    EZE:ruta1,
+    GRU:ruta1,
+}
 // ---------------------= =---------------------
 $(document).on('ready',function()
 {
@@ -56,11 +71,21 @@ $(document).on('ready',function()
 	// checkboxes
 	$(".checkbox").click(toggle_checkbox);
 	$("#cbx_acepto_terminos").click(function(){
-		if($(this).hasClass("checked"))
+
+		if($(this).hasClass("checked") && $("#aeropuerto_origen").val() != '')
 			$("#btn_buscar_check_in").show();
 		else
 			$("#btn_buscar_check_in").hide();
 	});
+
+    $("#aeropuerto_origen").change(function(){
+
+        if($("#cbx_acepto_terminos").hasClass("checked") && $("#aeropuerto_origen").val() != '')
+            $("#btn_buscar_check_in").show();
+        else
+            $("#btn_buscar_check_in").hide();
+    });
+
 
 	// radio buttons
 	$(".radio-button").click(toggle_radio_button);

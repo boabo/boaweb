@@ -3,9 +3,13 @@ function redirect(url_key)
 {
 	var url = BoA.urls[url_key];
 
+
+
+	var aeropuertoOrigen = listOrigen[$("#aeropuerto_origen").val()];
+
 	var btn = $("#btn_redirect");
 
-	btn.attr("href",url);
+	btn.attr("href",aeropuertoOrigen);
 	btn[0].click();
 }
 // ---------------------= =---------------------
