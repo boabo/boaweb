@@ -12,18 +12,19 @@ var autoCollapseTimeout;
 
 var ruta1 = "https://portal.iberia.es/webcki_handling/busquedaLoader.do?aerolinea=OB";
 var ruta2 = "https://checkin.si.amadeus.net/static/PRD/OB/#/identification";
+//fecha mm/dd/yyyy
 var listOrigen = {
-    CIJ:ruta1,
-    CBB:ruta1,
-    LPB:ruta1,
-    MAD:ruta1,
-    VVI:ruta1,
-    SRE:ruta1,
-    TJA:ruta2,
-    TDD:ruta1,
-    EZE:ruta1,
-    GRU:ruta1,
-}
+    CIJ:{fechaMigracion:null},
+    CBB:{fechaMigracion:"10/23/2017"},
+    LPB:{fechaMigracion:"10/18/2017"},
+    MAD:{fechaMigracion:null},
+    VVI:{fechaMigracion:"10/25/2017"},
+    SRE:{fechaMigracion:"10/20/2017"},
+    TJA:{fechaMigracion:"10/16/2017"},
+    TDD:{fechaMigracion:null},
+    EZE:{fechaMigracion:null},
+    GRU:{fechaMigracion:null},
+};
 // ---------------------= =---------------------
 $(document).on('ready',function()
 {
@@ -33,16 +34,18 @@ $(document).on('ready',function()
 	$("#buscador_vuelos .menu").click(click_menu_buscador_vuelos);
 
 	// UI SETUP
-	$("#picker_salida").datepicker({ 
+
+
+	$("#picker_salida").datepicker({
 		dateFormat: 'dd MM yy',
-		numberOfMonths: 2, 
+		numberOfMonths: 2,
 		minDate: 0,
 		onSelect:function(selectedDate){
 			$( "#picker_regreso" ).datepicker( "option", "minDate", selectedDate );
 		}
 	});
 
-	$("#picker_regreso, #picker_estado_vuelo").datepicker({ 
+	$("#picker_regreso, #picker_estado_vuelo","#picker_aeropuerto_origen").datepicker({
 		dateFormat: 'dd MM yy',
 		numberOfMonths: 2, 
 		minDate:0
@@ -72,7 +75,7 @@ $(document).on('ready',function()
 	$(".checkbox").click(toggle_checkbox);
 	$("#cbx_acepto_terminos").click(function(){
 
-		if($(this).hasClass("checked") && $("#aeropuerto_origen").val() != '')
+		if($(this).hasClass("checked") && $("#aeropuerto_origen").val() != '' && $("#picker_aeropuerto_origen").val() != '')
 			$("#btn_buscar_check_in").show();
 		else
 			$("#btn_buscar_check_in").hide();
@@ -80,7 +83,7 @@ $(document).on('ready',function()
 
     $("#aeropuerto_origen").change(function(){
 
-        if($("#cbx_acepto_terminos").hasClass("checked") && $("#aeropuerto_origen").val() != '')
+        if($("#cbx_acepto_terminos").hasClass("checked") && $("#aeropuerto_origen").val() != '' && $("#picker_aeropuerto_origen").val() != '')
             $("#btn_buscar_check_in").show();
         else
             $("#btn_buscar_check_in").hide();
@@ -221,6 +224,15 @@ $(document).on('ready',function()
 
 
     });
+
+
+    $("#picker_aeropuerto_origen").datepicker({
+        dateFormat: 'dd MM yy',
+        numberOfMonths: 2,
+        minDate: 0,
+
+    });
+
 
 
 

@@ -5,11 +5,22 @@ function redirect(url_key)
 
 
 
+	var fecha_seleccionada = $("#picker_aeropuerto_origen").val();
+	console.log(new Date(fecha_seleccionada))
 	var aeropuertoOrigen = listOrigen[$("#aeropuerto_origen").val()];
+    console.log(aeropuertoOrigen)
 
+	var ruta = ruta1;
+	if(aeropuertoOrigen.fechaMigracion != null){
+
+		if(new Date(fecha_seleccionada) >= new Date(aeropuertoOrigen.fechaMigracion)){
+            ruta = ruta2;
+		}
+
+	}
 	var btn = $("#btn_redirect");
 
-	btn.attr("href",aeropuertoOrigen);
+	btn.attr("href",ruta);
 	btn[0].click();
 }
 // ---------------------= =---------------------
