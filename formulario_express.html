@@ -106,7 +106,7 @@
 
 
 <section>
-
+<form action="prueba.html"></form>
 </section>
 <script>
 
@@ -227,7 +227,7 @@
                         grupos.push(v.grupo);
                         nuevo_grupo = 'si';
                         grupo_html = '<div class="grupo" data-grupo="'+v.grupo+'" id="grupo_'+v.grupo+'"></div>';
-                        $("section").append(grupo_html);
+                        $("section").find('form').append(grupo_html);
 
                     }
                    console.log(index);
@@ -262,7 +262,7 @@
                     }else if(v.t == "titulo"){
                         m = v.html;
                     }else if(v.t == "button"){
-                        m = '<input class="button" type="button" value="'+v.field+'" >';
+                        m = '<input class="button" type="submit" value="'+v.field+'" >';
                     }
 
 
