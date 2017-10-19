@@ -126,7 +126,7 @@
 
         formulario_ = {
 
-            token:'123as',
+            token:'token_',
             jsonForm: [
                 {
                     t:"titulo",
@@ -243,7 +243,7 @@
                         '<label for="' + v.n + '">'+
                         '<span>'+v.field+'</span>'+
                         '</label>' +
-                        '<select>';
+                        '<select name="'+name+'">';
                         $.each(v.datos,function (i,d) {
 
                             var display ;
