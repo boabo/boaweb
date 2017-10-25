@@ -106,7 +106,7 @@
 
 
 <section>
-<form action="prueba.html"></form>
+<form id="formExpress" action="prueba.html"></form>
 </section>
 <script>
 
@@ -160,31 +160,34 @@
                     grupo:2,
                     datos:[
                         {
-                            "value":"Mes"
+                            "value":"0","desc":"Mes",
                         },{
-                            "value":"Enero"
+                            "value":"Enero","desc":"Enero",
                         },{
-                            "value":"Febrero"
+                            "value":"Febrero","desc":"Febrero",
                         },{
-                            "value":"Marzo"
+                            "value":"Marzo","desc":"Marzo",
                         },{
-                            "value":"Abril"
+                            "value":"Abril","desc":"Abril",
                         },{
-                            "value":"Mayo"
+                            "value":"Mayo","desc":"Mayo",
                         },{
-                            "value":"Junio"
+                            "value":"Junio","desc":"Junio",
                         },{
-                            "value":"Julio"
+                            "value":"Julio","desc":"Julio",
                         },{
-                            "value":"Agosto"
+                            "value":"Agosto","desc":"Agosto",
                         },{
-                            "value":"Septiembre"
+                            "value":"Septiembre","desc":"Septiembre",
                         },{
-                            "value":"Octubre"
+                            "value":"Octubre",
+                            "desc":"Octubre",
                         },{
-                            "value":"Noviembre"
+                            "value":"Noviembre",
+                            "desc":"Noviembre",
                         },{
-                            "value":"Diciembre"
+                            "value":"Diciembre",
+                            "desc":"Diciembre",
                         },
                     ]
                 },{
@@ -195,9 +198,12 @@
                     grupo:2,
                     datos:[
                         {
-                            "value":"Año"
+                            "value":"0",
+                            "desc":"Año"
                         },{
-                            "value":"2015"
+                            "value":"2015",
+                            "desc":"2015"
+
                         }
                     ]
                 }, {
@@ -243,14 +249,14 @@
                         '<label for="' + v.n + '">'+
                         '<span>'+v.field+'</span>'+
                         '</label>' +
-                        '<select name="'+name+'">';
+                        '<select name="'+name+'" id="'+v.n+'">';
                         $.each(v.datos,function (i,d) {
 
                             var display ;
-                            if(d.display == undefined){
+                            if(d.desc == undefined){
                                 display = d.value;
                             }else{
-                                display = d.display;
+                                display = d.desc;
                             }
                             console.log(d.display)
                             m+='<option value="'+d.value+'">'+display+'</option>';
@@ -262,8 +268,10 @@
                     }else if(v.t == "titulo"){
                         m = v.html;
                     }else if(v.t == "button"){
-                        m = '<input class="button" type="submit" value="'+v.field+'" >';
+                        m = '<input id="enviar_" class="button" type="button" value="'+v.field+'" >';
                     }
+
+
 
 
 
@@ -273,6 +281,39 @@
                     if(v.valid == "solo_numeros"){
                         $('#numero_tarjeta').validCampos('1234567890');
                     }
+
+                    //enviar
+                    $("#enviar_").click(function () {
+
+                        var valid = false;
+
+                        $.each(formulario_.jsonForm,function (k,v) {
+                            if(v.field != undefined && v.n != "button"){
+
+                                if($("#"+v.n).val() == '' || $("#"+v.n).val() ==0){
+                                    valid = false;
+                                    $("#"+v.n).css({"border":"1px solid red"});
+                                }else{
+                                    $("#"+v.n).css({"border":""});
+                                }
+                            }
+                        })
+
+                        if($("#numero_tarjeta").val().length >= 15 && $("#numero_tarjeta").val().length <= 17){
+                            valid = true;
+                        }else{
+                            valid = false;
+                            $("#numero_tarjeta").css({"border":"1px solid red"});
+                        }
+
+                        if(valid){
+
+                            $( "#formExpress" ).submit();
+                        }
+
+
+
+                    });
 
 
                 });
