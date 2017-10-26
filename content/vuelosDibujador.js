@@ -479,7 +479,8 @@
                     tipoPasajero = 'precio_adultoMayor';
                 }
 
-                $("#" + tipoPasajero).html((parseFloat(v.importe) * parseInt(v.countPax)) - ( (parseFloat(v.tax_orig) + parseFloat(v.tax_return)) * parseInt(v.countPax)) );
+                var precio_tipoPasajero = (parseFloat(v.importe) * parseInt(v.countPax)) - ( (parseFloat(v.tax_orig) + parseFloat(v.tax_return)) * parseInt(v.countPax));
+                $("#" + tipoPasajero).html(precio_tipoPasajero.toFixed(2));
 
 
             });
