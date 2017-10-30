@@ -774,24 +774,7 @@ function changeNumPassengers()
                 //validamos si es adulto o ninho o infante para que adulto mayor quitemos su seleccion
                 if(tipo == 'adulto' || tipo == 'ninho' || tipo == 'infante'){
 
-
-                    $('[data-tipo="adultoMayor"]').closest('.tarifa').addClass('inactive');
-                    $('[data-tipo="adultoMayor"]').find('.selected').removeClass('selected');
-
-					$.each($('[data-tipo="adultoMayor"]').find('li'),function (k,v) {
-
-                        $( v ).attr("class","");
-
-						if (k == 0){
-							$(v).addClass('selected');
-						}else{
-                            $(v).addClass('plus-'+arraySelectPass[k]);
-						}
-
-						console.log(k)
-						console.log(v)
-                    });
-
+                    limpiarSeleccionPorTipo('adultoMayor');
                     
                 }else{
 
