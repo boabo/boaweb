@@ -4,10 +4,10 @@ var VISTAPAGOS = false;
 var DIRECCIONAR = false;
 var TIME_END = 500;
 
-var CURRENCY = "bs"; // "euro", "bs" , "usd"
+var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "favio";
+var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIipgNngNqseIz3bQ9iF/9DYut7eStnFd4bwSj+jYcZ4KbPmCUptXb9G6g4BgqJCLTtP1wYM9fg053XA==";
 var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
@@ -72,8 +72,8 @@ var BoA = {
 
 		/* SERVICES */
         // nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-        nearest_dates_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/Calendar",
-        flights_schedule_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
+        nearest_dates_service: "http://40.71.187.245/ServicesA1/BasicReservationServiceA1.svc/Calendar",
+        flights_schedule_service: "http://40.71.187.245/ServicesA1/BasicReservationServiceA1.svc/AvailabilityPlusValuationsShort",
         validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
         change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php",
@@ -82,14 +82,14 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'GRU',
-        destino: 'CBB',
-        fechaIda : '20171021',//formatCompactDate(new Date()), // today
-        fechaVuelta:'20171023',//null, // no flight back
-        adulto: 1,
+        origen: 'CBB',
+        destino: 'LPB',
+        fechaIda : '20171102',//formatCompactDate(new Date()), // today
+        fechaVuelta:null,//null, // no flight back
+        adulto: 0,
         infante: 0,
         ninho: 0,
-        adultoMayor:0
+        adultoMayor:1
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",

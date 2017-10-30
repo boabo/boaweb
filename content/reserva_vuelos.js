@@ -181,6 +181,8 @@ var validacion_ = {
     }
 };
 var vuelos_store;
+
+var arraySelectPass = ["","one","two","three","four","five","six","seven","nine"];
 // ---------------------= =---------------------
 /********************************************************* 
  ********************** UI HANDLERS **********************
@@ -731,9 +733,14 @@ function changeNumPassengers()
 
 	var counting = ["one","two","three","four","five","six","seven","eight"];
 
+
+
 	if(ul.hasClass("active")) {
 		ul.removeClass("active");
 		var row = $(ul[0].parentNode.parentNode);
+
+
+
 
 		// when change
 		if(false == $(this).hasClass("selected")) {
@@ -757,10 +764,44 @@ function changeNumPassengers()
 			}
 
 			// change row status
-			if(count==0)
-				row.addClass("inactive");
-			else
-				row.removeClass("inactive");
+			if(count==0){
+                row.addClass("inactive");
+
+            }else{
+
+                row.removeClass("inactive");
+
+                //validamos si es adulto o ninho o infante para que adulto mayor quitemos su seleccion
+                if(tipo == 'adulto' || tipo == 'ninho' || tipo == 'infante'){
+
+
+                    $('[data-tipo="adultoMayor"]').closest('.tarifa').addClass('inactive');
+                    $('[data-tipo="adultoMayor"]').find('.selected').removeClass('selected');
+
+					$.each($('[data-tipo="adultoMayor"]').find('li'),function (k,v) {
+
+                        $( v ).attr("class","");
+
+						if (k == 0){
+							$(v).addClass('selected');
+						}else{
+                            $(v).addClass('plus-'+arraySelectPass[k]);
+						}
+
+						console.log(k)
+						console.log(v)
+                    });
+
+                    
+                }else{
+
+                    limpiarSeleccionPorTipo('adulto');
+                    limpiarSeleccionPorTipo('ninho');
+                    limpiarSeleccionPorTipo('infante');
+
+                }
+			}
+
 
 			//vemos las cantidades de pasajeros
 			getTypeSelectedSitesCount(tipo);
@@ -792,6 +833,26 @@ function changeNumPassengers()
 
 
 	
+}
+
+function limpiarSeleccionPorTipo(tipo) {
+
+    $('[data-tipo="'+tipo+'"]').closest('.tarifa').addClass('inactive');
+    $('[data-tipo="'+tipo+'"]').find('.selected').removeClass('selected');
+
+    $.each($('[data-tipo="'+tipo+'"]').find('li'),function (k,v) {
+
+        $( v ).attr("class","");
+
+        if (k == 0){
+            $(v).addClass('selected');
+        }else{
+            $(v).addClass('plus-'+arraySelectPass[k]);
+        }
+
+
+    });
+
 }
 
 function validatePassengers()
@@ -1957,6 +2018,7 @@ function getTypeSelectedSitesCount(tipo_seleccionado)
 	var sitio_seleccionados = {
 		total_adulto : 0,
 		total_ninho: 0,
+		total_ninho: 0,
 	};
 
 	for(var i=0;i<pxSelections.length;i++) {
@@ -1968,6 +2030,10 @@ function getTypeSelectedSitesCount(tipo_seleccionado)
 
 		}else if(tipo=="ninho"){
 			sitio_seleccionados.total_ninho += parseInt(ul.find("li.selected").data("count"));
+		}else if(tipo=="adultoMayor"){
+			sitio_seleccionados.total_adultoMayor += parseInt(ul.find("li.selected").data("count"));
+			sitio_seleccionados.total_ninho += parseInt(0);
+			sitio_seleccionados.total_adultoMayor += parseInt(0);
 		}
 
 	}
