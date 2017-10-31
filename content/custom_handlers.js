@@ -4,12 +4,18 @@ var VISTAPAGOS = false;
 var DIRECCIONAR = false;
 var TIME_END = 500;
 
-var CURRENCY = "usd"; // "euro", "bs" , "usd"
+var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIiphxU/EH6xKWcG+sWpWL0yQw8IH3CQ51HleBOyTcFGqLuUgxgUTooLqmLTuIKJvw3h+Yn1DM1xm7eQ==";
+var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIiphxU/EH6xKWcGRouLqho6N08Bf93l7prM+KOrQhKqa4P1XwkX0IxhqQO4LP8czSTpDRrxmJ4Dztfg==";
 var server = 'localhost'; //puede ser "+server+"
 
+var adultoMayorNoAeropuerto ={
+    "MIA":"MIA",
+    "MAD":"MAD",
+    "GRU":"GRU",
+    "EZE":"EZE",
+};
 // ---------------------------------------------------------------------------
 var LocaleConfig = {
     countries: [
@@ -86,10 +92,10 @@ var BoA = {
         destino: 'LPB',
         fechaIda : '20171102',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
-        adulto: 0,
+        adulto: 1,
         infante: 0,
         ninho: 0,
-        adultoMayor:1
+        adultoMayor:0
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",

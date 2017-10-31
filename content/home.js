@@ -233,6 +233,17 @@ $(document).on('ready',function()
 
     });
 
+    $("#select_desde, #select_hasta").change(function () {
+
+    	if(adultoMayorNoAeropuerto[$("#select_desde").val()] != undefined || adultoMayorNoAeropuerto[$("#select_hasta").val()] != undefined  ){
+    		$("#select_nro_adultos_mayor").parent().css({"display":"none"});
+    		$("#lbl_adulto_mayor").css({"display":"none"});
+		}else{
+            $("#select_nro_adultos_mayor").parent().css({"display":""});
+            $("#lbl_adulto_mayor").css({"display":""});
+		}
+    });
+
 
 
 
