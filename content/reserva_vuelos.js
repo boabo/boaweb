@@ -960,7 +960,7 @@ function validatePassengers()
 
 
 
-		if(tipo=="infante" || tipo=="ninho" || tipo=="adulto") {
+		if(tipo=="infante" || tipo=="ninho" || tipo=="adulto" || tipo=='adultoMayor') {
 			var pickerNacimiento = divPersona.find(".nacimiento");
 			if($.trim(pickerNacimiento.val())=="" ) {
 				isValid = false;
@@ -1184,6 +1184,14 @@ function asyncValidateSeleccionVuelo(response)
 
         form.children('[data-tipo=infante]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinInf );
         form.children('[data-tipo=ninho]').find(".calendar").datepicker().datepicker("option", "minDate", fechaMinNino );
+
+
+        form.children('[data-tipo=adultoMayor]').find(".calendar").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 1,
+            maxDate: 0,
+            changeYear: true,
+        });
 
         form.children('[data-tipo=adultoMayor]').find(".calendar").datepicker().datepicker("option", "maxDate", fechaMinAdultoMayor );
 

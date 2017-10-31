@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "usd"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIipgNngNqseIz3bQ9iF/9DYut7eStnFd4bwSj+jYcZ4KbPmCUptXb9G6g4BgqJCLTtP1wYM9fg053XA==";
+var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIiphxU/EH6xKWcG+sWpWL0yQw8IH3CQ51HleBOyTcFGqLuUgxgUTooLqmLTuIKJvw3h+Yn1DM1xm7eQ==";
 var server = 'localhost'; //puede ser "+server+"
 
 // ---------------------------------------------------------------------------
