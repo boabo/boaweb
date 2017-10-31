@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIiphxU/EH6xKWcGRouLqho6N08Bf93l7prM+KOrQhKqa4P1XwkX0IxhqQO4LP8czSTpDRrxmJ4Dztfg==";
+var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIiphxU/EH6xKWcOcc12F1uqSfIybURJbZ2vOS0s1VfFor1XK5Z+SkolaZHeZd66BtJA9bEEF3aVZC2g==";
 var server = 'localhost'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto ={
@@ -92,10 +92,10 @@ var BoA = {
         destino: 'LPB',
         fechaIda : '20171102',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
-        adulto: 1,
+        adulto: 0,
         infante: 0,
         ninho: 0,
-        adultoMayor:0
+        adultoMayor:1
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",

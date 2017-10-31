@@ -183,6 +183,9 @@ var validacion_ = {
 var vuelos_store;
 
 var arraySelectPass = ["","one","two","three","four","five","six","seven","nine"];
+
+
+
 // ---------------------= =---------------------
 /********************************************************* 
  ********************** UI HANDLERS **********************
@@ -775,12 +778,18 @@ function changeNumPassengers()
                 if(tipo == 'adulto' || tipo == 'ninho' || tipo == 'infante'){
 
                     limpiarSeleccionPorTipo('adultoMayor');
+                    $.each(adultoMayorNoAeropuerto,function (k,v) {
+                        $('option[value="'+k+'"]').css({"display":""});
+                    });
                     
                 }else{
 
                     limpiarSeleccionPorTipo('adulto');
                     limpiarSeleccionPorTipo('ninho');
                     limpiarSeleccionPorTipo('infante');
+                    $.each(adultoMayorNoAeropuerto,function (k,v) {
+						$('option[value="'+k+'"]').css({"display":"none"});
+                    });
 
                 }
 			}
