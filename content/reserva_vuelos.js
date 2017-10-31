@@ -781,6 +781,7 @@ function changeNumPassengers()
                     $.each(adultoMayorNoAeropuerto,function (k,v) {
                         $('option[value="'+k+'"]').css({"display":""});
                     });
+                    store.de
                     
                 }else{
 
@@ -1682,6 +1683,12 @@ function handleInitialRequest()
 // ---------------------= =---------------------
 function requestSearchParameters(parms)
 {
+
+	//validamos si es un vuelo restringido para adulto mayor
+	if(adultoMayorNoAeropuerto[ parms.origen ] != undefined || adultoMayorNoAeropuerto[ parms.destino ] != undefined ){
+		$(".tarifa").find('[data-tipo = "adultoMayor"]').parent().parent().hide();
+	}
+
 	// Clear cache data first
 	currentDateIda = null;
 	currentDateVuelta = null;
