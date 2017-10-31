@@ -2,22 +2,28 @@
 function redirect(url_key)
 {
 	var url = BoA.urls[url_key];
+    var ruta;
+	if(url_key == 'web_check_in'){
+        var fecha_seleccionada = $("#picker_aeropuerto_origen").val();
+        console.log(new Date(fecha_seleccionada))
+        var aeropuertoOrigen = listOrigen[$("#aeropuerto_origen").val()];
+        console.log(aeropuertoOrigen)
 
+        ruta = ruta1;
+        if(aeropuertoOrigen.fechaMigracion != null){
 
+            if(new Date(fecha_seleccionada) >= new Date(aeropuertoOrigen.fechaMigracion)){
+                ruta = ruta2;
+            }
 
-	var fecha_seleccionada = $("#picker_aeropuerto_origen").val();
-	console.log(new Date(fecha_seleccionada))
-	var aeropuertoOrigen = listOrigen[$("#aeropuerto_origen").val()];
-    console.log(aeropuertoOrigen)
-
-	var ruta = ruta1;
-	if(aeropuertoOrigen.fechaMigracion != null){
-
-		if(new Date(fecha_seleccionada) >= new Date(aeropuertoOrigen.fechaMigracion)){
-            ruta = ruta2;
-		}
-
+        }
+	}else{
+		ruta = BoA.urls[url_key];
 	}
+
+
+
+
 	var btn = $("#btn_redirect");
 
 	btn.attr("href",ruta);
