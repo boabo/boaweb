@@ -238,6 +238,19 @@ $(document).on('ready',function()
     	if(adultoMayorNoAeropuerto[$("#select_desde").val()] != undefined || adultoMayorNoAeropuerto[$("#select_hasta").val()] != undefined  ){
     		$("#select_nro_adultos_mayor").parent().css({"display":"none"});
     		$("#lbl_adulto_mayor").css({"display":"none"});
+
+    		//debemos cambiar la seleccion de adulto mayor si hubiera
+
+			$("#select_nro_adultos_mayor").val(0);$("#select_nro_adultos").prop('disabled', false);
+
+            $("#select_nro_bebes").prop('disabled', false);
+            $("#select_nro_ninhos").prop('disabled', false);
+            $("#select_nro_adultos").val(1);
+            $("#select_nro_adultos").css({"background-color":""});
+            $("#select_nro_bebes").css({"background-color":""});
+            $("#select_nro_ninhos").css({"background-color":""});
+
+
 		}else{
             $("#select_nro_adultos_mayor").parent().css({"display":""});
             $("#lbl_adulto_mayor").css({"display":""});

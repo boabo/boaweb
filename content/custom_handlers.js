@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIiphxU/EH6xKWcJLYEC7AxxWmIB4xaKdpO5Fez8pPfZrZ9ddDcmKCXaADILgt4XYrROr1/VmF4nGYow==";
+var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIipiBJxuWGFgK4xVd3920PcOETzsukv7BNj60lBv5/u/ls5pH666baFpmubshRwRdeZqeLsYPOb5Rbw==";
 var server = 'localhost'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto ={
@@ -95,7 +95,7 @@ var BoA = {
         adulto: 0,
         infante: 0,
         ninho: 0,
-        adultoMayor:1
+        adultoMayor:3
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",
