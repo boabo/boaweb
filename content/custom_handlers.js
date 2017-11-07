@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "DQiYC4bWUfNMNtjY4JnI3GNuPDejHngLfgRfwIQlrCweA4MDSviq/sh2LXSkr0+SoLINnuf9M3OvH5UrlHXsKR2ccM/ETMvXSBo7cZdIipiBJxuWGFgK4xVd3920PcOETzsukv7BNj60lBv5/u/ls5pH666baFpmubshRwRdeZqeLsYPOb5Rbw==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7RffIeeUPex3ffE7cNT/JTbGbrYnJWEOD1mhwLLPRhij4zDIOmZNGL2G1r81VeghXLduYqDDOmng==";
 var server = 'localhost'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto ={
@@ -78,8 +78,8 @@ var BoA = {
 
 		/* SERVICES */
         // nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-        nearest_dates_service: "http://40.71.187.245/ServicesA1/BasicReservationServiceA1.svc/Calendar",
-        flights_schedule_service: "http://40.71.187.245/ServicesA1/BasicReservationServiceA1.svc/AvailabilityPlusValuationsShort",
+        nearest_dates_service: "https://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
+        flights_schedule_service: "https://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
         validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
         change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php",
@@ -88,14 +88,14 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'CBB',
-        destino: 'LPB',
-        fechaIda : '20171102',//formatCompactDate(new Date()), // today
+        origen: 'TJA',
+        destino: 'BYC',
+        fechaIda : '20171229',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
-        adulto: 0,
+        adulto: 1,
         infante: 0,
         ninho: 0,
-        adultoMayor:3
+        adultoMayor:0
     },
 
     defaultApologyMessage : "En estos momentos no podemos atender su solicitud, por favor intente mas tarde.",

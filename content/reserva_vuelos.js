@@ -148,7 +148,8 @@ var airports = {
 	BCN: "Aeropuerto Internacional El Prat",
 	CCA: "Aeropuerto Internacional Chimore",
 	MIA: "Aeropuerto Internacional Miami",
-	POI: "Aeropuerto Capitán Nicolas Rojas"
+	POI: "Aeropuerto Capitán Nicolas Rojas",
+	BYC: "Aeropuerto Yacuiba"
 };
 
 var linea_clase = {
@@ -781,7 +782,7 @@ function changeNumPassengers()
                     $.each(adultoMayorNoAeropuerto,function (k,v) {
                         $('option[value="'+k+'"]').css({"display":""});
                     });
-                    store.de
+
                     
                 }else{
 

@@ -261,6 +261,15 @@
                                     //fin validacion
 
                                     objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
+
+                                    //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+                                    if (!Array.isArray(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero)) {
+                                        var ArrayOfTasaTipoPasajero = [];
+                                        ArrayOfTasaTipoPasajero.push(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero);
+                                        object.tasaTipoPasajero.ArrayOfTasaTipoPasajero = ArrayOfTasaTipoPasajero;
+
+                                    }
+
                                     objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
                                     arrayTarifasAux.push(objectTarifasAux);
 
@@ -334,6 +343,14 @@
                                 //fin validacion
 
                                 objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
+
+                                //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+                                if (!Array.isArray(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero)) {
+                                    var ArrayOfTasaTipoPasajero = [];
+                                    ArrayOfTasaTipoPasajero.push(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero);
+                                    object.tasaTipoPasajero.ArrayOfTasaTipoPasajero = ArrayOfTasaTipoPasajero;
+
+                                }
 
                                 objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
                                 arrayTarifasAux.push(objectTarifasAux);
