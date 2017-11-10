@@ -874,6 +874,9 @@ function validatePassengers()
 
 		var isValid = true;
 
+		//id ff
+		persona.idViajeroFrecuente = divPersona.find(".nro-viajero-frecuente").val();
+
 		// nombres
 		var tbxNombres = divPersona.find(".nombres");
 		if($.trim(tbxNombres.val())=="") {
@@ -1126,10 +1129,75 @@ function asyncValidateSeleccionVuelo(response)
 		var nowYear = new Date();
 
 
+        iconSvg.convertirFigureSvgIcono();
+
+
         $(".nombres").validCampos(' abcdefghijklmnopqrstuvwxyzáéiou');
         $(".apellidos").validCampos(' abcdefghijklmnopqrstuvwxyzáéiou');
         $(".telefono").validCampos(' 0123456789+()-');
         $(".nro-documento").validCampos('0123456789abcdefghijklmnopqrstuvwxyz');
+        $(".nro-viajero-frecuente").validCampos('0123456789');
+
+
+
+        //ff
+		$(".iconFormSvg").click(function () {
+
+			console.log('ff')
+			console.log($(this).parent());
+			var input = $(this).parent().find('input').val();
+			console.log(input)
+
+			/*
+			 var form = new FormData();
+			 form.append("id", input);
+
+
+
+
+
+			$.ajax({
+			 url: 'http://webpreprod.cloudapp.net/BoAWebSite/Loyalty/GetFF',
+			 data: form,
+			 processData: false,
+			 type: 'POST',
+			 success: function(data){
+			 }
+			 });*/
+
+
+			var resp = {
+                "codigo": 1,
+                "mensaje": "",
+                "codigoError": null,
+                "dato_valor": null,
+                "objeto": {
+                    "ExtensionData": {},
+                    "BirthDate": "/Date(974160000000)/",
+                    "DocNumber": "424242234",
+                    "DocType": "",
+                    "Email": "test999@boa.bo",
+                    "ErrorMessage": null,
+                    "Gender": "M",
+                    "LastName": "Prueba",
+                    "Name": "Jacinto",
+                    "Phone": "591"
+                }
+            };
+
+			console.log($(this).closest('table'))
+            var fecha = new Date(resp.objeto.BirthDate.match(/\d+/)[0] * 1);
+            console.log($(this).closest('table').find('.nombres'))
+            $($(this).closest('table').find('.nombres')).val(resp.objeto.Name)
+            $($(this).closest('table').find('.apellidos')).val(resp.objeto.LastName)
+            $($(this).closest('table').find('.tipo-documento')).val(resp.objeto.DocType)
+            $($(this).closest('table').find('.nro-documento')).val(resp.objeto.DocNumber)
+            $($(this).closest('table').find('.telefono')).val(resp.objeto.Phone)
+            $($(this).closest('table').find('.email')).val(resp.objeto.Email)
+            $($(this).closest('table').find('.nacimiento')).val(fecha)
+
+        });
+
 
 
         /*form.find(".calendar").datepicker({
@@ -1859,6 +1927,10 @@ function buildRegistroPersona(tipo, numPx)
 
     var tbl = $(persona).find(".form table");
 
+    tbl.append(
+        "<tr><th colspan='3' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><tr><td colspan='2'><input style='width: 40%; float: left;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+
+);
     tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")
 	   .append("<tr>" + 
 	   				"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_nombres' class='nombres'></div></td>"+
@@ -1906,8 +1978,8 @@ function buildRegistroPersona(tipo, numPx)
                 :
                 "" +
                 (isAdulto?
-                        "<tr><th colspan='2' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><td colspan='2'><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td>" :
-                        "<tr><td colspan='4'><span style='color: #4c0a00; font-size: 15px;'><b>Se debe presentar documentos para confirmar la edad</b></span><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+                        "" :
+                        "<tr><td colspan='4'><span style='color: #4c0a00; font-size: 15px;'><b>Se debe presentar documentos para confirmar la edad</b></span><!--<span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span> --> </td></tr>"
                 ) +""
 			)
 
@@ -1916,6 +1988,7 @@ function buildRegistroPersona(tipo, numPx)
 
 
 	$(persona).find("input").focusin(focusOnPersona);
+
 
 
 	return persona;
@@ -2212,4 +2285,8 @@ function backToFlightStage()
 
     $('.cell-submit').html(m);
 
+}
+
+function mapearDatosFF (resp){
+	console.log(resp)
 }

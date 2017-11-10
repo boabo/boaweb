@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7RffIeeUPex3ffE7cNT/JTbGbrYnJWEOD1mhwLLPRhij4zDIOmZNGL2G1r81VeghXLduYqDDOmng==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi4PdYYhRcipCmIso3dTwkT8lveb0ycxjZn5DjCljxeNCGpEQsfHsHgwGi/WtJWIBhdOcmaFDXEX1w==";
 var server = 'localhost'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto ={
@@ -84,17 +84,18 @@ var BoA = {
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
         change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php",
         itinerario: "http://stackoverflow.com",
+        ffdataInfo: "http://webpreprod.cloudapp.net/BoAWebSite/Loyalty/GetFF", // post id = 123456789 // adulto y nino
 
     },
 
     defaultConsultaVuelos : {
-        origen: 'TJA',
-        destino: 'BYC',
+        origen: 'CBB',
+        destino: 'LPB',
         fechaIda : '20171229',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
         adulto: 1,
         infante: 0,
-        ninho: 0,
+        ninho: 1,
         adultoMayor:0
     },
 
