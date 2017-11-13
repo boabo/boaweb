@@ -1180,8 +1180,8 @@ function asyncValidateSeleccionVuelo(response)
 
 
 			var resp = {
-                "codigo": 1,
-                "mensaje": "",
+                "codigo": 0,
+                "mensaje": "El código de viajero frecuente no existe.",
                 "codigoError": null,
                 "dato_valor": null,
                 "objeto": {
@@ -1192,22 +1192,26 @@ function asyncValidateSeleccionVuelo(response)
                     "Email": "test999@boa.bo",
                     "ErrorMessage": null,
                     "Gender": "M",
-                    "LastName": "Prueba",
-                    "Name": "Jacinto",
+                    "LastName": "Figuero",
+                    "Name": "Favio",
                     "Phone": "591"
                 }
             };
 
 			console.log($(this).closest('table'))
             var fecha = new Date(resp.objeto.BirthDate.match(/\d+/)[0] * 1);
-            console.log($(this).closest('table').find('.nombres'))
-            $($(this).closest('table').find('.nombres')).val(resp.objeto.Name)
-            $($(this).closest('table').find('.apellidos')).val(resp.objeto.LastName)
-            $($(this).closest('table').find('.tipo-documento')).val(resp.objeto.DocType)
-            $($(this).closest('table').find('.nro-documento')).val(resp.objeto.DocNumber)
-            $($(this).closest('table').find('.telefono')).val(resp.objeto.Phone)
-            $($(this).closest('table').find('.email')).val(resp.objeto.Email)
-            $($(this).closest('table').find('.nacimiento')).val(fecha)
+            console.log($(this).closest('table').find('.nombres'));
+            $($(this).closest('table').find('.nombres')).val(resp.objeto.Name);
+            $($(this).closest('table').find('.apellidos')).val(resp.objeto.LastName);
+            $($(this).closest('table').find('.tipo-documento')).val(resp.objeto.DocType);
+            $($(this).closest('table').find('.nro-documento')).val(resp.objeto.DocNumber);
+            $($(this).closest('table').find('.telefono')).val(resp.objeto.Phone);
+            $($(this).closest('table').find('.email')).val(resp.objeto.Email);
+            $($(this).closest('table').find('.nacimiento')).val(fecha);
+
+            if(resp.codigo == 0){
+            	showSimpleDialog2(resp.mensaje+" "+input)
+			}
 
         });
 
