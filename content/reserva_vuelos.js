@@ -1140,8 +1140,21 @@ function asyncValidateSeleccionVuelo(response)
 
 
 
+        $(".frmPerLimpiar").click(function () {
+
+        	console.log('LIMPIAR')
+            console.log($(this).closest('table'));
+            $($(this).closest('table').find('.nombres')).val('')
+            $($(this).closest('table').find('.apellidos')).val('')
+            $($(this).closest('table').find('.tipo-documento')).val('NONE')
+            $($(this).closest('table').find('.nro-documento')).val('')
+            $($(this).closest('table').find('.telefono')).val('')
+            $($(this).closest('table').find('.email')).val('')
+            $($(this).closest('table').find('.nacimiento')).val('')
+        });
+
         //ff
-		$(".iconFormSvg").click(function () {
+		$(".frmPerBuscar").click(function () {
 
 			console.log('ff')
 			console.log($(this).parent());
@@ -1928,7 +1941,7 @@ function buildRegistroPersona(tipo, numPx)
     var tbl = $(persona).find(".form table");
 
     tbl.append(
-        "<tr><th colspan='3' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><tr><td colspan='2'><input style='width: 40%; float: left;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+        "<tr><th colspan='3' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><tr><td style='position:relative;' colspan='2'><input style='width: 40%; float: left; position: absolute; bottom: 0;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg frmPerBuscar'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg frmPerLimpiar'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
 
 );
     tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")

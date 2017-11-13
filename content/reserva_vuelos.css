@@ -2503,13 +2503,23 @@ loading svg {
 	float: left;
 	cursor: pointer;
 	margin-left: 5px;
+	left: 45%;
 }
 .iconFormSvg svg {
 	width: 32px;
 	height:32px;
+}
+.iconFormSvg svg path{
+	fill: #2D4565;
 }
 .iconFormSvg span{
 	position: absolute;
 	bottom: 0;
 	text-align: center;
 }
+
+.iconFormSvg:hover  svg path {
+	fill: #EFAA35;
+}
+
+
