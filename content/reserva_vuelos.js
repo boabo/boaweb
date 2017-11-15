@@ -1138,6 +1138,9 @@ function asyncValidateSeleccionVuelo(response)
         $(".nro-documento").validCampos('0123456789abcdefghijklmnopqrstuvwxyz');
         $(".nro-viajero-frecuente").validCampos('0123456789');
 
+        if(ENABLE_GENDER){
+        	$("#info_registro_pasajeros .persona").css({"height":"215px"});
+		}
 
 
         $(".frmPerLimpiar").click(function () {
@@ -1945,7 +1948,7 @@ function buildRegistroPersona(tipo, numPx)
     var tbl = $(persona).find(".form table");
 
     tbl.append(
-        "<tr><th colspan='3' class='disabled'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr><tr><td style='position:relative;' colspan='2'><input style='width: 40%; float: left; position: absolute; bottom: 0;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg frmPerBuscar'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg frmPerLimpiar'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+        "<tr><td style='position:relative;' colspan='2'><span style='display: inline;float: left;'># VIAJERO FRECUENTE:</span> <input style='width: 40%; float: left; position: absolute; bottom: 0;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg frmPerBuscar'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg frmPerLimpiar'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
 
 );
     tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")
@@ -1989,7 +1992,7 @@ function buildRegistroPersona(tipo, numPx)
 		.append(
 			""+(ENABLE_GENDER==true?
 				""+(isAdulto?
-                        "<tr><th colspan='1'>GENERO</th><th colspan='1'># VIAJERO FRECUENTE</th><th colspan='2'></th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td><td><input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'></td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>":
+                        "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>":
                    		 "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>"
 				)+""
                 :
