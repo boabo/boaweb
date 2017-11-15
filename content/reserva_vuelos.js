@@ -874,8 +874,6 @@ function validatePassengers()
 
 		var isValid = true;
 
-		//id ff
-		persona.idViajeroFrecuente = divPersona.find(".nro-viajero-frecuente").val();
 
 		// nombres
 		var tbxNombres = divPersona.find(".nombres");
