@@ -1138,6 +1138,7 @@ function asyncValidateSeleccionVuelo(response)
 
         if(ENABLE_GENDER){
         	$("#info_registro_pasajeros .persona").css({"height":"215px"});
+        	$(".left-label").css({"height":"215px"});
 		}
 
 
@@ -1208,7 +1209,8 @@ function asyncValidateSeleccionVuelo(response)
             $($(this).closest('table').find('.nro-documento')).val(resp.objeto.DocNumber);
             $($(this).closest('table').find('.telefono')).val(resp.objeto.Phone);
             $($(this).closest('table').find('.email')).val(resp.objeto.Email);
-            $($(this).closest('table').find('.nacimiento')).val(fecha);
+            $($(this).closest('table').find('.nacimiento')).datepicker("setDate", fecha );
+
 
             if(resp.codigo == 0){
             	showSimpleDialog2(resp.mensaje+" "+input)
