@@ -1880,15 +1880,15 @@ td#pagar_reserva.activado {
 }
 
 .ico_con_conexion{
-	background-image: url('images/azul1.png');
-	width: 25px;
+	background-image: url('images/conexion.png');
+	width: 70px;
 	height: 25px;
 	background-size: cover;
 	margin: auto;
 }
 .ico_sin_conexion{
-	background-image: url('images/azul2.png');
-	width: 25px;
+	background-image: url('images/directo.png');
+	width: 70px;
 	height: 25px;
 	background-size: cover;
 	margin: auto;
@@ -2526,3 +2526,6 @@ loading svg {
 }
 
 
+.duracion_total {
+	font-size: 12px;
+}
