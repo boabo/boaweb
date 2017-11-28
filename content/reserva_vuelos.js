@@ -1109,6 +1109,7 @@ function asyncRegisterPassengers(response)
 	}
 }
 
+
 function asyncValidateSeleccionVuelo(response)
 {
 
@@ -1140,6 +1141,8 @@ function asyncValidateSeleccionVuelo(response)
         	$("#info_registro_pasajeros .persona").css({"height":"215px"});
         	$(".left-label").css({"height":"215px"});
 		}
+
+
 
 
         $(".frmPerLimpiar").click(function () {
@@ -1182,7 +1185,7 @@ function asyncValidateSeleccionVuelo(response)
 
 
 			var resp = {
-                "codigo": 0,
+                "codigo": 1,
                 "mensaje": "El código de viajero frecuente no existe.",
                 "codigoError": null,
                 "dato_valor": null,
@@ -1214,7 +1217,22 @@ function asyncValidateSeleccionVuelo(response)
 
             if(resp.codigo == 0){
             	showSimpleDialog2(resp.mensaje+" "+input)
+			}else{ //cuando esta existe el viajero frecuente
+                $(this).closest('table').find('.nombres').prop('readonly',true);
+                $(this).closest('table').find('.apellidos').prop('readonly',true);
 			}
+
+			$('.nombres, .apellidos').click(function () {
+				if(this.readOnly){
+                    showSimpleDialog2("No puedes Modificar este campo, limpia el formulario y vuelta a intentarlo");
+
+                }
+            });
+            
+            
+
+
+
 
         });
 
@@ -1947,10 +1965,13 @@ function buildRegistroPersona(tipo, numPx)
 
     var tbl = $(persona).find(".form table");
 
-    tbl.append(
-        "<tr><td style='position:relative;' colspan='2'><span style='display: inline;float: left;'># VIAJERO FRECUENTE:</span> <input style='width: 40%; float: left; position: absolute; bottom: 0;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg frmPerBuscar'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg frmPerLimpiar'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+    if(tipo=='adulto' || tipo=='adultoMayor' || tipo=='ninho'){
+        tbl.append(
+            "<tr><td style='position:relative;' colspan='2'><span style='display: inline;float: left;'># VIAJERO FRECUENTE:</span> <input style='width: 40%; float: left; position: absolute; bottom: 0;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg frmPerBuscar'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg frmPerLimpiar'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
 
-);
+        );
+	}
+
     tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")
 	   .append("<tr>" + 
 	   				"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_nombres' class='nombres'></div></td>"+
