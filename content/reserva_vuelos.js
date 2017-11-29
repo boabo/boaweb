@@ -1156,6 +1156,9 @@ function asyncValidateSeleccionVuelo(response)
             $($(this).closest('table').find('.telefono')).val('')
             $($(this).closest('table').find('.email')).val('')
             $($(this).closest('table').find('.nacimiento')).val('')
+
+            $(this).closest('table').find('.nombres').prop('readonly',false);
+            $(this).closest('table').find('.apellidos').prop('readonly',false);
         });
 
         //ff
@@ -1225,7 +1228,6 @@ function asyncValidateSeleccionVuelo(response)
 			$('.nombres, .apellidos').click(function () {
 				if(this.readOnly){
                     showSimpleDialog2("No puedes Modificar este campo, limpia el formulario y vuelta a intentarlo");
-
                 }
             });
             
