@@ -211,6 +211,8 @@ $(document).on('ready',function()
             var self = $("#pagar_reserva")[0];
 		}
 
+
+
         $(self).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
 
         if ($(self).hasClass("activado")) {
@@ -440,7 +442,8 @@ function dibujarBancos(objeto,titulo){
 			}else{
 				clase = "bancos_";
 			}
-			var banco = '<div data-mensaje="'+v.mensaje+'" class="'+clase+'" id="'+v.nombre+'">'+
+
+			var banco = '<div data-mensaje="'+v.mensaje+'" class="'+clase+'" id="'+v.nombre+'" data-dias_para_pagar="'+v.dias_para_poder_pagar+'">'+
 				'<img src="'+v.img+'" width="100%">'+
 				'</div>';
 			$("#"+titulo).append(banco);
@@ -1058,6 +1061,37 @@ function validatePassengers()
 
 		$("#btn_validar_pasajeros").hide();
 		$("#btn_validar_pasajeros2").hide();
+
+
+		/*tamamos en cuenta el parametro de dias para pagar en ciertos bancos*/
+        $.each($("[data-dias_para_pagar]"),function () {
+
+            if($(this).data('dias_para_pagar')>0){
+                console.log($(this).data('dias_para_pagar'))
+                console.log(vuelos_store.fechaIdaConsultada)
+
+                var year        = vuelos_store.fechaIdaConsultada.substring(0,4);
+                var month       = vuelos_store.fechaIdaConsultada.substring(4,6);
+                var day         = vuelos_store.fechaIdaConsultada.substring(6,8);
+
+                var date        = new Date(year, month-1, day);
+                var currentDate = new Date();
+
+                var timeDiff = Math.abs(date.getTime() - currentDate.getTime());
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                if(diffDays >= $(this).data('dias_para_pagar')){
+                    $(this).addClass('bancos_');
+                    $(this).removeClass('banco_disabled');
+                }else{
+                    $(this).removeClass('bancos_');
+                    $(this).addClass('banco_disabled');
+                }
+
+
+
+            }
+        });
 
 	}
 }

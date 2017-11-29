@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5CQ90dv5zlSLKwhCpO2xMyMfTlT8yNeCk4fW00WN3V9lqp5ZyIXpGZRfDP8kt3fc/WguKSV1h5Lw==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5CQ90dv5zlSMrTAae7S0a8Gv5pE7cl0Qle2gRqg9WR2WHa0rC7DWejVQtx0xoBBCMnMihEswt57g==";
 var server = 'localhost'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto = {
@@ -94,8 +94,8 @@ var BoA = {
         fechaIda : '20171212',//formatCompactDate(new Date()), // today
         fechaVuelta:null,//null, // no flight back
         adulto: 1,
-        infante: 1,
-        ninho: 1,
+        infante: 0,
+        ninho: 0,
         adultoMayor:0
     },
 
@@ -236,7 +236,8 @@ var BoA = {
                     visible:true,
                     enabled:true,
                     type_:"POST",
-                    mensaje:"Por motivos en mejoras sobre nuestra plataforma para pago con Tarjetas de Credito. Nos vemos obligados a suspender este servicio. Por favor intente realizar su pago por medio de Banca Electronica o Billtera Electronica. Disculpe las molestias"
+                    mensaje:"Por motivos en mejoras sobre nuestra plataforma para pago con Tarjetas de Credito. Nos vemos obligados a suspender este servicio. Por favor intente realizar su pago por medio de Banca Electronica o Billtera Electronica. Disculpe las molestias",
+                    dias_para_poder_pagar:3
 
                 }
 
