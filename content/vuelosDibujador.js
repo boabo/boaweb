@@ -24,7 +24,7 @@
             $('#picker_salida').datepicker("setDate",
                 compactToJSDate(that.store.fechaIdaConsultada)
             );
-            console.log('$("#rbtn_ida")',$("#rbtn_ida"))
+            console.log('$("#rbtn_ida")',$("#rbtn_ida"));
             $("#rbtn_ida").click();
 
             if(this.store.tieneVuelta == true) {
@@ -39,10 +39,10 @@
             $("#"+tipo+"_").remove();
 
             if(tipo == 'salidas'){
-                var m = $('<div id="salidas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
+                var m = $('<div id="salidas_" style="width: 100%; ">\n    <div class="content_familias">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }else if(tipo == 'llegadas'){
-                var m = $('<div id="llegadas_" style="width: 100%; ">\n    <div style="display: block; height: 40px;">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
+                var m = $('<div id="llegadas_" style="width: 100%; ">\n    <div class="content_familias">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }
 
@@ -106,6 +106,8 @@
             var vuelos = store[ida_vuelta];
             $.each(vuelos,function (k,v) {
 
+                var minutosAux = (v.horaSalida.mm < 10)? '0'+v.horaSalida.mm : v.horaSalida.mm;
+                var ordenPorHora = v.horaSalida.hh+''+ minutosAux;
 
                 var ico_conexion = '';
                 var escala = '';
@@ -128,7 +130,7 @@
                     console.log(vuelo.co_operador)
                 });
 
-                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" style="display: block; height:80px;">\n    <div style="width: 60%;  float: left; margin-top: 12px;">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total : 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br>'+iconos_operador+'\n        </div>\n    </div>\n</div>');
+                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" class="content_vuelo" data-ordenPorPrecio="'+k+'" data-ordenPorHora="'+ordenPorHora+'" >\n    <div class="desc_vuelo">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total : 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br>'+iconos_operador+'\n        </div>\n    </div>\n</div>');
 
                 var opcion_vuelo_indice ='';
                 //no tiene vuelta entonces dibujamos directamente con sus opciones y vuelta como cero ej: 1-0
@@ -170,7 +172,7 @@
 
 
                 //buscaremos sus distinatas tarifas por familias
-                var FamiliasImportes = $('<div style="width: 40%; float: left; ">\n</div>');
+                var FamiliasImportes = $('<div class="desc_familias">\n</div>');
 
                 var tam = parseInt(100 / scope.store.familyInformation.length) -1;
 
@@ -221,7 +223,13 @@
                             }
                             ///FamiliasImportes.append('<div style="float: left;width: 32%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;"><b>'+importe+' '+moneda+'</b></div>');
 
-                            objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" style="float: left;width: '+tam+'%; text-align: center; background-color: #f1f1f1; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: pointer;"><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+                            var familia = $.map(scope.store.familyInformation,function (fml) {
+                              if(fml.refNumber == tarifa[familiaTipoidaVuelta]){
+                                  return fml.fareFamilyName;
+                              }
+                            });
+
+                            objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" class="cajaFamilia" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia[0]+'</span><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
 
 
                         }
@@ -240,7 +248,7 @@
                         FamiliasImportes.append(objectAux[familia.refNumber]);
 
                     }else{
-                        FamiliasImportes.append('<div style="float: left;width: '+tam+'%; text-align: center; background-color: #cccccc; color:#fff; height: 50px; padding-top: 28px; color: #333333; border: 1px solid #fff;font-size: 15px;  cursor: no-drop;"><b>No<br> Disponible</b></div>');
+                        FamiliasImportes.append('<div class="cajaFamiliaNoDisponible" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia.fareFamilyName+'</span><b>No<br> Disponible</b></div>');
                     }
 
 
@@ -965,6 +973,31 @@
             })
 
             return array;
+
+        },
+        ordenarVuelos:function (combo) {
+
+            var $combo = $(combo);
+            var tipoIdaVuelta = $combo.data("tipo");//es el nombre del contenedor de salidas o de llegadas
+            var $contenedor = $("#"+tipoIdaVuelta);
+
+
+            $contenedor.css({"display":"flex","flex-direction":"column"});
+            console.log($contenedor);
+
+            //obtener los div de vuelos content_vuelo
+            var $contentVuelos = $contenedor.find('.content_vuelo');
+            $contentVuelos.sort(function (a,b) {
+
+                return parseInt($(a).data($combo.val()))-parseInt($(b).data($combo.val()))
+            });
+            $contentVuelos.each(function (index) {
+                var id = $(this).attr("id");
+
+                $(this).css({"order":index});
+                $("#"+id+"_detalle").css({"order":index});
+            });
+
 
         }
         

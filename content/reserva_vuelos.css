@@ -2506,7 +2506,6 @@ loading svg {
 	float: left;
 	cursor: pointer;
 	margin-left: 5px;
-	left: 45%;
 }
 .iconFormSvg svg {
 	width: 32px;
@@ -2519,6 +2518,7 @@ loading svg {
 	position: absolute;
 	bottom: 0;
 	text-align: center;
+	font-size: 13px;
 }
 
 .iconFormSvg:hover  svg path {
@@ -2528,4 +2528,375 @@ loading svg {
 
 .duracion_total {
 	font-size: 12px;
+}
+
+
+/**/
+
+.content_vuelo {
+	display: block;
+	height: 80px;
+}
+.desc_vuelo {
+	width: 60%;  float: left; margin-top: 12px;
+}
+
+.desc_familias{
+	width: 40%; float: left;
+}
+
+.familiaTarifaMobile {
+	display: none;
+}
+
+.cajaFamilia {
+	float: left;
+
+	text-align: center;
+	background-color: #f1f1f1;
+	color: #fff;
+	height: 50px;
+	padding-top: 28px;
+	color: #333333;
+	border: 1px solid #fff;
+	font-size: 15px;
+	cursor: pointer;
+
+}
+.cajaFamiliaNoDisponible{
+
+	float: left;
+
+	text-align: center;
+	background-color: #cccccc;
+	color: #fff;
+	height: 50px;
+	padding-top: 28px;
+	color: #333333;
+	border: 1px solid #fff;
+	font-size: 15px;
+	cursor: no-drop;
+
+
+}
+
+.content_familias{
+	display: block; height: 40px;
+}
+
+.txt_origen_destino{
+	font-size: 25px;
+}
+
+@media (min-width: 768px){
+
+
+}
+
+.titulo_persona_mobile{
+	display: none !important;
+}
+#divFlotante{
+
+	display: none;
+}
+#divBordeInferiorMob{
+	display: none;
+}
+
+
+#formulario_pagar table {
+	width: 60%;
+}
+
+@media (max-width: 769px){
+
+	#ui_reserva_vuelos .header{
+		position: relative;
+		min-width: 100%;
+	}
+
+	#ui_reserva_vuelos .header .stages {
+		left: 0px;
+		top: 16px;
+	}
+
+	.ui-section.wide .gradient {
+		display: none;
+	}
+
+	#widget_cambiar_vuelo .form{
+		width: 82%;
+	}
+
+	#widget_cambiar_vuelo .form select {
+		background-position: 133px 10px;
+		width: 159px;
+	}
+
+	#widget_cambiar_vuelo{
+		top:100px;
+	}
+	.content_vuelo {
+		height: 140px;
+	}
+
+
+	.content_familias{
+		display: none;
+	}
+	.desc_vuelo {
+		width: 100%; margin-top: 12px;
+	}
+
+	.desc_familias{
+		width: 100%; float: left;
+	}
+
+	.familiaTarifaMobile {
+		display: block;
+	}
+
+	.cajaFamilia {
+
+		padding-top: 12px;
+
+	}
+
+	.cajaFamiliaNoDisponible {
+
+		padding-top: 12px;
+
+	}
+
+
+	#ui_reserva_vuelos .info .descripcion {
+		padding: 0;
+	}
+
+	#widget_resumen_reserva {
+
+		position: fixed;
+		left: 0;
+		bottom: -2000px;
+		padding: 116px 0 0 0;
+		width: 100%;
+		visibility: hidden;
+	}
+
+	.ui-section.wide {
+		width: 100%;
+		min-width: 100%;
+		margin: 0 auto;
+	}
+
+	#ui_reserva_vuelos .info {
+		position: absolute;
+		width: 100%;
+		min-width: 100%;
+	}
+
+	#ui_reserva_vuelos {
+		position: relative;
+		top: 125px;
+		width: 100%;
+		min-width: 100%;
+		margin: 0 auto;
+		opacity: 1;
+		z-index: 1000;
+	}
+
+
+	/*dias*/
+	#ui_reserva_vuelos .descripcion table.days-selector td {
+		padding: 0px;
+
+	}
+
+	#ui_reserva_vuelos .descripcion table td {
+
+		 padding: 0px;
+	}
+
+	.ui-section .descripcion table td {
+
+		 padding: 0px;
+	}
+
+
+	.bottonReservaMobile{
+		position: fixed;
+		bottom: 10px;
+	}
+
+	#info_registro_pasajeros .persona{
+		height: auto;
+		width: 95%;
+		padding-left: 35px;
+	}
+	#info_registro_pasajeros{
+		margin-top: 80px;
+	}
+	.left-label{
+		display: none;
+	}
+	#info_registro_pasajeros .persona .form{
+		padding:5px 0 20px 0;
+	}
+
+	.Grid--cols-4 > .Grid-cell{
+		flex: 1 100% !important;
+	}
+	.titulo_persona_mobile{
+		display:flex !important;
+	}
+	#div_formulario_personas{
+		margin-top: 25px;
+	}
+
+	.iconFormSvg{
+		margin-left: 2px;
+	}
+
+	#info_registro_pasajeros .persona.inactive {
+		background-color: #E1E1E1;
+	}
+	#btn_validar_pasajeros{
+		position: static;
+		float: right;
+	}
+
+	.txt_origen_destino{
+		font-size: 0.9em;
+	}
+
+	#divFlotante {
+
+		display: inline;
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		background-color: #2D4565;
+		z-index: 100000;
+		bottom: 0;
+		left: 30px;
+	}
+	#divFlotante svg {
+		transition-property: transform;
+		overflow: hidden;
+		transition-duration: 0.4s;
+	}
+	#divBordeInferiorMob {
+		position: fixed;
+		width: 100%;
+		height: 10px;
+		background-color: #2D4565;
+		bottom: 0;
+		z-index: 5000;
+		display: inline;
+	}
+
+
+	.openMobile {
+		position: absolute;
+		-moz-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		transform:rotate(180deg);
+	}
+
+	/*.cerrarMobile {
+		position: absolute;
+		-moz-transform: rotate(-180deg);
+		-webkit-transform: rotate(-180deg);
+		-webkit-transform: rotate(-180deg);
+		transform:rotate(-180deg);
+	}*/
+
+
+
+	#info_pago_bancos{
+		margin-top: 110px;
+	}
+	#lbl_codigo_reserva{
+		font-size: 2em !important;
+	}
+
+	.ui-section .descripcion strong {
+		font-size: 1em;
+	}
+
+	#formulario_pagar table {
+		width: 95%;
+	}
+}
+
+#draggable {
+	width: 30px;
+	height: 30px;
+	padding: 0.5em;
+	z-index: 10000;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
+
+
+.titulo_input {
+	color: #1F3656;
+	background-color: transparent;
+	border: none;
+	font-size: 13px;
+	font-family: "FuturaBook";
+	text-align: left;
+	padding: 10px 0 0 0;
+}
+
+/*widget mobile detalle*/
+.MostrarWidgetMobile{
+	animation-name: slideInUp;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+
+.ocultarWidgetMobile {
+	animation-name: slideOutDown;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+/*fin widget mobile detalle*/
+
+/*combo ordenar vuelos*/
+.OrdenarVuelos{
+	float: right;
+	position: relative;
+	right: 5px;
+}
+.OrdenarVuelos div {
+	font-size: 0.8em;
+}
+.OrdenarVuelos select {
+	height: 34px;
+	border-radius: 0px;
+	border-width: 0 0 2px 0;
+	border-style: solid;
+	border-color: #959595;
+	font-family: "HelveticaNeuePro";
+	font-size: 15px;
+	color: #1F3656;
+	padding: 2px 44px 0 10px;
+	background-image: url(images/icon_arrow_down.png);
+	background-repeat: no-repeat;
+	background-position: 70px 10px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	text-indent: 0.01px;
 }

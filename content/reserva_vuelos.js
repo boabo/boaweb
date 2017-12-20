@@ -195,7 +195,7 @@ $(document).on('ready',function()
 {
 
     //(function(a){a.fn.validCampos=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
-
+    iconSvg.convertirFigureSvgIcono();
 
 	setTimeout(function () {
         $("#ui_reserva_vuelos").removeClass("blured");
@@ -1178,21 +1178,22 @@ function asyncValidateSeleccionVuelo(response)
 
 
 
-
         $(".frmPerLimpiar").click(function () {
+            var $formPersona = $(this).closest('.persona');
 
         	console.log('LIMPIAR')
-            console.log($(this).closest('table'));
-            $($(this).closest('table').find('.nombres')).val('')
-            $($(this).closest('table').find('.apellidos')).val('')
-            $($(this).closest('table').find('.tipo-documento')).val('NONE')
-            $($(this).closest('table').find('.nro-documento')).val('')
-            $($(this).closest('table').find('.telefono')).val('')
-            $($(this).closest('table').find('.email')).val('')
-            $($(this).closest('table').find('.nacimiento')).val('')
+            $formPersona.find('.nombres').val('')
+            $formPersona.find('.apellidos').val('')
+            $formPersona.find('.tipo-documento').val('NONE')
+            $formPersona.find('.nro-documento').val('')
+            $formPersona.find('.telefono').val('')
+            $formPersona.find('.email').val('')
+            $formPersona.find('.nacimiento').val('')
 
-            $(this).closest('table').find('.nombres').prop('readonly',false);
-            $(this).closest('table').find('.apellidos').prop('readonly',false);
+            $formPersona.find('.nro-viajero-frecuente').val('')
+
+            $formPersona.find('.nombres').prop('readonly',false);
+            $formPersona.find('.apellidos').prop('readonly',false);
         });
 
         //ff
@@ -1239,17 +1240,18 @@ function asyncValidateSeleccionVuelo(response)
                     "Phone": "591"
                 }
             };
+            var $formPersona = $(this).closest('.persona');
 
-			console.log($(this).closest('table'))
+			console.log($formPersona)
             var fecha = new Date(resp.objeto.BirthDate.match(/\d+/)[0] * 1);
             console.log($(this).closest('table').find('.nombres'));
-            $($(this).closest('table').find('.nombres')).val(resp.objeto.Name);
-            $($(this).closest('table').find('.apellidos')).val(resp.objeto.LastName);
-            $($(this).closest('table').find('.tipo-documento')).val(resp.objeto.DocType);
-            $($(this).closest('table').find('.nro-documento')).val(resp.objeto.DocNumber);
-            $($(this).closest('table').find('.telefono')).val(resp.objeto.Phone);
-            $($(this).closest('table').find('.email')).val(resp.objeto.Email);
-            $($(this).closest('table').find('.nacimiento')).datepicker("setDate", fecha );
+            $formPersona.find('.nombres').val(resp.objeto.Name);
+            $formPersona.find('.apellidos').val(resp.objeto.LastName);
+            $formPersona.find('.tipo-documento').val(resp.objeto.DocType);
+            $formPersona.find('.nro-documento').val(resp.objeto.DocNumber);
+            $formPersona.find('.telefono').val(resp.objeto.Phone);
+            $formPersona.find('.email').val(resp.objeto.Email);
+            $formPersona.find('.nacimiento').datepicker("setDate", fecha );
 
 
             if(resp.codigo == 0){
@@ -1842,10 +1844,13 @@ function requestSearchParameters(parms)
 	var cityOrigen = cities[origen];
 	var cityDestino = cities[destino];
 
+
 	$("#lbl_info_salida").siblings('b').remove(); //este elimina a los dos b de ida y de regreso para volver a poner
+	$(".OrdenarVuelos").remove(); //este elimina a los dos
 	$("#lbl_info_salida").html("VUELO DE IDA");
 	$("#lbl_info_salida").css({"font-size":"12px"});
-	$("#lbl_info_salida").after("<b style='font-size: 25px;'>"+cityOrigen+" ( "+origen+" ) - "+cityDestino+" ( "+destino+" ) </b>");
+	$("#lbl_info_salida").after("<b class='txt_origen_destino'>"+cityOrigen+" ( "+origen+" ) - "+cityDestino+" ( "+destino+" ) </b>");
+	$("#lbl_info_salida").after("<div class='OrdenarVuelos'><div>Ordenar por:</div><select onchange='vuelosDibujador.ordenarVuelos(this)' data-tipo='salidas_' ><option value='ordenporprecio'>Precio</option><option value='ordenporhora'>Hora</option></select></div>");
 
 	// regreso
 	if(parms.fechaVuelta != null) {
@@ -1854,10 +1859,12 @@ function requestSearchParameters(parms)
 		$("#lbl_info_regreso").html("VUELO DE VUELTA: ");
 
 		$("#lbl_info_regreso").css({"font-size":"12px"});
-		$("#lbl_info_regreso").after("<b style='font-size: 25px;'>"+cityDestino+" ( "+destino+" ) - "+cityOrigen+" ( "+origen+") </b>");
+		$("#lbl_info_regreso").after("<b class='txt_origen_destino'>"+cityDestino+" ( "+destino+" ) - "+cityOrigen+" ( "+origen+") </b>");
+        $("#lbl_info_regreso").after("<div class='OrdenarVuelos'><div>Ordenar por:</div><select onchange='vuelosDibujador.ordenarVuelos(this)' data-tipo='llegadas_' ><option value='ordenporprecio'>Precio</option><option value='ordenporhora'>Hora</option></select></div>");
 
 
-	} else {
+
+    } else {
 		$("#lbl_info_regreso, #tbl_dayselector_regreso, #tbl_regreso").hide();
 		$("#lbl_info_regreso").hide();
 	}
@@ -1997,71 +2004,89 @@ function buildRegistroPersona(tipo, numPx)
 			  .addClass("inactive")
 			  .attr("data-tipo",tipo)
 			  .append("<div class='left-label'><label class='lbl-tipo'>"+namesByTipo[tipo]+"</label><label class='nro-pasajero'>PASAJERO "+numPx+"</label><div class='icon-pasajero "+tipo+"'></div></div>")
-			  .append("<div class='form'><table cellpadding='0' cellspacing='0'></table></div>");
+			  .append("<div class='form'><table cellpadding='0' cellspacing='0'></table></div>")
+			  .append("<div class='wrapper'><div class='form'></div></div>");
 
     var tbl = $(persona).find(".form table");
 
-    if(tipo=='adulto' || tipo=='adultoMayor' || tipo=='ninho'){
-        tbl.append(
-            "<tr><td style='position:relative;' colspan='2'><span style='display: inline;float: left;'># VIAJERO FRECUENTE:</span> <input style='width: 40%; float: left; position: absolute; bottom: 0;' type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'><div class='iconFormSvg frmPerBuscar'><figure class='svg'  data-src='search'></figure><span>Buscar</span></div> <div class='iconFormSvg frmPerLimpiar'><figure class='svg'  data-src='Borrar'></figure><span>Limpiar</span></div>  </td><td colspan='2'><span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span></td></tr>"
+    var wrapper = $(persona).find('.wrapper .form');
+    wrapper.css({"width":"85%"});
 
-        );
+
+    wrapper.append('<div class="Grid Grid--gutters Grid--cols-1 titulo_persona_mobile">'+
+		'<div class="Grid-cell" style="background-color:#3D5B86; position: absolute; top: -28px; padding: 15px; color: #fff; "><div class="content-1of1"><div class="icon-pasajero '+tipo+'"></div> PASAJERO '+numPx+' - '+namesByTipo[tipo]+' </div></div>'+
+        '</div>');
+
+    wrapper.append('<br>');
+
+    if(tipo=='adulto' || tipo=='adultoMayor' || tipo=='ninho'){
+        wrapper.append('<div class="Grid Grid--gutters Grid--holly-grail">' +
+            '<div class="Grid-cell main" style="order: 1;">' +
+				'<div class="Holly">' +
+					'<div class="titulo_input" style="float: left;"># VIAJERO <br>FRECUENTE:  </div>' +
+					'<input style="width: 37%; float:left; margin-top: 7px;" type="text" id="tbx_px'+numPx+'_px_frecuente" class="nro-viajero-frecuente">  ' +
+					'<div class="iconFormSvg frmPerBuscar"><figure class="svg"  data-src="search"></figure><span>Buscar</span></div>'+
+					'<div class="iconFormSvg frmPerLimpiar"><figure class="svg"  data-src="Borrar"></figure><span>Limpiar</span></div>'+
+				'</div>' +
+            '</div>'+
+            '<div class="Grid-cell aside" style="order: 2;"><div class="Holly"><span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span></div></div>'+
+            '</div>');
+    }
+
+    wrapper.append('<div class="Grid Grid--gutters Grid--cols-4">'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">NOMBRES</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_nombres" class="nombres"></div> </div></div>'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">APELLIDOS</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_apellidos" class="apellidos"></div> </div></div>'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">TIPO DE DOCUMENTO</div><div class="validable">' +
+							'<select id="select_px'+numPx+'_tipo_documento" class="tipo-documento">' +
+							'<option value="NONE">Tipo de Documento</option>' +
+							'<option value="CI">CI</option>' +
+							'<option value="PASAPORTE">PASAPORTE</option>' +
+							'<option value="DNI">DNI</option>' +
+							'</select>'+
+						'</div> </div></div>'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input"># DE DOCUMENTO</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_documento" class="nro-documento"></div> </div></div>'+
+
+					'</div>');
+    wrapper.append('<div class="Grid Grid--gutters Grid--holly-grail">'+
+						'<div class="Grid-cell aside" style="order: 1;">'+
+							'<div class="Holly">'+
+								'<div class="titulo_input">TELEFONO</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_telefono" class="telefono"></div>'+
+							'</div>'+
+						'</div>'+
+						'<div class="Grid-cell main" style="order: 2;">'+
+							'<div class="Holly">'+
+								'<div class="titulo_input">'+(isAdulto?'EMAIL':'FECHA NACIMIENTO')+'</div> ' +
+								(isAdulto?
+										'<div class="validable" style="position: relative;"><div class="tooltip">Debes Ingresar tu Correo Electronico</div><input type="text" id="tbx_px'+numPx+'_email" class="email" onfocus="validaciones_form.validar_email(this)" onkeyup="validaciones_form.validar_email(this)" ><span class="icon_form"><svg   class="svg_icon_form"><use class="alert_form" xlink:href="#alert_form" /></svg></span></div>':
+										'<div class="validable" style="position: relative;"><div class="tooltip">'+(tipo=='infante'?'Infante desde los 8 dias de nacido hasta antes de los 2 a&ntilde;os':'Ni&ntilde;o desde los 2 a&ntilde;os hasta antes de cumplir 12 a&ntilde;os')+'</div><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>'
+								) +
+							'</div>'+
+						'</div>'+
+						'<div class="Grid-cell aside" style="order: 3;">'+
+							'<div class="Holly">'+
+								'<div class="titulo_input">'+(isAdulto?'FECHA NACIMIENTO':'# VIAJERO FRECUENTE')+'</div> '+
+								(isAdulto?
+										'<div class="validable"><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>':
+										'<input readonly type="text" id="tbx_px'+numPx+'_px_frecuente" class="nro-viajero-frecuente">'
+								) +
+							'</div>'+
+						'</div>'+
+					'</div>');
+
+    if(ENABLE_GENDER==true){
+    	if(isAdulto){
+
+            wrapper.append('<div class="Grid Grid--gutters Grid--cols-4">'+
+							'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">GENERO</div><div class="validable"><select id="tbx_px'+numPx+'_genero" class="genero"><option value="NONE">Genero</option><option value="M">MASCULINO</option><option value="F">FEMENINO</option></select> </div> </div></div>'+
+						'</div>');
+
+        }else{
+            wrapper.append("<div style='color: #4c0a00; font-size: 15px; width: 100%;'><b>Se debe presentar documentos para confirmar la edad</b></div>");
+
+		}
 	}
 
-    tbl.append("<tr><th style='width:25%'>NOMBRES</th><th style='width:25%'>APELLIDOS</th><th style='width:25%'>TIPO DE DOCUMENTO</th><th style='width:25%'># DE DOCUMENTO</th></tr>")
-	   .append("<tr>" + 
-	   				"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_nombres' class='nombres'></div></td>"+
-	   				"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_apellidos' class='apellidos'></div></td>" +
-	   				"<td>" +
-						"<div class='validable'><select id='select_px"+numPx+"_tipo_documento' class='tipo-documento'>" +
-							"<option value='NONE'>Tipo de Documento</option>" +
-			                "<option value='CI'>CI</option>" +
-			                "<option value='PASAPORTE'>PASAPORTE</option>" +
-			                "<option value='DNI'>DNI</option>" +
-						"</select></div>" +
-					"</td>" +
-					"<td><div class='validable'><input type='text' id='tbx_px"+numPx+"_documento' class='nro-documento'></div></td>" +
-					
-				"</tr>")
-		.append("<tr><th>TEL&Eacute;FONO</th><th colspan='2'>"+(isAdulto?"EMAIL":"FECHA NACIMIENTO")+"</th><th class='"+(isAdulto?'':'disabled')+"'>"+(isAdulto?"FECHA NACIMIENTO":"# VIAJERO FRECUENTE")+"</th></tr>"+
-			"<tr>" +
-			"<td><input type='text' id='tbx_px"+numPx+"_telefono' class='telefono'></td>" +
-			"<td colspan='"+(isAdulto?'2':'1')+"'>" +
-			/*SI ES ADULTO ENTRA EL EMAIL Y DIFERENTE ENTRA LA FECHA NACIMIENTO*/
-			(isAdulto?
-				//"<div class='validable' style='position: relative;'><div class='tooltip'>Debes Ingresar tu Correo Electronico</div><input type='text' id='tbx_px"+numPx+"_email' class='email' onfocus='validaciones_form.validar_email(this)' onkeyup='validaciones_form.validar_email(this)' ><span class='icon_form'><svg class='svg_icon_form'><use class='alert_form' xlink:href='#alert_form' /></svg></span></div>" :
-				"<div class='validable' style='position: relative;'><div class='tooltip'>Debes Ingresar tu Correo Electronico</div><input type='text' id='tbx_px"+numPx+"_email' class='email' onfocus='validaciones_form.validar_email(this)' onkeyup='validaciones_form.validar_email(this)' ><span class='icon_form'><svg   class='svg_icon_form'><use class='alert_form' xlink:href='#alert_form' /></svg></span></div>" :
-				"<div class='validable' style='position: relative;'><div class='tooltip'>"+(tipo=='infante'?'Infante desde los 8 dias de nacido hasta antes de los 2 a&ntilde;os':'Ni&ntilde;o desde los 2 a&ntilde;os hasta antes de cumplir 12 a&ntilde;os')+"</div><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>"
-			) +
-			"</td>" +
-			(isAdulto?"":"<td></td>") +
 
-			"<td>" +
-			/*SI ES ADULTO ENTRA LA FECHA DE NACIMIENTO Y DIFERENTE ENTRA VIAJERO FRECUENTE*/
-			(isAdulto?
-				"<div class='validable'><input type='text' id='picker_px"+numPx+"_nacimiento' class='calendar nacimiento' text='(Ingrese fecha de nacimiento)' onkeypress='return false;'></div>":
-				"<input readonly type='text' id='tbx_px"+numPx+"_px_frecuente' class='nro-viajero-frecuente'>"
-			) +
-			"</td>" +
-
-			"</tr>"
-		)
-		.append(
-			""+(ENABLE_GENDER==true?
-				""+(isAdulto?
-                        "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>":
-                   		 "<tr><th colspan='1'>GENERO</th></tr> <tr><td><select id='tbx_px"+numPx+"_genero' class='genero'><option value='NONE'>Genero</option><option value='M'>MASCULINO</option><option value='F'>FEMENINO</option></select></td></tr>"
-				)+""
-                :
-                "" +
-                (isAdulto?
-                        "" :
-                        "<tr><td colspan='4'><span style='color: #4c0a00; font-size: 15px;'><b>Se debe presentar documentos para confirmar la edad</b></span><!--<span class='disabled'>&iquest;No eres viajero frecuente?<a href='#''>REG&Iacute;STRATE</a></span> --> </td></tr>"
-                ) +""
-			)
-
-
-        );
 
 
 	$(persona).find("input").focusin(focusOnPersona);

@@ -19,6 +19,7 @@
 	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_en.js"></script>  -->
 	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
 
+
 	<!-- SCROLLBAR LIBRARY -->
 	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
 		rel="stylesheet" type="text/css" />
@@ -59,6 +60,7 @@
 
 
 	<link rel="stylesheet" href="content/animate.css" type="text/css"/>
+	<link rel="stylesheet" href="content/flex-grid.css" type="text/css"/>
 
 
 	<!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
@@ -583,7 +585,7 @@
 					</table>
 
 					<br>
-					<table style="border: none;padding: 0;background-color: #fff;">
+					<table class="bottonReservaMobile" style="border: none;padding: 0;background-color: #fff;">
 						<tr style="background-color: #fff;">
 							<td  style="background-color: #fff;" align="right" class="cell-submit" colspan="2">
 								<!--<div id="loading_compra2" class="loading" style="display:none"></div>
@@ -701,6 +703,16 @@
 						<div class="persona">
 						</div>
 					</div>
+					<table class="bottonReservaMobile" style="border: none;padding: 0;background-color: #fff;">
+						<tr style="background-color: #fff;">
+							<td  style="background-color: #fff;" align="right" class="cell-submit" colspan="2">
+
+							</td>
+						</tr>
+					</table>
+
+
+
 				</div>
 			</div>
 
@@ -765,7 +777,7 @@
 
 							<td id="contenedor_pagar" colspan="2" style="background-color: #E1E1E1;">
 								<div id="formulario_pagar" class="form">
-									<table width="60%" style="margin: auto; width: 60%;">
+									<table>
                                         <tr>
                                             <td colspan="2">
                                                 <br/>
@@ -1206,7 +1218,7 @@
 
 				</table>
 
-				<table style="border: none;padding: 0;background-color: #fff;">
+				<table class="bottonReservaMobile" style="border: none;padding: 0;background-color: #fff;">
 					<tr style="background-color: #fff;">
 						<td style="background-color: #fff;" class="cell-submit" colspan="2">
 							<!--<div id="loading_compra" class="loading" style="display:none"></div>
@@ -1230,5 +1242,61 @@
 	<!-- <<< MISC UI >>> -->
 	<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
 	<div id="div_submit"></div>
+
+
+<div id="divFlotante">
+	<figure class="svg"  data-src="flecha"></figure>
+</div>
+<div id="divBordeInferiorMob"></div>
+
+<script>
+    $( function() {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+        var $widget_resumen_reserva = $("#widget_resumen_reserva");
+        var divFlotante =  $( "#divFlotante");
+
+        divFlotante.click(function (){
+            console.log('click',$widget_resumen_reserva.hasClass('MostrarWidgetMobile'))
+
+            if($widget_resumen_reserva.hasClass('MostrarWidgetMobile') == true){
+                $widget_resumen_reserva.removeClass('MostrarWidgetMobile');
+
+                $widget_resumen_reserva.addClass('ocultarWidgetMobile');
+
+                $(".ocultarWidgetMobile").one(animationEnd, function () {
+                    console.log('ocultamos')
+                    $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
+                    $widget_resumen_reserva.css({"visibility": "hidden"});
+                    $widget_resumen_reserva.css({"display": "none"});
+
+                    divFlotante.find('svg').removeClass("openMobile");
+                    divFlotante.find('svg').addClass("cerrarMobile");
+                    divFlotante.css({"background-color":""});
+
+                });
+
+			}else{
+
+                $widget_resumen_reserva.css({"display": ""});
+
+                $widget_resumen_reserva.addClass('MostrarWidgetMobile');
+                $widget_resumen_reserva.css({"visibility": "visible"});
+                $('.MostrarWidgetMobile').one(animationEnd, function () {
+                    console.log('ocultamos ocultarWidgetMobile');
+					console.log($widget_resumen_reserva)
+                    $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
+
+                    divFlotante.find('svg').removeClass("cerrarMobile");
+                    divFlotante.find('svg').addClass("openMobile");
+
+                    divFlotante.css({"background-color":"#EFAA35"});
+                });
+			}
+
+        });
+
+    } );
+</script>
 </body>
 </html>
