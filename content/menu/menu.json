@@ -17,7 +17,6 @@
           "link":"http://www.boa.bo/bolivia/inicio"
         }
       ]
-
     },
     {
       "name":"ANTES DE VIAJAR",
@@ -27,25 +26,29 @@
           "name":"POL&Iacute;TICA DE EQUIPAJE",
           "class":"primary",
           "data-item":"politica_equipaje",
+          "link":"/BoAWebSite/Home/About?primary=politica_equipaje",
           "subMenu":[
             {
-
               "data-item":"equipaje_mano",
-              "name":"Equipaje de mano"
+              "name":"Equipaje de mano",
+              "link":"/BoAWebSite/Home/About?item=equipaje_mano&amp;primary=politica_equipaje"
             },
             {
               "data-item":"equipaje_facturable",
-              "name":"Equipaje facturable"
+              "name":"Equipaje facturable",
+              "link":"/BoAWebSite/Home/About?item=equipaje_facturable&amp;primary=politica_equipaje"
 
             },
             {
               "data-item":"exceso_equipaje",
-              "name":"Exceso de equipaje"
+              "name":"Exceso de equipaje",
+              "link":"/BoAWebSite/Home/About?item=exceso_equipaje&amp;primary=politica_equipaje"
 
             },
             {
               "data-item":"Equipaje especial",
-              "name":"equipaje_especial"
+              "name":"equipaje_especial",
+              "link":"/BoAWebSite/Home/About?item=equipaje_especial&amp;primary=politica_equipaje"
             },
             {
               "data-item":"equipaje_adicional",
@@ -53,82 +56,209 @@
             },
             {
               "data-item":"mercancias_peligrosas",
-              "name":"Mercanc&iacute;as peligrosas"
+              "name":"Mercanc&iacute;as peligrosas",
+              "link":"/BoAWebSite/Home/About?item=mercancias_peligrosas&amp;primary=politica_equipaje"
             },
             {
               "data-item":"equipaje_mascotas",
-              "name":"Mascotas"
+              "name":"Mascotas",
+              "link":"/BoAWebSite/Home/About?item=equipaje_mascotas&amp;primary=politica_equipaje"
             },
             {
-              "data-item":"hora_limite",
-              "name":"Hora l&iacute;mite"
+              "name":"TIPS DE EQUIPAJE",
+              "data-item":"tips_equipaje",
+              "class":"primary",
+              "link":"/BoAWebSite/Home/About?primary=tips_equipaje"
             },
             {
-              "data-item":"aeropuerto_lp",
-              "name":"Aeropuerto de La Paz"
-            },
-            {
-              "data-item":"aeropuerto_cbba",
-              "name":"Aeropuerto de Cochabamba"
-            },
-            {
-              "data-item":"aeropuerto_viruviru",
-              "name":"Aeropuerto de Viru Viru"
+              "name": "LLEGAR AL AEROPUERTO",
+              "data-item": "llegar_aeropuerto",
+              "class": "primary",
+              "link": "/BoAWebSite/Home/About?primary=llegar_aeropuerto",
+              "sub-Menu": [
+                {
+                  "data-item": "hora_limite",
+                  "name": "Hora limite",
+                  "link": "/BoAWebSite/Home/About?item=hora_limite&amp;primary=llegar_aeropuerto"
+                },
+                {
+                  "data-item": "aeropuerto_lp",
+                  "name": "Aeropuerto de La Paz",
+                  "link": "/BoAWebSite/Home/About?item=aeropuerto_lp&amp;primary=llegar_aeropuerto"
+                },
+                {
+                  "data-item": "aeropuerto_cbba",
+                  "name": "Aeropuerto de Cochabamba",
+                  "link": "/BoAWebSite/Home/About?item=aeropuerto_cbba&amp;primary=llegar_aeropuerto"
+                },
+                {
+                  "data-item": "aeropuerto_viruviru",
+                  "name": "Aeropuerto de Viru Viru",
+                  "link": "/BoAWebSite/Home/About?item=aeropuerto_viruviru&amp;primary=llegar_aeropuerto"
+                }
+              ]
             }
           ]
         },
-
         {
           "name":"SERVICIOS ESPECIALES",
-          "link":"",
+          "link":"/BoAWebSite/Home/About?primary=servicios_especiales",
+          "class":"primary",
           "data-item":"servicios_especiales",
           "subMenu":[
             {
               "name":"menores_no_acompanados",
-              "data-item":"Menores no acompa&ntilde;ados"
+              "data-item":"Menores no acompa&ntilde;ados",
+              "link":"/BoAWebSite/Home/About?item=menores_no_acompanados&amp;primary=servicios_especiales"
             },
             {
               "data-item":"pasajeros_necesidades_diferentes",
-              "name":"Pasajeros con necesidades diferentes"
+              "name":"Pasajeros con necesidades diferentes",
+              "link":"/BoAWebSite/Home/About?item=pasajeros_necesidades_diferentes&amp;primary=servicios_especiales"
             },
             {
               "data-item":"condiciones_medicas_especiales",
-              "name":"Condiciones m&eacute;dicas especiales"
+              "name":"Condiciones m&eacute;dicas especiales",
+              "link":"/BoAWebSite/Home/About?item=condiciones_medicas_especiales&amp;primary=servicios_especiales"
             },
             {
-              "data-item":"hola",
-              "name":"hola"
+              "data-item":"oxigeno",
+              "name":"Transporte de ox&iacute;geno",
+              "link":"/BoAWebSite/Home/About?item=oxigeno&amp;primary=servicios_especiales"
             },
             {
-              "data-item":"aldo",
-              "name":"aldo"
+              "data-item":"dialisis_portatil",
+              "name":"Transporte de equipo de di&aacute;lisis port&aacute;til (PDMs)",
+              "link":"/BoAWebSite/Home/About?item=dialisis_portatil&amp;primary=servicios_especiales"
             },
             {
-              "data-item":"jaune",
-              "name":"jaune"
+              "data-item":"bebes",
+              "name":"Viajando con beb&eacute;s",
+              "link":"/BoAWebSite/Home/About?item=bebes&amp;primary=servicios_especiales"
+            },
+            {
+              "data-item":"mascota",
+              "name":"Viajando con tu mascota en cabina",
+              "link":"/BoAWebSite/Home/About?item=mascota&amp;primary=servicios_especiales"
             }
-
           ]
-
+        },
+        {
+          "name":"PASAJEROS ESPECIALES",
+          "link":"/BoAWebSite/Home/About?primary=pasajeros_especiales",
+          "class":"primary",
+          "data-item":"pasajeros_especiales",
+          "subMenu":[
+            {
+              "data-item":"embarazadas",
+              "name":"Mujeres embarazadas",
+              "link":"/BoAWebSite/Home/About?item=embarazadas&amp;primary=pasajeros_especiales"
+            },
+            {
+              "data-item":"tercera_edad",
+              "name":"Pasajeros de la tercera edad",
+              "link":"/BoAWebSite/Home/About?item=tercera_edad&amp;primary=pasajeros_especiales"
+            },
+            {
+              "data-item":"pasajeros_sobrepeso",
+              "name":"Pasajeros que requieren asiento extra",
+              "link":"/BoAWebSite/Home/About?item=pasajeros_sobrepeso&amp;primary=pasajeros_especiales"
+            },
+            {
+              "data-item":"pasajeros_custodia_legal",
+              "name":"Pasajeros bajo custodia legal",
+              "link":"/BoAWebSite/Home/About?item=pasajeros_custodia_legal&amp;primary=pasajeros_especiales"
+            },
+            {
+              "data-item":"menu_especial",
+              "name":"MENU ESPECIAL",
+              "class":"primary",
+              "link":"/BoAWebSite/Home/About?primary=menu_especial"
+            },
+            {
+              "data-item":"documentacion_viaje",
+              "name":"DOCUMENTACION DE VIAJE, VISA Y API",
+              "class":"primary",
+              "link":"/BoAWebSite/Home/About?primary=documentacion_viaje"
+            },
+            {
+              "data-item":"vacunas",
+              "name":"VACUNAS",
+              "class":"primary",
+              "link":"/BoAWebSite/Home/About?primary=vacunas"
+            },
+            {
+              "data-item":"derechos_pasajeros",
+              "name":"DERECHOS DE LOS PASAJEROS",
+              "class":"primary",
+              "link":"/BoAWebSite/Home/About?primary=derechos_pasajeros",
+              "subMenu":[
+                {
+                  "name":"Contrato de transporte (es)",
+                  "link":"/content/docs/contrato_transporte.pdf"
+                }
+              ]
+            }
+          ]
         }
-
       ]
-
     },
     {
-      "name":"prueba",
-      "link":""
-
+      "name":"EXPERIENCIA BoA",
+      "link":"",
+      "subMenu":[
+        {
+          "data-item":"nuestra_flota",
+          "name":"NUESTRA FLOTA",
+          "class":"primary",
+          "link":"/BoAWebSite/Home/About?primary=nuestra_flota"
+        },
+        {
+          "data-item":"experiencia_bordo",
+          "name":"EXPERIENCIA A BORDO",
+          "class":"primary",
+          "link":"/BoAWebSite/Home/About?primary=experiencia_bordo",
+          "subMenu":[
+            {
+              "data-item":"gastronomia",
+              "name":"Gastronomía, Snack y Bebidas",
+              "link":"/BoAWebSite/Home/About?item=gastronomia&amp;primary=experiencia_bordo"
+            },
+            {
+              "name":"Revista Destinos",
+              "link":"http://www.destinos.com.bo"
+            }
+          ]
+        }
+      ]
     },
     {
-      "name":"otro",
-      "link":""
-
+      "name":"SOMOS BoA",
+      "link":"",
+      "subMenu":[
+        {
+          "data-item":"perfil_corporativo",
+          "name":"PERFIL CORPORATIVO",
+          "class":"primary",
+          "link":"/BoAWebSite/Home/About?primary=perfil_corporativo",
+          "subMenu":[
+            {
+              "name":"Convocatorias",
+              "link":"http://sms.obairlines.bo/BoAInstitucional/Home/Convocatorias/1"
+            }
+          ]
+        },
+        {
+          "data-item":"somos_iosa",
+          "name":"SOMOS IOSA",
+          "link":"/BoAWebSite/Home/About?primary=somos_iosa"
+        },
+        {
+          "data-item":"reconocimientos_premios",
+          "name":"RECONOCIMIENTOS Y PREMIOS",
+          "link":"/BoAWebSite/Home/About?primary=reconocimientos_premios"
+        }
+      ]
     }
-
-
-
-
-
   ]
 }
