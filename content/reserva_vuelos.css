@@ -2611,6 +2611,26 @@ loading svg {
 
 @media (max-width: 769px){
 
+	#ui_reserva_vuelos .header .stage .number{
+		width: 20px;
+		height: 20px;
+		
+	}
+	#ui_reserva_vuelos .header .stage.active .number{
+		width: 30px;
+		height: 30px;
+	}
+
+	#ui_reserva_vuelos .header .stage .number{
+		font-size: 15px;
+		line-height: 25px;
+	}
+	#ui_reserva_vuelos .header .stage.active .number span {
+		color: #FFF;
+		font-size: 20px;
+		line-height: 40px;
+	}
+
 	#ui_reserva_vuelos .header{
 		position: relative;
 		min-width: 100%;
@@ -2698,7 +2718,7 @@ loading svg {
 
 	#ui_reserva_vuelos {
 		position: relative;
-		top: 125px;
+		top: 60px;
 		width: 100%;
 		min-width: 100%;
 		margin: 0 auto;
@@ -2900,3 +2920,5 @@ loading svg {
 	-o-appearance: none;
 	text-indent: 0.01px;
 }
+
+/*56283*/

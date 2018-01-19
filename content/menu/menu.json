@@ -1,0 +1,134 @@
+{
+  "menu": [
+    {
+      "name":"PLANIFICA TU VIAJE",
+      "link":"",
+      "subMenu":[
+        {
+          "name":"RESERVAR VUELOS",
+          "link":"http://www.boa.bo/bolivia/inicio"
+        },
+        {
+          "name":"ESTADO DEL VUELO",
+          "link":"http://www.boa.bo/bolivia/inicio"
+        },
+        {
+          "name":"HORARIO DE VUELOS",
+          "link":"http://www.boa.bo/bolivia/inicio"
+        }
+      ]
+
+    },
+    {
+      "name":"ANTES DE VIAJAR",
+      "link":"",
+      "subMenu":[
+        {
+          "name":"POL&Iacute;TICA DE EQUIPAJE",
+          "class":"primary",
+          "data-item":"politica_equipaje",
+          "subMenu":[
+            {
+
+              "data-item":"equipaje_mano",
+              "name":"Equipaje de mano"
+            },
+            {
+              "data-item":"equipaje_facturable",
+              "name":"Equipaje facturable"
+
+            },
+            {
+              "data-item":"exceso_equipaje",
+              "name":"Exceso de equipaje"
+
+            },
+            {
+              "data-item":"Equipaje especial",
+              "name":"equipaje_especial"
+            },
+            {
+              "data-item":"equipaje_adicional",
+              "name":"Equipaje adicional"
+            },
+            {
+              "data-item":"mercancias_peligrosas",
+              "name":"Mercanc&iacute;as peligrosas"
+            },
+            {
+              "data-item":"equipaje_mascotas",
+              "name":"Mascotas"
+            },
+            {
+              "data-item":"hora_limite",
+              "name":"Hora l&iacute;mite"
+            },
+            {
+              "data-item":"aeropuerto_lp",
+              "name":"Aeropuerto de La Paz"
+            },
+            {
+              "data-item":"aeropuerto_cbba",
+              "name":"Aeropuerto de Cochabamba"
+            },
+            {
+              "data-item":"aeropuerto_viruviru",
+              "name":"Aeropuerto de Viru Viru"
+            }
+          ]
+        },
+
+        {
+          "name":"SERVICIOS ESPECIALES",
+          "link":"",
+          "data-item":"servicios_especiales",
+          "subMenu":[
+            {
+              "name":"menores_no_acompanados",
+              "data-item":"Menores no acompa&ntilde;ados"
+            },
+            {
+              "data-item":"pasajeros_necesidades_diferentes",
+              "name":"Pasajeros con necesidades diferentes"
+            },
+            {
+              "data-item":"condiciones_medicas_especiales",
+              "name":"Condiciones m&eacute;dicas especiales"
+            },
+            {
+              "data-item":"hola",
+              "name":"hola"
+            },
+            {
+              "data-item":"aldo",
+              "name":"aldo"
+            },
+            {
+              "data-item":"jaune",
+              "name":"jaune"
+            }
+
+          ]
+
+        }
+
+      ]
+
+    },
+    {
+      "name":"prueba",
+      "link":""
+
+    },
+    {
+      "name":"otro",
+      "link":""
+
+    }
+
+
+
+
+
+  ]
+}
