@@ -178,8 +178,12 @@
 
                 var objectAux = {};
 
+                //duplicidad de familias y clases
+                var dup = [];
                 if(typeof store.vueloMatriz[opcion_vuelo_indice] === 'object'){
                     $.each(store.vueloMatriz[opcion_vuelo_indice].tarifas, function (indexTarifa, tarifa) {
+
+
 
                         var continuar = true;
                         //verificamos si ya se selecciona la ida debemos filtrar tambien por la familia que se a seleccionado para no mostrar tarifas que no se podrian combinar
@@ -204,6 +208,13 @@
 
                             }
                         }
+
+                        dup[indexTarifa] = tarifa.FI+'-'+tarifa.FV;
+                        if(dup[indexTarifa-1] == tarifa.FI+'-'+tarifa.FV ){
+                            continuar = false;
+                            console.log('el mismo solo se debe tomar en cuenta el mas barato');
+                        }
+
 
                         if(continuar == true){
                             var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
