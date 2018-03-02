@@ -15,6 +15,7 @@
         familiaIdaSeleccionado:'',
         familiaVueltaSeleccionado:'',
 
+
         //store:'',
 
         dibujarHeaderFamilias: function (tipo) {
@@ -177,6 +178,7 @@
                 var tam = parseInt(100 / scope.store.familyInformation.length) -1;
 
                 var objectAux = {};
+                var objectAuxTarifasBarata = {};
 
                 //duplicidad de familias y clases
                 var dup = [];
@@ -216,6 +218,8 @@
                         }
 
 
+
+
                         if(continuar == true){
                             var importe = tarifa.TarifaPersoCombinabilityID[0][importe_vuelo];
                             var moneda = tarifa.TarifaPersoCombinabilityID[0].moneda;
@@ -240,17 +244,32 @@
                               }
                             });
 
-                            objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" class="cajaFamilia" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia[0]+'</span><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+                            /*mostramos las tarifaas mas baratas si encontramos la mantenemos*/
+                            var noChanges = 'Y';
+                            if(typeof objectAuxTarifasBarata[tarifa[familiaTipoidaVuelta]] === "number"){
+                                if(objectAuxTarifasBarata[tarifa[familiaTipoidaVuelta]] < parseFloat(importe)){
+
+                                    noChanges = 'N';
+                                    objectAuxTarifasBarata[tarifa[familiaTipoidaVuelta]] = parseFloat(importe);
+                                }
+                            }else {
+                                objectAuxTarifasBarata[tarifa[familiaTipoidaVuelta]] = parseFloat(importe);
+                            }
+
+
+                            if(noChanges === 'Y'){
+                                objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" class="cajaFamilia" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia[0]+'</span><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+                            }
 
 
                         }
+
 
 
                     });
 
 
                 }
-
 
                 $.each(scope.store.familyInformation,function (indexFamilia,familia) {
 
