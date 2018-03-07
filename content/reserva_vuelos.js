@@ -418,7 +418,7 @@ $(document).on('ready',function()
     $("#pagar_reserva").click(pagarReserva);
 
 
-//dibuja los bancos
+	//dibuja los bancos
     dibujarBancos(BoA.bancos.debito, "debito");
     dibujarBancos(BoA.bancos.credito, "credito");
     dibujarBancos(BoA.bancos.billetera, "billetera");
@@ -579,17 +579,17 @@ function toggleWidgetCambiarVuelo()
 function validateSearch()
 {
 
+    $("#tabla_tipo").hide();
+    $("#totalTasas").html("0");
+
+    var selectOrigen = $("#select_origen");
+    var selectDestino = $("#select_destino");
+    var rbtnIda = $("#rbtn_ida");
+    var rbtnIdaVuelta = $("#rbtn_ida_vuelta");
+    var pickerSalida = $("#picker_salida");
+    var pickerRegreso = $("#picker_regreso");
 
 
-	$("#tabla_tipo").hide();
-	$("#totalTasas").html("0");
-
-	var selectOrigen = $("#select_origen");
-	var selectDestino = $("#select_destino");
-	var rbtnIda = $("#rbtn_ida");
-	var rbtnIdaVuelta = $("#rbtn_ida_vuelta");
-	var pickerSalida = $("#picker_salida");
-	var pickerRegreso = $("#picker_regreso");
 
 	var parms = {
 		origen: selectOrigen.val(),
@@ -653,6 +653,33 @@ function validateSearch()
 		rawDate = pickerRegreso.val().split(" ");
 		searchParameters.fechaVuelta = rawDate[2] +""+ MONTHS_LANGUAGE_TABLE[rawDate[1]] +""+ rawDate[0];
 	}
+
+
+	/*
+	 * cuando es presionado nuevamente el calendario
+	 *
+	 * */
+    var table = this;
+    if(table.tagName == 'TD'){
+        while(false == $(table).is("table")) // find parent table
+            table = table.parentNode;
+
+        var isSalida = ($(table).data("salida_regreso") == "salida");
+
+        $(table).find(".day-selector").removeClass("selected");
+
+        $(this).addClass("selected");
+
+        var selected_date = $(this).data("date");
+
+        if(isSalida){
+            searchParameters.fechaIda = selected_date;
+        }
+        else {
+            searchParameters.fechaVuelta = selected_date;
+        }
+    }
+
 
     loadingBoa.cargarBoa();
     vuelosDibujador.resetearSeleccion();
@@ -1443,7 +1470,8 @@ function asyncReceiveDates(response)
 
 		return;
 	}
-	
+
+	console.log(response)
 	// construir selector de fechas para vuelos de ida y vuelta
 	currentDateIda = response["fechaIdaConsultada"];
 	rawDatesCache.ida = response["calendarioOW"]["OW_Ida"]["salidas"]["salida"];
@@ -1514,6 +1542,7 @@ function asyncReceiveFlights(response)
 	// el verdadero response esta mas adentro ¬¬
 	response = response['ResultAvailabilityPlusValuationsShort']; 
 
+	console.log('response',response)
 	var fechaIdaConsultada = response["fechaIdaConsultada"];
 	var fechaVueltaConsultada = response["fechaVueltaConsultada"];
 	
@@ -1639,7 +1668,8 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 
 	table.prepend(monthsRow);
 
-	table.find("tr.days td.day-selector:not(.no-flights)").click(changeDay);
+	//table.find("tr.days td.day-selector:not(.no-flights)").click(changeDay);
+	table.find("tr.days td.day-selector:not(.no-flights)").click(validateSearch);
 }
 
 function operadorSvg(operador){

@@ -73,6 +73,10 @@
         },
         dibujarVuelos:function (tipo,store) {
 
+            //encontrar el menor importe de la vista a mostrar
+            var menorImporte =0;
+            var $calendario;
+
             //vamos a poner a un scope en vez de el that
             var scope = this;
 
@@ -92,6 +96,8 @@
 
                 importe_vuelo = "importe_orig";
 
+                $calendario = $("#tbl_days_selector_salida");
+
             }else if (tipo == "llegadas"){
 
                 ida_vuelta = "vuelosVuelta";
@@ -99,6 +105,8 @@
                 disponibilidadTipoidaVuelta = "VDisponibility";
 
                 importe_vuelo = "importe_return";
+                $calendario = $("#tbl_days_selector_regreso");
+
 
             }
 
@@ -182,6 +190,7 @@
 
                 //duplicidad de familias y clases
                 var dup = [];
+
                 if(typeof store.vueloMatriz[opcion_vuelo_indice] === 'object'){
                     $.each(store.vueloMatriz[opcion_vuelo_indice].tarifas, function (indexTarifa, tarifa) {
 
@@ -256,6 +265,22 @@
                                 objectAuxTarifasBarata[tarifa[familiaTipoidaVuelta]] = parseFloat(importe);
                             }
 
+                            //encontramos el menor de todos los importes a mostrar en pantalla
+                            //tomar en cuenta que no del servicio si no de lo que ya estamos filtrando sobre ese buscaremos el mas barato
+                            if(menorImporte === 0){
+                                //solo entra la primera vez
+                                menorImporte = parseFloat(importe);
+
+                            }else{
+                                //reseteamos el valor con el nuevo valor menor encontrado
+                                if(menorImporte > parseFloat(importe)){
+                                    menorImporte = parseFloat(importe);
+                                }
+
+                            }
+
+
+
 
                             if(noChanges === 'Y'){
                                 objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" class="cajaFamilia" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia[0]+'</span><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
@@ -267,6 +292,7 @@
 
 
                     });
+
 
 
                 }
@@ -303,6 +329,11 @@
 
                 iconSvg.convertirFigureSvg(''+ida_vuelta+'_'+v.num_opcion+'_detalle',v);
             });
+
+            //re dibujamos el menor importe en el calendario encontrado en el filtrado
+            console.log('monto menor encontrado',menorImporte);
+            $calendario.find('.selected').find('h3').html('Bs. '+  menorImporte);
+
            
 
         },
