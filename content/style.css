@@ -3005,3 +3005,133 @@ div.panel {
 }
 
 
+
+@media (max-width: 769px){
+	.ui-section{
+		width: 100%;
+	}
+	.ui-section .header{
+		width: 100%;
+		padding: 10px 0 0 20px;
+	}
+	.ui-section .header h3{
+
+	}
+	.ui-section .header-fixed{
+		left: 0;
+	}
+	.ui-section .header-fixed h3{
+		width: 100%;
+		font-size: 1em;
+	}
+	.ui-section .first-menu {
+		display: none;
+	}
+
+	.ui-section .info{
+		width: 100%;
+	}
+	.ui-section .info.selected {
+		left: 0px;
+	}
+
+	.ui-section .icon, .ui-section.unique .icon{
+		left: 70%;
+		margin: 0;
+	}
+
+	.ui-section .descripcion h3{
+		width: 100%;
+		font-size: 1.5em;
+	}
+
+	.info .with-aligned-images .img-contenido {
+		width: 80% !important;
+		float: none !important;
+		margin: 0 !important;
+		margin-left: 20% !important;
+	}
+	.info .with-aligned-images .paragraph{
+		margin: 0px !important;
+	}
+
+	.ui-section .descripcion .desplegable{
+		width: 110%;
+		left: -10%;
+		position: relative;
+	}
+	.ui-section .descripcion .title{
+		width: 100%;
+		left: 0;
+		height: 75px;
+	}
+	.ui-section .descripcion .desplegable .arrow{
+		right: 0 !important;
+	}
+
+	.ui-section .descripcion .desplegable.collapsed .title > h4{
+		width: 100%;
+		font-size: .6em;
+	}
+
+	.ui-section .descripcion .title .img{
+		left: 20px;
+		width: 35px;
+		height: 35px;
+		background-size: 35px auto;
+	}
+
+	.ui-section .descripcion .title > h4 {
+
+		top: 10px;
+		left: 60px;
+		width: 85%;
+		font-size: 17px;
+
+	}
+
+	.ui-section .descripcion table th{
+		font-size: .5em;
+	}
+
+	.ui-section .descripcion table td{
+		padding: 0;
+		font-size: .5em;
+	}
+
+
+
+
+}
+
+/*cookies*/
+.div_cookies {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	background-color: #f5e9c5;
+	height: 70px;
+	z-index: 10000;
+}
+
+.text_cookies {
+	margin-left: 80px;
+	width: 75%;
+	padding-top: 15px;
+	font-size: 1em;
+	float: left;
+}
+
+.btn_cookies {
+	float: left;
+	color: #fff;
+	margin-top: 20px;
+	background-color: #085794;
+	border-color: #096CB9;
+	border-width: 0 0 4px 0;
+	border-style: solid;
+	padding: 10px;
+	cursor: pointer;
+}
+
+

@@ -867,5 +867,22 @@
 			<h1>901 105010</h1>
 		</div>
 	</footer>
+
+	<div class="div_cookies">
+		<div class="text_cookies">
+			Nuestra web utiliza cookies propias y de terceros para mejorar tu experiencia de usuario y mostrarte contenido
+			relacionado con tus preferencias. Si continuas navegando, consideramos que aceptas su uso. Puede obtener más
+			información, o bien conocer cómo cambiar la configuración, en nuestra <a>Política de cookies</a>
+		</div>
+		<div id="btn_cookies" class="btn_cookies">
+			Aceptar
+		</div>
+		<script>
+			var $btn_cookies = $("#btn_cookies");
+            $btn_cookies.click(function () {
+                $btn_cookies.parent('.div_cookies').hide();
+            });
+		</script>
+	</div>
 </body>
 </html>
