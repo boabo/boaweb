@@ -15,10 +15,10 @@
         familiaIdaSeleccionado:'',
         familiaVueltaSeleccionado:'',
 
-
         //store:'',
 
         dibujarHeaderFamilias: function (tipo) {
+
 
             var that = this;
 
@@ -40,10 +40,10 @@
             $("#"+tipo+"_").remove();
 
             if(tipo == 'salidas'){
-                var m = $('<div id="salidas_" style="width: 100%; ">\n    <div class="content_familias">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
+                var m = $('<div id="salidas_" style="width: 100%; ">\n    <div class="content_familias">\n        <div style="width: 60%; float: left">'+translate.t.SELECCIONA_CLASE_QUE_TE_CONVENGA+'</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }else if(tipo == 'llegadas'){
-                var m = $('<div id="llegadas_" style="width: 100%; ">\n    <div class="content_familias">\n        <div style="width: 60%; float: left">Selecciona la clase que te convenga</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
+                var m = $('<div id="llegadas_" style="width: 100%; ">\n    <div class="content_familias">\n        <div style="width: 60%; float: left">'+translate.t.SELECCIONA_CLASE_QUE_TE_CONVENGA+'</div>\n        <div style="width: 40%; float: left" class="familias_">\n            \n        </div>\n    </div>\n    \n</div>');
 
             }
 
@@ -139,7 +139,7 @@
                     console.log(vuelo.co_operador)
                 });
 
-                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" class="content_vuelo" data-ordenPorPrecio="'+k+'" data-ordenPorHora="'+ordenPorHora+'" >\n    <div class="desc_vuelo">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>SALIDA</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>Detalle\n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">Duración Total : 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>LLEGADA</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>Operado por:</label></span><br>'+iconos_operador+'\n        </div>\n    </div>\n</div>');
+                m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" class="content_vuelo" data-ordenPorPrecio="'+k+'" data-ordenPorHora="'+ordenPorHora+'" >\n    <div class="desc_vuelo">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>'+translate.t.SALIDA+'</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>'+translate.t.DETALLE+' \n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">'+translate.t.DURACION_TOTAL+' : 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>'+translate.t.LLEGADA+'</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>'+translate.t.OPERADO_POR+'</label></span><br>'+iconos_operador+'\n        </div>\n    </div>\n</div>');
 
                 var opcion_vuelo_indice ='';
                 //no tiene vuelta entonces dibujamos directamente con sus opciones y vuelta como cero ej: 1-0
@@ -223,7 +223,6 @@
                         dup[indexTarifa] = tarifa.FI+'-'+tarifa.FV;
                         if(dup[indexTarifa-1] == tarifa.FI+'-'+tarifa.FV ){
                             continuar = false;
-                            console.log('el mismo solo se debe tomar en cuenta el mas barato');
                         }
 
 
@@ -283,7 +282,7 @@
 
 
                             if(noChanges === 'Y'){
-                                objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" class="cajaFamilia" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia[0]+'</span><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' Asientos</span></div>';
+                                objectAux[tarifa[familiaTipoidaVuelta]] = '<div onclick="vuelosDibujador.seleccionarTarifa(this)" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" data-'+familiaTipoidaVuelta+'="'+tarifa[familiaTipoidaVuelta]+'" class="cajaFamilia" style="width: '+tam+'%;"><span class="familiaTarifaMobile">'+familia[0]+'</span><b>' + importe + ' ' + HTML_CURRENCIES[CURRENCY] + '</b><br><span class="'+clase_disponibilidad+'">'+disponibilidad+' '+translate.t.ASIENTOS+'</span></div>';
                             }
 
 

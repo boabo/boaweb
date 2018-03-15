@@ -194,6 +194,10 @@ var arraySelectPass = ["","one","two","three","four","five","six","seven","nine"
 $(document).on('ready',function()
 {
 
+	//traducimos los elementos html que estan quemados en la vista
+	translate.traducir($(this));
+
+
     //(function(a){a.fn.validCampos=function(b){a(this).on({keypress:function(a){var c=a.which,d=a.keyCode,e=String.fromCharCode(c).toLowerCase(),f=b;(-1!=f.indexOf(e)||9==d||37!=c&&37==d||39==d&&39!=c||8==d||46==d&&46!=c)&&161!=c||a.preventDefault()}})}})(jQuery);
     iconSvg.convertirFigureSvgIcono();
 
@@ -1877,20 +1881,20 @@ function requestSearchParameters(parms)
 
 	$("#lbl_info_salida").siblings('b').remove(); //este elimina a los dos b de ida y de regreso para volver a poner
 	$(".OrdenarVuelos").remove(); //este elimina a los dos
-	$("#lbl_info_salida").html("VUELO DE IDA");
+	$("#lbl_info_salida").html(translate.t.VUELO_DE_IDA);
 	$("#lbl_info_salida").css({"font-size":"12px"});
 	$("#lbl_info_salida").after("<b class='txt_origen_destino'>"+cityOrigen+" ( "+origen+" ) - "+cityDestino+" ( "+destino+" ) </b>");
-	$("#lbl_info_salida").after("<div class='OrdenarVuelos'><div>Ordenar por:</div><select onchange='vuelosDibujador.ordenarVuelos(this)' data-tipo='salidas_' ><option value='ordenporprecio'>Precio</option><option value='ordenporhora'>Hora</option></select></div>");
+	$("#lbl_info_salida").after("<div class='OrdenarVuelos'><div>"+translate.t.ORDENAR_POR+" :</div><select onchange='vuelosDibujador.ordenarVuelos(this)' data-tipo='salidas_' ><option value='ordenporprecio'>"+translate.t.PRECIO+"</option><option value='ordenporhora'>"+translate.t.HORA+"</option></select></div>");
 
 	// regreso
 	if(parms.fechaVuelta != null) {
 		$("#lbl_info_regreso").empty();
  		$("#lbl_info_regreso, #tbl_dayselector_regreso, #tbl_regreso").show();
-		$("#lbl_info_regreso").html("VUELO DE VUELTA: ");
+		$("#lbl_info_regreso").html(translate.t.VUELO_DE_VUELTA);
 
 		$("#lbl_info_regreso").css({"font-size":"12px"});
 		$("#lbl_info_regreso").after("<b class='txt_origen_destino'>"+cityDestino+" ( "+destino+" ) - "+cityOrigen+" ( "+origen+") </b>");
-        $("#lbl_info_regreso").after("<div class='OrdenarVuelos'><div>Ordenar por:</div><select onchange='vuelosDibujador.ordenarVuelos(this)' data-tipo='llegadas_' ><option value='ordenporprecio'>Precio</option><option value='ordenporhora'>Hora</option></select></div>");
+        $("#lbl_info_regreso").after("<div class='OrdenarVuelos'><div>"+translate.t.ORDENAR_POR+":</div><select onchange='vuelosDibujador.ordenarVuelos(this)' data-tipo='llegadas_' ><option value='ordenporprecio'>"+translate.t.PRECIO+"</option><option value='ordenporhora'>"+translate.t.HORA+"</option></select></div>");
 
 
 

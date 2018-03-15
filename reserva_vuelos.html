@@ -18,6 +18,7 @@
 
 	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_en.js"></script>  -->
 	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
+	<script src="content/translate.js"></script> <!-- CHANGE BY LANGUAGE -->
 
 
 	<!-- SCROLLBAR LIBRARY -->
@@ -483,42 +484,42 @@
 		<div class="header" style="border: 0px;">
 			<div class="stages">
 				<div id="stage_eleccion" class="stage">
-					<div class="number"><span>1</span></div><span>Busqueda</span>
+					<div class="number"><span>1</span></div><span data-headerName="busqueda">Busqueda</span>
 				</div>
 
 				<div id="stage_seleccion" class="stage active">
-					<div class="number"><span>2</span></div><span>Elija su Vuelo</span>
+					<div class="number"><span>2</span></div><span data-headerName="elija_su_vuelo">Elija su Vuelo</span>
 				</div>
 				<div id="stage_registro" class="stage">
-					<div class="number"><span>3</span></div><span>Reservar</span>
+					<div class="number"><span>3</span></div><span data-headerName="reservar">Reservar</span>
 				</div>
 				<div id="stage_compra" class="stage">
-					<div class="number"><span>4</span></div><span>Pagar</span>
+					<div class="number"><span>4</span></div><span data-headerName="pagar">Pagar</span>
 				</div>
 			</div>
 
 			<div id="widget_cambiar_vuelo" class="collapsed">
 				<div id="btn_cambiar_vuelo" class="btn-expand">
-					<span class="cambiar">Modificar Busqueda</span>
-					<span class="buscando">Buscando...</span>
+					<span data-trans="MODIFICAR_BUSQUEDA">Modificar Busqueda</span>
+					<span data-trans="BUSCANDO" class="buscando">Buscando...</span>
 					<div class="icon-loading"></div>
 					<div class="icon-cross"></div>
 				</div>
 				<div id="btn_volver_vuelos" class="btn-expand" style="display:none">
-					<span class="cambiar">Volver a vuelos</span>
+					<span data-trans="VOLVER_A_VUELOS" class="cambiar">Volver a vuelos</span>
 					<div class="icon-back"></div>
 				</div>
 				<div class="form">
 					<table>
 						<tr>
-							<td width="50%"><label>Origen:</label></td>
-							<td width="50%"><label>Destino:</label></td>
+							<td width="50%"><label data-trans="ORIGEN">Origen:</label></td>
+							<td width="50%"><label data-trans="DESTINO">Destino:</label></td>
 						</tr>
 						<tr>
 							<td class='input-container'>
 								<div class="validable">
 									<select id="select_origen" class="origen-destino">
-										<option value="">Origen</option>
+										<option data-trans="ORIGEN" value="">Origen</option>
 										<option value="CIJ">COBIJA</option>
 						                <option value="CBB">COCHABAMBA</option>
 						                <option value="LPB">LA PAZ</option>
@@ -538,7 +539,7 @@
 							<td class='input-container'>
 								<div class="validable">
 									<select id="select_destino" class="origen-destino">
-										<option value="">Destino</option>
+										<option data-trans="DESTINO" value="">Destino</option>
 										<option value="CIJ">COBIJA</option>
 						                <option value="CBB">COCHABAMBA</option>
 						                <option value="LPB">LA PAZ</option>
@@ -562,7 +563,7 @@
 									<div class="btn">
 										<div></div>
 									</div>
-									<label>Solo ida</label>
+									<label data-trans="SOLO_IDA">Solo ida</label>
 								</div>
 							</td>
 							<td>
@@ -570,13 +571,13 @@
 									<div class="btn">
 										<div></div>
 									</div>
-									<label>Ida y Vuelta</label>
+									<label data-trans="IDA_Y_VUELTA">Ida y Vuelta</label>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td><label>Salida:</label></td>
-							<td><label id="lbl_regreso" style="display:none">Regreso:</label></td>
+							<td><label data-trans="SALIDA">Salida:</label></td>
+							<td><label data-trans="REGRESO" id="lbl_regreso" style="display:none">Regreso:</label></td>
 						</tr>
 						<tr>
 							<td class='input-container'>
@@ -593,7 +594,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div id="btn_buscar_vuelo" class="button">BUSCAR</div>
+								<div data-trans="BUSCAR" id="btn_buscar_vuelo" class="button">BUSCAR</div>
 							</td>
 						</tr>
 					</table>
@@ -1013,20 +1014,20 @@
 				<div class="head-tu-vuelo">
 					<div style="float: left;">
 						<img src="content/images/carrito.png" width="50" style="float: left;">
-						<span style=" float: left;margin-left: 10px; text-align: left; font-family: 'FuturaLight';font-size: 28px;">
+						<span data-trans="CESTA_DE_COMPRA" style=" float: left;margin-left: 10px; text-align: left; font-family: 'FuturaLight';font-size: 28px;">
 							Su Cesta<br>de Compra
 						</span>
 					</div>
 
 				</div>
 				<div class="separator"></div>
-				<div class="empty-selection" id="div_empty_vuelo">SELECCIONA<br>TU VUELO</div>
+				<div data-trans="SELECCIONA_TU_VUELO" class="empty-selection" id="div_empty_vuelo">SELECCIONA<br>TU VUELO</div>
 				<div class="div-seleccion" style=" padding-right: 10px; padding-left: 10px;">
 					<table id="tbl_seleccion_ida" style="display:none;">
 						<tr style="position: absolute;right: 10px; top: -3px;">
 
 							<td id="btn_borrar_ida" colspan="7" align="right">
-								<span class="quitar_vuelo_ida" style="padding: 5px;">Quitar Vuelo</span>
+								<span data-trans="QUITAR_VUELO" class="quitar_vuelo_ida" style="padding: 5px;">Quitar Vuelo</span>
 								<img alt="quitar vuelo" style="cursor: pointer;"  src="content/images/remove.png" width="15">
 							</td>
 						</tr>
@@ -1048,11 +1049,11 @@
 								<img src="content/images/avion.png" style="/*margin-top: 20px;*/">
 							</td>
 							<td colspan="3" class="cell-origen-destino fecha_salida_" style="text-align: left; padding-left: 5px; font-size: 12px;">
-								<span>Origen</span>
+								<span data-trans="ORIGEN">Origen</span>
 							</td>
 							<td></td>
 							<td colspan="3" class="cell-origen-destino fecha_llegada_" style="text-align: left; font-size: 12px;">
-								<span class="lbl-origen-destino">Destino</span>
+								<span data-trans="DESTINO" class="lbl-origen-destino">Destino</span>
 
 							</td>
 						</tr>
@@ -1203,7 +1204,7 @@
 					</tr>
 					<tr class="tarifa inactive">
 						<td class="cell-descripcion">
-							Adultos
+							<div data-trans="ADULTOS">Adultos</div>
 							<div id="tooltip_adulto" class="tooltip"></div>
 							<div class="warning-icon">!
 								<div>El n&uacute;mero de pasajeros seleccionado es mayor a la última b&uacute;squeda realizada.<br>
@@ -1233,7 +1234,7 @@
 					</tr>
 					<tr class="tarifa inactive">
 						<td class="cell-descripcion">
-							Ni&ntilde;o
+							<div data-trans="NINO">Ni&ntilde;o</div>
 							<div id="tooltip_ninho" class="tooltip"></div>
 						</td>
 						<td class="selector-pax">
@@ -1259,7 +1260,7 @@
 					</tr>
 					<tr class="tarifa inactive">
 						<td class="cell-descripcion">
-							Infantes
+							<div data-trans="INFANTES">Infantes</div>
 							<div id="tooltip_infante"  class="tooltip"></div>
 						</td>
 						<td class="selector-pax">
@@ -1281,7 +1282,7 @@
 
 					<tr class="tarifa inactive">
 						<td class="cell-descripcion">
-							Adulto Mayor
+							<div data-trans="ADULTO_MAYOR">Adulto Mayor</div>
 							<div id="tooltip_adultoMayor"  class="tooltip"></div>
 						</td>
 						<td class="selector-pax">
@@ -1315,7 +1316,7 @@
 
 					<tr id="tasas" class="tarifa">
 						<td class="cell-descripcion" style="width: 45px;">
-							Tasas
+							<div data-trans="TASAS">Tasas</div>
 							<div id="tooltip_tasas" style="bottom: 0px;" class="tooltip"></div>
 						</td>
 						<td class="cell-cantidad" id="totalTasas">
@@ -1326,7 +1327,7 @@
 
 
 					<tr class="tarifa">
-						<td class="cell-descripcion" style="width: 45px;">Precio Total</td>
+						<td data-trans="PRECIO_TOTAL" class="cell-descripcion" style="width: 45px;">Precio Total</td>
 						<td class="cell-cantidad">
 							<input id="precio_total" class="display XS">
 						</td>
@@ -1365,7 +1366,7 @@
 			<div class="description">
 
 			</div>
-			<div class="button">CERRAR</div>
+			<div data-trans="CERRAR" class="button">CERRAR</div>
 		</div>
 	</div>
 	<!-- <<< MISC UI >>> -->

@@ -51,10 +51,10 @@ var menu = (function () {
 
         console.log($menu);
         console.log(data);
-        var $ul = $('<ul></ul>')
+        var $ul = $('<ul></ul>');
         $.each(data.menu,function (k,v) {
-            if(Array.isArray(v.subMenu)){
 
+            if(Array.isArray(v.subMenu)){
                 var $li = $('<li></li>');
                 $li.append('<label for="menu-'+k+'">'+v.name+'</label>');
                 $li.append('<input type="checkbox" id="menu-'+k+'" name="menu-'+k+'" class="menu-checkbox">');
