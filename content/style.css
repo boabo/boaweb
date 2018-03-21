@@ -3134,4 +3134,14 @@ div.panel {
 	cursor: pointer;
 }
 
+@media (max-width: 769px) {
+	.div_cookies {
+		height: auto;
+	}
+
+	.text_cookies {
+		margin-left: .5em;
+	}
+}
+
 
