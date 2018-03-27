@@ -11,6 +11,7 @@ var translate = (function(){
     translateMsg.SALIDA = 'SALIDA';
     translateMsg.LLEGADA = 'LLEGADA';
     translateMsg.DETALLE = 'Detalle';
+    translateMsg.VER_DETALLE = 'Ver Detalle';
     translateMsg.DURACION_TOTAL  = 'Duración Total ';
     translateMsg.OPERADO_POR  = 'Operado por:';
     translateMsg.ASIENTOS  = 'Asientos';
