@@ -706,7 +706,7 @@
             //cuando es solo la peticion por ida
 
 
-            m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">Continuar mi compra</div>';
+            m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">'+translate.t.CONTINUAR_MI_COMPRA+'</div>';
 
             $('.cell-submit').html(m);
 

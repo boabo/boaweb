@@ -2037,7 +2037,7 @@ function buildRegistroPersona(tipo, numPx)
 	$(persona).addClass("persona")
 			  .addClass("inactive")
 			  .attr("data-tipo",tipo)
-			  .append("<div class='left-label'><label class='lbl-tipo'>"+namesByTipo[tipo]+"</label><label class='nro-pasajero'>PASAJERO "+numPx+"</label><div class='icon-pasajero "+tipo+"'></div></div>")
+			  .append("<div class='left-label'><label class='lbl-tipo'>"+namesByTipo[tipo]+"</label><label class='nro-pasajero'>"+translate.t.PASAJERO+" "+numPx+"</label><div class='icon-pasajero "+tipo+"'></div></div>")
 			  .append("<div class='form'><table cellpadding='0' cellspacing='0'></table></div>")
 			  .append("<div class='wrapper'><div class='form'></div></div>");
 
@@ -2048,7 +2048,7 @@ function buildRegistroPersona(tipo, numPx)
 
 
     wrapper.append('<div class="Grid Grid--gutters Grid--cols-1 titulo_persona_mobile">'+
-		'<div class="Grid-cell" style="background-color:#3D5B86; position: absolute; top: -28px; padding: 15px; color: #fff; "><div class="content-1of1"><div class="icon-pasajero '+tipo+'"></div> PASAJERO '+numPx+' - '+namesByTipo[tipo]+' </div></div>'+
+		'<div class="Grid-cell" style="background-color:#3D5B86; position: absolute; top: -28px; padding: 15px; color: #fff; "><div class="content-1of1"><div class="icon-pasajero '+tipo+'"></div> '+translate.t.PASAJERO+' '+numPx+' - '+namesByTipo[tipo]+' </div></div>'+
         '</div>');
 
     wrapper.append('<br>');
@@ -2057,48 +2057,48 @@ function buildRegistroPersona(tipo, numPx)
         wrapper.append('<div class="Grid Grid--gutters Grid--holly-grail">' +
             '<div class="Grid-cell main" style="order: 1;">' +
 				'<div class="Holly">' +
-					'<div class="titulo_input" style="float: left;"># VIAJERO <br>FRECUENTE:  </div>' +
+					'<div class="titulo_input" style="float: left;">'+translate.t.VIAJERO_FRECUENTE+'</div>' +
 					'<input style="width: 37%; float:left; margin-top: 7px;" type="text" id="tbx_px'+numPx+'_px_frecuente" class="nro-viajero-frecuente">  ' +
-					'<div class="iconFormSvg frmPerBuscar"><figure class="svg"  data-src="search"></figure><span>Buscar</span></div>'+
-					'<div class="iconFormSvg frmPerLimpiar"><figure class="svg"  data-src="Borrar"></figure><span>Limpiar</span></div>'+
+					'<div class="iconFormSvg frmPerBuscar"><figure class="svg"  data-src="search"></figure><span>'+translate.t.BUSCAR+'</span></div>'+
+					'<div class="iconFormSvg frmPerLimpiar"><figure class="svg"  data-src="Borrar"></figure><span>'+translate.t.LIMPIAR+'</span></div>'+
 				'</div>' +
             '</div>'+
-            '<div class="Grid-cell aside" style="order: 2;"><div class="Holly"><span>&iquest;No eres viajero frecuente?<a href="#">REG&Iacute;STRATE</a></span></div></div>'+
+            '<div class="Grid-cell aside" style="order: 2;"><div class="Holly"><span>'+translate.t.SI_NO_ERES_VIAJERO_FRECUENTE_Q+'<a href="#">'+translate.t.REGISTRATE+'</a></span></div></div>'+
             '</div>');
     }
 
     wrapper.append('<div class="Grid Grid--gutters Grid--cols-4">'+
-						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">NOMBRES</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_nombres" class="nombres"></div> </div></div>'+
-						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">APELLIDOS</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_apellidos" class="apellidos"></div> </div></div>'+
-						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">TIPO DE DOCUMENTO</div><div class="validable">' +
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.NOMBRES+'</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_nombres" class="nombres"></div> </div></div>'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.APELLIDOS+'</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_apellidos" class="apellidos"></div> </div></div>'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.TIPO_DE_DOCUMENTO+'</div><div class="validable">' +
 							'<select id="select_px'+numPx+'_tipo_documento" class="tipo-documento">' +
-							'<option value="NONE">Tipo de Documento</option>' +
-							'<option value="CI">CI</option>' +
-							'<option value="PASAPORTE">PASAPORTE</option>' +
-							'<option value="DNI">DNI</option>' +
+							'<option value="NONE">'+translate.t.TIPO_DE_DOCUMENTO_MIN+'</option>' +
+							'<option value="CI">'+translate.t.CI+'</option>' +
+							'<option value="PASAPORTE">'+translate.t.PASAPORTE+'</option>' +
+							'<option value="DNI">'+translate.t.DNI+'</option>' +
 							'</select>'+
 						'</div> </div></div>'+
-						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input"># DE DOCUMENTO</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_documento" class="nro-documento"></div> </div></div>'+
+						'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.NUM_DE_DOCUMENTO+'</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_documento" class="nro-documento"></div> </div></div>'+
 
 					'</div>');
     wrapper.append('<div class="Grid Grid--gutters Grid--holly-grail">'+
 						'<div class="Grid-cell aside" style="order: 1;">'+
 							'<div class="Holly">'+
-								'<div class="titulo_input">TELEFONO</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_telefono" class="telefono"></div>'+
+								'<div class="titulo_input">'+translate.t.TELEFONO+'</div><div class="validable"><input type="text" id="tbx_px'+numPx+'_telefono" class="telefono"></div>'+
 							'</div>'+
 						'</div>'+
 						'<div class="Grid-cell main" style="order: 2;">'+
 							'<div class="Holly">'+
-								'<div class="titulo_input">'+(isAdulto?'EMAIL':'FECHA NACIMIENTO')+'</div> ' +
+								'<div class="titulo_input">'+(isAdulto?translate.t.EMAIL:translate.t.FECHA_NACIMIENTO)+'</div> ' +
 								(isAdulto?
-										'<div class="validable" style="position: relative;"><div class="tooltip">Debes Ingresar tu Correo Electronico</div><input type="text" id="tbx_px'+numPx+'_email" class="email" onfocus="validaciones_form.validar_email(this)" onkeyup="validaciones_form.validar_email(this)" ><span class="icon_form"><svg   class="svg_icon_form"><use class="alert_form" xlink:href="#alert_form" /></svg></span></div>':
-										'<div class="validable" style="position: relative;"><div class="tooltip">'+(tipo=='infante'?'Infante desde los 8 dias de nacido hasta antes de los 2 a&ntilde;os':'Ni&ntilde;o desde los 2 a&ntilde;os hasta antes de cumplir 12 a&ntilde;os')+'</div><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>'
+										'<div class="validable" style="position: relative;"><div class="tooltip">'+translate.t.DEBES_INGRESAR_TU_CORREO_ELECTRONICO+'</div><input type="text" id="tbx_px'+numPx+'_email" class="email" onfocus="validaciones_form.validar_email(this)" onkeyup="validaciones_form.validar_email(this)" ><span class="icon_form"><svg   class="svg_icon_form"><use class="alert_form" xlink:href="#alert_form" /></svg></span></div>':
+										'<div class="validable" style="position: relative;"><div class="tooltip">'+(tipo=='infante'?translate.t.INFANTE_DESC:translate.t.NINO_DESC)+'</div><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>'
 								) +
 							'</div>'+
 						'</div>'+
 						'<div class="Grid-cell aside" style="order: 3;">'+
 							'<div class="Holly">'+
-								'<div class="titulo_input">'+(isAdulto?'FECHA NACIMIENTO':'# VIAJERO FRECUENTE')+'</div> '+
+								'<div class="titulo_input">'+(isAdulto?translate.t.FECHA_NACIMIENTO: translate.t.VIAJERO_FRECUENTE)+'</div> '+
 								(isAdulto?
 										'<div class="validable"><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>':
 										'<input readonly type="text" id="tbx_px'+numPx+'_px_frecuente" class="nro-viajero-frecuente">'
@@ -2111,11 +2111,11 @@ function buildRegistroPersona(tipo, numPx)
     	if(isAdulto){
 
             wrapper.append('<div class="Grid Grid--gutters Grid--cols-4">'+
-							'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">GENERO</div><div class="validable"><select id="tbx_px'+numPx+'_genero" class="genero"><option value="NONE">Genero</option><option value="M">MASCULINO</option><option value="F">FEMENINO</option></select> </div> </div></div>'+
+							'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.GENERO+'</div><div class="validable"><select id="tbx_px'+numPx+'_genero" class="genero"><option value="NONE">Genero</option><option value="M">'+translate.t.MASCULINO+'</option><option value="F">'+translate.t.FEMENINO+'</option></select> </div> </div></div>'+
 						'</div>');
 
         }else{
-            wrapper.append("<div style='color: #4c0a00; font-size: 15px; width: 100%;'><b>Se debe presentar documentos para confirmar la edad</b></div>");
+            wrapper.append("<div style='color: #4c0a00; font-size: 15px; width: 100%;'><b>"+translate.t.SE_DEBE_PRESENTAR_DOCUMENTOS+"</b></div>");
 
 		}
 	}
@@ -2417,7 +2417,7 @@ function backToFlightStage()
     //cuando es solo la peticion por ida
 
 
-    m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">Continuar mi compra</div>';
+    m = '<div onclick="vuelosDibujador.continuarCompra(this)"   class="button btn_validar_vuelos" style="position: relative;float: right;">'+translate.t.CONTINUAR_MI_COMPRA+'</div>';
 
     $('.cell-submit').html(m);
 

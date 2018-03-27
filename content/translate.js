@@ -43,6 +43,31 @@ var translate = (function(){
     translateMsg.TASAS  = 'Tasas';
     translateMsg.PRECIO_TOTAL  = 'Precio Total';
     translateMsg.CERRAR  = 'CERRAR';
+    translateMsg.CONTINUAR_MI_COMPRA  = 'Continuar mi compra';
+    translateMsg.PASAJERO  = 'PASAJERO';
+    translateMsg.VIAJERO_FRECUENTE  = '# VIAJERO <br>FRECUENTE:';
+    translateMsg.BUSCAR  = 'Buscar';
+    translateMsg.LIMPIAR  = 'Limpiar';
+    translateMsg.SI_NO_ERES_VIAJERO_FRECUENTE_Q  = '&iquest;No eres viajero frecuente?';
+    translateMsg.REGISTRATE  = 'REG&Iacute;STRATE';
+    translateMsg.NOMBRES  = 'NOMBRES';
+    translateMsg.APELLIDOS  = 'APELLIDOS';
+    translateMsg.TIPO_DE_DOCUMENTO  = 'TIPO DE DOCUMENTO';
+    translateMsg.TIPO_DE_DOCUMENTO_MIN  = 'Tipo de Documento';
+    translateMsg.CI  = 'CI';
+    translateMsg.PASAPORTE  = 'PASAPORTE';
+    translateMsg.DNI  = 'DNI';
+    translateMsg.NUM_DE_DOCUMENTO  = '# DE DOCUMENTO';
+    translateMsg.TELEFONO  = 'TELEFONO';
+    translateMsg.EMAIL  = 'EMAIL';
+    translateMsg.FECHA_NACIMIENTO  = 'FECHA NACIMIENTO';
+    translateMsg.DEBES_INGRESAR_TU_CORREO_ELECTRONICO  = 'Debes Ingresar tu Correo Electronico';
+    translateMsg.INFANTE_DESC  = 'Infante desde los 8 dias de nacido hasta antes de los 2 a&ntilde;os';
+    translateMsg.NINO_DESC  = 'Ni&ntilde;o desde los 2 a&ntilde;os hasta antes de cumplir 12 a&ntilde;os';
+    translateMsg.GENERO  = 'GENERO';
+    translateMsg.MASCULINO  = 'MASCULINO';
+    translateMsg.FEMENINO  = 'FEMENINO';
+    translateMsg.SE_DEBE_PRESENTAR_DOCUMENTOS  = 'Se debe presentar documentos para confirmar la edad';
 
 
     function traducirElementosHtml(){
