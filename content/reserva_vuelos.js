@@ -1627,8 +1627,8 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 		$(cell).addClass("day-selector").data("date", dateStr);
 
 
-		$(cell).html("<span>"+WEEKDAYS_LONG_2_CHARS_LANGUAGE_TABLE[d.getDay()]+"</span><h2>" + mess  +
-			"<span>" + (("00" + d.getDate()).slice(-2)) + "</span></h2>");
+		$(cell).html("<span >"+WEEKDAYS_LONG_2_CHARS_LANGUAGE_TABLE[d.getDay()]+"</span><h2>" + mess  +
+			"<span class='fecha_dia_calendario'>" + (("00" + d.getDate()).slice(-2)) + "</span></h2>");
 
 		var inRange = true;
 
@@ -1648,7 +1648,7 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 			$(cell).addClass("no-flights")
 				   .append("<h3>No hay<br>vuelos</h3>");
 		} else {
-			$(cell).append("<h3>" + formatCurrencyQuantity(tarifasByDate[dateStr], true, 0) +"</h3>");
+			$(cell).append("<h3 class='monto_calendario'>" + formatCurrencyQuantity(tarifasByDate[dateStr], true, 0) +"</h3>");
 			//$(cell).append("<h3></h3>");
 		}
 

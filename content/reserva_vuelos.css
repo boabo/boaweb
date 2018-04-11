@@ -2849,6 +2849,17 @@ loading svg {
 	#formulario_pagar table {
 		width: 95%;
 	}
+
+	.fecha_dia_calendario{
+		display: block;
+		padding: 0 !important;
+	}
+	.monto_calendario{
+		display: block;
+	}
+	#ui_reserva_vuelos .descripcion table .day-selector h2{
+		height: auto !important;
+	}
 }
 
 #draggable {

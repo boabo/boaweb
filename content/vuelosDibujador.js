@@ -111,7 +111,6 @@
             }
 
             //limpiamos los vuelos
-
             var vuelos = store[ida_vuelta];
             $.each(vuelos,function (k,v) {
 
@@ -146,10 +145,8 @@
                 if(ida_vuelta == "vuelosIda"){
                     if(store.tieneVuelta == false){
 
-
                         //cuando es la primera entra aca para dibujar
                         opcion_vuelo_indice = v.num_opcion+'-'+0;
-
 
                     }else{
 
