@@ -5,7 +5,8 @@
 	<meta charset="utf-8">
 	<title>Boliviana de Aviaci&oacute;n</title>
 	<link rel="icon" href="images/icon.png" type="image/x-icon">
-	
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
 	<!--  LIBRERIAS JAVASCRIPT  -->
 	<!-- JQUERY -->
 	<script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
@@ -33,6 +34,9 @@
 	<script type="text/javascript" src="content/home.js"></script>
 	<script type="text/javascript" src="content/header.js"></script>
 	<script type="text/javascript" src="content/footer.js"></script>
+
+	<link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
+
 
 	<!-- SERVICES LOCATION -->
 	<script type="text/javascript">
@@ -299,6 +303,23 @@
 			</ul>
 		</div>
 	</header>
+
+	<!--menu for mob-->
+	<div id="wrapper">
+		<div id="info">
+			<div id="info-content">
+				<div id="logoBoaMob"><img src="content/images/logoBoa.png"></div>
+			</div>
+		</div>
+
+		<input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+		<div class="menuMob" id="MenuMobile">
+			<label  class="menu-toggle" for="menu"><span>Toggle</span></label>
+
+		</div>
+
+	</div><!-- #wrapper -->
+
 	<!-- HOME -->
 	<div id="home">
 		<div id="slider">
@@ -884,5 +905,8 @@
             });
 		</script>
 	</div>
+
+<script src="content/menu/menu.js"></script>
+
 </body>
 </html>

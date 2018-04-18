@@ -75,7 +75,7 @@ var menu = (function () {
     }
     function subMenu(data,position) {
 
-        var $subMenu = $('<div class="menu"></div>');
+        var $subMenu = $('<div class="menuMob"></div>');
         $subMenu.append('<label class="menu-toggle" for="menu-'+position+'"><span>Toggle</span></label>');
         var $ul = $('<ul></ul>');
         $.each(data,function (k,v) {
