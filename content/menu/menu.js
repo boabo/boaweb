@@ -91,7 +91,7 @@ var menu = (function () {
 
 
             }else{
-                $ul.append('<li><a href="#">'+v.name+'</a></li>')
+                $ul.append('<li><a href="'+v.link+'">'+v.name+'</a></li>')
             }
         });
         $subMenu.append($ul);

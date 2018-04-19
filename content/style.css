@@ -3111,10 +3111,16 @@ div.panel {
 	#slider img {
 		background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)),  repeat;
 		min-width: 100%;
+		margin-top: 63px;
 	}
 
+	body{
+		overflow: auto;
+	}
+	#slider{
+		height: 600px;
+	}
 	#buscador_vuelos {
-		position: fixed;
 		top: 15em;
 		left: 0;
 		width: 100%;
@@ -3158,6 +3164,9 @@ div.panel {
 
 	footer #call_center{
 		width: auto;
+	}
+	footer #icons_util{
+		display: none;
 	}
 
 }
