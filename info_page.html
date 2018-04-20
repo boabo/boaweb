@@ -41,6 +41,10 @@
 	<!-- STYLE.CSS -->
 	<link href="content/style.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
+
+
 </head>
 <body style="padding:0;margin:0;overflow-y:auto !important;overflow-x:hidden !important">
 <header style="display:block">
@@ -307,6 +311,22 @@
 		</ul>
 	</div>
 </header>
+
+<!--menu for mob-->
+<div id="wrapper">
+	<div id="info">
+		<div id="info-content">
+			<div id="logoBoaMob"><img src="content/images/logoBoa.png"></div>
+		</div>
+	</div>
+
+	<input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+	<div class="menuMob" id="MenuMobile">
+		<label  class="menu-toggle" for="menu"><span>Toggle</span></label>
+
+	</div>
+
+</div><!-- #wrapper -->
 
 <div id="clouds">
 	<canvas id="clouds_canvas" width="2500" height="1000"></canvas>
@@ -3716,6 +3736,7 @@
 	</div>
 </div> <!-- <<< cookies >>> -->
 
+<script src="content/menu/menu.js"></script>
 
 
 <a id="btn_redirect" href="#" target="_blank" style="display:none"></a>

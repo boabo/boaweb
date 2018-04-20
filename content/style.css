@@ -3009,6 +3009,7 @@ div.panel {
 @media (max-width: 769px){
 	.ui-section{
 		width: 100%;
+		top: 60px;
 	}
 	.ui-section .header{
 		width: 100%;
@@ -3019,6 +3020,13 @@ div.panel {
 	}
 	.ui-section .header-fixed{
 		left: 0;
+
+	}
+	.ui-section .header-fixed.active{
+		top:60px;
+	}
+	.ui-section .gradient.fixed{
+		display: none;
 	}
 	.ui-section .header-fixed h3{
 		width: 100%;
@@ -3033,6 +3041,10 @@ div.panel {
 	}
 	.ui-section .info.selected {
 		left: 0px;
+		top:120px;
+	}
+	.ui-section .gradient{
+		display: none;
 	}
 
 	.ui-section .icon, .ui-section.unique .icon{
