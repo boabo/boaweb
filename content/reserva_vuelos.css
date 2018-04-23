@@ -2866,6 +2866,10 @@ loading svg {
 	.ui-section .info.selected{
 		top:0 !important;
 	}
+
+	#ui_reserva_vuelos .descripcion table .day-selector h3{
+		font-size: 0.6em;
+	}
 }
 
 #draggable {
