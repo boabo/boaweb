@@ -3082,7 +3082,7 @@ div.panel {
 	}
 
 	.ui-section .descripcion .desplegable.collapsed .title > h4{
-		width: 75%;
+		width: 70%;
 		font-size: .6em;
 	}
 
@@ -3098,7 +3098,7 @@ div.panel {
 		top: 10px;
 		left: 60px;
 		width: 75%;
-		font-size: 17px;
+		font-size: 0.8em;
 
 	}
 
