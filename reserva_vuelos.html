@@ -1386,44 +1386,51 @@
 
         var $widget_resumen_reserva = $("#widget_resumen_reserva");
         var divFlotante =  $( "#divFlotante");
+       	var procesando = false;
 
         divFlotante.click(function (){
             console.log('click',$widget_resumen_reserva.hasClass('MostrarWidgetMobile'))
 
-            if($widget_resumen_reserva.hasClass('MostrarWidgetMobile') == true){
-                $widget_resumen_reserva.removeClass('MostrarWidgetMobile');
+            if(!procesando){
+                procesando= true;
+                if($widget_resumen_reserva.hasClass('MostrarWidgetMobile') == true){
+                    $widget_resumen_reserva.removeClass('MostrarWidgetMobile');
 
-                $widget_resumen_reserva.addClass('ocultarWidgetMobile');
+                    $widget_resumen_reserva.addClass('ocultarWidgetMobile');
 
-                $(".ocultarWidgetMobile").one(animationEnd, function () {
-                    console.log('ocultamos')
-                    $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
-                    $widget_resumen_reserva.css({"visibility": "hidden"});
-                    $widget_resumen_reserva.css({"display": "none"});
+                    $(".ocultarWidgetMobile").one(animationEnd, function () {
+                        console.log('ocultamos')
+                        $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
+                        $widget_resumen_reserva.css({"visibility": "hidden"});
+                        $widget_resumen_reserva.css({"display": "none"});
 
-                    divFlotante.find('svg').removeClass("openMobile");
-                    divFlotante.find('svg').addClass("cerrarMobile");
-                    divFlotante.css({"background-color":""});
+                        divFlotante.find('svg').removeClass("openMobile");
+                        divFlotante.find('svg').addClass("cerrarMobile");
+                        divFlotante.css({"background-color":""});
+                        procesando= false;
+                    });
 
-                });
+                }else{
+                    procesando= true;
+                    $widget_resumen_reserva.css({"display": ""});
 
-			}else{
+                    $widget_resumen_reserva.addClass('MostrarWidgetMobile');
+                    $widget_resumen_reserva.css({"visibility": "visible"});
+                    $('.MostrarWidgetMobile').one(animationEnd, function () {
+                        console.log('ocultamos ocultarWidgetMobile');
+                        console.log($widget_resumen_reserva)
+                        $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
 
-                $widget_resumen_reserva.css({"display": ""});
+                        divFlotante.find('svg').removeClass("cerrarMobile");
+                        divFlotante.find('svg').addClass("openMobile");
 
-                $widget_resumen_reserva.addClass('MostrarWidgetMobile');
-                $widget_resumen_reserva.css({"visibility": "visible"});
-                $('.MostrarWidgetMobile').one(animationEnd, function () {
-                    console.log('ocultamos ocultarWidgetMobile');
-					console.log($widget_resumen_reserva)
-                    $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
+                        divFlotante.css({"background-color":"#EFAA35"});
 
-                    divFlotante.find('svg').removeClass("cerrarMobile");
-                    divFlotante.find('svg').addClass("openMobile");
-
-                    divFlotante.css({"background-color":"#EFAA35"});
-                });
+                        procesando= false;
+                    });
+                }
 			}
+
 
         });
 
