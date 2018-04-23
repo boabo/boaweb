@@ -2857,8 +2857,14 @@ loading svg {
 	.monto_calendario{
 		display: block;
 	}
+	#ui_reserva_vuelos .descripcion table .day-selector{
+		min-width: auto;
+	}
 	#ui_reserva_vuelos .descripcion table .day-selector h2{
 		height: auto !important;
+	}
+	.ui-section .info.selected{
+		top:0 !important;
 	}
 }
 
