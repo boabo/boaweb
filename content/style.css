@@ -3006,53 +3006,62 @@ div.panel {
 
 
 
-@media (max-width: 769px){
-	.ui-section{
+@media (max-width: 769px) {
+	.ui-section {
 		width: 100%;
 		top: 60px;
 	}
-	.ui-section .header{
+
+	.ui-section .header {
 		width: 100%;
 		padding: 10px 0 0 20px;
 	}
-	.ui-section .header h3{
+
+	.ui-section .header h3 {
 
 	}
-	.ui-section .header-fixed{
+
+	.ui-section .header-fixed {
 		left: 0;
 
 	}
-	.ui-section .header-fixed.active{
-		top:60px;
+
+	.ui-section .header-fixed.active {
+		top: 60px;
 	}
-	.ui-section .gradient.fixed{
+
+	.ui-section .gradient.fixed {
 		display: none;
 	}
-	.ui-section .header-fixed h3{
+
+	.ui-section .header-fixed h3 {
 		width: 100%;
 		font-size: 1em;
 	}
+
 	.ui-section .first-menu {
 		display: none;
 	}
 
-	.ui-section .info{
+	.ui-section .info {
 		width: 100%;
 	}
+
 	.ui-section .info.selected {
 		left: 0px;
-		top:120px;
+		top: 120px;
 	}
-	.ui-section .gradient{
+
+	.ui-section .gradient {
 		display: none;
 	}
 
-	.ui-section .icon, .ui-section.unique .icon{
+	.ui-section .icon, .ui-section.unique .icon {
 		left: 70%;
 		margin: 0;
 	}
 
-	.ui-section .descripcion h3{
+	.ui-section .descripcion h3 {
 		width: 100%;
 		font-size: 1.5em;
 	}
@@ -3063,30 +3072,33 @@ div.panel {
 		margin: 0 !important;
 		margin-left: 20% !important;
 	}
-	.info .with-aligned-images .paragraph{
+
+	.info .with-aligned-images .paragraph {
 		margin: 0px !important;
 	}
 
-	.ui-section .descripcion .desplegable{
+	.ui-section .descripcion .desplegable {
 		width: 110%;
 		left: -10%;
 		position: relative;
 	}
-	.ui-section .descripcion .title{
+
+	.ui-section .descripcion .title {
 		width: 100%;
 		left: 0;
 		height: 75px;
 	}
-	.ui-section .descripcion .desplegable .arrow{
+
+	.ui-section .descripcion .desplegable .arrow {
 		right: 0 !important;
 	}
 
-	.ui-section .descripcion .desplegable.collapsed .title > h4{
+	.ui-section .descripcion .desplegable.collapsed .title > h4 {
 		width: 70%;
 		font-size: .6em;
 	}
 
-	.ui-section .descripcion .title .img{
+	.ui-section .descripcion .title .img {
 		left: 20px;
 		width: 35px;
 		height: 35px;
@@ -3102,91 +3114,105 @@ div.panel {
 
 	}
 
-	.ui-section .descripcion table th{
+	.ui-section .descripcion table th {
 		font-size: .5em;
 	}
 
-	.ui-section .descripcion table td{
+	.ui-section .descripcion table td {
 		padding: 0;
 		font-size: .5em;
 	}
-
-
 
 	header {
 		display: none;
 		visibility: hidden;
 	}
-	#slider{
+
+	#slider {
 		position: static;
 	}
+
 	#slider img {
-		background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)),  repeat;
+		background: linear-gradient(0deg, rgba(2, 173, 231, 0.5), rgba(2, 173, 231, 0.5)), repeat;
 		min-width: 100%;
 		margin-top: 63px;
 	}
 
-	body{
+	body {
 		overflow: auto;
 	}
-	#slider{
+
+	#slider {
 		height: 600px;
 	}
+
 	#buscador_vuelos {
 		top: 15em;
 		left: 0;
 		width: 100%;
 	}
+
 	#buscador_vuelos ul li {
 		width: 20% !important;
 	}
-	.content select.origen-destino, .content select.moneda{
+
+	.content select.origen-destino, .content select.moneda {
 		width: 100%;
 	}
-	#buscador_vuelos .form input[type="text"]{
+
+	#buscador_vuelos .form input[type="text"] {
 		padding: 0;
 	}
-	.form input.calendar{
+
+	.form input.calendar {
 		background-position: 111px 10px;
 
 	}
-	#buscador_vuelos .content table{
-		margin:0;
+
+	#buscador_vuelos .content table {
+		margin: 0;
 	}
-	#buscador_vuelos .menu.selected h2{
+
+	#buscador_vuelos .menu.selected h2 {
 		font-size: 1em;
 	}
 
-	#buscador_vuelos .menu.selected h1{
-		font-size: 1.2em;
-	}
-	#buscador_vuelos .menu h2{
-		font-size: 1em;
-	}
-	#buscador_vuelos .menu h1{
+	#buscador_vuelos .menu.selected h1 {
 		font-size: 1.2em;
 	}
 
-	footer #icons_seguridad{
+	#buscador_vuelos .menu h2 {
+		font-size: 1em;
+	}
+
+	#buscador_vuelos .menu h1 {
+		font-size: 1.2em;
+	}
+
+	footer #icons_seguridad {
 		display: none;
 	}
-	footer #icons_redes_sociales{
+
+	footer #icons_redes_sociales {
 		left: 0px;
 	}
 
-	footer #call_center{
+	footer #call_center {
 		width: auto;
 	}
-	footer #icons_util{
+
+	footer #icons_util {
 		display: none;
 	}
 
-	.origen-destino{
+	.origen-destino {
 		color: #FFFFFF !important;
 	}
-	.content select.number{
+
+	.content select.number {
 		color: #FFFFFF !important;
 	}
+}
 
 /*cookies*/
 .div_cookies {
