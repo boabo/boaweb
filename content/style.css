@@ -3078,9 +3078,13 @@ div.panel {
 	}
 
 	.ui-section .descripcion .desplegable {
-		width: 110%;
-		left: -10%;
+		width: 100%;
+		left: 0%;
 		position: relative;
+	}
+
+	.ui-section .descripcion{
+		padding: 0px 15px 15px 15px;
 	}
 
 	.ui-section .descripcion .title {
