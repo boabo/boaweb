@@ -3204,14 +3204,14 @@ div.panel {
 	footer #icons_util {
 		display: none;
 	}
-
 	.origen-destino {
-		color: #FFFFFF !important;
+		background-color: #FFFFFF !important;
 	}
 
 	.content select.number {
-		color: #FFFFFF !important;
+		background-color: #FFFFFF !important;
 	}
+
 }
 
 /*cookies*/
