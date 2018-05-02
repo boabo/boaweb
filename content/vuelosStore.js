@@ -374,8 +374,6 @@
             if (that.tieneVuelta == true) {
                 $.each(object.vuelosYTarifas.Vuelos.vuelta.Item.vuelo, function (igndexVuelta, vuelta) {
 
-
-
                     //si ya esta como un objeto es por que la numero de opcion ya esta
                     //existe ya un vuelo con la misma opcion asi que debe entrar como conexion
                     if (typeof that.vuelosVuelta[vuelta.num_opcion] === 'object') {

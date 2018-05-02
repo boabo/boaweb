@@ -318,6 +318,19 @@
 	<div id="info">
 		<div id="info-content">
 			<div id="logoBoaMob"><img src="content/images/logoBoa.png"></div>
+
+			<div class="dropdown">
+				<button onclick="idiomas()" class="dropbtn">
+					<!--en data-src entra es,en o pt-->
+					<figure   class="svg banderaIco"  data-src="pt"></figure>ES
+				</button>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="#">ES</a>
+					<a href="#">EN</a>
+					<a href="#">BR</a>
+				</div>
+			</div>
+
 		</div>
 	</div>
 
@@ -3738,7 +3751,35 @@
 </div> <!-- <<< cookies >>> -->
 
 <script src="content/menu/menu.js"></script>
+<script src="content/iconSvg.js"></script>
 
+<script>
+
+	iconSvg.convertirFigureSvgIcono();
+	/* When the user clicks on the button,
+	 toggle between hiding and showing the dropdown content */
+    function idiomas() {
+		//$("#myDropdown").addClass("show");
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 
 <a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
 </body>
