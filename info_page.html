@@ -325,9 +325,9 @@
 					<figure   class="svg banderaIco"  data-src="pt"></figure>ES
 				</button>
 				<div id="myDropdown" class="dropdown-content">
-					<a href="#">ES</a>
-					<a href="#">EN</a>
-					<a href="#">BR</a>
+					<a class="cambiarIdioma" href="#">ES</a>
+					<a class="cambiarIdioma" href="#">EN</a>
+					<a class="cambiarIdioma" href="#">BR</a>
 				</div>
 			</div>
 
@@ -3764,10 +3764,16 @@
     }
 
 
+    $(".cambiarIdioma").click(function () {
+
+        console.log($(this).text())
+    });
 
     // Close the dropdown menu if the user clicks outside of it
     window.onclick = function(event) {
+        console.log(this)
         if (!event.target.matches('.dropbtn')) {
+
 
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
