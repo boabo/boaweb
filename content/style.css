@@ -3138,8 +3138,10 @@ div.panel {
 
 	#slider img {
 		background: linear-gradient(0deg, rgba(2, 173, 231, 0.5), rgba(2, 173, 231, 0.5)), repeat;
-		min-width: 100%;
+		/*min-width: 100%;*/
 		margin-top: 63px;
+		height: 100%;
+		right: 0;
 	}
 
 	body {
@@ -3206,7 +3208,9 @@ div.panel {
 	}
 
 	footer #icons_util {
-		display: none;
+		/*display: none;*/
+		margin-left: 185px;
+
 	}
 	.origen-destino {
 		background-color: #FFFFFF !important;
