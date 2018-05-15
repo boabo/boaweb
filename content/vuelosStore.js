@@ -389,8 +389,8 @@
                         objVuelta.horaLlegada.mm = parseInt(vuelta.hora_llegada.substr(2, 2));
                         vuelta.horaLlegada = objVuelta.horaLlegada;
 
-                    //calculamos el tiempo del vuelo
-                    vuelta.tiempoVuelo = tiempoTransito(objVuelta.horaSalida,objVuelta.horaLlegada);
+                        //calculamos el tiempo del vuelo
+                        vuelta.tiempoVuelo = tiempoTransito(objVuelta.horaSalida,objVuelta.horaLlegada);
 
                         that.vuelosVuelta[vuelta.num_opcion].vuelos.push(vuelta);
                         //CAMBIAMOS su destino por que tiene conexion

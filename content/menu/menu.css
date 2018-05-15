@@ -49,6 +49,9 @@ label:focus {
     text-indent: -9999px;
     background: #fff url(https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png) 50% 50%/25px 25px no-repeat;
 }
+.menuMob ul > li {
+    border-bottom: 1px solid #ebebeb;
+}
 .menuMob ul li > label {
     background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-right-b-128.png) 95% 50%/16px 16px no-repeat;
 }
@@ -56,7 +59,7 @@ label:focus {
     display: block;
     text-align: center;
     padding: 0 20px;
-    line-height: 60px;
+    line-height: 50px;
     text-decoration: none;
     color: #000;
 }
