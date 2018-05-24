@@ -49,6 +49,8 @@
 #info_equipaje_mano .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mano.png'); }
 #info_equipaje_mano .img-contenido { background-image: url('images/contenidos/images_politica_equipaje_mano.png'); }
 
+
+
 #subtitle_franquicia 						.title .img { background-position: 0 0;}
 #subtitle_ubicacion_equipaje 				.title .img{background-position: 0 -125px;}
 #subtitle_accesorio_personal 				.title .img{background-position: 0 -250px;}
@@ -655,5 +657,55 @@
 
 
 }
+@media (max-width: 769px) {
+	#subtitle_franquicia.			.title .img{background-position: 0 0;}
+	#subtitle_ubicacion_equipaje		.title .img{background-position: 0 -35px;}
+	#subtitle_accesorio_personal		.title .img{background-position: 0 -70px;}
+	#subtitle_articulos_restringidos 	.title .img{background-position: 0 -105px;}
+	#subtitle_liquidos_geles 			.title .img{background-position: 0 -140px;}
+	#subtitle_duty_free 				.title .img{background-position: 0 -175px;}
+	#subtitle_equipos_electronicos 	.title .img{background-position: 0 -210px;}
+	#subtitle_franquicia_espana		.title .img{background-position: 0 -245px;}
+
+
+
+	#subtitle_menores_no_acompanados_nal				.title .img {background-position: 0 0;}
+	#subtitle_mna_requisitos_viajes_internacionales 	.title .img {background-position: 0 -40px;}
+	#subtitle_mna_bo_arg_bra 							.title .img {background-position: 0 -80px;}
+	#subtitle_mna_sud_am_a_esp_usa 					.title .img {background-position: 0 -105px;}
+	#subtitle_mna_jovenes_sud_am_a_esp_usa 			.title .img {background-position: 0 -142px;}
+	#subtitle_mna_auxiliar 							.title .img {background-position: 0 -175px;}
+	#subtitle_mna_restricciones 						.title .img {background-position: 0 -210px;}
+	#subtitle_mna_excepciones 						.title .img {background-position: 0 -245px;}
+
+
+	#subtitle_gestacion_sin_complicaciones 	.title .img { background-position: 0 0;}
+	#subtitle_gestacion_madrid 				.title .img { background-position: 0 -35px;}
+	#subtitle_gestacion_con_riesgo			.title .img { background-position: 0 -75px;}
+
+	#subtitle_menu_especial 	.title .img { background-position: 0 -245px; }
+
+
+	#subtitle_documentacion_usa 		.title .img { background-position: 0 0;}
+	#subtitle_documentacion_espana	.title .img { background-position: 0 -35px;}
+	#subtitle_documentacion_bolivia	.title .img { background-position: 0 -70px;}
+	#subtitle_documentacion_argentina	.title .img { background-position: 0 -105px;}
+	#subtitle_documentacion_brasil	.title .img { background-position: 0 -140px;}
+
+
+	#subtitle_vacunas_bolivia		.title .img { background-position: 0 0; }
+	#subtitle_vacunas_eeuu 		.title .img { background-position: 0 -40px; }
+	#subtitle_vacunas_espana 		.title .img { background-position: 0 -70px; }
+	#subtitle_vacunas_argentina 	.title .img { background-position: 0 -110px; }
+	#subtitle_vacunas_brasil 		.title .img { background-position: 0 -140px; }
+
+
+	#subtitle_737_300			.title .img { background-position: 0 0;}
+	#subtitle_737_500			.title .img { background-position: 0 -40px;}
+	#subtitle_737_700_ng		.title .img { background-position: 0 -105px;}
+	#subtitle_767_300			.title .img { background-position: 0 -140px;}
+
+}
+
 
 
