@@ -69,6 +69,7 @@ var translate = (function(){
     translateMsg.MASCULINO  = 'MASCULINO';
     translateMsg.FEMENINO  = 'FEMENINO';
     translateMsg.SE_DEBE_PRESENTAR_DOCUMENTOS  = 'Se debe presentar documentos para confirmar la edad';
+    translateMsg.REALIZAR_PAGO  = 'Realizar Pago';
 
 
     function traducirElementosHtml(){

@@ -930,7 +930,7 @@
                 asyncValidateSeleccionVuelo({success:true});
 
                 $(that).hide();
-                $(".cell-submit").html('<div onclick="validatePassengers()" id="btn_validar_pasajeros" class="button" >Realizar Pago</div>');
+                $(".cell-submit").html('<div onclick="validatePassengers()" id="btn_validar_pasajeros" class="button" >'+translate.t.REALIZAR_PAGO+'</div>');
 
 
             }else{
