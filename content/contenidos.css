@@ -6,6 +6,12 @@
 	background-repeat: no-repeat;
 	margin: 20px auto;
 }
+.info .img-contenido_us{
+	width: 200px;
+	height: 200px;
+	background-repeat: no-repeat;
+	margin: 20px auto;
+}
 
 .info .with-aligned-images{min-height: 200px;}
 
@@ -153,6 +159,7 @@
 /* ---- MASCOTAS ---- */
 #info_equipaje_mascotas .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mascotas.png'); }
 #info_equipaje_mascotas .img-contenido {background-image: url('images/contenidos/images_politica_equipaje_mascotas.png'); }
+#info_equipaje_mascotas .img-contenido_us {background-image: url('images/contenidos/images_politica_equipaje_mascotas_us.png'); }
 
 #subtitle_mascotas_buzon 			.title .img { background-position: 0 0;}
 #subtitle_mascotas_documentacion	.title .img { background-position: 0 -125px;}
