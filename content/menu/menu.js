@@ -13,7 +13,7 @@ var menu = (function () {
         //buscamos
 
 
-        $wrapper = $("#wrapper");
+        $wrapper = $("#wrapperMenu");
 
         transformOriginal =  verEstiloMenu();
         $wrapper.css({"height":"60px"});
