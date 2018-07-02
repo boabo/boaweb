@@ -1130,6 +1130,9 @@ function validatePassengers()
 function asyncRegisterPassengers(response)
 {
 
+	//quitamos el div flotante en caso del mobile
+    $("#divFlotante").hide();
+
 	loadingBoa.terminarCargarBoa();
 	if(response["success"] == false) {
 		showSimpleDialog2(response["msg"]);
@@ -2052,6 +2055,7 @@ function buildRegistroPersona(tipo, numPx)
         '</div>');
 
     wrapper.append('<br>');
+
 
     if(tipo=='adulto' || tipo=='adultoMayor' || tipo=='ninho'){
         wrapper.append('<div class="Grid Grid--gutters Grid--holly-grail">' +
