@@ -67,10 +67,17 @@ var translate = (function(){
     translateMsg.INFANTE_DESC  = 'Infante desde los 8 dias de nacido hasta antes de los 2 a&ntilde;os';
     translateMsg.NINO_DESC  = 'Ni&ntilde;o desde los 2 a&ntilde;os hasta antes de cumplir 12 a&ntilde;os';
     translateMsg.GENERO  = 'GENERO';
+    translateMsg.GENERO_MIN  = 'Genero';
     translateMsg.MASCULINO  = 'MASCULINO';
     translateMsg.FEMENINO  = 'FEMENINO';
     translateMsg.SE_DEBE_PRESENTAR_DOCUMENTOS  = 'Se debe presentar documentos para confirmar la edad';
     translateMsg.REALIZAR_PAGO  = 'Realizar Pago';
+
+    translateMsg.ADULTO  = 'ADULTO k';
+    translateMsg.NINHO  = 'NINHO';
+    translateMsg.INFANTE  = 'INFANTE';
+    translateMsg.ADULTO_MAYOR_FORM  = 'ADULTO MAYOR';
+    translateMsg.NO_HAY_VUELOS  = 'NO HAY VUELOS';
 
 
     function traducirElementosHtml(){

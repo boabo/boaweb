@@ -1536,7 +1536,7 @@ function asyncReceiveFlights(response)
         $("#llegadas_").remove();
 
         //quitamos seleccion y le ponemos que no hay vuelos
-		$('.days').find('.selected').find('h3').html('NO HAY VUELOS');
+		$('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
 		$('.days').find('.selected').removeClass('selected').addClass('no-flights');
 
 		$("#salidasHeaderFamilias").empty().append('<div style="width: 100%; height: 70px; background-color: #EFAA35;    color: #111;padding-top: 25px;text-align: center;">'+response.ResultInfoOrError.messageError+'</div>');
@@ -2029,7 +2029,8 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 // ---------------------= dibujador del formulario =---------------------
 function buildRegistroPersona(tipo, numPx)
 {
-	var namesByTipo = {adulto:"ADULTO",ninho:"NI&Ntilde;O",infante:"INFANTE",adultoMayor:"ADULTO_MAYOR"};
+	//cambiamos las variables para multilenguaje
+	var namesByTipo = {adulto:'ADULTO',ninho:'NINHO',infante:'INFANTE',adultoMayor:'ADULTO_MAYOR_FORM'};
 
 
 
@@ -2040,7 +2041,7 @@ function buildRegistroPersona(tipo, numPx)
 	$(persona).addClass("persona")
 			  .addClass("inactive")
 			  .attr("data-tipo",tipo)
-			  .append("<div class='left-label'><label class='lbl-tipo'>"+namesByTipo[tipo]+"</label><label class='nro-pasajero'>"+translate.t.PASAJERO+" "+numPx+"</label><div class='icon-pasajero "+tipo+"'></div></div>")
+			  .append("<div class='left-label'><label class='lbl-tipo'>"+translate.t[namesByTipo[tipo]]+"</label><label class='nro-pasajero'>"+translate.t.PASAJERO+" "+numPx+"</label><div class='icon-pasajero "+tipo+"'></div></div>")
 			  .append("<div class='form'><table cellpadding='0' cellspacing='0'></table></div>")
 			  .append("<div class='wrapper'><div class='form'></div></div>");
 
@@ -2115,7 +2116,7 @@ function buildRegistroPersona(tipo, numPx)
     	if(isAdulto){
 
             wrapper.append('<div class="Grid Grid--gutters Grid--cols-4">'+
-							'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.GENERO+'</div><div class="validable"><select id="tbx_px'+numPx+'_genero" class="genero"><option value="NONE">Genero</option><option value="M">'+translate.t.MASCULINO+'</option><option value="F">'+translate.t.FEMENINO+'</option></select> </div> </div></div>'+
+							'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.GENERO+'</div><div class="validable"><select id="tbx_px'+numPx+'_genero" class="genero"><option value="NONE">'+translate.t.GENERO_MIN+'</option><option value="M">'+translate.t.MASCULINO+'</option><option value="F">'+translate.t.FEMENINO+'</option></select> </div> </div></div>'+
 						'</div>');
 
         }else{
