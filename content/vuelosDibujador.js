@@ -345,12 +345,20 @@
                 $("#"+id_detalle_seleccionado).removeClass('Detalle_abierto');
                 $("#"+id_detalle_seleccionado).addClass('Detalle_cerrado');
                 $(that).removeClass('active');
+
+                //agregamos traducciones al span cuando cambia
+                $(that).text(translate.t.VER_DETALLE);
+
+
             }else{
                 $("#"+id_detalle_seleccionado).removeClass('Detalle_cerrado');
 
                 $("#"+id_detalle_seleccionado).addClass('Detalle_abierto');
 
                 $(that).addClass('active');
+
+                //agregamos traducciones al span cuando cambia
+                $(that).text(translate.t.OCULTAR_DETALLE);
             }
 
         },
@@ -1185,7 +1193,7 @@
                         duracion.minutos = min;
                     }
                     //agregamos la duracion total a la celda principal de este vuelo
-                    $('#'+vuelo.tipo+'_'+vuelo.num_opcion).find(".duracion_total").empty().append("Duración Total : "
+                    $('#'+vuelo.tipo+'_'+vuelo.num_opcion).find(".duracion_total").empty().append(translate.t.DURACION_TOTAL+" : "
                      +((duracion.horas > 0)?duracion.horas+" hrs. ":"")
                      +((duracion.minutos>0)?duracion.minutos+" mins.":" ")
                      );

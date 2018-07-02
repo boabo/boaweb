@@ -1939,6 +1939,7 @@ td#pagar_reserva.activado {
 	cursor: pointer;
 	display: none;
 }
+/*
 .btn_view_detail span::before{
 	content: 'Ver ';
 }
@@ -1946,6 +1947,7 @@ td#pagar_reserva.activado {
 .btn_view_detail.active span::before{
 	content: 'Menos ';
 }
+*/
 
 
 
