@@ -79,6 +79,9 @@ var translate = (function(){
     translateMsg.ADULTO_MAYOR_FORM  = 'ADULTO MAYOR';
     translateMsg.NO_HAY_VUELOS  = 'NO HAY VUELOS';
 
+    translateMsg.PAGAR_RESERVA  = 'Pagar Reserva';
+
+
 
     function traducirElementosHtml(){
 

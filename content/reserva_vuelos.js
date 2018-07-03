@@ -217,7 +217,7 @@ $(document).on('ready',function()
 
 
 
-        $(self).empty().append('<b class="button" style="position: static;">Pagar Reserva</b>');
+        $(self).empty().append('<b class="button" style="position: static;">'+translate.t.PAGAR_RESERVA+'</b>');
 
         if ($(self).hasClass("activado")) {
             $(self).removeClass("activado");
@@ -234,7 +234,7 @@ $(document).on('ready',function()
         } else {
 
             $(self).addClass("activado");
-            $(self).empty().append('x Pagar Reserva');
+            $(self).empty().append('x '+translate.t.PAGAR_RESERVA+'');
             $(self).siblings('td').hide("slow", function () {
                 $("#contenedor_pagar").show("slide");
                 $("#cod_reserva").css({"margin-top": "0px"});
@@ -305,7 +305,7 @@ $(document).on('ready',function()
         if(reserva_redirect == true){
 
             $("#pagar_reserva").addClass("activado");
-            $("#pagar_reserva").empty().append('x Pagar Reserva');
+            $("#pagar_reserva").empty().append('x '+translate.t.PAGAR_RESERVA+'');
             $("#pagar_reserva").siblings('td').hide("slow",function () {
                 $("#contenedor_pagar").show("slide");
                 $("#cod_reserva").css({"margin-top":"0px"});
