@@ -117,7 +117,7 @@
                     duracion.minutos = min;
                 }
                 //agregamos la duracion total a la celda principal de este vuelo
-                $('#' + vuelo.tipo + '_' + vuelo.num_opcion).find(".duracion_total").empty().append("Duración Total : "
+                $('#' + vuelo.tipo + '_' + vuelo.num_opcion).find(".duracion_total").empty().append(translate.t.DURACION_TOTAL+": "
                     + ((duracion.horas > 0) ? duracion.horas + " hrs. " : "")
                     + ((duracion.minutos > 0) ? duracion.minutos + " mins." : " ")
                 );
