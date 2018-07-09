@@ -1206,8 +1206,9 @@ function asyncValidateSeleccionVuelo(response)
         $(".nro-viajero-frecuente").validCampos('0123456789');
 
         if(ENABLE_GENDER){
-        	$("#info_registro_pasajeros .persona").css({"height":"215px"});
-        	$(".left-label").css({"height":"215px"});
+        	//cambiamos la altura
+        	$("#info_registro_pasajeros .persona").css({"height":"250px"});
+        	$(".left-label").css({"height":"250px"});
 		}
 
 
@@ -2110,20 +2111,29 @@ function buildRegistroPersona(tipo, numPx)
 								) +
 							'</div>'+
 						'</div>'+
+
 					'</div>');
 
     if(ENABLE_GENDER==true){
-    	if(isAdulto){
+
 
             wrapper.append('<div class="Grid Grid--gutters Grid--cols-4">'+
 							'<div class="Grid-cell"><div class="content-1of4"><div class="titulo_input">'+translate.t.GENERO+'</div><div class="validable"><select id="tbx_px'+numPx+'_genero" class="genero"><option value="NONE">'+translate.t.GENERO_MIN+'</option><option value="M">'+translate.t.MASCULINO+'</option><option value="F">'+translate.t.FEMENINO+'</option></select> </div> </div></div>'+
-						'</div>');
+							(!isAdulto?
+									'<div class="Grid-cell"><div class="content-3of4"><br> <b>'+translate.t.SE_DEBE_PRESENTAR_DOCUMENTOS+'</b> </div></div>':
+									'<div class="Grid-cell"><div class="content-3of4"> </div></div>'
+							) +
 
-        }else{
-            wrapper.append("<div style='color: #4c0a00; font-size: 15px; width: 100%;'><b>"+translate.t.SE_DEBE_PRESENTAR_DOCUMENTOS+"</b></div>");
 
-		}
+				'</div>');
+
+
 	}
+
+
+
+
+
 
 
 
