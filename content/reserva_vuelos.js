@@ -131,7 +131,8 @@ var cities = {
 	EZE: "Buenos Aires",
 	BCN: "Barcelona",
 	GRU: "Sao Paulo",
-	MIA: "Miami"
+	MIA: "Miami",
+	LTR: "punta cana"
 };
 
 var airports = {
@@ -149,7 +150,8 @@ var airports = {
 	CCA: "Aeropuerto Internacional Chimore",
 	MIA: "Aeropuerto Internacional Miami",
 	POI: "Aeropuerto Capitán Nicolas Rojas",
-	BYC: "Aeropuerto Yacuiba"
+	BYC: "Aeropuerto Yacuiba",
+    LTR: "Aeropuerto Yacuiba"
 };
 
 var linea_clase = {
@@ -1482,10 +1484,32 @@ function asyncReceiveDates(response)
 	console.log(response)
 	// construir selector de fechas para vuelos de ida y vuelta
 	currentDateIda = response["fechaIdaConsultada"];
-	rawDatesCache.ida = response["calendarioOW"]["OW_Ida"]["salidas"]["salida"];
+
+    //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+    if (!Array.isArray(response["calendarioOW"]["OW_Ida"]["salidas"]["salida"])) {
+
+        var arrayCalendarioOW = [];
+        arrayCalendarioOW.push(response["calendarioOW"]["OW_Ida"]["salidas"]["salida"]);
+
+        response["calendarioOW"]["OW_Ida"]["salidas"]["salida"] = arrayCalendarioOW;
+
+    }
+    rawDatesCache.ida = response["calendarioOW"]["OW_Ida"]["salidas"]["salida"];
+
 
 	if(searchParameters.fechaVuelta != null){
 		currentDateVuelta = response["fechaVueltaConsultada"];
+
+        //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
+        if (!Array.isArray(response["calendarioOW"]["OW_Vuelta"]["salidas"]["salida"])) {
+
+            var arrayCalendarioOW = [];
+            arrayCalendarioOW.push(response["calendarioOW"]["OW_Vuelta"]["salidas"]["salida"]);
+
+            response["calendarioOW"]["OW_Vuelta"]["salidas"]["salida"] = arrayCalendarioOW;
+
+        }
+
 		rawDatesCache.vuelta = response["calendarioOW"]["OW_Vuelta"]["salidas"]["salida"];
 	}
 	else{
