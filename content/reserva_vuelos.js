@@ -1540,6 +1540,18 @@ function asyncReceiveFlights(response)
 		$('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
 		$('.days').find('.selected').removeClass('selected').addClass('no-flights');
 
+		console.log(BoA.defaultConsultaVuelos.fechaIda)
+		//agregar al calendario una fecha
+        $('#picker_salida').datepicker("setDate",
+            compactToJSDate(BoA.defaultConsultaVuelos.fechaIda)
+        );
+        if(BoA.defaultConsultaVuelos.fechaVuelta != null) {
+            $("#picker_regreso").datepicker("setDate",
+                compactToJSDate(BoA.defaultConsultaVuelos.fechaVuelta)
+            );
+        }
+
+
 		$("#salidasHeaderFamilias").empty().append('<div style="width: 100%; height: 70px; background-color: #EFAA35;    color: #111;padding-top: 25px;text-align: center;">'+response.ResultInfoOrError.messageError+'</div>');
 		$("#llegadasHeaderFamilias").empty().append('<div style="width: 100%; height: 70px; background-color: #EFAA35;    color: #111;padding-top: 25px;text-align: center;">'+response.ResultInfoOrError.messageError+'</div>');
 		return;
