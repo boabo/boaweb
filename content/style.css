@@ -462,6 +462,16 @@ header .att-div{
 }
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
+
+
+/* --------------------------------------------------------------------------- */
+#menu_item_boa_handling .secondary-menu .primary .icon {
+	background-image: url("images/contenidos/aeropuerto.png");
+}
+
+.secondary-menu li[data-item='servicios_de_aeropuerto']		.icon{ background-position: 0px 0px; }
+/* --------------------------------------------------------------------------- */
+
 #sec_menu {
 	position: absolute;
 	top: 55px;
