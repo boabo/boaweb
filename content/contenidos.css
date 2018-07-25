@@ -722,7 +722,15 @@
 	#subtitle_737_700_ng		.title .img { background-position: 0 -105px;}
 	#subtitle_767_300			.title .img { background-position: 0 -140px;}
 
+	#subtitle_porque_en_hora_internacionales1.desplegable .title{
+		height: 70px !important;
+	}
 }
 
-
+#subtitle_porque_en_hora_internacionales1.collapsed .title{
+	height: 70px !important;
+}
+#subtitle_porque_en_hora_internacionales1.desplegable .title{
+	height: 200px;
+}
 
