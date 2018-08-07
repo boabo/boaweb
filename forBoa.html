@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- needed for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+    <!-- Style of the plugin -->
+    <link rel="stylesheet" href="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="content/lib/datepickerScreen/plugin/datepicker-in-fullscreen.css">
+
+</head>
+<body>
+
+<div class="range">
+    <input id="example_9_from" type="hidden" placeholder="From Date">
+    <div class="range-addon">to</div>
+    <input id="example_9_till" type="hidden" placeholder="Till Date">
+</div>
+<style>
+    .range .dpifs-fake-input{
+        width: 45%;
+        float: left;
+        text-align: center;
+    }
+    .range .range-addon{
+        width: 10%;
+        float: left;
+        background-color: #eee;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        height: 42px;
+        line-height: 42px;
+        padding: 0px 12px;
+        text-align: center;
+    }
+</style>
+
+<!-- jQuery 1.8+ -->
+<script src="content/lib/datepickerScreen/plugin/components/jQuery/jquery-1.11.3.min.js"></script>
+
+<script src="content/lib/datepickerScreen/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JS file -->
+<script src="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js"></script> <!-- spanish language (es) -->
+<script src="content/lib/datepickerScreen/plugin/components/moment/moment.min.js"></script>
+<script src="content/lib/datepickerScreen/plugin/components/TouchSwipe/jquery.touchSwipe.min.js"></script> <!-- Only if touchswipe is enabled -->
+<script src="content/lib/datepickerScreen/plugin/datepicker-in-fullscreen.js"></script>
+
+
+<script>
+    $('#example_9_from').datepickerInFullscreen({
+        beforeOpen : function(modal, settings){
+            var till_date = moment($('#example_9_till').val(), 'MMMM DD,YYYY');
+            if(till_date.isValid()){
+                settings.datepicker.endDate 		= till_date.toDate();
+                settings.datepicker.defaultViewDate = till_date.toDate();
+            }else{
+                settings.datepicker.endDate         = Infinity;
+                settings.datepicker.defaultViewDate = new Date();
+            }
+        },
+    });
+
+    $('#example_9_till').datepickerInFullscreen({
+        beforeOpen : function(modal, settings){
+            var from_date = moment($('#example_9_from').val(), 'MMMM DD,YYYY');
+            if(from_date.isValid()){
+                settings.datepicker.startDate 		= from_date.toDate();
+                settings.datepicker.defaultViewDate = from_date.toDate();
+            }else{
+                settings.datepicker.startDate       = -Infinity;
+                settings.datepicker.defaultViewDate = new Date();
+            }
+        },
+    });
+
+</script>
+</body>
+</html>

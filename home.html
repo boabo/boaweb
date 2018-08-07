@@ -38,6 +38,10 @@
 
 	<link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
 
+	<!-- Style of the plugin -->
+	<link rel="stylesheet"
+		  href="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/bootstrap-datepicker3.min.css">
+	<link rel="stylesheet" href="content/lib/datepickerScreen/plugin/datepicker-in-fullscreen.css">
 
 	<!-- SERVICES LOCATION -->
 	<script type="text/javascript">
@@ -320,6 +324,259 @@
 		</div>
 
 	</div><!-- #wrapper -->
+
+	<!--mob-->
+	<div id="homeMobile">
+
+
+		<div class="row mainRow" data-event="reservaVuelosMob" style="background-color: #334866;">
+			<div class="col" style="width: 20%; padding: 8%;">
+				<div class="check"></div>
+			</div>
+			<div class="col">
+				<div class="text">
+					RESERVA DE <br>
+					<span>VUELOS</span>
+				</div>
+			</div>
+
+		</div>
+		<div class="row inactive form" data-bind="reservaVuelosMob" id="reservaVuelosMob"
+			 style="background-color: #334866;">
+
+			<div style="width: 90%; padding: 5%;">
+				<div class="titleMob">Desde:</div>
+				<select data-id="select_desde" class="origen-destino">
+					<option value="">Origen</option>
+					<option value="CIJ">COBIJA</option>
+					<option value="CBB">COCHABAMBA</option>
+					<option value="LPB">LA PAZ</option>
+					<option value="MAD">MADRID</option>
+					<option value="VVI">SANTA CRUZ</option>
+					<option value="SRE">SUCRE</option>
+					<option value="TJA">TARIJA</option>
+					<option value="TDD">TRINIDAD</option>
+					<option value="EZE">BUENOS AIRES</option>
+					<option value="GRU">SAO PAULO</option>
+				</select>
+				<div class="titleMob">A:</div>
+				<select data-id="select_hasta" class="origen-destino">
+					<option value="">Destino</option>
+					<option value="CIJ">COBIJA</option>
+					<option value="CBB">COCHABAMBA</option>
+					<option value="LPB">LA PAZ</option>
+					<option value="MAD">MADRID</option>
+					<option value="VVI">SANTA CRUZ</option>
+					<option value="SRE">SUCRE</option>
+					<option value="TJA">TARIJA</option>
+					<option value="TDD">TRINIDAD</option>
+					<option value="EZE">BUENOS AIRES</option>
+					<option value="GRU">SAO PAULO</option>
+					<option value="MIA">MIAMI</option>
+				</select>
+
+
+				<br>
+				<br>
+				<div class="row">
+					<div class="col" style="width: 50%;">
+						<div id="rbtn_ida_vuelta_Mob" class="radio-button checked" data-group="ida_vuelta">
+							<div class="btn">
+								<div></div>
+							</div>
+							<label>Ida y vuelta</label>
+						</div>
+					</div>
+					<div class="col" style="width: 50%;">
+						<div id="rbtn_ida_Mob" class="radio-button " data-group="ida_vuelta">
+							<div class="btn">
+								<div></div>
+							</div>
+							<label>Solo ida</label>
+						</div>
+					</div>
+				</div>
+				<div class="titleMob">Salida:</div>
+				<div class="row">
+					<div class="col" style="width: 100%;">
+
+						<input id="from" type="hidden" placeholder="From Date">
+					</div>
+
+				</div>
+				<div class="titleMob">Regreso:</div>
+				<div class="row">
+					<div class="col" style="width: 100%;">
+
+						<input id="till" type="hidden" placeholder="Till Date">
+
+					</div>
+
+				</div>
+				<!---->
+				<div class="titleMob"></div>
+				<div class="row">
+					<div class="col" style="width: 32%;  padding-right: 1%;">
+						<div class="titleMob">Adultos <br><br></div>
+						<select data-tipo="select_nro_adultos" class="origen-destino">
+							<option value="0">0</option>
+
+							<option value="1" selected="">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+						</select>
+					</div>
+					<div class="col" style="width: 31%;padding-left: 1.5%;  padding-right: 1.5%;">
+						<div class="titleMob">Niños <br>(2-11 años)</div>
+						<select data-tipo="select_nro_ninhos" class="origen-destino">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+						</select>
+					</div>
+					<div class="col" style="width: 33%;padding-left: 1%;">
+
+						<div class="titleMob">Bebés <br> (0-1 años)</div>
+						<select data-tipo="select_nro_bebes" class="origen-destino">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="1">2</option>
+						</select>
+					</div>
+				</div>
+
+
+				<br>
+				<br>
+				<div data-id="btn_buscar_vuelos" class="button">BUSCAR</div>
+
+				<br>
+				<br>
+				<br>
+				<div class="titleMob" style="margin-top: 20px;">
+					* Si desea acceder a tarifas para personas de la tercera edad. Debe apersonarse por nuestras oficinas
+					con documentación respaldatoria
+				</div>
+
+				<br>
+				<br>
+				<br>
+				<br>
+
+
+			</div>
+
+
+		</div>
+
+
+		<div class="row mainRow" style="background-color: #efb047; margin-top: 10px;">
+			<div class="col" style="width: 20%; padding: 8%;">
+				<div class="check"></div>
+			</div>
+			<div class="col">
+				<div class="text">
+					WEB <br>
+					<span>CHECK IN</span>
+				</div>
+			</div>
+
+		</div>
+		<div class="row inactive form" style="background-color: #efb047;">
+			<div style="width: 90%; padding: 5%;">
+				<div class="titleMob">Aeropuerto Origen:</div>
+				<select data-id="select_desde" class="origen-destino">
+					<option value="">Origen</option>
+					<option value="CIJ">COBIJA</option>
+					<option value="CBB">COCHABAMBA</option>
+					<option value="LPB">LA PAZ</option>
+					<option value="MAD">MADRID</option>
+					<option value="VVI">SANTA CRUZ</option>
+					<option value="SRE">SUCRE</option>
+					<option value="TJA">TARIJA</option>
+					<option value="TDD">TRINIDAD</option>
+					<option value="EZE">BUENOS AIRES</option>
+					<option value="GRU">SAO PAULO</option>
+				</select>
+
+				<br>
+				<br>
+				<div class="row">
+					<div class="col">
+						<ul>
+							<li>- Realízalo entre 48 y 1 hora antes del
+								vuelo en rutas nacionales.
+							</li>
+							<li>- Ten a mano tus documentos de viaje.</li>
+							<li>- Ten lista tu impresora con hojas de papel
+								tamaño carta.
+							</li>
+						</ul>
+
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col" style="width: 20%"></div>
+					<div class="col" style="width: 20%;">
+						<br>
+						<div id="cbx_acepto_terminos" class="checkbox"></div>
+					</div>
+					<div class="col" style="width: 40%;">
+						<br>
+						<label>Acepto los <a target="_blank" href="/BoAWebSite/Home/TermsConds">términos y
+							condiciones</a></label>
+					</div>
+					<div class="col" style="width: 20%"></div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row" style="background-color: #334866; margin-top: 10px;">
+			<div class="col" style="width: 20%; padding: 8%;">
+				<div class="check"></div>
+			</div>
+			<div class="col">
+				<div class="text">
+					AUTOS <br>
+					<span>RENT CAR</span>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div id="footerMob">
+		<div class="redesSociales">
+			<div style="float: left; width: 30%; height: 66px; margin-left: 3%;" class="youtubeMob"></div>
+			<div style="float: left; width: 30%; height: 66px; margin-left: 3%;" class="twiterMob"></div>
+			<div style="float: left; width: 30%; height: 66px; margin-left: 3%;" class="facebookMob"></div>
+
+		</div>
+		<div class="oficinas"></div>
+		<div class="text">NUESTRAS OFICINAS</div>
+		<div class="bottom"></div>
+	</div>
+
+	<!--end mob-->
+
 
 	<!-- HOME -->
 	<div id="home">
@@ -908,6 +1165,226 @@
 	</div>
 
 <script src="content/menu/menu.js"></script>
+
+	<script>
+
+
+        var $homeMobile = $("#homeMobile");
+        var $checkMob = $homeMobile.find(".mainRow");
+        var $reservaVuelosMob = $homeMobile.find('#reservaVuelosMob');
+
+        //campos
+        var $SelectOrigen = $reservaVuelosMob.find('[data-id="select_desde"]');
+        var $SelectDestino = $reservaVuelosMob.find('[data-id="select_hasta"]');
+        var $btnIdaMob = $reservaVuelosMob.find("#rbtn_ida_Mob");
+        var $btnIdaVueltaMob = $reservaVuelosMob.find("#rbtn_ida_vuelta_Mob");
+        var $dateFrom = $reservaVuelosMob.find("#from");
+        var $dateTill = $reservaVuelosMob.find("#till");
+        var $selectAdulto = $reservaVuelosMob.find('[data-tipo="select_nro_adultos"]');
+        var $selectNinho = $reservaVuelosMob.find('[data-tipo="select_nro_ninhos"]');
+        var $selectBebe = $reservaVuelosMob.find('[data-tipo="select_nro_bebes"]');
+        var $btnEnviar = $reservaVuelosMob.find('[data-id="btn_buscar_vuelos"]');
+
+        var $footerMob = $("#footerMob");
+
+        $checkMob.click(function () {
+            var $that = $(this).next('.row');
+            if ($that.hasClass('inactive')) {
+                $that.show();
+                $that.removeClass('inactive')
+            } else {
+                $that.hide();
+                $that.addClass('inactive')
+            }
+
+
+            $footerMob.css({"position": "relative", "margin-top": "250px"});
+        });
+
+        $reservaVuelosMob.find('[data-group="ida_vuelta"]').click(function () {
+            if ($btnIdaMob.hasClass("checked")) {
+                $dateTill.closest('.row').show();
+                $dateTill.closest('.row').prev().show();
+            } else {
+                $dateTill.closest('.row').hide();
+                $dateTill.closest('.row').prev().hide();
+            }
+        });
+
+        $btnEnviar.click(function () {
+            var parms = {
+                desde: $SelectOrigen.val(),
+                hasta: $SelectDestino.val(),
+                fecha_salida: $dateFrom.val(),
+                fecha_regreso: $dateTill.val(),
+                solo_ida: $btnIdaMob.hasClass("checked"),
+                nro_adultos: $selectAdulto.val(),
+                nro_ninhos: $selectNinho.val(),
+                nro_bebes: $selectBebe.val(),
+                flexible_en_fechas: '',
+                moneda: ''
+            };
+
+            console.log(parms)
+            // -----= VALIDATION PROCESS =------
+            var valid_form = true
+            // origen
+            if (parms.desde == "") {
+                $SelectOrigen.css({"border-left": "10px solid red"});
+                valid_form = false;
+            }
+
+            // destino
+            if (parms.hasta == "") {
+                $SelectDestino.css({"border-left": "10px solid red"});
+                valid_form = false;
+            }
+
+            // fecha de salida
+            if (parms.fecha_salida == "") {
+                $dateFrom.next().css({"border-left": "10px solid red"});
+                ;
+                valid_form = false;
+            }
+
+            // fecha_regreso
+            if (false == parms.solo_ida && $dateTill.val() === "") {
+                $dateTill.next().css({"border-left": "10px solid red"});
+                ;
+                valid_form = false;
+            }
+            if (false == valid_form) {
+                setTimeout(function () {
+                    $SelectOrigen.css({"border-left": ""});
+                    $SelectDestino.css({"border-left": ""});
+                    $dateFrom.next().css({"border-left": ""});
+                    $dateTill.next().css({"border-left": ""});
+                }, 1500);
+                return;
+            }
+
+            var URL_RESERVA_VUELOS = 'https://www.resiberweb.com/PaxBOAv2/Default.aspx';
+
+            var data = {
+                KEY: 'D08D3150-580D-4E6B-83DB-C02158114D9A', // fixed value, must not change
+                FIDA: parms.fecha_salida,
+                FVUELTA: parms.fecha_regreso,
+                MONEDA: parms.moneda,
+                ORIGEN: parms.desde,
+                DESTINO: parms.hasta,
+                ADT: parms.nro_adultos,
+                CHD: parms.nro_ninhos,
+                INF: parms.nro_bebes,
+                IPCLIENT: "",
+            };
+
+            var form = $('<form target="_blank" method="POST" action="' + URL_RESERVA_VUELOS + '">');
+            $.each(data, function (k, v) {
+                form.append('<input type="hidden" name="' + k + '" value="' + v + '">');
+            });
+
+            $("#div_submit").html("").append(form); // IE FIX
+
+            form.submit();
+        });
+
+
+        //cantidad de pasajeros
+        $selectAdulto.change(function () {
+            var pasajeros_adultos = $selectAdulto.val();
+            var count_permitidos = 9 - parseInt(pasajeros_adultos);
+
+            $.each($selectNinho.children(), function (k, v) {
+
+                if (count_permitidos < k) {
+                    $(v).hide();
+                } else {
+                    $(v).show();
+                }
+            });
+            $.each($selectBebe.children(), function (k, v) {
+
+                if (pasajeros_adultos < k) {
+                    $(v).hide();
+                } else {
+                    $(v).show();
+
+                }
+            });
+        });
+
+        $selectNinho.change(function () {
+            var pasajeros_ninos = $selectNinho.val();
+            var count_permitidos = 9 - parseInt(pasajeros_ninos);
+
+            $.each($selectAdulto.children(), function (k, v) {
+
+                if (count_permitidos < k) {
+                    $(v).hide();
+                } else {
+                    $(v).show();
+                }
+            });
+
+        });
+
+	</script>
+
+	<script src="content/lib/datepickerScreen/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Plugin JS file -->
+	<script src="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+	<!-- spanish language (es) -->
+	<script src="content/lib/datepickerScreen/plugin/components/moment/moment.min.js"></script>
+	<script src="content/lib/datepickerScreen/plugin/components/TouchSwipe/jquery.touchSwipe.min.js"></script>
+	<!-- Only if touchswipe is enabled -->
+	<script src="content/lib/datepickerScreen/plugin/datepicker-in-fullscreen.js"></script>
+
+
+	<script>
+        $('#from').datepickerInFullscreen({
+            datepicker: {language: 'es'},
+            format: 'DDMMYYYY',
+            fakeInputFormat: 'DD MMMM YYYY',
+            todayWord: 'Hoy',
+            clearWord: 'Vaciar',
+            closeWord: 'Cerrar',
+            beforeOpen: function (modal, settings) {
+                var till_date = moment($('#till').val(), 'DDMMYYYY');
+                if (till_date.isValid()) {
+                    settings.datepicker.endDate = till_date.toDate();
+                    settings.datepicker.defaultViewDate = till_date.toDate();
+                } else {
+                    settings.datepicker.endDate = Infinity;
+                    settings.datepicker.defaultViewDate = new Date();
+                }
+            },
+        });
+
+        $('#till').datepickerInFullscreen({
+            datepicker: {language: 'es'},
+            format: 'DDMMYYYY',
+            fakeInputFormat: 'DD MMMM YYYY',
+            todayWord: 'Hoy',
+            clearWord: 'Vaciar',
+            closeWord: 'Cerrar',
+            beforeOpen: function (modal, settings) {
+                var from_date = moment($('#from').val(), 'DDMMYYYY');
+                if (from_date.isValid()) {
+                    settings.datepicker.startDate = from_date.toDate();
+                    settings.datepicker.defaultViewDate = from_date.toDate();
+                } else {
+                    settings.datepicker.startDate = -Infinity;
+                    settings.datepicker.defaultViewDate = new Date();
+                }
+            },
+        });
+
+	</script>
+
+
+
 
 </body>
 </html>
