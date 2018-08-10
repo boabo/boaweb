@@ -455,6 +455,11 @@ header .att-div{
 .secondary-menu li[data-item='perfil_corporativo']		.icon{ background-position: 0px 0px; }
 .secondary-menu li[data-item='somos_iosa']				.icon{ background-position: 0px -20px; }
 .secondary-menu li[data-item='reconocimientos_premios'] .icon{ background-position: 0px -40px; }
+
+#menu_item_somos_boa .secondary-menu .primary .iconRutas {
+	background-image: url("images/contenidos/icono-mapa.png") !important;
+	background-position: 0px 0px;
+}
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
 #menu_item_planifica .secondary-menu .primary .icon {
