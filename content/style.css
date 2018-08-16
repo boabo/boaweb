@@ -3148,7 +3148,7 @@ div.panel {
 	}
 
 	#slider {
-		position: static;
+		/*position: static;*/
 	}
 
 	#slider img {
@@ -3347,6 +3347,12 @@ div.panel {
 		visibility: visible;
 	}
 	#ui_home {
+		visibility: visible;
+	}
+	#homeMobile{
+		visibility: hidden;
+	}
+	#slider{
 		visibility: visible;
 	}
 }
