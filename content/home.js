@@ -26,9 +26,11 @@ var listOrigen = {
     GRU:{fechaMigracion:null},
 };
 // ---------------------= =---------------------
+
 $(document).on('ready',function()
 {
-	// Header first
+
+    // Header first
 	initialize_header(false);
 
 	$("#buscador_vuelos .menu").click(click_menu_buscador_vuelos);

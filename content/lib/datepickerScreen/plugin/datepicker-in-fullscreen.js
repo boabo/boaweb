@@ -226,8 +226,8 @@
 
             // Init datepicker plugin
 
-            datepicker_instance = modal.find('.datepicker-in-fullscreen').datepicker(settings.datepicker)
-                .datepicker('setDate', moment($input.val(), settings.format).toDate()) 
+            datepicker_instance = modal.find('.datepicker-in-fullscreen').bootstrapDP(settings.datepicker)
+                .bootstrapDP('setDate', moment($input.val(), settings.format).toDate())
                 .on('changeDate', function(ev){
 
                     var new_date = moment(ev.date).format(settings.format);
@@ -267,7 +267,7 @@
 
             modal.find('.dpifs-today').on('click', function(e){
                 e.preventDefault();
-                datepicker_instance.datepicker('setDate', moment().toDate());
+                datepicker_instance.bootstrapDP('setDate', moment().toDate());
             });
 
             // Clear
