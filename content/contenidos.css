@@ -1,12 +1,6 @@
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
-.info .img-contenido{
-	width: 200px;
-	height: 200px;
-	background-repeat: no-repeat;
-	margin: 20px auto;
-}
-.info .img-contenido_us{
+.info .img-contenido,.info .img-contenido_us,.info .img-contenido_br {
 	width: 200px;
 	height: 200px;
 	background-repeat: no-repeat;
@@ -125,13 +119,16 @@
 #subtitle_instrumentos_musicales 				.title .img {background-position: 0 -125px;}
 #subtitle_equipaje_voluminoso 					.title .img {background-position: 0 -250px;}
 #subtitle_equipaje_voluminoso_espana			.title .img {background-position: 0 -375px;}
-#subtitle_equipaje_armas_de_fuego			.title .img {background-position: 0 -375px;}
+#subtitle_equipaje_armas_de_fuego			.title .img {background-position: 0 0;}
 
 #subtitle_equipamiento_deportivo.collapsed		.title .img { background-position: 0 0;}
 #subtitle_instrumentos_musicales.collapsed 		.title .img {background-position: 0 -40px;}
 #subtitle_equipaje_voluminoso.collapsed 		.title .img {background-position: 0 -80px;}
 #subtitle_equipaje_voluminoso_espana.collapsed	.title .img {background-position: 0 -120px;}
-#subtitle_equipaje_armas_de_fuego.collapsed	.title .img {background-position: 0 -120px;}
+
+#subtitle_equipaje_armas_de_fuego.collapsed .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mercancias_peligrosas.png'); }
+#subtitle_equipaje_armas_de_fuego.desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mercancias_peligrosas.png'); }
+
 
 #image_equipaje_deportivo 	{margin: 0;background-position: 0px 0px;}
 #image_equipaje_musical 	{height: 340px;background-position: 0px -200px;}
@@ -160,6 +157,7 @@
 #info_equipaje_mascotas .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mascotas.png'); }
 #info_equipaje_mascotas .img-contenido {background-image: url('images/contenidos/images_politica_equipaje_mascotas.png'); }
 #info_equipaje_mascotas .img-contenido_us {background-image: url('images/contenidos/images_politica_equipaje_mascotas_us.png'); }
+#info_equipaje_mascotas .img-contenido_br {background-image: url('images/contenidos/images_politica_equipaje_mascotas_br.png'); }
 
 #subtitle_mascotas_buzon 			.title .img { background-position: 0 0;}
 #subtitle_mascotas_documentacion	.title .img { background-position: 0 -125px;}
