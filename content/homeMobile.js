@@ -167,13 +167,13 @@ jQuery( document ).ready(function( $ ) {
 
     $('#from').datepickerInFullscreen({
         datepicker: {language: 'es'},
-        format: 'DDMMYYYY',
+        format: 'YYYYMMDD',
         fakeInputFormat: 'DD MMMM YYYY',
         todayWord: 'Hoy',
         clearWord: 'Vaciar',
         closeWord: 'Cerrar',
         beforeOpen: function (modal, settings) {
-            var till_date = moment($('#till').val(), 'DDMMYYYY');
+            var till_date = moment($('#till').val(), 'YYYYMMDD');
             if (till_date.isValid()) {
                 settings.datepicker.endDate = till_date.toDate();
                 settings.datepicker.defaultViewDate = till_date.toDate();
@@ -186,13 +186,13 @@ jQuery( document ).ready(function( $ ) {
 
     $('#till').datepickerInFullscreen({
         datepicker: {language: 'es'},
-        format: 'DDMMYYYY',
+        format: 'YYYYMMDD',
         fakeInputFormat: 'DD MMMM YYYY',
         todayWord: 'Hoy',
         clearWord: 'Vaciar',
         closeWord: 'Cerrar',
         beforeOpen: function (modal, settings) {
-            var from_date = moment($('#from').val(), 'DDMMYYYY');
+            var from_date = moment($('#from').val(), 'YYYYMMDD');
             if (from_date.isValid()) {
                 settings.datepicker.startDate = from_date.toDate();
                 settings.datepicker.defaultViewDate = from_date.toDate();
