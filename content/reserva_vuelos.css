@@ -1928,8 +1928,9 @@ td#pagar_reserva.activado {
 
 }
 
-.tiempo_vuelo svg rect,path,text {
-	fill: #fff;
+/*importante*/
+.tiempo_vuelo svg rect,path,text,tspan {
+	fill: #fff !important;
 }
 .tiempo_vuelo svg text{
 	font-family: "FuturaMedium";
