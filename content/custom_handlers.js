@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7hticcs4TLo7RHsurhzLJySeIpAQVzMo1RewxyzcDdgtgCqqRNg6WAc+4aDuYS3YSqJnHOJiQG/w==";
+var SERVICE_CREDENTIALS_KEY = "z+bwQzMVBklGZ42xI45QYdeI6V+zHjjfSyULJMWKgH0G2qkasgs+LaGvZYYLe9s+ABTKCPa3RNdiLGlb3wBMWnrYqDusuEvZtrT5kZK+PYiDdL73Za8KtR3ldyjxGKW7/neqlNrAx0uE0pvWHhpob+pHVdnAcPl+mAXIHMVEDx44FsHbe9rqIw==";
 var server = '192.168.17.249'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto = {
@@ -78,8 +78,10 @@ var BoA = {
 
 		/* SERVICES */
         // nearest_dates_service: "http://"+server+"/content/fake_services/nearest_dates.php",
-        nearest_dates_service: "https://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
-        flights_schedule_service: "https://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
+        //nearest_dates_service: "https://ef.boa.bo/Services/BasicReservationService.svc/Calendar",
+        nearest_dates_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/Calendar",
+        //flights_schedule_service: "https://ef.boa.bo/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
+        flights_schedule_service: "http://skbpruebas.cloudapp.net/Services/BasicReservationService.svc/AvailabilityPlusValuationsShort",
         validate_flight_selection_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/validate_flight_selection_service.php",
         register_passengers_service: "http://"+server+"/~faviofigueroa/boaweb/content/fake_services/register_passengers_service.php",
         change_locale_settings_service: "http://"+server+"/content/fake_services/change_locale_settings.php",
@@ -90,9 +92,9 @@ var BoA = {
 
     defaultConsultaVuelos : {
         origen: 'VVI',
-        destino: 'LRM',
-        fechaIda : '20180726',//formatCompactDate(new Date()), // today
-        fechaVuelta:null,//null, // no flight back
+        destino: 'WAS',
+        fechaIda : '20181002',//formatCompactDate(new Date()), // today
+        fechaVuelta:'20181102',//null, // no flight back
         adulto: 1,
         infante: 0,
         ninho: 0,

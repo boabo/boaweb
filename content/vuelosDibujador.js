@@ -133,7 +133,7 @@
                     if (objectAuxOperador[vuelo.co_operador] == undefined){
                         objectAuxOperador[vuelo.co_operador] = vuelo.co_operador;
                         var clase = linea_clase[vuelo.co_operador];
-                        iconos_operador += '<div class="'+clase+'"><span style="bottom:-22px;position:relative;">'+lineas[vuelo.co_operador]+'</span></div>';
+                        iconos_operador += '<div class="'+clase+'"><span style="bottom:-22px;position:relative; font-size: 11px;">'+lineas[vuelo.co_operador]+'</span></div>';
                     }
                     console.log(vuelo.co_operador)
                 });

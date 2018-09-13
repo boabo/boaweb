@@ -51,7 +51,7 @@ var menu = (function () {
 
         console.log($menu);
         console.log(data);
-        var $ul = $('<ul></ul>');
+        var $ul = $('<ul style="margin-top: 100px;"></ul>');
         $.each(data.menu,function (k,v) {
 
             if(Array.isArray(v.subMenu)){
@@ -77,7 +77,7 @@ var menu = (function () {
 
         var $subMenu = $('<div class="menuMob"></div>');
         $subMenu.append('<label class="menu-toggle" for="menu-'+position+'"><span>Toggle</span></label>');
-        var $ul = $('<ul></ul>');
+        var $ul = $('<ul style="margin-top: 100px;"></ul>');
         $.each(data,function (k,v) {
             console.log(v)
             if(Array.isArray(v.subMenu)){

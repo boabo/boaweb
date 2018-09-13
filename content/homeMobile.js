@@ -29,9 +29,12 @@ jQuery( document ).ready(function( $ ) {
         if ($that.hasClass('inactive')) {
             $that.show();
             $that.removeClass('inactive')
+            $(this).find('.check').addClass('rotate');
         } else {
             $that.hide();
             $that.addClass('inactive')
+            $(this).find('.check').removeClass('rotate');
+
         }
 
 

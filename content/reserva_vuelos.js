@@ -132,7 +132,8 @@ var cities = {
 	BCN: "Barcelona",
 	GRU: "Sao Paulo",
 	MIA: "Miami",
-	LTR: "punta cana"
+	LTR: "punta cana",
+	WAS: "Washington"
 };
 
 var airports = {
@@ -151,18 +152,21 @@ var airports = {
 	MIA: "Aeropuerto Internacional Miami",
 	POI: "Aeropuerto Capitán Nicolas Rojas",
 	BYC: "Aeropuerto Yacuiba",
-    LTR: "Aeropuerto Yacuiba"
+    LTR: "Aeropuerto Yacuiba",
+    WAS: "R. Reagan Nacional (DCA)"
 };
 
 var linea_clase = {
 
 	OB:"ico_boa",
-	IB:"ico_iberia"
+	IB:"ico_iberia",
+	AA:"ico_american"
 };
 var lineas = {
 
 	OB:"BoA",
-	IB:"Iberia"
+	IB:"Iberia",
+    AA:"American Airlines"
 };
 var compartmentNames = {"2":"Business","3":"Econ&oacute;mica"};
 

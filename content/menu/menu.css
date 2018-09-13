@@ -63,6 +63,8 @@ label:focus {
     line-height: 15px;
     text-decoration: none;
     color: #000;
+    font-family: "FuturaHeavy";
+
 }
 .menuMob ul li a:hover, .menuMob ul li label:hover {
     color: #666;

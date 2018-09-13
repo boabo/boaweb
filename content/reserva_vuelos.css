@@ -1903,6 +1903,7 @@ td#pagar_reserva.activado {
 	float: left;
 	margin-left: 10px;
 	margin-top: 5px;
+	margin-right: 20px;
 }
 .ico_iberia{
 	background-image: url('images/iberia.jpg');
@@ -1913,6 +1914,18 @@ td#pagar_reserva.activado {
 	float: left;
 	margin-left: 10px;
 	margin-top: 5px;
+}
+.ico_american{
+	background-image: url('images/american.png');
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	margin: auto;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-right: 20px;
+
 }
 
 .tiempo_vuelo svg rect,path,text {
