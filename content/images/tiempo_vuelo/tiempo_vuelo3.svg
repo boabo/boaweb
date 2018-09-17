@@ -82,7 +82,7 @@
 		</g>
 	</g>
 	<text transform="matrix(1 0 0 1 397.9883 137.0177)" class="st7 st8">  </text>
-	<text data="operado1" transform="matrix(1 0 0 1 165.9034 47.1123)" class="st5">
+	<text data="operado1" transform="matrix(1 0 0 1 165.9034 97.1123)" class="st5">
 		<tspan x="0" y="0" class="st0 st3 st6">Operado por:</tspan>
 		<tspan x="22" y="18" class="st0 st3 st6">BoA</tspan>
 	</text>
@@ -106,7 +106,7 @@
 	</g>
 </g>
 <g id="vuelo2">
-	<text data="operado2" transform="matrix(1 0 0 1 515.4247 47.1123)" class="st5">
+	<text data="operado2" transform="matrix(1 0 0 1 515.4247 97.1123)" class="st5">
 		<tspan x="0" y="0" class="st0 st3 st6">Operado por:</tspan>
 		<tspan x="22" y="18" class="st0 st3 st6">BoA</tspan>
 	</text>
@@ -198,7 +198,7 @@
 	</g>
 </g>
 <g id="vuelo3">
-	<text data="operado3" transform="matrix(1 0 0 1 869.7853 47.1123)" class="st5">
+	<text data="operado3" transform="matrix(1 0 0 1 869.7853 97.1123)" class="st5">
 		<tspan x="0" y="0" class="st0 st3 st6">Operado por:</tspan>
 		<tspan x="22" y="18" class="st0 st3 st6">BoA</tspan>
 	</text>
