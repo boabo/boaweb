@@ -45,6 +45,9 @@
 #info_mercancias_peligrosas.fixed 	.icon{background-position: 	0px -200px; }
 #info_equipaje_mascotas.fixed 		.icon{background-position: 	0px -250px; }
 
+
+
+
 /* ---- EQUIPAJE DE MANO ---- */
 #info_equipaje_mano .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mano.png'); }
 #info_equipaje_mano .img-contenido { background-image: url('images/contenidos/images_politica_equipaje_mano.png'); }
@@ -346,7 +349,6 @@
 #submenu_item_embarazadas 			.icon{background-position: 0px 0px;}
 #submenu_item_tercera_edad 			.icon{background-position: 0px -25px;}
 #submenu_item_pasajeros_sobrepeso 	.icon{background-position: 0px -50px;}
-#submenu_item_pasajeros_custodia_legal 	.icon{background-position: 0px -50px;}
 
 #info_embarazadas 				.icon{background-position: 	0px 0px; }
 #info_tercera_edad 				.icon{background-position: 	0px -80px; }
@@ -731,4 +733,22 @@
 #subtitle_porque_en_hora_internacionales1.desplegable .title{
 	height: 200px;
 }
+
+
+#info_pasajeros_custodia_legal .icon {
+	background-image: url("images/contenidos/pasajeros-especiales.png") !important;
+	background-position: 0px 0px;  !important;
+
+}
+
+#submenu_item_pasajeros_custodia_legal 	#iconPasajeroBajoCustodia {
+	background-image: url("images/contenidos/pasajeros-especiales.png") !important;
+	background-position: 0px 0px;  !important;
+}
+
+#ui_mapa_rutas 	.icon {
+	background-image: url("images/contenidos/icono-mapa.png") !important;
+	background-position: 0px 0px;  !important;
+}
+
 
