@@ -160,6 +160,7 @@
 #info_equipaje_mascotas .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mascotas.png'); }
 #info_equipaje_mascotas .img-contenido {background-image: url('images/contenidos/images_politica_equipaje_mascotas.png'); }
 #info_equipaje_mascotas .img-contenido_us {background-image: url('images/contenidos/images_politica_equipaje_mascotas_us.png'); }
+/*agregar este estilo img-contenido_br*/
 #info_equipaje_mascotas .img-contenido_br {background-image: url('images/contenidos/images_politica_equipaje_mascotas_br.png'); }
 
 #subtitle_mascotas_buzon 			.title .img { background-position: 0 0;}
