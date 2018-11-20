@@ -80,6 +80,8 @@ var translate = (function(){
     translateMsg.NO_HAY_VUELOS  = 'NO HAY VUELOS';
 
     translateMsg.PAGAR_RESERVA  = 'Pagar Reserva';
+    translateMsg.FECHA_EXP  = 'Fecha Exp';
+    translateMsg.NACIONALIDAD  = 'Nacionalidad';
 
 
 

@@ -1396,6 +1396,13 @@ function asyncValidateSeleccionVuelo(response)
 
 
 
+        //todo form - nuevos campos - picker para fecha expiracion
+        /*form.find(".datepickerExp").datepicker({
+            dateFormat: 'dd MM yy',
+            numberOfMonths: 1,
+            maxDate: 0,
+            changeYear: true
+        });*/
 
 
 
@@ -2169,6 +2176,13 @@ function buildRegistroPersona(tipo, numPx)
 
 
 	}
+
+	//todo form - nuevos campos columas para nacionalidad fecha expiracion y pais emisor //TODO
+    /*wrapper.append('<div class="Grid Grid--gutters Grid--cols-3">'+
+        '<div class="Grid-cell"><div class="content-1of3"><div class="titulo_input">'+translate.t.FECHA_EXP+'</div> <div class="validable"><input type="text" id="picker_px'+numPx+'_expiracion" class="calendar datepickerExp" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div> </div></div>'+
+        '<div class="Grid-cell"><div class="content-2of3"><div class="titulo_input">'+translate.t.NACIONALIDAD+'</div><div class="validable"><select id="tbx_px'+numPx+'_nacionalidad" class="genero"><option value="NONE">Nacionalidad</option><option value="M">boliviana</option><option value="F">peruana</option></select> </div> </div></div>'+
+        '<div class="Grid-cell"><div class="content-3of3"><div class="titulo_input">na</div><div class="validable"><select id="tbx_px'+numPx+'_nacionalidad" class="genero"><option value="NONE">Nacionalidad</option><option value="M">boliviana</option><option value="F">peruana</option></select> </div> </div></div>'+
+        '</div>');*/
 
 
 
