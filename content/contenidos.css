@@ -52,6 +52,9 @@
 #info_equipaje_mano .desplegable .title .img { background-image: url('images/contenidos/icons_politica_equipaje_mano.png'); }
 #info_equipaje_mano .img-contenido { background-image: url('images/contenidos/images_politica_equipaje_mano.png'); }
 
+#img_equipaje_mano {
+	background-image: url("images/contenidos/maleta.png") !important;
+}
 
 
 #subtitle_franquicia 						.title .img { background-position: 0 0;}
