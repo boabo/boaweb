@@ -27,8 +27,205 @@ var listOrigen = {
 };
 // ---------------------= =---------------------
 
+
+//este arma el nuevo combobox ul li
+var arraOrigenDestino = [
+    {
+        code: 'CIJ',
+        desc: 'COBIJA',
+    }, {
+        code: 'CBB',
+        desc: 'COCHABAMBA'
+    }, {
+        code: 'LPB',
+        desc: 'LA PAZ'
+    }, {
+        code: 'MAD',
+        desc: 'MADRID'
+    }, {
+        code: 'VVI',
+        desc: 'SANTA CRUZ'
+    }, {
+        code: 'SRE',
+        desc: 'SUCRE'
+    }, {
+        code: 'TJA',
+        desc: 'TARIJA'
+    }, {
+        code: 'TDD',
+        desc: 'TRINIDAD'
+    }, {
+        code: 'EZE',
+        desc: 'BUENOS AIRE'
+    }, {
+        code: 'GRU',
+        desc: 'SAO PAUL'
+    }, {
+        code: 'WAS',
+        desc: 'WAS',
+    }
+];
+
 $(document).on('ready',function()
 {
+
+
+	/*
+	* nueva forma para la busqueda
+	* */
+
+
+
+
+    //dibujar origen destino en el detalle de cada uno
+
+    var $detalleOrigen = $("#detalle_origen");
+    var $detalleDestino = $("#detalle_destino");
+
+    var $ulTemplate =  $('<ul></ul>');
+    arraOrigenDestino.forEach(function (detail,index) {
+        var $li = $('<li data-val="'+detail.code+'" data-desc="'+detail.desc+'">'+detail.desc+'</li>');
+        $ulTemplate.append($li);
+
+
+    });
+    $detalleOrigen.html($ulTemplate.clone()).find('li').click(clickedInLi);
+    $detalleDestino.html($ulTemplate.clone()).find('li').click(clickedInLi);
+
+    function clickedInLi(){
+        var $li = $(this);
+        var $ul = $li.parent('ul');
+        var $containerDetail = $ul.parent('.detalle_origen_destino');
+        var tipo = $containerDetail.attr('id');
+
+        $ul.find('li').removeClass('selected');
+        $li.addClass('selected');
+        $containerDetail.prev().val($li.attr('data-val') + ' - ' + $li.attr('data-desc'));
+        $containerDetail.hide();
+
+        if(tipo === 'detalle_origen'){
+            $detalleDestino.show();
+            $('#select_desde').val($li.attr('data-val'));
+        }else{
+            $("#picker_salida").focus().click();
+            $('#select_hasta').val($li.attr('data-val'));
+        }
+    }
+
+    $( ".origen_destino_input" ).click(function() {
+        var $context = $(this);
+        var $origenDestinoDetalle = $context.next();
+        console.log($origenDestinoDetalle.is(":visible"))
+        if($origenDestinoDetalle.is(":visible")){
+            $origenDestinoDetalle.hide();
+        }else{
+            $origenDestinoDetalle.show();
+        }
+
+    });
+
+
+    $( "#pasajeros_input" ).click(function() {
+        if($("#detalle_pasajeros").is(":visible")){
+            $("#detalle_pasajeros").hide();
+            calcularPasajeros();
+        }else{
+            $("#detalle_pasajeros").show();
+            calcularPasajeros();
+        }
+    });
+
+    $("#btn_cerrar_pasajeros_det").click(function () {
+        calcularPasajeros();
+        $("#detalle_pasajeros").hide();
+    });
+
+    //calcular cantidad de pasajeros
+    function calcularPasajeros() {
+        var selectNroAdultos = $("#select_nro_adultos").val();
+        var selectNroBebes = $("#select_nro_bebes").val();
+        var selectNroNinos = $("#select_nro_ninhos").val();
+        var total = parseInt(selectNroAdultos) + parseInt(selectNroNinos);
+        $( "#pasajeros_input" ).val( total + ' Pasajeros');
+    }
+
+    $("#detalle_pasajeros").find('i.fa').click(function () {
+
+        var $this = $(this);
+        var $select = $("#select_nro_"+$this.parent('td').attr('data-action'));
+        console.log($select)
+        var plus = $this.hasClass('fa-plus');
+
+        var current_val = $select.val();
+
+
+        //es para aumentar
+        if(plus){
+
+            var newValue = parseInt(current_val) + 1;
+
+            console.log($select.find('option[value="' +newValue+ '"]'))
+            console.log($select.find('option[value="' +newValue+ '"]').prop("disabled"))
+            console.log(newValue)
+            if($select.find('option[value="' +newValue+ '"]').length > 0 && !$select.find('option[value="' +newValue+ '"]').prop("disabled")){
+                $select.val(newValue).change();
+
+            }
+
+
+        }else{
+            var newValue = parseInt(current_val) - 1;
+            if($select.find('option[value="' +newValue+ '"]').length > 0 && !$select.find('option[value="' +newValue+ '"]').prop("disabled")){
+                $select.val(newValue).change();
+
+            }
+
+
+        }
+
+    });
+
+    $("#select_nro_adultos,#select_nro_bebes,#select_nro_ninhos").change(function () {
+
+        if ( $(this).attr('id') == "select_nro_adultos" ){
+            $("#detalle_pasajeros").find('[data-action="adultos"]').find("label").html($(this).val());
+
+        }else if ($(this).attr('id') == "select_nro_ninhos"){
+            $("#detalle_pasajeros").find('[data-action="ninhos"]').find("label").html($(this).val());
+
+        }else if ($(this).attr('id') == "select_nro_bebes"){
+            $("#detalle_pasajeros").find('[data-action="bebes"]').find("label").html($(this).val());
+
+        }
+
+    });
+
+
+    $('#reserva_vuelos').click(function () {
+        $("html, body").delay(200).animate({scrollTop: $('#reserva_vuelos').offset().top -200 }, 500);
+
+    });
+
+    var $selectDesde = $("#select_desde");
+    var $selectHasta = $("#select_hasta");
+
+    $selectDesde.hide();
+    $selectHasta.hide();
+
+    $selectDesde.change(function () {
+
+        console.log('es abierto');
+        $("#picker_salida").focus().click();
+
+    });
+
+
+	/*fin nueva forma para la busqueda*/
+
+
+
+	// added the div for showing alert pop up with opcion
+    //$('body').append('<div id="confirm"></div>');
 
     // Header first
 	initialize_header(false);
@@ -44,7 +241,14 @@ $(document).on('ready',function()
 		minDate: 0,
 		onSelect:function(selectedDate){
 			$( "#picker_regreso" ).datepicker( "option", "minDate", selectedDate );
-		}
+            //para mostrar automaticamente el calendario
+            if($("#rbtn_ida").hasClass("checked")){
+                $("#pasajeros_input").focus().click();
+            }else{
+                $("#picker_regreso").focus().click();
+            }
+
+        }
 	});
 
 	$("#picker_regreso, #picker_estado_vuelo","#picker_aeropuerto_origen").datepicker({
@@ -60,6 +264,9 @@ $(document).on('ready',function()
 		minDate: 0,
 		onSelect:function(selectedDate){
 			$( "#picker_regreso_footer" ).datepicker( "option", "minDate", selectedDate );
+
+
+
 		}
 	});
 
@@ -102,7 +309,7 @@ $(document).on('ready',function()
 			$("#lbl_regreso,#picker_regreso").show();
 	});
 
-	$(document).mousemove(handleParallaxSliders);
+	//$(document).mousemove(handleParallaxSliders);
 
 	$("#buscador_vuelos, #ui-datepicker-div").mouseenter(function(){
 		parallaxLocked = true;
@@ -132,7 +339,7 @@ $(document).on('ready',function()
 	$.getJSON(SLIDES_SERVICE_URL, async_receive_slides);
 
 	// handle "BUSCAR" from 'RESERVA DE VUELOS' button
-	$("#btn_buscar_vuelos").click(search_reserva_vuelos);
+	$("#btn_buscar_vuelos").click(validatePassengers);
 
 	$("#btn_buscar_check_in").click(search_check_in);
 
@@ -156,18 +363,23 @@ $(document).on('ready',function()
 		$.each($("#select_nro_ninhos").children(),function (k,v) {
 
 			if(count_permitidos < k ){
-				$(v).hide();
+				//$(v).hide();
+				$(v).prop('disabled',true).prop('hidden',true);
 			}else {
-                $(v).show();
+                //$(v).show();
+                $(v).prop('disabled',false).prop('hidden',false);
 			}
 			console.log(v)
         });
 		$.each($("#select_nro_bebes").children(),function (k,v) {
 
 			if(pasajeros_adultos < k ){
-				$(v).hide();
-			}else{
-                $(v).show();
+				//$(v).hide();
+                $(v).prop('disabled',true).prop('hidden',true);
+
+            }else{
+                //$(v).show();
+                $(v).prop('disabled',false).prop('hidden',false);
 
             }
 			console.log(v)
@@ -181,9 +393,11 @@ $(document).on('ready',function()
         $.each($("#select_nro_adultos").children(),function (k,v) {
 
             if(count_permitidos < k ){
-                $(v).hide();
+                //$(v).hide();
+                $(v).prop('disabled',true).prop('hidden',true);
             }else {
-                $(v).show();
+                //$(v).show();
+                $(v).prop('disabled',false).prop('hidden',false);
             }
             console.log(v)
         });
@@ -457,8 +671,52 @@ function handleParallaxSliders(event)
 	$("#buscador_vuelos").css("margin-top", "-" + parseInt(ratio_y * 100) + "px");
 	$("#slider").css("top", (50 - parseInt(ratio_y * 70)) + "px");
 }
+
+function validatePassengers(){
+
+    var select_desde = $("#select_desde");
+    var select_hasta = $("#select_hasta");
+    var picker_salida = $("#picker_salida");
+    var picker_regreso = $("#picker_regreso");
+    var select_nro_adultos = $("#select_nro_adultos");
+    var select_nro_ninhos = $("#select_nro_ninhos");
+    var select_nro_bebes = $("#select_nro_bebes");
+    var cbx_flexible_en_fechas = $("#cbx_flexible_en_fechas");
+    var select_moneda = $("#select_moneda");
+
+    var rbtn_ida = $("#rbtn_ida");
+    var rbtn_ida_vuelta = $("#rbtn_ida_vuelta");
+
+
+
+    var parms = {
+        desde: select_desde.val(),
+        hasta: select_hasta.val(),
+        fecha_salida: picker_salida.val(),
+        fecha_regreso: picker_regreso.val(),
+        solo_ida: rbtn_ida.hasClass("checked"),
+        nro_adultos: select_nro_adultos.val(),
+        nro_ninhos: select_nro_ninhos.val(),
+        nro_bebes: select_nro_bebes.val(),
+        flexible_en_fechas: cbx_flexible_en_fechas.hasClass("checked"),
+        moneda: select_moneda.val()
+    };
+
+    //verify if the passanger is only a child or children without adult
+    if (parms.nro_adultos == 0 && parms.nro_ninhos >= 1){
+        BoaConfirm(translate.t.MSG_MENORES_NO_ACOMPANADOS,
+            function onYes() { // callback when we click in ok
+                search_reserva_vuelos(parms);
+            },
+            function onNo() { //callback when we click in cancel
+                return 0;
+
+            },'OK','CANCEL' // we can put translations
+        );
+    }
+}
 // ---------------------= =---------------------
-function search_reserva_vuelos()
+function search_reserva_vuelos(parms)
 {
 	var select_desde = $("#select_desde");
 	var select_hasta = $("#select_hasta");
@@ -473,18 +731,19 @@ function search_reserva_vuelos()
 	var rbtn_ida = $("#rbtn_ida");
 	var rbtn_ida_vuelta = $("#rbtn_ida_vuelta");
 
-	var parms = {
-		desde: select_desde.val(),
-		hasta: select_hasta.val(),
-		fecha_salida: picker_salida.val(),
-		fecha_regreso: picker_regreso.val(),
-		solo_ida: rbtn_ida.hasClass("checked"),
-		nro_adultos: select_nro_adultos.val(),
-		nro_ninhos: select_nro_ninhos.val(),
-		nro_bebes: select_nro_bebes.val(),
-		flexible_en_fechas: cbx_flexible_en_fechas.hasClass("checked"),
-		moneda: select_moneda.val()
-	};
+
+	//verify if the passanger is only a child or children without adult
+	if (parms.nro_adultos == 0 && parms.nro_ninhos >= 1){
+        BoaConfirm(translate.t.MSG_MENORES_NO_ACOMPANADOS,
+			function onYes() { // callback when we click in ok
+        	console.log('onYes')
+			},
+			function onNo() { //callback when we click in cancel
+                console.log('onNo')
+
+            },'OK','CANCEL' // we can put translations
+		);
+	}
 
 	// -----= VALIDATION PROCESS =------
 	var valid_form = true

@@ -1,0 +1,91 @@
+div.jqmAlert {
+    display: none;
+    position: fixed;
+    top: 17%;
+    width: 100%;
+    text-align: center
+}
+
+.jqmOverlay {
+    background-color: white
+}
+
+div.jqmAlertWindow {
+    display: table;
+    width: 1px;
+    text-align: left;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 10px 10px;
+    background: white;
+}
+
+.jqmAlertTitle {
+    margin: 5px 2px;
+    height: 20px;
+    color: black;
+    background: white
+}
+
+.jqmAlertTitle h1 {
+    margin: 5px 2px;
+    padding-left: 5px;
+    padding: 0;
+    font-size: 12pt;
+    text-align: left;
+    text-transform: capitalize;
+    letter-spacing: -1px;
+    font-weight: bold;
+    color: black;
+    height: 20px
+}
+
+.jqmAlertFooter {
+    height: 30px;
+    width: 100%;
+    text-align: center
+}
+
+div.jqmAlert a.jqmClose:hover {
+    background-position: 0 -20px
+}
+
+div.jqmAlertContent {
+    border-top: 0;
+    padding: 5px 20px 5px;
+    margin: 5px;
+    background: white
+}
+
+div.jqmAlertContent, div.jqmAlertContent pre {
+    color: black;
+    font-family: arial;
+    font-size: 8pt;
+    font-weight: bold;
+    letter-spacing: 0
+}
+
+.tableBtnsAlert{
+    width: 100%;
+}
+
+.tableBtnsAlert tr td div.Button{
+
+    font-family: "HelveticaNeuePro";
+    background: #085794;
+    border-color: #096CB9;
+    color: #FFF;
+    width: 120px;
+    height: 0px;
+    padding: 15px 1px;
+    margin: 5px auto;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    font-family: arial;
+    border-width: 0 0 4px 0;
+    border-style: solid;
+    margin: 5px auto;
+
+}

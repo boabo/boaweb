@@ -115,7 +115,7 @@ footer .validable,
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
 body {
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 body.generic-container
@@ -782,7 +782,7 @@ header .att-div{
 .form label a:hover{text-decoration: underline;}
 
 .form .input-container{
-	padding: 0 20px 5px 0;
+	padding: 0 2px 0px 0;
 }
 
 .form select {
@@ -792,7 +792,7 @@ header .att-div{
 	border-style: solid;
 	border-color: #959595;
 	font-family: "HelveticaNeuePro";
-	font-size: 15px;
+	font-size: 12px;
 	color: #1F3656;
 	padding: 2px 44px 0 10px;
 	background-image: url('images/icon_arrow_down.png');
@@ -943,7 +943,7 @@ header .att-div{
 .content select.moneda {width: 195px;}
 /* --------------------------------------------------------------------------- */
 .main-label{
-	position: fixed;
+	position: absolute;
 	
 	left: 670px;
 	width: 345px;
@@ -977,10 +977,11 @@ header .att-div{
 /* --------------------------------------------------------------------------- */
 #buscador_vuelos{
 	position: absolute;
-	top: 200px;
+	top: 450px;
 	left: 75px;
 	margin-top: -80px;
 	z-index: 200;
+	width: 100%;
 }
 
 #buscador_vuelos .menu{
@@ -1064,9 +1065,10 @@ header .att-div{
 
 #buscador_vuelos .content{
 	display: none;
-	padding: 0 0 20px 0;
+	padding: 0 0 0 0;
 	margin: 80px 0 0 0;
 	overflow: hidden;
+	width: 90%;
 }
 
 #buscador_vuelos .content.selected{display: block;}
@@ -1108,7 +1110,7 @@ header .att-div{
 }
 
 #buscador_vuelos .content table {
-	margin: 10px 0 0 25px;
+	margin: 10px 0 0 0px;
 }
 
 
@@ -3572,4 +3574,67 @@ div.panel {
 		background-repeat: no-repeat;
 	}
 
+}
+
+
+
+/*para detalle cantidad de pasajeros*/
+
+#detalle_pasajeros {
+	padding-left: 40px;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: 180px;
+	/* left: 10px; */
+	background-color: #2D4565;
+	color: #FFF;
+	font-family: "FuturaLight";
+	cursor: default;
+	z-index: 700000;
+	 display: none;
+	box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-ms-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+}
+#detalle_pasajeros i {
+	cursor: pointer;
+}
+
+.detalle_origen_destino {
+	/*padding-left: 40px;*/
+	position: absolute;
+	width: 200px;
+	height: 230px;
+	top: 180px;
+	/* left: 10px; */
+	background-color: #2D4565;
+	color: #FFF;
+	font-family: "FuturaLight";
+	cursor: default;
+	z-index: 700000;
+	 display: none;
+	box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-ms-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	padding-top: 10px;
+}
+.detalle_origen_destino i {
+	cursor: pointer;
+}
+
+
+.detalle_origen_destino ul {
+	width: 100%;
+}
+.detalle_origen_destino ul li{
+	padding: 3px 0px 3px 20px;
+}
+.detalle_origen_destino ul li:hover{
+	background-color: #8590a5;
+}
+.detalle_origen_destino ul li.selected{
+	background-color: #8590a5;
 }

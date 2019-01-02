@@ -192,6 +192,7 @@ var vuelos_store;
 var arraySelectPass = ["","one","two","three","four","five","six","seven","nine"];
 
 
+var timerCambioNumPasajeros;
 
 // ---------------------= =---------------------
 /********************************************************* 
@@ -769,6 +770,9 @@ function checkCompleteSeleccionVuelo()
 function changeNumPassengers()
 {
 
+	console.log(timerCambioNumPasajeros);
+    clearTimeout(timerCambioNumPasajeros);
+    timerCambioNumPasajeros = undefined;
 
 	var ul = $(this.parentNode);
 	var count = parseInt($(this).data("count"));
@@ -850,7 +854,8 @@ function changeNumPassengers()
 			if(contadorNuevaPeticion == 1 ){
 				contadorNuevaPeticion +=1;
 				$('.cell-submit').empty();
-				setTimeout(validateSearch, 2500);
+				timerCambioNumPasajeros = setTimeout(validateSearch, 2500);
+
 			}
 
 
