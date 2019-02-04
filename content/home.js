@@ -75,7 +75,8 @@ $(document).on('ready',function()
 	* */
 
 
-
+    var tamanoParaPonerReserva = screen.height - 165 -251;
+    $("#buscador_vuelos").css({"top":tamanoParaPonerReserva+"px"});
 
     //dibujar origen destino en el detalle de cada uno
 
@@ -115,7 +116,7 @@ $(document).on('ready',function()
     $( ".origen_destino_input" ).click(function() {
         var $context = $(this);
         var $origenDestinoDetalle = $context.next();
-        console.log($origenDestinoDetalle.is(":visible"))
+        console.log($origenDestinoDetalle.is(":visible"));
         if($origenDestinoDetalle.is(":visible")){
             $origenDestinoDetalle.hide();
         }else{
@@ -245,22 +246,30 @@ $(document).on('ready',function()
             if($("#rbtn_ida").hasClass("checked")){
                 $("#pasajeros_input").focus().click();
             }else{
-                $("#picker_regreso").focus().click();
+                $("#picker_regreso").focus();
             }
-
         }
 	});
 
-	$("#picker_regreso, #picker_estado_vuelo","#picker_aeropuerto_origen").datepicker({
+
+
+    $("#picker_regreso").datepicker({
+        dateFormat: 'dd MM yy',
+        numberOfMonths: 2,
+        minDate: 0,
+    });
+
+
+	/*$("#picker_regreso, #picker_estado_vuelo","#picker_aeropuerto_origen").datepicker({
 		dateFormat: 'dd MM yy',
-		numberOfMonths: 2, 
+		numberOfMonths: 2,
 		minDate:0
-	});
+	});*/
 
 	// footer UI
-	$("#picker_salida_footer").datepicker({ 
+	$("#picker_salida_footer").datepicker({
 		dateFormat: 'dd MM yy',
-		numberOfMonths: 2, 
+		numberOfMonths: 2,
 		minDate: 0,
 		onSelect:function(selectedDate){
 			$( "#picker_regreso_footer" ).datepicker( "option", "minDate", selectedDate );
@@ -270,16 +279,16 @@ $(document).on('ready',function()
 		}
 	});
 
-	$("#picker_regreso_footer").datepicker({ 
+	$("#picker_regreso_footer").datepicker({
 		dateFormat: 'dd MM yy',
-		numberOfMonths: 2, 
+		numberOfMonths: 2,
 		minDate: 0
 	});
 
 	// support for "font-awesome" icon library
 	$(".validable .calendar").datepicker("option", "prevText", '<i class="fa fa-arrow-left"></i>');
 	$(".validable .calendar").datepicker("option", "nextText", '<i class="fa fa-arrow-right"></i>');
-	
+
 	// checkboxes
 	$(".checkbox").click(toggle_checkbox);
 	$("#cbx_acepto_terminos").click(function(){
@@ -321,7 +330,7 @@ $(document).on('ready',function()
 		return;
 
 		if(!autoCollapseTimeout)
-			autoCollapseTimeout = 
+			autoCollapseTimeout =
 				setTimeout(function(){
 					$("#buscador_vuelos").removeClass("expanded")
 										 .addClass("collapsed");
@@ -329,7 +338,7 @@ $(document).on('ready',function()
 	});
 
 	$("#buscador_vuelos").mousemove(function(){
-		if(autoCollapseTimeout) 
+		if(autoCollapseTimeout)
 			clearTimeout(autoCollapseTimeout);
 
 		autoCollapseTimeout = null;
@@ -514,7 +523,7 @@ function async_receive_slides(response)
 
 	if(slides.length==0) return;
 
-	for(var i in slides) 
+	for(var i in slides)
 		slides[i].status = "ready";
 
 	$("#slider").css("top","33px");
@@ -557,10 +566,10 @@ function load_next_slide_image()
 			$(img).attr("width","100%");
 
 			slides[i]["status"] = "loading";
-				
-			$(img).on("load",new_slide_ready);	
 
-			break;		
+			$(img).on("load",new_slide_ready);
+
+			break;
 		}
 	}
 }
@@ -781,13 +790,13 @@ function search_reserva_vuelos(parms)
 	var raw_date, date_weight;
 	if(false == parms.solo_ida){
 		raw_date= picker_salida.val().split(" ");
-		var date_weight_salida = (366 * parseInt(raw_date[2])) + 
-						  		 (31 * parseInt(MONTHS_LANGUAGE_TABLE[raw_date[1]])) + 
+		var date_weight_salida = (366 * parseInt(raw_date[2])) +
+						  		 (31 * parseInt(MONTHS_LANGUAGE_TABLE[raw_date[1]])) +
 						  		 parseInt(raw_date[0]);
 
 		raw_date= picker_regreso.val().split(" ");
-		var date_weight_regreso = (366 * parseInt(raw_date[2])) + 
-						  		  (31 * parseInt(MONTHS_LANGUAGE_TABLE[raw_date[1]])) + 
+		var date_weight_regreso = (366 * parseInt(raw_date[2])) +
+						  		  (31 * parseInt(MONTHS_LANGUAGE_TABLE[raw_date[1]])) +
 						  		  parseInt(raw_date[0]);
 
 		if(date_weight_regreso < date_weight_salida){
@@ -856,7 +865,7 @@ function showSimpleDialog(msg)
 	$("#simple_dialog").show();
 }
 // ---------------------= =---------------------
-function showLocaleSettingsDialog() 
+function showLocaleSettingsDialog()
 {
 	$("#select_locale_country, #select_locale_language, #select_locale_currency").html("<option value=''>(seleccione opci&oacute;n)</option>");
 
@@ -897,7 +906,7 @@ function closeSimpleDialog()
 	$("#home, #ui_home").removeClass("blured");
 }
 // ---------------------= =---------------------
-function validateAndSelectLocaleDialog() 
+function validateAndSelectLocaleDialog()
 {
 	var validForm = true;
 	var selCountry = $("#select_locale_country");
