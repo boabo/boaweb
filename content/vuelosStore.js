@@ -122,7 +122,7 @@
                     //calculamos el tiempo del vuelo
                     ida.tiempoVuelo = tiempoTransito(objIda.horaSalida,objIda.horaLlegada);
                     //cuando llega al dia siguiente
-                    if(ida.variacion_tiempo == "1"){
+                    if(ida.variacion_tiempo == "1") {
                         if(that.diferenciaHoraria[ida.origen+'-'+ida.destino] !== undefined){
                             var tipo_operacion = that.diferenciaHoraria[ida.origen+'-'+ida.destino][0].tipo;
                             var valor = parseInt(that.diferenciaHoraria[ida.origen+'-'+ida.destino][0].valor);

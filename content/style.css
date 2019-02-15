@@ -133,6 +133,7 @@ header{
 	position: fixed;
 	width: 100%;
 	z-index: 2000;
+	margin-top: 70px;
 }
 
 header .logo-header{
@@ -3247,7 +3248,7 @@ div.panel {
 .div_cookies {
 	position: fixed;
 	width: 100%;
-	bottom: 0;
+	top: 0;
 	background-color: #f5e9c5;
 	height: 70px;
 	z-index: 10000;

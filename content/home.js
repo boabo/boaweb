@@ -75,8 +75,18 @@ $(document).on('ready',function()
 	* */
 
 
-    var tamanoParaPonerReserva = screen.height - 165 -251;
+
+
+    var tamanoParaPonerReserva = ((parseInt($( window ).height()) / 2) - (251/2) + 30 );
     $("#buscador_vuelos").css({"top":tamanoParaPonerReserva+"px"});
+
+
+    $( window ).resize(function() {
+        var tamanoParaPonerReserva = ((parseInt($( window ).height()) / 2) - (251/2) + 30 );
+        $("#buscador_vuelos").css({"top":tamanoParaPonerReserva+"px"});
+    });
+
+
 
     //dibujar origen destino en el detalle de cada uno
 
@@ -257,6 +267,10 @@ $(document).on('ready',function()
         dateFormat: 'dd MM yy',
         numberOfMonths: 2,
         minDate: 0,
+        onSelect:function(selectedDate){
+            //para mostrar automaticamente el calendario
+            $("#pasajeros_input").focus().click();
+        }
     });
 
 
