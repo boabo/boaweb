@@ -1577,10 +1577,9 @@ function asyncReceiveFlights(response)
         $("#llegadas_").remove();
 
         //quitamos seleccion y le ponemos que no hay vuelos
-		$('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
-		$('.days').find('.selected').removeClass('selected').addClass('no-flights');
+		//$('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
+		//$('.days').find('.selected').removeClass('selected').addClass('no-flights');
 
-		console.log(BoA.defaultConsultaVuelos.fechaIda)
 		//agregar al calendario una fecha
         $('#picker_salida').datepicker("setDate",
             compactToJSDate(BoA.defaultConsultaVuelos.fechaIda)
