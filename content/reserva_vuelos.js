@@ -194,6 +194,14 @@ var arraySelectPass = ["","one","two","three","four","five","six","seven","nine"
 
 var timerCambioNumPasajeros;
 
+//04042019
+var g_date_salida_param;
+var g_date_llegada_param;
+var g_salida_consultada = false;
+var g_llegada_consultada = false;
+//fin 04042019
+
+
 // ---------------------= =---------------------
 /********************************************************* 
  ********************** UI HANDLERS **********************
@@ -1527,6 +1535,10 @@ function asyncReceiveDates(response)
         }
 
 		rawDatesCache.vuelta = response["calendarioOW"]["OW_Vuelta"]["salidas"]["salida"];
+
+
+
+
 	}
 	else{
 		currentDatevuelta = null;
@@ -1579,6 +1591,14 @@ function asyncReceiveFlights(response)
         //quitamos seleccion y le ponemos que no hay vuelos
 		//$('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
 		//$('.days').find('.selected').removeClass('selected').addClass('no-flights');
+
+		//04042019
+        var sitios = getSelectedSitesCount();
+
+        if (g_salida_consultada && g_llegada_consultada) {
+            solicitarVueloTest(g_date_salida_param,searchParameters.origen,searchParameters.destino,sitios);
+		}
+		//FIN 04042019
 
 		//agregar al calendario una fecha
         $('#picker_salida').datepicker("setDate",
@@ -1647,6 +1667,19 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 		var tarifaStr = rawDate["tarifas"]["tarifaCalen"]["importe"];
 
 		tarifasByDate[rawDate["fecha"]] = tarifaStr;
+
+        // 04042019 verificamos si las dos fechas solicitadas tienen vuelos en el calendario(PARCHE)
+		if (isIda) {
+			if(rawDate["fecha"] == g_date_salida_param){
+				g_salida_consultada = true;
+			}
+		}else{
+            if(rawDate["fecha"] == g_date_llegada_param){
+            	g_llegada_consultada = true;
+            }
+		}
+		//fin 04042019
+
 	}
 
 	requestedDate = compactToJSDate(requestedDateStr);
@@ -2003,6 +2036,9 @@ function requestSearchParameters(parms)
         sitesDetail		: parms.sitesDetail,
 	};
 
+	// 04042019 guardamos los parametros de fecha
+	g_date_salida_param = parms.fechaIda;
+	g_date_llegada_param = parms.fechaVuelta;
 
 	//agregamos si es miami
 	if (parms.destino == 'MIA'){
@@ -2498,4 +2534,72 @@ function backToFlightStage()
 
 function mapearDatosFF (resp){
 	console.log(resp)
+}
+
+//add 04042019
+function solicitarVueloTest (dateConsultada,from,to,totalSites,callback) {
+    var now = new Date();
+    var currentTimeStr = ("00" + (now.getHours())).slice(-2) + "" + ("00" + (now.getMinutes())).slice(-2);
+
+    var sitios = (totalSites > 0 || totalSites != null || totalSites != '')?totalSites:"1";
+    var data = {
+        tokenAv 		: SERVICE_CREDENTIALS_KEY,
+        language 		: "ES",
+        currency 		: CODE_CURRENCIES[CURRENCY],
+        locationType 	: "N",
+        location 		: "BO",
+        bringAv			: "1",
+        bringRates		: "3",
+        surcharges 		: true,
+        directionality  : "0",
+
+        departing 		: dateConsultada,
+        returning 		: null,
+        sites 			: sitios,
+        compartment 	: "0",
+        classes 		: "",
+        classesState 	: "",
+        clientDate 		: todayStr,
+        clientHour 		: currentTimeStr,
+        forRelease 		: "1",
+
+        cat19Discounts	: "true",
+        specialDiscounts: null,
+        book 			: "1",
+        booking 		: "",
+        bookingHour		: "",
+        responseType 	: "1",
+        releasingTime 	: "1",
+        ipAddress 		: "127.0.0.1", // xD
+        xmlOrJson 		: "false", // false is Json
+        sitesDetail		:  searchParameters.sitesDetail,
+
+
+        from: from,
+        to: to
+    };
+
+    ajaxRequest(
+        BoA.urls["flights_schedule_service"],
+        function (response) {
+            response = $.parseJSON(response.AvailabilityPlusValuationsShortResult);
+
+            //tbl_days_selector_regreso
+
+            //tbl_days_selector_salida
+
+            //$('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
+            //$('.days').find('.selected').removeClass('selected').addClass('no-flights');
+
+            if(response.ResultInfoOrError != null) {
+                $("#tbl_days_selector_salida").find('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
+                $("#tbl_days_selector_salida").find('.days').find('.selected').removeClass('selected').addClass('no-flights');
+            }else{
+            	console.log('no hay error')
+				$("#tbl_days_selector_regreso").find('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
+				$("#tbl_days_selector_regreso").find('.days').find('.selected').removeClass('selected').addClass('no-flights');
+			}
+        },
+        "POST", data);
+    
 }
