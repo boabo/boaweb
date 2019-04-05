@@ -1574,7 +1574,6 @@ function asyncReceiveDates(response)
 function asyncReceiveFlights(response)
 {
 
-    loadingBoa.terminarCargarBoa();
 	checkWarningPxNumber() ;
 	
 	if(waitingForFlightsData == false) // response ya fue procesado
@@ -1596,7 +1595,9 @@ function asyncReceiveFlights(response)
         var sitios = getSelectedSitesCount();
 
         if (g_salida_consultada && g_llegada_consultada) {
-            solicitarVueloTest(g_date_salida_param,searchParameters.origen,searchParameters.destino,sitios);
+            solicitarVueloTest(g_date_salida_param,searchParameters.origen,searchParameters.destino,sitios,function () {
+                loadingBoa.terminarCargarBoa();
+            });
 		}
 		//FIN 04042019
 
@@ -1615,6 +1616,9 @@ function asyncReceiveFlights(response)
 		$("#llegadasHeaderFamilias").empty().append('<div style="width: 100%; height: 70px; background-color: #EFAA35;    color: #111;padding-top: 25px;text-align: center;">'+response.ResultInfoOrError.messageError+'</div>');
 		return;
 	}
+
+    loadingBoa.terminarCargarBoa();
+
     $("#salidasHeaderFamilias").empty();
     $("#llegadasHeaderFamilias").empty();
 
@@ -2598,6 +2602,10 @@ function solicitarVueloTest (dateConsultada,from,to,totalSites,callback) {
             	console.log('no hay error')
 				$("#tbl_days_selector_regreso").find('.days').find('.selected').find('h3').html(translate.t.NO_HAY_VUELOS);
 				$("#tbl_days_selector_regreso").find('.days').find('.selected').removeClass('selected').addClass('no-flights');
+			}
+
+			if(typeof callback === "function") {
+            	callback();
 			}
         },
         "POST", data);
