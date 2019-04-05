@@ -1573,6 +1573,7 @@ function asyncReceiveDates(response)
 // ---------------------= =---------------------
 function asyncReceiveFlights(response)
 {
+    loadingBoa.terminarCargarBoa();
 
 	checkWarningPxNumber() ;
 	
@@ -1617,7 +1618,6 @@ function asyncReceiveFlights(response)
 		return;
 	}
 
-    loadingBoa.terminarCargarBoa();
 
     $("#salidasHeaderFamilias").empty();
     $("#llegadasHeaderFamilias").empty();
