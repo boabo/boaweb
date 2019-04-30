@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <title>Boliviana de Aviaci&oacute;n</title>
+    <!-- <link rel="icon" href="content/images/icon.png" type="image/x-icon"> -->
+
+    <!-- JQUERY LIBRARY -->
+    <script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
+    <!-- BROWSER DETECTION -->
+    <script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+    <!-- JQUERY UI -->
+    <link rel="stylesheet" type="text/css" href="content/lib/jquery_ui/css/dot-luv/jquery-ui.min.css">
+    <script src="content/lib/jquery_ui/jquery-ui.min_es.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+    <!-- <script src="content/lib/jquery_ui/jquery-ui.min_en.js"></script>  -->
+    <!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
+    <script src="content/translate.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+
+    <!-- SCROLLBAR LIBRARY -->
+    <link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
+          rel="stylesheet" type="text/css" />
+    <script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- FLAPPER =o -->
+    <link  href="content/lib/flapper/css/flapper.css" type="text/css" rel="stylesheet" />
+    <script src="content/lib/flapper/transform/dist/jquery.transform-0.9.3.min.js"></script>
+    <script src="content/lib/flapper/src/jquery.flapper.js"></script>
+
+    <!-- HASHTABLE LIBRARY -->
+    <script src="content/lib/jshashtable.js"></script>
+
+    <!-- NUMBER FORMATTER -->
+    <script src="content/lib/jquery.numberformatter-1.2.4.jsmin.js"></script>
+
+    <!-- CUSTOM SCRIPTS -->
+
+    <!-- COMMON SCRIPTS -->
+    <script type="text/javascript" src="content/language_data_es.js"></script> <!-- PT, EN -->
+
+    <script type="text/javascript" src="content/common.js"></script>
+    <script type="text/javascript" src="content/custom_handlers.js"></script>
+    <script type="text/javascript" src="content/header.js"></script>
+    <script type="text/javascript" src="content/generic_container.js"></script>
+    <script type="text/javascript" src="content/validaciones_form.js"></script>
+    <script type="text/javascript" src="content/lib/validate.min.js"></script>
+
+    <script type="text/javascript" src="content/loadingBoa.js"></script>
+
+    <!-- STYLE.CSS -->
+    <link href="content/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="content/reserva_vuelos.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+    <!-- Style of the plugin -->
+    <link rel="stylesheet"
+          href="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="content/lib/datepickerScreen/plugin/datepicker-in-fullscreen.css">
+    <script src="content/lib/datepickerScreen/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JS file -->
+    <script src="content/lib/datepickerScreen/plugin/components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- spanish language (es) -->
+    <script src="content/lib/datepickerScreen/plugin/components/moment/moment.min.js"></script>
+    <script src="content/lib/datepickerScreen/plugin/components/TouchSwipe/jquery.touchSwipe.min.js"></script>
+    <!-- Only if touchswipe is enabled -->
+    <script src="content/lib/datepickerScreen/plugin/datepicker-in-fullscreen.js"></script>
+
+
+    <link rel="stylesheet" href="content/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="content/flex-grid.css" type="text/css"/>
+    <link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
+
+    <link rel="stylesheet" href="http://select2.github.io/select2/select2-3.5.1/select2.css" type="text/css"/>
+    <script src="http://select2.github.io/select2/select2-3.5.1/select2.js"></script>
+
+
+
+    <!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
+
+    <style>
+        .ui-section.wide .info {
+            top: 0px;
+            width: auto;
+            min-width: 0px;
+            left: 0px;
+            margin: 0px 0px 0px 200px;
+        }
+        input {
+            height: 25px;
+        }
+    </style>
+
+    <style>
+
+
+        .dpifs-fake-input{
+            height: 34px;
+            display: block;
+            width: 100%;
+            font-size: 13px;
+            font-family: "FuturaBook";
+        }
+        .select2-container .select2-choice {
+            padding: 5px 5px;
+            width: 100%;
+            font-size: 1.2em;
+
+        }
+
+
+
+
+        .select2-container{
+            background-color: #F8F8F8;
+        }
+        .select2-container .select2-choice .select2-arrow {
+            background-image: url(content/images/icon_arrow_down.png) !important;
+
+            background-repeat: no-repeat;
+
+            color: #fff;
+            padding: 40px 2px;
+            background-color: #F8F8F8;
+            border: none;
+            background-position:0px 12px;
+        }
+
+        .select2-container .select2-choice > .select2-chosen {
+            color: #1F3656;
+            border: none;
+            font-size: 13px;
+            font-family: "FuturaBook";
+            border: none;
+        }
+
+    </style>
+</head>
+<body class="generic-container">
+
+<script>
+    $(function() {
+        if (!$.fn.bootstrapDP && $.fn.datepicker && $.fn.datepicker.noConflict) {
+            var datepicker = $.fn.datepicker.noConflict();
+            $.fn.bootstrapDP = datepicker;
+        }
+        $("#jquery-ui-datepicker").datepicker({});
+        $('#bootstrap-datepicker').bootstrapDP({});
+    });
+</script>
+
+<loading style="display: none;">
+</loading>
+
+<svg style="display: none">
+    <symbol id="svg_cerrar" viewBox="0 0 16 16">
+        <polygon points="14,3.3 12.7,2 8,6.7 3.3,2 2,3.3 6.7,8 2,12.7 3.3,14 8,9.3 12.7,14 14,12.7 9.3,8 "></polygon>
+    </symbol>
+</svg>
+
+
+<svg style="display: none" >
+    <symbol id="alert_form" viewBox="0 0 16 16">
+        <path fill="#D80027" d="M8 0c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zM9 13h-2v-2h2v2zM9 10h-2v-7h2v7z"></path>
+
+    </symbol>
+</svg>
+
+
+<header style="display:block">
+    <a id="btn_return_home" href="http://www.boa.bo"></a>
+    <div class="logo-header"></div>
+    <ul id="main_menu">
+        <li id="menu_item_planifica" >
+            <span>PLANIFICA TU VIAJE</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>RESERVAR VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>ESTADO DEL VUELO
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>HORARIO DE VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary disabled"  data-item="web_check_in"><div class="icon"></div>WEB CHECK-IN</li>
+                                <li class="primary disabled"  data-item="formas_pago"><div class="icon"></div>FORMAS DE PAGO</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_antes_viajar">
+            <span>ANTES DE VIAJAR</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="politica_equipaje"><div class="icon"></div>POL&Iacute;TICA DE EQUIPAJE</li>
+                                <li data-item="equipaje_mano">Equipaje de mano</li>
+                                <li data-item="equipaje_facturable">Equipaje facturable</li>
+                                <li data-item="exceso_equipaje">Exceso de equipaje</li>
+                                <li data-item="equipaje_especial">Equipaje especial</li>
+                                <li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+                                <li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+                                <li data-item="equipaje_mascotas">Mascotas</li>
+                                <li class="primary disabled" data-item="seguimiento_equipaje"><div class="icon"></div>SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA</li>
+                                <li class="primary disabled"  data-item="equipajes_demorados"><div class="icon"></div>EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS</li>
+                                <li class="primary disabled"  data-item="declaracion_equipaje"><div class="icon"></div>DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE</li>
+                                <li class="primary" data-item="tips_equipaje"><div class="icon"></div>TIPS DE EQUIPAJE</li>
+                                <li class="primary disabled" data-item="equipaje_interlineal"><div class="icon"></div>EQUIPAJE INTERLINEAL</li>
+                                <li class="primary" data-item="llegar_aeropuerto"><div class="icon"></div>LLEGAR AL AEROPUERTO</li>
+                                <li data-item="hora_limite">Hora l&iacute;mite</li>
+                                <li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+                                <li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+                                <li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="servicios_especiales"><div class="icon"></div>SERVICIOS ESPECIALES</li>
+                                <li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+                                <li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes</li>
+                                <li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales</li>
+                                <li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+                                <li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til (PDMs)</li>
+                                <li data-item="bebes">Viajando con beb&eacute;s</li>
+                                <li data-item="mascota">Viajando con tu mascota en cabina</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="pasajeros_especiales"><div class="icon"></div>PASAJEROS ESPECIALES</li>
+                                <li data-item="embarazadas">Mujeres embarazadas</li>
+                                <li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+                                <li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+                                <li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+                                <li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+                                <li class="primary" data-item="menu_especial"><div class="icon"></div>MEN&Uacute; ESPECIAL</li>
+                                <li class="primary" data-item="documentacion_viaje"><div class="icon"></div>DOCUMENTACI&Oacute;N DE VIAJE, VISA y API</li>
+                                <li class="primary" data-item="vacunas"><div class="icon"></div>VACUNAS</li>
+                                <li class="primary" data-item="derechos_pasajeros" data-action="none"><div class="icon"></div>DERECHOS DE LOS PASAJEROS</li>
+                                <li data-is_link="true">
+                                    <a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_promos_destinos" style="display:none">
+            <span>PROMOS Y DESTINOS</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_experiencia_boa">
+            <span>EXPERIENCIA BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="nuestra_flota"><div class="icon"></div>NUESTRA FLOTA</li>
+                                <li class="primary" data-item="experiencia_bordo"><div class="icon"></div>EXPERIENCIA A BORDO</li>
+                                <li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+                                <li data-item="" class="disabled">Entretenimiento a Bordo</li>
+                                <li data-item="" class="disabled">Duty Free a Bordo</li>
+                                <li data-item="" class="disabled">Asiento + Confort</li>
+                                <li data-item="" class="disabled">Revista Destinos</li>
+                                <li data-item="" class="disabled">Wi-Fi y GSM</li>
+                                <li class="primary" data-item="seguro_internacional"><div class="icon"></div>SEGURO INTERNACIONAL</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="en_el_aeropuerto"><div class="icon"></div>EN EL AEROPUERTO</li>
+                                <li data-item="check_in">Servicio de Check-In</li>
+                                <li data-item="" class="disabled">Kioskos de Check-In</li>
+                                <li data-item="" class="disabled">Mobile Phone Check-In</li>
+                                <li data-item="" class="disabled">Salas VIP</li>
+                                <li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+                                <li data-item="" class="disabled">Parqueos</li>
+                                <li data-item="" class="disabled">Servicio de Chofer</li>
+                                <li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="cabinas"><div class="icon"></div>CARACTERISTICAS DE LAS CABINAS</li>
+                                <li data-item="" class="disabled">Clase Business</li>
+                                <li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+                                <li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE FAMILIA</li>
+                                <li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE GRUPOS</li>
+
+                                <li class="primary disabled" data-item=""><div class="icon"></div>NUESTRAS ALIANZAS</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_boa_millas" style="display:none">
+            <span>BoA MILES</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+                                <li data-item="">Secundario A</li>
+                                <li data-item="">Secundario B</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_somos_boa">
+            <span>SOMOS BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="perfil_corporativo"><div class="icon"></div>PERFIL CORPORATIVO</li>
+                                <li class="primary disabled" data-item="liderazgo_corporativo"><div class="icon"></div>LIDERAZGO CORPORATIVO</li>
+                                <li class="primary" data-item="somos_iosa"><div class="icon"></div>SOMOS IOSA</li>
+                                <li class="primary" data-item="reconocimientos_premios"><div class="icon"></div>RECONOCIMIENTOS Y PREMIOS</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
+    <ul id="sec_menu">
+        <li id="menu_item_agencias">Agencias</li>
+        <li id="menu_item_corporativo" style="display:none">Corporativo</li>
+        <li id="menu_item_login" style="display:none">Login</li>
+    </ul>
+    <div id="menu_locations" class="header-menu">
+        <div class="flag bolivia"></div>
+        <h2><strong>BOLIVIA</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="bolivia selected" data-location="bolivia">
+                <div class="flag"></div>
+                <h2><strong>BOLIVIA</strong></h2>
+            </li>
+            <li class="bsas"  data-location="bsas">
+                <div class="flag"></div>
+                <h2><strong>BS. AS.</strong></h2>
+            </li>
+            <li class="madrid" data-location="madrid">
+                <div class="flag"></div>
+                <h2><strong>MADRID</strong></h2>
+            </li>
+            <li class="saopaulo"  data-location="saopaulo">
+                <div class="flag"></div>
+                <h2><strong>SAO PAULO</strong></h2>
+            </li>
+            <li class="salta" data-location="salta">
+                <div class="flag"></div>
+                <h2><strong>SALTA</strong></h2>
+            </li>
+            <li class="miami" data-location="miami">
+                <div class="flag"></div>
+                <h2><strong>MIAMI</strong></h2>
+            </li>
+        </ul>
+    </div>
+    <div id="menu_languages" class="header-menu">
+        <h2><strong>ESPA&Ntilde;OL</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="selected" data-language="ES">
+                <h2><strong>ESPA&Ntilde;OL</strong></h2>
+            </li>
+            <!-- <li data-language="EN">
+                <h2><strong>ENGLISH</strong></h2>
+            </li>
+            <li data-language="PT">
+                <h2><strong>PORTUGU&Ecirc;S</strong></h2>
+            </li> -->
+        </ul>
+    </div>
+</header>
+
+
+<!--menu for mob-->
+<div id="wrapperMenu">
+    <div id="info">
+        <div id="info-content">
+            <div id="logoBoaMob"><img src="content/images/logoBoa.png"></div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+    <div class="menuMob" id="MenuMobile">
+        <label  class="menu-toggle" for="menu"><span>Toggle</span></label>
+        <!--<ul>
+            <li>
+                <a href="#">Menu-1</a>
+            </li>
+            <li>
+                <a href="#">Menu-2</a>
+            </li>
+            <li>
+                <label for="menu-3">Menu-3</label>
+                <input type="checkbox" id="menu-3" name="menu-3" class="menu-checkbox">
+                <div class="menu">
+                    <label class="menu-toggle" for="menu-3"><span>Toggle</span></label>
+                    <ul>
+                        <li>
+                            <a href="#">Menu-3-1</a>
+                        </li>
+                        <li>
+                            <label for="menu-3-2">Menu-3-2</label>
+                            <input type="checkbox" id="menu-3-2" name="menu-3-2" class="menu-checkbox">
+                            <div class="menu">
+                                <label class="menu-toggle" for="menu-3-2"><span>Toggle</span></label>
+                                <ul>
+                                    <li>
+                                        <a href="#">Menu-3-2-1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Menu-3-2-2</a>
+                                    </li>
+                                    <li>
+                                        <label for="menu-3-2-3">Menu-3-2-3</label>
+                                        <input type="checkbox" id="menu-3-2-3" name="menu-3-2-3" class="menu-checkbox">
+                                        <div class="menu">
+                                            <label class="menu-toggle" for="menu-3-2-3"><span>Toggle</span></label>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Menu-3-2-3-1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Menu-3-2-3-2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Menu-3-2-3-3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Menu-3-2-3-4</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">Menu-3-2-4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Menu-3-3</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-3-4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <label for="menu-4">Menu-4</label>
+                <input type="checkbox" id="menu-4" name="menu-4" class="menu-checkbox">
+                <div class="menu">
+                    <label class="menu-toggle" for="menu-4"><span>Toggle</span></label>
+                    <ul>
+                        <li>
+                            <a href="#">Menu-4-1</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-4-2</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-4-3</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-4-4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <label for="menu-5">Menu-5</label>
+                <input type="checkbox" id="menu-5" name="menu-5" class="menu-checkbox">
+                <div class="menu">
+                    <label class="menu-toggle" for="menu-5"><span>Toggle</span></label>
+                    <ul>
+                        <li>
+                            <a href="#">Menu-5-1</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-5-2</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-5-3</a>
+                        </li>
+                        <li>
+                            <a href="#">Menu-5-4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#">Menu-6</a>
+            </li>
+        </ul>-->
+    </div>
+
+</div><!-- #wrapper -->
+
+
+
+<div id="clouds">
+    <canvas id="clouds_canvas" width="2500" height="1000"></canvas>
+</div>
+
+<div data-mode="normal" class="ui-section wide results selected">
+
+
+
+    <!-- PAGO DE BANCOS -->
+    <div style="width: 100%;" class="info phase selected">
+        <div class="descripcion wide">
+
+            <div class='form'>
+                <div class='wrapper'>
+                    <div class='form'>
+
+                        <label>Información Personal</label>
+                        <div class="Grid Grid--gutters Grid--cols-4 u-textCenter">
+                            <div class="Grid-cell">
+                                <div class="Demo content-1of4">
+                                    <div class="titulo_input" style="float: left;">Correo Electronico</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="El campo Correo electrónico es requerido" id="Email"
+                                           name="Email" placeholder="Correo Electronico" type="text" value="">
+
+
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-2of4">
+                                    <div class="titulo_input" style="float: left;">Repetir correo</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="El campo Correo electrónico es requerido"
+                                           name="Email" placeholder="Repetir correo" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-3of4">
+                                    <div class="titulo_input" style="float: left;">Contraseña</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="El Contraseña debe tener mínimo 6 caracteres."
+                                           name="contra" placeholder="Contraseña" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-4of4">
+                                    <div class="titulo_input" style="float: left;">Repite tu contraseña</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="El Contraseña debe tener mínimo 6 caracteres."
+                                           name="contra" placeholder="Repite tu contraseña" type="text" value="">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="Grid Grid--gutters Grid--cols-4 u-textCenter">
+                            <div class="Grid-cell">
+                                <div class="Demo content-1of4">
+                                    <div class="titulo_input" style="float: left;">Primer Nombre</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="El campo Primer Nombre es requerido" id="primer_nombre"
+                                           name="Email" placeholder="Primer Nombre" type="text" value="">
+
+
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-2of4">
+                                    <div class="titulo_input" style="float: left;">Segundo Nombre</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="El campo Segundo Nombre es requerido" id="segundo_nombre"
+                                           name="Email" placeholder="Segundo Nombre" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-3of4">
+                                    <div class="titulo_input" style="float: left;">Apellidos</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="Apellidos"
+                                           name="apellidos" placeholder="Apellidos" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-4of4">
+                                    <div class="titulo_input" style="float: left;">Seleccione género</div>
+
+                                    <select class="tipo-documento">
+                                        <option value="M">M</option>
+                                        <option value="F">F</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="Grid Grid--gutters Grid--cols-4 u-textCenter">
+                            <div class="Grid-cell">
+                                <div class="Demo content-1of4">
+                                    <div class="titulo_input" style="display: block;">Fecha Nacimiento</div>
+
+                                    <input style="font-size: 12px;" class="form-control" id="fecha_nacimiento" type="hidden" placeholder="Fecha Nacimiento">
+
+
+
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-2of4">
+                                    <div class="titulo_input" style="display: block;">Nacionalidad</div>
+
+                                    <select style="width: 100%;" class="js-example-basic-single" name="states">
+                                        <option value="AL">Alabama</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-3of4">
+                                    <div class="titulo_input" style="float: left;">Apellidos</div>
+
+                                    <input style="width: 100%;" class="form-control" data-val="true"
+                                           data-val-required="Apellidos"
+                                           name="apellidos" placeholder="Apellidos" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="Grid-cell">
+                                <div class="Demo content-4of4">
+                                    <div class="titulo_input" style="float: left;">Seleccione género</div>
+
+                                    <select class="tipo-documento">
+                                        <option value="M">M</option>
+                                        <option value="F">F</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<!-- <<< DIALOGS >>> -->
+<div id="dialog_overlay" style="display:none">
+    <div id="simple_dialog" class="dialog" style="display:none">
+        <div class="description">
+
+        </div>
+        <div data-trans="CERRAR" class="button">CERRAR</div>
+    </div>
+</div>
+<!-- <<< MISC UI >>> -->
+<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+<div id="div_submit"></div>
+
+
+<div id="divFlotante">
+    <figure class="svg"  data-src="flecha"></figure>
+</div>
+<div id="divBordeInferiorMob"></div>
+
+<script src="content/menu/menu.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+
+</script>
+
+<script>
+    $('#fecha_nacimiento').datepickerInFullscreen({
+        datepicker: {language: 'es'},
+        format: 'YYYYMMDD',
+        fakeInputFormat: 'DD MMMM YYYY',
+        todayWord: 'Hoy',
+        clearWord: 'Vaciar',
+        closeWord: 'Cerrar'
+    });
+</script>
+</body>
+</html>
