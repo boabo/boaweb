@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<!--     BOLIVIANA DE AVIACION     -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>Boliviana de Aviaci&oacute;n</title>
+    <link rel="icon" href="content/images/icon.png" type="image/x-icon">
+
+    <!-- JQUERY LIBRARY -->
+    <script type="text/javascript" src="content/lib/jquery-1.11.1.min.js"></script>
+
+    <!-- BROWSER DETECTION -->
+    <script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+    <!-- SCROLLBAR LIBRARY -->
+    <link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
+          rel="stylesheet" type="text/css"/>
+    <script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- ANIMATION LIBRARY -->
+    <script type="text/javascript" src="content/prototypes/Engine.js"></script>
+    <script type="text/javascript" src="content/prototypes/Transformable.js"></script>
+    <script type="text/javascript" src="content/prototypes/Transparent.js"></script>
+    <script type="text/javascript" src="content/prototypes/Cloud.js"></script>
+    <script type="text/javascript" src="content/prototypes/Sky.js"></script>
+
+    <!-- INFO PAGE CUSTOM SCRIPTS -->
+    <script type="text/javascript" src="content/info_page.js"></script>
+    <script type="text/javascript" src="content/generic_container.js"></script>
+
+    <!-- COMMON SCRIPTS -->
+    <script type="text/javascript" src="content/common.js"></script>
+    <script type="text/javascript" src="content/custom_handlers.js"></script>
+    <script type="text/javascript" src="content/header.js"></script>
+    <script>
+        INFO_PAGE_LINK_ADDRESS = "info_page.html";
+    </script>
+
+    <!-- STYLE.CSS -->
+    <link href="content/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
+
+
+</head>
+<body style="padding:0;margin:0;overflow-y:auto !important;overflow-x:hidden !important">
+<header style="display:block">
+    <a id="btn_return_home" href="http://www.boa.bo"></a>
+    <div class="logo-header"></div>
+    <ul id="main_menu">
+        <li id="menu_item_planifica">
+            <span>PLANIFICA TU VIAJE</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        RESERVAR VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        ESTADO DEL VUELO
+                                    </a>
+                                </li>
+                                <li class="primary" data-is_link="true">
+                                    <a href="http://www.boa.bo/bolivia/inicio">
+                                        <div class="icon"></div>
+                                        HORARIO DE VUELOS
+                                    </a>
+                                </li>
+                                <li class="primary disabled" data-item="web_check_in">
+                                    <div class="icon"></div>
+                                    WEB CHECK-IN
+                                </li>
+                                <li class="primary disabled" data-item="formas_pago">
+                                    <div class="icon"></div>
+                                    FORMAS DE PAGO
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_antes_viajar">
+            <span>ANTES DE VIAJAR</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="politica_equipaje">
+                                    <div class="icon"></div>
+                                    POL&Iacute;TICA DE EQUIPAJE
+                                </li>
+                                <li data-item="equipaje_mano">Equipaje de mano</li>
+                                <li data-item="equipaje_facturable">Equipaje facturable</li>
+                                <li data-item="exceso_equipaje">Exceso de equipaje</li>
+                                <li data-item="equipaje_especial">Equipaje especial</li>
+                                <li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+                                <li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+                                <li data-item="equipaje_mascotas">Mascotas</li>
+                                <li class="primary disabled" data-item="seguimiento_equipaje">
+                                    <div class="icon"></div>
+                                    SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA
+                                </li>
+                                <li class="primary disabled" data-item="equipajes_demorados">
+                                    <div class="icon"></div>
+                                    EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS
+                                </li>
+                                <li class="primary disabled" data-item="declaracion_equipaje">
+                                    <div class="icon"></div>
+                                    DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE
+                                </li>
+                                <li class="primary" data-item="tips_equipaje">
+                                    <div class="icon"></div>
+                                    TIPS DE EQUIPAJE
+                                </li>
+                                <li class="primary disabled" data-item="equipaje_interlineal">
+                                    <div class="icon"></div>
+                                    EQUIPAJE INTERLINEAL
+                                </li>
+                                <li class="primary" data-item="llegar_aeropuerto">
+                                    <div class="icon"></div>
+                                    LLEGAR AL AEROPUERTO
+                                </li>
+                                <li data-item="hora_limite">Hora l&iacute;mite</li>
+                                <li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+                                <li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+                                <li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="servicios_especiales">
+                                    <div class="icon"></div>
+                                    SERVICIOS ESPECIALES
+                                </li>
+                                <li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+                                <li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes
+                                </li>
+                                <li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales
+                                </li>
+                                <li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+                                <li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til
+                                    (PDMs)
+                                </li>
+                                <li data-item="bebes">Viajando con beb&eacute;s</li>
+                                <li data-item="mascota">Viajando con tu mascota en cabina</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="pasajeros_especiales">
+                                    <div class="icon"></div>
+                                    PASAJEROS ESPECIALES
+                                </li>
+                                <li data-item="embarazadas">Mujeres embarazadas</li>
+                                <li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+                                <li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+                                <li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+                                <li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+                                <li class="primary" data-item="menu_especial">
+                                    <div class="icon"></div>
+                                    MEN&Uacute; ESPECIAL
+                                </li>
+                                <li class="primary" data-item="documentacion_viaje">
+                                    <div class="icon"></div>
+                                    DOCUMENTACI&Oacute;N DE VIAJE, VISA y API
+                                </li>
+                                <li class="primary" data-item="vacunas">
+                                    <div class="icon"></div>
+                                    VACUNAS
+                                </li>
+                                <li class="primary" data-item="derechos_pasajeros">
+                                    <div class="icon"></div>
+                                    DERECHOS DE LOS PASAJEROS
+                                </li>
+                                <li data-is_link="true">
+                                    <a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+                                </li>
+
+                                <li class="primary" data-item="aviso_legal_esp">Aviso Legal Espa&ntilde;a</li>
+                                <li class="primary" data-item="cookies">Cookies</li>
+
+
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_promos_destinos" style="display:none">
+            <span>PROMOS Y DESTINOS</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-item="">
+                                    <div class="icon"></div>
+                                    PRINCIPAL
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_experiencia_boa">
+            <span>EXPERIENCIA BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="nuestra_flota">
+                                    <div class="icon"></div>
+                                    NUESTRA FLOTA
+                                </li>
+                                <li class="primary" data-item="experiencia_bordo">
+                                    <div class="icon"></div>
+                                    EXPERIENCIA A BORDO
+                                </li>
+                                <li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+                                <li data-item="" class="disabled">Entretenimiento a Bordo</li>
+                                <li data-item="" class="disabled">Duty Free a Bordo</li>
+                                <li data-item="" class="disabled">Asiento + Confort</li>
+                                <li data-item="" class="disabled">Revista Destinos</li>
+                                <li data-item="" class="disabled">Wi-Fi y GSM</li>
+                                <li class="primary" data-item="seguro_internacional">
+                                    <div class="icon"></div>
+                                    SEGURO INTERNACIONAL
+                                </li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="en_el_aeropuerto">
+                                    <div class="icon"></div>
+                                    EN EL AEROPUERTO
+                                </li>
+                                <li data-item="check_in">Servicio de Check-In</li>
+                                <li data-item="" class="disabled">Kioskos de Check-In</li>
+                                <li data-item="" class="disabled">Mobile Phone Check-In</li>
+                                <li data-item="" class="disabled">Salas VIP</li>
+                                <li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+                                <li data-item="" class="disabled">Parqueos</li>
+                                <li data-item="" class="disabled">Servicio de Chofer</li>
+                                <li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+                            </ul>
+                        </td>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="night">
+                                <li class="primary" data-item="cabinas">
+                                    <div class="icon"></div>
+                                    CARACTERISTICAS DE LAS CABINAS
+                                </li>
+                                <li data-item="" class="disabled">Clase Business</li>
+                                <li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    VIAJE DE FAMILIA
+                                </li>
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    VIAJE DE GRUPOS
+                                </li>
+
+                                <li class="primary disabled" data-item="">
+                                    <div class="icon"></div>
+                                    NUESTRAS ALIANZAS
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_boa_millas" style="display:none">
+            <span>BoA MILES</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu">
+                                <li class="primary" data-item="">
+                                    <div class="icon"></div>
+                                    PRINCIPAL
+                                </li>
+                                <li data-item="">Secundario A</li>
+                                <li data-item="">Secundario B</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_somos_boa">
+            <span>SOMOS BoA</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="mapa_rutas">
+                                    <div class="icon iconRutas"></div>
+                                    RUTAS
+                                </li>
+                                <li class="primary" data-item="perfil_corporativo">
+                                    <div class="icon"></div>
+                                    PERFIL CORPORATIVO
+                                </li>
+                                <li class="primary disabled" data-item="liderazgo_corporativo">
+                                    <div class="icon"></div>
+                                    LIDERAZGO CORPORATIVO
+                                </li>
+                                <li class="primary" data-item="somos_iosa">
+                                    <div class="icon"></div>
+                                    SOMOS IOSA
+                                </li>
+                                <li class="primary" data-item="reconocimientos_premios">
+                                    <div class="icon"></div>
+                                    RECONOCIMIENTOS Y PREMIOS
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li id="menu_item_boa_handling">
+            <span>Boa Handling</span>
+            <div class="shadow-margin-left"></div>
+            <div class="shadow-margin-right"></div>
+            <div class="fix-bottom"></div>
+            <div class="secondary-menu-container">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <ul class="secondary-menu" data-sky="afternoon">
+                                <li class="primary" data-item="servicios_de_aeropuerto">
+                                    <div class="icon"></div>
+                                    Servicio en Aeropuerto
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li class="primary" data-item="brujula_turistica">
+            <div class="icon"></div>
+            <a href="Brujula_turistica.html">BRUJULA TURISTICA</a></li>
+    </ul>
+    <ul id="sec_menu">
+        <li id="menu_item_agencias">Agencias</li>
+        <li id="menu_item_corporativo" style="display:none">Corporativo</li>
+        <li id="menu_item_login" style="display:none">Login</li>
+    </ul>
+    <div id="menu_locations" class="header-menu">
+        <div class="flag bolivia"></div>
+        <h2><strong>BOLIVIA</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="bolivia selected" data-location="bolivia">
+                <div class="flag"></div>
+                <h2><strong>BOLIVIA</strong></h2>
+            </li>
+            <li class="bsas" data-location="bsas">
+                <div class="flag"></div>
+                <h2><strong>BS. AS.</strong></h2>
+            </li>
+            <li class="madrid" data-location="madrid">
+                <div class="flag"></div>
+                <h2><strong>MADRID</strong></h2>
+            </li>
+            <li class="saopaulo" data-location="saopaulo">
+                <div class="flag"></div>
+                <h2><strong>SAO PAULO</strong></h2>
+            </li>
+            <li class="salta" data-location="salta">
+                <div class="flag"></div>
+                <h2><strong>SALTA</strong></h2>
+            </li>
+            <li class="miami" data-location="miami">
+                <div class="flag"></div>
+                <h2><strong>MIAMI</strong></h2>
+            </li>
+        </ul>
+    </div>
+    <div id="menu_languages" class="header-menu">
+        <h2><strong>ESPA&Ntilde;OL</strong></h2>
+        <div class="arrow-down-icon"></div>
+        <ul>
+            <li class="selected" data-language="ES">
+                <h2><strong>ESPA&Ntilde;OL</strong></h2>
+            </li>
+            <!-- <li data-language="EN">
+					<h2><strong>ENGLISH</strong></h2>
+				</li>
+				<li data-language="PT">
+					<h2><strong>PORTUGU&Ecirc;S</strong></h2>
+				</li> -->
+        </ul>
+    </div>
+</header>
+
+<!--menu for mob-->
+<div id="wrapperMenu">
+    <div id="info">
+        <div id="info-content">
+            <div id="logoBoaMob"><img src="content/images/logoBoa.png"></div>
+
+            <div class="dropdown">
+                <button onclick="idiomas()" class="dropbtn">
+                    <!--en data-src entra es,en o pt-->
+                    <figure class="svg banderaIco" data-src="pt"></figure>
+                    ES
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a class="cambiarIdioma" href="#">ES</a>
+                    <a class="cambiarIdioma" href="#">EN</a>
+                    <a class="cambiarIdioma" href="#">BR</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+    <div class="menuMob" id="MenuMobile">
+        <label class="menu-toggle" for="menu"><span>Toggle</span></label>
+
+    </div>
+
+</div><!-- #wrapper -->
+
+<div id="clouds">
+    <canvas id="clouds_canvas" width="2500" height="1000"></canvas>
+</div>
+
+
+<div id="info_register" class="info selected">
+    <div class="icon"></div>
+    <div class="descripcion">
+        <fieldset class="row">
+
+            <div class="col-12">
+
+                <div class="form-container animated fadeInDown">
+                    <div class="row no-gutters" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="col-12 no-gutters align-self-center">
+                            <div style="text-justify:auto;">
+                                <h1 style="font-weight: bolder;color: rgb(15,47,82);">Formulario de Registro</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="/BoAWebDL/Account/Register" class="ffp-form container-fluid ff-box-shadow"
+                          id="enrolForm" method="post" role="form"><input name="__RequestVerificationToken"
+                                                                          type="hidden"
+                                                                          value="K39tbmFJgpRZIEvXrAG3b1ZYEXd1rivRotcd26ddodyRSjI-sdEoimH-mHtnJSiwSrwXyNpzHl8v0QCANVglRwTV_QhMBpqVfmb2EQsVhPM1">
+                        <label>Información Personal</label>
+                        <hr>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <label>Recordar Correo</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true"
+                                       data-val-required="El campo Correo electrónico es requerido" id="Email"
+                                       name="Email" placeholder="Correo Electronico" type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="Email"
+                                      data-valmsg-replace="true"></span>
+                                <span class="fa fa-user icon-left"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" id="EmailCopy" name="EmailCopy" placeholder="Repetir correo"
+                                       type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="EmailCopy"
+                                      data-valmsg-replace="true"></span>
+                                <span class="fa fa-user icon-left"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true"
+                                       data-val-length="El Contraseña debe tener mínimo 6 caracteres."
+                                       data-val-length-max="100" data-val-length-min="6"
+                                       data-val-required="El campo Contraseña es requerido" id="RegisterPassword"
+                                       name="RegisterPassword" placeholder="Contraseña" type="password" value="">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="RegisterPassword" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true" data-val-equalto="Passsssssssss."
+                                       data-val-equalto-other="*.RegisterPassword"
+                                       data-val-required="El campo Confirmar contraseña es requerido"
+                                       id="ConfirmPassword" name="ConfirmPassword" placeholder="Repite tu contraseña"
+                                       type="password" value="">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>ParagraphRegister</label>
+
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true"
+                                       data-val-regex="Por favor utilize letras de las a - z o A - Z"
+                                       data-val-regex-pattern="^[a-zA-Z\u00F1\u00D1 ]+$"
+                                       data-val-required="El campo Nombre es requerido" id="Name" name="Name"
+                                       placeholder="Primer Nombre" type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="Name"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true"
+                                       data-val-regex="Por favor utilize letras de las a - z o A - Z"
+                                       data-val-regex-pattern="^[a-zA-Z\u00F1\u00D1 ]+$" id="MiddleName"
+                                       name="MiddleName" placeholder="Segundo Nombre" type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="MiddleName"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true"
+                                       data-val-regex="Por favor utilize letras de las a - z o A - Z"
+                                       data-val-regex-pattern="^[a-zA-Z\u00F1\u00D1 ]+$"
+                                       data-val-required="El campo Apellidos es requerido" id="LastName" name="LastName"
+                                       placeholder="Apellidos" type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="LastName"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <select class="form-control" id="GenderId" name="GenderId" style="width:100%">
+                                    <option value="">Seleccione género</option>
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                </select>
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="GenderId"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <div class="input-group date" id="BirthDate">
+                                    <input class="form-control text-box single-line" data-val="true"
+                                           data-val-date="The field Fecha de nacimiento must be a date."
+                                           data-val-required="El campo Fecha de nacimiento es requerido" id="BirthDate"
+                                           name="BirthDate" placeholder="Fecha Nacimiento" type="datetime"
+                                           value="1/1/0001 12:00:00 AM">
+                                </div>
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="BirthDate"
+                                      data-valmsg-replace="true" id="BirthDateValidator"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <div class="select2-container form-control select2-allowclear" id="s2id_CitizenshipId">
+                                    <a href="javascript:void(0)" onclick="return false;" class="select2-choice"
+                                       tabindex="-1"> <span class="select2-chosen">BOLIVIA</span><abbr
+                                            class="select2-search-choice-close"></abbr> <span
+                                            class="select2-arrow"><b></b></span></a><input
+                                        class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"></div>
+                                <input class="form-control select2-offscreen" data-val="true"
+                                       data-val-required="El campo Nacionalidad es requerido" id="CitizenshipId"
+                                       name="CitizenshipId" placeholder="Seleccione Nacionalidad" type="text" value=""
+                                       tabindex="-1">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="CitizenshipId" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <select class="form-control" data-val="true"
+                                        data-val-required="El campo Preferencias de idioma es requerido"
+                                        id="LanguagePreferenceId" name="LanguagePreferenceId" style="width:100%">
+                                    <option value="">PreferenciasIdioma</option>
+                                    <option selected="selected" value="ES">Español</option>
+                                    <option value="EN">Ingles</option>
+                                </select>
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="LanguagePreferenceId" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <label>CellPhone</label>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <div class="select2-container form-control select2-allowclear"
+                                     id="s2id_PhoneCountryCode"><a href="javascript:void(0)" onclick="return false;"
+                                                                   class="select2-choice" tabindex="-1"> <span
+                                        class="select2-chosen">BOLIVIA (+591)</span><abbr
+                                        class="select2-search-choice-close"></abbr> <span class="select2-arrow"><b></b></span></a><input
+                                        class="select2-focusser select2-offscreen" type="text" id="s2id_autogen1"></div>
+                                <input class="form-control select2-offscreen" data-val="true"
+                                       data-val-required="El campo Código telefónico del país es requerido"
+                                       id="PhoneCountryCode" name="PhoneCountryCode"
+                                       placeholder="PaisProcedenciaTelefono" type="text" value="" tabindex="-1">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="PhoneCountryCode" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true"
+                                       data-val-regex="Solo es permitido ingresar números"
+                                       data-val-regex-pattern="^[0-9]+$"
+                                       data-val-required="El campo Número de celular es requerido" id="CellNumber"
+                                       name="CellNumber" placeholder="CelNumber" type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="CellNumber"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <label>Documentos</label>
+                        <hr>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" data-val="true" data-val-regex="Formato invalido"
+                                       data-val-regex-pattern="^[0-9]+$|^[0-9]+[a-zA-Z]+[a-zA-Z0-9]*$|^[a-zA-Z]+[0-9]+[a-zA-Z0-9]*$|[0-9]+[a-zA-Z]*[-]+[a-zA-Z0-9]+$"
+                                       data-val-required="El campo Documento de identificación nacional es requerido"
+                                       id="NationalId" name="NationalId" placeholder="DocumentoIdentificacion"
+                                       type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left" data-valmsg-for="NationalId"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+
+
+                                <div class="select2-container form-control select2-allowclear"
+                                     id="s2id_DocumentTypeCountryId"><a href="javascript:void(0)"
+                                                                        onclick="return false;" class="select2-choice"
+                                                                        tabindex="-1"> <span class="select2-chosen">BOLIVIA</span><abbr
+                                        class="select2-search-choice-close"></abbr> <span class="select2-arrow"><b></b></span></a><input
+                                        class="select2-focusser select2-offscreen" type="text" id="s2id_autogen3"></div>
+                                <input class="form-control select2-offscreen" data-val="true"
+                                       data-val-required="El campo País de procedencia es requerido"
+                                       id="DocumentTypeCountryId" name="DocumentTypeCountryId"
+                                       placeholder="PaisProcedenciaDocumento" type="text" value="" tabindex="-1">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="DocumentTypeCountryId" data-valmsg-replace="true"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <input class="form-control" id="PassportNumber" name="PassportNumber"
+                                       placeholder="PassportNumber" type="text" value="">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="PassportNumber" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group col-md-3 has-icon-left">
+                                <div class="select2-container form-control" id="s2id_PassportCountryId"><a
+                                        href="javascript:void(0)" onclick="return false;"
+                                        class="select2-choice select2-default" tabindex="-1"> <span
+                                        class="select2-chosen">PaisProcedenciaDocumento</span><abbr
+                                        class="select2-search-choice-close"></abbr> <span class="select2-arrow"><b></b></span></a><input
+                                        class="select2-focusser select2-offscreen" type="text" id="s2id_autogen4"></div>
+                                <input class="form-control select2-offscreen" id="PassportCountryId"
+                                       name="PassportCountryId" placeholder="PaisProcedenciaDocumento" type="text"
+                                       value="" tabindex="-1">
+                                <span class="field-validation-valid fa fa-user icon-left"
+                                      data-valmsg-for="PassportCountryId" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-3 has-icon-left">
+                                <div class="">
+                                    <input data-val="true" data-val-required="The registerLoyalty field is required."
+                                           id="createLoyaltyCount" name="registerLoyalty" type="checkbox"
+                                           value="true"><input name="registerLoyalty" type="hidden" value="false">
+                                    <label>Crear Cuenta en el programa de viajero frecuente.</label>
+                                    <span class="field-validation-valid fa fa-user icon-left"
+                                          data-valmsg-for="registerLoyalty" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="">
+                                    <input data-val="true"
+                                           data-val-required="The AcceptPageNoticePolitics field is required."
+                                           id="chkPermissions" name="AcceptPageNoticePolitics" type="checkbox"
+                                           value="true"><input name="AcceptPageNoticePolitics" type="hidden"
+                                                               value="false">
+                                    <label>AcceptPagePoliticsPart1 <a href="/BoAWebDL/Home/TermsCond" target="_blank">TerminosCondiciones</a>
+                                        <span>AcceptPagePoliticsPart2</span></label>
+                                    <span class="field-validation-valid fa fa-user icon-left"
+                                          data-valmsg-for="AcceptPageNoticePolitics" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="bt_animated_botones" style="margin-top: 20px; padding: 10px;">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input id="mainSubmit" type="submit" class="btn btn-primary" disabled=""
+                                       value="Registrar">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-md-10 col-10">
+                            <span>LeeNuestra <a href="/BoAWebDL/Home/Politica_privacidad" target="_blank">PoliticadePrivacidad</a> <span>EnterateComoProtegemosTusDatos</span></span>
+                        </div>
+                        <br>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+
+<script src="content/menu/menu.js"></script>
+<script src="content/iconSvg.js"></script>
+
+<script>
+
+    iconSvg.convertirFigureSvgIcono();
+    /* When the user clicks on the button,
+     toggle between hiding and showing the dropdown content */
+    function idiomas() {
+        //$("#myDropdown").addClass("show");
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+
+    $(".cambiarIdioma").click(function () {
+
+        console.log($(this).text())
+    });
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+        console.log(this)
+        if (!event.target.matches('.dropbtn')) {
+
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    $("#logoBoaMob").click(function () {
+        window.location.href = BoA.urls.home;
+
+    });
+</script>
+
+<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+</body>
+</html>
+
+2 br hgh 161.164  med 210.506 low -
+
+

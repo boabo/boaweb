@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi5oNjJne8X5U0ntdl04Q5JssbtzHunuGbhblIFWH3CWYStxTS2kjkn6Rw+Dsl0Jr8hxISEzjPS+Bg==";
+var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7XWgSlPE8nTe1M9YXtdtrQDJtAFbeeqTlo2P8BFq1omMVMZao61vsrwCSQM6VORymPHGCeVbWBOA==";
 var server = '192.168.17.249'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto = {
@@ -91,10 +91,10 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'VVI',
-        destino: 'LPB',
-        fechaIda : '20181202',//formatCompactDate(new Date()), // today
-        fechaVuelta:'20181202',//null, // no flight back
+        origen: 'CBB',
+        destino: 'MIA',
+        fechaIda : '20190502',//formatCompactDate(new Date()), // today
+        fechaVuelta:'20190511',//null, // no flight back
         adulto: 1,
         infante: 0,
         ninho: 0,
