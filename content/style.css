@@ -409,6 +409,13 @@ header .att-div{
 	color: #FFF;
 }
 
+/* 1_STABLE para menu controlado desde teclado*/
+#main_menu .secondary-menu li.activado {
+	background-color: #EFAA35;
+	color: #FFF;
+}
+
+
 #main_menu .secondary-menu .icon {
 	position: absolute;
 	top: 5px;
