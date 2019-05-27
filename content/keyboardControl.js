@@ -17,6 +17,7 @@ window.keyboardControl = (() => {
         document.onkeyup = function(e) {
             console.log(e)
             if (e.ctrlKey && e.keyCode === 80) { // control + p
+                $menuContainer.find('div').hide();
                 $menuContainer = $mainMenu.find('#menu_item_planifica');
 
                 secondaryMenuContainer = $menuContainer.find('.secondary-menu-container');
@@ -59,6 +60,10 @@ window.keyboardControl = (() => {
 
                     console.log('$menuContainer encontrado', $menuContainer)
                 }
+
+            }else if(menuActivado && e.keyCode === 13) { //enter
+
+                $seleccionado.find('a').click();
 
             }
         };
