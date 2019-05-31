@@ -49,10 +49,10 @@
 </head>
 <body style="padding:0;margin:0;overflow-y:auto !important;overflow-x:hidden !important">
 <header style="display:block">
-	<a id="btn_return_home" href="http://www.boa.bo"></a>
+	<a id="btn_return_home" tabindex="-1" href="http://www.boa.bo"></a>
 	<div class="logo-header"></div>
 	<ul id="main_menu">
-		<li id="menu_item_planifica" tabindex="0" >
+		<li id="menu_item_planifica" tabindex="1" >
 			<span>PLANIFICA TU VIAJEe</span>
 			<div class="shadow-margin-left"></div>
 			<div class="shadow-margin-right"></div>
@@ -85,7 +85,7 @@
 				</table>
 			</div>
 		</li>
-		<li id="menu_item_antes_viajar">
+		<li id="menu_item_antes_viajar" tabindex="2">
 			<span>ANTES DE VIAJAR</span>
 			<div class="shadow-margin-left"></div>
 			<div class="shadow-margin-right"></div>
@@ -170,7 +170,7 @@
 				</table>
 			</div>
 		</li>
-		<li id="menu_item_experiencia_boa">
+		<li id="menu_item_experiencia_boa" tabindex="3">
 			<span>EXPERIENCIA BoA</span>
 			<div class="shadow-margin-left"></div>
 			<div class="shadow-margin-right"></div>
@@ -219,7 +219,7 @@
 				</table>
 			</div>
 		</li>
-		<li id="menu_item_boa_millas" style="display:none">
+		<li id="menu_item_boa_millas" style="display:none" >
 			<span>BoA MILES</span>
 			<div class="shadow-margin-left"></div>
 			<div class="shadow-margin-right"></div>
@@ -238,7 +238,7 @@
 				</table>
 			</div>
 		</li>
-		<li id="menu_item_somos_boa">
+		<li id="menu_item_somos_boa" tabindex="4">
 			<span>SOMOS BoA</span>
 			<div class="shadow-margin-left"></div>
 			<div class="shadow-margin-right"></div>
@@ -259,7 +259,7 @@
 				</table>
 			</div>
 		</li>
-		<li id="menu_item_boa_handling">
+		<li id="menu_item_boa_handling" tabindex="5">
 			<span>Boa Handling</span>
 			<div class="shadow-margin-left"></div>
 			<div class="shadow-margin-right"></div>
@@ -276,7 +276,7 @@
 				</table>
 			</div>
 		</li>
-		<li class="primary" data-item="brujula_turistica"><div class="icon"></div><a href="Brujula_turistica.html">BRUJULA TURISTICA</a></li>
+		<li class="primary" data-item="brujula_turistica" tabindex="6"><div class="icon"></div><a tabindex="-1" href="Brujula_turistica.html">BRUJULA TURISTICA</a></li>
 	</ul>
 	<ul id="sec_menu">
 		<li id="menu_item_agencias">Agencias</li>
@@ -338,14 +338,14 @@
 			<div id="logoBoaMob"><img alt="logoBoa" src="content/images/logoBoa.png"></div>
 
 			<div class="dropdown">
-				<button onclick="idiomas()" class="dropbtn">
+				<button tabindex="-1" onclick="idiomas()" class="dropbtn">
 					<!--en data-src entra es,en o pt-->
 					<figure   class="svg banderaIco"  data-src="pt"></figure>ES
 				</button>
 				<div id="myDropdown" class="dropdown-content">
-					<a class="cambiarIdioma" href="#">ES</a>
-					<a class="cambiarIdioma" href="#">EN</a>
-					<a class="cambiarIdioma" href="#">BR</a>
+					<a class="cambiarIdioma" href="#" tabindex="-1">ES</a>
+					<a class="cambiarIdioma" href="#" tabindex="-1">EN</a>
+					<a class="cambiarIdioma" href="#" tabindex="-1">BR</a>
 				</div>
 			</div>
 
@@ -4135,7 +4135,8 @@
 <script src="content/menu/menu.js"></script>
 <script src="content/iconSvg.js"></script>
 
-<script src="content/keyboardControl.js"></script>
+<!--<script src="content/keyboardControl.js"></script>-->
+<script src="content/keyboardControlv2.js"></script>
 
 
 

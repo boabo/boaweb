@@ -566,6 +566,15 @@ function async_receive_slides(response)
 	change_next_slide();
 	changing_slides_interval = setInterval(change_next_slide, 6000);
 }
+//--funcion para parar el slider o continuar el slider
+function pauseSlider() {
+    clearInterval(changing_slides_interval);
+}
+function playSlider() {
+    change_next_slide();
+    changing_slides_interval = setInterval(change_next_slide, 6000);
+}
+
 // ---------------------= =---------------------
 function load_next_slide_image()
 {
