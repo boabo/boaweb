@@ -3649,3 +3649,40 @@ div.panel {
 .detalle_origen_destino ul li.selected{
 	background-color: #8590a5;
 }
+
+/*1_STABLE*/
+input#buscador_contenido[type="text"] {
+	height: 20px;
+	font-size: 15px;
+	padding: 2px 40px 0 10px;
+}
+input#buscador_contenido[type="text"] {
+	border-radius: 0px;
+	border-width: 0 0 2px 0;
+	border-style: solid;
+	border-color: #959595;
+	font-family: "HelveticaNeuePro";
+	color: #1F3656;
+}
+
+#detalle_busqueda_contenido {
+	padding-left: 40px;
+	position: absolute;
+	width: 400px;
+	height: 200px;
+	top: 30px;
+	/*left: 410px;*/
+	background-color: #2D4565;
+	color: #FFF;
+	font-family: "FuturaLight";
+	cursor: default;
+	z-index: 700700005;
+	display: none;
+	box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+	-ms-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
+}
+#detalle_busqueda_contenido i {
+	cursor: pointer;
+}

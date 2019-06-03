@@ -87,6 +87,13 @@ window.keyboardControl = (() => {
             case 'Enter':
                 if($seleccionado !== undefined){
                     $seleccionado.find('a').click();
+                    console.log($seleccionado.find('a').attr('href'))
+                    var item = $seleccionado.attr('data-item');
+                    console.log('equipaje_mano')
+                    var $subMenuItem = $('#submenu_item_'+item);
+                    console.log($subMenuItem.attr('tabindex'))
+                    console.log(window)
+                    console.log(document)
                 }
                 break;
             case 'ArrowDown':

@@ -45,6 +45,9 @@
 
 	<link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
 
+	<link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
+
+
 
 </head>
 <body style="padding:0;margin:0;overflow-y:auto !important;overflow-x:hidden !important">
@@ -96,7 +99,7 @@
 						<td valign="top">
 							<ul class="secondary-menu" data-sky="afternoon">
 								<li class="primary" data-item="politica_equipaje"><div class="icon"></div>POL&Iacute;TICA DE EQUIPAJE</li>
-								<li data-item="equipaje_mano">Equipaje de mano</li>
+								<li data-item="equipaje_mano" >Equipaje de mano</li>
 								<li data-item="equipaje_facturable">Equipaje facturable</li>
 								<li data-item="exceso_equipaje">Exceso de equipaje</li>
 								<li data-item="equipaje_especial">Equipaje especial</li>
@@ -282,6 +285,116 @@
 		<li id="menu_item_agencias">Agencias</li>
 		<li id="menu_item_corporativo" style="display:none">Corporativo</li>
 		<li id="menu_item_login" style="display:none">Login</li>
+		<li id="menu_item_busqueda">
+			<input type="text" id="buscador_contenido"/>
+			<i class="fa fa-search" id="btnSearch"></i>
+			<div id="detalle_busqueda_contenido">
+
+				<table>
+					<tr>
+						<td><label>Adultos</label></td>
+						<td data-action="adultos" class="input-container">
+							<i class="fa fa-minus"></i>
+							<label style="font-size: 20px; margin-left: 5px; margin-right: 5px;">1</label>
+							<i class="fa fa-plus"></i>
+							<select id="select_nro_adultos" class="number" style="visibility: hidden;">
+								<option value="0">0</option>
+
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</td>
+						<td style="display:none"><label>Flexible en Fechas</label></td>
+
+					</tr>
+					<tr>
+						<td><label>Ni&ntilde;os<br>(2-11)a&ntilde;os</label></td>
+						<td data-action="ninhos" class="input-container">
+							<i class="fa fa-minus"></i>
+							<label style="font-size: 20px; margin-left: 5px; margin-right: 5px;">0</label>
+							<i class="fa fa-plus"></i>
+							<select id="select_nro_ninhos" class="number" style="visibility: hidden;">
+								<option value="0" selected>0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Beb&eacute;s<br>(0-1)a&ntilde;os</label></td>
+						<td data-action="bebes"  class="input-container">
+							<i class="fa fa-minus"></i>
+							<label style="font-size: 20px; margin-left: 5px; margin-right: 5px;">0</label>
+							<i class="fa fa-plus"></i>
+							<select id="select_nro_bebes" class="number" style="visibility: hidden;">
+								<option value="0" selected>0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td id="lbl_adulto_mayor"><label>Adultos Mayor</label></td>
+						<td class="input-container">
+							<select id="select_nro_adultos_mayor" class="number" style="visibility: hidden;">
+								<option value="0" selected>0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="width: auto;" id="btn_cerrar_pasajeros_det" class="button">continuar</div>
+
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" style="display:none">
+							<div id="cbx_flexible_en_fechas" class="checkbox"></div>
+						</td>
+					</tr>
+
+
+
+					<tr style="display:none">
+						<td><label>Moneda:</label></td>
+					</tr>
+					<tr style="display:none">
+						<td colspan="5">
+							<select id="select_moneda" class="moneda">
+								<option value="BOB" selected>BOLIVIANOS (BOB)</option>
+								<option value="USD">D&Oacute;LARES (USD)</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+
+
+			</div>
+
+		</li>
 	</ul>
 	<div id="menu_locations" class="header-menu">
 		<div class="flag bolivia"></div>
@@ -375,7 +488,7 @@
 		<h3>POL&Iacute;TICA DE EQUIPAJE</h3>
 	</div>
 	<ul class="first-menu">
-		<li id="submenu_item_equipaje_mano" class="selected" data-info="equipaje_mano">
+		<li id="submenu_item_equipaje_mano" tabindex="2.1" class="selected" data-info="equipaje_mano">
 			<label>Equipaje de Mano</label>
 			<div class="icon small"></div>
 		</li>
@@ -4138,6 +4251,11 @@
 <!--<script src="content/keyboardControl.js"></script>-->
 <script src="content/keyboardControlv2.js"></script>
 
+<script src="content/buscadorContenido.js"></script>
+
+<script>
+	buscadorContenido.init();
+</script>
 
 
 <script>
