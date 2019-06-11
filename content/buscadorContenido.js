@@ -42,7 +42,9 @@ var buscadorContenido = (function(){
                             $tr.find('a').click(function () {
                                 var id = $(this).attr('data-id');
                                 id = id.replace('ui_','');
-                                $("#main_menu").find('[data-item="'+id+'"]').click();
+                                console.log('click',id)
+                                console.log('click',$("#main_menu").find('[data-item="'+id+'"]'))
+                                $("#main_menu").find('[data-item="'+id+'"]').find('a').click();
                             });
 
                         });

@@ -145,6 +145,7 @@ function click_menu_item(ev)
 	var isLink = $(li).data("is_link");
 	var action = $(li).data("action");
 
+	console.log('isLink',isLink)
 	// redirects if is direct link
 	if(isLink) {
 		btn.attr("target","_blank");
