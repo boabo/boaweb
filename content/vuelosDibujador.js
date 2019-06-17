@@ -76,7 +76,7 @@
             var condicionReembolso = $dataToolTipCondicionTarifa.find('[data-tooltip="reembolso"]').html();
             console.log('$dataToolTipCondicionTarifa',$dataToolTipCondicionTarifa);
 
-            var $templateTooltipIcon = $('<div style="float: left;" class="contenedor_tooltip"><img src="" width="20px" /><div class="tooltip"></div></div>');
+            var $templateTooltipIcon = $('<div style="float: left; margin-left: 1px;" class="contenedor_tooltip"><img src="" width="20px" /><div class="tooltip" style="left: -75px;"></div></div>');
             var $equipajeDeMano = $templateTooltipIcon.clone();
             $equipajeDeMano.find('.tooltip').html(condicionEquipajeDeMano);
             $equipajeDeMano.find('img').attr('src','content/images/equipaje-de-mano-01.png');
@@ -88,7 +88,7 @@
             $modificacion.find('img').attr('src','content/images/modificación-de-fecha-01.png');
             var $reembolso = $templateTooltipIcon.clone();
             $reembolso.find('.tooltip').html(condicionReembolso);
-            $reembolso.find('img').attr('src','content/images/modificación-de-fecha-01.png');
+            $reembolso.find('img').attr('src','content/images/Reembolso-01.png');
 
 
             var $condicionesTarifa = $('<div class="condicion_tarifa"></div>');
@@ -1104,7 +1104,7 @@
             }else if(destino === 'MAD'){
                 return 'MAD'
             }else if(destino === 'EZE' || destino == 'SLA'){
-                return 'MAD'
+                return 'BUE SLA'
             }else if(destino === 'MIA'){
                 return 'MIA'
             }else if(destino === 'GRU'){
