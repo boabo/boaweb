@@ -2962,10 +2962,12 @@ loading svg {
 	display: block;
 	background-color: #fff;
 	height: 20px;
-	width: 90%;
+	width: 100px;
 	margin-top: 10px;
-	margin-right: 5%;
-	margin-left: 5%;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-right: auto;
+	margin-left: auto;
 }
 .condicion_tarifa img {
 	cursor: pointer;

@@ -1110,7 +1110,7 @@
             }else if(destino === 'MAD'){
                 return 'MAD'
             }else if(destino === 'EZE' || destino == 'SLA'){
-                return 'BUE SLA'
+                return 'BUE_SLA'
             }else if(destino === 'MIA'){
                 return 'MIA'
             }else if(destino === 'GRU'){
