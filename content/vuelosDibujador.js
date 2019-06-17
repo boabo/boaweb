@@ -25,7 +25,7 @@
             $('#picker_salida').datepicker("setDate",
                 compactToJSDate(that.store.fechaIdaConsultada)
             );
-            console.log('$("#rbtn_ida")',$("#rbtn_ida"));
+
             $("#rbtn_ida").click();
 
             if(this.store.tieneVuelta == true) {
@@ -64,9 +64,43 @@
 
             var tam = parseInt(100 / this.store.familyInformation.length);
 
+            var jsonCondicionTarifa = {};
+
+
+            var tipoDestino = this.verTipoDestino(searchParameters.destino);
+            var $tablaCondicionTarifaSeleccionada = $('#'+tipoDestino);
+            var $dataToolTipCondicionTarifa = $tablaCondicionTarifaSeleccionada.find('[data-id="tooltip"]');
+            var condicionEquipajeDeMano = $dataToolTipCondicionTarifa.find('[data-tooltip="equipaje_de_mano"]').html();
+            var condicionEquipajeRegistrado = $dataToolTipCondicionTarifa.find('[data-tooltip="equipaje_registrado"]').html();
+            var condicionModificacion = $dataToolTipCondicionTarifa.find('[data-tooltip="modificacion"]').html();
+            var condicionReembolso = $dataToolTipCondicionTarifa.find('[data-tooltip="reembolso"]').html();
+            console.log('$dataToolTipCondicionTarifa',$dataToolTipCondicionTarifa);
+
+            var $templateTooltipIcon = $('<div style="float: left;" class="contenedor_tooltip"><img src="" width="20px" /><div class="tooltip"></div></div>');
+            var $equipajeDeMano = $templateTooltipIcon.clone();
+            $equipajeDeMano.find('.tooltip').html(condicionEquipajeDeMano);
+            $equipajeDeMano.find('img').attr('src','content/images/equipaje-de-mano-01.png');
+            var $equipajeRegistrado = $templateTooltipIcon.clone();
+            $equipajeRegistrado.find('.tooltip').html(condicionEquipajeRegistrado);
+            $equipajeRegistrado.find('img').attr('src','content/images/equipaje-registrado-01.png');
+            var $modificacion = $templateTooltipIcon.clone();
+            $modificacion.find('.tooltip').html(condicionModificacion);
+            $modificacion.find('img').attr('src','content/images/modificación-de-fecha-01.png');
+            var $reembolso = $templateTooltipIcon.clone();
+            $reembolso.find('.tooltip').html(condicionReembolso);
+            $reembolso.find('img').attr('src','content/images/modificación-de-fecha-01.png');
+
+
+            var $condicionesTarifa = $('<div class="condicion_tarifa"></div>');
+
+            $condicionesTarifa.append($equipajeDeMano);
+            $condicionesTarifa.append($equipajeRegistrado);
+            $condicionesTarifa.append($modificacion);
+            $condicionesTarifa.append($reembolso);
+
             $.each(this.store.familyInformation,function (k,v) {
 
-                $(m).find('.familias_').append('<div style="float: left;width: '+tam+'%; height: 30px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'</div>')
+                $(m).find('.familias_').append('<div style="float: left;width: '+tam+'%; height: 50px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'  '+$condicionesTarifa[0].outerHTML+'</div>')
             });
 
             return m;
@@ -135,7 +169,6 @@
                         var clase = linea_clase[vuelo.co_operador];
                         iconos_operador += '<div class="'+clase+'"><span style="bottom:-22px;position:relative; font-size: 11px;">'+lineas[vuelo.co_operador]+'</span></div>';
                     }
-                    console.log(vuelo.co_operador)
                 });
 
                 m = $('<div  id="'+ida_vuelta+'_'+v.num_opcion+'" data-opcion="'+v.num_opcion+'" data-tipo="'+ida_vuelta+'" class="content_vuelo" data-ordenPorPrecio="'+k+'" data-ordenPorHora="'+ordenPorHora+'" >\n    <div class="desc_vuelo">\n        <div style="float: left;width: 25%; text-align: center; border-left: 2px solid #EFAA35;">\n            <span>'+translate.t.SALIDA+'</span>\n            <div><b>'+formatTime(v.horaSalidaVuelo)+' '+v.origenVuelo+'</b></div>\n            <div style="display: block; margin-top: 5px;" onclick="vuelosDibujador.verDetalleConexion(this)"\n                 class="btn_view_detail"><span></span>'+translate.t.VER_DETALLE+' \n            </div>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <div class="'+ico_conexion+'"></div><span><label class="duracion_total">'+translate.t.DURACION_TOTAL+' : 1 hora</label></span>\n        </div>\n        <div style="float: left;width: 25%; text-align: center;">\n            <span>'+translate.t.LLEGADA+'</span><div><b>'+formatTime(v.horaLlegadaVuelo)+' '+v.destinoVuelo+'</b></div>\n        </div>\n        <div style="float: left;width: 23%; text-align: center;">\n            <span><label>'+translate.t.OPERADO_POR+'</label></span><br>'+iconos_operador+'\n        </div>\n    </div>\n</div>');
@@ -327,7 +360,6 @@
             });
 
             //re dibujamos el menor importe en el calendario encontrado en el filtrado
-            console.log('monto menor encontrado',menorImporte);
             $calendario.find('.selected').find('h3').html('Bs. '+  menorImporte);
 
            
@@ -1048,7 +1080,6 @@
 
 
             $contenedor.css({"display":"flex","flex-direction":"column"});
-            console.log($contenedor);
 
             //obtener los div de vuelos content_vuelo
             var $contentVuelos = $contenedor.find('.content_vuelo');
@@ -1064,6 +1095,21 @@
             });
 
 
+        },
+        verTipoDestino : function (destino) {
+
+
+            if(['CCA','CIJ','CBB','LPB','ORU','POI','VVI','SRE','TJA','TDD','UYU','BYC'].includes(destino)){
+                return 'NAL'
+            }else if(destino === 'MAD'){
+                return 'MAD'
+            }else if(destino === 'EZE' || destino == 'SLA'){
+                return 'MAD'
+            }else if(destino === 'MIA'){
+                return 'MIA'
+            }else if(destino === 'GRU'){
+                return 'SAO'
+            }
         }
         
     };
