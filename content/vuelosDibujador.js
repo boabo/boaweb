@@ -64,19 +64,30 @@
 
             var tam = parseInt(100 / this.store.familyInformation.length);
 
-            var jsonCondicionTarifa = {};
 
+
+            $.each(this.store.familyInformation,function (k,v) {
+
+                var $condicionesTarifa = that.condicionesDeTarifaPorFamilia(v.fareFamilyName);
+                $(m).find('.familias_').append('<div style="float: left;width: '+tam+'%; height: 50px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'  '+$condicionesTarifa[0].outerHTML+'</div>')
+            });
+
+            return m;
+        },
+        condicionesDeTarifaPorFamilia : function (fareFamilyName) {
 
             var tipoDestino = this.verTipoDestino(searchParameters.destino);
             var $tablaCondicionTarifaSeleccionada = $('#'+tipoDestino);
-            var $dataToolTipCondicionTarifa = $tablaCondicionTarifaSeleccionada.find('[data-id="tooltip"]');
-            var condicionEquipajeDeMano = $dataToolTipCondicionTarifa.find('[data-tooltip="equipaje_de_mano"]').html();
-            var condicionEquipajeRegistrado = $dataToolTipCondicionTarifa.find('[data-tooltip="equipaje_registrado"]').html();
-            var condicionModificacion = $dataToolTipCondicionTarifa.find('[data-tooltip="modificacion"]').html();
-            var condicionReembolso = $dataToolTipCondicionTarifa.find('[data-tooltip="reembolso"]').html();
-            console.log('$dataToolTipCondicionTarifa',$dataToolTipCondicionTarifa);
+            var $fareFamilies = $tablaCondicionTarifaSeleccionada.find('[data-id="fare_families"]');
+            var posicionFamilia = $fareFamilies.find('[data-id="'+fareFamilyName+'"]').index();
 
-            var $templateTooltipIcon = $('<div style="float: left; margin-left: 1px;" class="contenedor_tooltip"><img src="" width="20px" /><div class="tooltip" style="left: -75px;"></div></div>');
+
+            var condicionEquipajeDeMano = $tablaCondicionTarifaSeleccionada.find('[data-id="equipaje_de_mano"]').find('td:eq('+posicionFamilia+')').html();
+            var condicionEquipajeRegistrado = $tablaCondicionTarifaSeleccionada.find('[data-id="equipaje_registrado"]').find('td:eq('+posicionFamilia+')').html();
+            var condicionModificacion = $tablaCondicionTarifaSeleccionada.find('[data-id="modificaciones"]').find('td:eq('+posicionFamilia+')').html();
+            var condicionReembolso = $tablaCondicionTarifaSeleccionada.find('[data-id="reembolso"]').find('td:eq('+posicionFamilia+')').html();
+
+            var $templateTooltipIcon = $('<div style="float: left; margin-left: 1px;" class="contenedor_tooltip"><img src="" width="20px" /><div class="tooltip" style="left: -130px;"></div></div>');
             var $equipajeDeMano = $templateTooltipIcon.clone();
             $equipajeDeMano.find('.tooltip').html(condicionEquipajeDeMano);
             $equipajeDeMano.find('img').attr('src','content/images/equipaje-de-mano-01.png');
@@ -97,13 +108,8 @@
             $condicionesTarifa.append($equipajeRegistrado);
             $condicionesTarifa.append($modificacion);
             $condicionesTarifa.append($reembolso);
+            return $condicionesTarifa;
 
-            $.each(this.store.familyInformation,function (k,v) {
-
-                $(m).find('.familias_').append('<div style="float: left;width: '+tam+'%; height: 50px; font-size: 12px; text-align: center; background-color: #1F3656; color:#fff; padding-top: 10px;">'+v.fareFamilyName+'  '+$condicionesTarifa[0].outerHTML+'</div>')
-            });
-
-            return m;
         },
         dibujarVuelos:function (tipo,store) {
 
