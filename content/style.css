@@ -3646,7 +3646,6 @@ div.panel {
 
 /*para tooltip*/
 .contenedor_tooltip {
-	text-transform: uppercase;
 	color: #555;
 	cursor: help;
 	font-family: "Gill Sans", Impact, sans-serif;
@@ -3661,9 +3660,9 @@ div.panel {
 }
 
 .contenedor_tooltip .tooltip {
-	background: #1496bb;
+	background: #EFAA35;
 	bottom: 100%;
-	color: #fff;
+	color: #111;
 	display: block;
 	left: -25px;
 	margin-bottom: 15px;
@@ -3706,7 +3705,7 @@ div.panel {
 .contenedor_tooltip .tooltip:after {
 	border-left: solid transparent 10px;
 	border-right: solid transparent 10px;
-	border-top: solid #1496bb 10px;
+	border-top: solid #EFAA35 10px;
 	bottom: -10px;
 	content: " ";
 	height: 0;
