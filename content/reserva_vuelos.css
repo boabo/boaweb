@@ -2958,4 +2958,19 @@ loading svg {
 	text-indent: 0.01px;
 }
 
-/*56283*/
+.condicion_tarifa {
+	display: block;
+	background-color: #fff;
+	height: 20px;
+	width: 100px;
+	margin-top: 10px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.condicion_tarifa img {
+	cursor: pointer;
+}
+
+

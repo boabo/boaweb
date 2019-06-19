@@ -755,4 +755,14 @@
 	background-position: 0px 0px;  !important;
 }
 
+#submenu_item_aduana_nacional 	#iconAduana {
+	background-image: url("images/contenidos/ico-aduana.png") !important;
+	background-position: 0px 0px;  !important;
+}
+#info_aduana_nacional .icon {
+	background-image: url("images/contenidos/ico-aduana.png") !important;
+	background-position: 0px 0px;  !important;
+
+}
+
 
