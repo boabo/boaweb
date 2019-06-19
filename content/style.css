@@ -3790,3 +3790,11 @@ input#buscador_contenido[type="text"] {
 #detalle_busqueda_contenido i {
 	cursor: pointer;
 }
+
+
+.buttonPlayPause{
+	background-color: #085794; color: #fff; padding: 5px; cursor: pointer;
+}
+.buttonPlayPause:hover{
+	background-color: rgba(239, 170, 53, 0.9);
+}

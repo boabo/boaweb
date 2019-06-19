@@ -70,6 +70,19 @@ $(document).on('ready',function()
 {
 
 
+    /*1_STABLE*/
+    //eventos para pause y play slider
+    $('.fa-play').click(function () {
+        playSlider();
+        $(this).hide();
+        $('.fa-pause').show();
+    });
+    $('.fa-pause').click(function () {
+        pauseSlider();
+        $(this).hide();
+        $('.fa-play').show();
+    });
+
 	/*
 	* nueva forma para la busqueda
 	* */
