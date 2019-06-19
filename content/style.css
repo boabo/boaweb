@@ -427,36 +427,44 @@ header .att-div{
 	background-color: #1F3656;
 	border-radius: 25px;
 }
+#detalle_busqueda_contenido .icon {
+	width: 20px;
+	height: 20px;
+	background-size: 20px auto;
+	background-repeat: no-repeat;
+	background-color: #1F3656;
+	border-radius: 25px;
+}
 /* --------------------------------------------------------------------------- */
-#menu_item_antes_viajar .secondary-menu .primary .icon {
+#menu_item_antes_viajar .secondary-menu .primary .icon, #detalle_busqueda_contenido tr[data-id="menu_item_antes_viajar"] .icon {
 	background-image: url("images/contenidos/icons_antes_de_viajar.png");
 }
 
-.secondary-menu li[data-item='politica_equipaje'] 		.icon{ background-position: 0px 0px; }
-.secondary-menu li[data-item='equipajes_demorados'] 	.icon{ background-position: 0px -20px; }
-.secondary-menu li[data-item='declaracion_equipaje'] 	.icon{ background-position: 0px -40px; }
-.secondary-menu li[data-item='tips_equipaje'] 			.icon{ background-position: 0px -60px; }
-.secondary-menu li[data-item='llegar_aeropuerto'] 		.icon{ background-position: 0px -80px; }
-.secondary-menu li[data-item='servicios_especiales'] 	.icon{ background-position: 0px -100px; }
-.secondary-menu li[data-item='pasajeros_especiales'] 	.icon{ background-position: 0px -120px; }
-.secondary-menu li[data-item='menu_especial'] 			.icon{ background-position: 0px -140px; }
-.secondary-menu li[data-item='documentacion_viaje'] 	.icon{ background-position: 0px -160px; }
-.secondary-menu li[data-item='vacunas'] 				.icon{ background-position: 0px -180px; }
-.secondary-menu li[data-item='derechos_pasajeros'] 		.icon{ background-position: 0px -200px; }
+.secondary-menu li[data-item='politica_equipaje'] 		.icon, #detalle_busqueda_contenido a[data-item="politica_equipaje"] .icon { background-position: 0px 0px; }
+.secondary-menu li[data-item='equipajes_demorados'] 	.icon, #detalle_busqueda_contenido a[data-item="equipajes_demorados"] .icon{ background-position: 0px -20px; }
+.secondary-menu li[data-item='declaracion_equipaje'] 	.icon, #detalle_busqueda_contenido a[data-item="declaracion_equipaje"] .icon{ background-position: 0px -40px; }
+.secondary-menu li[data-item='tips_equipaje'] 			.icon, #detalle_busqueda_contenido a[data-item="tips_equipaje"] .icon{ background-position: 0px -60px; }
+.secondary-menu li[data-item='llegar_aeropuerto'] 		.icon, #detalle_busqueda_contenido a[data-item="llegar_aeropuerto"] .icon{ background-position: 0px -80px; }
+.secondary-menu li[data-item='servicios_especiales'] 	.icon, #detalle_busqueda_contenido a[data-item="servicios_especiales"] .icon { background-position: 0px -100px; }
+.secondary-menu li[data-item='pasajeros_especiales'] 	.icon, #detalle_busqueda_contenido a[data-item="pasajeros_especiales"] .icon{ background-position: 0px -120px; }
+.secondary-menu li[data-item='menu_especial'] 			.icon, #detalle_busqueda_contenido a[data-item="menu_especial"] .icon{ background-position: 0px -140px; }
+.secondary-menu li[data-item='documentacion_viaje'] 	.icon, #detalle_busqueda_contenido a[data-item="documentacion_viaje"] .icon{ background-position: 0px -160px; }
+.secondary-menu li[data-item='vacunas'] 				.icon, #detalle_busqueda_contenido a[data-item="vacunas"] .icon{ background-position: 0px -180px; }
+.secondary-menu li[data-item='derechos_pasajeros'] 		.icon, #detalle_busqueda_contenido a[data-item="derechos_pasajeros"] .icon{ background-position: 0px -200px; }
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
-#menu_item_experiencia_boa .secondary-menu .primary .icon {
+#menu_item_experiencia_boa .secondary-menu .primary .icon, #detalle_busqueda_contenido tr[data-id="menu_item_experiencia_boa"] .icon{
 	background-image: url("images/contenidos/icons_experiencia_boa.png");
 }
 
-.secondary-menu li[data-item='nuestra_flota'] 		 .icon{ background-position: 0px 0px; }
-.secondary-menu li[data-item='experiencia_bordo'] 	 .icon{ background-position: 0px -20px; }
-.secondary-menu li[data-item='seguro_internacional'] .icon{ background-position: 0px -40px; }
-.secondary-menu li[data-item='en_el_aeropuerto'] 	 .icon{ background-position: 0px -60px; }
-.secondary-menu li[data-item='cabinas'] 		 	 .icon{ background-position: 0px -80px; }
+.secondary-menu li[data-item='nuestra_flota'] 		 .icon, #detalle_busqueda_contenido a[data-item="nuestra_flota"] .icon { background-position: 0px 0px; }
+.secondary-menu li[data-item='experiencia_bordo'] 	 .icon, #detalle_busqueda_contenido a[data-item="experiencia_bordo"] .icon { background-position: 0px -20px; }
+.secondary-menu li[data-item='seguro_internacional'] .icon, #detalle_busqueda_contenido a[data-item="seguro_internacional"] .icon { background-position: 0px -40px; }
+.secondary-menu li[data-item='en_el_aeropuerto'] 	 .icon, #detalle_busqueda_contenido a[data-item="en_el_aeropuerto"] .icon { background-position: 0px -60px; }
+.secondary-menu li[data-item='cabinas'] 		 	 .icon, #detalle_busqueda_contenido a[data-item="cabinas"] .icon { background-position: 0px -80px; }
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
-#menu_item_somos_boa .secondary-menu .primary .icon {
+#menu_item_somos_boa .secondary-menu .primary .icon , #detalle_busqueda_contenido tr[data-id="menu_item_somos_boa"] .icon{
 	background-image: url("images/contenidos/icons_somos_boa.png");
 }
 
@@ -464,14 +472,14 @@ header .att-div{
 .secondary-menu li[data-item='somos_iosa']				.icon{ background-position: 0px -20px; }
 .secondary-menu li[data-item='reconocimientos_premios'] .icon{ background-position: 0px -40px; }
 
-#menu_item_somos_boa .secondary-menu .primary .iconRutas {
+#menu_item_somos_boa .secondary-menu .primary .iconRutas , #detalle_busqueda_contenido tr[data-id="menu_item_somos_boa"] .iconRutas {
 	background-image: url("images/contenidos/icono-mapa.png") !important;
 	background-position: 0px 0px;
 }
 
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
-#menu_item_planifica .secondary-menu .primary .icon {
+#menu_item_planifica .secondary-menu .primary .icon, #detalle_busqueda_contenido tr[data-id="menu_item_planifica"] .icon {
 	background-image: url("images/contenidos/icons_planifica_tu_viaje.png");
 }
 /* --------------------------------------------------------------------------- */
@@ -479,17 +487,18 @@ header .att-div{
 
 
 /* --------------------------------------------------------------------------- */
-#menu_item_boa_handling .secondary-menu .primary .icon {
+#menu_item_boa_handling .secondary-menu .primary .icon, #detalle_busqueda_contenido tr[data-id="menu_item_boa_handling"] .icon {
 	background-image: url("images/contenidos/aeropuerto.png");
 }
 
-.secondary-menu li[data-item='servicios_de_aeropuerto']		.icon{ background-position: 0px 0px; }
+.secondary-menu li[data-item='servicios_de_aeropuerto']		.icon, #detalle_busqueda_contenido a[data-item="servicios_de_aeropuerto"] .icon { background-position: 0px 0px; }
 /* --------------------------------------------------------------------------- */
 
 #sec_menu {
 	position: absolute;
 	top: 55px;
-	width: 100%;
+	/*width: 100%;*/
+	width: calc(100% - 300px);
 	height: 30px;
 	background-color: #D8D8D8;
 	padding: 0 0 0 300px;
@@ -3764,7 +3773,7 @@ input#buscador_contenido[type="text"] {
 	width: 400px;
 	/*height: 200px;*/
 	top: 30px;
-	/*left: 410px;*/
+	right: 0;
 	background-color: #2D4565;
 	background-color: #F5F5F5;
 	color: #FFF;

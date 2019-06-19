@@ -33,14 +33,34 @@ var buscadorContenido = (function(){
                         $.each(resp,function (index,encontrado) {
 
                             var idCambiado = encontrado.id;
+                            var idMenu = idCambiado.replace('ui_','');
 
-                            var $tr = $('<tr></tr>');
-                            $tr.append('<td><a style="text-decoration: underline; cursor: pointer;" data-id="'+idCambiado+'">'+encontrado.nombre+'</a></td>');
-                            $tr.append('<td>'+encontrado.cantidad+'</td>');
+
+                            var $contextMenuSeleccionado = $("#main_menu").find('[data-item="'+idMenu+'"]');
+                            var $iconParaBusqueda  = $contextMenuSeleccionado.find('.icon').clone();
+
+                            console.log('li',$contextMenuSeleccionado.parents('li'))
+
+                            var menuPadreId = $contextMenuSeleccionado.parents('li').attr('id');
+
+                            console.log($contextMenuSeleccionado.find('.icon'))
+                            $iconParaBusqueda.css({"float":"left"});
+
+                            var $tr = $('<tr data-id="'+menuPadreId+'"></tr>');
+                            var $a = $('<a data-item="'+idMenu+'" style="text-decoration: underline; cursor: pointer;" data-id="'+idCambiado+'"></a>');
+                            $a.append($iconParaBusqueda);
+                            $a.append('<div style="float:left; margin-left: 10px;">'+encontrado.nombre+'</div>');
+                            var $tdDescripcion = $('<td></td>');
+                            var $tdCantidad = $('<td></td>');
+                            $tdDescripcion.append($a);
+                            $tdCantidad.append(encontrado.cantidad);
+                            $tr.append($tdDescripcion);
+                            $tr.append($tdCantidad);
                             $table.append($tr);
 
                             $tr.find('a').click(function () {
                                 var id = $(this).attr('data-id');
+
                                 id = id.replace('ui_','');
                                 console.log('click',id)
                                 console.log('click',$("#main_menu").find('[data-item="'+id+'"]'))
@@ -80,6 +100,8 @@ var buscadorContenido = (function(){
 
                 if($found.length > 0){
                     var nombre = $(v).find('.header').text();
+
+
                     arra[i] = new Object({
                         "palabra_clave" : valor,
                         "encontrados":[],
