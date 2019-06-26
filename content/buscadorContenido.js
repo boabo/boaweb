@@ -7,14 +7,16 @@ var buscadorContenido = (function(){
     var $inputContenido;
     var $btnSearch;
     var $detalleBusquedaContenido = $("#detalle_busqueda_contenido");
+    var respuestaHtml;
 
     function init(){
         //agregamos contexto
         $inputContenido = $("#buscador_contenido");
         $btnSearch = $("#btnSearch");
 
-        $btnSearch.click(function () {
-            if($detalleBusquedaContenido.is(":visible")){
+        //$btnSearch.click(function () {
+        $inputContenido.keyup(function () {
+            if(/*$detalleBusquedaContenido.is(":visible")*/ '1'=='2'){
                 $detalleBusquedaContenido.hide();
             }else{
 
@@ -23,10 +25,20 @@ var buscadorContenido = (function(){
                 search(function (resp) {
                     //se debe dibujar en el detalle lo que se encontro
                     var $table = $('<table style="width:100%;"></table>');
+
+                    var $trClose = $('<tr></tr>');
+                    $trClose.append('<td colspan="2" style="text-align: right;"><a id="cerrarBuscador">cerrar[x]</a></td>');
+                    $table.append($trClose);
+
                     var $tr = $('<tr></tr>');
                     $tr.append('<td>Contenido</td>');
                     $tr.append('<td>Cantidad</td>');
                     $table.append($tr);
+
+
+                    $table.find('#cerrarBuscador').click(function () {
+                        $detalleBusquedaContenido.hide();
+                    });
 
                     if(resp.length > 0){
 
@@ -79,52 +91,71 @@ var buscadorContenido = (function(){
     }
 
     function search(callback){
-        var $body;
-        //necesitamos hacer ajax html para obtener el info_page
-        //aca se debe configurar que archivo traer depende el idioma
-        //aldo todo
-        $.ajax({
-            url: "info_page.html",
-            context: document.body
-        }).done(function(resp) {
+        console.log(respuestaHtml)
+        if (respuestaHtml == undefined){
+            var $body;
+            //necesitamos hacer ajax html para obtener el info_page
+            //aca se debe configurar que archivo traer depende el idioma
+            //aldo todo
+            $.ajax({
+                url: "info_page.html",
+                context: document.body
+            }).done(function(resp) {
 
-            var data = resp.replace('<body', '<body><div id="body"').replace('</body>','</div></body>');
-            var $body = $(data).filter('#body');
+                var data = resp.replace('<body', '<body><div id="body"').replace('</body>','</div></body>');
+                respuestaHtml = data;
 
-            var arra = [];
-            var valor = $inputContenido.val();
+                var arra = buscarHtmlPage(data);
 
-            var i = 0;
-            $.each($body.find('.ui-section'),function (k,v) {
-                var $found = $(v).find(':contains("'+valor+'")');
+                callback(arra);
 
-                if($found.length > 0){
-                    var nombre = $(v).find('.header').text();
-
-
-                    arra[i] = new Object({
-                        "palabra_clave" : valor,
-                        "encontrados":[],
-                        "id":$(v).attr('id'),
-                        "cantidad":$found.length,
-                        "nombre":nombre
-
-                    });
-                    /*porsi creamos mas completo*/
-                    $.each($found, function (indexContains, found) {
-                        arra[i].encontrados = new Object({
-
-                        });
-                    });
-                    i++;
-                }
-
-
-            })
-
+            });
+        }else{
+            console.log('ya no cargara la pagina nuevamente para traer datos del info page')
+            var arra = buscarHtmlPage(respuestaHtml);
             callback(arra);
+        }
 
-        });
+
+    }
+
+    function buscarHtmlPage (data){
+        var $body = $(data).filter('#body');
+
+        var arra = [];
+        var valor = $inputContenido.val();
+
+        var i = 0;
+        $.each($body.find('.ui-section'),function (k,v) {
+            var $found = $(v).find(':contains("'+valor+'")');
+
+            if($found.length > 0){
+                var nombre = $(v).find('.header').text();
+
+
+                arra[i] = new Object({
+                    "palabra_clave" : valor,
+                    "encontrados":[],
+                    "id":$(v).attr('id'),
+                    "cantidad":$found.length,
+                    "nombre":nombre
+
+                });
+                /*porsi creamos mas completo*/
+                $.each($found, function (indexContains, found) {
+                    arra[i].encontrados = new Object({
+
+                    });
+                });
+                i++;
+            }
+
+
+        })
+        return arra;
+    }
+
+    function dibujarEncontrados(resp){
 
     }
 
