@@ -3733,3 +3733,24 @@ div.panel {
 .lte8 .contenedor_tooltip:hover .tooltip {
 	display: block;
 }
+
+
+/*para el widget de genesys*/
+.cx-widget ,.ow-modal ,.cx-desktop ,.cx-theme-light {
+	z-index: 99999999;
+}
+.cx-widget
+.cx-common-container
+.cx-overlay
+.cx-channel-selector
+.cx-close
+.cx-theme-light
+.cx-desktop
+.cx-control-cx-channel-selector{
+	z-index: 999999999;
+
+}
+.cx-widget.cx-theme-light {
+	z-index: 999999999;
+
+}
