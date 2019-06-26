@@ -43,6 +43,9 @@
 
 
 
+	<link id="genesys-widgets-styles" rel="stylesheet" type="text/css" href="content/lib/genesys/widgets.min.css"/>
+
+
 	<link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
 
 	<!-- Style of the plugin -->
@@ -1310,6 +1313,109 @@
 
 </script>
 
+
+<script>
+    if(!window._genesys)window._genesys = {};
+    if(!window._gt)window._gt = [];
+
+    window._genesys.widgets = {
+
+        main: {},
+        webchat: {},
+        cobrowse: {},
+    };
+    window._genesys.widgets = {
+        main: {
+            debug: true,
+            theme: "light",
+            lang: "en",
+            customStylesheetID: "genesys_widgets_custom",
+            plugins: [
+                "cx-webchat",
+                "cx-webchat-service",
+                "cx-send-message",
+                "cx-send-message-service",
+                "cx-search",
+                "cx-knowledge-center-service",
+                "cx-chat-deflection",
+                "cx-channel-selector",
+                "cx-stats-service",
+                "cx-call-us",
+                "cx-sidebar"
+            ]
+        },
+        webchat: {
+            dataURL: "http://172.17.58.80:8080/genesys/2/chat/chat-BoA",
+            apikey: "",
+            userData: {},
+            autoInvite: {
+                enabled: true,
+                timeToInviteSeconds: 5,
+                inviteTimeoutSeconds: 30
+            },
+            chatButton: {
+                enabled: false,
+                openDelay: 1000,
+                effectDuration: 300,
+                hideDuringInvite: true
+            },
+            uploadsEnabled: false,
+            emojis: true
+        },
+        sendmessage: {
+            dataURL: "http://172.17.58.80:8080/genesys/2/email/SendMessage",
+            apikey: "",
+            SendMessageButton: {
+                enabled: false
+            }
+        },
+        channelselector: {
+            ewtRefreshInterval: 10,
+            channels: [
+                {
+                    enable: true,
+                    clickCommand: "SendMessage.open",
+                    readyEvent: "SendMessage.ready",
+                    displayName: "Enviar Email",
+                    i10n: "EmailTitle",
+                    icon: "email",
+                    html: ""
+                },
+                {
+                    enable: true,
+                    clickCommand: "WebChat.open",
+                    readyEvent: "WebChat.ready",
+                    displayName: "Iniciar Chat",
+                    i10n: "ChatTitle",
+                    icon: "chat",
+                    html: "",
+                    ewt: {
+                        display: true,
+                        queue: "",
+                        availabilityThresholdMin: 300,
+                        availabilityThresholdMax: 3600,
+                        hideChannelWhenThresholdMax: false
+                    }
+                }
+            ]
+        },
+        sidebar: {
+            showOnStartup: true,
+            position: "right",
+            expandOnHover: true,
+            channels: [
+                {
+                    name: "ChannelSelector"
+                }
+            ]
+        }
+    };
+
+</script>
+<script src="content/lib/genesys/widgets.min.kh.WebRTC.js"></script>
+<script src="content/lib/genesys/widgets.min.kh.WebRTC.inicio.js"></script>
+<!-- By default the JSAPI library file grtc.js is under the src dir -->
+<script type="text/javascript" src="content/lib/genesys/grtc.js"></script>
 
 
 </body>
