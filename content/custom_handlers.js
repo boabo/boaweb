@@ -170,7 +170,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:true,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:true,
+                    urlQr:'url del qr'
                 },
                 {
                     nombre:"economico",
@@ -178,7 +180,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:true,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:false,
+                    urlQr:'url del qr'
                 },
                 {
                     nombre:"bnb",
@@ -186,7 +190,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:false,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:true,
+                    urlQr:'url del qr'
                 },
                 {
                     nombre:"bcp",
@@ -194,7 +200,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:false,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:true,
+                    urlQr:'url del qr'
                 },
                 {
                     nombre:"bisa",
@@ -202,7 +210,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:false,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:true,
+                    urlQr:'url del qr'
                 },
                 {
                     nombre:"ecofuturo",
@@ -210,7 +220,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:false,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:true,
+                    urlQr:'url del qr'
                 },
                 {
                     nombre:"comunidad",
@@ -218,7 +230,9 @@ var BoA = {
                     url:"http://www.google.com",
                     visible:true,
                     enabled:false,
-                    type_:"POST"
+                    type_:"POST",
+                    qr:true,
+                    urlQr:'url del qr'
                 }
             ],
             credito:[

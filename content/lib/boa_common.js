@@ -52,7 +52,7 @@ function BoaConfirm(msg,callback1,callback2,option1,option2,alertbtn){
     $(".jqmAlertFooter").css('width',$('.jqmAlertWindow').attr('offsetWidth')+'px');
 }
 
-function popUpPagoQr(msg,callback1,callback2,callback2,option1,option2,alertbtn){
+function popUpPagoQr(msg,callback1,callback2,callback2,option1,option2){
     console.log('confirm',$('#confirm'))
     console.log('confirm',$('#confirm').length)
     var check1 = 0;
