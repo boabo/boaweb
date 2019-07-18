@@ -175,7 +175,7 @@ var contadorNuevaPeticion = 0;
 var menor_tarifa_ida = 0;
 var menor_tarifa_vuelta = 0;
 
-var reserva_redirect = false;
+var reserva_redirect = true;
 
 
 var validacion_ = {
@@ -511,6 +511,23 @@ function dibujarBancos(objeto,titulo){
 						}
 
 					}
+
+
+					//abriremos un popup para agregar el pago por tipo de qr
+                    popUpPagoQr('lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br> Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus <br>et magnis dis parturient montes, nascetur ridiculus mus. ',
+                        function generarQr() { // callback cuando apreta generar QR
+                            alert('asd')
+                        },
+                        function continuarSitioBanco() { //callback cuando apreta continuar pagos
+                            return 0;
+
+                        },
+                        function close() { //callback cuando apreta continuar pagos
+                            return 0;
+
+                        },'GENERAR QR','CONTINUAR'
+                    );
+
 				});
 
 			}
