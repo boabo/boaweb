@@ -528,6 +528,8 @@ function dibujarBancos(objeto,titulo){
 
                             },'GENERAR QR','CONTINUAR'
                         );
+					}else{
+						//meter tu codigo antiguo
 					}
 
 
