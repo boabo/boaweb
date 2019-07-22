@@ -515,7 +515,8 @@ function dibujarBancos(objeto,titulo){
 
 					if ( v.qr === true ){
                         //abriremos un popup para agregar el pago por tipo de qr
-                        popUpPagoQr('lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br> Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus <br>et magnis dis parturient montes, nascetur ridiculus mus. ',
+                        popUpPagoQr('<h3>¿Cómo funciona el pago con QR?</h3><br><ul id="jqmUl"><li>Debes ingresar a la app de tu banco. Si aún no la tienes, ingresa al sitio web de tu banco para descargarla.</li><li>Debes ir a la opción que dice Simple.</li><li>Para pagar, la app te pedirá escanear el código QR desde la cámara o desde la galería de imágenes.</li><li>Y en movimientos, verás todas las transacciones realizadas por este mecanismo.</li><ul>',
+                            'continuar con la pagina web',
                             function generarQr() { // callback cuando apreta generar QR
 								console.log('v',v.urlQr)
                             },

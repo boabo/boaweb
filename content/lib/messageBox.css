@@ -89,3 +89,13 @@ div.jqmAlertContent, div.jqmAlertContent pre {
     margin: 5px auto;
 
 }
+
+#jqmUl  {
+    list-style-type: circle;
+}
+#jqmUl li {
+    font-family: FuturaLight;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 100;
+}

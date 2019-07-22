@@ -52,7 +52,7 @@ function BoaConfirm(msg,callback1,callback2,option1,option2,alertbtn){
     $(".jqmAlertFooter").css('width',$('.jqmAlertWindow').attr('offsetWidth')+'px');
 }
 
-function popUpPagoQr(msg,callback1,callback2,callback2,option1,option2){
+function popUpPagoQr(msg,msg2,callback1,callback2,callback2,option1,option2){
     console.log('confirm',$('#confirm'))
     console.log('confirm',$('#confirm').length)
     var check1 = 0;
@@ -76,7 +76,7 @@ function popUpPagoQr(msg,callback1,callback2,callback2,option1,option2){
             '  <br><hr/>'+
             '  <div style="height: 60px;margin-top: 20px;padding-top: 15px;" class="jqmAlertFooter clearfix">'+
             '    <table class="tableBtnsAlert" align=center>'+
-            '       <tr><td style="font-family:FuturaLight; font-size: 13px;">deseo continuar al sitio web del banco</td>'+
+            '       <tr><td style="font-family:FuturaLight; font-size: 13px;">'+msg2+'</td>'+
             '       <td><div class="CONTINUAR Button">'+opt2+'</div></td></tr>'+
             '    </table><br/>'+
             '  </div>'+
