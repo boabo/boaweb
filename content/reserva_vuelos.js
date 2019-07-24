@@ -449,6 +449,13 @@ $(document).on('ready',function()
 
 function dibujarBancos(objeto,titulo){
 
+    $("#nit").focus(function () {
+		$(this).parent().find('.tooltip').remove();
+    });
+
+    $("#razon_social").focus(function () {
+        $(this).parent().find('.tooltip').remove();
+    });
 	$.each(objeto,function (k,v) {
 		if(v.visible == true){
 
@@ -473,10 +480,12 @@ function dibujarBancos(objeto,titulo){
 					var validado = true;
 
 
+					var $mensajeValidado = $('<div class="tooltip">Campo Requerido</div>');
 					//window.open(v.url);
 					if($("#nit").val() == ''){
 						validado = false;
 						$("#nit").css({"border":"1px solid red"});
+						$("#nit").parent().append($mensajeValidado.clone().css({'opacity':'0.9','pointer-events' : 'auto;'}));
 					}else{
 						$("#nit").css({"border":""});
 					}
@@ -485,7 +494,9 @@ function dibujarBancos(objeto,titulo){
 
 						validado = false;
 						$("#razon_social").css({"border":"1px solid red"});
-					}else{
+                        $("#razon_social").parent().append($mensajeValidado.clone().css({'opacity':'0.9','pointer-events' : 'auto;'}));
+
+                    }else{
 						$("#razon_social").css({"border":""});
 					}
 
@@ -510,7 +521,9 @@ function dibujarBancos(objeto,titulo){
 							showSimpleDialog2(mensaje);
 						}
 
-					}
+					}else{
+                        $("html, body").animate({ scrollTop: 50 }, "slow");
+                    }
 
 
 					if ( v.qr === true ){

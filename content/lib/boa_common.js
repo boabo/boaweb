@@ -74,11 +74,15 @@ function popUpPagoQr(msg,msg2,callback1,callback2,callback2,option1,option2){
             '  <hr/>'+
             '  <div class="jqmAlertContent" style="font-family:FuturaLight; font-size: 13px;">'+html+'</div>'+
             '  <br><hr/>'+
-            '  <div style="height: 60px;margin-top: 20px;padding-top: 15px;" class="jqmAlertFooter clearfix">'+
-            '    <table class="tableBtnsAlert" align=center>'+
-            '       <tr><td style="font-family:FuturaLight; font-size: 13px;">'+msg2+'</td>'+
-            '       <td><div class="CONTINUAR Button">'+opt2+'</div></td></tr>'+
-            '    </table><br/>'+
+            '    <div class="jqmAlertContent" style="font-family:FuturaLight; font-size: 13px;">' +
+            '        <div style="width: 500px;">' +
+            '            <div style="display: block; width: 100%;">' +
+            '                ' + msg2 +
+            '            </div>' +
+            '            <div style="position: relative;" class="jqmAlertFooter clearfix">' +
+            '                <table class="tableBtnsAlert" align="center">       <tbody><tr>       <td><div style="position: absolute; right: -5px;" class="CONTINUAR Button">' + opt2 + '</div></td></tr>    </tbody></table><br>' +
+            '            </div>' +
+            '        </div>' +
             '  </div>'+
             '</div>'+
             '</div>')
