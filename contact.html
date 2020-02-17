@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+	<title>Boliviana de Aviaci&oacute;n</title>
+	<!-- <link rel="icon" href="content/images/icon.png" type="image/x-icon"> -->
+
+	<!-- JQUERY LIBRARY -->
+	<script type="text/javascript" src="content/lib/jquery-2.2.3.min.js"></script>
+	<!-- BROWSER DETECTION -->
+	<script type="text/javascript" src="content/lib/jquery.browser.min.js"></script>
+
+	<!-- JQUERY UI -->
+	<link rel="stylesheet" type="text/css" href="content/lib/jquery_ui/css/dot-luv/jquery-ui.min.css">
+	<script src="content/lib/jquery_ui/jquery-ui.min_es.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_en.js"></script>  -->
+	<!-- <script src="content/lib/jquery_ui/jquery-ui.min_pt.js"></script>  -->
+	<script src="content/translate.js"></script> <!-- CHANGE BY LANGUAGE -->
+
+
+	<!-- SCROLLBAR LIBRARY -->
+	<link href="content/lib/custom_scrollbar/jquery.mCustomScrollbar.css"
+		rel="stylesheet" type="text/css" />
+	<script src="content/lib/custom_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<!-- FLAPPER =o -->
+	<link  href="content/lib/flapper/css/flapper.css" type="text/css" rel="stylesheet" />
+	<script src="content/lib/flapper/transform/dist/jquery.transform-0.9.3.min.js"></script>
+	<script src="content/lib/flapper/src/jquery.flapper.js"></script>
+
+	<!-- HASHTABLE LIBRARY -->
+	<script src="content/lib/jshashtable.js"></script>
+
+	<!-- NUMBER FORMATTER -->
+	<script src="content/lib/jquery.numberformatter-1.2.4.jsmin.js"></script>
+
+	<!-- CUSTOM SCRIPTS -->
+	<script type="text/javascript" src="content/reserva_vuelos.js"></script>
+
+	<!-- COMMON SCRIPTS -->
+	<script type="text/javascript" src="content/language_data_es.js"></script> <!-- PT, EN -->
+
+	<script type="text/javascript" src="content/common.js"></script>
+	<script type="text/javascript" src="content/custom_handlers.js"></script>
+	<script type="text/javascript" src="content/header.js"></script>
+	<script type="text/javascript" src="content/generic_container.js"></script>
+	<script type="text/javascript" src="content/validaciones_form.js"></script>
+	<script type="text/javascript" src="content/lib/validate.min.js"></script>
+	<script type="text/javascript" src="content/vuelosStore.js"></script>
+	<script type="text/javascript" src="content/vuelosDibujador.js"></script>
+	<script type="text/javascript" src="content/loadingBoa.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="content/lib/messageBox.css">
+	<script type="text/javascript" src="content/lib/jqModal.js"></script>
+	<script type="text/javascript" src="content/lib/boa_common.js"></script>
+
+
+	<!-- STYLE.CSS -->
+	<link href="content/style.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="content/reserva_vuelos.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<link href="content/lib/font-awesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+	<link rel="stylesheet" href="content/animate.css" type="text/css"/>
+	<link rel="stylesheet" href="content/flex-grid.css" type="text/css"/>
+	<link rel="stylesheet" href="content/menu/menu.css" type="text/css"/>
+
+
+	<link rel="stylesheet" type="text/css" href="content/afboacss/app.css">
+
+	<link rel="stylesheet" href="content/afboacss/animacion.css" type="text/css"/>
+	<link rel="stylesheet" href="content/afboacss/afformularios.css" type="text/css"/>
+
+
+	<link rel="stylesheet" href="content/afboacss/oficinas/style.css"/>
+
+	<!-- <link href="content/contenidos.css" media="screen" rel="stylesheet" type="text/css" /> -->
+</head>
+<body class="generic-container">
+
+<!--<loading style="display: none;">-->
+<!--</loading>-->
+
+
+
+	<header style="display:block">
+		<a id="btn_return_home" href="http://www.boa.bo"></a>
+		<div class="logo-header"></div>
+		<ul id="main_menu">
+			<li id="menu_item_planifica" >
+				<span>PLANIFICA TU VIAJE</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu">
+									<li class="primary" data-is_link="true">
+										<a href="http://www.boa.bo/bolivia/inicio">
+											<div class="icon"></div>RESERVAR VUELOS
+										</a>
+									</li>
+									<li class="primary" data-is_link="true">
+										<a href="http://www.boa.bo/bolivia/inicio">
+											<div class="icon"></div>ESTADO DEL VUELO
+										</a>
+									</li>
+									<li class="primary" data-is_link="true">
+										<a href="http://www.boa.bo/bolivia/inicio">
+											<div class="icon"></div>HORARIO DE VUELOS
+										</a>
+									</li>
+									<li class="primary disabled"  data-item="web_check_in"><div class="icon"></div>WEB CHECK-IN</li>
+									<li class="primary disabled"  data-item="formas_pago"><div class="icon"></div>FORMAS DE PAGO</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_antes_viajar">
+				<span>ANTES DE VIAJAR</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="politica_equipaje"><div class="icon"></div>POL&Iacute;TICA DE EQUIPAJE</li>
+									<li data-item="equipaje_mano">Equipaje de mano</li>
+									<li data-item="equipaje_facturable">Equipaje facturable</li>
+									<li data-item="exceso_equipaje">Exceso de equipaje</li>
+									<li data-item="equipaje_especial">Equipaje especial</li>
+									<li data-item="equipaje_adicional" class="disabled ">Equipaje adicional</li>
+									<li data-item="mercancias_peligrosas">Mercanc&iacute;as peligrosas</li>
+									<li data-item="equipaje_mascotas">Mascotas</li>
+									<li class="primary disabled" data-item="seguimiento_equipaje"><div class="icon"></div>SEGUIMIENTO DE EQUIPAJE EN L&Iacute;NEA</li>
+									<li class="primary disabled"  data-item="equipajes_demorados"><div class="icon"></div>EQUIPAJES DEMORADOS EXTRAVIADOS O DA&Ntilde;ADOS</li>
+									<li class="primary disabled"  data-item="declaracion_equipaje"><div class="icon"></div>DECLARACI&Oacute;N DEL VALOR DEL EQUIPAJE</li>
+									<li class="primary" data-item="tips_equipaje"><div class="icon"></div>TIPS DE EQUIPAJE</li>
+									<li class="primary disabled" data-item="equipaje_interlineal"><div class="icon"></div>EQUIPAJE INTERLINEAL</li>
+									<li class="primary" data-item="llegar_aeropuerto"><div class="icon"></div>LLEGAR AL AEROPUERTO</li>
+									<li data-item="hora_limite">Hora l&iacute;mite</li>
+									<li data-item="aeropuerto_lp">Aeropuerto de La Paz</li>
+									<li data-item="aeropuerto_cbba">Aeropuerto de Cochabamba</li>
+									<li data-item="aeropuerto_viruviru">Aeropuerto de Viru Viru</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="servicios_especiales"><div class="icon"></div>SERVICIOS ESPECIALES</li>
+									<li data-item="menores_no_acompanados">Menores no acompa&ntilde;ados</li>
+									<li data-item="pasajeros_necesidades_diferentes">Pasajeros con necesidades diferentes</li>
+									<li data-item="condiciones_medicas_especiales">Condiciones m&eacute;dicas especiales</li>
+									<li data-item="oxigeno">Transporte de ox&iacute;geno</li>
+									<li data-item="dialisis_portatil">Transporte de equipo de di&aacute;lisis port&aacute;til (PDMs)</li>
+									<li data-item="bebes">Viajando con beb&eacute;s</li>
+									<li data-item="mascota">Viajando con tu mascota en cabina</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="pasajeros_especiales"><div class="icon"></div>PASAJEROS ESPECIALES</li>
+									<li data-item="embarazadas">Mujeres embarazadas</li>
+									<li data-item="tercera_edad">Pasajeros de la tercera edad</li>
+									<li data-item="pasajeros_sobrepeso">Pasajeros que requieren asiento extra</li>
+									<li data-item="dificultad_vision" class="disabled">Pasajeros con dificultad de visi&oacute;n</li>
+									<li data-item="acompanantes" class="disabled">Acompa&ntilde;antes</li>
+									<li class="primary" data-item="menu_especial"><div class="icon"></div>MEN&Uacute; ESPECIAL</li>
+									<li class="primary" data-item="documentacion_viaje"><div class="icon"></div>DOCUMENTACI&Oacute;N DE VIAJE, VISA y API</li>
+									<li class="primary" data-item="vacunas"><div class="icon"></div>VACUNAS</li>
+									<li class="primary" data-item="derechos_pasajeros" data-action="none"><div class="icon"></div>DERECHOS DE LOS PASAJEROS</li>
+									<li data-is_link="true">
+										<a href="content/docs/contrato_transporte.pdf">Contrato de transporte</a>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_promos_destinos" style="display:none">
+				<span>PROMOS Y DESTINOS</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu">
+									<li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_experiencia_boa">
+				<span>EXPERIENCIA BoA</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="nuestra_flota"><div class="icon"></div>NUESTRA FLOTA</li>
+									<li class="primary" data-item="experiencia_bordo"><div class="icon"></div>EXPERIENCIA A BORDO</li>
+									<li data-item="gastronomia">Gastronom&iacute;a, Snack y Bebidas</li>
+									<li data-item="" class="disabled">Entretenimiento a Bordo</li>
+									<li data-item="" class="disabled">Duty Free a Bordo</li>
+									<li data-item="" class="disabled">Asiento + Confort</li>
+									<li data-item="" class="disabled">Revista Destinos</li>
+									<li data-item="" class="disabled">Wi-Fi y GSM</li>
+									<li class="primary" data-item="seguro_internacional"><div class="icon"></div>SEGURO INTERNACIONAL</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="night">
+									<li class="primary" data-item="en_el_aeropuerto"><div class="icon"></div>EN EL AEROPUERTO</li>
+									<li data-item="check_in">Servicio de Check-In</li>
+									<li data-item="" class="disabled">Kioskos de Check-In</li>
+									<li data-item="" class="disabled">Mobile Phone Check-In</li>
+									<li data-item="" class="disabled">Salas VIP</li>
+									<li data-item="" class="disabled">Alquiler de Veh&iacute;culos</li>
+									<li data-item="" class="disabled">Parqueos</li>
+									<li data-item="" class="disabled">Servicio de Chofer</li>
+									<li data-item="" class="disabled">Transporte Origen-Destino Aeropuerto</li>
+								</ul>
+							</td>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="night">
+									<li class="primary" data-item="cabinas"><div class="icon"></div>CARACTERISTICAS DE LAS CABINAS</li>
+									<li data-item="" class="disabled">Clase Business</li>
+									<li data-item="" class="disabled">Clase Econ&oacute;mica</li>
+									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE FAMILIA</li>
+									<li class="primary disabled" data-item=""><div class="icon"></div>VIAJE DE GRUPOS</li>
+
+									<li class="primary disabled" data-item=""><div class="icon"></div>NUESTRAS ALIANZAS</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_boa_millas" style="display:none">
+				<span>BoA MILES</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu">
+									<li class="primary"  data-item=""><div class="icon"></div>PRINCIPAL</li>
+									<li data-item="">Secundario A</li>
+									<li data-item="">Secundario B</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+			<li id="menu_item_somos_boa">
+				<span>SOMOS BoA</span>
+				<div class="shadow-margin-left"></div>
+				<div class="shadow-margin-right"></div>
+				<div class="fix-bottom"></div>
+				<div class="secondary-menu-container">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td valign="top">
+								<ul class="secondary-menu" data-sky="afternoon">
+									<li class="primary" data-item="perfil_corporativo"><div class="icon"></div>PERFIL CORPORATIVO</li>
+									<li class="primary disabled" data-item="liderazgo_corporativo"><div class="icon"></div>LIDERAZGO CORPORATIVO</li>
+									<li class="primary" data-item="somos_iosa"><div class="icon"></div>SOMOS IOSA</li>
+									<li class="primary" data-item="reconocimientos_premios"><div class="icon"></div>RECONOCIMIENTOS Y PREMIOS</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</li>
+		</ul>
+		<ul id="sec_menu">
+			<li id="menu_item_agencias">Agencias</li>
+			<li id="menu_item_corporativo" style="display:none">Corporativo</li>
+			<li id="menu_item_login" style="display:none">Login</li>
+		</ul>
+		<div id="menu_locations" class="header-menu">
+			<div class="flag bolivia"></div>
+			<h2><strong>BOLIVIA</strong></h2>
+			<div class="arrow-down-icon"></div>
+			<ul>
+				<li class="bolivia selected" data-location="bolivia">
+					<div class="flag"></div>
+					<h2><strong>BOLIVIA</strong></h2>
+				</li>
+				<li class="bsas"  data-location="bsas">
+					<div class="flag"></div>
+					<h2><strong>BS. AS.</strong></h2>
+				</li>
+				<li class="madrid" data-location="madrid">
+					<div class="flag"></div>
+					<h2><strong>MADRID</strong></h2>
+				</li>
+				<li class="saopaulo"  data-location="saopaulo">
+					<div class="flag"></div>
+					<h2><strong>SAO PAULO</strong></h2>
+				</li>
+				<li class="salta" data-location="salta">
+					<div class="flag"></div>
+					<h2><strong>SALTA</strong></h2>
+				</li>
+				<li class="miami" data-location="miami">
+					<div class="flag"></div>
+					<h2><strong>MIAMI</strong></h2>
+				</li>
+			</ul>
+		</div>
+		<div id="menu_languages" class="header-menu">
+			<h2><strong>ESPA&Ntilde;OL</strong></h2>
+			<div class="arrow-down-icon"></div>
+			<ul>
+				<li class="selected" data-language="ES">
+					<h2><strong>ESPA&Ntilde;OL</strong></h2>
+				</li>
+				<!-- <li data-language="EN">
+					<h2><strong>ENGLISH</strong></h2>
+				</li>
+				<li data-language="PT">
+					<h2><strong>PORTUGU&Ecirc;S</strong></h2>
+				</li> -->
+			</ul>
+		</div>
+	</header>
+
+
+<!--menu for mob-->
+<div id="wrapperMenu">
+	<div id="info">
+		<div id="info-content">
+			<div id="logoBoaMob"><img src="content/images/logoBoa.png"></div>
+		</div>
+	</div>
+
+	<input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+	<div class="menuMob" id="MenuMobile">
+		<label  class="menu-toggle" for="menu"><span>Toggle</span></label>
+		<!--<ul>
+			<li>
+				<a href="#">Menu-1</a>
+			</li>
+			<li>
+				<a href="#">Menu-2</a>
+			</li>
+			<li>
+				<label for="menu-3">Menu-3</label>
+				<input type="checkbox" id="menu-3" name="menu-3" class="menu-checkbox">
+				<div class="menu">
+					<label class="menu-toggle" for="menu-3"><span>Toggle</span></label>
+					<ul>
+						<li>
+							<a href="#">Menu-3-1</a>
+						</li>
+						<li>
+							<label for="menu-3-2">Menu-3-2</label>
+							<input type="checkbox" id="menu-3-2" name="menu-3-2" class="menu-checkbox">
+							<div class="menu">
+								<label class="menu-toggle" for="menu-3-2"><span>Toggle</span></label>
+								<ul>
+									<li>
+										<a href="#">Menu-3-2-1</a>
+									</li>
+									<li>
+										<a href="#">Menu-3-2-2</a>
+									</li>
+									<li>
+										<label for="menu-3-2-3">Menu-3-2-3</label>
+										<input type="checkbox" id="menu-3-2-3" name="menu-3-2-3" class="menu-checkbox">
+										<div class="menu">
+											<label class="menu-toggle" for="menu-3-2-3"><span>Toggle</span></label>
+											<ul>
+												<li>
+													<a href="#">Menu-3-2-3-1</a>
+												</li>
+												<li>
+													<a href="#">Menu-3-2-3-2</a>
+												</li>
+												<li>
+													<a href="#">Menu-3-2-3-3</a>
+												</li>
+												<li>
+													<a href="#">Menu-3-2-3-4</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<a href="#">Menu-3-2-4</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="#">Menu-3-3</a>
+						</li>
+						<li>
+							<a href="#">Menu-3-4</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<label for="menu-4">Menu-4</label>
+				<input type="checkbox" id="menu-4" name="menu-4" class="menu-checkbox">
+				<div class="menu">
+					<label class="menu-toggle" for="menu-4"><span>Toggle</span></label>
+					<ul>
+						<li>
+							<a href="#">Menu-4-1</a>
+						</li>
+						<li>
+							<a href="#">Menu-4-2</a>
+						</li>
+						<li>
+							<a href="#">Menu-4-3</a>
+						</li>
+						<li>
+							<a href="#">Menu-4-4</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<label for="menu-5">Menu-5</label>
+				<input type="checkbox" id="menu-5" name="menu-5" class="menu-checkbox">
+				<div class="menu">
+					<label class="menu-toggle" for="menu-5"><span>Toggle</span></label>
+					<ul>
+						<li>
+							<a href="#">Menu-5-1</a>
+						</li>
+						<li>
+							<a href="#">Menu-5-2</a>
+						</li>
+						<li>
+							<a href="#">Menu-5-3</a>
+						</li>
+						<li>
+							<a href="#">Menu-5-4</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#">Menu-6</a>
+			</li>
+		</ul>-->
+	</div>
+
+</div><!-- #wrapper -->
+
+
+
+	<div id="clouds">
+		<canvas id="clouds_canvas" width="2500" height="1000"></canvas>
+	</div>
+
+	<!-- UI RESERVA VUELOS -->
+	<div id="ui_contact" data-mode="normal" class="ui-section wide results selected" >
+
+		<div style="position:relative; ">
+
+
+			<!-- Contact -->
+			<div id="info_pago_bancos" class="info phase selected" style="min-width: auto;">
+				<div class="descripcion wide">
+
+					<div class="col-12">
+
+						<div class="form-container animated fadeInDown">
+							<form method="post" class="ffp-form container-fluid ff-box-shadow">
+
+
+								<fieldset class="row">
+									<div class="col-md-12" style="background-image: url('content/images/reclamos/banner_form.jpg'); background-size: 100% auto; background-repeat: no-repeat;  height: 250px;">
+										<div id="icons" style="margin-left: 35px; margin-top: 35px; float: left;"></div>
+										<div style=" float: left; margin-left:0; margin-top: 50px;">
+											<!-- <h2  id="titulo_call_center" style=" padding: 5px; background-image: url('content/afboaimages/call_center/fondo_text.png'); background-repeat: repeat; color: #fff; font-size: 30px;">Call Center</h2>
+                                             --><h2  id="titulo_call_center" style="  color: #fff; font-size: 35px; text-shadow: /*4px 3px 0px #ccc,*/ 6px 4px 0px rgba(0, 0, 0, 5);">Reclamos y Sugerencias</h2>
+
+											<div  style=" color:#ccc; font-size: 18px; ">
+												" Porque nos importa lo que piense "<br/> <span id="js-rotating" style="font-size: 25px; color: #EFAA35; font-weight: bold;">Reclama,Consulta,Informate,Felicitanos</span> <span id="ico_emo"></span>
+											</div>
+
+										</div>
+
+									</div>
+								</fieldset>
+
+
+
+								<fieldset class="row">
+
+									<div class="form-group col-md-12">
+
+										<div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; color:#111; ">
+											<div class="col-md-6">
+												<h2 class="titulo_atencion"></h2>
+
+											</div>
+
+											<div class="col-md-3">
+
+											</div>
+											<div class="col-md-3">
+
+                                                <span>
+
+
+                                                    <i style="float: right; margin-left: 10px;"
+													   class="fa fa-youtube fa-2x"></i>
+                                                    <i style="float: right; margin-left: 10px;"
+													   class="fa fa-twitter fa-2x"></i>
+                                                    <i style="float: right; margin-left: 10px;"
+													   class="fa fa-facebook fa-2x"></i>
+                                                </span>
+
+											</div>
+
+
+										</div>
+										<hr style=" margin-bottom: 0px;"/>
+										<div class="col-md-12">
+											<div class="form-container animated fadeInDown">
+												<form name="form" action="#" id="formulario" method="post" class="ffp-form container-fluid ff-box-shadow">
+
+													<fieldset class="row">
+
+														<div class=" col-md-12" style="color: #111;">
+
+															<div class="col-md-12">
+																Si quieres comunicarte con nosotros y necesitas hacer un reclamo, enviarnos alguna sugerencia, felicitarnos por nuestros servicios o alguna consulta en general por favor completa este formulario entregando toda la información requerida y así poder ayudarte lo antes posible.
+																Según la naturaleza de tu mensaje, este será derivado al área que corresponda y será respondido dentro de los próximos 30 días.
+																No olvides, tu opinión es importante, gracias por ayudarnos a mejorar nuestro servicio.
+
+															</div>
+
+
+														</div>
+
+
+														<div class="col-md-12"
+															 style="background-color: #fff; padding-top: 30px;">
+															<div id="mensajes_formulario">
+															</div>
+
+
+															<div class="col-md-12">
+																<legend><span>Seleccione el Asunto del Mensaje</span>
+																</legend>
+															</div>
+
+															<div class="form-group col-md-6 has-icon-left">
+																<label for="select_tipo">Quiero Realizar</label>
+																<select data-type="select" id="select_tipo" class="form-control">
+																	<option value="Reclamo" selected="">Reclamo</option>
+																	<option value="Sugerencia" >Sugerencia</option>
+																	<option value="Felicitación" >Felicitación</option>
+																	<option value="Consulta" >Consulta</option>
+																	<option value="Denuncia" >Denuncia</option>
+
+																</select>
+																<span style="height: 31px;"
+																	  class="select-icon fa fa-sort-desc fa-2x">
+                                                            </span>
+																<span
+																		class="fa fa-street-view icon-left">
+                                                            </span>
+															</div>
+
+
+															<div class="form-group col-md-6 has-icon-left">
+																<label for="servicio_asociado">Servicio Asociado</label>
+																<select  data-type="select" id="servicio_asociado" class="form-control">
+																	<option value="" selected="">Servicio en Aeropuerto
+																	</option>
+																	<option value="" selected="">Servicio a bordo</option>
+																	<option value="" selected="">Equipaje</option>
+																	<option value="" selected="">Retraso/Cancelación del
+																		Vuelo
+																	</option>
+																	<option value="" selected="">Oficinas de Venta</option>
+																	<option value="" selected="">Call Center</option>
+																	<option value="" selected="">Srevicio Web (www.boa.bo)
+																	</option>
+																	<option value="" selected="">Otros Servicios</option>
+
+																</select>
+																<span style="height: 31px;"
+																	  class="select-icon fa fa-sort-desc fa-2x">
+                                                            </span>
+																<span
+																		class="fa fa-street-view icon-left">
+                                                            </span>
+															</div>
+
+
+
+
+															<div class="col-md-12">
+																<legend><span>Su Mensaje</span></legend>
+															</div>
+
+
+															<div class="form-group col-md-12 has-icon-right">
+																<label for="select_pais">Le rogamos nos facilite toda la información relevante ya que así nos permitirá contestar mejor su solicitud. No introduzca ninguna información personal como números de tarjetas de crédito o Claves de Acceso.</label>
+
+																<textarea name="" class="form-control" id="" cols="30"
+																		  rows="10"></textarea>
+																<span style="margin-top: 25px;"
+																	  class="fa fa-edit fa-2x icon-right"></span>
+
+
+															</div>
+
+
+															<div class="form-group col-md-12">
+
+																<label for="select_pais"><h2>Documentación Adjunta</h2>
+																	<p>
+																		<i class="fa fa-upload"></i> Solo podrás adjuntar una máximo de tres archivos de los siguientes tipos: GIF, JPEG, JPG, PNG, BMP, PDF.
+
+																	</p>
+																</label>
+
+
+																<input style="height: 40px; width:50%; "   id="uploadFile" placeholder="busca tu archivo" disabled="disabled" />
+																<div class="fileUpload btn btn-primary">
+
+																	<input multiple id="uploadBtn"  name="archivos[]" type="file" accept="image/gif, image/jpeg , image/png"   class="upload" />
+																	<span>Subir un Archivo</span>
+																</div>
+															</div>
+
+															<div class="form-group col-md-12">
+																<legend><span>Tipo de Identidad</span>
+																	<span style="float: right; padding-left: 5px;"
+																		  class="group_form"><i
+																			class="fa fa-chevron-up"></i>
+                                                              </span>
+																</legend>
+
+																<div class="contenedor_de_form" id="checkboxsTipoContenedor">
+
+
+																	<div class="form-group col-md-12 has-icon-left">
+																		<div class="checkbox-inline">
+																			<input type="checkbox" value="Sr." id="sr"
+																			>
+																			<label for="sr">Sr.</label>
+																		</div>
+																		<div class="checkbox-inline">
+																			<input type="checkbox" value="Sra." id="sra"
+																			>
+																			<label for="sra">Sra.</label>
+																		</div>
+
+																		<div class="checkbox-inline" id="anonimatoSection">
+																			<input type="checkbox" value="anonimato." id="anonimato"
+																			>
+																			<label for="anonimato">Anonimato.</label>
+																		</div>
+
+																	</div>
+
+
+																</div>
+
+															</div>
+
+
+															<div class="form-group col-md-12 dataContact">
+																<legend><span>Tu Identidad</span>
+																	<span style="float: right; padding-left: 5px;"
+																		  class="group_form"><i
+																			class="fa fa-chevron-up"></i>
+                                                              </span>
+																</legend>
+
+
+																	<div class="contenedor_de_form">
+
+
+
+
+
+																	<div class="form-group col-md-3 has-icon-left">
+																		<label for="apellido">Apellidos</label>
+
+																		<input type="text" class="form-control"
+																			   id="apellido"/>
+																		<span class="fa fa-user icon-left"></span>
+
+
+																	</div>
+
+																	<div class="form-group col-md-3 has-icon-left">
+																		<label for="nombre">Nombres</label>
+
+																		<input type="text" class="form-control"
+																			   id="nombre"/>
+																		<span class="fa fa-user icon-left"></span>
+
+
+																	</div>
+
+
+																	<div class="form-group col-md-4 has-icon-left">
+																		<label for="documento">Tipo de Documento</label>
+																		<select id="documento" class="form-control">
+																			<option value="" selected="">Cedula de Identidad
+																			</option>
+																			<option value="" selected="">Pasaporte</option>
+																			<option value="" selected="">Otro</option>
+
+																		</select>
+																		<span style="height: 31px;"
+																			  class="select-icon fa fa-sort-desc fa-2x">
+                                                            </span>
+																		<span
+																				class="fa fa-street-view icon-left">
+                                                            </span>
+																	</div>
+
+																	<div class="form-group col-md-2">
+																		<label for="numero">Numero</label>
+
+																		<input type="text" class="form-control"
+																			   id="numero"/>
+
+
+																	</div>
+																</div>
+
+															</div>
+
+
+															<div class="form-group col-md-12 dataContact" style="
+                                                        margin-top: 15px;">
+																<legend>
+																	<span>Datos de Contacto</span>
+																	<span style="float: right; padding-left: 5px;"
+																		  class="group_form"><i
+																			class="fa fa-chevron-up"></i></span>
+																</legend>
+
+																<div class="contenedor_de_form">
+
+
+																	<div class="form-group col-md-6 has-icon-right">
+																		<label for="email">Email</label>
+
+																		<input type="text" class="form-control" id="email"/>
+																		<span
+																				class="">
+                                                                    </span>
+
+
+																	</div>
+
+																	<div class="form-group col-md-6">
+																		<label for="confirma_email">Confirma tu
+																			Email</label>
+
+																		<input type="text" class="form-control"
+																			   id="confirma_email"/>
+																		<span
+																				class="">
+                                                                    </span>
+
+
+																	</div>
+
+
+																	<div id="mensaje_email" class="col-md-12"
+																		 style="margin-top: -20px;">
+																		<!-- aca entra el mensaje de la aprobacion o lo contrario del correo -->
+
+																	</div>
+																	<br/>
+
+
+																	<div class="form-group col-md-4 has-icon-left">
+																		<label for="pais">Pais</label>
+																		<select id="pais" class="form-control">
+																			<option value="" selected="">Bolivia</option>
+
+																		</select>
+																		<span style="height: 31px;"
+																			  class="select-icon fa fa-sort-desc fa-2x">
+                                                            </span>
+																		<span
+																				class="fa fa-street-view icon-left">
+                                                            </span>
+																	</div>
+
+
+																	<div class="form-group col-md-4 has-icon-left">
+																		<label for="ciudad">Ciudad</label>
+																		<select id="ciudad" class="form-control">
+																			<option value="" selected="">Cochabamba</option>
+
+																		</select>
+																		<span style="height: 31px;"
+																			  class="select-icon fa fa-sort-desc fa-2x">
+                                                                    </span>
+																		<span
+																				class="fa fa-street-view icon-left">
+                                                                    </span>
+																	</div>
+
+
+																	<div class="form-group col-md-4">
+																		<label for="calle">Calle y Numero</label>
+																		<input type="text" class="form-control" id="calle"/>
+																	</div>
+
+
+																	<div class="form-group col-md-6 has-icon-left">
+																		<label for="prefijo">Prejijo</label>
+																		<select id="prefijo" class="form-control">
+																			<option value="" selected="">Prefijo</option>
+
+																		</select>
+																		<span style="height: 31px;"
+																			  class="select-icon fa fa-sort-desc fa-2x">
+                                                                    </span>
+																		<span
+																				class="fa fa-street-view icon-left">
+                                                                    </span>
+																	</div>
+
+																	<div class="form-group col-md-6">
+																		<label for="telefono">Telefono de Contacto</label>
+
+																		<input type="text" class="form-control"
+																			   id="telefono"/>
+
+
+																	</div>
+
+																</div>
+
+
+															</div>
+
+
+															<div class="form-group col-md-12 dataContact" style="
+                                                        margin-top: 15px;">
+																<legend>
+																	<span>Si tu mensaje esta relacionado con un vuelo, completa las siguientes datos</span>
+																	<span style="float: right; padding-left: 5px;"
+																		  class="group_form"><i
+																			class="fa fa-chevron-up"></i></span>
+																</legend>
+
+																<div class="contenedor_de_form">
+
+
+																	<div class="form-group col-md-2 has-icon-right">
+																		<label for="codigo_vuelo">Nro Vuelo</label>
+
+																		<input type="text" class="form-control"
+																			   id="codigo_vuelo"/>
+																		<span
+																				class="">
+                                                                    </span>
+
+
+																	</div>
+
+																	<div class="form-group col-md-4">
+																		<label for="numero_vuelo">ejemplo 714</label>
+																		<input type="text" class="form-control"
+																			   id="numero_vuelo"/>
+																		<span
+																				class="">
+                                                                    </span>
+
+
+																	</div>
+
+																	<div class="form-group col-md-6 has-icon-left">
+																		<label id="lb_fecha" for="datepicker-form"
+																			   style="color: #fff;">
+																			Fecha Vuelta</label>
+																		<input type="text" name="datepicker-vuelta"
+																			   id="datepicker-form"
+																			   placeholder="Fecha"
+																			   class="form-control"><span
+																			style="margin-top: -4px;"
+																			class="fa fa-calendar icon-left"></span>
+																	</div>
+
+
+																	<div class="form-group col-md-6 has-icon-left">
+																		<label for="cb_origen"
+																			   style="color:#fff; ">Origen</label>
+																		<select id="cb_origen" class="form-control">
+																			<option value="" selected="" disabled="">
+																				DESTINO
+																			</option>
+																			<option value="">Origen</option>
+																			<option value="CIJ">COBIJA</option>
+																			<option value="CBB">COCHABAMBA</option>
+																			<option value="LPB">LA PAZ</option>
+																			<option value="MAD">MADRID</option>
+																			<option value="VVI">SANTA CRUZ</option>
+																			<option value="SRE">SUCRE</option>
+																			<option value="TJA">TARIJA</option>
+																			<option value="EZE">BUENOS AIRES</option>
+																			<option value="GRU">SAO PAULO</option>
+																		</select>
+																		<span style="height: 31px;" class="select-icon fa fa-sort-desc fa-2x">
+                                                                    </span>
+																		<span
+																				class="fa fa-street-view icon-left">
+                                                                    </span>
+																	</div>
+
+																	<div class="form-group col-md-6 has-icon-left">
+																		<label for="cb_destino"
+																			   style="color:#fff; ">Destino</label>
+																		<select id="cb_destino" class="form-control">
+																			<option value="" selected="" disabled="">
+																				DESTINO
+																			</option>
+																			<option value="">Destino</option>
+																			<option value="CIJ">COBIJA</option>
+																			<option value="CBB">COCHABAMBA</option>
+																			<option value="LPB">LA PAZ</option>
+																			<option value="MAD">MADRID</option>
+																			<option value="VVI">SANTA CRUZ</option>
+																			<option value="SRE">SUCRE</option>
+																			<option value="TJA">TARIJA</option>
+																			<option value="EZE">BUENOS AIRES</option>
+																			<option value="GRU">SAO PAULO</option>
+																		</select>
+																		<span style="height: 31px;"
+																			  class="select-icon fa fa-sort-desc fa-2x"></span><span
+																			class="fa fa-thumb-tack icon-left"></span>
+																	</div>
+
+
+
+																	<div class="form-group col-md-6">
+																		<label for="codigo_reserva">Codigo Reserva</label>
+																		<input type="text" class="form-control"
+																			   id="codigo_reserva"/>
+																		<span
+																				class="">
+                                                                    </span>
+
+
+																	</div>
+
+																	<div class="form-group col-md-6">
+																		<label for="numero_boleto">Numero Boleto</label>
+																		<input type="text" class="form-control"
+																			   id="numero_boleto"/>
+																		<span
+																				class="">
+                                                                    </span>
+
+
+																	</div>
+
+
+																	<!--<div class="form-group col-md-12">
+                                                                    <div class="input-group">
+                                                                        <input type="text" name="verificatin-code"  placeholder="pon resultado" class="form-control"><span class="input-group-addon">5 + 2 ?</span>
+                                                                    </div>
+                                                                    </div>  -->
+
+
+
+																</div>
+
+
+
+
+
+															</div>
+
+															<div class="col-md-12" id="bt_animated_botones"
+																 style="background-color: #2d4562; margin-top: 20px; padding: 10px;">
+
+																<button id="btn_formulario" type="button"
+																		value="Registrar"
+																		style="margin-right: 20px; float: right;"
+																		class="btn btn-primary">Enviar Mensaje <span
+																		class="btn-icon-right icon-cancel5"></span>
+																</button>
+																<button style="float: right; margin-right: 5px;"
+																		type="reset"
+																		class="btn btn-default">Reniciar<span
+																		class="btn-icon-right icon-cancel5"></span>
+																</button>
+
+															</div>
+
+
+
+														</div>
+
+
+														<!-- <img src="content/afboaimages/aniversario.jpg" width="100%" alt=""/>-->
+													</fieldset>
+
+												</form>
+											</div>
+
+										</div>
+
+
+
+
+										<!-- <img src="content/afboaimages/aniversario.jpg" width="100%" alt=""/>-->
+								</fieldset>
+
+								<!-- <footer>
+
+                                </footer> -->
+
+							</form>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+
+	</div>
+
+
+
+
+
+<div id="divBordeInferiorMob"></div>
+
+<script src="content/menu/menu.js"></script>
+<script>
+    $( function() {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+        var $widget_resumen_reserva = $("#widget_resumen_reserva");
+        var divFlotante =  $( "#divFlotante");
+       	var procesando = false;
+
+        divFlotante.click(function (){
+            console.log('click',$widget_resumen_reserva.hasClass('MostrarWidgetMobile'))
+
+            if(!procesando){
+                procesando= true;
+                if($widget_resumen_reserva.hasClass('MostrarWidgetMobile') == true){
+                    $widget_resumen_reserva.removeClass('MostrarWidgetMobile');
+
+                    $widget_resumen_reserva.addClass('ocultarWidgetMobile');
+
+                    $(".ocultarWidgetMobile").one(animationEnd, function () {
+                        console.log('ocultamos')
+                        $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
+                        $widget_resumen_reserva.css({"visibility": "hidden"});
+                        $widget_resumen_reserva.css({"display": "none"});
+
+                        divFlotante.find('svg').removeClass("openMobile");
+                        divFlotante.find('svg').addClass("cerrarMobile");
+                        divFlotante.css({"background-color":""});
+                        procesando= false;
+                    });
+
+                }else{
+                    procesando= true;
+                    $widget_resumen_reserva.css({"display": ""});
+
+                    $widget_resumen_reserva.addClass('MostrarWidgetMobile');
+                    $widget_resumen_reserva.css({"visibility": "visible"});
+                    $('.MostrarWidgetMobile').one(animationEnd, function () {
+                        console.log('ocultamos ocultarWidgetMobile');
+                        console.log($widget_resumen_reserva)
+                        $widget_resumen_reserva.removeClass('ocultarWidgetMobile');
+
+                        divFlotante.find('svg').removeClass("cerrarMobile");
+                        divFlotante.find('svg').addClass("openMobile");
+
+                        divFlotante.css({"background-color":"#EFAA35"});
+
+                        procesando= false;
+                    });
+                }
+			}
+
+
+        });
+
+    } );
+</script>
+
+		<script>
+            $( function() {
+                loadingBoa.terminarCargarBoa();
+                setTimeout(function () {
+                    $("#ui_contact").removeClass("blured");
+                },500 * 1000);
+
+
+                const selectTipo = $('#select_tipo');
+                const selectServicioAsociado = $('#servicio_asociado');
+                const checkAnonimato = $('#anonimato');
+
+                $('#anonimatoSection').hide();
+
+                selectTipo.change(function () {
+					if($(this).val() === 'Denuncia'){
+                        selectServicioAsociado.prop('disabled',true).prop('hidden', true);
+                        $('#anonimatoSection').show();
+
+					}else{
+                        selectServicioAsociado.prop('disabled',false).prop('hidden', false);
+                        $('#anonimatoSection').hide();
+					}
+                });
+
+                $('#checkboxsTipoContenedor').find('input').click(function () {
+					const $check = $(this);
+                    $('#checkboxsTipoContenedor').find('input').prop('checked',false);
+                    $check.prop('checked',true);
+
+                    if($check.val() !== 'anonimato.'){
+                        $('.dataContact').show();
+					}
+
+
+
+                });
+                checkAnonimato.click(function () {
+
+					if($(this).prop('checked') === true) {
+						$('.dataContact').hide();
+					}else{
+                        $('.dataContact').show();
+					}
+                })
+
+            } );
+
+		</script>
+
+
+
+		<script src="content/afboajs/datepicker.js"></script>
+		<script src="content/afboajs/formance/jquery.formance.min.js"></script>
+		<script src="content/afboajs/plug/formulario_reclamos.js"></script>
+
+		<script src="content/afboajs/call_center/text/morphext.js"></script>
+		<script>
+            $("#js-rotating").Morphext({
+                animation: "bounceIn",
+                separator: ",",
+                speed: 4000,
+                complete: function () {
+                    console.log("letra caambiada " + this.index);
+                    $("#ico_emo").empty();
+                    if(this.index == 0){
+                        $("#ico_emo").append(' <i style="opacity: 0.4" class="fa fa-frown-o fa-2x"></i>');
+                    }else if(this.index == 1)
+                        $("#ico_emo").append(' <i style="opacity: 0.4" class="fa fa-question fa-2x"></i>');
+                    }else if(this.index == 2){
+                        $("#ico_emo").append(' <i style="opacity: 0.4" class="fa fa-info-circle fa-2x"></i>');
+                    }else if(this.index == 3){
+                        $("#ico_emo").append(' <i  style="opacity: 0.4" class="fa fa-smile-o fa-2x"></i>');
+                    }
+                }
+            });
+		</script>
+
+
+		<script type="text/javascript">
+
+            //para validar email
+			/*if($("#email").val().indexOf('@', 0) == -1 || $("#email").val().indexOf('.', 0) == -1) {
+			 alert('El correo electrónico introducido no es correcto.');
+			 }*/
+
+		</script>
+
+		<script>
+            document.getElementById("uploadBtn").onchange = function () {
+                document.getElementById("uploadFile").value = this.value;
+            };
+		</script>
+
+
+		<script>
+
+
+            $("#btn_formulario").click(function () {
+
+                if (igualdad()) {
+
+
+                } else {
+
+                }
+
+            });
+            //efecto para ocultar o mostrar los forms//
+            $(".group_form").click(function () {
+                var ico = $(this).children();
+                var form = $(this).parent().next('div');
+                if (ico.hasClass('fa-chevron-up')) {
+                    form.hide(1000, function () {
+                    });
+                    ico.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+                } else {
+                    form.show(1000, function () {
+                    });
+                    ico.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+                }
+            });
+            //fin efecto de form //
+
+
+            function igualdad() {
+                var iguales = true;
+                if ($("#email").val() == $("#confirma_email").val()) {
+                    $("#email").next().removeClass('fa fa-remove icon-right');
+                    $("#confirma_email").next().removeClass('fa fa-remove icon-right');
+                    $("#mensaje_email").empty();
+                    $("#mensaje_email").removeClass('desigualdad');
+                    iguales = true;
+
+                } else {
+
+                    iguales = false;
+                    $("#email").next().addClass('fa fa-remove icon-right');
+                    $("#confirma_email").next().addClass('fa fa-remove icon-right');
+
+                    if ($("#mensaje_email").hasClass('desigualdad') == false) {
+                        $("#mensaje_email").empty().append('<div style="background-color: #C12826; color: #fff; padding: 5px; margin-bottom: 20px; position: static;font-size: 12px;">No son iguales</div>').hide().fadeToggle('slider');
+                    }
+                    $("#mensaje_email").addClass('desigualdad');
+
+                }
+
+                return iguales;
+            }
+
+
+		</script>
+
+
+		<script>
+            jQuery(function ($) {
+                var objetos = {
+                    "form": [
+                        {
+                            "id": "email",
+                            "tipo_de_validacion": "email",
+                            "mensaje_error": "Datos del email Incorrectos",
+                            "mensaje_bien": "Datos Correctos"
+                        },
+                        {
+                            "id": "confirma_email",
+                            "tipo_de_validacion": "email",
+                            "mensaje_error": "Datos del email Incorrectos",
+                            "mensaje_bien": "Datos Correctos"
+                        },
+                        {
+                            "id": "telefono",
+                            "tipo_de_validacion": "phone_number",
+                            "mensaje_error": "Datos del email Incorrectos",
+                            "mensaje_bien": "Datos Correctos"
+                        },
+
+                    ]
+                };
+                $.each(objetos.form, function (index, value) {
+
+
+                    $('#' + value.id + '').formance('format_' + value.tipo_de_validacion);
+					/*.addClass('form-control')
+					 .wrap('<div class=\'form-group\' />')
+					 .parent()
+					 .append('<label class=\'control-label\'></label>');*/
+
+                    $('#' + value.id + '').on('keyup change blur', function (value) {
+                        return function (event) {
+                            $this = $(this);
+                            //console.log($(this));
+
+                            if (!$this.formance('validate_' + value.tipo_de_validacion)) {
+                                $this.parent()
+                                    .removeClass('has-success has-error')
+                                    .addClass('has-error')
+                                    .children(':last')
+								/*.text(value.mensaje_error)*/;
+                            } else {
+                                $this.parent()
+                                    .removeClass('has-success has-error')
+                                    .addClass('has-success')
+                                    .children(':last')
+								/* .text(value.mensaje_bien)*/;
+                            }
+                        }
+                    }(value));
+                });
+            });
+
+		</script>
+
+
+</body>
+</html>
