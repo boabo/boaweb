@@ -441,6 +441,8 @@ $(document).on('ready',function()
     dibujarBancos(BoA.bancos.debito, "debito");
     dibujarBancos(BoA.bancos.credito, "credito");
     dibujarBancos(BoA.bancos.billetera, "billetera");
+    dibujarBancos(BoA.bancos.qr, "qr");
+
 
 
 

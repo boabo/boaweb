@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 
-var VISTAPAGOS = false;
+var VISTAPAGOS = true;
 var DIRECCIONAR = false;
 var TIME_END = 500;
 
@@ -163,6 +163,17 @@ var BoA = {
     //configuracion de bancos nuevo
     bancos :
         {
+            qr:[
+                {
+                    nombre:"visa",
+                    img:"content/images/bancos/visa.png",
+                    url:"http://www.google.com",
+                    visible:true,
+                    enabled:true,
+                    type_:"POST",
+                    mensaje:"Por motivos en mejoras sobre nuestra plataforma para pago con Tarjetas de Credito. Nos vemos obligados a suspender este servicio. Por favor intente realizar su pago por medio de Banca Electronica o Billtera Electronica. Disculpe las molestias"
+                }
+            ],
             debito:[
                 {
                     nombre:"banco_union",
