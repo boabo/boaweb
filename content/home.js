@@ -40,8 +40,11 @@ var arraOrigenDestino = [
         code: 'LPB',
         desc: 'LA PAZ'
     }, {
-        code: 'MAD',
-        desc: 'MADRID'
+        code: 'ORU',
+        desc: 'ORURO'
+    }, {
+        code: 'POI',
+        desc: 'POTOSI'
     }, {
         code: 'VVI',
         desc: 'SANTA CRUZ'
@@ -55,14 +58,26 @@ var arraOrigenDestino = [
         code: 'TDD',
         desc: 'TRINIDAD'
     }, {
+        code: 'UYU',
+        desc: 'UYUNI'
+    }, {
+        code: 'BYC',
+        desc: 'YACUIBA'
+    }, {
+        code: 'BCN',
+        desc: 'BARCELONA'
+    }, {
         code: 'EZE',
-        desc: 'BUENOS AIRE'
+        desc: 'BUENOS AIRES'
+    }, {
+        code: 'MAD',
+        desc: 'MADRID'
+    }, {
+        code: 'MIA',
+        desc: 'MIAMI'
     }, {
         code: 'GRU',
-        desc: 'SAO PAUL'
-    }, {
-        code: 'WAS',
-        desc: 'WAS',
+        desc: 'SAO PAULO'
     }
 ];
 
@@ -77,12 +92,12 @@ $(document).on('ready',function()
 
 
 
-    var tamanoParaPonerReserva = ((parseInt($( window ).height()) / 2) - (251/2) + 30 );
+    var tamanoParaPonerReserva = ((parseInt($( window ).height()) / 2) - (251/2) + 500 );
     $("#buscador_vuelos").css({"top":tamanoParaPonerReserva+"px"});
 
 
     $( window ).resize(function() {
-        var tamanoParaPonerReserva = ((parseInt($( window ).height()) / 2) - (251/2) + 30 );
+        var tamanoParaPonerReserva = ((parseInt($( window ).height()) / 2) - (251/2) + 500 );
         $("#buscador_vuelos").css({"top":tamanoParaPonerReserva+"px"});
     });
 

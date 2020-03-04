@@ -115,7 +115,7 @@ footer .validable,
 /* --------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------- */
 body {
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 
 body.generic-container
@@ -3610,7 +3610,7 @@ div.panel {
 	/*padding-left: 40px;*/
 	position: absolute;
 	width: 200px;
-	height: 230px;
+	height: auto;
 	top: 180px;
 	/* left: 10px; */
 	background-color: #2D4565;
