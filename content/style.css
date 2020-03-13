@@ -3754,3 +3754,25 @@ div.panel {
 	z-index: 999999999;
 
 }
+
+
+/* qr mobile y escritorio */
+.tableQR{
+	width: 300px;
+}
+
+.qrImg {
+	width: 250px;
+}
+@media (max-width: 769px){
+	.tableQR{
+		width: 100%;
+	}
+
+	.qrImg {
+		width: 100%;
+	}
+}
+
+
+
