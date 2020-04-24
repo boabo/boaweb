@@ -175,7 +175,7 @@ var contadorNuevaPeticion = 0;
 var menor_tarifa_ida = 0;
 var menor_tarifa_vuelta = 0;
 
-var reserva_redirect = true;
+var reserva_redirect = false;
 
 
 var validacion_ = {
@@ -1262,11 +1262,11 @@ function asyncValidateSeleccionVuelo(response)
         $(".nro-documento").validCampos('0123456789abcdefghijklmnopqrstuvwxyz');
         $(".nro-viajero-frecuente").validCampos('0123456789');
 
-        if(ENABLE_GENDER){
+        /*if(ENABLE_GENDER){
         	//cambiamos la altura
         	$("#info_registro_pasajeros .persona").css({"height":"250px"});
         	$(".left-label").css({"height":"250px"});
-		}
+		}*/
 
 
 

@@ -1,13 +1,13 @@
 // ---------------------------------------------------------------------------
 
-var VISTAPAGOS = true;
+var VISTAPAGOS = false;
 var DIRECCIONAR = false;
 var TIME_END = 500;
 
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY = "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7wCjHVLtRxbgf0vHVb3i/xBuHiXXBmHXV+j8LKSmrS2acxvi29Ig7D4JXgNteENK8O9UV0NZIp4g==";
+var SERVICE_CREDENTIALS_KEY =  "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi6eY6sITP1qX1QDEA16b/a0PI7geaxm//UzgLJSSG4tP2ncxzOsIlQRKI1u3qe0ccUWDXul8XGG5A==";
 var server = '192.168.17.249'; //puede ser "+server+"
 
 var adultoMayorNoAeropuerto = {
@@ -92,9 +92,9 @@ var BoA = {
 
     defaultConsultaVuelos : {
         origen: 'CBB',
-        destino: 'VVI',
-        fechaIda : '20190627',//formatCompactDate(new Date()), // today
-        fechaVuelta:'20190628',//null, // no flight back
+        destino: 'MIA',
+        fechaIda : '20200627',//formatCompactDate(new Date()), // today
+        fechaVuelta: null,//null, // no flight back
         adulto: 1,
         infante: 0,
         ninho: 0,
