@@ -262,6 +262,14 @@
 #submenu_item_bebes 							.icon{background-position: 0px -125px;}
 #submenu_item_mascota 							.icon{background-position: 0px -150px;}
 
+#submenu_item_pasajeros_capacidades_diferentes 							.icon{background-position: 0px -25px;}
+#submenu_item_pasajeros_discapacitados 	        						.icon{background-position: 0px -25px;}
+#submenu_item_pasajeros_transportando_jeringuilla_e_insulina_en_cabina 	.icon{background-position: 0px -50px;}
+#submenu_item_pasajeros_con_apnea_de_sueno_cpaps 						.icon{background-position: 0px -50px;}
+#submenu_item_pasajeros_con_uso_oxigeno   								.icon{background-position: 0px -75px;}
+#submenu_item_transporte_de_pasajeros_con_equipo_de_dialisis_portatil 	.icon{background-position: 0px -100px;}
+#submenu_item_transporte_de_mascotas_en_cabina_de_pasajeros 			.icon{background-position: 0px -150px;}
+
 #info_menores_no_acompanados 			.icon{background-position: 	0px 0px; }
 #info_pasajeros_necesidades_diferentes	.icon{background-position: 	0px -80px; }
 #info_condiciones_medicas_especiales 	.icon{background-position: 	0px -160px; }
@@ -534,9 +542,9 @@
 	background-image: url("images/contenidos/bg_mision_vision.png");
 }
 
-#image_mision_vision { 
-	width:650px; 
-	height:520px; 
+#image_mision_vision {
+	width:650px;
+	height:520px;
 	background-position: 0 0;
 	color: #FFF;
 	padding: 180px 0 0 50px;
