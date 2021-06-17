@@ -31,7 +31,7 @@
 }
 
 /* **** ANIMACIONES **** */
-#widget_cambiar_vuelo, 
+#widget_cambiar_vuelo,
 .flight-details .cell-details, .flight-details .expandable,
 #widget_resumen_reserva td.selector-pax ul li,
 .ui-section.wide.results .header .stage span,
@@ -93,7 +93,7 @@
 	border-width: 10px 0 0 0;
 	margin: 0;
 	padding: 0;
-	background-image: url('images/banner_reserva_vuelos.png'); 
+	background-image: url('images/banner_reserva_vuelos.png');
 	background-color: #1EAAD1;
 	z-index: 100;
 
@@ -141,7 +141,7 @@
 	-ms-box-shadow: 6px 7px 11px rgba(0, 0, 0, 0.5);
 }
 
-#ui_reserva_vuelos .header .stage.active .number span { 
+#ui_reserva_vuelos .header .stage.active .number span {
 	color: #FFF;
     font-size: 30px;
     line-height: 56px;
@@ -264,9 +264,9 @@
 	min-width: 850px;
 }
 
-#ui_reserva_vuelos .descripcion table { 
+#ui_reserva_vuelos .descripcion table {
 	width: 100%;
-	margin: 0;	
+	margin: 0;
 }
 
 #ui_reserva_vuelos .descripcion table th{
@@ -520,7 +520,7 @@
 }
 
 
-/* detalles de celda */ 
+/* detalles de celda */
 #ui_reserva_vuelos .descripcion table td.cell-details {
 	background-color: #EFAA35 !important;
 	padding: 10px 0;
@@ -557,7 +557,7 @@
 	padding: 0;
 }
 
-#ui_reserva_vuelos .descripcion table td.cell-details label{ 
+#ui_reserva_vuelos .descripcion table td.cell-details label{
 	display: block;
 	font-size: 20px;
 	padding: 10px 0 10px 30px;
@@ -645,7 +645,7 @@
 /*--------------- FORMULARIO DE REGISTRO -----------------*/
 /*--------------------- DE PERSONAS ----------------------*/
 /*--------------------------------------------------------*/
-#ui_reserva_vuelos .info.phase { 
+#ui_reserva_vuelos .info.phase {
 	left: -2500px;
 	transition: left 1.5s !important;
 	-moz-transition: left 1.5s !important;
@@ -940,7 +940,7 @@
 	width: 180px;
 	height: 40px;
 	background-color: #EFAA35;
-	
+
 	font-family: "HelveticaNeuePro";
 	text-align: center;
 	color: rgb(255, 255, 255);
@@ -1074,7 +1074,7 @@
 }
 
 #widget_cambiar_vuelo .form .radio-button, .content .radio-button label {
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 #widget_cambiar_vuelo .form .radio-button .btn {
@@ -1310,7 +1310,7 @@
 }
 
 #widget_resumen_reserva .cell-descripcion .tooltip th {
-	font-size: 12px;	
+	font-size: 12px;
 	font-style: normal;
 }
 
@@ -1603,7 +1603,7 @@
 #widget_resumen_reserva tr.tarifa.inactive ul li span{display: none;}
 #widget_resumen_reserva tr.tarifa.inactive ul li .btn-plus{display: block;}
 /* (read only widget)  -----------------------------------*/
-#widget_resumen_reserva.read-only .tarifa.inactive { display: none; } 
+#widget_resumen_reserva.read-only .tarifa.inactive { display: none; }
 #widget_resumen_reserva.read-only .div-seleccion .overlay:hover .btn-borrar{ display: none; }
 #widget_resumen_reserva.read-only .div-seleccion .overlay:hover{ background-color: transparent; }
 #widget_resumen_reserva.read-only td.selector-pax ul {display: none;}
@@ -1614,7 +1614,7 @@
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
-#dialog_overlay 
+#dialog_overlay
 {
 	background-color: rgba(66, 66, 66, 0.55);
     width: 100%;
@@ -2490,7 +2490,7 @@ loading svg {
 	-o-animation: rotation 2s infinite linear;
 	animation: rotation 2s infinite linear;
 
-	
+
 
 
 
@@ -2630,7 +2630,7 @@ loading svg {
 	#ui_reserva_vuelos .header .stage .number{
 		width: 20px;
 		height: 20px;
-		
+
 	}
 	#ui_reserva_vuelos .header .stage.active .number{
 		width: 30px;
@@ -2973,4 +2973,7 @@ loading svg {
 	cursor: pointer;
 }
 
+.flapper.XS .digit, .flapper.XS .digit div {
+	width: 19px;
+}
 

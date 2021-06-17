@@ -11,9 +11,9 @@ var ALLOWED_TARIFAS_BY_ESTADO = ['A'];
 var ENABLE_GENDER = false;
 // ---------------------= =---------------------
 var searchParameters = {
-	origen : "", 
-	destino : "", 
-	fechaIda : "", 
+	origen : "",
+	destino : "",
+	fechaIda : "",
 	fechaVuelta : null,
 	sitios: 0
 };
@@ -28,7 +28,7 @@ var rawDatesCache = {ida:null,vuelta:null};
 
 var seleccionVuelo = {
 	ida: 			null,
-	vuelta: 		null, 
+	vuelta: 		null,
 
 	tasasTotales:{
 
@@ -203,7 +203,7 @@ var g_llegada_consultada = false;
 
 
 // ---------------------= =---------------------
-/********************************************************* 
+/*********************************************************
  ********************** UI HANDLERS **********************
  **********************************************************/
 $(document).on('ready',function()
@@ -399,7 +399,7 @@ $(document).on('ready',function()
             setInterval(checkSearchWidgetAvailability, 200);
 
             flapperTotal = $("#precio_total").flapper({
-                width: 7,
+                width: 9,
                 align: 'right'
             });
 
@@ -702,7 +702,7 @@ function validateSearch()
 	// fecha salida
 	var rawDate = pickerSalida.val().split(" ");
 	searchParameters.fechaIda = rawDate[2] +""+ MONTHS_LANGUAGE_TABLE[rawDate[1]] +""+ rawDate[0];
-	
+
 	// fecha retorno
 	if(parms.solo_ida){
 		searchParameters.fechaVuelta = null
@@ -759,9 +759,9 @@ function validateSearch()
 }
 // ---------------------= =---------------------
 // checks if selected passenger numbers don't pass available searched seats
-function checkWarningPxNumber() 
+function checkWarningPxNumber()
 {
-	// warning icon to show if there 
+	// warning icon to show if there
 	var warn = $("#widget_resumen_reserva .warning-icon");
 
 	// CONTINUAR AQUI, PROBAR CAMBIO DE PASAJEROS
@@ -873,7 +873,7 @@ function changeNumPassengers()
                         $('option[value="'+k+'"]').css({"display":""});
                     });
 
-                    
+
                 }else{
 
                     limpiarSeleccionPorTipo('adulto');
@@ -917,7 +917,7 @@ function changeNumPassengers()
 
 
 
-	
+
 }
 
 function limpiarSeleccionPorTipo(tipo) {
@@ -1120,7 +1120,7 @@ function validatePassengers()
 		}
 	}
 
-	if(isAllValid) { 
+	if(isAllValid) {
 		//var selVueloToSend = prepareSeleccionVueloToSend();
 		var selVueloToSend = vuelosDibujador.objectEnviar.seleccionVuelo;
 
@@ -1142,8 +1142,8 @@ function validatePassengers()
         loadingBoa.cargarBoa();
 
 		ajaxRequest(
-			BoA.urls["register_passengers_service"], 
-			asyncRegisterPassengers, 
+			BoA.urls["register_passengers_service"],
+			asyncRegisterPassengers,
 			"POST", dataToSend);
 
 
@@ -1226,7 +1226,7 @@ function asyncRegisterPassengers(response)
 		$("#info_pago_bancos").addClass("active");
 
 		$("#stage_registro").removeClass("active");
-		$("#stage_compra").addClass("active");	
+		$("#stage_compra").addClass("active");
 
 		$("#widget_resumen_reserva").hide();
 	} else {
@@ -1358,8 +1358,8 @@ function asyncValidateSeleccionVuelo(response)
                     showSimpleDialog2("No puedes Modificar este campo, limpia el formulario y vuelta a intentarlo");
                 }
             });
-            
-            
+
+
 
 
 
@@ -1521,7 +1521,7 @@ function checkResultsTableWidth()
 		$("#tbl_salida .expandable .detail, #tbl_regreso .expandable .detail").addClass("stretched");
 }
 
-/******************************************************** 
+/********************************************************
  ********************** ASYNC HANDLERS ******************
  ********************************************************/
 // ---------------------= =---------------------
@@ -1534,7 +1534,7 @@ function asyncReceiveDates(response)
 	try {
 		// fix to .NET dumbest encoding ever (possible bug here in future)
 
-		response = $.parseJSON(response.CalendarResult).ResultCalendar; 
+		response = $.parseJSON(response.CalendarResult).ResultCalendar;
 	} catch (e){
 		showSimpleDialog (BoA.defaultApologyMessage, BoA.defaultURLAfterFail);
 
@@ -1583,7 +1583,7 @@ function asyncReceiveDates(response)
 		rawDatesCache.vuelta = null;
 	}
 
-	// (las fechas de ida y vuelta deben estar establecidas 
+	// (las fechas de ida y vuelta deben estar establecidas
 	//	antes de construir el selector de fechas)
 	buildDatesSelector(
 		response["calendarioOW"]["OW_Ida"]["salidas"]["salida"],
@@ -1596,11 +1596,11 @@ function asyncReceiveDates(response)
 	if(searchParameters.fechaVuelta != null) {
 		buildDatesSelector(
 			response["calendarioOW"]["OW_Vuelta"]["salidas"]["salida"],
-			response["fechaVueltaConsultada"], 
+			response["fechaVueltaConsultada"],
 			$("#tbl_days_selector_regreso"),
 			false
 		);
-	} 
+	}
 
 	waitingForFlightsData = true;
 
@@ -1614,7 +1614,7 @@ function asyncReceiveFlights(response)
     loadingBoa.terminarCargarBoa();
 
 	checkWarningPxNumber() ;
-	
+
 	if(waitingForFlightsData == false) // response ya fue procesado
 		return;
 
@@ -1661,12 +1661,12 @@ function asyncReceiveFlights(response)
     $("#llegadasHeaderFamilias").empty();
 
 	// el verdadero response esta mas adentro ¬¬
-	response = response['ResultAvailabilityPlusValuationsShort']; 
+	response = response['ResultAvailabilityPlusValuationsShort'];
 
 	console.log('response',response)
 	var fechaIdaConsultada = response["fechaIdaConsultada"];
 	var fechaVueltaConsultada = response["fechaVueltaConsultada"];
-	
+
 	if(fechaIdaConsultada != currentDateIda &&
 	   fechaVueltaConsultada != currentDateVuelta)
 		return; // cuando response no es de las fechas esperadas
@@ -1696,7 +1696,7 @@ function asyncReceiveFlights(response)
 
 }
 
-/***************************************************** 
+/*****************************************************
  *************** UI BUILDING FUNCTIONS ***************
  *****************************************************/
 function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
@@ -1763,7 +1763,7 @@ function buildDatesSelector(rawDates, requestedDateStr, table, isIda)
 		var inRange = true;
 
 		// evitar mostrar fechas cruzadas (de ida y vuelta)
-		if(currentDateVuelta != null) { 
+		if(currentDateVuelta != null) {
 			var otherDate = compactToJSDate(isIda ? currentDateVuelta:currentDateIda);
 			if(isIda)
 				inRange = (d <= otherDate);
@@ -1900,7 +1900,7 @@ function separarAeropuertoSvg(aeropuerto) {
     return $(svg_aer);
 }
 
-/******************************************************* 
+/*******************************************************
  *************** LOGIC HANDLER FUNCTIONS ***************
  *******************************************************/
 // ---------------------= =---------------------
@@ -1914,7 +1914,7 @@ function handleInitialRequest()
 	$("#select_origen").val(searchParameters.origen);
 	$("#select_destino").val(searchParameters.destino);
 
-	$('#picker_salida').datepicker("setDate", 
+	$('#picker_salida').datepicker("setDate",
 		compactToJSDate(BoA.defaultConsultaVuelos.fechaIda)
 	);
 
@@ -1986,7 +1986,7 @@ function handleInitialRequest()
 
 
 
-	
+
 	requestSearchParameters(searchParameters);
 }
 // ---------------------= =---------------------
@@ -2067,13 +2067,13 @@ function requestSearchParameters(parms)
 		days 			: "3",
 		ratesMax		: "1",
 		sites			: (""+parms.sitios),
-		compartment 	: "0", 
+		compartment 	: "0",
 		classes 		: "",
 		clientDate 		: todayStr,
 		clientHour 		: currentTimeStr,
 		forBook			: "1",
 		forRelease 		: "1",
-		ipAddress 		: "127.0.0.1", 
+		ipAddress 		: "127.0.0.1",
 		xmlOrJson 		: false , // false=json ; true=xml
         sitesDetail		: parms.sitesDetail,
 	};
@@ -2090,8 +2090,8 @@ function requestSearchParameters(parms)
     searchParameters.sitesDetail = parms.sitesDetail;
 
 	ajaxRequest(
-		BoA.urls["nearest_dates_service"], 
-		asyncReceiveDates, 
+		BoA.urls["nearest_dates_service"],
+		asyncReceiveDates,
 		"POST", data);
 
 
@@ -2152,8 +2152,8 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 
 
 	ajaxRequest(
-		BoA.urls["flights_schedule_service"], 
-		asyncReceiveFlights, 
+		BoA.urls["flights_schedule_service"],
+		asyncReceiveFlights,
 		"POST", data);
 }
 // ---------------------= dibujador del formulario =---------------------
@@ -2281,7 +2281,7 @@ function buildRegistroPersona(tipo, numPx)
 	return persona;
 }
 // ---------------------= =---------------------
-function buildBanks(banks) 
+function buildBanks(banks)
 {
 	// BANKS SETUP
 	var tblBanks = $("#info_pago_bancos .banks-container");
@@ -2311,7 +2311,7 @@ function buildBanks(banks)
 
 			$(cell).append("<img class='bank " + bankKey + "' data-bank_key='"+bankKey+"' src='/content/images/bancos/" + bankKey + ".png'>");
 			$(cell).find("img").click(function(){
-				showSimpleDialog(disabledBanksMessages[$(this).data("bank_key")]);	
+				showSimpleDialog(disabledBanksMessages[$(this).data("bank_key")]);
 			});
 		}
 
@@ -2321,7 +2321,7 @@ function buildBanks(banks)
 
 
 // ---------------------= =---------------------
-function getSelectedSitesCount() 
+function getSelectedSitesCount()
 {
 	var pxSelections = $("#widget_resumen_reserva .selector-pax ul");
 	var total = 0;
@@ -2647,5 +2647,5 @@ function solicitarVueloTest (dateConsultada,from,to,totalSites,callback) {
 			}
         },
         "POST", data);
-    
+
 }
