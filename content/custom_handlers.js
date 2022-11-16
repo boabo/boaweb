@@ -51,6 +51,7 @@ var BoA = {
         twitter: "http://www.twitter.com/BoABolivia",
         instagram: "http://i.instagram.com/boa_bolivia",
         youtube: "http://www.youtube.com/user/BoADigital",
+        whatsapp: "https://wa.me/59170779285",
         revista_destinos: "http://www.destinos.com.bo",
         ventas_web: "mailto:ventasweb@boa.bo",
         info_madrid: "http://www.minetur.gob.es/turismo/es-ES/Paginas/IndexTurismo.aspx",

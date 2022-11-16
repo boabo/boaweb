@@ -21,6 +21,7 @@ $(document).on('ready',function()
 	$("footer #icon_facebook").click(function() { redirect('facebook');});
 	$("footer #icon_youtube").click(function() { redirect('youtube');});
 	$("footer #icon_twitter").click(function() { redirect('twitter');});
+	$("footer #icon_whatsapp").click(function() { redirect('whatsapp');});
 
 	$("#rbtn_ida_footer, #rbtn_ida_vuelta_footer").click(function() {
 		var visibility = $("#rbtn_ida_footer").hasClass("checked") ? "hidden":"visible";

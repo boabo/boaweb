@@ -1245,7 +1245,7 @@ footer #icons_redes_sociales div {
 	top: 10px;
 	width: 25px;
     height: 25px;
-	background-image: url('images/icons_redes_sociales.png');
+	background-image: url('images/icons_redes_socialesv2.png');
     background-size: 25px;
     border-radius: 5px;
 
@@ -1438,12 +1438,13 @@ footer #reservas.active {
 	background-position: -92px -3px;
 }
 
+
 footer #icon_facebook {
 	right: 15px;
 	background-position: 0px 0px;
 }
 
-footer #icon_facebook:hover{ 
+footer #icon_facebook:hover{
 	right: 10px;
 	background-position: 0px 0px;
 }
@@ -1467,6 +1468,17 @@ footer #icon_youtube:hover{
 	right: 87px;
 	background-position: 0 -83px;
 }
+
+footer #icon_whatsapp {
+	right: 132px;
+	background-position: 0px -75px;
+}
+
+footer #icon_whatsapp:hover{
+	right: 122px;
+	background-position: -2px -122px;
+}
+
 
 footer .tooltip span {
 	position: absolute;
@@ -3222,7 +3234,7 @@ div.panel {
 	}
 
 	footer #icons_redes_sociales {
-		left: 0px;
+		left: 15px;
 	}
 
 	footer #call_center {
@@ -3231,7 +3243,7 @@ div.panel {
 
 	footer #icons_util {
 		/*display: none;*/
-		margin-left: 185px;
+		margin-left: 195px;
 
 	}
 	.origen-destino {
