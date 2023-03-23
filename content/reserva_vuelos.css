@@ -839,6 +839,16 @@
     text-align: right;
     padding: 20px 0 0 0;
 }
+#info_registro_pasajeros .persona .form span.iti__country-name {
+	display: initial;
+    text-align: center;
+    padding: 0;
+}
+#info_registro_pasajeros .persona .form span.iti__dial-code {
+	display: initial;
+    text-align: center;
+    padding: 0;
+}
 
 #info_registro_pasajeros .persona .form span.disabled,
 #info_registro_pasajeros .persona .form span.disabled a {

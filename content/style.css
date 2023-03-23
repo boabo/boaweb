@@ -2019,6 +2019,12 @@ footer .form .button {
 	line-height: 25px;
 	margin: 0 0 0 20px;
 }
+.ui-section .descripcion ul li.iti__country, li.iti__divider {
+	list-style-type: none !important;
+	line-height: 15px;
+	margin: 0 0 0 5px;
+}
+
 
 .ui-section .descripcion ol li {
 	list-style-type: number;

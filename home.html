@@ -1166,6 +1166,210 @@
 	</div>
 
 	<a id="btn_redirect" href="#" target="_blank" style="display:none"></a>
+
+<style>
+
+
+	#main-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		background-color: #e1e8fd;
+		overflow: hidden;
+	}
+	#main-wrapper #floating-snap-btn-wrapper {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 40%;
+		left: 30px;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+	}
+	#main-wrapper #floating-snap-btn-wrapper .fab-btn {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: #25d366;
+		color: white;
+		z-index: 1000;
+		box-shadow: 0px 2px 17px -1px rgba(0, 0, 0, 0.3);
+	}
+	#main-wrapper #floating-snap-btn-wrapper ul {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	#main-wrapper #floating-snap-btn-wrapper ul li {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #f7f7f7;
+		color: black;
+		list-style-type: none;
+		transform: scale(0.95);
+		transition: 0.5s;
+		border-radius: 50%;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active li:hover {
+		background-color: #f8e487;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active.left li:nth-child(1) {
+		top: 0%;
+		left: 300%;
+		transition-delay: 0s;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active.left li:nth-child(2) {
+		top: 0%;
+		left: 200%;
+		transition-delay: 0.2s;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active.left li:nth-child(3) {
+		top: 0%;
+		left: 100%;
+		transition-delay: 0.4s;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active.right li:nth-child(1) {
+		top: 0%;
+		left: -300%;
+		transition-delay: 0s;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active.right li:nth-child(2) {
+		top: 0%;
+		left: -200%;
+		transition-delay: 0.2s;
+	}
+	#main-wrapper #floating-snap-btn-wrapper.fab-active.right li:nth-child(3) {
+		top: 0%;
+		left: -100%;
+		transition-delay: 0.4s;
+	}
+
+</style>
+<div id="main-wrapper">
+	<div id="floating-snap-btn-wrapper">
+		<!-- BEGIN :: Floating Button -->
+		<div class="fab-btn">
+			<i class="fa fa-whatsapp fa-3x"></i>
+			<ion-icon name="share-social"></ion-icon>
+		</div>
+		<!-- END :: Floating Button -->
+		<!-- BEGIN :: Expand Section -->
+		<ul>
+			<li>
+				<ion-icon name="logo-twitter"></ion-icon>
+			</li>
+			<li>
+				<ion-icon name="logo-facebook"></ion-icon>
+			</li>
+			<li>
+				<ion-icon name="logo-whatsapp"></ion-icon>
+			</li>
+		</ul>
+		<!-- END :: Expand Section -->
+	</div>
+</div>
+<script>
+	const fabElement = document.getElementById("floating-snap-btn-wrapper");
+	let oldPositionX,
+			oldPositionY;
+
+	const move = (e) => {
+		if (!fabElement.classList.contains("fab-active")) {
+			if (e.type === "touchmove") {
+				fabElement.style.top = e.touches[0].clientY + "px";
+				fabElement.style.left = e.touches[0].clientX + "px";
+			} else {
+				fabElement.style.top = e.clientY + "px";
+				fabElement.style.left = e.clientX + "px";
+			}
+		}
+	};
+
+	const mouseDown = (e) => {
+		console.log("mouse down ");
+		oldPositionY = fabElement.style.top;
+		oldPositionX = fabElement.style.left;
+		if (e.type === "mousedown") {
+			window.addEventListener("mousemove", move);
+		} else {
+			window.addEventListener("touchmove", move);
+		}
+
+		fabElement.style.transition = "none";
+	};
+
+	const mouseUp = (e) => {
+		console.log("mouse up");
+		if (e.type === "mouseup") {
+			window.removeEventListener("mousemove", move);
+		} else {
+			window.removeEventListener("touchmove", move);
+		}
+		snapToSide(e);
+		fabElement.style.transition = "0.3s ease-in-out left";
+	};
+
+	const snapToSide = (e) => {
+		const wrapperElement = document.getElementById('main-wrapper');
+		const windowWidth = window.innerWidth;
+		let currPositionX, currPositionY;
+		if (e.type === "touchend") {
+			currPositionX = e.changedTouches[0].clientX;
+			currPositionY = e.changedTouches[0].clientY;
+		} else {
+			currPositionX = e.clientX;
+			currPositionY = e.clientY;
+		}
+		if(currPositionY < 50) {
+			fabElement.style.top = 50 + "px";
+		}
+		if(currPositionY > wrapperElement.clientHeight - 50) {
+			fabElement.style.top = (wrapperElement.clientHeight - 50) + "px";
+		}
+		if (currPositionX < windowWidth / 2) {
+			fabElement.style.left = 30 + "px";
+			fabElement.classList.remove('right');
+			fabElement.classList.add('left');
+		} else {
+			fabElement.style.left = windowWidth - 30 + "px";
+			fabElement.classList.remove('left');
+			fabElement.classList.add('right');
+		}
+	};
+
+	fabElement.addEventListener("mousedown", mouseDown);
+
+	fabElement.addEventListener("mouseup", mouseUp);
+
+	fabElement.addEventListener("touchstart", mouseDown);
+
+	fabElement.addEventListener("touchend", mouseUp);
+
+	fabElement.addEventListener("click", (e) => {
+		if (
+				oldPositionY === fabElement.style.top &&
+				oldPositionX === fabElement.style.left
+		) {
+			fabElement.classList.toggle("fab-active");
+		}
+	});
+
+</script>
+
 	<footer>
 		<div id="icons_seguridad"></div>
 		<div id="icons_util">
@@ -1411,6 +1615,8 @@
 <script src="content/lib/genesys/widgets.min.kh.WebRTC.inicio.js"></script>
 <!-- By default the JSAPI library file grtc.js is under the src dir -->
 <script type="text/javascript" src="content/lib/genesys/grtc.js"></script>
+
+
 
 
 </body>

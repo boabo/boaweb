@@ -1250,6 +1250,13 @@ function asyncValidateSeleccionVuelo(response)
 		for(var key in {adulto:null,ninho:null,infante:null,adultoMayor:null}) // weirdo and fast :P
 			for(var i=0;i<seleccionVuelo[key].num;i++)
 				form.append(buildRegistroPersona(key,numPx++));
+
+		for (var perIter = 1; perIter < numPx; perIter++) {
+			console.log('"#tbx_px" + perIter + "_telefono"',$("#tbx_px" + perIter + "_telefono"))
+			var input = document.querySelector("#tbx_px" + perIter + "_telefono");
+			window.intlTelInput(input, {separateDialCode: true});
+		}
+
 		var nowYear = new Date();
 
 
@@ -2159,6 +2166,8 @@ function requestFlights(dateIda, dateVuelta, totalSites)
 // ---------------------= dibujador del formulario =---------------------
 function buildRegistroPersona(tipo, numPx)
 {
+
+	console.log('buildRegistroPersona',buildRegistroPersona)
 	//cambiamos las variables para multilenguaje
 	var namesByTipo = {adulto:'ADULTO',ninho:'NINHO',infante:'INFANTE',adultoMayor:'ADULTO_MAYOR_FORM'};
 
@@ -2174,6 +2183,8 @@ function buildRegistroPersona(tipo, numPx)
 			  .append("<div class='left-label'><label class='lbl-tipo'>"+translate.t[namesByTipo[tipo]]+"</label><label class='nro-pasajero'>"+translate.t.PASAJERO+" "+numPx+"</label><div class='icon-pasajero "+tipo+"'></div></div>")
 			  .append("<div class='form'><table cellpadding='0' cellspacing='0'></table></div>")
 			  .append("<div class='wrapper'><div class='form'></div></div>");
+
+
 
     var tbl = $(persona).find(".form table");
 
