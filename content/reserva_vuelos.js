@@ -1015,8 +1015,13 @@ function validatePassengers()
 
         //VALIDAMOS EL TELEFONO
         var tbxTelefono = divPersona.find(".telefono");
-		persona["telefono"] = divPersona.find(".telefono").val();
-        if(persona.telefono.length > 24 ) {
+		const intiAux = tbxTelefono.data('inti');
+		const dd =  intiAux.getSelectedCountryData().dialCode  ;
+		persona["telefono"] = `${dd}${divPersona.find(".telefono").val()}`;
+
+
+
+		if(persona.telefono.length > 24 ) {
             isValid = false;
            showSimpleDialog2('Telefono no tiene que ser mayor a 24 caracters');
         }
@@ -1254,7 +1259,11 @@ function asyncValidateSeleccionVuelo(response)
 		for (var perIter = 1; perIter < numPx; perIter++) {
 			console.log('"#tbx_px" + perIter + "_telefono"',$("#tbx_px" + perIter + "_telefono"))
 			var input = document.querySelector("#tbx_px" + perIter + "_telefono");
-			window.intlTelInput(input, {separateDialCode: true});
+			const inti = window.intlTelInput(input, {separateDialCode: true, autoHideDialCode:false,});
+			$(input).data("inti", inti);
+			//para set un valor default
+			inti.setCountry("bo");
+
 		}
 
 		var nowYear = new Date();
