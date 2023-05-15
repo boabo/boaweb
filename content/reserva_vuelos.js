@@ -1019,8 +1019,6 @@ function validatePassengers()
 		const intiAux = tbxTelefono.data('inti');
 		const dd =  intiAux.getSelectedCountryData().dialCode  ;
 		persona["telefono"] = `${dd}${divPersona.find(".telefono").val()}`;
-		console.log('telefonoVal',telefonoVal)
-		console.log('telefonoVal.length',telefonoVal.length)
 
 		if(!telefonoVal || telefonoVal === '' || telefonoVal == 0 || telefonoVal.length < 8) {
 			isValid = false;
