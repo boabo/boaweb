@@ -1015,10 +1015,17 @@ function validatePassengers()
 
         //VALIDAMOS EL TELEFONO
         var tbxTelefono = divPersona.find(".telefono");
+		const telefonoVal = divPersona.find(".telefono").val();
 		const intiAux = tbxTelefono.data('inti');
 		const dd =  intiAux.getSelectedCountryData().dialCode  ;
 		persona["telefono"] = `${dd}${divPersona.find(".telefono").val()}`;
+		console.log('telefonoVal',telefonoVal)
+		console.log('telefonoVal.length',telefonoVal.length)
 
+		if(!telefonoVal || telefonoVal === '' || telefonoVal == 0 || telefonoVal.length < 8) {
+			isValid = false;
+			showSimpleDialog2('Agregue un telefono debe ser mayor a 8 caracteres');
+		}
 
 
 		if(persona.telefono.length > 24 ) {
