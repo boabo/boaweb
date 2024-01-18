@@ -351,14 +351,36 @@
                                 objectTarifasAux.TarifaPersoCombinabilityID = tarifa.TarifasPersoCombinabilityID.TarifaPersoCombinabilityID;
 
                                 //VALIDAMOS QUE SEA ARRAY SI NO DEBEMOS CONVERTILO
-                                if (!Array.isArray(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero)) {
+                                if (object.tasaTipoPasajero && !Array.isArray(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero)) {
                                     var ArrayOfTasaTipoPasajero = [];
                                     ArrayOfTasaTipoPasajero.push(object.tasaTipoPasajero.ArrayOfTasaTipoPasajero);
                                     object.tasaTipoPasajero.ArrayOfTasaTipoPasajero = ArrayOfTasaTipoPasajero;
 
                                 }
 
-                                objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
+
+
+                                if(object.tasaTipoPasajero) {
+                                    objectTarifasAux.TasaTipoPasajero = object.tasaTipoPasajero.ArrayOfTasaTipoPasajero[indexTarifas];
+                                } else {
+                                    const TasaTipoPasajeroAux = [
+                                        {
+                                            "ExtensionData": null,
+                                            "cantidadPax": "1",
+                                            "monto": "0",
+                                            "tasa": "IMPUESTO PRAGUAY",
+                                            "tipoPasajero": "ADT",
+                                            "tipoTasa": "AR"
+                                        },
+                                    ]
+                                    objectTarifasAux.TasaTipoPasajero = {
+                                        TasaTipoPasajero: TasaTipoPasajeroAux
+                                    }
+
+                                }
+
+
+
                                 arrayTarifasAux.push(objectTarifasAux);
 
                             }
