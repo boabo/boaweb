@@ -2249,8 +2249,8 @@ function buildRegistroPersona(tipo, numPx)
 						'</div>'+
 						'<div class="Grid-cell main" style="order: 2;">'+
 							'<div class="Holly">'+
-								'<div class="titulo_input">'+(isAdulto?translate.t.EMAIL:translate.t.FECHA_NACIMIENTO)+'</div> ' +
-								(isAdulto?
+								'<div class="titulo_input">'+((isAdulto || tipo=='ninho')?translate.t.EMAIL:translate.t.FECHA_NACIMIENTO)+'</div> ' +
+								((isAdulto || tipo=='ninho')?
 										'<div class="validable" style="position: relative;"><div class="tooltip">'+translate.t.DEBES_INGRESAR_TU_CORREO_ELECTRONICO+'</div><input type="text" id="tbx_px'+numPx+'_email" class="email" onfocus="validaciones_form.validar_email(this)" onkeyup="validaciones_form.validar_email(this)" ><span class="icon_form"><svg   class="svg_icon_form"><use class="alert_form" xlink:href="#alert_form" /></svg></span></div>':
 										'<div class="validable" style="position: relative;"><div class="tooltip">'+(tipo=='infante'?translate.t.INFANTE_DESC:translate.t.NINO_DESC)+'</div><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>'
 								) +
@@ -2258,8 +2258,8 @@ function buildRegistroPersona(tipo, numPx)
 						'</div>'+
 						'<div class="Grid-cell aside" style="order: 3;">'+
 							'<div class="Holly">'+
-								'<div class="titulo_input">'+(isAdulto?translate.t.FECHA_NACIMIENTO: translate.t.VIAJERO_FRECUENTE)+'</div> '+
-								(isAdulto?
+								'<div class="titulo_input">'+((isAdulto || tipo=='ninho')?translate.t.FECHA_NACIMIENTO: translate.t.VIAJERO_FRECUENTE)+'</div> '+
+								((isAdulto || tipo=='ninho')?
 										'<div class="validable"><input type="text" id="picker_px'+numPx+'_nacimiento" class="calendar nacimiento" text="(Ingrese fecha de nacimiento)" onkeypress="return false;"></div>':
 										'<input readonly type="text" id="tbx_px'+numPx+'_px_frecuente" class="nro-viajero-frecuente">'
 								) +

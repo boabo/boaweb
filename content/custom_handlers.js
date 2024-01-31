@@ -7,7 +7,7 @@ var TIME_END = 500;
 var CURRENCY = "bs"; // "euro", "bs" , "usd"
 var HTML_CURRENCIES = {bs:"Bs.",euro:"&euro;",usd:"USD"};
 var CODE_CURRENCIES = {bs:"BOB",euro:"EU",usd:"USD"};
-var SERVICE_CREDENTIALS_KEY =  "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi74bZRxuSW0HUG3Dg9y6unt8uIyr9yFxOloyPTBnS7InQiys6DmndK2Jjcv/0M95l0GgwD0AYWhkA=="
+var SERVICE_CREDENTIALS_KEY =  "BIlpbSRa4cLutdqSVK+Z7TDl8RnhQEkZClKiiiWK18AeDVzOiGo2WV5FZkG3HV7avD3D6Zu33KAFoiyJziA/td/nH+b9Z1kb77X452Mayi7z7J+H+m0fKbfkSjY52Ba+FQd5FozDc5ARejoIrktmWoOvjcnyq6DA2Cb4GSE8k3u6vEFNjUvgBQ=="
 ;
 var server = '192.168.17.249'; //puede ser "+server+"
 
@@ -93,13 +93,13 @@ var BoA = {
     },
 
     defaultConsultaVuelos : {
-        origen: 'ASU',
-        destino: 'VVI',
-        fechaIda : '20240125',//formatCompactDate(new Date()), // today
+        origen: 'CBB',
+        destino: 'MIA',
+        fechaIda : '20240225',//formatCompactDate(new Date()), // today
         fechaVuelta: null,//null, // no flight back
         adulto: 1,
         infante: 0,
-        ninho: 0,
+        ninho: 1,
         adultoMayor:0
     },
 
