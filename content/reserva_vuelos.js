@@ -1032,7 +1032,7 @@ function validatePassengers()
         }
 
 		persona["nroViajeroFrecuente"] = divPersona.find(".nro-viajero-frecuente").val();
-		if(tipo=='adulto' || tipo=='adultoMayor'){
+		if(tipo=='adulto' || tipo=='ninho' || tipo=='adultoMayor'){
 			var tbxemail = divPersona.find(".email");
 
 			if(isEmail(divPersona.find(".email").val())!=true){
